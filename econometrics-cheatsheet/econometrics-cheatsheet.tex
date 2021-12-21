@@ -1,0 +1,64 @@
+\documentclass[10pt,landscape]{article}
+\usepackage{multicol} % multiple columns
+\usepackage[landscape]{geometry} % landscape
+\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} % margins
+\pagenumbering{gobble} % remove page numeration
+\usepackage{lipsum}% dummy text
+\usepackage{parskip} % no indentation
+
+\begin{document}
+\begin{center}
+\textbf{\Large Econometrics CheatSheet}
+\end{center}
+
+\begin{multicols}{3}
+\section*{Econometrics Theory}
+\subsection*{Definition}
+\textbf{Econometrics} - social science with the objective of quantify the relationships between economic agents.
+\textbf{Econometric model} - simplification of the reality to explain economic phenomena.
+
+\subsection*{Phases of an econometric model}
+\begin{enumerate}
+	\item Specification
+	\item Estimation
+	\item Validation
+	\item Utilization
+\end{enumerate}
+
+\section*{Regression Analysis}
+Study and predict the mean value of a variable regarding the base of fixed values of other variables.
+
+We usually use Ordinary Least Squares (OLS).
+
+
+\section*{Correlation Analysis}
+The correlation analysis not distinguish between dependent and independent variables.
+
+\textbf{Simple Correlation}
+
+Measure the grade of lineal association between two variables.
+
+
+
+\section*{Utilization}
+\subsection*{Interpretation of the model}
+
+
+\begin{tabular}{ | c | c | c | c | }
+	\hline
+	Model & Dependent & Independent & Interpretation $\beta_1$ \\
+	\hline
+	Level-level & $y$ & $x$ & $\Delta y = \beta_1 \Delta x$ \\ 
+	\hline
+	Level-log & $y$ & cell6 & cell2 \\  
+	\hline
+	Log-level & cell8 & cell9 & cell1 \\
+	\hline
+	Log-log & cell10 & cell1 & cell1 \\
+	\hline
+\end{tabular}
+
+
+\lipsum
+\end{multicols}
+\end{document}
