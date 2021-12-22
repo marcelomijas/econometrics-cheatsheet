@@ -55,20 +55,20 @@ Under this assumptions the estimators of the parameters will present "good prope
 \item Independence: independence, that guarantees that all the covariances between independents are zero.
 \item Identical distribution: that guarantees that the $n$ expected values and variances of the observations are the same.
 \end{itemize}
-\item $E(\epsilon / X_1, X_2, ..., X_k) = 0$, guarantees that the estimations are unbiased, that have some implications:
+\item $E(u / X_1, X_2, ..., X_k) = 0$, guarantees that the estimations are unbiased, that have some implications:
 \begin{itemize}
-\item $E(\epsilon) = 0$ there are none systematic errors.
-\item $Cov(\epsilon, X_1) = Cov(\epsilon, X_2) = ... = Cov(\epsilon, X_k) = 0$ there are no relevant variables not included in the model.
+\item $E(u) = 0$ there are none systematic errors.
+\item $Cov(u, X_1) = Cov(u, X_2) = ... = Cov(u, X_k) = 0$ there are no relevant variables not included in the model.
 \item $E(Y/X_1, X_2, ..., X_k) = \beta_0 + \beta_1 X_1 + \beta_k X_k$ the lineal relation between $Y$ and $X_1, ..., X_k$ is fulfilled, at least in average.
 \end{itemize}
-\item Homocedasticity: $Var(\epsilon_i / X_{1i}, X_{2i}, ..., X_{ki}) = \sigma^2$, the variability of the error is the same for all levels of $x$. Guarantees that the estimations are efficient. Implies that: $Var(Y_i / X_{1i}, X_{2i}, ..., X_{ki}) = \sigma^2$, the variability of the dependent variable is the same for all levels of $x$.
-\item No autocorrelation: $Cov(\epsilon_i \epsilon_j = 0 \rightarrow Cov(Y_i Y_j / X) = 0$ for every $i$ different from $j$. The errors do not contain information about other errors.
+\item Homocedasticity: $Var(u_i / X_{1i}, X_{2i}, ..., X_{ki}) = \sigma^2$, the variability of the error is the same for all levels of $x$. Guarantees that the estimations are efficient. Implies that: $Var(Y_i / X_{1i}, X_{2i}, ..., X_{ki}) = \sigma^2$, the variability of the dependent variable is the same for all levels of $x$.
+\item No autocorrelation: $Cov(u_i, u_j) = 0 \rightarrow Cov(Y_i Y_j / X) = 0$ for every $i$ different from $j$. The errors do not contain information about other errors.
 \item The distribution of the errors is normal (is not always necessary).
 \item No multicolineality: none of the independent variables is constant nor exist an exact (or aproximate) linear relation between them, they are linearly independents.
 \item The number of available data is greater than $k+1$ ($\beta$ parameters to estimate).
 \end{itemize}
 
-The homocedasticity and no autocorrelation asumptions can also be written in matrix form: $Var(\epsilon / X) = \sigma^2 I_n$
+The homocedasticity and no autocorrelation asumptions can also be written in matrix form: $Var(u / X) = \sigma^2 I_n$
 
 \subsection*{Interpretation of the coefficients}
 \scalebox{0.8}{
@@ -89,8 +89,70 @@ The homocedasticity and no autocorrelation asumptions can also be written in mat
 \end{tabular}
 }
 
+% ALSO ADD IN MATRICIAL FORM
+\section*{OLS estimation of the model}
+
+\subsection*{Simple regression model}
+
+$Y_i = \beta_0 + \beta_1 X_{1i} + u_i, i = 1, ..., n$
+
+\textbf{Definitions}
+
+$\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 X_i$
+
+$\hat{u}_i = Y_i - \hat{Y}_i = Y_i - (\hat{\beta}_0 + \hat{\beta}_1 X_i)$
+
+Objective is minimize the square sum of resid:
+
+$Min \sum_{i=1}^n \hat{u}_i^2 = Min \sum_{i=1}^n [Y_i - (\hat{\beta}_0 + \hat{\beta}_1 X_i)]^2$
+
+With
+
+$\hat{\beta}_0 = \overline{Y} - \hat{\beta_1} \overline{X}$
+
+$\hat{\beta}_1 = \frac{Cov(Y, X)}{Var(X)}$
+
+\subsection*{Multiple regression model}
+
+$Y_i = \beta_0 + \beta_1 X_{1i} + ... + \beta_k X_{ki} + u_i, i = 1,..., n$
+
+$\hat{u}_i = Y_i - \hat{Y}_i = Y_i - (\hat{\beta}_0 + \hat{\beta}_1 X_i + ... + \hat{\beta}_k X_{ki})$
+
+Objective:
+
+$Min \sum_{i=1}^n \hat{u}_i^2$
+
+Then
+
+$\hat{\beta}_0 = \overline{Y} - \hat{\beta_1} \overline{X}_1 - ... - \hat{\beta_k} \overline{X}_k$
+
+$\hat{\beta}_j = \frac{Cov(Y, resid(X_j))}{Var(resid(X_j))}$
+
+\subsection*{Properties of OLS}
+
+\begin{itemize}
+\item Lineality in $Y$.
+\item Normality: $Y / X ~ N(\beta_0 + \beta_1 X, \sigma^2)$
+\item Expected value of the estimator: $E(\hat{\beta}_1 / X_i) = \beta_1$, then $\hat{\beta}_1$ is an unbiased estimator of $\beta_1$
+\item Variance of the estimator: $Var(\hat{\beta}_1 / X_i) = \frac{\sigma^2}{n Var(X_i)}$
+\end{itemize}
+
+\textbf{Eficiency of OLS estimators, Gauss-Markov Theorem}. In the context of the simple or multiple linear regression model, the OLS estimators of the parameters are those with the lowest variance between the lineal and unbiased estimators
+
+\subsection*{Central Limit Theorem}
+% MORE EXPLANATION
+Under the CLT, $\hat{\beta}_j$ is a consistent estimator of the poblational parameter $\beta_i$.
+
+$p lim \hat{\beta}_i = \beta_i$
 
 
+% ERRORS SUBSECTION
+
+% GOODNESS OF THE FIT (R SQUARED) SUBSECTION
+
+
+
+% ------------------------------------------
 
 \section*{Regression Analysis}
 Study and predict the mean value of a variable regarding the base of fixed values of other variables.
