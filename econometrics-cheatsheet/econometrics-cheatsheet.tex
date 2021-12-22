@@ -1,64 +1,129 @@
 \documentclass[10pt,landscape]{article}
-\usepackage{multicol} % multiple columns
-\usepackage[landscape]{geometry} % landscape
-\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} % margins
-\pagenumbering{gobble} % remove page numeration
-\usepackage{lipsum}% dummy text
-\usepackage{parskip} % no indentation
 
+% packages:
+\usepackage{multicol} % for multiple columns
+\usepackage[landscape]{geometry} % for landscape
+\usepackage{parskip} % remove text indentation
+\usepackage{graphicx} % for scale tables
+\usepackage{lipsum}% for dummy text (will be removed int he final version)
+
+% page customization
+\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} % margins configuration
+\pagenumbering{gobble} % remove page numeration
+
+% -----document-----
 \begin{document}
+% title
 \begin{center}
 \textbf{\Large Econometrics CheatSheet}
 \end{center}
+% content
+\begin{multicols}{3} % set page columns to 3
 
-\begin{multicols}{3}
-\section*{Econometrics Theory}
-\subsection*{Definition}
-\textbf{Econometrics} - social science with the objective of quantify the relationships between economic agents.
-\textbf{Econometric model} - simplification of the reality to explain economic phenomena.
+\section*{Basic concepts}
 
-\subsection*{Phases of an econometric model}
+\subsection*{Definition of econometrics}
+
+\textbf{Econometrics} - is a social science discipline with the objective of quantify the relationships between economic agents, contrast economic theories and evalue and implement government and business policies.
+
+\textbf{Econometric model} - is a simplificated representation of the reality to explain economic phenomena.
+
+\subsection*{Data types}
+
 \begin{enumerate}
-	\item Specification
-	\item Estimation
-	\item Validation
-	\item Utilization
+\item Cross section: data taken at a given moment in time, an static "photo". Order does not matter.
+\item Temporal series: observation of one/many vairable/s across time. Order does matter.
+\item Panel data: consist of a temporal serie for each observation of a cross section.
+\item Pooled cross sections: combines cross sections from different temporal periods.
 \end{enumerate}
 
-\section*{Regression Analysis}
-Study and predict the mean value of a variable regarding the base of fixed values of other variables.
+\subsection*{Phases of an econometric model}
 
-We usually use Ordinary Least Squares (OLS).
+\begin{enumerate}
+\item Specification
+\item Estimation
+\item Validation
+\item Utilization
+\end{enumerate}
 
+\subsection*{Assumptions of the econometric model}
+Under this assumptions the estimators of the parameters will present "good properties". GAUSS MARKOV ASSUMPTIONS (EXTENDED)
+\begin{itemize}
+\item Parameters linearity.
+\item The sample of the poblation is random. Caracteristics:
+\begin{itemize}
+\item Independence: independence, that guarantees that all the covariances between independents are zero.
+\item Identical distribution: that guarantees that the $n$ expected values and variances of the observations are the same.
+\end{itemize}
+\item $E(\epsilon / X_1, X_2, ..., X_k) = 0$, guarantees that the estimations are unbiased, that have some implications:
+\begin{itemize}
+\item $E(\epsilon) = 0$ there are none systematic errors.
+\item $Cov(\epsilon, X_1) = Cov(\epsilon, X_2) = ... = Cov(\epsilon, X_k) = 0$ there are no relevant variables not included in the model.
+\item $E(Y/X_1, X_2, ..., X_k) = \beta_0 + \beta_1 X_1 + \beta_k X_k$ the lineal relation between $Y$ and $X_1, ..., X_k$ is fulfilled, at least in average.
+\end{itemize}
+\item Homocedasticity: $Var(\epsilon_i / X_{1i}, X_{2i}, ..., X_{ki}) = \sigma^2$, the variability of the error is the same for all levels of $x$. Guarantees that the estimations are efficient. Implies that: $Var(Y_i / X_{1i}, X_{2i}, ..., X_{ki}) = \sigma^2$, the variability of the dependent variable is the same for all levels of $x$.
+\item No autocorrelation: $Cov(\epsilon_i \epsilon_j = 0 \rightarrow Cov(Y_i Y_j / X) = 0$ for every $i$ different from $j$. The errors do not contain information about other errors.
+\item The distribution of the errors is normal (is not always necessary).
+\item No multicolineality: none of the independent variables is constant nor exist an exact (or aproximate) linear relation between them, they are linearly independents.
+\item The number of available data is greater than $k+1$ ($\beta$ parameters to estimate).
+\end{itemize}
 
-\section*{Correlation Analysis}
-The correlation analysis not distinguish between dependent and independent variables.
+The homocedasticity and no autocorrelation asumptions can also be written in matrix form: $Var(\epsilon / X) = \sigma^2 I_n$
 
-\textbf{Simple Correlation}
-
-Measure the grade of lineal association between two variables.
-
-
-
-\section*{Utilization}
-\subsection*{Interpretation of the model}
-
-
+\subsection*{Interpretation of the coefficients}
+\scalebox{0.8}{
 \begin{tabular}{ | c | c | c | c | }
 	\hline
 	Model & Dependent & Independent & Interpretation $\beta_1$ \\
 	\hline
 	Level-level & $y$ & $x$ & $\Delta y = \beta_1 \Delta x$ \\ 
 	\hline
-	Level-log & $y$ & cell6 & cell2 \\  
+	Level-log & $y$ & $log(x)$ & $\Delta y = (\beta_1/100)[1 \% \Delta x]$ \\  
 	\hline
-	Log-level & cell8 & cell9 & cell1 \\
+	Log-level & $log(y)$ & $x$ & $\% \Delta y = (100 \beta_1) \Delta x$ \\
 	\hline
-	Log-log & cell10 & cell1 & cell1 \\
+	Log-log & $log(y)$ & $log(x)$ & $\% \Delta y = \beta_1 \% \Delta x$ \\
+	\hline
+	Quadratic & $y$ & $x + x^2$ & $\Delta y = (\beta_1 + 2 \beta_2 x) \Delta x$ \\
 	\hline
 \end{tabular}
+}
 
 
+
+
+\section*{Regression Analysis}
+Study and predict the mean value of a variable regarding the base of fixed values of other variables.
+We usually use Ordinary Least Squares (OLS).
+
+\section*{Correlation Analysis}
+The correlation analysis not distinguish between dependent and independent variables.
+\textbf{Simple Correlation}
+Measure the grade of lineal association between two variables.
+
+\section*{Utilization}
+\subsection*{Interpretation of the model}
+
+
+\section*{Heterocedasticity}
+The residuals $u_i$ of the poblational regression function don't have the same variance $\sigma^2$:
+
+$Var(u_i \mid x_i) = \sigma_i^2; i = 1, ..., n$
+
+\subsection*{Consequences}
+Under the Gauss-Markov Theorem asumptions, OLS estimators are not efficient. The estimations of the variance of the estimators are biased. The hyphotesis contrast and the confidence intervals are not reliable.
+\subsection*{Detection}
+Plots (look for structures in plots with the square residuals) and contrasts: Park test, Goldfield-Quandt, Bartlett, Breush-Pagan, CUSUMQ, Spearman, White.
+White's null hypothesis:
+
+$H_0 = HOMOCEDASTICITY$
+\subsection*{Correction}
+\begin{itemize}
+	\item When the variance structure is known, use weighted least squares.
+	\item When the variance structure is not known: make asumptions of the possible structure and apply weighted least squares
+	\item Supossing that $\sigma_i^2$ is proportional to $x_i^2$, divide by $x_i$
+\end{itemize}
 \lipsum
+
 \end{multicols}
 \end{document}
