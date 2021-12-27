@@ -5,7 +5,6 @@
 \usepackage[landscape]{geometry} % for landscape
 \usepackage{parskip} % remove text indentation
 \usepackage{graphicx} % for scale tables
-\usepackage{lipsum}% for dummy text (will be removed int he final version)
 
 % page customization
 \geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} % margins configuration
@@ -145,14 +144,59 @@ Under the CLT, $\hat{\beta}_j$ is a consistent estimator of the poblational para
 
 $p lim \hat{\beta}_i = \beta_i$
 
+The Central Limit Theorem allow us to obtain (asintotically):
 
-% ERRORS SUBSECTION
+$\frac{\hat{\beta}_i - \beta_i}{s(\hat{\beta}_i)} \sim N(0,1)$
 
-% GOODNESS OF THE FIT (R SQUARED) SUBSECTION
+\subsection*{Goodness of the fit, R-Squared}
+
+The R2 is a measure of the goodness of the fit, how the OLS fit to the data.
+
+Is the proportion of vatiability of the dependent variable explained by the regression line:
+
+$R^2 = \frac{\sum_i (\hat{Y}_i - \overline{Y}_i)^2}{\sum_i (Y_i - \overline{Y}_i)^2} = 1 - \frac{\sum_i \hat{\epsilon}_i^2}{nS_y^2}$
+
+The $R^2$ takes values between 0 (no lineal explanation of the variations of $Y$) and one (total explanation of the variations of $Y$)
+
+Is a descriptive measure of the global fit of the model.
+
+The $R^2$ measures the percentage of variation of $Y$ that is linearly explained by the variatons of $X$.
+
+The $R^2$ increments it's value when increments the number of regressors, whatever they are relevant or not.
+
+For eliminate the above phenomena, there is a $R^2$ corrected by degrees of freedom ($\overline{R}^2$).
+
+$\overline{R}^2 = 1 - \frac{n-1}{n-k-1} \frac{\sum_i \hat{\epsilon}_i^2}{\sum_i (Y_i - \overline{Y}_i)^2} = 1 - \frac{n-1}{n-k-1} (1-R^2)$
+
+For big sample sizes:
+
+$\overline{R}^2 \approx R^2$
+
+\subsection*{Errors}
+
+Standard error of the regression is a measure of the goodness of the fit.
+
+$\hat{\sigma} = \sqrt{\frac{\sum_i \hat{\epsilon}_i^2}{n-k-1}}$
+
+It's value decreases as the number of regresors increase, so it have the same problem as the $R^2$
+
+\subsection*{Hypothesis testing}
+
+An hypothesis test is a rule designed to explain from a sample, if exist evidence or not to reject an hypothesis that is made on one or more poblational parameters.
+
+Elements of an hypothesis contrast:
 
 
 
 % ------------------------------------------
+
+
+
+
+
+
+
+
 
 \section*{Regression Analysis}
 Study and predict the mean value of a variable regarding the base of fixed values of other variables.
@@ -185,7 +229,6 @@ $H_0 = HOMOCEDASTICITY$
 	\item When the variance structure is not known: make asumptions of the possible structure and apply weighted least squares
 	\item Supossing that $\sigma_i^2$ is proportional to $x_i^2$, divide by $x_i$
 \end{itemize}
-\lipsum
 
 \end{multicols}
 \end{document}
