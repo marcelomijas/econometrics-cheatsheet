@@ -5,4 +5,4 @@ Econometrics CheatSheet using LaTeX with a complete review of the econometrics p
 
 Available in English and Spanish in .pdf and .tex formats.
 
-:construction: Currently is a work in progress, an usable and more comprehensive version is scheduled to be released at the first week of 2022. :construction:
+:construction: Currently is a work in progress, an usable and more comprehensive version (in English) is scheduled to be released during the first week of 2022. :construction:
