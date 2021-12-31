@@ -14,7 +14,7 @@
 \begin{document}
 % title
 \begin{center}
-\textbf{\Large Econometrics CheatSheet}
+\textbf{\Large Econometrics Cheat Sheet}
 \end{center}
 % content
 \begin{multicols}{3} % set page columns to 3
@@ -23,16 +23,16 @@
 
 \subsection*{Definition of econometrics}
 
-\textbf{Econometrics} - is a social science discipline with the objective of quantify the relationships between economic agents, contrast economic theories and evalue and implement government and business policies.
+\textbf{Econometrics} - is a social science discipline with the objective of quantify the relationships between economic agents, contrast economic theories and evaluate and implement government and business policies.
 
-\textbf{Econometric model} - is a simplificated representation of the reality to explain economic phenomena.
+\textbf{Econometric model} - is a simplified representation of the reality to explain economic phenomena.
 
 \subsection*{Data types}
 
 \begin{enumerate}
 \item Cross section: data taken at a given moment in time, an static "photo". Order does not matter.
-\item Temporal series: observation of one/many vairable/s across time. Order does matter.
-\item Panel data: consist of a temporal serie for each observation of a cross section.
+\item Temporal series: observation of one/many variable/s across time. Order does matter.
+\item Panel data: consist of a temporal series for each observation of a cross section.
 \item Pooled cross sections: combines cross sections from different temporal periods.
 \end{enumerate}
 
@@ -49,9 +49,9 @@
 Under this assumptions the estimators of the parameters will present "good properties". GAUSS MARKOV ASSUMPTIONS (EXTENDED)
 \begin{itemize}
 \item Parameters linearity.
-\item The sample of the poblation is random. Caracteristics:
+\item The sample of the population is random. Characteristics:
 \begin{itemize}
-\item Independence: independence, that guarantees that all the covariances between independents are zero.
+\item Independence: independence, that guarantees that all the co-variances between independents are zero.
 \item Identical distribution: that guarantees that the $n$ expected values and variances of the observations are the same.
 \end{itemize}
 \item $E(u / X_1, X_2, ..., X_k) = 0$, guarantees that the estimations are unbiased, that have some implications:
@@ -61,13 +61,13 @@ Under this assumptions the estimators of the parameters will present "good prope
 \item $E(Y/X_1, X_2, ..., X_k) = \beta_0 + \beta_1 X_1 + \beta_k X_k$ the lineal relation between $Y$ and $X_1, ..., X_k$ is fulfilled, at least in average.
 \end{itemize}
 \item Homocedasticity: $Var(u_i / X_{1i}, X_{2i}, ..., X_{ki}) = \sigma^2$, the variability of the error is the same for all levels of $x$. Guarantees that the estimations are efficient. Implies that: $Var(Y_i / X_{1i}, X_{2i}, ..., X_{ki}) = \sigma^2$, the variability of the dependent variable is the same for all levels of $x$.
-\item No autocorrelation: $Cov(u_i, u_j) = 0 \rightarrow Cov(Y_i Y_j / X) = 0$ for every $i$ different from $j$. The errors do not contain information about other errors.
+\item No auto-correlation: $Cov(u_i, u_j) = 0 \rightarrow Cov(Y_i Y_j / X) = 0$ for every $i$ different from $j$. The errors do not contain information about other errors.
 \item The distribution of the errors is normal (is not always necessary).
-\item No multicolineality: none of the independent variables is constant nor exist an exact (or aproximate) linear relation between them, they are linearly independents.
+\item No multicolineality: none of the independent variables is constant nor exist an exact (or approximate) linear relation between them, they are linearly independents.
 \item The number of available data is greater than $k+1$ ($\beta$ parameters to estimate).
 \end{itemize}
 
-The homocedasticity and no autocorrelation asumptions can also be written in matrix form: $Var(u / X) = \sigma^2 I_n$
+The homocedasticity and no auto-correlation assumptions can also be written in matrix form: $Var(u / X) = \sigma^2 I_n$
 
 \subsection*{Interpretation of the coefficients}
 \scalebox{0.8}{
@@ -101,7 +101,7 @@ $\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 X_i$
 
 $\hat{u}_i = Y_i - \hat{Y}_i = Y_i - (\hat{\beta}_0 + \hat{\beta}_1 X_i)$
 
-Objective is minimize the square sum of resid:
+Objective is minimize the square sum of residuals:
 
 $Min \sum_{i=1}^n \hat{u}_i^2 = Min \sum_{i=1}^n [Y_i - (\hat{\beta}_0 + \hat{\beta}_1 X_i)]^2$
 
@@ -130,21 +130,21 @@ $\hat{\beta}_j = \frac{Cov(Y, resid(X_j))}{Var(resid(X_j))}$
 \subsection*{Properties of OLS}
 
 \begin{itemize}
-\item Lineality in $Y$.
+\item Linearity in $Y$.
 \item Normality: $Y / X ~ N(\beta_0 + \beta_1 X, \sigma^2)$
 \item Expected value of the estimator: $E(\hat{\beta}_1 / X_i) = \beta_1$, then $\hat{\beta}_1$ is an unbiased estimator of $\beta_1$
 \item Variance of the estimator: $Var(\hat{\beta}_1 / X_i) = \frac{\sigma^2}{n Var(X_i)}$
 \end{itemize}
 
-\textbf{Eficiency of OLS estimators, Gauss-Markov Theorem}. In the context of the simple or multiple linear regression model, the OLS estimators of the parameters are those with the lowest variance between the lineal and unbiased estimators
+\textbf{Efficiency of OLS estimators, Gauss-Markov Theorem}. In the context of the simple or multiple linear regression model, the OLS estimators of the parameters are those with the lowest variance between the lineal and unbiased estimators
 
 \subsection*{Central Limit Theorem}
 % MORE EXPLANATION
-Under the CLT, $\hat{\beta}_j$ is a consistent estimator of the poblational parameter $\beta_i$.
+Under the CLT, $\hat{\beta}_j$ is a consistent estimator of the population parameter $\beta_i$.
 
 $p lim \hat{\beta}_i = \beta_i$
 
-The Central Limit Theorem allow us to obtain (asintotically):
+The Central Limit Theorem allow us to obtain (asymptotically):
 
 $\frac{\hat{\beta}_i - \beta_i}{s(\hat{\beta}_i)} \sim N(0,1)$
 
@@ -152,7 +152,7 @@ $\frac{\hat{\beta}_i - \beta_i}{s(\hat{\beta}_i)} \sim N(0,1)$
 
 The R2 is a measure of the goodness of the fit, how the OLS fit to the data.
 
-Is the proportion of vatiability of the dependent variable explained by the regression line:
+Is the proportion of variability of the dependent variable explained by the regression line:
 
 $R^2 = \frac{\sum_i (\hat{Y}_i - \overline{Y}_i)^2}{\sum_i (Y_i - \overline{Y}_i)^2} = 1 - \frac{\sum_i \hat{\epsilon}_i^2}{nS_y^2}$
 
@@ -160,7 +160,7 @@ The $R^2$ takes values between 0 (no lineal explanation of the variations of $Y$
 
 Is a descriptive measure of the global fit of the model.
 
-The $R^2$ measures the percentage of variation of $Y$ that is linearly explained by the variatons of $X$.
+The $R^2$ measures the percentage of variation of $Y$ that is linearly explained by the variations of $X$.
 
 The $R^2$ increments it's value when increments the number of regressors, whatever they are relevant or not.
 
@@ -178,17 +178,80 @@ Standard error of the regression is a measure of the goodness of the fit.
 
 $\hat{\sigma} = \sqrt{\frac{\sum_i \hat{\epsilon}_i^2}{n-k-1}}$
 
-It's value decreases as the number of regresors increase, so it have the same problem as the $R^2$
+It's value decreases as the number of regressors increase, so it have the same problem as the $R^2$
 
 \subsection*{Hypothesis testing}
 
-An hypothesis test is a rule designed to explain from a sample, if exist evidence or not to reject an hypothesis that is made on one or more poblational parameters.
+An hypothesis test is a rule designed to explain from a sample, if exist evidence or not to reject an hypothesis that is made on one or more population parameters.
 
 Elements of an hypothesis contrast:
 
+\begin{itemize}
+\item Null hypothesis ($H_0$): is the hypothesis that you want to contrast.
+\item Alternative hypothesis ($H_1$): is the hypothesis that cannot be rejected when the null hypothesis is rejected.
+\item Statistic of contrast: is a random variable with a known distribution that allow us to see if we reject (or not) the null hypothesis.
+\item Significance level ($\alpha$): is the probability of rejecting the null hypothesis being true (Error type I). Is chosen by who conduct the contrast. Commonly is 0,10, 0.05, 0.01 or 0,001
+\item Critic value: is the value that, for a determined value of $\alpha$, determines the reject (or not) of the null hypothesis.
+\item p-value: is the highest level of significance for what we do not reject (accept) the null hypothesis ($H_0$).
+\end{itemize}
+
+The rule is: if p-value is lower than $\alpha$, there is evidence at that given $\alpha$ to reject the null hypothesis (accept the alternative instead).
+
+\subsection*{Individual significance contrasts}
+
+\begin{itemize}
+\item $H_0: \beta_j = 0$
+\item $H_1: \beta_j \neq 0$
+\end{itemize}
+
+Supposing that the model's errors are distributed as a normal distribution.
+
+$Y_i / X_i, ..., X_k \sim N(\beta_0 + \beta_1 X_1 + ... + \beta_k X_k, \sigma^2)$
+
+Then, under $H_0$:
+
+$t = \frac{\hat{\beta}_j - \beta_j}{s(\hat{\beta}_j)} \sim t_{n-k-1, \alpha/2}$
+
+If $\mid t \mid > t_{n-k, \alpha/2}$ there is evidence to reject the null hypothesis.
+
+\subsection*{Confidence intervals}
+
+Supposing normality of the residuals:
+
+$Y_i / X_i, ..., X_k \sim N(\beta_0 + \beta_1 X_1 + ... + \beta_k X_k, \sigma^2)$
+
+Then, $t = \frac{\hat{\beta}_j - \beta_j}{s(\hat{\beta}_j)} \sim t_{n-k-1}$
+
+The confidence interval:
+
+$P[\hat{\beta}_j - t_{n-k-1, \alpha/2} s(\hat{\beta}_j) < \beta_j < \hat{\beta}_j + t_{n-k-1, \alpha/2} s(\hat{\beta}_j)] = 1 - \alpha$
+
+% THE F CONTRAST P.40 PDF
 
 
-% ------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -212,22 +275,23 @@ Measure the grade of lineal association between two variables.
 
 
 \section*{Heterocedasticity}
-The residuals $u_i$ of the poblational regression function don't have the same variance $\sigma^2$:
+The residuals $u_i$ of the population regression function don't have the same variance $\sigma^2$:
 
 $Var(u_i \mid x_i) = \sigma_i^2; i = 1, ..., n$
 
 \subsection*{Consequences}
-Under the Gauss-Markov Theorem asumptions, OLS estimators are not efficient. The estimations of the variance of the estimators are biased. The hyphotesis contrast and the confidence intervals are not reliable.
+Under the Gauss-Markov Theorem assumptions, OLS estimators are not efficient. The estimations of the variance of the estimators are biased. The hyphotesis contrast and the confidence intervals are not reliable.
 \subsection*{Detection}
 Plots (look for structures in plots with the square residuals) and contrasts: Park test, Goldfield-Quandt, Bartlett, Breush-Pagan, CUSUMQ, Spearman, White.
 White's null hypothesis:
 
 $H_0 = HOMOCEDASTICITY$
+
 \subsection*{Correction}
 \begin{itemize}
 	\item When the variance structure is known, use weighted least squares.
 	\item When the variance structure is not known: make asumptions of the possible structure and apply weighted least squares
-	\item Supossing that $\sigma_i^2$ is proportional to $x_i^2$, divide by $x_i$
+	\item Supposing that $\sigma_i^2$ is proportional to $x_i^2$, divide by $x_i$
 \end{itemize}
 
 \end{multicols}
