@@ -10,7 +10,7 @@ Available in English in .pdf and .tex formats.
 
 :construction: A more refined (and possibly smaller) version of pages 1 and 2 will be released on the coming months.
 
-:construction: An Spanish version is scheduled to be release before May 2022.
+:construction: An Spanish version is scheduled to be released before May 2022.
 
 :construction: A bibliography is in development as a separate page and/or inside the readme.md. 
 
