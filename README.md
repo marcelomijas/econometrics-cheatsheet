@@ -6,11 +6,11 @@ Available in English in .pdf and .tex formats.
 
 :white_check_mark: Pages 1 and 2 are completed with: definitions, basic concepts, coefficient interpretation, basic assumptions,  model construction, goodness of the fit, etc. It is an usable version.
 
-:construction: Page 3 is still in development with more details about problems of a model to be released in the coming months.
+:construction: Page 3 is still in development, with more details about the problems of a model scheduled to be released on the coming months.
 
-:construction: A more refined (and possibly smaller) version of pages 1 and 2 will be released in the coming months.
+:construction: A more refined (and possibly smaller) version of pages 1 and 2 will be released on the coming months.
 
-:construction: An Spanish version is scheduled to release before May 2022.
+:construction: An Spanish version is scheduled to be release before May 2022.
 
 :construction: A bibliography is in development as a separate page and/or inside the readme.md. 
 
