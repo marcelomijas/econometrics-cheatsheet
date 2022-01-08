@@ -1,27 +1,33 @@
 \documentclass[10pt,landscape]{article}
 
-% packages:
+% -----packages-----
 \usepackage{multicol} % for multiple columns
 \usepackage[landscape]{geometry} % for landscape
 \usepackage{parskip} % remove text indentation
 \usepackage{graphicx} % for scale tables
+\usepackage[compact]{titlesec} % titles spacing
+\usepackage{enumitem} % indent of lists
 
-% page customization
+% -----page customization-----
 \geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} % margins configuration
 \pagenumbering{gobble} % remove page numeration
+\setlength{\parskip}{0cm} % paragraph length
+% title spacing:
+\titlespacing{\section}{0pt}{2ex}{1ex}
+\titlespacing{\subsection}{0pt}{1ex}{0ex}
+\titlespacing{\subsubsection}{0pt}{0.5ex}{0ex}
 
 % -----document-----
 \begin{document}
-% title
+
 \begin{center}
-\textbf{\Large Econometrics Cheat Sheet}
+\textbf{\Large Econometrics Cheat Sheet 0.8}
 \end{center}
-% content
+
 \begin{multicols}{3} % set page columns to 3
 
 \section*{Basic concepts}
-
-\subsection*{Definition of econometrics}
+\subsection*{Definitions}
 
 \textbf{Econometrics} - is a social science discipline with the objective of quantify the relationships between economic agents, contrast economic theories and evaluate and implement government and business policies.
 
@@ -29,51 +35,61 @@
 
 \subsection*{Data types}
 
-\begin{enumerate}
-\item Cross section: data taken at a given moment in time, an static "photo". Order does not matter.
-\item Temporal series: observation of one/many variable/s across time. Order does matter.
-\item Panel data: consist of a temporal series for each observation of a cross section.
-\item Pooled cross sections: combines cross sections from different temporal periods.
-\end{enumerate}
+\textbf{Cross section} - data taken at a given moment in time, an static "photo". Order does not matter.
+
+\textbf{Temporal series} - observation of one/many variable/s across time. Order does matter.
+
+\textbf{Panel data} - consist of a temporal series for each observation of a cross section.
+
+\textbf{Pooled cross sections} - combines cross sections from different temporal periods.
 
 \subsection*{Phases of an econometric model}
 
-\begin{enumerate}
+\begin{enumerate}[leftmargin=*]
+\setlength{\multicolsep}{0pt}
+\begin{multicols}{2}
 \item Specification
 \item Estimation
+\columnbreak
 \item Validation
 \item Utilization
+\end{multicols}
 \end{enumerate}
 
-\subsection*{Assumptions of the econometric model}
-Under this assumptions the estimators of the parameters will present "good properties". GAUSS MARKOV ASSUMPTIONS (EXTENDED)
-\begin{itemize}
-\item Parameters linearity.
-\item The sample of the population is random. Characteristics:
-\begin{itemize}
-\item Independence: independence, that guarantees that all the co-variances between independents are zero.
-\item Identical distribution: that guarantees that the $n$ expected values and variances of the observations are the same.
+\subsection*{Econometric model assumptions}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CUT TO 5 OR FOUR
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Under this assumptions the estimators of the parameters will present "good properties". \textbf{Extended Gauss Markov assumptions}:
+
+\begin{enumerate}[leftmargin=*]
+\item Parameters linearity. $y$ must be a linear function of the $\beta$'s.
+\item The sample (data) taken from the population is random. Characteristics:
+\begin{itemize}[leftmargin=*]
+\item Independence: all the co-variances between the $x$'s are zero.
+\item Identical distribution: all the expected values and variances of the observations are the same.
 \end{itemize}
-\item $E(u / X_1, X_2, ..., X_k) = 0$, guarantees that the estimations are unbiased, that have some implications:
-\begin{itemize}
-\item $E(u) = 0$ there are none systematic errors.
-\item $Cov(u, X_1) = Cov(u, X_2) = ... = Cov(u, X_k) = 0$ there are no relevant variables not included in the model.
-\item $E(Y/X_1, X_2, ..., X_k) = \beta_0 + \beta_1 X_1 + \beta_k X_k$ the lineal relation between $Y$ and $X_1, ..., X_k$ is fulfilled, at least in average.
+\item $E(u | x_1, ..., x_k) = 0$, the estimations are unbiased. Implications:
+\begin{itemize}[leftmargin=*]
+\item $E(u) = 0$, there are no systematic errors.
+\item $Cov(u, x_1) = ... = Cov(u, x_k) = 0$, there are no relevant variables left out the model.
+\item $E(y | x_1, ..., x_k) = \beta_0 + \beta_1 x_1 + ... + \beta_k x_k$, the linear relation between $y$ and the $x$'s is fulfilled, at least in average.
 \end{itemize}
-\item Homocedasticity: $Var(u_i / X_{1i}, X_{2i}, ..., X_{ki}) = \sigma^2$, the variability of the error is the same for all levels of $x$. Guarantees that the estimations are efficient. Implies that: $Var(Y_i / X_{1i}, X_{2i}, ..., X_{ki}) = \sigma^2$, the variability of the dependent variable is the same for all levels of $x$.
-\item No auto-correlation: $Cov(u_i, u_j) = 0 \rightarrow Cov(Y_i Y_j / X) = 0$ for every $i$ different from $j$. The errors do not contain information about other errors.
-\item The distribution of the errors is normal (is not always necessary).
+\item Homocedasticity: $Var(u_i | x_{1i},  ..., x_{ki}) = \sigma^2$, the variability of the residual is the same for all levels of $x$.
+\item No auto-correlation: $Cov(u_i, u_j | x) = 0$, the residuals do not contain information about other residuals.
+\item The residuals are normally distributed.
 \item No multicolineality: none of the independent variables is constant nor exist an exact (or approximate) linear relation between them, they are linearly independents.
-\item The number of available data is greater than $k+1$ ($\beta$ parameters to estimate).
-\end{itemize}
+\item The number of available data is greater than $k+1$ (parameters to estimate).
+\end{enumerate}
 
-The homocedasticity and no auto-correlation assumptions can also be written in matrix form: $Var(u / X) = \sigma^2 I_n$
+\subsection*{Interpretation of coefficients}
 
-\subsection*{Interpretation of the coefficients}
 \scalebox{0.8}{
-\begin{tabular}{ | c | c | c | c | }
+\begin{tabular}{ | l | c | c | c | }
 	\hline
-	Model & Dependent & Independent & Interpretation $\beta_1$ \\
+	Model & Dependent & Independent & $\beta_1$ interpretation \\
 	\hline
 	Level-level & $y$ & $x$ & $\Delta y = \beta_1 \Delta x$ \\ 
 	\hline
@@ -88,22 +104,26 @@ The homocedasticity and no auto-correlation assumptions can also be written in m
 \end{tabular}
 }
 
-% ALSO ADD IN MATRICIAL FORM
-\section*{OLS estimation of the model}
+\section*{Ordinary Least Squares}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ADD MATRICIAL FORM
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{Objective of OLS} - minimize the square sum of residuals:
+
+$Min \sum_{i=1}^n \hat{u}_i^2 = Min \sum_{i=1}^n [Y_i - (\hat{\beta}_0 + \hat{\beta}_1 X_i)]^2$
+
 
 \subsection*{Simple regression model}
 
-$Y_i = \beta_0 + \beta_1 X_{1i} + u_i, i = 1, ..., n$
+Equation:
+$y_i = \beta_0 + \beta_1 x_{1i} + u_i; i = 1, ..., n$
 
-\textbf{Definitions}
-
+Estimation:
 $\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 X_i$
+$\hat{u}_i = y_i - \hat{y}_i = y_i - (\hat{\beta}_0 + \hat{\beta}_1 x_i)$
 
-$\hat{u}_i = Y_i - \hat{Y}_i = Y_i - (\hat{\beta}_0 + \hat{\beta}_1 X_i)$
-
-Objective is minimize the square sum of residuals:
-
-$Min \sum_{i=1}^n \hat{u}_i^2 = Min \sum_{i=1}^n [Y_i - (\hat{\beta}_0 + \hat{\beta}_1 X_i)]^2$
 
 With
 
@@ -226,37 +246,143 @@ The confidence interval:
 
 $P[\hat{\beta}_j - t_{n-k-1, \alpha/2} s(\hat{\beta}_j) < \beta_j < \hat{\beta}_j + t_{n-k-1, \alpha/2} s(\hat{\beta}_j)] = 1 - \alpha$
 
-% THE F CONTRAST P.40 PDF
+\subsection*{The F contrast}
 
+It uses a non restricted model and a restricted model to do assumptions about the parameters.
 
+\begin{itemize}
+\item Non restricted model: is the model on which we want to make the hypothesis contrast.
+\item Restricted model: is the model on which the hypothesis that we want to contrast have been imposed.
+\end{itemize}
 
+Then, looking at the errors, there is:
 
+\begin{itemize}
+\item $\sum_{i=1}^n \hat{\epsilon}_N^2$: is the sum of the OLS residuals of the non restricted model (SRN).
+\item $\sum_{i=1}^n \hat{\epsilon}_N^2$: is the sum of the OLS residuals of the restricted model (SRR).
+\end{itemize}
 
+Then:
 
+$F = \frac{SRR - SRN}{SRN} \frac{(n-K-1)}{q} \sim F_{q, n-K-1}$
 
+Where $K$ is the number of parameters in the non restricted model and $q$ is the number of linear hypothesis.
 
+When $F_{tables} > F_{q, n-K-1}$
 
+\subsection*{Dummy variables and structural change}
 
+Dummy (or binary) variables are used for qualitative information: sex, married or not, etc.
 
+The dummy variables get the value of 1 in a category, and 0 on the rest.
 
+The dummy variables are used to analyze and modeling structural changes in the models parameters.
 
+We denominate structural changes to the modifications in the value of the parameters of the models for different sub-populations.
 
+In the constant, their associate parameter represents the difference in mean between the values.
 
+In the parameters that determines the slope of the regression line, the associate parameter represents the difference in the effect between the values.
 
+\textbf{The Chow's structural contrast}
 
+When we want to analyze the existence of structural changes in all the model parameters, is more common to use a particular expression of the F contrast known as the Chow's contrast.
 
+It defines two non restricted models (with structural change):
 
+$Y_i = \beta_0^A + \beta_1^A X_{1i} + ... + \beta_k^A X_{ki} + \epsilon_i$ sub-sample A
 
+$Y_i = \beta_0^B + \beta_1^B X_{1i} + ... + \beta_k^B X_{ki} + \epsilon_i$ sub-sample B
 
+Restricted model (without structural change):
 
+$Y_i = \beta_0 + \beta_1 X_{1i} + ... + \beta_k X_{ki} + \epsilon_i$
 
+With the restriction:
 
+$H_0: \beta_j^A = \beta_j^B; j=0,1,...,k$
 
+Be SRN the sum of the OLS square residuals of the non restricted model: $SRN = SR_A + SR_B$
 
+Be SRR the sum of the OLS square residuals of the restricted model.
 
+Then:
 
+$F = \frac{SRR - SRN}{SRN} \frac{n-2(k+1)}{k+1} \sim F_{k+1,n-2(k+1)}$
 
+If $F_{table} < F$, is evidence to reject the null hypothesis.
 
+\subsection*{Multicolineality}
+
+If there is exact multicolineality, the equation system of OLS cannot be solved due to infinite solutions.
+
+\begin{itemize}
+\item Approximate multicolineality: when one or more variables are almost a constant or there is a linear relation between them. In this context, there is not a problem, given the classic requirements of OLS, and the inference is valid. But, there are some empiric consequences of this:
+\begin{itemize}
+\item Small sample variations can induce to big variations in the OLS estimations.
+\item The variance of the OLS estimator of the X variables that are collinear $Var(\hat{\beta}_j)$ increments, then, the inference of the parameter is affected $\rightarrow$ The estimation of the parameter is very imprecise (big confidence interval)
+\end{itemize}
+
+\end{itemize}
+
+Calculating the Variance Inflation Factor to analyze multicolineality problems:
+
+$VIF(\hat{\beta}_j) = \frac{1}{1-R_j^2}$
+
+Indicates the increment of $V(\hat{\beta}_j)$ because of the multicolineality.
+
+\begin{itemize}
+\item If it is bigger than 10, indicates that there are multicolineality problems.
+\item From 4 onwards, it is advisable to analyze in more detail if there may be
+multicolineality
+\end{itemize}
+
+One typical characteristic of multicolineality is that the regression coefficients of the model are not individually different from zero (because the high variances), but jointly different from zero.
+
+\subsection*{Heterocedasticity}
+
+The residuals $\epsilon_i$ of the population regression function don't have the same variance $\sigma^2$:
+
+$Var(\varepsilon \mid X) = Var(Y \mid X) \neq \sigma^2 \rightarrow$ HETEROCEDASTICITY
+
+\textbf{Consequences}
+
+The estimators still are unbiased.
+The estimators still are consistent.
+The variance of the estimators is biased: the construction of confidence intervals and the hypothesis contrast are not valid.
+In this context, OLS is not an unbiased lineal estimator of minimum variance. There is an alternate unbiased lineal estimator of minimum variance denominated estimator of minimum pondered squares (MPS) or minimum generalized squares (MGS).
+
+Under the Gauss-Markov Theorem assumptions, OLS estimators are not efficient. The estimations of the variance of the estimators are biased. The hyphotesis contrast and the confidence intervals are not reliable.
+
+\textbf{Detection}
+
+Plots (look for structures in plots with the square residuals) and contrasts: Park test, Goldfield-Quandt, Bartlett, Breush-Pagan, CUSUMQ, Spearman, White.
+White's null hypothesis:
+
+$H_0 = HOMOCEDASTICITY$
+
+\textbf{Correction}
+\begin{itemize}
+	\item When the variance structure is known, use weighted least squares.
+	\item When the variance structure is not known: make assumptions of the possible structure and apply weighted least squares (factible weighted least squares)
+	\item Supposing that $\sigma_i^2$ is proportional to $x_i^2$, divide by $x_i$
+\end{itemize}
+
+\subsection*{Autocorrelation}
+
+The "natural" context of this phenomena is in temporal series.
+
+The residual of any observation, $u_i$ is correlated with the residual of any other observation. The observations are not independent $E(u_i,u_j) \neq 0; i \neq j$
+
+Causes of autocorrelation:
+
+\begin{itemize}
+\item By the existence of tendencies and/or cycles in the data.
+\item By the aggregation of the data.
+\item By the existence of an especification error (omission of relevant variables, bad functional form, etc.)
+\item Model specification error
+\item 
+\end{itemize}
 
 
 
@@ -271,28 +397,10 @@ The correlation analysis not distinguish between dependent and independent varia
 Measure the grade of lineal association between two variables.
 
 \section*{Utilization}
+
 \subsection*{Interpretation of the model}
 
 
-\section*{Heterocedasticity}
-The residuals $u_i$ of the population regression function don't have the same variance $\sigma^2$:
-
-$Var(u_i \mid x_i) = \sigma_i^2; i = 1, ..., n$
-
-\subsection*{Consequences}
-Under the Gauss-Markov Theorem assumptions, OLS estimators are not efficient. The estimations of the variance of the estimators are biased. The hyphotesis contrast and the confidence intervals are not reliable.
-\subsection*{Detection}
-Plots (look for structures in plots with the square residuals) and contrasts: Park test, Goldfield-Quandt, Bartlett, Breush-Pagan, CUSUMQ, Spearman, White.
-White's null hypothesis:
-
-$H_0 = HOMOCEDASTICITY$
-
-\subsection*{Correction}
-\begin{itemize}
-	\item When the variance structure is known, use weighted least squares.
-	\item When the variance structure is not known: make asumptions of the possible structure and apply weighted least squares
-	\item Supposing that $\sigma_i^2$ is proportional to $x_i^2$, divide by $x_i$
-\end{itemize}
 
 \end{multicols}
 \end{document}
