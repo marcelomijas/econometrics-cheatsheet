@@ -4,7 +4,7 @@ Econometrics Cheat Sheet using LaTeX with a complete review of the econometrics 
 
 Available in English in .pdf and .tex formats.
 
-:white_check_mark: Pages 1 and 2 are completed with: definitions, basic concepts, coefficient interpretation, basic assumptions,  model construction, goodness of the fit. It is an usable version.
+:white_check_mark: Pages 1 and 2 are completed with: definitions, basic concepts, coefficient interpretation, basic assumptions,  model construction, goodness of the fit, etc. It is an usable version.
 
 :construction: Page 3 is still in development with more details about problems of a model to be released in the coming months.
 
