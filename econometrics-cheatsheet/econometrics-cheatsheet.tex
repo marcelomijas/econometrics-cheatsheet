@@ -19,12 +19,13 @@
 
 % -----document-----
 \begin{document}
-
-\begin{center}
-\textbf{\Large Econometrics Cheat Sheet 0.8}
-\end{center}
-
 \begin{multicols}{3} % set page columns to 3
+
+\textbf{\Large Econometrics Cheat Sheet 1.0}
+
+\begin{scriptsize}
+By Marcelo Moreno - University King Juan Carlos
+\end{scriptsize}
 
 \section*{Basic concepts}
 \subsection*{Definitions}
@@ -77,12 +78,66 @@ Under this assumptions the estimators of the parameters will present "good prope
 \item $Cov(u, x_1) = ... = Cov(u, x_k) = 0$, there are no relevant variables left out the model.
 \item $E(y | x_1, ..., x_k) = \beta_0 + \beta_1 x_1 + ... + \beta_k x_k$, the linear relation between $y$ and the $x$'s is fulfilled, at least in average.
 \end{itemize}
-\item Homocedasticity: $Var(u_i | x_{1i},  ..., x_{ki}) = \sigma^2$, the variability of the residual is the same for all levels of $x$.
+\item Homoscedasticity: $Var(u_i | x_{1i},  ..., x_{ki}) = \sigma^2$, the variability of the residual is the same for all levels of $x$.
 \item No auto-correlation: $Cov(u_i, u_j | x) = 0$, the residuals do not contain information about other residuals.
-\item The residuals are normally distributed.
-\item No multicolineality: none of the independent variables is constant nor exist an exact (or approximate) linear relation between them, they are linearly independents.
+\item The residuals are normally distributed, $u \sim N(0, \sigma)$
+\item No multicollinearity: none of the independent variables is constant nor exist an exact (or approximate) linear relation between them, they are linearly independents.
 \item The number of available data is greater than $k+1$ (parameters to estimate).
 \end{enumerate}
+
+\textbf{Efficiency of OLS estimators, Gauss-Markov Theorem}. In the context of the simple or multiple linear regression model, the OLS estimators of the parameters are those with the lowest variance between the lineal and unbiased estimators.
+
+\subsection*{Central Limit Theorem}
+% MORE EXPLANATION
+Under the CLT, $\hat{\beta}_j$ is a consistent estimator of the population parameter $\beta_i$.
+
+$p lim \hat{\beta}_i = \beta_i$
+
+The Central Limit Theorem allow us to obtain (asymptotically):
+
+$\frac{\hat{\beta}_i - \beta_i}{s(\hat{\beta}_i)} \sim N(0,1)$
+
+\section*{Ordinary Least Squares}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ADD MATRICIAL FORM
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{OLS objective} - minimize the square sum of residuals:
+
+$Min \sum_{i=1}^n \hat{u}_i^2$
+
+\subsection*{Simple regression model}
+
+Equation: $y_i = \beta_0 + \beta_1 x_{1i} + u_i$
+
+Estimation: $\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 x_i$
+
+Residuals: $\hat{u}_i = y_i - \hat{y}_i = y_i - (\hat{\beta}_0 + \hat{\beta}_1 x_i)$
+
+With:
+
+$\hat{\beta}_0 = \overline{y} - \hat{\beta}_1 \overline{x}$
+
+$\hat{\beta}_1 = \frac{Cov(y, x)}{Var(x)}$
+
+\subsection*{Multiple regression model}
+
+Equation: $y_i = \beta_0 + \beta_1 x_{1i} + ... + \beta_k x_{ki} + u_i$
+
+Estimation: $\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 x_{1i} + ... + \hat{\beta}_k x_{ki}$
+
+Residuals: $\hat{u}_i = Y_i - \hat{Y}_i = Y_i - (\hat{\beta}_0 + \hat{\beta}_1 X_i + ... + \hat{\beta}_k X_{ki})$
+
+With:
+
+$\hat{\beta}_0 = \overline{y} - \hat{\beta}_1 \overline{x}_1 - ... - \hat{\beta}_k \overline{x}_k$
+
+$\hat{\beta}_j = \frac{Cov(y, resid(x_j))}{Var(resid(x_j))}$
+
+In matrix form:
+
+$\hat{\beta} = (X^T X)^{-1} X^T Y$
 
 \subsection*{Interpretation of coefficients}
 
@@ -104,185 +159,129 @@ Under this assumptions the estimators of the parameters will present "good prope
 \end{tabular}
 }
 
-\section*{Ordinary Least Squares}
+\subsection*{Goodness of the fit, R-squared}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ADD MATRICIAL FORM
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Is a measure of the goodness of the fit (how the OLS fit to the data):
 
-\textbf{Objective of OLS} - minimize the square sum of residuals:
+$R^2 = \frac{\sum_i (\hat{y}_i - \overline{y}_i)^2}{\sum_i (y_i - \overline{y}_i)^2} = 1 - \frac{\sum_i \hat{u}_i^2}{nS_y^2}$
 
-$Min \sum_{i=1}^n \hat{u}_i^2 = Min \sum_{i=1}^n [Y_i - (\hat{\beta}_0 + \hat{\beta}_1 X_i)]^2$
-
-
-\subsection*{Simple regression model}
-
-Equation:
-$y_i = \beta_0 + \beta_1 x_{1i} + u_i; i = 1, ..., n$
-
-Estimation:
-$\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 X_i$
-$\hat{u}_i = y_i - \hat{y}_i = y_i - (\hat{\beta}_0 + \hat{\beta}_1 x_i)$
-
-
-With
-
-$\hat{\beta}_0 = \overline{Y} - \hat{\beta_1} \overline{X}$
-
-$\hat{\beta}_1 = \frac{Cov(Y, X)}{Var(X)}$
-
-\subsection*{Multiple regression model}
-
-$Y_i = \beta_0 + \beta_1 X_{1i} + ... + \beta_k X_{ki} + u_i, i = 1,..., n$
-
-$\hat{u}_i = Y_i - \hat{Y}_i = Y_i - (\hat{\beta}_0 + \hat{\beta}_1 X_i + ... + \hat{\beta}_k X_{ki})$
-
-Objective:
-
-$Min \sum_{i=1}^n \hat{u}_i^2$
-
-Then
-
-$\hat{\beta}_0 = \overline{Y} - \hat{\beta_1} \overline{X}_1 - ... - \hat{\beta_k} \overline{X}_k$
-
-$\hat{\beta}_j = \frac{Cov(Y, resid(X_j))}{Var(resid(X_j))}$
-
-\subsection*{Properties of OLS}
-
-\begin{itemize}
-\item Linearity in $Y$.
-\item Normality: $Y / X ~ N(\beta_0 + \beta_1 X, \sigma^2)$
-\item Expected value of the estimator: $E(\hat{\beta}_1 / X_i) = \beta_1$, then $\hat{\beta}_1$ is an unbiased estimator of $\beta_1$
-\item Variance of the estimator: $Var(\hat{\beta}_1 / X_i) = \frac{\sigma^2}{n Var(X_i)}$
+\begin{itemize}[leftmargin=*]
+\item Takes values between 0 (no lineal explanation of the variations of $y$) and 1 (total explanation of the variations of $y$).
+\item Measures the percentage of variation of $y$ that is linearly explained by the variations of $x$'s.
+\item When the number of regressors increment, the value of the r-squared increments as well, whatever the new variables are relevant or not.
 \end{itemize}
 
-\textbf{Efficiency of OLS estimators, Gauss-Markov Theorem}. In the context of the simple or multiple linear regression model, the OLS estimators of the parameters are those with the lowest variance between the lineal and unbiased estimators
+For eliminate the last point, there is an r-squared corrected by degrees of freedom:
 
-\subsection*{Central Limit Theorem}
-% MORE EXPLANATION
-Under the CLT, $\hat{\beta}_j$ is a consistent estimator of the population parameter $\beta_i$.
-
-$p lim \hat{\beta}_i = \beta_i$
-
-The Central Limit Theorem allow us to obtain (asymptotically):
-
-$\frac{\hat{\beta}_i - \beta_i}{s(\hat{\beta}_i)} \sim N(0,1)$
-
-\subsection*{Goodness of the fit, R-Squared}
-
-The R2 is a measure of the goodness of the fit, how the OLS fit to the data.
-
-Is the proportion of variability of the dependent variable explained by the regression line:
-
-$R^2 = \frac{\sum_i (\hat{Y}_i - \overline{Y}_i)^2}{\sum_i (Y_i - \overline{Y}_i)^2} = 1 - \frac{\sum_i \hat{\epsilon}_i^2}{nS_y^2}$
-
-The $R^2$ takes values between 0 (no lineal explanation of the variations of $Y$) and one (total explanation of the variations of $Y$)
-
-Is a descriptive measure of the global fit of the model.
-
-The $R^2$ measures the percentage of variation of $Y$ that is linearly explained by the variations of $X$.
-
-The $R^2$ increments it's value when increments the number of regressors, whatever they are relevant or not.
-
-For eliminate the above phenomena, there is a $R^2$ corrected by degrees of freedom ($\overline{R}^2$).
-
-$\overline{R}^2 = 1 - \frac{n-1}{n-k-1} \frac{\sum_i \hat{\epsilon}_i^2}{\sum_i (Y_i - \overline{Y}_i)^2} = 1 - \frac{n-1}{n-k-1} (1-R^2)$
+$\overline{R}^2 = 1 - \frac{n-1}{n-k-1} \frac{\sum_{i=1}^n \hat{u}_i^2}{\sum_{i=1}^n (y_i - \overline{y}_i)^2} = 1 - \frac{n-1}{n-k-1} (1-R^2)$
 
 For big sample sizes:
 
 $\overline{R}^2 \approx R^2$
 
-\subsection*{Errors}
+\subsection*{Error measures}
 
-Standard error of the regression is a measure of the goodness of the fit.
+Total Sum of Squares: $SST = \sum_{i=1}^n (y_i - \overline{y}_i)^2$
 
-$\hat{\sigma} = \sqrt{\frac{\sum_i \hat{\epsilon}_i^2}{n-k-1}}$
+Explained Sum of Squares: $SSE = \sum_{i=1}^n (\hat{y}_i - \overline{y}_i)^2$
 
-It's value decreases as the number of regressors increase, so it have the same problem as the $R^2$
+Residual Sum of Squares: $SSR = \sum_{i=1}^n u_i^2$
 
-\subsection*{Hypothesis testing}
+Standard error of the regression: $\hat{\sigma} = \sqrt{\frac{\sum_{i=1}^n \hat{u}_i^2}{n-k-1}}$
 
-An hypothesis test is a rule designed to explain from a sample, if exist evidence or not to reject an hypothesis that is made on one or more population parameters.
+\section*{Hypothesis testing}
+
+\subsection*{The basics of hypothesis testing}
+
+An hypothesis test is a rule designed to explain from a sample, if exist evidence or not to reject an hypothesis that is made of one or more population parameters.
 
 Elements of an hypothesis contrast:
 
-\begin{itemize}
+\begin{itemize}[leftmargin=*]
 \item Null hypothesis ($H_0$): is the hypothesis that you want to contrast.
 \item Alternative hypothesis ($H_1$): is the hypothesis that cannot be rejected when the null hypothesis is rejected.
 \item Statistic of contrast: is a random variable with a known distribution that allow us to see if we reject (or not) the null hypothesis.
-\item Significance level ($\alpha$): is the probability of rejecting the null hypothesis being true (Error type I). Is chosen by who conduct the contrast. Commonly is 0,10, 0.05, 0.01 or 0,001
+\item Significance level ($\alpha$): is the probability of rejecting the null hypothesis being true (type I error). Is chosen by who conduct the contrast. Commonly is 0.10, 0.05, 0.01 or 0.001
 \item Critic value: is the value that, for a determined value of $\alpha$, determines the reject (or not) of the null hypothesis.
 \item p-value: is the highest level of significance for what we do not reject (accept) the null hypothesis ($H_0$).
 \end{itemize}
 
-The rule is: if p-value is lower than $\alpha$, there is evidence at that given $\alpha$ to reject the null hypothesis (accept the alternative instead).
+\textbf{The rule is}: if p-value is lower than $\alpha$, there is evidence at that given $\alpha$ to reject the null hypothesis (accept the alternative instead).
 
-\subsection*{Individual significance contrasts}
+\subsection*{Individual contrasts}
 
-\begin{itemize}
-\item $H_0: \beta_j = 0$
-\item $H_1: \beta_j \neq 0$
+Under the premise of normality of the residuals, contrast if a given parameter is significantly different from a given value.
+
+\begin{itemize}[leftmargin=*]
+\item $H_0: \beta_j = \theta$
+\item $H_1: \beta_j \neq \theta$
 \end{itemize}
 
-Supposing that the model's errors are distributed as a normal distribution.
-
-$Y_i / X_i, ..., X_k \sim N(\beta_0 + \beta_1 X_1 + ... + \beta_k X_k, \sigma^2)$
-
-Then, under $H_0$:
+Under $H_0$:
 
 $t = \frac{\hat{\beta}_j - \beta_j}{s(\hat{\beta}_j)} \sim t_{n-k-1, \alpha/2}$
 
 If $\mid t \mid > t_{n-k, \alpha/2}$ there is evidence to reject the null hypothesis.
 
-\subsection*{Confidence intervals}
+\textbf{Individual significance contrasts} - contrast if a given parameter is significantly different from zero.
 
-Supposing normality of the residuals:
+\begin{itemize}[leftmargin=*]
+\item $H_0: \beta_j = 0$
+\item $H_1: \beta_j \neq 0$
+\end{itemize}
 
-$Y_i / X_i, ..., X_k \sim N(\beta_0 + \beta_1 X_1 + ... + \beta_k X_k, \sigma^2)$
+Under $H_0$:
 
-Then, $t = \frac{\hat{\beta}_j - \beta_j}{s(\hat{\beta}_j)} \sim t_{n-k-1}$
+$t = \frac{\hat{\beta}_j - 0}{s(\hat{\beta}_j)} \sim t_{n-k-1, \alpha/2}$
 
-The confidence interval:
+If $\mid t \mid > t_{n-k, \alpha/2}$ there is evidence to reject the null hypothesis.
 
-$P[\hat{\beta}_j - t_{n-k-1, \alpha/2} s(\hat{\beta}_j) < \beta_j < \hat{\beta}_j + t_{n-k-1, \alpha/2} s(\hat{\beta}_j)] = 1 - \alpha$
+\section*{Confidence intervals}
 
-\subsection*{The F contrast}
+Under the normality of the residuals requirement, the confidence intervals at $1 - \alpha$ confidence can be calculated:
+
+$\hat{\beta}_j \mp t_{n-k-1, \alpha/2} s(\hat{\beta}_j)$
+
+\section*{The F contrast}
 
 It uses a non restricted model and a restricted model to do assumptions about the parameters.
 
-\begin{itemize}
+\begin{itemize}[leftmargin=*]
 \item Non restricted model: is the model on which we want to make the hypothesis contrast.
 \item Restricted model: is the model on which the hypothesis that we want to contrast have been imposed.
 \end{itemize}
 
 Then, looking at the errors, there is:
 
-\begin{itemize}
-\item $\sum_{i=1}^n \hat{\epsilon}_N^2$: is the sum of the OLS residuals of the non restricted model (SRN).
-\item $\sum_{i=1}^n \hat{\epsilon}_N^2$: is the sum of the OLS residuals of the restricted model (SRR).
+\begin{itemize}[leftmargin=*]
+\item $\sum_{i=1}^n \hat{u}_N^2$: is the sum of the OLS residuals of the non restricted model (SRN).
+\item $\sum_{i=1}^n \hat{u}_R^2$: is the sum of the OLS residuals of the restricted model (SRR).
 \end{itemize}
 
-Then:
+Then: $F = \frac{SRR - SRN}{SRN} \frac{(n-K-1)}{q} \sim F_{q, n-K-1}$
 
-$F = \frac{SRR - SRN}{SRN} \frac{(n-K-1)}{q} \sim F_{q, n-K-1}$
+Where $K$ is the number of parameters of the non restricted model and $q$ is the number of linear hypothesis.
 
-Where $K$ is the number of parameters in the non restricted model and $q$ is the number of linear hypothesis.
+When $F_{q, n-K-1} < F$, there is evidence to reject the null hypothesis.
 
-When $F_{tables} > F_{q, n-K-1}$
+\section*{Dummy variables and structural change}
 
-\subsection*{Dummy variables and structural change}
+Dummy (or binary) variables are used for qualitative information: sex, civil state, etc.
 
-Dummy (or binary) variables are used for qualitative information: sex, married or not, etc.
+\begin{itemize}[leftmargin=*]
+\item The dummy variables get the value of 1 in a given category, and 0 on the rest.
+\item Dummy variables are used to analyze and modeling structural changes in the model parameters.
+\end{itemize}
 
-The dummy variables get the value of 1 in a category, and 0 on the rest.
-
-The dummy variables are used to analyze and modeling structural changes in the models parameters.
+\subsection*{Structural change}
 
 We denominate structural changes to the modifications in the value of the parameters of the models for different sub-populations.
 
-In the constant, their associate parameter represents the difference in mean between the values.
-
-In the parameters that determines the slope of the regression line, the associate parameter represents the difference in the effect between the values.
+The position of the dummy variable matters:
+\begin{itemize}[leftmargin=*]
+\item On the constant, their associate parameter represents the difference in mean between the values.
+\item On the parameters that determines the slope of the regression line, the associate parameter represents the difference in the effect between the values.
+\end{itemize}
 
 \textbf{The Chow's structural contrast}
 
@@ -290,101 +289,94 @@ When we want to analyze the existence of structural changes in all the model par
 
 It defines two non restricted models (with structural change):
 
-$Y_i = \beta_0^A + \beta_1^A X_{1i} + ... + \beta_k^A X_{ki} + \epsilon_i$ sub-sample A
+$y_i = \beta_0^A + \beta_1^A x_{1i} + ... + \beta_k^A x_{ki} + u_i$ from sub-sample A
 
-$Y_i = \beta_0^B + \beta_1^B X_{1i} + ... + \beta_k^B X_{ki} + \epsilon_i$ sub-sample B
+$y_i = \beta_0^B + \beta_1^B x_{1i} + ... + \beta_k^B x_{ki} + u_i$ from sub-sample B
 
 Restricted model (without structural change):
 
-$Y_i = \beta_0 + \beta_1 X_{1i} + ... + \beta_k X_{ki} + \epsilon_i$
+$y_i = \beta_0 + \beta_1 x_{1i} + ... + \beta_k x_{ki} + u_i$
 
 With the restriction:
 
 $H_0: \beta_j^A = \beta_j^B; j=0,1,...,k$
 
-Be SRN the sum of the OLS square residuals of the non restricted model: $SRN = SR_A + SR_B$
-
-Be SRR the sum of the OLS square residuals of the restricted model.
+\begin{itemize}[leftmargin=*]
+\item Be SRN the sum of the OLS square residuals of the non restricted model: $SRN = SR_A + SR_B$
+\item Be SRR the sum of the OLS square residuals of the restricted model.
+\end{itemize}
 
 Then:
 
 $F = \frac{SRR - SRN}{SRN} \frac{n-2(k+1)}{k+1} \sim F_{k+1,n-2(k+1)}$
 
-If $F_{table} < F$, is evidence to reject the null hypothesis.
+If $F_{q, n-K-1} < F$, there is evidence to reject the null hypothesis.
 
-\subsection*{Multicolineality}
+\section*{Multicollinearity}
 
 If there is exact multicolineality, the equation system of OLS cannot be solved due to infinite solutions.
 
-\begin{itemize}
-\item Approximate multicolineality: when one or more variables are almost a constant or there is a linear relation between them. In this context, there is not a problem, given the classic requirements of OLS, and the inference is valid. But, there are some empiric consequences of this:
-\begin{itemize}
+\begin{itemize}[leftmargin=*]
+\item Approximate multicollinearity: when one or more variables are almost a constant or there is a linear relation between them. In this context, there is not a problem, given the classic requirements of OLS, and the inference is valid. But, there are some empiric consequences of this:
+\begin{itemize}[leftmargin=*]
 \item Small sample variations can induce to big variations in the OLS estimations.
-\item The variance of the OLS estimator of the X variables that are collinear $Var(\hat{\beta}_j)$ increments, then, the inference of the parameter is affected $\rightarrow$ The estimation of the parameter is very imprecise (big confidence interval)
+\item The variance of the OLS estimator of the $x$'s that are collinear $Var(\hat{\beta}_j)$ increments, then, the inference of the parameter is affected $\rightarrow$ The estimation of the parameter is very imprecise (big confidence interval).
+\end{itemize}
 \end{itemize}
 
-\end{itemize}
-
-Calculating the Variance Inflation Factor to analyze multicolineality problems:
+Calculating the Variance Inflation Factor to analyze multicollinearity problems:
 
 $VIF(\hat{\beta}_j) = \frac{1}{1-R_j^2}$
 
 Indicates the increment of $V(\hat{\beta}_j)$ because of the multicolineality.
 
-\begin{itemize}
-\item If it is bigger than 10, indicates that there are multicolineality problems.
-\item From 4 onwards, it is advisable to analyze in more detail if there may be
-multicolineality
+\begin{itemize}[leftmargin=*]
+\item If it is bigger than 10, indicates that there are multicollinearity problems.
+\item From 4 onwards, it is advisable to analyze in more detail if there might be
+multicollinearity.
 \end{itemize}
 
-One typical characteristic of multicolineality is that the regression coefficients of the model are not individually different from zero (because the high variances), but jointly different from zero.
+One typical characteristic of multicollinearity is that the regression coefficients of the model are not individually different from zero (because the high variances), but jointly they are different from zero.
 
-\subsection*{Heterocedasticity}
+\columnbreak
 
-The residuals $\epsilon_i$ of the population regression function don't have the same variance $\sigma^2$:
+\section*{Heteroscedasticity}
 
-$Var(\varepsilon \mid X) = Var(Y \mid X) \neq \sigma^2 \rightarrow$ HETEROCEDASTICITY
+The residuals $u_i$ of the population regression function do not have the same variance $\sigma^2$:
 
-\textbf{Consequences}
+$Var(\varepsilon \mid X) = Var(Y \mid X) \neq \sigma^2$
 
-The estimators still are unbiased.
-The estimators still are consistent.
-The variance of the estimators is biased: the construction of confidence intervals and the hypothesis contrast are not valid.
-In this context, OLS is not an unbiased lineal estimator of minimum variance. There is an alternate unbiased lineal estimator of minimum variance denominated estimator of minimum pondered squares (MPS) or minimum generalized squares (MGS).
+\subsection*{Consequences}
 
-Under the Gauss-Markov Theorem assumptions, OLS estimators are not efficient. The estimations of the variance of the estimators are biased. The hyphotesis contrast and the confidence intervals are not reliable.
+\begin{itemize}[leftmargin=*]
+\item The estimators still are unbiased.
+\item The estimators still are consistent.
+\item The variance of the estimators is biased: the construction of confidence intervals and the hypothesis contrast are not reliable.
+\end{itemize}
 
-\textbf{Detection}
+In this context, OLS is not an unbiased lineal estimator of minimum variance. There is an alternate unbiased lineal estimator of minimum variance denominated estimator of least weighted squares (OLWS) or least generalized squares (LGS).
 
-Plots (look for structures in plots with the square residuals) and contrasts: Park test, Goldfield-Quandt, Bartlett, Breush-Pagan, CUSUMQ, Spearman, White.
-White's null hypothesis:
+\subsection*{Detection}
 
-$H_0 = HOMOCEDASTICITY$
+Plots. Look for structures in plots with the square residuals) and contrasts: Park test, Goldfield-Quandt, Bartlett, Breush-Pagan, CUSUMQ, Spearman, White.
 
-\textbf{Correction}
-\begin{itemize}
+White test null hypothesis:
+
+$H_0 = Homoscedasticity$
+
+\subsection*{Correction}
+
+\begin{itemize}[leftmargin=*]
 	\item When the variance structure is known, use weighted least squares.
 	\item When the variance structure is not known: make assumptions of the possible structure and apply weighted least squares (factible weighted least squares)
 	\item Supposing that $\sigma_i^2$ is proportional to $x_i^2$, divide by $x_i$
 \end{itemize}
 
-\subsection*{Autocorrelation}
+\subsection*{Auto-correlation}
 
 The "natural" context of this phenomena is in temporal series.
 
 The residual of any observation, $u_i$ is correlated with the residual of any other observation. The observations are not independent $E(u_i,u_j) \neq 0; i \neq j$
-
-Causes of autocorrelation:
-
-\begin{itemize}
-\item By the existence of tendencies and/or cycles in the data.
-\item By the aggregation of the data.
-\item By the existence of an especification error (omission of relevant variables, bad functional form, etc.)
-\item Model specification error
-\item 
-\end{itemize}
-
-
 
 
 \section*{Regression Analysis}
@@ -395,12 +387,6 @@ We usually use Ordinary Least Squares (OLS).
 The correlation analysis not distinguish between dependent and independent variables.
 \textbf{Simple Correlation}
 Measure the grade of lineal association between two variables.
-
-\section*{Utilization}
-
-\subsection*{Interpretation of the model}
-
-
 
 \end{multicols}
 \end{document}
