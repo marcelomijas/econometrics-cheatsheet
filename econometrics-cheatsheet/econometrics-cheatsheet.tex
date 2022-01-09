@@ -60,7 +60,7 @@ By Marcelo Moreno - University King Juan Carlos
 \subsection*{Econometric model assumptions}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% CUT TO 5 OR FOUR
+% CUT TO 4 OR 5
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Under this assumptions the estimators of the parameters will present "good properties". \textbf{Extended Gauss Markov assumptions}:
@@ -100,7 +100,7 @@ $\frac{\hat{\beta}_i - \beta_i}{s(\hat{\beta}_i)} \sim N(0,1)$
 \section*{Ordinary Least Squares}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ADD MATRICIAL FORM
+% ADD MATRICIAL FORM DETAILS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \textbf{OLS objective} - minimize the square sum of residuals:
@@ -127,7 +127,7 @@ Equation: $y_i = \beta_0 + \beta_1 x_{1i} + ... + \beta_k x_{ki} + u_i$
 
 Estimation: $\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 x_{1i} + ... + \hat{\beta}_k x_{ki}$
 
-Residuals: $\hat{u}_i = Y_i - \hat{Y}_i = Y_i - (\hat{\beta}_0 + \hat{\beta}_1 X_i + ... + \hat{\beta}_k X_{ki})$
+Residuals: $\hat{u}_i = y_i - \hat{y}_i = y_i - (\hat{\beta}_0 + \hat{\beta}_1 x_i + ... + \hat{\beta}_k x_{ki})$
 
 With:
 
@@ -328,7 +328,7 @@ Calculating the Variance Inflation Factor to analyze multicollinearity problems:
 
 $VIF(\hat{\beta}_j) = \frac{1}{1-R_j^2}$
 
-Indicates the increment of $V(\hat{\beta}_j)$ because of the multicolineality.
+Indicates the increment of $Var(\hat{\beta}_j)$ because of the multicollinearity.
 
 \begin{itemize}[leftmargin=*]
 \item If it is bigger than 10, indicates that there are multicollinearity problems.
@@ -344,7 +344,7 @@ One typical characteristic of multicollinearity is that the regression coefficie
 
 The residuals $u_i$ of the population regression function do not have the same variance $\sigma^2$:
 
-$Var(\varepsilon \mid X) = Var(Y \mid X) \neq \sigma^2$
+$Var(u|x) = Var(y|x) \neq \sigma^2$
 
 \subsection*{Consequences}
 
