@@ -6,7 +6,7 @@ PDF version download: https://github.com/marcelomijas/econometrics-cheatsheet/ra
 
 TeX version: https://github.com/marcelomijas/econometrics-cheatsheet/raw/main/econometrics-cheatsheet/econometrics-cheatsheet.tex
 
-## Roadmap:
+## Roadmap for 2.0
 
 :white_check_mark: Pages 1 and 2 are completed with: definitions, basic concepts, coefficient interpretation, basic assumptions,  model construction, goodness of the fit, etc. It is an usable version.
 
