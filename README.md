@@ -1,6 +1,6 @@
-# Econometrics Cheat Sheet 1.0
+# Econometrics cheat sheet 1.0
 
-Econometrics Cheat Sheet using LaTeX with a complete review of the econometrics principles, assumptions of the linear regression model, interpretation, error measures, and post hoc analysis.
+Econometrics cheat sheet using LaTeX with a complete review of the econometrics principles, assumptions of the linear regression model, interpretation, error measures, and post hoc analysis.
 
 PDF version download: https://github.com/marcelomijas/econometrics-cheatsheet/raw/main/econometrics-cheatsheet/econometrics-cheatsheet.pdf
 
