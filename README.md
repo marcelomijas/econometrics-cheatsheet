@@ -4,7 +4,7 @@ Econometrics Cheat Sheet using LaTeX with a complete review of the econometrics 
 
 PDF version download: https://github.com/marcelomijas/econometrics-cheatsheet/raw/main/econometrics-cheatsheet/econometrics-cheatsheet.pdf
 
-TeX version download: https://github.com/marcelomijas/econometrics-cheatsheet/raw/main/econometrics-cheatsheet/econometrics-cheatsheet.tex
+TeX version: https://github.com/marcelomijas/econometrics-cheatsheet/raw/main/econometrics-cheatsheet/econometrics-cheatsheet.tex
 
 ## Roadmap:
 
