@@ -7,6 +7,7 @@
 \usepackage{graphicx} % for scale tables
 \usepackage[compact]{titlesec} % titles spacing
 \usepackage{enumitem} % indent of lists
+\usepackage{tikz} % for plots
 
 % -----page customization-----
 \geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} % margins configuration
@@ -36,7 +37,7 @@ By Marcelo Moreno - University King Juan Carlos
 
 \subsection*{Data types}
 
-\textbf{Cross section} - data taken at a given moment in time, an static "photo". Order does not matter.
+\textbf{Cross section} - data taken at a given moment in time, an static ``photo". Order does not matter.
 
 \textbf{Temporal series} - observation of one/many variable/s across time. Order does matter.
 
@@ -49,95 +50,149 @@ By Marcelo Moreno - University King Juan Carlos
 \begin{enumerate}[leftmargin=*]
 \setlength{\multicolsep}{0pt}
 \begin{multicols}{2}
-\item Specification
-\item Estimation
+\item Specification.
+\item Estimation.
 \columnbreak
-\item Validation
-\item Utilization
+\item Validation.
+\item Utilization.
 \end{multicols}
 \end{enumerate}
 
+\subsection*{Regression analysis}
+Study and predict the mean value of a variable (dependent variable, $y$) regarding the base of fixed values of other variables (independent variables, $x$'s). In econometrics it is common to use Ordinary Least Squares (OLS) for regression analysis.
+
+\subsection*{Correlation analysis}
+The correlation analysis not distinguish between dependent and independent variables.
+
+\begin{itemize}[leftmargin=*]
+\item The simple correlation measures the grade of linear association between two variables.
+\item The partial correlation measures the grade of linear association between two variables controlling a third variable.
+\end{itemize}
+
+\columnbreak
+
+\section*{Assumptions and properties}
 \subsection*{Econometric model assumptions}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% CUT TO 4 OR 5
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Under this assumptions the estimators of the parameters will present "good properties". \textbf{Extended Gauss Markov assumptions}:
+Under this assumptions, the estimators of the OLS parameters will present good properties. \textbf{Gauss-Markov assumptions extended}:
 
 \begin{enumerate}[leftmargin=*]
-\item Parameters linearity. $y$ must be a linear function of the $\beta$'s.
-\item The sample (data) taken from the population is random. Characteristics:
+\item \textbf{Parameters linearity}. $y$ must be a linear function of the $\beta$'s
+\item \textbf{Random sampling}. The sample from the population has been randomly taken. (ONLY makes sense when data is cross section)
+\item \textbf{No perfect collinearity}.
 \begin{itemize}[leftmargin=*]
-\item Independence: all the co-variances between the $x$'s are zero.
-\item Identical distribution: all the expected values and variances of the observations are the same.
+\item There are no constant independent variables: $Var(X) \neq 0$.
+\item There is not an exact linear relation between independent variables.
 \end{itemize}
-\item $E(u | x_1, ..., x_k) = 0$, the estimations are unbiased. Implications:
+\item \textbf{Conditional mean zero and correlation zero}.
 \begin{itemize}[leftmargin=*]
-\item $E(u) = 0$, there are no systematic errors.
-\item $Cov(u, x_1) = ... = Cov(u, x_k) = 0$, there are no relevant variables left out the model.
-\item $E(y | x_1, ..., x_k) = \beta_0 + \beta_1 x_1 + ... + \beta_k x_k$, the linear relation between $y$ and the $x$'s is fulfilled, at least in average.
+\item There are no systematic errors: $E(u | x_1, ..., x_k) = E(u) = 0$.
+\item There are no relevant variables left out the model: $Cov(x_j | u) = 0$ for any $j = 1, ..., k$.
 \end{itemize}
-\item Homoscedasticity: $Var(u_i | x_{1i},  ..., x_{ki}) = \sigma^2$, the variability of the residual is the same for all levels of $x$.
-\item No auto-correlation: $Cov(u_i, u_j | x) = 0$, the residuals do not contain information about other residuals.
-\item The residuals are normally distributed, $u \sim N(0, \sigma)$
-\item No multicollinearity: none of the independent variables is constant nor exist an exact (or approximate) linear relation between them, they are linearly independents.
-\item The number of available data is greater than $k+1$ (parameters to estimate).
+\item \textbf{Homoscedasticity}. The variability of the residual is the same for all levels of $x$: $Var(u | x_1, ..., x_k) = \sigma^2$.
+\item \textbf{No auto-correlation}. The residuals do not contain information about other residuals: $Corr(u_t, u_s | X) = 0$ for any $t \neq s$. (ONLY makes sense when data is temporal series)
+\item \textbf{Normality}. The residuals are independent and identically distributed: $u \sim N(0,\sigma^2)$.
+\item \textbf{Data size}. The number of observations available must be greater than $(k + 1)$ parameters to estimate. (Do NOT makes sense under asymptotic situations)
 \end{enumerate}
 
-\textbf{Efficiency of OLS estimators, Gauss-Markov Theorem}. In the context of the simple or multiple linear regression model, the OLS estimators of the parameters are those with the lowest variance between the lineal and unbiased estimators.
+\subsection*{Asymptotic properties of OLS}
 
-\subsection*{Central Limit Theorem}
-% MORE EXPLANATION
-Under the CLT, $\hat{\beta}_j$ is a consistent estimator of the population parameter $\beta_i$.
-
-$p lim \hat{\beta}_i = \beta_i$
-
-The Central Limit Theorem allow us to obtain (asymptotically):
-
-$\frac{\hat{\beta}_i - \beta_i}{s(\hat{\beta}_i)} \sim N(0,1)$
+Under the econometric model assumptions and the Central Limit Theorem:
+\begin{itemize}[leftmargin=*]
+\item Hold 1 to 4: OLS is \textbf{unbiased}. $E(\hat{\beta}_j) = \beta_j$
+\item Hold 1 to 4: OLS is \textbf{consistent}. $plim(\hat{\beta}_j) = \beta_j$
+\item Hold 1 to 5: \textbf{asymptotic normality} of OLS (then, 7 is necessarily satisfied): $u \sim_a N(0,\sigma^2)$.
+\item Hold 1 to 7: OLS is BLUE (Best Linear Unbiased Estimator) or \textbf{efficient}. Thereby, hypothesis contrasts and confidence intervals can be done reliably.
+\end{itemize}
 
 \section*{Ordinary Least Squares}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ADD MATRICIAL FORM DETAILS
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\textbf{OLS objective} - minimize the square sum of residuals:
-
-$Min \sum_{i=1}^n \hat{u}_i^2$
+\textbf{Objective} - minimize the Sum of Squared Residuals (SSR): $Min \sum_{i=1}^n \hat{u}_i^2$, where $\hat{u}_i = y_i - \hat{y}_i$
 
 \subsection*{Simple regression model}
 
-Equation: $y_i = \beta_0 + \beta_1 x_{1i} + u_i$
+\setlength{\multicolsep}{0pt}
+\begin{multicols}{2}
 
-Estimation: $\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 x_i$
+\begin{tikzpicture}[scale=0.19]
+% background grid
+\draw[step=2, gray, very thin] (-10,-10) grid (10,10);
+%axis
+\draw[thick, <->] (-10,10) node[anchor=south] {$y$} -- (-10,-10) -- (10,-10) node[anchor=north] {$x$};
+% regression line
+\draw[red, thick] plot [domain=-10:10] (\x,{1 + 0.5 * \x});
+% data points
+\draw plot [only marks, mark=*, mark size=5, domain=-8:8, samples=20] (\x,{rnd * 5 - 1.5 + 0.5 * \x});
+% beta0
+\draw (-9.3,-9.6) -- (-9.5,-9.6) -- (-9.5,-4.3) -- (-9.3, -4.3) node[anchor=north west] {$\beta_0$};
+% beta1
+\draw (-2,0) -- (1.5,0) arc (0:25:3.5);
+\draw (3,0.5) node {$\beta_1$};
+\end{tikzpicture}
 
-Residuals: $\hat{u}_i = y_i - \hat{y}_i = y_i - (\hat{\beta}_0 + \hat{\beta}_1 x_i)$
+\columnbreak
 
-With:
+Equation:\\ $y_i = \beta_0 + \beta_1 x_{1i} + u_i$
 
-$\hat{\beta}_0 = \overline{y} - \hat{\beta}_1 \overline{x}$
+\vspace*{1mm}
 
-$\hat{\beta}_1 = \frac{Cov(y, x)}{Var(x)}$
+Estimation:\\ $\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 x_{1i}$
+
+\vspace*{1mm}
+
+Where: \\ $\hat{\beta}_0 = \overline{y} - \hat{\beta}_1 \overline{x}$ \\ $\hat{\beta}_1 = \frac{Cov(y, x)}{Var(x)}$
+
+\end{multicols}
 
 \subsection*{Multiple regression model}
 
-Equation: $y_i = \beta_0 + \beta_1 x_{1i} + ... + \beta_k x_{ki} + u_i$
+\setlength{\multicolsep}{0pt}
+\begin{multicols}{2}
 
-Estimation: $\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 x_{1i} + ... + \hat{\beta}_k x_{ki}$
+\begin{tikzpicture}[scale=0.19]
+% axis
+\draw[thick, ->] (-10,-10) -- (-3,-4) node[anchor=north west] {$x_2$};
+\draw[thick, <->] (-10,10) node[anchor=south] {$y$} -- (-10,-10) -- (10,-10) node[anchor=north] {$x_1$};
+% regression grid
+\draw[red, thick] (-10,-4) -- (-5,3);
+\draw[red, thick] (-8.5, -3.5) -- (-3.5,3.5);
+\draw[red, thick] (-7, -3) -- (-2,4);
+\draw[red, thick] (-5.5, -2.5) -- (-0.5,4.5);
+\draw[red, thick] (-4, -2) -- (1,5);
+\draw[red, thick] (-2.5, -1.5) -- (2.5,5.5);
+\draw[red, thick] (-1, -1) -- (4,6);
+\draw[red, thick] (0.5, -0.5) -- (5.5,6.5);
+\draw[red, thick] (2, 0) -- (7,7);
+\draw[red, thick] (3.5, 0.5) -- (8.5,7.5);
+\draw[red, thick] (5, 1) -- (10,8);
+\draw[red, thick] (-10, -4) -- (5, 1);
+\draw[red, thick] (-8.75, -2.25) -- (6.25,2.75);
+\draw[red, thick] (-7.5, -0.5) -- (7.5,4.5);
+\draw[red, thick] (-6.25, 1.25) -- (8.75,6.25);
+\draw[red, thick] (-5,3) -- (10,8);
+% data points
+\draw plot [only marks, mark=*, mark size=5, domain=-8:8, samples=20] (\x,{rnd * 6.5 - 1.5 + 0.5 * \x});
+% beta0
+\draw (-9.3,-9.6) -- (-9.5,-9.6) -- (-9.5,-4.3) -- (-9.3, -4.3) node[anchor=north west] {$\beta_0$};
+\end{tikzpicture}
 
-Residuals: $\hat{u}_i = y_i - \hat{y}_i = y_i - (\hat{\beta}_0 + \hat{\beta}_1 x_i + ... + \hat{\beta}_k x_{ki})$
+\columnbreak
 
-With:
+Equation: \\ $y_i = \beta_0 + \beta_1 x_{1i} + ... + \beta_k x_{ki} + u_i$
 
-$\hat{\beta}_0 = \overline{y} - \hat{\beta}_1 \overline{x}_1 - ... - \hat{\beta}_k \overline{x}_k$
+\vspace*{1mm}
 
-$\hat{\beta}_j = \frac{Cov(y, resid(x_j))}{Var(resid(x_j))}$
+Estimation: \\ $\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 x_{1i} + ... + \hat{\beta}_k x_{ki}$
 
-In matrix form:
+\vspace*{1mm}
 
-$\hat{\beta} = (X^T X)^{-1} X^T Y$
+Where: \\ $\hat{\beta}_0 = \overline{y} - \hat{\beta}_1 \overline{x}_1 - ... - \hat{\beta}_k \overline{x}_k$ \\ $\hat{\beta}_j = \frac{Cov(y, resid(x_j))}{Var(resid(x_j))}$
+
+\vspace*{1mm}
+
+In matrix form: \\ $\hat{\beta} = (X^T X)^{-1} X^T Y$
+
+\end{multicols}
 
 \subsection*{Interpretation of coefficients}
 
@@ -148,7 +203,7 @@ $\hat{\beta} = (X^T X)^{-1} X^T Y$
 	\hline
 	Level-level & $y$ & $x$ & $\Delta y = \beta_1 \Delta x$ \\ 
 	\hline
-	Level-log & $y$ & $log(x)$ & $\Delta y = (\beta_1/100)[1 \% \Delta x]$ \\  
+	Level-log & $y$ & $log(x)$ & $\Delta y = (\beta_1/100) \% \Delta x$ \\  
 	\hline
 	Log-level & $log(y)$ & $x$ & $\% \Delta y = (100 \beta_1) \Delta x$ \\
 	\hline
@@ -159,35 +214,41 @@ $\hat{\beta} = (X^T X)^{-1} X^T Y$
 \end{tabular}
 }
 
+\subsection*{Error measures}
+
+Sum of Sq. Resid.: $SSR = \sum_{i=1}^n u_i^2$
+
+Expl. Sum of Sq.: $SSE = \sum_{i=1}^n (\hat{y}_i - \overline{y}_i)^2$
+
+Tot. Sum of Sq.: $SST = \sum_{i=1}^n (y_i - \overline{y}_i)^2 = SSE + SSR$
+
+
+
+Standard error ($se$) of the regression: $\hat{\sigma} = \sqrt{\frac{\sum_{i=1}^n \hat{u}_i^2}{n-k-1}}$
+
+Sqrt. of the Quadratic Mean Error: $\sqrt{\frac{\sum_{i=1}^n (\hat{u}_i - \overline{u})^2}{n}}$
+
+Absolute Mean Error: $\frac{\sum_{i=1}^n |\hat{u}_i|}{n}$
+
 \subsection*{Goodness of the fit, R-squared}
 
-Is a measure of the goodness of the fit (how the OLS fit to the data):
+Is a measure of the goodness of the fit (how the OLS fits to the data):
 
-$R^2 = \frac{\sum_i (\hat{y}_i - \overline{y}_i)^2}{\sum_i (y_i - \overline{y}_i)^2} = 1 - \frac{\sum_i \hat{u}_i^2}{nS_y^2}$
+$R^2 = \frac{\sum_i^n (\hat{y}_i - \overline{y}_i)^2}{\sum_i^n (y_i - \overline{y}_i)^2} = 1 - \frac{\sum_i^n \hat{u}_i^2}{nS_y^2}$
 
 \begin{itemize}[leftmargin=*]
-\item Takes values between 0 (no lineal explanation of the variations of $y$) and 1 (total explanation of the variations of $y$).
 \item Measures the percentage of variation of $y$ that is linearly explained by the variations of $x$'s.
+\item Takes values between 0 (no linear explanation of the variations of $y$) and 1 (total explanation of the variations of $y$).
 \item When the number of regressors increment, the value of the r-squared increments as well, whatever the new variables are relevant or not.
 \end{itemize}
 
-For eliminate the last point, there is an r-squared corrected by degrees of freedom:
+To eliminate the last point, there is an r-squared corrected by degrees of freedom:
 
 $\overline{R}^2 = 1 - \frac{n-1}{n-k-1} \frac{\sum_{i=1}^n \hat{u}_i^2}{\sum_{i=1}^n (y_i - \overline{y}_i)^2} = 1 - \frac{n-1}{n-k-1} (1-R^2)$
 
 For big sample sizes:
 
 $\overline{R}^2 \approx R^2$
-
-\subsection*{Error measures}
-
-Total Sum of Squares: $SST = \sum_{i=1}^n (y_i - \overline{y}_i)^2$
-
-Explained Sum of Squares: $SSE = \sum_{i=1}^n (\hat{y}_i - \overline{y}_i)^2$
-
-Residual Sum of Squares: $SSR = \sum_{i=1}^n u_i^2$
-
-Standard error of the regression: $\hat{\sigma} = \sqrt{\frac{\sum_{i=1}^n \hat{u}_i^2}{n-k-1}}$
 
 \section*{Hypothesis testing}
 
@@ -219,7 +280,7 @@ Under the premise of normality of the residuals, contrast if a given parameter i
 
 Under $H_0$:
 
-$t = \frac{\hat{\beta}_j - \beta_j}{s(\hat{\beta}_j)} \sim t_{n-k-1, \alpha/2}$
+$t = \frac{\hat{\beta}_j - \beta_j}{se(\hat{\beta}_j)} \sim t_{n-k-1, \alpha/2}$
 
 If $\mid t \mid > t_{n-k, \alpha/2}$ there is evidence to reject the null hypothesis.
 
@@ -232,15 +293,15 @@ If $\mid t \mid > t_{n-k, \alpha/2}$ there is evidence to reject the null hypoth
 
 Under $H_0$:
 
-$t = \frac{\hat{\beta}_j - 0}{s(\hat{\beta}_j)} \sim t_{n-k-1, \alpha/2}$
+$t = \frac{\hat{\beta}_j - 0}{se(\hat{\beta}_j)} \sim t_{n-k-1, \alpha/2}$
 
-If $\mid t \mid > t_{n-k, \alpha/2}$ there is evidence to reject the null hypothesis.
+If $\mid t \mid > t_{n-k-1, \alpha/2}$ there is evidence to reject the null hypothesis.
 
 \section*{Confidence intervals}
 
 Under the normality of the residuals requirement, the confidence intervals at $1 - \alpha$ confidence can be calculated:
 
-$\hat{\beta}_j \mp t_{n-k-1, \alpha/2} s(\hat{\beta}_j)$
+$\hat{\beta}_j \mp t_{n-k-1, \alpha/2} se(\hat{\beta}_j)$
 
 \section*{The F contrast}
 
@@ -273,6 +334,8 @@ Dummy (or binary) variables are used for qualitative information: sex, civil sta
 \item Dummy variables are used to analyze and modeling structural changes in the model parameters.
 \end{itemize}
 
+If a qualitative variable have $m$ categories, we only have to include $m-1$ dummy variables.
+
 \subsection*{Structural change}
 
 We denominate structural changes to the modifications in the value of the parameters of the models for different sub-populations.
@@ -299,7 +362,7 @@ $y_i = \beta_0 + \beta_1 x_{1i} + ... + \beta_k x_{ki} + u_i$
 
 With the restriction:
 
-$H_0: \beta_j^A = \beta_j^B; j=0,1,...,k$
+$H_0: \beta_j^A = \beta_j^B; j=0,1,...,k$, there is no structural difference.
 
 \begin{itemize}[leftmargin=*]
 \item Be SRN the sum of the OLS square residuals of the non restricted model: $SRN = SR_A + SR_B$
@@ -338,8 +401,6 @@ multicollinearity.
 
 One typical characteristic of multicollinearity is that the regression coefficients of the model are not individually different from zero (because the high variances), but jointly they are different from zero.
 
-\columnbreak
-
 \section*{Heteroscedasticity}
 
 The residuals $u_i$ of the population regression function do not have the same variance $\sigma^2$:
@@ -351,7 +412,7 @@ $Var(u|x) = Var(y|x) \neq \sigma^2$
 \begin{itemize}[leftmargin=*]
 \item The estimators still are unbiased.
 \item The estimators still are consistent.
-\item The variance of the estimators is biased: the construction of confidence intervals and the hypothesis contrast are not reliable.
+\item The variance estimations of the estimators is biased: the construction of confidence intervals and the hypothesis contrast are not reliable.
 \end{itemize}
 
 In this context, OLS is not an unbiased lineal estimator of minimum variance. There is an alternate unbiased lineal estimator of minimum variance denominated estimator of least weighted squares (OLWS) or least generalized squares (LGS).
@@ -367,26 +428,103 @@ $H_0 = Homoscedasticity$
 \subsection*{Correction}
 
 \begin{itemize}[leftmargin=*]
-	\item When the variance structure is known, use weighted least squares.
-	\item When the variance structure is not known: make assumptions of the possible structure and apply weighted least squares (factible weighted least squares)
-	\item Supposing that $\sigma_i^2$ is proportional to $x_i^2$, divide by $x_i$
+\item When the variance structure is known, use weighted least squares.
+\item When the variance structure is not known: make assumptions of the possible structure and apply weighted least squares (factible weighted least squares).
+\item Supposing that $\sigma_i^2$ is proportional to $x_i^2$, divide by $x_i$.
+\item New model specification, for example, logarithmic transformation.
+\item Standard errors with heteroscedasticity corrected by the White's method.
 \end{itemize}
 
-\subsection*{Auto-correlation}
+\section*{Auto-correlation}
 
 The "natural" context of this phenomena is in temporal series.
 
 The residual of any observation, $u_i$ is correlated with the residual of any other observation. The observations are not independent $E(u_i,u_j) \neq 0; i \neq j$
 
+\subsection*{Consequences}
 
-\section*{Regression Analysis}
-Study and predict the mean value of a variable regarding the base of fixed values of other variables.
-We usually use Ordinary Least Squares (OLS).
+OLS estimators are not lineal, not efficient, and are biased.
 
-\section*{Correlation Analysis}
-The correlation analysis not distinguish between dependent and independent variables.
-\textbf{Simple Correlation}
-Measure the grade of lineal association between two variables.
+Because OLS estimators are not efficient, variance estimations of the estimators are biased, hypothesis contrast and confidence intervals are not reliable.
+
+\subsection*{Detection}
+
+\begin{itemize}[leftmargin=*]
+\item Graphic residual analysis. There are auto-correlation structures that can be identified in a plot. For example: 
+\end{itemize}
+
+\setlength{\multicolsep}{0pt}
+\begin{multicols}{3}
+
+AR:
+
+\vspace{2.5pt}
+
+\begin{tikzpicture}[scale=0.1]
+\draw[step=2, gray, very thin] (-10,-10) grid (10,10);
+\draw[thick,->] (-10,0) -- (10,0) node[anchor=north] {$\scriptscriptstyle u_{t-1}$};
+\draw[thick,-] (-10,-10) -- (-10,10) node[anchor=south] {$\scriptscriptstyle u_t$};
+\draw plot [only marks, mark=*, mark size=4, domain=-8:8, samples=50] (\x,{rnd * 6 + (-2 * (\x)^2 + 40) * 0.1});
+\draw[thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 + (-2 * (\x)^2 + 40) * 0.1});
+\end{tikzpicture}
+
+\columnbreak
+
+AR(+):
+
+\begin{tikzpicture}[scale=0.1]
+\draw[step=2, gray, very thin] (-10,-10) grid (10,10);
+\draw[thick,->] (-10,0) -- (10,0) node[anchor=north] {$\scriptscriptstyle u_{t-1}$};
+\draw[thick,-] (-10,-10) -- (-10,10) node[anchor=south] {$\scriptscriptstyle u_t$};
+\draw plot [only marks, mark=*, mark size=4, domain=-8:8, samples=25] (\x,{rnd * 6 + 0.5 * \x - 3});
+\draw[thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 + 0.5 * \x - 3});
+\end{tikzpicture}
+
+\columnbreak
+
+AR(-):
+
+\begin{tikzpicture}[scale=0.1]
+\draw[step=2, gray, very thin] (-10,-10) grid (10,10);
+\draw[thick,->] (-10,0) -- (10,0) node[anchor=north] {$\scriptscriptstyle u_{t-1}$};
+\draw[thick,-] (-10,-10) -- (-10,10) node[anchor=south] {$\scriptscriptstyle u_t$};
+\draw plot [only marks, mark=*, mark size=4, domain=-8:8, samples=25] (\x,{rnd * 6 - 0.5 * \x - 3});
+\draw[thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 - 0.5 * \x - 3});
+\end{tikzpicture}
+
+\end{multicols}
+
+\begin{itemize}[leftmargin=*]
+\item Formal contrasts: Breusch-Godfrey. It allows:
+\begin{itemize}[leftmargin=*]
+\item Dynamic models.
+\item $u_t$ that follows an auto-regressive model or $\rho$ order.
+\item Moving averages of the error term.
+\end{itemize}
+\end{itemize}
+
+$H_0: No auto-correlation$
+
+$H_1: u_t \sim AR(\rho)$ or $u_t \sim MA(q)$
+
+\subsection*{Correction}
+
+
+
+\section*{Prediction}
+
+Two types of prediction:
+
+\begin{itemize}[leftmargin=*]
+\item Prediction of the mean value of $y$ for a specific value of $x$.
+\item Prediction of an individual value of $y$ for a specific value of $x$.
+\end{itemize}
+
+If the values of the variables ($x$) approximate to the mean values ($\overline{x}$), the confidence interval amplitude will be less. 
+
+
+
+
 
 \end{multicols}
 \end{document}
