@@ -9,6 +9,7 @@
 \usepackage{enumitem} % indent of lists
 \usepackage{tikz} % for plots
 \usepackage{hyperref} % for hyperlinks
+\usepackage{amsmath}
 
 % -----page customization-----
 \geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} % margins configuration
@@ -188,11 +189,11 @@ Estimation: \\ $\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 x_{1i} + ... + \hat{\b
 
 \vspace*{1mm}
 
-Where: \\ $\hat{\beta}_0 = \overline{y} - \hat{\beta}_1 \overline{x}_1 - ... - \hat{\beta}_k \overline{x}_k$ \\ $\hat{\beta}_j = \frac{Cov(y, resid(x_j))}{Var(resid(x_j))}$
+Where: \\ $\hat{\beta}_0 = \overline{y} - \hat{\beta}_1 \overline{x}_1 - ... - \hat{\beta}_k \overline{x}_k$ \\ $\hat{\beta}_j = \frac{Cov(y, \text{residualized } x_j)}{Var(\text{residualized } x_j)}$
 
 \vspace*{1mm}
 
-Matrix form: $\hat{\beta} = (X^T X)^{-1} X^T Y$
+Matrix form: $\hat{\beta} = (X^T X)^{-1} (X^T Y)$
 
 \end{multicols}
 
@@ -223,6 +224,8 @@ Standard error ($se$) of the regression: $\hat{\sigma} = \sqrt{\frac{\sum_{i=1}^
 Sqrt. of the Quadratic Mean Error: $\sqrt{\frac{\sum_{i=1}^n (\hat{u}_i - \overline{u})^2}{n}}$
 
 Absolute Mean Error: $\frac{\sum_{i=1}^n |\hat{u}_i|}{n}$
+
+Mean Percentage Error: $\frac{\sum_{i=1}^n |\hat{u}_i / y_i|}{n} 100$
 
 \columnbreak
 
