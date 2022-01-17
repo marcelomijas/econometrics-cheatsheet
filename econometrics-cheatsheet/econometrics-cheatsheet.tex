@@ -1,4 +1,4 @@
-\documentclass[10pt,landscape]{article}
+\documentclass[10pt, a4paper, landscape]{extarticle}
 
 % -----packages-----
 \usepackage{multicol} % for multiple columns
@@ -8,11 +8,12 @@
 \usepackage[compact]{titlesec} % titles spacing
 \usepackage{enumitem} % indent of lists
 \usepackage{tikz} % for plots
+\usepackage{hyperref} % for hyperlinks
 
 % -----page customization-----
 \geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} % margins configuration
 \pagenumbering{gobble} % remove page numeration
-\setlength{\parskip}{0cm} % paragraph length
+\setlength{\parskip}{0cm} % paragraph skip length
 % title spacing:
 \titlespacing{\section}{0pt}{2ex}{1ex}
 \titlespacing{\subsection}{0pt}{1ex}{0ex}
@@ -22,11 +23,9 @@
 \begin{document}
 \begin{multicols}{3} % set page columns to 3
 
-\textbf{\Large Econometrics Cheat Sheet 1.0}
-
-\begin{scriptsize}
-By Marcelo Moreno - University King Juan Carlos
-\end{scriptsize}
+\begin{center}
+\textbf{\LARGE Econometrics Cheat Sheet} \\ {\footnotesize By Marcelo Moreno - King Juan Carlos University} \\ {\footnotesize \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Version 1.2-en}}
+\end{center}
 
 \section*{Basic concepts}
 \subsection*{Definitions}
@@ -81,7 +80,7 @@ Under this assumptions, the estimators of the OLS parameters will present good p
 \item \textbf{Random sampling}. The sample from the population has been randomly taken. (ONLY makes sense when data is cross section)
 \item \textbf{No perfect collinearity}.
 \begin{itemize}[leftmargin=*]
-\item There are no constant independent variables: $Var(X) \neq 0$.
+\item There are no independent variables that are constant: $Var(X) \neq 0$.
 \item There is not an exact linear relation between independent variables.
 \end{itemize}
 \item \textbf{Conditional mean zero and correlation zero}.
@@ -102,19 +101,21 @@ Under the econometric model assumptions and the Central Limit Theorem:
 \item Hold 1 to 4: OLS is \textbf{unbiased}. $E(\hat{\beta}_j) = \beta_j$
 \item Hold 1 to 4: OLS is \textbf{consistent}. $plim(\hat{\beta}_j) = \beta_j$
 \item Hold 1 to 5: \textbf{asymptotic normality} of OLS (then, 7 is necessarily satisfied): $u \sim_a N(0,\sigma^2)$.
-\item Hold 1 to 7: OLS is BLUE (Best Linear Unbiased Estimator) or \textbf{efficient}. Thereby, hypothesis contrasts and confidence intervals can be done reliably.
+\item Hold 1 to 6: OLS is \textcolor{blue}{BLUE} (Best Linear Unbiased Estimator) or \textbf{efficient}. 
+\item Hold 1 to 7: hypothesis testing and confidence intervals can be done reliably.
 \end{itemize}
 
 \section*{Ordinary Least Squares}
 
-\textbf{Objective} - minimize the Sum of Squared Residuals (SSR): $Min \sum_{i=1}^n \hat{u}_i^2$, where $\hat{u}_i = y_i - \hat{y}_i$
+\textbf{Objective} - minimize the Sum of Squared Residuals (SSR): $Min \sum_{i=1}^n \hat{u}_i^2$, where $\hat{u}_i = y_i - \hat{y}_i$.
 
 \subsection*{Simple regression model}
 
 \setlength{\multicolsep}{0pt}
+\setlength{\columnsep}{-40pt}
 \begin{multicols}{2}
 
-\begin{tikzpicture}[scale=0.19]
+\begin{tikzpicture}[scale=0.15]
 % background grid
 \draw[step=2, gray, very thin] (-10,-10) grid (10,10);
 %axis
@@ -122,12 +123,12 @@ Under the econometric model assumptions and the Central Limit Theorem:
 % regression line
 \draw[red, thick] plot [domain=-10:10] (\x,{1 + 0.5 * \x});
 % data points
-\draw plot [only marks, mark=*, mark size=5, domain=-8:8, samples=20] (\x,{rnd * 5 - 1.5 + 0.5 * \x});
+\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=20] (\x,{rnd * 5 - 1.5 + 0.5 * \x});
 % beta0
 \draw (-9.3,-9.6) -- (-9.5,-9.6) -- (-9.5,-4.3) -- (-9.3, -4.3) node[anchor=north west] {$\beta_0$};
 % beta1
 \draw (-2,0) -- (1.5,0) arc (0:25:3.5);
-\draw (3,0.5) node {$\beta_1$};
+\draw (3,-0.5) node {$\beta_1$};
 \end{tikzpicture}
 
 \columnbreak
@@ -147,9 +148,10 @@ Where: \\ $\hat{\beta}_0 = \overline{y} - \hat{\beta}_1 \overline{x}$ \\ $\hat{\
 \subsection*{Multiple regression model}
 
 \setlength{\multicolsep}{0pt}
+\setlength{\columnsep}{-40pt}
 \begin{multicols}{2}
 
-\begin{tikzpicture}[scale=0.19]
+\begin{tikzpicture}[scale=0.15]
 % axis
 \draw[thick, ->] (-10,-10) -- (-3,-4) node[anchor=north west] {$x_2$};
 \draw[thick, <->] (-10,10) node[anchor=south] {$y$} -- (-10,-10) -- (10,-10) node[anchor=north] {$x_1$};
@@ -171,7 +173,7 @@ Where: \\ $\hat{\beta}_0 = \overline{y} - \hat{\beta}_1 \overline{x}$ \\ $\hat{\
 \draw[red, thick] (-6.25, 1.25) -- (8.75,6.25);
 \draw[red, thick] (-5,3) -- (10,8);
 % data points
-\draw plot [only marks, mark=*, mark size=5, domain=-8:8, samples=20] (\x,{rnd * 6.5 - 1.5 + 0.5 * \x});
+\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=20] (\x,{rnd * 6.5 - 1.5 + 0.5 * \x});
 % beta0
 \draw (-9.3,-9.6) -- (-9.5,-9.6) -- (-9.5,-4.3) -- (-9.3, -4.3) node[anchor=north west] {$\beta_0$};
 \end{tikzpicture}
@@ -190,39 +192,31 @@ Where: \\ $\hat{\beta}_0 = \overline{y} - \hat{\beta}_1 \overline{x}_1 - ... - \
 
 \vspace*{1mm}
 
-In matrix form: \\ $\hat{\beta} = (X^T X)^{-1} X^T Y$
+Matrix form: $\hat{\beta} = (X^T X)^{-1} X^T Y$
 
 \end{multicols}
 
 \subsection*{Interpretation of coefficients}
 
-\scalebox{0.8}{
-\begin{tabular}{ | l | c | c | c | }
-	\hline
+\scalebox{0.872}{
+\begin{tabular}{ c c c c }
 	Model & Dependent & Independent & $\beta_1$ interpretation \\
 	\hline
 	Level-level & $y$ & $x$ & $\Delta y = \beta_1 \Delta x$ \\ 
-	\hline
 	Level-log & $y$ & $log(x)$ & $\Delta y = (\beta_1/100) \% \Delta x$ \\  
-	\hline
 	Log-level & $log(y)$ & $x$ & $\% \Delta y = (100 \beta_1) \Delta x$ \\
-	\hline
 	Log-log & $log(y)$ & $log(x)$ & $\% \Delta y = \beta_1 \% \Delta x$ \\
-	\hline
 	Quadratic & $y$ & $x + x^2$ & $\Delta y = (\beta_1 + 2 \beta_2 x) \Delta x$ \\
-	\hline
 \end{tabular}
 }
 
 \subsection*{Error measures}
 
-Sum of Sq. Resid.: $SSR = \sum_{i=1}^n u_i^2$
+Sum of Sq. Resid.: $SSR = \sum_{i=1}^n \hat{u}_i^2 = \sum_{i=1}^n (y_i - \hat{y}_i)^2$
 
 Expl. Sum of Sq.: $SSE = \sum_{i=1}^n (\hat{y}_i - \overline{y}_i)^2$
 
 Tot. Sum of Sq.: $SST = \sum_{i=1}^n (y_i - \overline{y}_i)^2 = SSE + SSR$
-
-
 
 Standard error ($se$) of the regression: $\hat{\sigma} = \sqrt{\frac{\sum_{i=1}^n \hat{u}_i^2}{n-k-1}}$
 
@@ -230,7 +224,9 @@ Sqrt. of the Quadratic Mean Error: $\sqrt{\frac{\sum_{i=1}^n (\hat{u}_i - \overl
 
 Absolute Mean Error: $\frac{\sum_{i=1}^n |\hat{u}_i|}{n}$
 
-\subsection*{Goodness of the fit, R-squared}
+\columnbreak
+
+\subsection*{R-squared}
 
 Is a measure of the goodness of the fit (how the OLS fits to the data):
 
@@ -246,12 +242,9 @@ To eliminate the last point, there is an r-squared corrected by degrees of freed
 
 $\overline{R}^2 = 1 - \frac{n-1}{n-k-1} \frac{\sum_{i=1}^n \hat{u}_i^2}{\sum_{i=1}^n (y_i - \overline{y}_i)^2} = 1 - \frac{n-1}{n-k-1} (1-R^2)$
 
-For big sample sizes:
-
-$\overline{R}^2 \approx R^2$
+For big sample sizes: $\overline{R}^2 \approx R^2$
 
 \section*{Hypothesis testing}
-
 \subsection*{The basics of hypothesis testing}
 
 An hypothesis test is a rule designed to explain from a sample, if exist evidence or not to reject an hypothesis that is made of one or more population parameters.
@@ -299,7 +292,7 @@ If $\mid t \mid > t_{n-k-1, \alpha/2}$ there is evidence to reject the null hypo
 
 \section*{Confidence intervals}
 
-Under the normality of the residuals requirement, the confidence intervals at $1 - \alpha$ confidence can be calculated:
+Under the normality of the residuals requirement, the confidence intervals at ($1 - \alpha$) confidence can be calculated:
 
 $\hat{\beta}_j \mp t_{n-k-1, \alpha/2} se(\hat{\beta}_j)$
 
@@ -312,14 +305,14 @@ It uses a non restricted model and a restricted model to do assumptions about th
 \item Restricted model: is the model on which the hypothesis that we want to contrast have been imposed.
 \end{itemize}
 
-Then, looking at the errors, there is:
+Then, looking at the errors, there are:
 
 \begin{itemize}[leftmargin=*]
-\item $\sum_{i=1}^n \hat{u}_N^2$: is the sum of the OLS residuals of the non restricted model (SRN).
-\item $\sum_{i=1}^n \hat{u}_R^2$: is the sum of the OLS residuals of the restricted model (SRR).
+\item $\sum_{i=1}^n \hat{u}_{nr}^2$: is the Sum of Sq. Resid. of the non restricted model ($SSR_{nr}$).
+\item $\sum_{i=1}^n \hat{u}_r^2$: is the Sum of Sq. Resid of the restricted model ($SSR_r$).
 \end{itemize}
 
-Then: $F = \frac{SRR - SRN}{SRN} \frac{(n-K-1)}{q} \sim F_{q, n-K-1}$
+Then: $F = \frac{SSR_r - SSR_{nr}}{SSR_{nr}} \frac{(n-K-1)}{q} \sim F_{q, n-K-1}$
 
 Where $K$ is the number of parameters of the non restricted model and $q$ is the number of linear hypothesis.
 
@@ -334,7 +327,7 @@ Dummy (or binary) variables are used for qualitative information: sex, civil sta
 \item Dummy variables are used to analyze and modeling structural changes in the model parameters.
 \end{itemize}
 
-If a qualitative variable have $m$ categories, we only have to include $m-1$ dummy variables.
+If a qualitative variable have $m$ categories, we only have to include ($m-1$) dummy variables.
 
 \subsection*{Structural change}
 
@@ -362,16 +355,16 @@ $y_i = \beta_0 + \beta_1 x_{1i} + ... + \beta_k x_{ki} + u_i$
 
 With the restriction:
 
-$H_0: \beta_j^A = \beta_j^B; j=0,1,...,k$, there is no structural difference.
+$H_0: \beta_j^A = \beta_j^B$ for $j=0,1,...,k$, there is no structural difference.
 
 \begin{itemize}[leftmargin=*]
-\item Be SRN the sum of the OLS square residuals of the non restricted model: $SRN = SR_A + SR_B$
-\item Be SRR the sum of the OLS square residuals of the restricted model.
+\item Be $SSR_{nr}$ the sum of the OLS square residuals of the non restricted model: $SSR_{nr} = SSR_A + SSR_B$
+\item Be $SSR_r$ the sum of the OLS square residuals of the restricted model.
 \end{itemize}
 
 Then:
 
-$F = \frac{SRR - SRN}{SRN} \frac{n-2(k+1)}{k+1} \sim F_{k+1,n-2(k+1)}$
+$F = \frac{SSR_r - SSR_{nr}}{SSR_{nr}} \frac{n-2(k+1)}{k+1} \sim F_{k+1,n-2(k+1)}$
 
 If $F_{q, n-K-1} < F$, there is evidence to reject the null hypothesis.
 
