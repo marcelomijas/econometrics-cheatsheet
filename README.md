@@ -10,7 +10,7 @@ TeX version: https://github.com/marcelomijas/econometrics-cheatsheet/raw/main/ec
 
 :white_check_mark: Pages 1 and 2 are completed with: definitions, basic concepts, coefficient interpretation, basic assumptions,  model construction, goodness of the fit, etc. It is an usable version.
 
-:construction: A more refined (and possibly more compact) version of pages 1 and 2 will be released 📅 at the end of January.
+:construction: A more refined (and possibly more compact) version of pages 1 and 2 will be released :date: at the end of January.
 
 :construction: Page 3 is still in development, with more details about the problems of a model scheduled to be released at the end of January.
 
