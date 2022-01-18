@@ -20,7 +20,7 @@ TeX version: https://github.com/marcelomijas/econometrics-cheatsheet/raw/main/ec
 
 Opinions, ideas and collaboration proposals are heard through GitHub or by email (marcelomijas@gmail.com).
 
-## Project roadmap
+## Project roadmap 2022
 
 :construction: Release of version 2.0 of the econometrics-cheatsheet.
 
