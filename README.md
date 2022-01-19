@@ -2,11 +2,10 @@
 
 Econometrics cheat sheet using LaTeX with a summarized review of the basic econometrics concepts, assumptions and properties of the linear regression model, Ordinary Least Squares (OLS) equations and interpretatations, error measures, r-squared, hypothesis testing with individual and F contrast, confidence intervals, dummy variables and structural change, predictions, and a revision of the most popular OLS problems: multicollinearity, heteroscedasticity and auto-correlation.
 
-* English .pdf version <a href="https://github.com/marcelomijas/econometrics-cheatsheet/raw/main/econometrics-cheatsheet/econometrics-cheatsheet-en.pdf">download</a>.
+* [English .pdf version](econometrics-cheatsheet/econometrics-cheatsheet-en.pdf)
 
-* English .tex version <a href="https://github.com/marcelomijas/econometrics-cheatsheet/raw/main/econometrics-cheatsheet/econometrics-cheatsheet-en.tex">download</a>.
+* [English .tex version](econometrics-cheatsheet/econometrics-cheatsheet-en.tex)
 
-[example](econometrics-cheatsheet/econometrics-cheatsheet-en.tex)
 
 Opinions, ideas and collaboration proposals are heard through GitHub or by email (marcelomijas@gmail.com).
 
@@ -20,7 +19,7 @@ Opinions, ideas and collaboration proposals are heard through GitHub or by email
 
 ## Bibliography
 
-In addition to the notes taken at the <a href="https://www.urjc.es/universidad/calidad/560-economia">Degree in Economics from the King Juan Carlos University</a>, the books used:
+In addition to the notes taken at the [Degree in Economics from the King Juan Carlos University](https://www.urjc.es/universidad/calidad/560-economia), the books used:
 
 [1] Wooldridge, J. M. (2015). *Introductory econometrics: A modern approach*. Cengage learning.
 
