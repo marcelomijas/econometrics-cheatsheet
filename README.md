@@ -3,7 +3,6 @@
 Econometrics cheat sheet using LaTeX with a summarized review of the basic econometrics concepts, assumptions and properties of the linear regression model, Ordinary Least Squares (OLS) equations and interpretatations, error measures, r-squared, hypothesis testing with individual and F contrast, confidence intervals, dummy variables and structural change, predictions, and a revision of the most popular OLS problems: multicollinearity, heteroscedasticity and auto-correlation.
 
 * [English .pdf version](econometrics-cheatsheet/econometrics-cheatsheet-en.pdf)
-
 * [English .tex version](econometrics-cheatsheet/econometrics-cheatsheet-en.tex)
 
 
