@@ -48,53 +48,16 @@ Page 3:
 
 ## Bibliography
 
-@book{wooldridge2015introductory,
-  title={Introductory econometrics: A modern approach},
-  author={Wooldridge, Jeffrey M},
-  year={2015},
-  publisher={Cengage learning}
-}
+Wooldridge, J. M. (2015). *Introductory econometrics: A modern approach*. Cengage learning.
 
-@misc{damodar2004basic,
-  title={Basic econometrics},
-  author={Damodar N, Gujarati},
-  year={2004},
-  publisher={The Mc-Graw Hill}
-}
+Damodar, N. G. (2004). *Basic Econometrics-Damodar N. Gujarati*. McGraw− Hill.
 
-@book{stock2012introduction,
-  title={Introduction to econometrics},
-  author={Stock, James H and Watson, Mark W and others},
-  volume={3},
-  year={2012},
-  publisher={Pearson New York}
-}
+Stock, J. H., & Watson, M. W. (2012). *Introduction to econometrics*. New York: Pearson.
 
-@misc{baltagi2011econometrics,
-  title={Econometrics},
-  author={Baltagi, Badi H},
-  year={2011},
-  publisher={springer}
-}
+Baltagi, B. H. (2011). *Econometrics*. New York: springer.
 
-@article{gujarati2009basic,
-  title={Basic econometrics (international edition)},
-  author={Gujarati, Damodar N and Porter, Dawn C},
-  journal={New York: McGraw-Hills Inc},
-  year={2009}
-}
+Gujarati, D. N., Porter, D. C., & Gunasekar, S. (2012). *Basic econometrics*. Tata McGraw-Hill Education.
 
-@book{ruiz2004fundamentos,
-  title={Fundamentos de inferencia estad{\'\i}stica},
-  author={Ruiz-Maya, Luis and Pliego, Francisco Javier Mart{\'\i}n},
-  year={2004},
-  publisher={AC}
-}
+Ruiz-Maya, L., & Pliego, F. J. M. (2004). *Fundamentos de inferencia estadística*. AC.
 
-@book{james2013introduction,
-  title={An introduction to statistical learning},
-  author={James, Gareth and Witten, Daniela and Hastie, Trevor and Tibshirani, Robert},
-  volume={112},
-  year={2013},
-  publisher={Springer}
-}
+James, G., Witten, D., Hastie, T., & Tibshirani, R. (2013). *An introduction to statistical learning*. New York: springer.
