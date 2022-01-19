@@ -38,16 +38,63 @@ Page 3:
 
 :white_check_mark: Auto-correlation: definition, consequences, detection, correction.
 
-Page 4:
-
-:construction: Bibliography.
-
 ## Project roadmap 2022
 
 :white_check_mark: Release of page 3 of econometrics-cheatsheet.
 
-:construction: Release of page 4 of econometrics-cheatsheet.
-
 :construction: Release of an Spanish version of the econometrics-cheatsheet.
 
 :construction: Release of a cheat cheet exclusively dedicated to temporal series in the context of econometrics (temporal-series-cheatsheet).
+
+## Bibliography
+
+@book{wooldridge2015introductory,
+  title={Introductory econometrics: A modern approach},
+  author={Wooldridge, Jeffrey M},
+  year={2015},
+  publisher={Cengage learning}
+}
+
+@misc{damodar2004basic,
+  title={Basic econometrics},
+  author={Damodar N, Gujarati},
+  year={2004},
+  publisher={The Mc-Graw Hill}
+}
+
+@book{stock2012introduction,
+  title={Introduction to econometrics},
+  author={Stock, James H and Watson, Mark W and others},
+  volume={3},
+  year={2012},
+  publisher={Pearson New York}
+}
+
+@misc{baltagi2011econometrics,
+  title={Econometrics},
+  author={Baltagi, Badi H},
+  year={2011},
+  publisher={springer}
+}
+
+@article{gujarati2009basic,
+  title={Basic econometrics (international edition)},
+  author={Gujarati, Damodar N and Porter, Dawn C},
+  journal={New York: McGraw-Hills Inc},
+  year={2009}
+}
+
+@book{ruiz2004fundamentos,
+  title={Fundamentos de inferencia estad{\'\i}stica},
+  author={Ruiz-Maya, Luis and Pliego, Francisco Javier Mart{\'\i}n},
+  year={2004},
+  publisher={AC}
+}
+
+@book{james2013introduction,
+  title={An introduction to statistical learning},
+  author={James, Gareth and Witten, Daniela and Hastie, Trevor and Tibshirani, Robert},
+  volume={112},
+  year={2013},
+  publisher={Springer}
+}
