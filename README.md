@@ -14,7 +14,7 @@ Opinions, ideas and collaboration proposals are heard through GitHub or by email
 
 :construction: Release of an Spanish version of the econometrics-cheatsheet.
 
-:construction: Release of a cheat cheet exclusively dedicated to temporal series in the context of econometrics (temporal-series-cheatsheet).
+:construction: Release of a cheat cheet exclusively dedicated to time series in the context of econometrics (time-series-cheatsheet).
 
 ## Bibliography
 
