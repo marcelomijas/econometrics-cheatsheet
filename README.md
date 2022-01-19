@@ -48,7 +48,7 @@ Page 3:
 
 ## Bibliography
 
-In addition to the notes of the <a href="https://www.urjc.es/universidad/calidad/560-economia">Degree in Economics from the King Juan Carlos University</a>:
+In addition to the notes taken at the <a href="https://www.urjc.es/universidad/calidad/560-economia">Degree in Economics from the King Juan Carlos University</a>:
 
 [1] Wooldridge, J. M. (2015). *Introductory econometrics: A modern approach*. Cengage learning.
 
