@@ -1,27 +1,51 @@
-# Econometrics Cheat Sheet 2.0
+# Econometrics Cheat Sheet
 
-Econometrics cheat sheet using LaTeX with a complete review of the econometrics principles, assumptions of the linear regression model, interpretation, error measures, and post hoc analysis.
+Econometrics cheat sheet using LaTeX with a summarized review of the basic econometrics concepts, assumptions and properties of the linear regression model, OLS equations and interpretatations, error measures, r-squared, hypothesis testing with individual and F contrast, confidence intervals, dummy variables and structural change, predictions, and a revision of the most popular OLS problems: multicollinearity, heteroscedasticity and auto-correlation
 
-PDF version download: https://github.com/marcelomijas/econometrics-cheatsheet/raw/main/econometrics-cheatsheet/econometrics-cheatsheet.pdf
+English .pdf version download: https://github.com/marcelomijas/econometrics-cheatsheet/raw/main/econometrics-cheatsheet/econometrics-cheatsheet-en.pdf
 
-TeX version: https://github.com/marcelomijas/econometrics-cheatsheet/raw/main/econometrics-cheatsheet/econometrics-cheatsheet.tex
+TeX version: https://github.com/marcelomijas/econometrics-cheatsheet/raw/main/econometrics-cheatsheet/econometrics-cheatsheet-en.tex
 
-## Roadmap for 2.0
+## Roadmap
 
-:white_check_mark: Pages 1 and 2 are completed with: definitions, basic concepts, coefficient interpretation, basic assumptions,  model construction, goodness of the fit, etc. It is an usable version.
+Page 1:
 
-:construction: A more refined (and possibly more compact) version of pages 1 and 2 is scheduled :date: to be released at the end of January.
+:white_check_mark: Basic concepts: definitions, data types, phases of an econometric model, regression analysis basics, correlation analysis basics.
 
-:construction: Page 3 is still in development, with more details about the problems of a model scheduled :date: to be released at the end of January.
+:white_check_mark: Assumptions and properties of the linear model: extended Gauss-Markov assumptions and OLS properties.
 
-:construction: An Spanish version is scheduled to be released :date: during February 2022.
+:white_check_mark: Ordinary Least Squares: simple regression model, multiple regression model, interpretation of coefficients, error measures.
 
-:construction: A bibliography is in development as a separate page and/or inside the readme.md scheduled :date: to be released at the end of February. 
+Page 2:
 
-Opinions, ideas and collaboration proposals are heard through GitHub or by email (marcelomijas@gmail.com).
+:white_check_mark: R-squared: equation and interpretation of r-squared and adjusted r-squared.
+
+:white_check_mark: Hypothesis testing: basics of hypothesis testing (elements and general rule), individual contrasts (including individual significance test) and F contrast (including global significance test).
+
+:white_check_mark: Confidence intervals: equation of confidence intervals.
+
+:white_check_mark: Dummy variables and structural change: definition of dummy variables, definition of structural change in mean and in effects, introduction to Chow's structural contrast.
+
+:white_check_mark: Predictions: basics of predictions.
+
+Page 3:
+
+:white_check_mark: Multicollinearity: definition, consequences, detection, correction.
+
+:white_check_mark: Heteroscedasticity: definition, consequences, detection, correction.
+
+:white_check_mark: Auto-correlation: definition, consequences, detection, correction.
+
+Page 4:
+
+:construction: Bibliography.
 
 ## Project roadmap 2022
 
-:construction: Release of version 2.0 of the econometrics-cheatsheet.
+:construction: Release of page 4 of econometrics-cheatsheet.
 
-:construction: Release of a cheat cheet exclusively dedicated to temporal series in the context of econometrics (temporal-series-cheatsheet)
+:construction: Release of an Spanish version of the econometrics-cheatsheet.
+
+:construction: Release of a cheat cheet exclusively dedicated to temporal series in the context of econometrics (temporal-series-cheatsheet).
+
+Opinions, ideas and collaboration proposals are heard through GitHub or by email (marcelomijas@gmail.com).
