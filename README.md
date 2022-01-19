@@ -48,16 +48,18 @@ Page 3:
 
 ## Bibliography
 
-Wooldridge, J. M. (2015). *Introductory econometrics: A modern approach*. Cengage learning.
+In addition to the notes of the <a href="https://www.urjc.es/universidad/calidad/560-economia">Degree in Economics from the King Juan Carlos University</a>:
 
-Damodar, N. G. (2004). *Basic Econometrics-Damodar N. Gujarati*. McGraw− Hill.
+[1] Wooldridge, J. M. (2015). *Introductory econometrics: A modern approach*. Cengage learning.
 
-Stock, J. H., & Watson, M. W. (2012). *Introduction to econometrics*. New York: Pearson.
+[2] Damodar, N. G. (2004). *Basic Econometrics-Damodar N. Gujarati*. McGraw− Hill.
 
-Baltagi, B. H. (2011). *Econometrics*. New York: springer.
+[3] Stock, J. H., & Watson, M. W. (2012). *Introduction to econometrics*. New York: Pearson.
 
-Gujarati, D. N., Porter, D. C., & Gunasekar, S. (2012). *Basic econometrics*. Tata McGraw-Hill Education.
+[4] Baltagi, B. H. (2011). *Econometrics*. New York: springer.
 
-Ruiz-Maya, L., & Pliego, F. J. M. (2004). *Fundamentos de inferencia estadística*. AC.
+[5] Gujarati, D. N., Porter, D. C., & Gunasekar, S. (2012). *Basic econometrics*. Tata McGraw-Hill Education.
 
-James, G., Witten, D., Hastie, T., & Tibshirani, R. (2013). *An introduction to statistical learning*. New York: springer.
+[6] Ruiz-Maya, L., & Pliego, F. J. M. (2004). *Fundamentos de inferencia estadística*. AC.
+
+[7] James, G., Witten, D., Hastie, T., & Tibshirani, R. (2013). *An introduction to statistical learning*. New York: springer.
