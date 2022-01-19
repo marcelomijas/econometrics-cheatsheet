@@ -42,6 +42,8 @@ Page 4:
 
 ## Project roadmap 2022
 
+:white_check_mark: Release of page 3 of econometrics-cheatsheet.
+
 :construction: Release of page 4 of econometrics-cheatsheet.
 
 :construction: Release of an Spanish version of the econometrics-cheatsheet.
