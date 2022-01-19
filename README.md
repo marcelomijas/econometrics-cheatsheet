@@ -4,7 +4,9 @@ Econometrics cheat sheet using LaTeX with a summarized review of the basic econo
 
 English .pdf version <a href="https://github.com/marcelomijas/econometrics-cheatsheet/raw/main/econometrics-cheatsheet/econometrics-cheatsheet-en.pdf">download</a>.
 
-English .tex version <a href<"https://github.com/marcelomijas/econometrics-cheatsheet/raw/main/econometrics-cheatsheet/econometrics-cheatsheet-en.tex">download</a>
+English .tex version <a href>"https://github.com/marcelomijas/econometrics-cheatsheet/raw/main/econometrics-cheatsheet/econometrics-cheatsheet-en.tex">download</a>
+
+Opinions, ideas and collaboration proposals are heard through GitHub or by email (marcelomijas@gmail.com).
 
 ## Roadmap
 
@@ -49,5 +51,3 @@ Page 4:
 :construction: Release of an Spanish version of the econometrics-cheatsheet.
 
 :construction: Release of a cheat cheet exclusively dedicated to temporal series in the context of econometrics (temporal-series-cheatsheet).
-
-Opinions, ideas and collaboration proposals are heard through GitHub or by email (marcelomijas@gmail.com).
