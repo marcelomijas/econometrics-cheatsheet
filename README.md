@@ -33,3 +33,7 @@ In addition to the notes taken at the [Degree in Economics from the King Juan Ca
 [6] Ruiz-Maya, L., & Pliego, F. J. M. (2004). *Fundamentos de inferencia estadística*. AC.
 
 [7] James, G., Witten, D., Hastie, T., & Tibshirani, R. (2013). *An introduction to statistical learning*. New York: springer.
+
+## Collaborations
+
+* Reddit user \_bheg_ about strong and weak exogeneity and their consequences on bias and consistency properties of OLS.
