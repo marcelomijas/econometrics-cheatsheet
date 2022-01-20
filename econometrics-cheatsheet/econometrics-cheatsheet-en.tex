@@ -25,7 +25,7 @@
 \begin{multicols}{3} % set columns to 3
 
 \begin{center}
-\textbf{\LARGE Econometrics Cheat Sheet} \\ {\footnotesize By Marcelo Moreno - King Juan Carlos University} \\ {\footnotesize \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Version 2.0-en}}
+\textbf{\LARGE Econometrics Cheat Sheet} \\ {\footnotesize By Marcelo Moreno - King Juan Carlos University} \\ {\footnotesize \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Version 2.1-en}}
 \end{center}
 
 \section*{Basic concepts}
@@ -82,31 +82,32 @@ $r = \frac{Cov(x,y)}{\sigma_x \sigma_y} = \frac{\sum_{i=1}^n (x_i - \overline{x}
 Under this assumptions, the estimators of the OLS parameters will present good properties. \textbf{Gauss-Markov assumptions extended}:
 
 \begin{enumerate}[leftmargin=*]
-\item \textbf{Parameters linearity}. $y$ must be a linear function of the $\beta$'s.
-\item \textbf{Random sampling}. The sample from the population has been randomly taken. (ONLY makes sense when data is cross section)
+\item \textbf{Parameters linearity} (plus weak dependence in time series). $y$ must be a linear function of the $\beta$'s.
+\item \textbf{Random sampling}. The sample from the population has been randomly taken. (ONLY when cross section)
 \item \textbf{No perfect collinearity}.
 \begin{itemize}[leftmargin=*]
-\item There are no independent variables that are constant: $Var(x) \neq 0$.
+\item There are no independent variables that are constant: $Var(x) \neq 0$
 \item There is not an exact linear relation between independent variables.
 \end{itemize}
 \item \textbf{Conditional mean zero and correlation zero}.
-\begin{itemize}[leftmargin=*]
-\item There are no systematic errors: $E(u | x_1, ..., x_k) = E(u) = 0$.
-\item There are no relevant variables left out the model: $Cov(x_j | u) = 0$ for any $j = 1, ..., k$.
-\end{itemize}
-\item \textbf{Homoscedasticity}. The variability of the residual is the same for all levels of $x$: $Var(u | x_1, ..., x_k) = \sigma^2$.
-\item \textbf{No auto-correlation}. The residuals do not contain information about other residuals: $Corr(u_t, u_s | x) = 0$ for any given $t \neq s$. (ONLY makes sense when data is temporal series)
-\item \textbf{Normality}. The residuals are independent and identically distributed: $u \sim N(0,\sigma^2)$.
-\item \textbf{Data size}. The number of observations available must be greater than $(k + 1)$ parameters to estimate. (Do NOT makes sense under asymptotic situations)
+\begin{enumerate}[leftmargin=*, label=\alph*.]
+\item There are no systematic errors: $E(u | x_1, ..., x_k) = E(u) = 0 \rightarrow$ \textbf{strong exogeneity} (a implies b).
+\item There are no relevant variables left out of the model: $Cov(x_j , u) = 0$ for any $j = 1, ..., k \rightarrow$ \textbf{weak exogeneity}.
+\end{enumerate}
+\item \textbf{Homoscedasticity}. The variability of the residual is the same for all levels of $x$: $Var(u | x_1, ..., x_k) = \sigma^2$
+\item \textbf{No auto-correlation}. The residuals do not contain information about other residuals: $Corr(u_t, u_s | x) = 0$ for any given $t \neq s$. (ONLY when time series)
+\item \textbf{Normality}. The residuals are independent and identically distributed: $u \sim N(0,\sigma^2)$
+\item \textbf{Data size}. The number of observations available must be greater than $(k + 1)$ parameters to estimate. (IS already satisfied under asymptotic situations)
 \end{enumerate}
 
 \subsection*{Asymptotic properties of OLS}
 
 Under the econometric model assumptions and the Central Limit Theorem:
 \begin{itemize}[leftmargin=*]
-\item Hold (1) to (4): OLS is \textbf{unbiased}. $E(\hat{\beta}_j) = \beta_j$
-\item Hold (1) to (4): OLS is \textbf{consistent}. $plim(\hat{\beta}_j) = \beta_j$
-\item Hold (1) to (5): \textbf{asymptotic normality} of OLS (then, 7 is necessarily satisfied): $u \sim_a N(0,\sigma^2)$.
+\item Hold (1) to (4a): OLS is \textbf{unbiased}. $E(\hat{\beta}_j) = \beta_j$
+\item Hold (1) to (4): OLS is \textbf{consistent}. $plim(\hat{\beta}_j) = \beta_j$ (to (4b) left out (4a), weak exogeneity, biased but consistent)
+\item Hold (1) to (5): \textbf{asymptotic normality} of OLS (then, (7) is necessarily satisfied): $u \sim_a N(0,\sigma^2)$.
+\item Hold (1) to (6): \textbf{unbiased estimate of $\sigma^2$}. $E(\hat{\sigma}^2) = \sigma^2$
 \item Hold (1) to (6): OLS is \textcolor{blue}{BLUE} (Best Linear Unbiased Estimator) or \textbf{efficient}. 
 \item Hold (1) to (7): hypothesis testing and confidence intervals can be done reliably.
 \end{itemize}
