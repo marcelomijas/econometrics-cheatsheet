@@ -34,6 +34,6 @@ In addition to the notes taken at the [Degree in Economics from the King Juan Ca
 
 [7] James, G., Witten, D., Hastie, T., & Tibshirani, R. (2013). *An introduction to statistical learning*. New York: springer.
 
-## Collaborations
+## Contributions
 
 * Reddit user \_bheg_. Pointed out about strong and weak exogeneity and their consequences on bias and consistency properties of OLS.
