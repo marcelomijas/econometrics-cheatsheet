@@ -48,17 +48,17 @@ The non matrix version:
 
 In addition to the notes taken at the [Degree in Economics from the King Juan Carlos University](https://www.urjc.es/universidad/calidad/560-economia), the books used:
 
-[1] Wooldridge, J. M. (2015). *Introductory econometrics: A modern approach*. Cengage learning.
+**[1]** Baltagi, B. H. (2011). *Econometrics*. New York: springer.
 
-[2] Stock, J. H., & Watson, M. W. (2012). *Introduction to econometrics*. New York: Pearson.
+**[2]** Gujarati, D. N., Porter, D. C., & Gunasekar, S. (2012). *Basic econometrics*. Tata McGraw-Hill Education.
 
-[3] Baltagi, B. H. (2011). *Econometrics*. New York: springer.
+**[3]** James, G., Witten, D., Hastie, T., & Tibshirani, R. (2013). *An introduction to statistical learning*. New York: springer.
 
-[4] Gujarati, D. N., Porter, D. C., & Gunasekar, S. (2012). *Basic econometrics*. Tata McGraw-Hill Education.
+**[4]** Ruiz-Maya, L., & Pliego, F. J. M. (2004). *Fundamentos de inferencia estadística*. AC.
 
-[5] Ruiz-Maya, L., & Pliego, F. J. M. (2004). *Fundamentos de inferencia estadística*. AC.
+**[5]** Stock, J. H., & Watson, M. W. (2012). *Introduction to econometrics*. New York: Pearson.
 
-[6] James, G., Witten, D., Hastie, T., & Tibshirani, R. (2013). *An introduction to statistical learning*. New York: springer.
+**[6]** Wooldridge, J. M. (2015). *Introductory econometrics: A modern approach*. Cengage learning.
 
 ## Contributions
 
