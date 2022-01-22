@@ -46,7 +46,7 @@ The non matrix version:
 
 ## Bibliography
 
-In addition to the notes taken at the [Degree in Economics from the King Juan Carlos University](https://www.urjc.es/universidad/calidad/560-economia), the books used:
+In addition to the notes taken from the [Degree in Economics by the King Juan Carlos University](https://www.urjc.es/universidad/calidad/560-economia) and the [Master in Applied Statistics by Máxima Formación with Nebrija University](https://www.maximaformacion.es/masters/master-de-estadistica-aplicada-con-r-software/), the books used:
 
 **[1]** Baltagi, B. H. (2011). *Econometrics*. New York: springer.
 
