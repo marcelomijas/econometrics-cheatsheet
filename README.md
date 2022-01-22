@@ -1,18 +1,32 @@
 # Econometrics Cheat Sheet
 
-Econometrics cheat sheet using LaTeX with a summarized review of the basic econometrics concepts, assumptions and properties of the linear regression model, Ordinary Least Squares (OLS) equations and interpretatations, error measures, r-squared, hypothesis testing with individual and F contrast, confidence intervals, dummy variables and structural change, predictions, and a revision of the most popular OLS problems: multicollinearity, heteroscedasticity and auto-correlation.
+Econometrics cheat sheet created using LaTeX with a summarized review of:
 
-* [English .pdf version](econometrics-cheatsheet/econometrics-cheatsheet-en.pdf)
-* [English .tex version](econometrics-cheatsheet/econometrics-cheatsheet-en.tex)
+* **Basic econometrics concepts**: econometrics definitions, data type, phases of a model, regression and correlation analysis.
+* **Assumptions and properties** of the linear regression model.
+* **Ordinary Least Squares** (OLS) equations, coefficient interpretatation, error measures, r-squared.
+* **Hypothesis testing and confidence intervals**.
+* **Dummy variables and structural change**.
+* **Predictions**.
+* **Popular OLS problems** (multicollinearity, heteroscedasticity and auto-correlation): consequences, detection and correction.
+
+### Download links
+
+Current version: `2.2`
+
+|         | PDF file | TeX file |
+|---------|----------|----------|
+| English |   [en.pdf](econometrics-cheatsheet/econometrics-cheatsheet-en.pdf)   |   [en.tex](econometrics-cheatsheet/econometrics-cheatsheet-en.tex)   |
+| Spanish |   [es.pdf](econometrics-cheatsheet/econometrics-cheatsheet-es.pdf)   |   [es.tex](econometrics-cheatsheet/econometrics-cheatsheet-es.tex)   |
 
 
-Opinions, ideas and collaboration proposals are heard through GitHub or by email (marcelomijas@gmail.com).
+Opinions, ideas and collaboration proposals are heard through GitHub or by email (marcelomijas@gmail.com). Also, my [LinkedIn](https://www.linkedin.com/in/marcelomorenop/).
 
 ## Roadmap
 
-:white_check_mark: Release of page 3 of econometrics-cheatsheet.
+:white_check_mark: Release of page 3 of econometrics-cheatsheet whith popular OLS problems.
 
-:construction: Release of an Spanish version of the econometrics-cheatsheet.
+:white_check_mark: Release of an Spanish version of the econometrics-cheatsheet.
 
 :construction: Release of a cheat cheet exclusively dedicated to time series in the context of econometrics (time-series-cheatsheet).
 
@@ -36,4 +50,4 @@ In addition to the notes taken at the [Degree in Economics from the King Juan Ca
 
 ## Contributions
 
-* Reddit user \_bheg_ - Pointed out about strong and weak exogeneity and their consequences on bias and consistency properties of OLS.
+* Reddit user \_bheg_ - Pointed out about the importance of including strong and weak exogeneity and their consequences on bias and consistency properties of OLS.
