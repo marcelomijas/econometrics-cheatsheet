@@ -30,6 +30,20 @@ Opinions, ideas and collaboration proposals are heard through GitHub or by email
 
 :construction: Release of a cheat cheet exclusively dedicated to time series in the context of econometrics (time-series-cheatsheet).
 
+## Frequently Asked Questions <!-- for LaTeX equations to .png use iTex2Img -->
+
+### What does it mean ![](images/rexj.png)?
+
+Those are the residuals from a OLS regression between ![](images/xj.png) and all the other ![](images/xs.png). Error meausres and r-squared can be obtained from this regression.
+
+### Where is the non matrix version of the standard error of the ![](images/betas.png)?
+
+For space reasons, the version included in the cheatsheet is the matricial one. It is perfectly valid and equal to the non matrix version.
+
+The non matrix version:
+
+![](images/sebj.png)
+
 ## Bibliography
 
 In addition to the notes taken at the [Degree in Economics from the King Juan Carlos University](https://www.urjc.es/universidad/calidad/560-economia), the books used:
