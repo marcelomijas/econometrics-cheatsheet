@@ -25,7 +25,7 @@
 \begin{multicols}{3} % set columns to 3
 
 \begin{center}
-\textbf{\LARGE Econometrics Cheat Sheet} \\ {\footnotesize By Marcelo Moreno - King Juan Carlos University} \\ {\footnotesize \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Version 2.1-en}}
+\textbf{\LARGE Econometrics Cheat Sheet} \\ {\footnotesize By Marcelo Moreno - King Juan Carlos University} \\ {\footnotesize \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Version 2.2-en}}
 \end{center}
 
 \section*{Basic concepts}
@@ -94,7 +94,7 @@ Under this assumptions, the estimators of the OLS parameters will present good p
 \item There are no systematic errors: $E(u | x_1, ..., x_k) = E(u) = 0 \rightarrow$ \textbf{strong exogeneity} (a implies b).
 \item There are no relevant variables left out of the model: $Cov(x_j , u) = 0$ for any $j = 1, ..., k \rightarrow$ \textbf{weak exogeneity}.
 \end{enumerate}
-\item \textbf{Homoscedasticity}. The variability of the residual is the same for all levels of $x$: $Var(u | x_1, ..., x_k) = \sigma^2$
+\item \textbf{Homoscedasticity}. The variability of the residuals is the same for all levels of $x$: $Var(u | x_1, ..., x_k) = \sigma^2$
 \item \textbf{No auto-correlation}. The residuals do not contain information about other residuals: $Corr(u_t, u_s | x) = 0$ for any given $t \neq s$. (ONLY when time series)
 \item \textbf{Normality}. The residuals are independent and identically distributed: $u \sim N(0,\sigma^2)$
 \item \textbf{Data size}. The number of observations available must be greater than $(k + 1)$ parameters to estimate. (IS already satisfied under asymptotic situations)
@@ -278,7 +278,7 @@ Elements of an hypothesis contrast:
 \item \textbf{Null hypothesis ($H_0$)} - is the hypothesis to be tested.
 \item \textbf{Alternative hypothesis ($H_1$)} - is the hypothesis that cannot be rejected when the null hypothesis is rejected.
 \item \textbf{Statistic of contrast}: is a random variable whose probability distribution is known under the null hypothesis and is tabulated.
-\item \textbf{Significance level ($\alpha$)} - is the probability of rejecting the null hypothesis being true (type I error). Is chosen by who conduct the contrast. Commonly is 0.10, 0.05, 0.01 or 0.001.
+\item \textbf{Significance level ($\alpha$)} - is the probability of rejecting the null hypothesis being true (Type I error). Is chosen by who conduct the contrast. Commonly is 0.10, 0.05, 0.01 or 0.001.
 \item \textbf{Critic value} - is the value against which
 the statistic of contrast is compared to determine if the
 null hypothesis is rejected or not.
@@ -289,7 +289,7 @@ null hypothesis is rejected or not.
 
 \subsection*{Individual contrasts}
 
-Tests if a given parameter is significantly different from a given value $\theta$.
+Tests if a parameter is significantly different from a given value, $\theta$.
 
 \begin{itemize}[leftmargin=*]
 \item $H_0: \beta_j = \theta$
@@ -302,9 +302,9 @@ Under $H_0$:
 $t = \frac{\hat{\beta}_j - \theta}{se(\hat{\beta}_j)} \sim t_{n-k-1, \alpha/2}$
 \end{center}
 
-If $\mid t \mid > t_{n-k-1, \alpha/2}$ there is evidence to reject the null hypothesis.
+If $\mid t \mid > t_{n-k-1, \alpha/2}$, there is evidence to reject the null hypothesis.
 
-\textbf{Individual significance test} - tests if a given parameter is significantly \textbf{different from zero}.
+\textbf{Individual significance test} - tests if a parameter is significantly \textbf{different from zero}.
 
 \begin{itemize}[leftmargin=*]
 \item $H_0: \beta_j = 0$
@@ -317,7 +317,7 @@ Under $H_0$:
 $t = \frac{\hat{\beta}_j}{se(\hat{\beta}_j)} \sim t_{n-k-1, \alpha/2}$
 \end{center}
 
-If $\mid t \mid > t_{n-k-1, \alpha/2}$ there is evidence to reject the null hypothesis.
+If $\mid t \mid > t_{n-k-1, \alpha/2}$, there is evidence to reject the null hypothesis.
 
 \subsection*{The F contrast}
 
@@ -345,7 +345,7 @@ Where $k_{nr}$ is the number of parameters of the non restricted model and $q$ i
 
 If $F_{q, n-k_{nr}-1} < F$, there is evidence to reject the null hypothesis.
 
-\textbf{Global significance test} - tests if all the parameters associated to $x$'s of the model are simultaneously equal to zero or not.
+\textbf{Global significance test} - tests if all the parameters associated to $x$'s are simultaneously equal to zero.
 
 $H_0: \beta_1 = \beta_2 = ... = \beta_k = 0$
 
@@ -504,7 +504,7 @@ Is the \textbf{breaking of the fifth (5) econometric model assumption}.
 \begin{itemize}[leftmargin=*]
 \item Use OLS with a variance-covariance matrix estimator robust to heteroscedasticity, for example, the one proposed by White.
 \item If the variance structure is known, make use of Weighted Least Squares (WLS) or Generalized Least Squares (GLS).
-\item If the variance structure is not known, make use of Feasible Weighted Least Squared (FWLS), that estimates a possible variance, and divides the model variables by it and then apply OLS.
+\item If the variance structure is not known, make use of Feasible Weighted Least Squared (FWLS), that estimates a possible variance, divides the model variables by it and then apply OLS.
 \item Make assumptions about the possible variance:
 \begin{itemize}[leftmargin=*]
 \item Supposing that $\sigma_i^2$ is proportional to $x_i$, divide the model variables by the square root of $x_i$ and apply OLS.
@@ -523,7 +523,7 @@ The residual of any observation, $u_t$, is correlated with the residual of any o
 $Corr(u_t, u_s | x) \neq 0$ for any $t \neq s$
 \end{center}
 
-The ``natural" context of this phenomena is in temporal series. Is the \textbf{breaking of the sixth (6) econometric model assumption}.
+The ``natural" context of this phenomena is time series. Is the \textbf{breaking of the sixth (6) econometric model assumption}.
 
 \subsection*{Consequences}
 
