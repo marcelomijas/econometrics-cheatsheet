@@ -10,6 +10,7 @@
 \usepackage{tikz} % for plots
 \usepackage{hyperref} % for hyperlinks
 \usepackage{amsmath} % for writing normal text on equations
+\usepackage{scrlayer-scrpage} % page foot
 
 % -----page customization-----
 \geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} % margins configuration
@@ -22,10 +23,12 @@
 
 % -----document-----
 \begin{document}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Versión 2.2-es - Marcelo Moreno}}
+\setlength{\footskip}{12pt}
 \begin{multicols}{3} % set columns to 3
 
 \begin{center}
-\textbf{\LARGE Cheat Sheet Econometría} \\ {\footnotesize Creado por Marcelo Moreno - Universidad Rey Juan Carlos} \\ {\footnotesize \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Versión 2.2-es}}
+\textbf{\LARGE \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Econometría Cheat Sheet}} \\ {\footnotesize Por Marcelo Moreno - Universidad Rey Juan Carlos}
 \end{center}
 
 \section*{Conceptos básicos}
