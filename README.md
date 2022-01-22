@@ -32,7 +32,7 @@ Opinions, ideas and collaboration proposals are heard through GitHub or by email
 
 ## Frequently Asked Questions <!-- for LaTeX equations to .png use iTex2Img -->
 
-### What does it mean ![](images/rexj.png)?
+### What does it mean ![](images/residxj.png)?
 
 Those are the residuals from a OLS regression between ![](images/xj.png) and all the other ![](images/xs.png). Error meausres and r-squared can be obtained from this regression.
 
