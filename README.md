@@ -12,12 +12,12 @@ Econometrics cheat sheet created using LaTeX with a summarized review of:
 
 ### Download links
 
-Current version: `2.2`
+**Econometrics Cheat Sheet**. Current version: `2.2`
 
 |         | PDF file | TeX file |
 |---------|----------|----------|
-| English |   [en.pdf](econometrics-cheatsheet/econometrics-cheatsheet-en.pdf)   |   [en.tex](econometrics-cheatsheet/econometrics-cheatsheet-en.tex)   |
-| Spanish |   [es.pdf](econometrics-cheatsheet/econometrics-cheatsheet-es.pdf)   |   [es.tex](econometrics-cheatsheet/econometrics-cheatsheet-es.tex)   |
+| English |  [en.pdf](econometrics-cheatsheet/econometrics-cheatsheet-en.pdf)  |  [en.tex](econometrics-cheatsheet/econometrics-cheatsheet-en.tex)  |
+| Spanish |  [es.pdf](econometrics-cheatsheet/econometrics-cheatsheet-es.pdf)  |  [es.tex](econometrics-cheatsheet/econometrics-cheatsheet-es.tex)  |
 
 
 Opinions, ideas and collaboration proposals are heard through GitHub or by email (marcelomijas@gmail.com). Also, my [LinkedIn](https://www.linkedin.com/in/marcelomorenop/).
@@ -28,7 +28,7 @@ Opinions, ideas and collaboration proposals are heard through GitHub or by email
 
 :white_check_mark: Release of an Spanish version of the econometrics-cheatsheet.
 
-:construction: Release of a cheat cheet exclusively dedicated to time series in the context of econometrics (time-series-cheatsheet).
+:construction: Release of a cheat cheet exclusively dedicated to time series in the context of econometrics (time-series-cheatsheet). A preview of the Work In Progress can be seen [here](econometrics-cheatsheet/time-series-cheatsheet-en.pdf), feedback will be welcome.
 
 ## Frequently Asked Questions
 
@@ -48,17 +48,17 @@ The non matrix version:
 
 In addition to the notes taken from the [Degree in Economics by the King Juan Carlos University](https://www.urjc.es/universidad/calidad/560-economia) and the [Master in Applied Statistics by Máxima Formación with Nebrija University](https://www.maximaformacion.es/masters/master-de-estadistica-aplicada-con-r-software/), the books used:
 
-**[1]** Baltagi, B. H. (2011). *Econometrics*. New York: springer.
+[1] Baltagi, B. H. (2011). *Econometrics*. New York: springer.
 
-**[2]** Gujarati, D. N., Porter, D. C., & Gunasekar, S. (2012). *Basic econometrics*. Tata McGraw-Hill Education.
+[2] Gujarati, D. N., Porter, D. C., & Gunasekar, S. (2012). *Basic econometrics*. Tata McGraw-Hill Education.
 
-**[3]** James, G., Witten, D., Hastie, T., & Tibshirani, R. (2013). *An introduction to statistical learning*. New York: springer.
+[3] James, G., Witten, D., Hastie, T., & Tibshirani, R. (2013). *An introduction to statistical learning*. New York: springer.
 
-**[4]** Ruiz-Maya, L., & Pliego, F. J. M. (2004). *Fundamentos de inferencia estadística*. AC.
+[4] Ruiz-Maya, L., & Pliego, F. J. M. (2004). *Fundamentos de inferencia estadística*. AC.
 
-**[5]** Stock, J. H., & Watson, M. W. (2012). *Introduction to econometrics*. New York: Pearson.
+[5] Stock, J. H., & Watson, M. W. (2012). *Introduction to econometrics*. New York: Pearson.
 
-**[6]** Wooldridge, J. M. (2015). *Introductory econometrics: A modern approach*. Cengage learning.
+[6] Wooldridge, J. M. (2015). *Introductory econometrics: A modern approach*. Cengage learning.
 
 ## Contributions
 
