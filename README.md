@@ -34,7 +34,7 @@ Opinions, ideas and collaboration proposals are heard through GitHub or by email
 
 ### What does ![](https://render.githubusercontent.com/render/math?math=\text{residualized}x_j) means?
 
-Those are the residuals from a OLS regression between ![](https://render.githubusercontent.com/render/math?math=x_j) and all the other ![](https://render.githubusercontent.com/render/math?math=x)'s. Error meausres and r-squared can be obtained from this regression.
+Those are the residuals from a OLS regression between ![](https://render.githubusercontent.com/render/math?math=x_j) and all the other ![](https://render.githubusercontent.com/render/math?math=x)'s. Error measures and r-squared can be obtained from this regression.
 
 ### Where is the non matrix version of the standard error of the ![](https://render.githubusercontent.com/render/math?math=\beta)'s?
 
