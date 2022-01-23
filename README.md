@@ -30,19 +30,19 @@ Opinions, ideas and collaboration proposals are heard through GitHub or by email
 
 :construction: Release of a cheat cheet exclusively dedicated to time series in the context of econometrics (time-series-cheatsheet).
 
-## Frequently Asked Questions <!-- for LaTeX equations to .png use iTex2Img -->
+## Frequently Asked Questions
 
-### What does ![](images/residxj.png) means?
+### What does ![](https://render.githubusercontent.com/render/math?math=\text{residualized}x_j) means?
 
-Those are the residuals from a OLS regression between ![](images/xj.png) and all the other ![](images/xs.png). Error meausres and r-squared can be obtained from this regression.
+Those are the residuals from a OLS regression between ![](https://render.githubusercontent.com/render/math?math=x_j) and all the other ![](https://render.githubusercontent.com/render/math?math=x)'s. Error meausres and r-squared can be obtained from this regression.
 
-### Where is the non matrix version of the standard error of the ![](images/betas.png)?
+### Where is the non matrix version of the standard error of the ![](https://render.githubusercontent.com/render/math?math=\beta)'s?
 
 For space reasons, the version included in the cheatsheet is the matricial one. It is perfectly valid and equal to the non matrix version.
 
 The non matrix version:
 
-![](images/sebj.png)
+![](https://render.githubusercontent.com/render/math?math=se(\beta_j)=\sqrt{\frac{\hat{\sigma}^2}{SST_j(1-R^2_j)}},j=1,...,k)
 
 ## Bibliography
 
