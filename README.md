@@ -36,7 +36,7 @@ Opinions, ideas and collaboration proposals are heard through GitHub or by email
 
 Those are the residuals from a OLS regression between ![](https://render.githubusercontent.com/render/math?math=x_j) and all the other ![](https://render.githubusercontent.com/render/math?math=x)'s. Error measures and r-squared can be obtained from this regression.
 
-### Where is the non matrix version of the standard error of the ![](https://render.githubusercontent.com/render/math?math=\beta)'s?
+### Where is the non matrix version of the standard error of the ![](https://render.githubusercontent.com/render/math?math=\hat{\beta})'s?
 
 For space reasons, the version included in the cheatsheet is the matricial one. It is perfectly valid and equal to the non matrix version.
 
