@@ -28,7 +28,7 @@ Opinions, ideas and collaboration proposals are heard through GitHub or by email
 
 :white_check_mark: Release of an Spanish version of the econometrics-cheatsheet.
 
-:construction: Release of a cheat cheet exclusively dedicated to time series in the context of econometrics (time-series-cheatsheet). A preview of the Work In Progress can be seen [here](econometrics-cheatsheet/time-series-cheatsheet-en.pdf), feedback will be welcome.
+:construction: Release of a cheat cheet exclusively dedicated to time series in the context of econometrics (time-series-cheatsheet). A preview of the Work In Progress can be seen [here](time-series-cheatsheet/time-series-cheatsheet-en.pdf), feedback is welcome.
 
 ## Frequently Asked Questions
 
