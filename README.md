@@ -42,7 +42,7 @@ For space reasons, the version included in the cheatsheet is the matricial one. 
 
 The non matrix version:
 
-![](https://render.githubusercontent.com/render/math?math=se(\beta_j)=\sqrt{\frac{\hat{\sigma}^2}{SST_j(1-R^2_j)}},j=1,...,k)
+![](https://render.githubusercontent.com/render/math?math=se(\hat{\beta}_j)=\sqrt{\frac{\hat{\sigma}^2}{SST_j(1-R^2_j)}},j=1,...,k)
 
 ## Bibliography
 
