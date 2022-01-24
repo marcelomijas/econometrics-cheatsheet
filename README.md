@@ -14,10 +14,10 @@ Econometrics cheat sheet created using LaTeX with a summarized review of:
 
 **Econometrics Cheat Sheet**. Current version: `2.2`
 
-|         | PDF file | TeX file |
-|---------|----------|----------|
-| English |  [en.pdf](econometrics-cheatsheet/econometrics-cheatsheet-en.pdf)  |  [en.tex](econometrics-cheatsheet/econometrics-cheatsheet-en.tex)  |
-| Spanish |  [es.pdf](econometrics-cheatsheet/econometrics-cheatsheet-es.pdf)  |  [es.tex](econometrics-cheatsheet/econometrics-cheatsheet-es.tex)  |
+|         | PDF file                                                          | TeX file                                                            |
+| :-----: | :---------------------------------------------------------------: | :-----------------------------------------------------------------: |
+| English | [en.pdf](econometrics-cheatsheet/econometrics-cheatsheet-en.pdf)  | [en.tex](econometrics-cheatsheet/econometrics-cheatsheet-en.tex)    |
+| Spanish | [es.pdf](econometrics-cheatsheet/econometrics-cheatsheet-es.pdf)  | [es.tex](econometrics-cheatsheet/econometrics-cheatsheet-es.tex)    |
 
 
 Opinions, ideas and collaboration proposals are heard through GitHub or by email (marcelomijas@gmail.com). Also, my [LinkedIn](https://www.linkedin.com/in/marcelomorenop/).
