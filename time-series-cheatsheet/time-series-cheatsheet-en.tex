@@ -36,404 +36,303 @@
 
 % -----document-----
 \begin{document}
+
 \cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Version ts-0.0-en - github.com/marcelomijas/econometrics-cheatsheet}}
 \setlength{\footskip}{12pt}
+
 \begin{multicols}{3} % set columns to 3
 
 \begin{center}
-\textbf{\LARGE \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Time Series Cheat Sheet}} \\ {\footnotesize By Marcelo Moreno - King Juan Carlos University} \\ {\footnotesize As part of the Econometrics Cheat Sheet Project}
+	\textbf{\LARGE \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Time Series Cheat Sheet}} \\ {\footnotesize By Marcelo Moreno - King Juan Carlos University} \\ {\footnotesize As part of the Econometrics Cheat Sheet Project}
 \end{center}
 
 \colorbox{yellow}{THIS IS A WORK IN PROGRESS}
-
-\colorbox{yellow}{NOT INTENDEND FOR GENEAL PURPOSE ATM}
-
-\colorbox{yellow}{It is still a mess as of \today}
+\\ \colorbox{yellow}{NOT INTENDEND FOR GENEAL PURPOSE ATM}
+\\ \colorbox{yellow}{It is still a mess as of \today}
 
 \section*{Basic concepts}
-\subsection*{Definitions}
-
-\textbf{Time series} - is a succession of quantitative observations of a phenomena ordered in time.
-
-\textbf{Stochastic process} - sequence of random variables that are indexed in time.
-
-There are types of data that makes uses of time series
-
-\textbf{Panel data} - consist of a temporal series for each observation of a cross section.
-
-\textbf{Pooled cross sections} - combines cross sections from different temporal periods.
-
-\subsection*{Components of a time series}
-
-\begin{itemize}[leftmargin=*]
-\item Trend
-\item Seasonal variations (sv)
-\item Cyclical variations (cv)
-\item Residual variations (rv)
-\end{itemize}
-
-\subsection*{Components calculus}
-
-\begin{itemize}[leftmargin=*]
-\item Trend: linear, exponential, quadratic.
-\end{itemize}
-
-\subsection*{Spurious regression}
+	\subsection*{Definitions}
+		\textbf{Time series} - is a succession of quantitative observations of a phenomena ordered in time.
+		\\ \textbf{Stochastic process} - sequence of random variables that are indexed in time.
+		\\ There are types of data that makes uses of time series
+		\\ \textbf{Panel data} - consist of a temporal series for each observation of a cross section.
+		\\ \textbf{Pooled cross sections} - combines cross sections from different temporal periods.
+	\subsection*{Components of a time series}
+		\begin{itemize}[leftmargin=*]
+			\item Trend
+			\item Seasonal variations (sv)
+			\item Cyclical variations (cv)
+			\item Residual variations (rv)
+		\end{itemize}
+	\subsection*{Components calculus}
+		\begin{itemize}[leftmargin=*]
+			\item Trend: linear, exponential, quadratic.
+		\end{itemize}
+	\subsection*{Spurious regression}
 
 \section*{Stationary processes}
-
-\subsection*{•}
-
-Static models:
-
-$y_t = \beta_0 + \beta_1 x_t + u_t$
+	\subsection*{•}
+		Static models:
+		\\ $y_t = \beta_0 + \beta_1 x_t + u_t$
 
 \columnbreak
 
 \section*{Assumptions and properties}
-\subsection*{OLS model assumptions under time series}
-
-Under this assumptions, the estimators of the OLS parameters will present good properties. \textbf{Gauss-Markov assumptions extended}:
-
-\begin{enumerate}[leftmargin=*]
-\item \textbf{Parameters linearity and weak dependence}.
-\begin{enumerate}[leftmargin=*, label=\alph*.]
-\item $y_t$ must be a linear function of the $\beta$'s.
-\item The stochastic $\lbrace(x_t, y_t): t = 1, 2, ...\rbrace$ is stationary and weakly dependent.
-\end{enumerate} 
-\item \textbf{No perfect collinearity}.
-\begin{itemize}[leftmargin=*]
-\item There are no independent variables that are constant: $Var(x) \neq 0$
-\item There is not an exact linear relation between independent variables.
-\end{itemize}
-\item \textbf{Conditional mean zero and correlation zero}.
-\begin{enumerate}[leftmargin=*, label=\alph*.]
-\item There are no systematic errors: $E(u_t | x_{1t}, ..., x_{kt}) = E(u_t) = 0, t = 1, 2, ... T \rightarrow$ \textbf{strong exogeneity} (a implies b).
-\item There are no relevant variables left out of the model: $Cov(x_{jt} , u_t) = 0$ for any $j = 1, ..., k \rightarrow$ \textbf{weak exogeneity}.
-\end{enumerate}
-\item \textbf{Homoscedasticity}. The variability of the residuals is the same for any $t$: $Var(u_t | x_{1t}, ..., x_{kt}) = \sigma^2, t = 1, 2, ..., T$
-\item \textbf{No auto-correlation}. The residuals do not contain information about other residuals: $Corr(u_t, u_s | x) = 0$ for any given $t \neq s$.
-\item \textbf{Normality}. The residuals are independent and identically distributed: $u \sim N(0,\sigma^2)$
-\item \textbf{Data size}. The number of observations available must be greater than $(k + 1)$ parameters to estimate. (IS already satisfied under asymptotic situations)
-\end{enumerate}
-
-\subsection*{Asymptotic properties of OLS}
-
-Under the econometric model assumptions and the Central Limit Theorem:
-\begin{itemize}[leftmargin=*]
-\item Hold (1) to (3a): OLS is \textbf{unbiased}. $E(\hat{\beta}_j) = \beta_j$
-\item Hold (1) to (3): OLS is \textbf{consistent}. $plim(\hat{\beta}_j) = \beta_j$ (to (3b) left out (3a), weak exogeneity, biased but consistent)
-\item Hold (1) to (5): \textbf{asymptotic normality} of OLS (then, (7) is necessarily satisfied): $u \sim_a N(0,\sigma^2)$.
-\item Hold (1) to (5): \textbf{unbiased estimate of $\sigma^2$}. $E(\hat{\sigma}^2) = \sigma^2$
-\item Hold (1) to (5): OLS is \textcolor{blue}{BLUE} (Best Linear Unbiased Estimator) or \textbf{efficient}. 
-\item Hold (1) to (6): hypothesis testing and confidence intervals can be done reliably.
-\end{itemize}
+	\subsection*{OLS model assumptions under time series}
+		Under this assumptions, the estimators of the OLS parameters will present good properties. \textbf{Gauss-Markov assumptions extended}:
+		\begin{enumerate}[leftmargin=*]
+			\item \textbf{Parameters linearity and weak dependence}.
+			\begin{enumerate}[leftmargin=*, label=\alph*.]
+				\item $y_t$ must be a linear function of the $\beta$'s.
+				\item The stochastic $\lbrace(x_t, y_t): t = 1, 2, ...\rbrace$ is stationary and weakly dependent.
+			\end{enumerate} 
+			\item \textbf{No perfect collinearity}.
+			\begin{itemize}[leftmargin=*]
+				\item There are no independent variables that are constant: $Var(x) \neq 0$
+				\item There is not an exact linear relation between independent variables.
+			\end{itemize}
+			\item \textbf{Conditional mean zero and correlation zero}.
+			\begin{enumerate}[leftmargin=*, label=\alph*.]
+				\item There are no systematic errors: $E(u_t | x_{1t}, ..., x_{kt}) = E(u_t) = 0, t = 1, 2, ... T \rightarrow$ \textbf{strong exogeneity} (a implies b).
+				\item There are no relevant variables left out of the model: $Cov(x_{jt} , u_t) = 0$ for any $j = 1, ..., k \rightarrow$ \textbf{weak exogeneity}.
+			\end{enumerate}
+			\item \textbf{Homoscedasticity}. The variability of the residuals is the same for any $t$: $Var(u_t | x_{1t}, ..., x_{kt}) = \sigma^2, t = 1, 2, ..., T$
+			\item \textbf{No auto-correlation}. The residuals do not contain information about other residuals: $Corr(u_t, u_s | x) = 0$ for any given $t \neq s$.
+			\item \textbf{Normality}. The residuals are independent and identically distributed: $u \sim N(0,\sigma^2)$
+			\item \textbf{Data size}. The number of observations available must be greater than $(k + 1)$ parameters to estimate. (IS already satisfied under asymptotic situations)
+		\end{enumerate}
+	\subsection*{Asymptotic properties of OLS}
+		Under the econometric model assumptions and the Central Limit Theorem:
+		\begin{itemize}[leftmargin=*]
+			\item Hold (1) to (3a): OLS is \textbf{unbiased}. $E(\hat{\beta}_j) = \beta_j$
+			\item Hold (1) to (3): OLS is \textbf{consistent}. $plim(\hat{\beta}_j) = \beta_j$ (to (3b) left out (3a), weak exogeneity, biased but consistent)
+			\item Hold (1) to (5): \textbf{asymptotic normality} of OLS (then, (7) is necessarily satisfied): $u \sim_a N(0,\sigma^2)$.
+			\item Hold (1) to (5): \textbf{unbiased estimate of $\sigma^2$}. $E(\hat{\sigma}^2) = \sigma^2$
+			\item Hold (1) to (5): OLS is \textcolor{blue}{BLUE} (Best Linear Unbiased Estimator) or \textbf{efficient}. 
+			\item Hold (1) to (6): hypothesis testing and confidence intervals can be done reliably.
+		\end{itemize}
 
 \section*{Ordinary Least Squares}
-
-\textbf{Objective} - minimize the Sum of Squared Residuals (SSR):
-
-\begin{center}
-$\text{Min} \sum_{t=1}^T \hat{u}_t^2$, where $\hat{u}_t = y_t - \hat{y}_t$
-\end{center}
-
-\subsection*{Regression model}
-
-\begin{tikzpicture}[scale=0.15]
-\draw[step=2, gray, very thin] (-10,-10) grid (10,10); % background grid
-\draw[thick, <->] (-10,10) node[anchor=south] {$y$} -- (-10,-10) -- (10,-10) node[anchor=north] {$t$}; %axis
-\draw[red, thick] plot [domain=-10:10] (\x,{1 + 0.5 * \x}); % regression line
-\draw[smooth] plot [domain=-8:8, samples=20] (\x,{rnd * 5 - 1.5 + 0.5 * \x}); % data points
-\draw (-9.3,-9.6) -- (-9.5,-9.6) -- (-9.5,-4.3) -- (-9.3, -4.3) node[anchor=north west] {$\beta_0$}; % beta0
-\draw (-2,0) -- (1.5,0) arc (0:25:3.5); % beta1 arc
-\draw (3,-0.5) node {$\beta_1$}; % beta1
-\end{tikzpicture}
-
-Equation:\\ $y_t = \beta_0 + \beta_1 x_{1t} + \beta_2 x_{2t} u_t$
-
-Matriciial solution: $\hat{\beta} = (X^T X)^{-1} (X^T y)$
-
-\subsection*{Interpretation of coefficients}
-
-\scalebox{0.872}{ % scale the table to fit in the column
-\begin{tabular}{ c c c c }
-	Model & Dependent & Independent & $\beta_1$ interpretation \\
-	\hline
-	Level-level & $y$ & $x$ & $\Delta y = \beta_1 \Delta x$ \\ 
-	Level-log & $y$ & $log(x)$ & $\Delta y = (\beta_1/100) \% \Delta x$ \\  
-	Log-level & $log(y)$ & $x$ & $\% \Delta y = (100 \beta_1) \Delta x$ \\
-	Log-log & $log(y)$ & $log(x)$ & $\% \Delta y = \beta_1 \% \Delta x$ \\
-	Quadratic & $y$ & $x + x^2$ & $\Delta y = (\beta_1 + 2 \beta_2 x) \Delta x$ \\
-\end{tabular}
-}
-
-\subsection*{Error measures}
-
-Sum of Sq. Resid.: \hfill $SSR = \sum_{i=1}^n \hat{u}_i^2 = \sum_{i=1}^n (y_i - \hat{y}_i)^2$
-
-\vspace*{0.5mm}
-
-Expl. Sum of Sq.: \hfill $SSE = \sum_{i=1}^n (\hat{y}_i - \overline{y})^2$
-
-\vspace*{0.5mm}
-
-Tot. Sum of Sq.: \hfill $SST = SSE + SSR = \sum_{i=1}^n (y_i - \overline{y})^2$
-
-\vspace*{0.5mm}
-
-Standard Error of the Regression: \hfill $\hat{\sigma} = \sqrt{\frac{SSR}{n-k-1}}$
-
-\vspace*{0.5mm}
-
-Standard Error of the $\hat{\beta}$'s: \hfill $se(\hat{\beta}) = \hat{\sigma} \sqrt{(X^T X)^{-1}}$
-
-\vspace*{0.5mm}
-
-Sqrt. of the Quadratic Mean Error: \hfill $\sqrt{\frac{\sum_{i=1}^n (\hat{u}_i - \overline{u})^2}{n}}$
-
-\vspace*{0.5mm}
-
-Absolute Mean Error: \hfill $\frac{\sum_{i=1}^n |\hat{u}_i|}{n}$
-
-\vspace*{0.5mm}
-
-Mean Percentage Error: \hfill $\frac{\sum_{i=1}^n |\hat{u}_i / y_i|}{n} \times 100$
+	\textbf{Objective} - minimize the Sum of Squared Residuals (SSR):
+	\begin{center}
+		$\text{Min} \sum_{t=1}^T \hat{u}_t^2$, where $\hat{u}_t = y_t - \hat{y}_t$
+	\end{center}
+	\subsection*{Regression model}
+		\begin{tikzpicture}[scale=0.15]
+			\draw[step=2, gray, very thin] (-10,-10) grid (10,10); % background grid
+			\draw[thick, <->] (-10,10) node[anchor=south] {$y$} -- (-10,-10) -- (10,-10) node[anchor=north] {$t$}; %axis
+			\draw[red, thick] plot [domain=-10:10] (\x,{1 + 0.5 * \x}); % regression line
+			\draw[smooth] plot [domain=-8:8, samples=100] (\x,{rnd * 5 - 1.5 + 0.5 * \x}); % data points
+			\draw (-9.3,-9.6) -- (-9.5,-9.6) -- (-9.5,-4.3) -- (-9.3, -4.3) node[anchor=north west] {$\beta_0$}; % beta0
+			\draw (-2,0) -- (1.5,0) arc (0:25:3.5); % beta1 arc
+			\draw (3,-0.5) node {$\beta_1$}; % beta1
+		\end{tikzpicture}
+		\\ Equation:\\ $y_t = \beta_0 + \beta_1 x_{1t} + \beta_2 x_{2t} u_t$
+		\\ Matriciial solution: $\hat{\beta} = (X^T X)^{-1} (X^T y)$
+	\subsection*{Interpretation of coefficients}
+		\scalebox{0.872}{ % scale the table to fit in the column
+		\begin{tabular}{ c c c c }
+			Model & Dependent & Independent & $\beta_1$ interpretation \\
+			\hline
+			Level-level & $y$ & $x$ & $\Delta y = \beta_1 \Delta x$ \\ 
+			Level-log & $y$ & $log(x)$ & $\Delta y = (\beta_1/100) \% \Delta x$ \\  
+			Log-level & $log(y)$ & $x$ & $\% \Delta y = (100 \beta_1) \Delta x$ \\
+			Log-log & $log(y)$ & $log(x)$ & $\% \Delta y = \beta_1 \% \Delta x$ \\
+			Quadratic & $y$ & $x + x^2$ & $\Delta y = (\beta_1 + 2 \beta_2 x) \Delta x$ \\
+		\end{tabular}
+		}
+	\subsection*{Error measures}
+		Sum of Sq. Resid.: \hfill $SSR = \sum_{i=1}^n \hat{u}_i^2 = \sum_{i=1}^n (y_i - \hat{y}_i)^2$
+		\\ Expl. Sum of Sq.: \hfill $SSE = \sum_{i=1}^n (\hat{y}_i - \overline{y})^2$
+		\\ Tot. Sum of Sq.: \hfill $SST = SSE + SSR = \sum_{i=1}^n (y_i - \overline{y})^2$
+		\\ Standard Error of the Regression: \hfill $\hat{\sigma} = \sqrt{\frac{SSR}{n-k-1}}$
+		\\ Standard Error of the $\hat{\beta}$'s: \hfill $se(\hat{\beta}) = \hat{\sigma} \sqrt{(X^T X)^{-1}}$
+		\\ Sqrt. of the Quadratic Mean Error: \hfill $\sqrt{\frac{\sum_{i=1}^n (\hat{u}_i - \overline{u})^2}{n}}$
+		\\ Absolute Mean Error: \hfill $\frac{\sum_{i=1}^n |\hat{u}_i|}{n}$
+		\\ Mean Percentage Error: \hfill $\frac{\sum_{i=1}^n |\hat{u}_i / y_i|}{n} \times 100$
 
 \columnbreak
 
 \section*{R-squared}
-
-Is a \textbf{measure of the goodness of the fit}, Measures the \textbf{percentage of variation of $y$ that is linearly explained by the variations of $x$'s}:
-
-\begin{center}
-$R^2 = \frac{SSE}{SST} = 1 - \frac{SSR}{SST}$
-\end{center}
-
-There is a version corrected by deggrees of freedom (adjusted r-squared):
-
-\begin{center}
-$\overline{R}^2 = 1 - \frac{n-1}{n-k-1} \frac{SSR}{SST} = 1 - \frac{n-1}{n-k-1} (1-R^2)$
-\end{center}
-
-For big sample sizes: $\overline{R}^2 \approx R^2$
-
-In time series context, r-squared tends to be very high. Although, it can be artificial (cointegration).
-
-\subsection*{The F contrast}
-
-Under $H_0$:
-
-\begin{center}
-$F = \frac{SSR_r - SSR_{nr}}{SSR_{nr}} \frac{(n-k_{nr}-1)}{q} \sim F_{q, n-k_{nr}-1}$
-\end{center}
-
-Where $k_{nr}$ is the number of parameters of the non restricted model and $q$ is the number of linear hypothesis tested.
-
-If $F_{q, n-k_{nr}-1} < F$, there is evidence to reject the null hypothesis.
+	Is a \textbf{measure of the goodness of the fit}, Measures the \textbf{percentage of variation of $y$ that is linearly explained by the variations of $x$'s}:
+	\begin{center}
+		$R^2 = \frac{SSE}{SST} = 1 - \frac{SSR}{SST}$
+	\end{center}
+	There is a version corrected by deggrees of freedom (adjusted r-squared):
+	\begin{center}
+		$\overline{R}^2 = 1 - \frac{n-1}{n-k-1} \frac{SSR}{SST} = 1 - \frac{n-1}{n-k-1} (1-R^2)$
+	\end{center}
+	For big sample sizes: $\overline{R}^2 \approx R^2$
+	\\ In time series context, r-squared tends to be very high. Although, it can be artificial (cointegration).
+	\subsection*{The F contrast}
+		Under $H_0$:
+		\begin{center}
+			$F = \frac{SSR_r - SSR_{nr}}{SSR_{nr}} \frac{(n-k_{nr}-1)}{q} \sim F_{q, n-k_{nr}-1}$
+		\end{center}
+		Where $k_{nr}$ is the number of parameters of the non restricted model and $q$ is the number of linear hypothesis tested.
+		\\ If $F_{q, n-k_{nr}-1} < F$, there is evidence to reject the null hypothesis.
 
 \section*{Dummy variables and structural change in time series}
-
-Dummy (or binary) variables are used for qualitative information like sex, civil state, country, etc.
-
-\begin{itemize}[leftmargin=*]
-\item Get the \textbf{value of 1 in a given category, and 0 on the rest}.
-\item Are used to analyze and modeling \textbf{structural changes} in the model parameters.
-\end{itemize}
-
-If a qualitative variable have $m$ categories, we only have to include ($m-1$) dummy variables.
-
-\subsection*{Structural change}
-
-Structural change refers to changes in the values of the parameters of the econometric model produced by the effect of different sub-populations. Structural change can be included in the model through dummy variables.
-
-The position of the dummy variable matters:
-\begin{itemize}[leftmargin=*]
-\item \textbf{On the intercept ($\beta_0$)} - represents the mean difference between the values produced by the structural change.
-\item \textbf{On the parameters that determines the slope of the regression line ($\beta_j$)} - represents the effect (slope) difference between the values produced by the structural change.
-\end{itemize}
-
-\textbf{The Chow's structural contrast} - when we want to analyze the existence of structural changes in all the model parameters, it is common to use a particular expression of the F contrast known as the Chow's contrast, where the null hypothesis is: $H_0: \text{No structural change}$
+	Dummy (or binary) variables are used for qualitative information like sex, civil state, country, etc.
+	\begin{itemize}[leftmargin=*]
+		\item Get the \textbf{value of 1 in a given category, and 0 on the rest}.
+		\item Are used to analyze and modeling \textbf{structural changes} in the model parameters.
+	\end{itemize}
+	If a qualitative variable have $m$ categories, we only have to include ($m-1$) dummy variables.
+	\subsection*{Structural change}
+		Structural change refers to changes in the values of the parameters of the econometric model produced by the effect of different sub-populations. Structural change can be included in the model through dummy variables.
+		\\ The position of the dummy variable matters:
+		\begin{itemize}[leftmargin=*]
+			\item \textbf{On the intercept ($\beta_0$)} - represents the mean difference between the values produced by the structural change.
+			\item \textbf{On the parameters that determines the slope of the regression line ($\beta_j$)} - represents the effect (slope) difference between the values produced by the structural change.
+		\end{itemize}
+		\textbf{The Chow's structural contrast} - when we want to analyze the existence of structural changes in all the model parameters, it is common to use a particular expression of the F contrast known as the Chow's contrast, where the null hypothesis is: $H_0: \text{No structural change}$
 
 \section*{Predictions}
-
-Two types of prediction:
-
-\begin{itemize}[leftmargin=*]
-\item Of the mean value of $y$ for a specific value of $x$.
-\item Of an individual value of $y$ for a specific value of $x$.
-\end{itemize}
-
-If the values of the variables ($x$) approximate to the mean values ($\overline{x}$), the confidence interval amplitude of the prediction will be shorter. 
+	Two types of prediction:
+	\begin{itemize}[leftmargin=*]
+		\item Of the mean value of $y$ for a specific value of $x$.
+		\item Of an individual value of $y$ for a specific value of $x$.
+	\end{itemize}
+	If the values of the variables ($x$) approximate to the mean values ($\overline{x}$), the confidence interval amplitude of the prediction will be shorter. 
 
 \columnbreak
 
 \section*{Heteroscedasticity in time series}
+	The residuals $u_i$ of the population regression function do not have the same variance $\sigma^2$:
+	\begin{center}
+		$Var(u|x) = Var(y|x) \neq \sigma^2$
+	\end{center}
+	Is the \textbf{breaking of the fifth (5) econometric model assumption}.
+	\subsection*{Consequences}
+		\begin{itemize}[leftmargin=*]
+			\item OLS estimators still are unbiased.
+			\item OLS estimators still are consistent.
+			\item OLS is \textbf{not efficient} anymore, but still a LUE (Linear Unbiased Estimator).
+			\item \textbf{Variance estimations of the estimators are biased}: the construction of confidence intervals and the hypothesis contrast are not reliable.
+		\end{itemize}
+	\subsection*{Detection}
+		\begin{itemize}[leftmargin=*]
+			\setlength{\multicolsep}{0pt} % reduce vertical spacing betwen subsection and multicols
+			\setlength{\columnsep}{20pt} % increment spacing between columns
+			\begin{multicols}{3} % set columns to 3
+			\item \textbf{Graphical analysis} - look for scatter patterns on $x$ vs. $u$ or $x$ vs. $y$ plots.
 
-The residuals $u_i$ of the population regression function do not have the same variance $\sigma^2$:
+			\columnbreak
+			\vspace*{-23pt}
 
-\begin{center}
-$Var(u|x) = Var(y|x) \neq \sigma^2$
-\end{center}
+			\begin{tikzpicture}[scale=0.108]
+				\draw[step=2, gray, very thin] (-10,-10) grid (10,10); % grid
+				\draw[thick,->] (-10,0) -- (10,0) node[anchor=north] {$x$}; % x axis
+				\draw[thick,-] (-10,-10) -- (-10,10) node[anchor=west] {$u$}; % u axis
+				\draw plot [domain=0:17, samples=50] ({\x - 9},{-0.5 * rand * \x - 1}); % data points
+				\draw[thick, dashed, red, -latex] plot [domain=1:17] ({\x - 10},{-0.5 * \x - 1}); % lower red arrow
+				\draw[thick, dashed, red, -latex] plot [domain=1:17] ({\x - 10},{0.5 * \x - 1}); % upper red arrow
+			\end{tikzpicture}
 
-Is the \textbf{breaking of the fifth (5) econometric model assumption}.
+			\columnbreak
+			\vspace*{-24pt}
 
-\subsection*{Consequences}
+			\begin{tikzpicture}[scale=0.108]
+				\draw[step=2, gray, very thin] (-10,-10) grid (10,10); % grid
+				\draw[thick,<->] (-10,10) node[anchor=west] {$y$} -- (-10,-10) -- (10,-10) node[anchor=south] {$x$}; % axis
+				\draw plot [domain=0:13, samples=50] ({\x -9},{(-0.65 * rand * \x) + 0.6 * \x - 8}); % data points
+				\draw[thick, dashed, red, -latex] plot [domain=0:12] ({\x - 9},{-0.06 * \x - 8.5}); % lower red arrow
+				\draw[thick, dashed, red, -latex] plot [domain=0:12] ({\x -9},{1.25 * \x - 7.2}); % upper red arrow
+			\end{tikzpicture}
+			\end{multicols}
+			\item \textbf{Formal tests} - White, Bartlett, Breusch-Pagan, etc. Commonly, the null hypothesis: $H_0 = \text{Homoscedasticity}$
+		\end{itemize}
+		\textbf{DURBIN WATSON EXPLANATION AND GRAPHICAL ANALYSIS (AND MOST COMMON VALUES?)}
 
-\begin{itemize}[leftmargin=*]
-\item OLS estimators still are unbiased.
-\item OLS estimators still are consistent.
-\item OLS is \textbf{not efficient} anymore, but still a LUE (Linear Unbiased Estimator).
-\item \textbf{Variance estimations of the estimators are biased}: the construction of confidence intervals and the hypothesis contrast are not reliable.
-\end{itemize}
-
-\subsection*{Detection}
-
-\begin{itemize}[leftmargin=*]
-\setlength{\multicolsep}{0pt} % reduce vertical spacing betwen subsection and multicols
-\setlength{\columnsep}{20pt} % increment spacing between columns
-\begin{multicols}{3} % set columns to 3
-\item \textbf{Graphical analysis} - look for scatter patterns on $x$ vs. $u$ or $x$ vs. $y$ plots.
-
-\columnbreak
-
-\vspace*{-23pt}
-
-\begin{tikzpicture}[scale=0.11]
-\draw[step=2, gray, very thin] (-10,-10) grid (10,10); % grid
-\draw[thick,->] (-10,0) -- (10,0) node[anchor=north] {$x$}; % x axis
-\draw[thick,-] (-10,-10) -- (-10,10) node[anchor=west] {$u$}; % u axis
-\draw plot [only marks, mark=*, mark size=6, domain=0:17, samples=50] ({\x - 9},{-0.5 * rand * \x - 1}); % data points
-\draw[thick, dashed, red, -latex] plot [domain=1:17] ({\x - 10},{-0.5 * \x - 1}); % lower red arrow
-\draw[thick, dashed, red, -latex] plot [domain=1:17] ({\x - 10},{0.5 * \x - 1}); % upper red arrow
-\end{tikzpicture}
-
-\columnbreak
-
-\vspace*{-24pt}
-
-\begin{tikzpicture}[scale=0.11]
-\draw[step=2, gray, very thin] (-10,-10) grid (10,10); % grid
-\draw[thick,<->] (-10,10) node[anchor=west] {$y$} -- (-10,-10) -- (10,-10) node[anchor=south] {$x$}; % axis
-\draw plot [only marks, mark=*, mark size=6, domain=0:13, samples=50] ({\x -9},{(-0.65 * rand * \x) + 0.6 * \x - 8}); % data points
-\draw[thick, dashed, red, -latex] plot [domain=0:12] ({\x - 9},{-0.06 * \x - 8.5}); % lower red arrow
-\draw[thick, dashed, red, -latex] plot [domain=0:12] ({\x -9},{1.25 * \x - 7.2}); % upper red arrow
-\end{tikzpicture}
-
-\end{multicols}
-
-\item \textbf{Formal tests} - White, Bartlett, Breusch-Pagan, etc. Commonly, the null hypothesis: $H_0 = \text{Homoscedasticity}$
-\end{itemize}
-
-\textbf{DURBIN WATSON EXPLANATION AND GRAPHICAL ANALYSIS (AND MOST COMMON VALUES?)}
-
-\subsection*{Correction}
-
-\begin{itemize}[leftmargin=*]
-\item Use OLS with a variance-covariance matrix estimator robust to heteroscedasticity, for example, the one proposed by White.
-\item If the variance structure is known, make use of Weighted Least Squares (WLS) or Generalized Least Squares (GLS).
-\item If the variance structure is not known, make use of Feasible Weighted Least Squared (FWLS), that estimates a possible variance, divides the model variables by it and then apply OLS.
-\item Make assumptions about the possible variance:
-\begin{itemize}[leftmargin=*]
-\item Supposing that $\sigma_i^2$ is proportional to $x_i$, divide the model variables by the square root of $x_i$ and apply OLS.
-\item Supposing that $\sigma_i^2$ is proportional to $x_i^2$, divide the model variables by $x_i$ and apply OLS.
-\end{itemize}
-\item Make a new model specification, for example, logarithmic transformation.
-\end{itemize}
+	\subsection*{Correction}
+		\begin{itemize}[leftmargin=*]
+			\item Use OLS with a variance-covariance matrix estimator robust to heteroscedasticity, for example, the one proposed by White.
+			\item If the variance structure is known, make use of Weighted Least Squares (WLS) or Generalized Least Squares (GLS).
+			\item If the variance structure is not known, make use of Feasible Weighted Least Squared (FWLS), that estimates a possible variance, divides the model variables by it and then apply OLS.
+			\item Make assumptions about the possible variance:
+			\begin{itemize}[leftmargin=*]
+				\item Supposing that $\sigma_i^2$ is proportional to $x_i$, divide the model variables by the square root of $x_i$ and apply OLS.
+				\item Supposing that $\sigma_i^2$ is proportional to $x_i^2$, divide the model variables by $x_i$ and apply OLS.
+			\end{itemize}
+			\item Make a new model specification, for example, logarithmic transformation.
+		\end{itemize}
 
 \columnbreak
 
 \section*{Auto-correlation}
+	The residual of any observation, $u_t$, is correlated with the residual of any other observation. The observations are not independent.
+	\begin{center}
+		$Corr(u_t, u_s | x) \neq 0$ for any $t \neq s$
+	\end{center}
+	The ``natural" context of this phenomena is time series. Is the \textbf{breaking of the sixth (6) econometric model assumption}.
+	\subsection*{Consequences}
+		\begin{itemize}[leftmargin=*]
+			\item OLS estimators still are unbiased.
+			\item OLS estimators still are consistent.
+			\item OLS is \textbf{not efficient} anymore, but still a LUE (Linear Unbiased Estimator).
+			\item \textbf{Variance estimations of the estimators are biased}: the construction of confidence intervals and the hypothesis contrast are not reliable.
+		\end{itemize}
+	\subsection*{Detection}
+		\begin{itemize}[leftmargin=*]
+			\item \textbf{Graphical analysis} - look for scatter patterns on $u_{t-1}$ vs. $u_t$ or make use of a correlogram.
+			\setlength{\multicolsep}{0pt} % reduce vertical spacing betwen subsection and multicols
+			\setlength{\columnsep}{6pt} % increment spacing between columns
+			\begin{multicols}{3} % set columns to 3
+				\begin{center}
+					\textbf{\footnotesize AR}
+				\end{center}
+				\vspace{2.0pt}
+				\begin{tikzpicture}[scale=0.11]
+					\draw[step=2, gray, very thin] (-10,-10) grid (10,10); % grid
+					\draw[thick,->] (-10,0) -- (10,0) node[anchor=south] {$u_{t-1}$}; % ut-1 axis
+					\draw[thick,-] (-10,-10) -- (-10,10) node[anchor=west] {$u_t$}; % ut axis
+					\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=50] (\x,{rnd * 6 + (-2 * (\x)^2 + 40) * 0.1}); % data points
+					\draw[thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 + (-2 * (\x)^2 + 40) * 0.1}); % red arrow
+				\end{tikzpicture}
 
-The residual of any observation, $u_t$, is correlated with the residual of any other observation. The observations are not independent.
+				\columnbreak
 
-\begin{center}
-$Corr(u_t, u_s | x) \neq 0$ for any $t \neq s$
-\end{center}
+				\begin{center}
+					\textbf{\footnotesize AR(+)}
+				\end{center}
+				\begin{tikzpicture}[scale=0.11]
+					\draw[step=2, gray, very thin] (-10,-10) grid (10,10); % grid
+					\draw[thick,->] (-10,0) -- (10,0) node[anchor=north] {$ u_{t-1}$}; % ut-1 axis
+					\draw[thick,-] (-10,-10) -- (-10,10) node[anchor=west] {$u_t$}; % ut axis
+					\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=25] (\x,{rnd * 6 + 0.5 * \x - 3}); % data points
+					\draw[thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 + 0.5 * \x - 3}); % red arrow
+				\end{tikzpicture}
 
-The ``natural" context of this phenomena is time series. Is the \textbf{breaking of the sixth (6) econometric model assumption}.
+				\columnbreak
 
-\subsection*{Consequences}
-
-\begin{itemize}[leftmargin=*]
-\item OLS estimators still are unbiased.
-\item OLS estimators still are consistent.
-\item OLS is \textbf{not efficient} anymore, but still a LUE (Linear Unbiased Estimator).
-\item \textbf{Variance estimations of the estimators are biased}: the construction of confidence intervals and the hypothesis contrast are not reliable.
-\end{itemize}
-
-\subsection*{Detection}
-
-\begin{itemize}[leftmargin=*]
-\item \textbf{Graphical analysis} - look for scatter patterns on $u_{t-1}$ vs. $u_t$ or make use of a correlogram.
-
-\setlength{\multicolsep}{0pt} % reduce vertical spacing betwen subsection and multicols
-\setlength{\columnsep}{6pt} % increment spacing between columns
-\begin{multicols}{3} % set columns to 3
-
-\begin{center}
-\textbf{\footnotesize AR}
-\end{center}
-
-\vspace{2.0pt}
-
-\begin{tikzpicture}[scale=0.11]
-\draw[step=2, gray, very thin] (-10,-10) grid (10,10); % grid
-\draw[thick,->] (-10,0) -- (10,0) node[anchor=south] {$u_{t-1}$}; % ut-1 axis
-\draw[thick,-] (-10,-10) -- (-10,10) node[anchor=west] {$u_t$}; % ut axis
-\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=50] (\x,{rnd * 6 + (-2 * (\x)^2 + 40) * 0.1}); % data points
-\draw[thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 + (-2 * (\x)^2 + 40) * 0.1}); % red arrow
-\end{tikzpicture}
-
-\columnbreak
-
-\begin{center}
-\textbf{\footnotesize AR(+)}
-\end{center}
-
-\begin{tikzpicture}[scale=0.11]
-\draw[step=2, gray, very thin] (-10,-10) grid (10,10); % grid
-\draw[thick,->] (-10,0) -- (10,0) node[anchor=north] {$ u_{t-1}$}; % ut-1 axis
-\draw[thick,-] (-10,-10) -- (-10,10) node[anchor=west] {$u_t$}; % ut axis
-\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=25] (\x,{rnd * 6 + 0.5 * \x - 3}); % data points
-\draw[thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 + 0.5 * \x - 3}); % red arrow
-\end{tikzpicture}
-
-\columnbreak
-
-\begin{center}
-\textbf{\footnotesize AR(-)}
-\end{center}
-
-\begin{tikzpicture}[scale=0.11]
-\draw[step=2, gray, very thin] (-10,-10) grid (10,10); % grid
-\draw[thick,->] (-10,0) -- (10,0) node[anchor=south] {$u_{t-1}$}; % ut-1 axis
-\draw[thick,-] (-10,-10) -- (-10,10) node[anchor=west] {$u_t$}; % ut axis
-\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=25] (\x,{rnd * 6 - 0.5 * \x - 3}); % data points
-\draw[thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 - 0.5 * \x - 3}); % red arrow
-\end{tikzpicture}
-
-\end{multicols}
-
-\item \textbf{Formal tests} - Durbin-Watson, Breusch-Godfrey, etc. Commonly, the null hypothesis: $H_0: \text{No auto-correlation}$
-
-\end{itemize}
-
-\subsection*{Correction}
-
-\begin{itemize}[leftmargin=*]
-\item Use OLS with a variance-covariance matrix estimator robust to auto-correlation, for example, the one proposed by Newey-West.
-\item Use Generalized Least Squares. Supposing $y_t = \beta_0 + \beta_1 x_t + u_t$, with $u_t = \rho u_{t-1} + \varepsilon_t$, where $|\rho| < 1$ and $\varepsilon_t$ is white noise.
-\begin{itemize}[leftmargin=*]
-\item If $\rho$ is known, create a quasi-differentiated model where $u_t$ is white noise and estimate it by OLS.
-\item If $\rho$ is not known, estimate it by -for example- the Cochrane-Orcutt method, create a quasi-differentiated model where $u_t$ is white noise and estimate it by OLS.
-\end{itemize}
-\end{itemize}
+				\begin{center}
+					\textbf{\footnotesize AR(-)}
+				\end{center}
+				\begin{tikzpicture}[scale=0.11]
+					\draw[step=2, gray, very thin] (-10,-10) grid (10,10); % grid
+					\draw[thick,->] (-10,0) -- (10,0) node[anchor=south] {$u_{t-1}$}; % ut-1 axis
+					\draw[thick,-] (-10,-10) -- (-10,10) node[anchor=west] {$u_t$}; % ut axis
+					\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=25] (\x,{rnd * 6 - 0.5 * \x - 3}); % data points
+					\draw[thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 - 0.5 * \x - 3}); % red arrow
+				\end{tikzpicture}
+			\end{multicols}
+			\item \textbf{Formal tests} - Durbin-Watson, Breusch-Godfrey, etc. Commonly, the null hypothesis: $H_0: \text{No auto-correlation}$
+		\end{itemize}
+	\subsection*{Correction}
+		\begin{itemize}[leftmargin=*]
+			\item Use OLS with a variance-covariance matrix estimator robust to auto-correlation, for example, the one proposed by Newey-West.
+			\item Use Generalized Least Squares. Supposing $y_t = \beta_0 + \beta_1 x_t + u_t$, with $u_t = \rho u_{t-1} + \varepsilon_t$, where $|\rho| < 1$ and $\varepsilon_t$ is white noise.
+			\begin{itemize}[leftmargin=*]
+				\item If $\rho$ is known, create a quasi-differentiated model where $u_t$ is white noise and estimate it by OLS.
+				\item If $\rho$ is not known, estimate it by -for example- the Cochrane-Orcutt method, create a quasi-differentiated model where $u_t$ is white noise and estimate it by OLS.
+			\end{itemize}
+		\end{itemize}
 
 \section*{Endogeneity}
 
 \section*{Instrumental Variables Methods}
 
-
-
 \end{multicols}
+
 \end{document}
