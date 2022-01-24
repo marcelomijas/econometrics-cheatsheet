@@ -10,6 +10,8 @@ Econometrics cheat sheet created using LaTeX with a summarized review of:
 * **Predictions**.
 * **Popular OLS problems** (multicollinearity, heteroscedasticity and auto-correlation): consequences, detection and correction.
 
+:bulb: Opinions, ideas and collaboration proposals are heard through GitHub or by email (marcelomijas@gmail.com). Also, my [LinkedIn](https://www.linkedin.com/in/marcelomorenop/).
+
 ### Download links
 
 **Econometrics Cheat Sheet**. Current version: `2.2`
@@ -19,16 +21,19 @@ Econometrics cheat sheet created using LaTeX with a summarized review of:
 | English | [en.pdf](econometrics-cheatsheet/econometrics-cheatsheet-en.pdf)  | [en.tex](econometrics-cheatsheet/econometrics-cheatsheet-en.tex)    |
 | Spanish | [es.pdf](econometrics-cheatsheet/econometrics-cheatsheet-es.pdf)  | [es.tex](econometrics-cheatsheet/econometrics-cheatsheet-es.tex)    |
 
-
-Opinions, ideas and collaboration proposals are heard through GitHub or by email (marcelomijas@gmail.com). Also, my [LinkedIn](https://www.linkedin.com/in/marcelomorenop/).
-
 ## Roadmap
 
 :white_check_mark: Release of page 3 of econometrics-cheatsheet whith popular OLS problems.
 
 :white_check_mark: Release of an Spanish version of the econometrics-cheatsheet.
 
-:construction: Release of a cheat cheet exclusively dedicated to time series in the context of econometrics (time-series-cheatsheet). A preview of the Work In Progress can be found [here](time-series-cheatsheet/time-series-cheatsheet-en.pdf), feedback is welcome.
+:black_square_button: Release of a cheat cheet exclusively dedicated to time series in the context of econometrics (time-series-cheatsheet).
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :arrow_right_hook: :warning: A work in progress preview can be found [here](time-series-cheatsheet/time-series-cheatsheet-en.pdf), feedback is welcome.
+
+:black_square_button: Release of an Spanish version of the time-series-cheatsheet.
+
+:question: Syled version of the cheat sheets (background colors, styled sections, more appealing plots, etc.)
 
 ## Frequently Asked Questions
 
