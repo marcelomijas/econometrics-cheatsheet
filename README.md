@@ -23,15 +23,15 @@ Econometrics cheat sheet created using LaTeX with a summarized review of:
 
 ## Roadmap
 
-:white_check_mark: Release of page 3 of econometrics-cheatsheet whith popular OLS problems.
+:white_check_mark: Release of page 3 of `econometrics-cheatsheet` whith popular OLS problems.
 
-:white_check_mark: Release of an Spanish version of the econometrics-cheatsheet.
+:white_check_mark: Release of an Spanish version of `econometrics-cheatsheet`.
 
-:black_square_button: Release of a cheat cheet exclusively dedicated to time series in the context of econometrics (time-series-cheatsheet).
+:black_square_button: Release of a cheat cheet exclusively dedicated to time series in the context of econometrics (`time-series-cheatsheet`).
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :arrow_right_hook: :warning: A work in progress preview can be found [here](time-series-cheatsheet/time-series-cheatsheet-en.pdf), feedback is welcome.
 
-:black_square_button: Release of an Spanish version of the time-series-cheatsheet.
+:black_square_button: Release of an Spanish version of `time-series-cheatsheet`.
 
 :question: Syled version of the cheat sheets (background colors, styled sections, more appealing plots, etc.)
 
