@@ -23,7 +23,9 @@ Econometrics cheat sheet created using LaTeX with a summarized review of:
 
 ## Roadmap
 
-:white_check_mark: Release of page 3 of `econometrics-cheatsheet` whith popular OLS problems.
+:white_check_mark: Release of pages 1 and 2 of `econometrics-cheatsheet` covering basic concepts, assumptions and properties, OLS equations, and more.
+
+:white_check_mark: Release of page 3 of `econometrics-cheatsheet` covering popular OLS problems.
 
 :white_check_mark: Release of an Spanish version of `econometrics-cheatsheet`.
 
