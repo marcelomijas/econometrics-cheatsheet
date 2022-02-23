@@ -70,3 +70,10 @@ In addition to the notes taken from the [Degree in Economics by the King Juan Ca
 ## Contributions
 
 * Reddit user \_bheg_ - Pointed out about the importance of including strong and weak exogeneity and their consequences on bias and consistency properties of OLS.
+
+## Support my work
+
+Support my work through:
+
+- BTC address: bc1q5xa35davhdttph3qa4353vkvm8rgvlmmqw2059
+- ETH address: 0x5Bc6287973D39EDfa4Da65Ec924CD7853791bD93
