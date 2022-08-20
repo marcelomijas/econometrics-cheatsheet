@@ -73,5 +73,5 @@ In addition to the notes taken from the [Degree in Economics by the King Juan Ca
 
 ## Support my work
 
-* BTC address: `bc1q5xa35davhdttph3qa4353vkvm8rgvlmmqw2059`
+* SOL address: `Enj2bTkHoat79MWJ8rYrkvvX3GEPHKA98WME2yW3ff2`
 * ETH address: `0x5Bc6287973D39EDfa4Da65Ec924CD7853791bD93`
