@@ -1,6 +1,6 @@
 # Econometrics Cheat Sheet
 
-Econometrics cheat sheet created using LaTeX with a summarized review of:
+Econometrics cheat sheet created using $\LaTeX$ with a summarized review of:
 
 * **Basic econometrics concepts**: econometrics definitions, data type, phases of a model, regression and correlation analysis.
 * **Assumptions and properties** of the linear regression model.
