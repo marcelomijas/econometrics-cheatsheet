@@ -25,7 +25,7 @@
 \begin{document}
 
 % page foot
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Version 2.2-en - github.com/marcelomijas/econometrics-cheatsheet}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Version 2.3-en - github.com/marcelomijas/econometrics-cheatsheet}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
@@ -39,11 +39,12 @@
 	\subsection*{Definitions}
 		\textbf{Econometrics} - is a social science discipline with the objective of quantify the relationships between economic agents, contrast economic theories and evaluate and implement government and business policies.
 		\\ \textbf{Econometric model} - is a simplified representation of the reality to explain economic phenomena.
+		\\ \textbf{\textsl{Ceteris paribus}} - if all the other relevant factors remain constant.
 	\subsection*{Data types}
-		\textbf{Cross section} - data taken at a given moment in time, an static ``photo". Order does not matter.
+		\textbf{Cross section} - data taken at a given moment in time, an static \textsl{photo}. Order does not matter.
 		\\ \textbf{Time series} - observation of one/many variable/s across time. Order does matter.
-		\\ \textbf{Panel data} - consist of a temporal series for each observation of a cross section.
-		\\ \textbf{Pooled cross sections} - combines cross sections from different temporal periods.
+		\\ \textbf{Panel data} - consist of a time series for each observation of a cross section.
+		\\ \textbf{Pooled cross sections} - combines cross sections from different time periods.
 	\subsection*{Phases of an econometric model}
 		\begin{enumerate}[leftmargin=*]
 			\setlength{\multicolsep}{0pt}
@@ -77,7 +78,7 @@
 			\item \textbf{Random sampling}. The sample from the population has been randomly taken. (ONLY when cross section)
 			\item \textbf{No perfect collinearity}.
 			\begin{itemize}[leftmargin=*]
-				\item There are no independent variables that are constant: $Var(x) \neq 0$
+				\item There are no independent variables that are constant: $Var(x_j) \neq 0$
 				\item There is not an exact linear relation between independent variables.
 			\end{itemize}
 			\item \textbf{Conditional mean zero and correlation zero}.
@@ -88,8 +89,8 @@
 			\item \textbf{Homoscedasticity}. The variability of the residuals is the same for all levels of $x$: $Var(u | x_1, ..., x_k) = \sigma^2$
 			\item \textbf{No auto-correlation}. The residuals do not contain information about other residuals: $Corr(u_t, u_s | x) = 0$ for any given $t \neq s$. (ONLY when time series)
 			\item \textbf{Normality}. The residuals are independent and identically distributed: $u \sim N(0,\sigma^2)$
-			\item \textbf{Data size}. The number of observations available must be greater than $(k + 1)$ parameters to estimate. (IS already satisfied under asymptotic situations)
-		\end{enumerate}
+			\item \textbf{Data size}. The number of observations available must be greater than $(k + 1)$ parameters to estimate. (IS already satisfied under asymptotic situations)		
+		\end{enumerate}		
 	\subsection*{Asymptotic properties of OLS}
 		Under the econometric model assumptions and the Central Limit Theorem:
 		\begin{itemize}[leftmargin=*]
@@ -168,9 +169,9 @@
 			Model & Dependent & Independent & $\beta_1$ interpretation \\
 			\hline
 			Level-level & $y$ & $x$ & $\Delta y = \beta_1 \Delta x$ \\ 
-			Level-log & $y$ & $log(x)$ & $\Delta y = (\beta_1/100) \% \Delta x$ \\  
+			Level-log & $y$ & $log(x)$ & $\Delta y = (\beta_1/100) (\% \Delta x$) \\  
 			Log-level & $log(y)$ & $x$ & $\% \Delta y = (100 \beta_1) \Delta x$ \\
-			Log-log & $log(y)$ & $log(x)$ & $\% \Delta y = \beta_1 \% \Delta x$ \\
+			Log-log & $log(y)$ & $log(x)$ & $\% \Delta y = \beta_1 (\% \Delta x$) \\
 			Quadratic & $y$ & $x + x^2$ & $\Delta y = (\beta_1 + 2 \beta_2 x) \Delta x$ \\
 		\end{tabular}
 		}

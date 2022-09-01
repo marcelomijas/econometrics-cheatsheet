@@ -25,7 +25,7 @@
 \begin{document}
 
 % page foot
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Versión 2.2-es - github.com/marcelomijas/econometrics-cheatsheet}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Versión 2.3-es - github.com/marcelomijas/econometrics-cheatsheet}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
@@ -39,8 +39,9 @@
 	\subsection*{Definiciones}
 		\textbf{Econometría} - es una disciplina de las ciencias sociales que tiene como objetivo cuantificar las relaciones entre agentes económicos, contrastar teorías económicas y evaluar e implementar políticas públicas y privadas.
 		\\ \textbf{Modelo econométrico} - es una representación simplificada de la realidad para explicar fenómenos económicos.
+		\\ \textbf{\textsl{Ceteris paribus}} - si todos los demás factores relevantes permanecen constantes.
 	\subsection*{Tipos de datos}
-		\textbf{Sección cruzada} - datos recogidos en un momento dado en el tiempo, una ``foto" estática. El orden no importa.
+		\textbf{Sección cruzada} - datos recogidos en un momento dado en el tiempo, una \textsl{foto} estática. El orden no importa.
 		\\ \textbf{Series temporales} - observación de una/muchas variable/s durante un periodo de tiempo. El orden sí importa.
 		\\ \textbf{Datos de panel} - consiste una una serie temporal por cada observación de una sección cruzada.
 		\\ \textbf{Secciones transversales agrupadas} - combina secciones cruzadas de diferentes periodos temporales.
@@ -77,7 +78,7 @@
 			\item \textbf{Muestreo aleatorio}. La muestra de la población se ha tomado de forma aleatoria. (SÓLO sección cruzada)
 			\item \textbf{No colinealidad perfecta}.
 			\begin{itemize}[leftmargin=*]
-				\item No hay variables independientes que sean constantes: $Var(x) \neq 0$
+				\item No hay variables independientes que sean constantes: $Var(x_j) \neq 0$
 				\item No hay una relación lineal exacta entre variables independientes.
 			\end{itemize}
 			\item \textbf{Media condicional cero y correlación cero}.
@@ -97,7 +98,7 @@
 			\item De (1) a (4): MCO es \textbf{consistente}. $plim(\hat{\beta}_j) = \beta_j$ (a (4b) sin (4a), exogeneidad estricta, insesg. y consistente)
 			\item De (1) a (5): \textbf{normalidad asintótica} de MCO (entonces, (7) es necesariamente satisfecho): $u \sim_a N(0,\sigma^2)$.
 			\item De (1) a (6): \textbf{estimador insesgado de $\sigma^2$}. $E(\hat{\sigma}^2) = \sigma^2$
-			\item De (1) a (6): MCO es \textcolor{red}{MELI} (Mejor Estimador Lineal Insesgado) ó \textbf{eficiente}. 
+			\item De (1) a (6): MCO es \textcolor{blue}{MELI} (Mejor Estimador Lineal Insesgado) ó \textbf{eficiente}. 
 			\item De (1) a (7): contrastes de hipótesis e intervalos de confianza son fiables.
 		\end{itemize}
 
@@ -168,9 +169,9 @@
 			Modelo & Depend. & Independ. & Interpretación $\beta_1$ \\
 			\hline
 			Nivel-nivel & $y$ & $x$ & $\Delta y = \beta_1 \Delta x$ \\ 
-			Nivel-log & $y$ & $log(x)$ & $\Delta y = (\beta_1/100) \% \Delta x$ \\  
+			Nivel-log & $y$ & $log(x)$ & $\Delta y = (\beta_1/100) (\% \Delta x$) \\  
 			Log-nivel & $log(y)$ & $x$ & $\% \Delta y = (100 \beta_1) \Delta x$ \\
-			Log-log & $log(y)$ & $log(x)$ & $\% \Delta y = \beta_1 \% \Delta x$ \\
+			Log-log & $log(y)$ & $log(x)$ & $\% \Delta y = \beta_1 (\% \Delta x$) \\
 			Cuadrático & $y$ & $x + x^2$ & $\Delta y = (\beta_1 + 2 \beta_2 x) \Delta x$ \\
 		\end{tabular}
 		}
