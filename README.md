@@ -14,7 +14,7 @@ Econometrics cheat sheet created using $\LaTeX$ with a summarized review of:
 
 ### Download links
 
-**Econometrics Cheat Sheet**. Current version: `2.3` [last update: 2 sep. 2022]
+**Econometrics Cheat Sheet**. Current version: `2.3` (last updated 2 sep. 2022)
 
 |         | PDF file                                                          | TeX file                                                            |
 | :-----: | :---------------------------------------------------------------: | :-----------------------------------------------------------------: |
