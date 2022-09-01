@@ -14,7 +14,7 @@ Econometrics cheat sheet created using $\LaTeX$ with a summarized review of:
 
 ### Download links
 
-**Econometrics Cheat Sheet**. Current version: `2.2`
+**Econometrics Cheat Sheet**. Current version: `2.3` [last update: 2 sep. 2022]
 
 |         | PDF file                                                          | TeX file                                                            |
 | :-----: | :---------------------------------------------------------------: | :-----------------------------------------------------------------: |
@@ -34,6 +34,8 @@ Econometrics cheat sheet created using $\LaTeX$ with a summarized review of:
      :warning: A work in progress preview can be found [here](time-series-cheatsheet/time-series-cheatsheet-en.pdf), feedback is welcome.
 
 - [ ] Release of an Spanish version of `time-series-cheatsheet`.
+
+- [ ] Expansion and restructuring of the Econometrics Cheat Sheet Project in three documents: one introductory and concise summary of basic econometrics (Econometrics Cheat Sheet), one dedicated to the most common problems in econometrics (Econometrics Problems Cheat Sheet) and one dedicated to time series in econometrics (Time Series Cheat Sheet). The max lenght of each one will be two pages.
 
 :question: Syled version of the cheat sheets (background colors, styled sections, more appealing plots, etc.)
 
@@ -66,6 +68,8 @@ In addition to the notes taken from the [Degree in Economics by the King Juan Ca
 [5] Stock, J. H., & Watson, M. W. (2012). *Introduction to econometrics*. New York: Pearson.
 
 [6] Wooldridge, J. M. (2015). *Introductory econometrics: A modern approach*. Cengage learning.
+
+[7] Lütkepohl, H., & Krätzig, M. (Eds.). (2004). *Applied Time Series Econometrics*. Cambridge: Cambridge University Press.
 
 ## Contributions
 
