@@ -63,13 +63,13 @@ In addition to the notes taken from the [Degree in Economics by the King Juan Ca
 
 [3] James, G., Witten, D., Hastie, T., & Tibshirani, R. (2013). *An introduction to statistical learning*. New York: springer.
 
-[4] Ruiz-Maya, L., & Pliego, F. J. M. (2004). *Fundamentos de inferencia estadística*. AC.
+[4] Lütkepohl, H., & Krätzig, M. (Eds.). (2004). *Applied Time Series Econometrics*. Cambridge: Cambridge University Press.
 
-[5] Stock, J. H., & Watson, M. W. (2012). *Introduction to econometrics*. New York: Pearson.
+[5] Ruiz-Maya, L., & Pliego, F. J. M. (2004). *Fundamentos de inferencia estadística*. AC.
 
-[6] Wooldridge, J. M. (2015). *Introductory econometrics: A modern approach*. Cengage learning.
+[6] Stock, J. H., & Watson, M. W. (2012). *Introduction to econometrics*. New York: Pearson.
 
-[7] Lütkepohl, H., & Krätzig, M. (Eds.). (2004). *Applied Time Series Econometrics*. Cambridge: Cambridge University Press.
+[7] Wooldridge, J. M. (2015). *Introductory econometrics: A modern approach*. Cengage learning.
 
 ## Contributions
 
