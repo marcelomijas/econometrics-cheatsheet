@@ -37,7 +37,7 @@
 % -----document-----
 \begin{document}
 
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Version ts-0.0-en - github.com/marcelomijas/econometrics-cheatsheet}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Version ts0.2-en - github.com/marcelomijas/econometrics-cheatsheet}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
@@ -47,130 +47,117 @@
 \end{center}
 
 \colorbox{yellow}{THIS IS A WORK IN PROGRESS}
-\\ \colorbox{yellow}{NOT INTENDEND FOR GENEAL PURPOSE ATM}
-\\ \colorbox{yellow}{It is still a mess as of \today}
+\\ \colorbox{yellow}{NOT INTENDEND FOR GENEAL PURPOSE}
 
 \section*{Basic concepts}
 	\subsection*{Definitions}
 		\textbf{Time series} - is a succession of quantitative observations of a phenomena ordered in time.
-		\\ \textbf{Stochastic process} - sequence of random variables that are indexed in time.
-		\\ There are types of data that makes uses of time series
-		\\ \textbf{Panel data} - consist of a temporal series for each observation of a cross section.
-		\\ \textbf{Pooled cross sections} - combines cross sections from different temporal periods.
+		\\ There are some variations of time series:
+		\begin{itemize}[leftmargin=*]
+			\item \textbf{Panel data} - consist of a time series for each observation of a cross section.
+			\item \textbf{Pooled cross sections} - combines cross sections from different time periods.
+		\end{itemize}
+		\textbf{Stochastic process} - sequence of random variables that are indexed in time.
 	\subsection*{Components of a time series}
 		\begin{itemize}[leftmargin=*]
-			\item Trend
-			\item Seasonal variations (sv)
-			\item Cyclical variations (cv)
-			\item Residual variations (rv)
+			\item \textbf{Trend} - is the long-term general movement of a series.
+			\item \textbf{Seasonal variations} - are periodic oscillations that are produced in a period equal or inferior to a year, and can be easily identified on different years (usually are the result of climatology reasons).
+			\item \textbf{Cyclical variations} - are periodic oscillations that are produced in a period greater than a year (are the result of the economic cycle).
+			\item \textbf{Residual variations} - are movements that do not follow a recognizable periodic oscillation (are the result of eventual non-permanent phenomena that can affect the studied variable in a given moment).
 		\end{itemize}
-	\subsection*{Components calculus}
-		\begin{itemize}[leftmargin=*]
-			\item Trend: linear, exponential, quadratic.
-		\end{itemize}
-	\subsection*{Spurious regression}
 
-\section*{Stationary processes}
-	\subsection*{•}
-		Static models:
-		\\ $y_t = \beta_0 + \beta_1 x_t + u_t$
+	\subsection*{Type of time series models}
+		\begin{itemize}[leftmargin=*]
+			\item \textbf{Static models} - the relation between $y$ and $x$'s is contemporary. Conceptually:
+			\begin{center}
+				$y_t = \beta_0 + \beta_1 x_t + u_t$
+			\end{center}
+			\item \textbf{Distributed-lag models} - the relation between $y$ and $x$'s is not contemporary. Conceptually:
+			\begin{center}
+				$y_t = \beta_0 + \beta_1 x_t + \beta_2 x_{t-1} + ... + \beta_{q+1} x_{t-q} + u_t$
+			\end{center}
+			The long term cumulative effect in $y$ when $\Delta x$ is:
+			 \begin{center}
+			 	$\beta_1 + \beta_2 + ... + \beta_{q+1}$
+			 \end{center}
+		\end{itemize}
 
 \columnbreak
 
 \section*{Assumptions and properties}
 	\subsection*{OLS model assumptions under time series}
-		Under this assumptions, the estimators of the OLS parameters will present good properties. \textbf{Gauss-Markov assumptions extended}:
-		\begin{enumerate}[leftmargin=*]
+		Under this assumptions, the estimators of the OLS parameters will present good properties. \textbf{Gauss-Markov assumptions extended applied to time series}:
+		\begin{enumerate}[leftmargin=*, label=ts\arabic*.]
 			\item \textbf{Parameters linearity and weak dependence}.
 			\begin{enumerate}[leftmargin=*, label=\alph*.]
 				\item $y_t$ must be a linear function of the $\beta$'s.
-				\item The stochastic $\lbrace(x_t, y_t): t = 1, 2, ...\rbrace$ is stationary and weakly dependent.
+				\item The stochastic $\lbrace(x_t, y_t): t = 1, 2, ..., T\rbrace$ is stationary and weakly dependent.
 			\end{enumerate} 
 			\item \textbf{No perfect collinearity}.
 			\begin{itemize}[leftmargin=*]
-				\item There are no independent variables that are constant: $Var(x) \neq 0$
+				\item There are no independent variables that are constant: $Var(x_j) \neq 0$
 				\item There is not an exact linear relation between independent variables.
 			\end{itemize}
 			\item \textbf{Conditional mean zero and correlation zero}.
 			\begin{enumerate}[leftmargin=*, label=\alph*.]
-				\item There are no systematic errors: $E(u_t | x_{1t}, ..., x_{kt}) = E(u_t) = 0, t = 1, 2, ... T \rightarrow$ \textbf{strong exogeneity} (a implies b).
+				\item There are no systematic errors: $E(u_t | x_{1t}, ..., x_{kt}) = E(u_t) = 0 \rightarrow$ \textbf{strong exogeneity} (a implies b).
 				\item There are no relevant variables left out of the model: $Cov(x_{jt} , u_t) = 0$ for any $j = 1, ..., k \rightarrow$ \textbf{weak exogeneity}.
 			\end{enumerate}
-			\item \textbf{Homoscedasticity}. The variability of the residuals is the same for any $t$: $Var(u_t | x_{1t}, ..., x_{kt}) = \sigma^2, t = 1, 2, ..., T$
+			\item \textbf{Homoscedasticity}. The variability of the residuals is the same for any $t$: $Var(u_t | x_{1t}, ..., x_{kt}) = \sigma^2$
 			\item \textbf{No auto-correlation}. The residuals do not contain information about other residuals: $Corr(u_t, u_s | x) = 0$ for any given $t \neq s$.
 			\item \textbf{Normality}. The residuals are independent and identically distributed: $u \sim N(0,\sigma^2)$
 			\item \textbf{Data size}. The number of observations available must be greater than $(k + 1)$ parameters to estimate. (IS already satisfied under asymptotic situations)
-		\end{enumerate}
+		\end{enumerate}	
 	\subsection*{Asymptotic properties of OLS}
 		Under the econometric model assumptions and the Central Limit Theorem:
 		\begin{itemize}[leftmargin=*]
 			\item Hold (1) to (3a): OLS is \textbf{unbiased}. $E(\hat{\beta}_j) = \beta_j$
 			\item Hold (1) to (3): OLS is \textbf{consistent}. $plim(\hat{\beta}_j) = \beta_j$ (to (3b) left out (3a), weak exogeneity, biased but consistent)
-			\item Hold (1) to (5): \textbf{asymptotic normality} of OLS (then, (7) is necessarily satisfied): $u \sim_a N(0,\sigma^2)$.
+			\item Hold (1) to (5): \textbf{asymptotic normality} of OLS (then, (6) is necessarily satisfied): $u \sim_a N(0,\sigma^2)$.
 			\item Hold (1) to (5): \textbf{unbiased estimate of $\sigma^2$}. $E(\hat{\sigma}^2) = \sigma^2$
 			\item Hold (1) to (5): OLS is \textcolor{blue}{BLUE} (Best Linear Unbiased Estimator) or \textbf{efficient}. 
 			\item Hold (1) to (6): hypothesis testing and confidence intervals can be done reliably.
 		\end{itemize}
 
-\section*{Ordinary Least Squares}
-	\textbf{Objective} - minimize the Sum of Squared Residuals (SSR):
-	\begin{center}
-		$\text{Min} \sum_{t=1}^T \hat{u}_t^2$, where $\hat{u}_t = y_t - \hat{y}_t$
-	\end{center}
-	\subsection*{Regression model}
+\section*{Trends and seasonality}
+	\subsection*{Trends}
+		Two time series can have the same (or contrary) trend, that should lend to a high level of correlation. This, can provoke a false appearance of causality, the problem is known as \textbf{spurious regression}. For example, given the model:
+		\begin{center}
+			$y_t = \beta_0 + \beta_1 x_t + u_t$
+		\end{center}
+		where:
+		\begin{center}
+			$y_t = \alpha_0 + \alpha_1 Trend + e_t$
+			\\ $x_t = \gamma_0 + \gamma_1 Trend + v_t$
+		\end{center}
+		Adding a trend to the model can solve the problem:
+		\begin{center}
+			$y_t = \beta_0 + \beta_1 x_t + \beta_2 Trend + u_t$
+		\end{center}
+		The trend can be linear or non-linear (quadratic, cubic, etc.)
+	\subsection*{Seasionallity}
+		A time series with a frequency higher than a year (CORREGIR), like, quarterly, monthly, weekly, ..., can manifest seasionallity. That is, the series are subject to a seasonal pattern. For ex: the GDP is usually higher in summer and lower in winter.
 		\begin{tikzpicture}[scale=0.15]
 			\draw[step=2, gray, very thin] (-10,-10) grid (10,10); % background grid
 			\draw[thick, <->] (-10,10) node[anchor=south] {$y$} -- (-10,-10) -- (10,-10) node[anchor=north] {$t$}; %axis
-			\draw[red, thick] plot [domain=-10:10] (\x,{1 + 0.5 * \x}); % regression line
-			\draw[smooth] plot [domain=-8:8, samples=100] (\x,{rnd * 5 - 1.5 + 0.5 * \x}); % data points
-			\draw (-9.3,-9.6) -- (-9.5,-9.6) -- (-9.5,-4.3) -- (-9.3, -4.3) node[anchor=north west] {$\beta_0$}; % beta0
-			\draw (-2,0) -- (1.5,0) arc (0:25:3.5); % beta1 arc
-			\draw (3,-0.5) node {$\beta_1$}; % beta1
+			\draw[red, thick] plot [domain=-10:10] (\x,{-0.19 + 0.66 * \x}); % regression line
+			\draw (-8,-7.2061) -- (-7.5676,-5.1908) -- (-7.1351,-8) -- (-6.7027,-2.3817) -- (-6.2703,-3.9695) -- (-5.8378,-1.1603) -- (-5.4054,-4.5802) -- (-4.973,0.855) -- (-4.5405,-1.5267) -- (-4.1081,-0.3053) -- (-3.6757,-4.5191) -- (-3.2432,-0.4885) -- (-2.8108,-2.3206) -- (-2.3784,-0.4275) -- (-1.9459,-4.2137) -- (-1.5135,0.3664) -- (-1.0811,-1.7099) -- (-0.6486,-0.5496) -- (-0.2162,-4.3969) -- (0.2162,1.0992) -- (0.6486,-1.0382) -- (1.0811,1.2824) -- (1.5135,-2.8702) -- (1.9459,1.7099) -- (2.3784,-1.0382) -- (2.8108,1.5267) -- (3.2432,-1.8321) -- (3.6757,3.3588) -- (4.1081,1.0992) -- (4.5405,4.2137) -- (4.973,0.916) -- (5.4054,6.2901) -- (5.8378,4.3969) -- (6.2703,6.5954) -- (6.7027,3.4198) -- (7.1351,8) -- (7.5676,6.1069) -- (8,6.9008);
 		\end{tikzpicture}
-		\\ Equation:\\ $y_t = \beta_0 + \beta_1 x_{1t} + \beta_2 x_{2t} u_t$
-		\\ Matriciial solution: $\hat{\beta} = (X^T X)^{-1} (X^T y)$
-	\subsection*{Interpretation of coefficients}
-		\scalebox{0.872}{ % scale the table to fit in the column
-		\begin{tabular}{ c c c c }
-			Model & Dependent & Independent & $\beta_1$ interpretation \\
-			\hline
-			Level-level & $y$ & $x$ & $\Delta y = \beta_1 \Delta x$ \\ 
-			Level-log & $y$ & $log(x)$ & $\Delta y = (\beta_1/100) \% \Delta x$ \\  
-			Log-level & $log(y)$ & $x$ & $\% \Delta y = (100 \beta_1) \Delta x$ \\
-			Log-log & $log(y)$ & $log(x)$ & $\% \Delta y = \beta_1 \% \Delta x$ \\
-			Quadratic & $y$ & $x + x^2$ & $\Delta y = (\beta_1 + 2 \beta_2 x) \Delta x$ \\
-		\end{tabular}
-		}
-	\subsection*{Error measures}
-		Sum of Sq. Resid.: \hfill $SSR = \sum_{i=1}^n \hat{u}_i^2 = \sum_{i=1}^n (y_i - \hat{y}_i)^2$
-		\\ Expl. Sum of Sq.: \hfill $SSE = \sum_{i=1}^n (\hat{y}_i - \overline{y})^2$
-		\\ Tot. Sum of Sq.: \hfill $SST = SSE + SSR = \sum_{i=1}^n (y_i - \overline{y})^2$
-		\\ Standard Error of the Regression: \hfill $\hat{\sigma} = \sqrt{\frac{SSR}{n-k-1}}$
-		\\ Standard Error of the $\hat{\beta}$'s: \hfill $se(\hat{\beta}) = \hat{\sigma} \sqrt{(X^T X)^{-1}}$
-		\\ Sqrt. of the Quadratic Mean Error: \hfill $\sqrt{\frac{\sum_{i=1}^n (\hat{u}_i - \overline{u})^2}{n}}$
-		\\ Absolute Mean Error: \hfill $\frac{\sum_{i=1}^n |\hat{u}_i|}{n}$
-		\\ Mean Percentage Error: \hfill $\frac{\sum_{i=1}^n |\hat{u}_i / y_i|}{n} \times 100$
+		\\ Solution: seasonal adjustment.
+		\\ Solution 1: stational binary variables. For example, quarterly series:
+		\\ $y_t = \beta_0 + \beta_1 Q2_t + \beta_2 Q3_t + \beta_3 Q4_t + \beta_4 x_{1t} + ... + \beta_k x_{kt} + u_t$
+		\\ Or $y_t = \beta_0 + \beta_1 Q2_t + \beta_2 Q3_t + \beta_3 Q4_t  + u_t$, and then $new y_t = \beta_0 + \beta_1 x_{1t} + ... + \beta_k x_{kt} + u_t$
 
 \columnbreak
 
-\section*{R-squared}
-	Is a \textbf{measure of the goodness of the fit}, Measures the \textbf{percentage of variation of $y$ that is linearly explained by the variations of $x$'s}:
-	\begin{center}
-		$R^2 = \frac{SSE}{SST} = 1 - \frac{SSR}{SST}$
-	\end{center}
-	There is a version corrected by deggrees of freedom (adjusted r-squared):
-	\begin{center}
-		$\overline{R}^2 = 1 - \frac{n-1}{n-k-1} \frac{SSR}{SST} = 1 - \frac{n-1}{n-k-1} (1-R^2)$
-	\end{center}
-	For big sample sizes: $\overline{R}^2 \approx R^2$
-	\\ In time series context, r-squared tends to be very high. Although, it can be artificial (cointegration).
-	\subsection*{The F contrast}
-		Under $H_0$:
-		\begin{center}
-			$F = \frac{SSR_r - SSR_{nr}}{SSR_{nr}} \frac{(n-k_{nr}-1)}{q} \sim F_{q, n-k_{nr}-1}$
-		\end{center}
-		Where $k_{nr}$ is the number of parameters of the non restricted model and $q$ is the number of linear hypothesis tested.
-		\\ If $F_{q, n-k_{nr}-1} < F$, there is evidence to reject the null hypothesis.
+\section*{Stationarity (estacionariedad)}
+	Strong exogeneity  is violated in static models and lag models (modelos de rezagos distribuidos).
+	\subsection*{Series de tiempo estacionarias y no estacionarias}
+		\begin{itemize}[leftmargin=*]
+			\item Stationary process - is the one in that the probability distribution are stable in time. If any collection of random variables are taken, and are shifted $h$ periods. The joint probability distribution should be inaltered.
+			\item Non stationary process - for example, a series with trend, at least the mean change with the time (at least). IF THE MEAN IS CONSTANT, STRONG STATIONARITY.
+			\\ IF ONLY THE COVARIANCE IS CONSTANT, $Cov(x_t, x_{t+h}$
+		\end{itemize}
 
 \section*{Dummy variables and structural change in time series}
 	Dummy (or binary) variables are used for qualitative information like sex, civil state, country, etc.
