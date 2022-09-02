@@ -37,13 +37,15 @@
 % -----document-----
 \begin{document}
 
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Version ts0.2-en - github.com/marcelomijas/econometrics-cheatsheet}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Version ts0.3-en - github.com/marcelomijas/econometrics-cheatsheet}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
 
 \begin{center}
-	\textbf{\LARGE \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Time Series Cheat Sheet}} \\ {\footnotesize By Marcelo Moreno - King Juan Carlos University} \\ {\footnotesize As part of the Econometrics Cheat Sheet Project}
+	\textbf{\LARGE \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Time Series Cheat Sheet}}
+	\\ {\footnotesize By Marcelo Moreno - King Juan Carlos University} 
+	\\ {\footnotesize As part of the Econometrics Cheat Sheet Project}
 \end{center}
 
 \colorbox{yellow}{THIS IS A WORK IN PROGRESS}
@@ -121,7 +123,7 @@
 
 \section*{Trends and seasonality}
 	\subsection*{Trends}
-		Two time series can have the same (or contrary) trend, that should lend to a high level of correlation. This, can provoke a false appearance of causality, the problem is known as \textbf{spurious regression}. For example, given the model:
+		Two time series can have the same (or contrary) trend, that should lend to a high level of correlation. This, can provoke a false appearance of causality, the problem is in what is known as \textbf{spurious regression} (the non-fulfillment of ts3). For example, given the model:
 		\begin{center}
 			$y_t = \beta_0 + \beta_1 x_t + u_t$
 		\end{center}
@@ -134,30 +136,71 @@
 		\begin{center}
 			$y_t = \beta_0 + \beta_1 x_t + \beta_2 Trend + u_t$
 		\end{center}
-		The trend can be linear or non-linear (quadratic, cubic, etc.)
-	\subsection*{Seasionallity}
-		A time series with a frequency higher than a year (CORREGIR), like, quarterly, monthly, weekly, ..., can manifest seasionallity. That is, the series are subject to a seasonal pattern. For ex: the GDP is usually higher in summer and lower in winter.
-		\begin{tikzpicture}[scale=0.15]
-			\draw[step=2, gray, very thin] (-10,-10) grid (10,10); % background grid
-			\draw[thick, <->] (-10,10) node[anchor=south] {$y$} -- (-10,-10) -- (10,-10) node[anchor=north] {$t$}; %axis
-			\draw[red, thick] plot [domain=-10:10] (\x,{-0.19 + 0.66 * \x}); % regression line
-			\draw (-8,-7.2061) -- (-7.5676,-5.1908) -- (-7.1351,-8) -- (-6.7027,-2.3817) -- (-6.2703,-3.9695) -- (-5.8378,-1.1603) -- (-5.4054,-4.5802) -- (-4.973,0.855) -- (-4.5405,-1.5267) -- (-4.1081,-0.3053) -- (-3.6757,-4.5191) -- (-3.2432,-0.4885) -- (-2.8108,-2.3206) -- (-2.3784,-0.4275) -- (-1.9459,-4.2137) -- (-1.5135,0.3664) -- (-1.0811,-1.7099) -- (-0.6486,-0.5496) -- (-0.2162,-4.3969) -- (0.2162,1.0992) -- (0.6486,-1.0382) -- (1.0811,1.2824) -- (1.5135,-2.8702) -- (1.9459,1.7099) -- (2.3784,-1.0382) -- (2.8108,1.5267) -- (3.2432,-1.8321) -- (3.6757,3.3588) -- (4.1081,1.0992) -- (4.5405,4.2137) -- (4.973,0.916) -- (5.4054,6.2901) -- (5.8378,4.3969) -- (6.2703,6.5954) -- (6.7027,3.4198) -- (7.1351,8) -- (7.5676,6.1069) -- (8,6.9008);
-		\end{tikzpicture}
-		\\ Solution: seasonal adjustment.
-		\\ Solution 1: stational binary variables. For example, quarterly series:
-		\\ $y_t = \beta_0 + \beta_1 Q2_t + \beta_2 Q3_t + \beta_3 Q4_t + \beta_4 x_{1t} + ... + \beta_k x_{kt} + u_t$
-		\\ Or $y_t = \beta_0 + \beta_1 Q2_t + \beta_2 Q3_t + \beta_3 Q4_t  + u_t$, and then $new y_t = \beta_0 + \beta_1 x_{1t} + ... + \beta_k x_{kt} + u_t$
-
+		The trend can be linear or non-linear (quadratic, cubic, exponential, etc.)
+	\subsection*{Seasionality}
+		\setlength{\multicolsep}{0pt} % reduce vertical spacing betwen subsection and multicols
+		\begin{multicols}{2} % set columns to 2
+		A time series with can manifest seasionality. That is, the series is subject to a seasonal variations or pattern, usually related to climatology conditions.
+		\\ For example, the GDP is usually higher in summer and lower in winter.
+		\columnbreak
+			\begin{tikzpicture}[scale=0.18]
+				\draw[step=2, gray, very thin] (-10,-10) grid (10,10); % background grid
+				\draw[thick, <->] (-10,10) node[anchor=south] {$y$} -- (-10,-10) -- (10,-10) node[anchor=north] {$t$}; %axis
+				\draw[red, thick] plot [domain=-10:10] (\x,{-0.19 + 0.66 * \x}); % regression line
+				\draw (-8,-7.2061) -- (-7.5676,-5.1908) -- (-7.1351,-8) -- (-6.7027,-2.3817) -- (-6.2703,-3.9695) -- (-5.8378,-1.1603) -- (-5.4054,-4.5802) -- (-4.973,0.855) -- (-4.5405,-1.5267) -- (-4.1081,-0.3053) -- (-3.6757,-4.5191) -- (-3.2432,-0.4885) -- (-2.8108,-2.3206) -- (-2.3784,-0.4275) -- (-1.9459,-4.2137) -- (-1.5135,0.3664) -- (-1.0811,-1.7099) -- (-0.6486,-0.5496) -- (-0.2162,-4.3969) -- (0.2162,1.0992) -- (0.6486,-1.0382) -- (1.0811,1.2824) -- (1.5135,-2.8702) -- (1.9459,1.7099) -- (2.3784,-1.0382) -- (2.8108,1.5267) -- (3.2432,-1.8321) -- (3.6757,3.3588) -- (4.1081,1.0992) -- (4.5405,4.2137) -- (4.973,0.916) -- (5.4054,6.2901) -- (5.8378,4.3969) -- (6.2703,6.5954) -- (6.7027,3.4198) -- (7.1351,8) -- (7.5676,6.1069) -- (8,6.9008);
+			\end{tikzpicture}
+		\end{multicols}
+		This problem is part of what is known as \textbf{spurious regression} (the non-fulfillment of ts3). A seasonal adjustment can solve the problem.
+		\\ A simple seasonal adjustment could be creating stational binary variables and adding them to the model. For example, for quarterly series:
+		\begin{center}
+			$y_t = \beta_0 + \beta_1 Q2_t + \beta_2 Q3_t + \beta_3 Q4_t + \beta_4 x_{1t} + ... + \beta_k x_{kt} + u_t$
+		\end{center}
+		Another way is to seasonaly adjust (sa) the variables, and then, do the regression with the final regression:
+		\begin{center}
+			$z_t = \beta_0 + \beta_1 Q2_t + \beta_2 Q3_t + \beta_3 Q4_t  + e_t \rightarrow (sa)\tilde{e}_t = (sa)\tilde{z}_t$
+			$(sa)\tilde{y}_t = \beta_0 + \beta_1 (sa)\tilde{x}_{1t} + ... + \beta_k (sa)\tilde{x}_{kt} + u_t$
+		\end{center}
+		There are much better and complex methods to seasonaly adjust a time series.
+		
 \columnbreak
 
-\section*{Stationarity (estacionariedad)}
-	Strong exogeneity  is violated in static models and lag models (modelos de rezagos distribuidos).
-	\subsection*{Series de tiempo estacionarias y no estacionarias}
+\section*{Stationarity}
+	Strong exogeneity is violated in static models and distributed-lag models.
+	\subsection*{Stationary and non-stationary process}
 		\begin{itemize}[leftmargin=*]
-			\item Stationary process - is the one in that the probability distribution are stable in time. If any collection of random variables are taken, and are shifted $h$ periods. The joint probability distribution should be inaltered.
-			\item Non stationary process - for example, a series with trend, at least the mean change with the time (at least). IF THE MEAN IS CONSTANT, STRONG STATIONARITY.
-			\\ IF ONLY THE COVARIANCE IS CONSTANT, $Cov(x_t, x_{t+h}$
+			\item Stationary process - is the one in that the probability distribution are stable in time. If any collection of random variables are taken, and are shifted $h$ periods, the joint probability distribution should be inaltered.
+			\begin{itemize}[leftmargin=*]
+				\item Strong stationarity - if the mean is constant in time.
+				\item Weak stationarity - $Cov(x_t, x_{x+h})$ only depends on $h$, not of $t$.
+			\end{itemize}
+			\item Non-stationary process - for example, a series with trend, at least the mean change with the time (at least).
 		\end{itemize}
+		Stationarity is good, $\beta_j$ stand unchanged in time.
+
+\section*{Weak-dependent time series}
+	How close the relationship between $x_t$ and $x_{t+h}$ is as the temporal distance between the series increases ($h$).  (it is good, can achieve Central Limit Theorem). It is different from the concept of stationarity.
+	\\ Weak dependence: when $x_t$ and $x_{t+h}$ are almost independent as $h$ increases to infinity.
+	\\ When $Corr(x_t, x_{t+h}) \rightarrow$ 0 when h $\rightarrow infinity$	
+
+
+\section*{Moving average process order 1}
+	MA(1)
+	\\ iid (independent and identically distributed)
+	\\ $x_t = e_t + \alpha_1 e_{t-1}$ , $t=1,2,...,T$
+	\\ is stationary and weak-dependent
+	
+\section*{Auto-regressive process order 1}
+	AR(1)
+	\\ iid
+	\\ $y_t = \rho_1 y_{t-1} + u_t$
+	\\ If $|\rho_1|<1$ in AR(1)
+	\\ stable process
+	\\ is stationary and weak dependent
+	\\
+	\\
+	\\ A series with a trend cannot be stationary, but can be weak dependent (and OK if the model have included a Trend variable)
+	
+\columnbreak
 
 \section*{Dummy variables and structural change in time series}
 	Dummy (or binary) variables are used for qualitative information like sex, civil state, country, etc.
@@ -173,7 +216,7 @@
 			\item \textbf{On the intercept ($\beta_0$)} - represents the mean difference between the values produced by the structural change.
 			\item \textbf{On the parameters that determines the slope of the regression line ($\beta_j$)} - represents the effect (slope) difference between the values produced by the structural change.
 		\end{itemize}
-		\textbf{The Chow's structural contrast} - when we want to analyze the existence of structural changes in all the model parameters, it is common to use a particular expression of the F contrast known as the Chow's contrast, where the null hypothesis is: $H_0: \text{No structural change}$
+		\textbf{The Chow's structural contrast} - when we want to analyze the existence of structural changes in all the model parameters, it is common to use a particular expression of the F contrast known as the Chow's contrast, where the null hypothesis is: $H_0: \text{No structural change}$ (non-asymptotic correlation)
 
 \section*{Predictions}
 	Two types of prediction:
@@ -182,8 +225,6 @@
 		\item Of an individual value of $y$ for a specific value of $x$.
 	\end{itemize}
 	If the values of the variables ($x$) approximate to the mean values ($\overline{x}$), the confidence interval amplitude of the prediction will be shorter. 
-
-\columnbreak
 
 \section*{Heteroscedasticity in time series}
 	The residuals $u_i$ of the population regression function do not have the same variance $\sigma^2$:
@@ -244,8 +285,6 @@
 			\end{itemize}
 			\item Make a new model specification, for example, logarithmic transformation.
 		\end{itemize}
-
-\columnbreak
 
 \section*{Auto-correlation}
 	The residual of any observation, $u_t$, is correlated with the residual of any other observation. The observations are not independent.
@@ -317,8 +356,6 @@
 		\end{itemize}
 
 \section*{Endogeneity}
-
-\section*{Instrumental Variables Methods}
 
 \end{multicols}
 
