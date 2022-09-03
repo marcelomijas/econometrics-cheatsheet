@@ -37,7 +37,7 @@
 % -----document-----
 \begin{document}
 
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Version ts0.3-en - github.com/marcelomijas/econometrics-cheatsheet}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Version ts0.5-en - github.com/marcelomijas/econometrics-cheatsheet}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
@@ -129,7 +129,7 @@
 		\end{center}
 		where:
 		\begin{center}
-			$y_t = \alpha_0 + \alpha_1 Trend + e_t$
+			$y_t = \alpha_0 + \alpha_1 Trend + v_t$
 			\\ $x_t = \gamma_0 + \gamma_1 Trend + v_t$
 		\end{center}
 		Adding a trend to the model can solve the problem:
@@ -157,66 +157,72 @@
 		\end{center}
 		Another way is to seasonaly adjust (sa) the variables, and then, do the regression with the final regression:
 		\begin{center}
-			$z_t = \beta_0 + \beta_1 Q2_t + \beta_2 Q3_t + \beta_3 Q4_t  + e_t \rightarrow (sa)\tilde{e}_t = (sa)\tilde{z}_t$
+			$z_t = \beta_0 + \beta_1 Q2_t + \beta_2 Q3_t + \beta_3 Q4_t  + v_t \rightarrow (sa)\tilde{v}_t = (sa)\tilde{z}_t$
 			$(sa)\tilde{y}_t = \beta_0 + \beta_1 (sa)\tilde{x}_{1t} + ... + \beta_k (sa)\tilde{x}_{kt} + u_t$
 		\end{center}
 		There are much better and complex methods to seasonaly adjust a time series.
 		
 \columnbreak
 
-\section*{Stationarity}
-	Strong exogeneity is violated in static models and distributed-lag models.
+\section*{Stationarity and weak dependence}
+	Stationarity means stability of the joints distributions of a process as time progresses. It allows to correctly identify the relations --that stay unchange with time-- between variables.
 	\subsection*{Stationary and non-stationary process}
 		\begin{itemize}[leftmargin=*]
-			\item Stationary process - is the one in that the probability distribution are stable in time. If any collection of random variables are taken, and are shifted $h$ periods, the joint probability distribution should be inaltered.
+			\item \textbf{Stationary process} (strong stationarity) - is the one in that the probability distribution are stable in time: if any collection of random variables is taken, and then are shifted $h$ periods, the joint probability distribution should stay unchanged.
+			\item \textbf{Non-stationary process} - is, for example, a series with trend, where at least the mean changes with the time.
+			\item \textbf{Covariance stationary process} - is a weaker form of stationarity:
 			\begin{itemize}[leftmargin=*]
-				\item Strong stationarity - if the mean is constant in time.
-				\item Weak stationarity - $Cov(x_t, x_{x+h})$ only depends on $h$, not of $t$.
+			 	\item $E(x_t)$ is constant.
+			 	\item $Var(x_t)$ is constant.
+			 	\item For any $t$,  $h \geq 1$, the $Cov(x_t, x_{t+h})$ depends only of $h$, not of $t$.
 			\end{itemize}
-			\item Non-stationary process - for example, a series with trend, at least the mean change with the time (at least).
 		\end{itemize}
-		Stationarity is good, $\beta_j$ stand unchanged in time.
-
-\section*{Weak-dependent time series}
-	How close the relationship between $x_t$ and $x_{t+h}$ is as the temporal distance between the series increases ($h$).  (it is good, can achieve Central Limit Theorem). It is different from the concept of stationarity.
-	\\ Weak dependence: when $x_t$ and $x_{t+h}$ are almost independent as $h$ increases to infinity.
-	\\ When $Corr(x_t, x_{t+h}) \rightarrow$ 0 when h $\rightarrow infinity$	
-
-
-\section*{Moving average process order 1}
-	MA(1)
-	\\ iid (independent and identically distributed)
-	\\ $x_t = e_t + \alpha_1 e_{t-1}$ , $t=1,2,...,T$
-	\\ is stationary and weak-dependent
-	
-\section*{Auto-regressive process order 1}
-	AR(1)
-	\\ iid
-	\\ $y_t = \rho_1 y_{t-1} + u_t$
-	\\ If $|\rho_1|<1$ in AR(1)
-	\\ stable process
-	\\ is stationary and weak dependent
-	\\
-	\\
-	\\ A series with a trend cannot be stationary, but can be weak dependent (and OK if the model have included a Trend variable)
-	
-\columnbreak
-
-\section*{Dummy variables and structural change in time series}
-	Dummy (or binary) variables are used for qualitative information like sex, civil state, country, etc.
-	\begin{itemize}[leftmargin=*]
-		\item Get the \textbf{value of 1 in a given category, and 0 on the rest}.
-		\item Are used to analyze and modeling \textbf{structural changes} in the model parameters.
-	\end{itemize}
-	If a qualitative variable have $m$ categories, we only have to include ($m-1$) dummy variables.
-	\subsection*{Structural change}
-		Structural change refers to changes in the values of the parameters of the econometric model produced by the effect of different sub-populations. Structural change can be included in the model through dummy variables.
-		\\ The position of the dummy variable matters:
+	\subsection*{Weak dependence time series}
+		It is important because it replaces the random sampling assumption, giving for granted the validity of the central limit theorem (requires stationality and a form of weak dependence). Weakly dependent process are known also as integrated of order zero, I(0).
 		\begin{itemize}[leftmargin=*]
-			\item \textbf{On the intercept ($\beta_0$)} - represents the mean difference between the values produced by the structural change.
-			\item \textbf{On the parameters that determines the slope of the regression line ($\beta_j$)} - represents the effect (slope) difference between the values produced by the structural change.
+			\item \textbf{Weak dependence} - restricts how close the relationship between $x_t$ and $x_{t+h}$ can be as the time distance between the series increases ($h$).
 		\end{itemize}
-		\textbf{The Chow's structural contrast} - when we want to analyze the existence of structural changes in all the model parameters, it is common to use a particular expression of the F contrast known as the Chow's contrast, where the null hypothesis is: $H_0: \text{No structural change}$ (non-asymptotic correlation)
+		A stationary time process $\lbrace x_t: t = 1, 2, ..., T \rbrace$ is weakly dependent when $x_t$ and $x_{t+h}$ are almost independent as $h$ increases without a limit.
+		\\ A covariance stationary time process is weakly dependent if the correlation between $x_t$ and $x_{t+h}$ tends to $0$ fast enough when $h \rightarrow \infty$ (they are not asymptotically correlated).
+		\\ Some examples of stationary and weakly dependent time series are:
+		\begin{itemize}[leftmargin=*]
+			\item Moving average - $\lbrace x_t \rbrace$ is a moving average of order one MA(1).
+			\begin{center}
+				$x_t = e_t + \alpha_1 e_{t-1}$
+			\end{center}
+			where $\lbrace e_t: t = 0, 1, ..., T \rbrace$ is an independent and indentically distributed (iid) sequence with zero mean and $\sigma^2_e$ variance. 
+			\item Auto-regressive process - $\lbrace y_t \rbrace$ is a auto-regressive process of order one AR(1).
+			\begin{center}
+				$y_t = \rho_1 y_{t-1} + e_t$
+			\end{center}
+			where $\lbrace e_t: t = 0, 1, ..., T \rbrace$ is an independent and indentically distributed (iid) sequence with zero mean and $\sigma^2_e$ variance.		
+		\\ If $|\rho_1|<1$, then $\lbrace y_t \rbrace$ is an AR(1) stable process that is weakly dependent. It is stationary in covariance, $Corr(y_t, y_{t+1}) = \rho_1$.
+		\end{itemize}
+	A series with a trend cannot be stationary, but can be weak dependent (and stationary if the series is de-trended).
+	
+	\subsection*{Strong dependence time series}
+		Most of the time, economics series are strong dependent (or high persistent in time).
+		\begin{itemize}[leftmargin=*]
+			\item Random walk -	For example, an AR(1) process with $\rho_1 = 1$. That is:
+			\begin{center}
+				$y_t = y_{t-1} + e_t$
+			\end{center}
+			where: $\lbrace e_t : t = 1, 2, ..., T \rbrace$ is iid with mean 0 and variance $\sigma^2_e$. This is a random walk ($e_t$ iid is the reason), is a special case of unit root process. It is not stationary, is persistant. Corr depends of the starting point, t.
+			\item Random walk with a drift - $\rho_1 = 1$
+			\begin{center}
+				$y_t = \alpha_0 y_{t-1} + e_t$
+			\end{center}
+			where: $\lbrace e_t : t = 1, 2, ..., T \rbrace$ is iid with mean 0 and variance $\sigma^2_e$. This is a random walk ($e_t$ iid is the reason), is a special case of unit root process. It is not stationary, is persistant
+		\end{itemize}
+
+	\subsection*{Transforming unit root to weak dependent}
+		Weak dependent process, integrated of order 0 (I(0)), is ok. Unit root process: random walk and random walk with drift are I(1). The first difference of the process is weakly dependent (and usually, stationary).
+		\begin{center}
+			$\Delta y_t = y_t - y_{t-1} = e_t$
+		\end{center}
+		where: $\Delta y_t$  is iid
+
+\columnbreak
 
 \section*{Predictions}
 	Two types of prediction:
