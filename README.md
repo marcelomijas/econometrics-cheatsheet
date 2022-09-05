@@ -35,7 +35,7 @@ Econometrics cheat sheet created using $\LaTeX$ with a summarized review of:
 
 - [ ] Release of an Spanish version of `time-series-cheatsheet`.
 
-- [ ] Expansion and restructuring of the Econometrics Cheat Sheet Project in three documents: one introductory and concise summary of basic econometrics (Econometrics Cheat Sheet), one dedicated to the most common problems in econometrics (Econometrics Problems Cheat Sheet) and one dedicated to time series in econometrics (Time Series Cheat Sheet). The max lenght of each one will be two pages.
+- [ ] Expansion and restructuring of the Econometrics Cheat Sheet Project in three documents: one introductory and concise summary of basic econometrics (Econometrics Cheat Sheet), one dedicated to the most common problems in econometrics (Econometrics Problems Cheat Sheet) and one dedicated to time series in econometrics (Time Series Cheat Sheet).
 
 :question: Syled version of the cheat sheets (background colors, styled sections, more appealing plots, etc.)
 
