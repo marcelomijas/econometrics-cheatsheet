@@ -12,12 +12,6 @@
 \usepackage{scrlayer-scrpage} % page foot
 \usepackage[compact]{titlesec} % titles spacing
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%% WATERMARK (NOT PERMANENT...) %%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{draftwatermark}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 % -----page customization-----
 \geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} % margins configuration
 \pagenumbering{gobble} % remove page numeration
@@ -27,17 +21,10 @@
 \titlespacing{\subsection}{0pt}{1ex}{0ex}
 \titlespacing{\subsubsection}{0pt}{0.5ex}{0ex}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%% WATERMARK PROPERTIES %%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\SetWatermarkText{DRAFT}
-\SetWatermarkScale{3}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 % -----document-----
 \begin{document}
 
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Version ts0.5-en - github.com/marcelomijas/econometrics-cheatsheet}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Version ts0.7-en - github.com/marcelomijas/econometrics-cheatsheet}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
@@ -49,7 +36,7 @@
 \end{center}
 
 \colorbox{yellow}{THIS IS A WORK IN PROGRESS}
-\\ \colorbox{yellow}{NOT INTENDEND FOR GENEAL PURPOSE}
+\\ \colorbox{yellow}{NOT INTENDED FOR GENERAL PURPOSE YET}
 
 \section*{Basic concepts}
 	\subsection*{Definitions}
@@ -107,7 +94,7 @@
 			\end{enumerate}
 			\item \textbf{Homoscedasticity}. The variability of the residuals is the same for any $t$: $Var(u_t | x_{1t}, ..., x_{kt}) = \sigma^2$
 			\item \textbf{No auto-correlation}. The residuals do not contain information about other residuals: $Corr(u_t, u_s | x) = 0$ for any given $t \neq s$.
-			\item \textbf{Normality}. The residuals are independent and identically distributed: $u \sim N(0,\sigma^2)$
+			\item \textbf{Normality}. The residuals are independent and identically distributed (\textbf{i.i.d.} so on): $u \sim N(0,\sigma^2)$
 			\item \textbf{Data size}. The number of observations available must be greater than $(k + 1)$ parameters to estimate. (IS already satisfied under asymptotic situations)
 		\end{enumerate}	
 	\subsection*{Asymptotic properties of OLS}
@@ -178,7 +165,7 @@
 			\end{itemize}
 		\end{itemize}
 	\subsection*{Weak dependence time series}
-		It is important because it replaces the random sampling assumption, giving for granted the validity of the central limit theorem (requires stationality and a form of weak dependence). Weakly dependent process are known also as integrated of order zero, I(0).
+		It is important because it replaces the random sampling assumption, giving for granted the validity of the central limit theorem (requires stationality and a form of weak dependence). Weakly dependent process are \textbf{also known as integrated of order zero, I(0)}.
 		\begin{itemize}[leftmargin=*]
 			\item \textbf{Weak dependence} - restricts how close the relationship between $x_t$ and $x_{t+h}$ can be as the time distance between the series increases ($h$).
 		\end{itemize}
@@ -186,41 +173,43 @@
 		\\ A covariance stationary time process is weakly dependent if the correlation between $x_t$ and $x_{t+h}$ tends to $0$ fast enough when $h \rightarrow \infty$ (they are not asymptotically correlated).
 		\\ Some examples of stationary and weakly dependent time series are:
 		\begin{itemize}[leftmargin=*]
-			\item Moving average - $\lbrace x_t \rbrace$ is a moving average of order one MA(1).
+			\item \textbf{Moving average} - $\lbrace x_t \rbrace$ is a moving average of order one MA(1).
 			\begin{center}
 				$x_t = e_t + \alpha_1 e_{t-1}$
 			\end{center}
-			where $\lbrace e_t: t = 0, 1, ..., T \rbrace$ is an independent and indentically distributed (iid) sequence with zero mean and $\sigma^2_e$ variance. 
-			\item Auto-regressive process - $\lbrace y_t \rbrace$ is a auto-regressive process of order one AR(1).
+			where $\lbrace e_t: t = 0, 1, ..., T \rbrace$ is an \textsl{i.i.d.} sequence with zero mean and $\sigma^2_e$ variance. 
+			\item \textbf{Auto-regressive process} - $\lbrace y_t \rbrace$ is a auto-regressive process of order one AR(1).
 			\begin{center}
 				$y_t = \rho_1 y_{t-1} + e_t$
 			\end{center}
-			where $\lbrace e_t: t = 0, 1, ..., T \rbrace$ is an independent and indentically distributed (iid) sequence with zero mean and $\sigma^2_e$ variance.		
+			where $\lbrace e_t: t = 0, 1, ..., T \rbrace$ is an \textsl{i.i.d.} sequence with zero mean and $\sigma^2_e$ variance.		
 		\\ If $|\rho_1|<1$, then $\lbrace y_t \rbrace$ is an AR(1) stable process that is weakly dependent. It is stationary in covariance, $Corr(y_t, y_{t+1}) = \rho_1$.
 		\end{itemize}
-	A series with a trend cannot be stationary, but can be weak dependent (and stationary if the series is de-trended).
+	A series with a trend cannot be stationary, but can be weakly dependent (and stationary if the series is de-trended).
 	
 	\subsection*{Strong dependence time series}
-		Most of the time, economics series are strong dependent (or high persistent in time).
+		Most of the time, economics series are strong dependent (or high persistent in time). Some special cases of unit root processes:
 		\begin{itemize}[leftmargin=*]
-			\item Random walk -	For example, an AR(1) process with $\rho_1 = 1$. That is:
+			\item \textbf{Random walk} - an AR(1) process with $\rho_1 = 1$.
 			\begin{center}
 				$y_t = y_{t-1} + e_t$
 			\end{center}
-			where: $\lbrace e_t : t = 1, 2, ..., T \rbrace$ is iid with mean 0 and variance $\sigma^2_e$. This is a random walk ($e_t$ iid is the reason), is a special case of unit root process. It is not stationary, is persistant. Corr depends of the starting point, t.
-			\item Random walk with a drift - $\rho_1 = 1$
+			where $\lbrace e_t : t = 1, 2, ..., T \rbrace$ is an \textsl{i.i.d.} sequence with zero mean and $\sigma^2_e$ variance.
+			\\ This is a random walk ($\lbrace e_t \rbrace$ \textsl{i.i.d.} is the reason). It is not stationary, is persistent.
+			\item \textbf{Random walk with a drift} - an AR(1) process with $\rho_1 = 1$ and a constant.
 			\begin{center}
-				$y_t = \alpha_0 y_{t-1} + e_t$
+				$y_t = \alpha_0 + y_{t-1} + e_t$
 			\end{center}
-			where: $\lbrace e_t : t = 1, 2, ..., T \rbrace$ is iid with mean 0 and variance $\sigma^2_e$. This is a random walk ($e_t$ iid is the reason), is a special case of unit root process. It is not stationary, is persistant
+			where $\lbrace e_t : t = 1, 2, ..., T \rbrace$ is an \textsl{i.i.d.} sequence with zero mean and $\sigma^2_e$ variance.
+			\\ This is a random walk ($\lbrace e_t \rbrace$ \textsl{i.i.d.} is the reason). It is not stationary, is persistent.
 		\end{itemize}
 
 	\subsection*{Transforming unit root to weak dependent}
-		Weak dependent process, integrated of order 0 (I(0)), is ok. Unit root process: random walk and random walk with drift are I(1). The first difference of the process is weakly dependent (and usually, stationary).
+		Unit root processes are integrated of order one, I(1). This means that the first difference of the process is weakly dependent (and usually, stationary). For example, a random walk:
 		\begin{center}
 			$\Delta y_t = y_t - y_{t-1} = e_t$
 		\end{center}
-		where: $\Delta y_t$  is iid
+		where $\lbrace e_t \rbrace = \lbrace \Delta y_t \rbrace$  is \textsl{i.i.d.}
 
 \columnbreak
 
