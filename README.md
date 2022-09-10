@@ -77,7 +77,7 @@ In addition to the notes taken from the [Degree in Economics by the King Juan Ca
 
 ## Support the project
 
-The first (and I think, **the best**) way to help the project is to directly support the authors of the manuals that are included in the resources section (for example, by buying their works). Each and every one of the authors of the manuals are wonderful minds who have contributed a lot to econometrics and statistics. 
+The first (and I think, **the best**) way to help the project is to **directly support the authors of the manuals that are included in the resources section** (for example, by buying their works). Each and every one of the authors of the manuals are wonderful minds who have contributed a lot to econometrics and statistics. 
 
 Another way is to support me directly. As a Ph.D. student, these days, mundane life is getting harder and harder, and for me *any donation is a step backwards from getting a student loan* or dropping studies.
 
