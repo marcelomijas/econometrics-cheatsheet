@@ -82,4 +82,4 @@ The first (and I think, **the best**) way to help the project is to directly sup
 Another way is to support me directly. As a Ph.D. student, these days, mundane life is getting harder and harder, and for me *any donation is a step backwards from getting a student loan* or dropping studies.
 
 * SOL address: `Enj2bTkHoat79MWJ8rYrkvvX3GEPHKA98WME2yW3ff2`
-* ETH address: `0x5Bc6287973D39EDfa4Da65Ec924CD7853791bD93`
+* ETH (ERC-20) address: `0x5Bc6287973D39EDfa4Da65Ec924CD7853791bD93`
