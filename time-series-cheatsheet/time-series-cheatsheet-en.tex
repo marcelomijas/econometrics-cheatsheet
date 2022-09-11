@@ -109,6 +109,7 @@
 		\end{itemize}
 
 \section*{Trends and seasonality}
+	\textbf{Spurious regression} - is when the relation between $y$ and $x$ is due to factors that affect $y$ and have correlation with $x$, $Corr(x, u) \neq 0$. 
 	\subsection*{Trends}
 		Two time series can have the same (or contrary) trend, that should lend to a high level of correlation. This, can provoke a false appearance of causality, the problem is in what is known as \textbf{spurious regression} (the non-fulfillment of ts3). For example, given the model:
 		\begin{center}
@@ -177,12 +178,12 @@
 			\begin{center}
 				$x_t = e_t + \alpha_1 e_{t-1}$
 			\end{center}
-			where $\lbrace e_t: t = 0, 1, ..., T \rbrace$ is an \textsl{i.i.d.} sequence with zero mean and $\sigma^2_e$ variance. 
+			where $\lbrace e_t: t = 0, 1, ..., T \rbrace$ is an \textsl{i.i.d.} sequence with zero mean and $\sigma^2_e$ variance.
 			\item \textbf{Auto-regressive process} - $\lbrace y_t \rbrace$ is a auto-regressive process of order one AR(1).
 			\begin{center}
 				$y_t = \rho_1 y_{t-1} + e_t$
 			\end{center}
-			where $\lbrace e_t: t = 0, 1, ..., T \rbrace$ is an \textsl{i.i.d.} sequence with zero mean and $\sigma^2_e$ variance.		
+			where $\lbrace e_t: t = 0, 1, ..., T \rbrace$ is an \textsl{i.i.d.} sequence with zero mean and $\sigma^2_e$ variance.
 		\\ If $|\rho_1|<1$, then $\lbrace y_t \rbrace$ is an AR(1) stable process that is weakly dependent. It is stationary in covariance, $Corr(y_t, y_{t+1}) = \rho_1$.
 		\end{itemize}
 	A series with a trend cannot be stationary, but can be weakly dependent (and stationary if the series is de-trended).
@@ -210,6 +211,23 @@
 			$\Delta y_t = y_t - y_{t-1} = e_t$
 		\end{center}
 		where $\lbrace e_t \rbrace = \lbrace \Delta y_t \rbrace$  is \textsl{i.i.d.}
+		\\ Usually, I(1) series are converted to logarithms in order to, getting the first difference to achieve weak dependence (and possibly stationarity), and obtain the (approx.) percentage change:
+		\begin{center}
+			$\Delta log(y_t) = log(y_t) - log(y_{t-1}) \approx (y_t - y_{t-1}) / y_{t-1}$
+		\end{center}
+		Getting the first difference of a series also deletes its trend.
+		[GRÁFICO]
+		
+	\subsection*{I(1) detection}
+		\begin{itemize}[leftmargin=*]
+			\item The approx. way: in a AR(1) model (if the series have a trend, is better to de-trend before measuring the AC). In a AR(1) model:
+			\begin{itemize}[leftmargin=*]
+				\item If $|\rho_1| < 1 \rightarrow I(0)$
+				\item If $|\rho_1| = 1 \rightarrow I(1)$
+				\item If $|\rho_1| > 1 \rightarrow try AR(2) and test$
+			\end{itemize}
+		\end{itemize}
+		
 
 \columnbreak
 
@@ -266,7 +284,6 @@
 			\end{multicols}
 			\item \textbf{Formal tests} - White, Bartlett, Breusch-Pagan, etc. Commonly, the null hypothesis: $H_0 = \text{Homoscedasticity}$
 		\end{itemize}
-		\textbf{DURBIN WATSON EXPLANATION AND GRAPHICAL ANALYSIS (AND MOST COMMON VALUES?)}
 
 	\subsection*{Correction}
 		\begin{itemize}[leftmargin=*]
@@ -339,6 +356,7 @@
 				\end{tikzpicture}
 			\end{multicols}
 			\item \textbf{Formal tests} - Durbin-Watson, Breusch-Godfrey, etc. Commonly, the null hypothesis: $H_0: \text{No auto-correlation}$
+			\textbf{DURBIN WATSON EXPLANATION AND GRAPHICAL ANALYSIS (AND MOST COMMON VALUES?)}
 		\end{itemize}
 	\subsection*{Correction}
 		\begin{itemize}[leftmargin=*]
@@ -349,8 +367,6 @@
 				\item If $\rho$ is not known, estimate it by -for example- the Cochrane-Orcutt method, create a quasi-differentiated model where $u_t$ is white noise and estimate it by OLS.
 			\end{itemize}
 		\end{itemize}
-
-\section*{Endogeneity}
 
 \end{multicols}
 
