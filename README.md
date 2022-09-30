@@ -17,17 +17,17 @@ Econometrics cheat sheet created using $\LaTeX$ with a summarized review of:
 
 **Econometrics Cheat Sheet**. Current version: `2.5` (last updated 30 sep. 2022)
 
-|              | PDF file                                                          | TeX file                                                            |
-| :----------: | :---------------------------------------------------------------: | :-----------------------------------------------------------------: |
-| English :uk: | [en.pdf](econometrics-cheatsheet/econometrics-cheatsheet-en.pdf)  | [en.tex](econometrics-cheatsheet/econometrics-cheatsheet-en.tex)    |
-| Spanish :es: | [es.pdf](econometrics-cheatsheet/econometrics-cheatsheet-es.pdf)  | [es.tex](econometrics-cheatsheet/econometrics-cheatsheet-es.tex)    |
+|              | PDF file                                                          | TeX file                                                          |
+| :----------: | :---------------------------------------------------------------: | :---------------------------------------------------------------: |
+| English :uk: | [en.pdf](econometrics-cheatsheet/econometrics-cheatsheet-en.pdf)  | [en.tex](econometrics-cheatsheet/econometrics-cheatsheet-en.tex)  |
+| Spanish :es: | [es.pdf](econometrics-cheatsheet/econometrics-cheatsheet-es.pdf)  | [es.tex](econometrics-cheatsheet/econometrics-cheatsheet-es.tex)  |
 
 **Time Series Cheat Sheet**. Current version: `1.0` (last updated 30 sep. 2022)
 
-|              | PDF file                                                          | TeX file                                                            |
-| :----------: | :---------------------------------------------------------------: | :-----------------------------------------------------------------: |
-| English :uk: | [en.pdf](time-series-cheatsheet/time-series--cheatsheet-en.pdf)   | [en.tex](time-series-cheatsheet/time-series--cheatsheet-en.tex)     |
-| Spanish :es: | work in progress                                                  | work in progress                                                    |
+|              | PDF file                                                        | TeX file                                                        |
+| :----------: | :-------------------------------------------------------------: | :-------------------------------------------------------------: |
+| English :uk: | [en.pdf](time-series-cheatsheet/time-series-cheatsheet-en.pdf)  | [en.tex](time-series-cheatsheet/time-series-cheatsheet-en.tex)  |
+| Spanish :es: | work in progress                                                | work in progress                                                |
 
 ## Roadmap
 
