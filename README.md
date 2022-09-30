@@ -9,37 +9,43 @@ Econometrics cheat sheet created using $\LaTeX$ with a summarized review of:
 * **Dummy variables and structural change**.
 * **Predictions**.
 * **Popular OLS problems** (multicollinearity, heteroscedasticity and auto-correlation): consequences, detection and correction.
+* **Time series** analysis and peculiarities.
 
 :bulb: Opinions, ideas and collaboration proposals are heard through GitHub or by email (marcelomijas@gmail.com). Also, my [LinkedIn](https://www.linkedin.com/in/marcelomorenop/).
 
 ### Download links
 
-**Econometrics Cheat Sheet**. Current version: `2.4` (last updated 23 sep. 2022)
+**Econometrics Cheat Sheet**. Current version: `2.5` (last updated 30 sep. 2022)
 
-|         | PDF file                                                          | TeX file                                                            |
-| :-----: | :---------------------------------------------------------------: | :-----------------------------------------------------------------: |
-| English | [en.pdf](econometrics-cheatsheet/econometrics-cheatsheet-en.pdf)  | [en.tex](econometrics-cheatsheet/econometrics-cheatsheet-en.tex)    |
-| Spanish | [es.pdf](econometrics-cheatsheet/econometrics-cheatsheet-es.pdf)  | [es.tex](econometrics-cheatsheet/econometrics-cheatsheet-es.tex)    |
+|              | PDF file                                                          | TeX file                                                            |
+| :----------: | :---------------------------------------------------------------: | :-----------------------------------------------------------------: |
+| English :uk: | [en.pdf](econometrics-cheatsheet/econometrics-cheatsheet-en.pdf)  | [en.tex](econometrics-cheatsheet/econometrics-cheatsheet-en.tex)    |
+| Spanish :es: | [es.pdf](econometrics-cheatsheet/econometrics-cheatsheet-es.pdf)  | [es.tex](econometrics-cheatsheet/econometrics-cheatsheet-es.tex)    |
+
+**Time Series Cheat Sheet**. Current version: `1.0` (last updated 30 sep. 2022)
+
+|              | PDF file                                                          | TeX file                                                            |
+| :----------: | :---------------------------------------------------------------: | :-----------------------------------------------------------------: |
+| English :uk: | [en.pdf](time-series-cheatsheet/time-series--cheatsheet-en.pdf)   | [en.tex](time-series-cheatsheet/time-series--cheatsheet-en.tex)     |
+| Spanish :es: | work in progress                                                  | work in progress                                                    |
 
 ## Roadmap
 
-- [x] Release of pages 1 and 2 of `econometrics-cheatsheet` covering basic concepts, assumptions and properties, OLS equations, and more. Version `1.0`
+- [x] Release of pages 1 and 2 of `econometrics-cheatsheet` covering basic concepts, assumptions and properties, OLS equations, and more.
 
-- [x] Release of page 3 of `econometrics-cheatsheet` covering popular OLS problems. Version `2.0`
+- [x] Release of page 3 of `econometrics-cheatsheet` covering popular OLS problems.
 
 - [x] Release of an Spanish version of `econometrics-cheatsheet`.
 
-- [ ] Release of a cheat cheet exclusively dedicated to time series in the context of econometrics (`time-series-cheatsheet`).
-
-     :warning: A work in progress preview can be found [here](time-series-cheatsheet/time-series-cheatsheet-en.pdf), feedback is welcome.
+- [x] Release of a cheat sheet exclusively dedicated to time series in the context of econometrics (`time-series-cheatsheet`).
 
 - [ ] Release of an Spanish version of `time-series-cheatsheet`.
 
-- [ ] Expansion and restructuring of the Econometrics Cheat Sheet Project in three documents: one introductory and concise summary of basic econometrics (Econometrics Cheat Sheet), one dedicated to the most common problems in econometrics (Econometrics Problems Cheat Sheet) and one dedicated to time series in econometrics (Time Series Cheat Sheet).
+- [ ] Release of a cheat sheet dedicated to the most common problems in econometrics (Econometrics Problems Cheat Sheet).
 
 :question: Syled version of the cheat sheets (background colors, styled sections, more appealing plots, etc.)
 
-## Frequently Asked Questions
+## Frequently Asked Questions (FAQ)
 
 ### What does $residualized$ $x_j$ means?
 
