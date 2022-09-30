@@ -25,7 +25,7 @@
 \begin{document}
 
 % page foot
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Version 2.4-en - github.com/marcelomijas/econometrics-cheatsheet}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Version 2.5-en - github.com/marcelomijas/econometrics-cheatsheet}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
@@ -98,7 +98,7 @@
 			\item Hold (1) to (4): OLS is \textbf{consistent}. $plim(\hat{\beta}_j) = \beta_j$ (to (4b) left out (4a), weak exogeneity, biased but consistent)
 			\item Hold (1) to (5): \textbf{asymptotic normality} of OLS (then, (7) is necessarily satisfied): $u \sim_a N(0,\sigma^2)$.
 			\item Hold (1) to (6): \textbf{unbiased estimate of $\sigma^2$}. $E(\hat{\sigma}^2) = \sigma^2$
-			\item Hold (1) to (6): OLS is \textcolor{blue}{BLUE} (Best Linear Unbiased Estimator) or \textbf{efficient}. 
+			\item Hold (1) to (6): OLS is \textcolor{blue}{\href{https://www.youtube.com/watch?v=68ugkg9RePc}{BLUE}} (Best Linear Unbiased Estimator) or \textbf{efficient}. 
 			\item Hold (1) to (7): hypothesis testing and confidence intervals can be done reliably.
 		\end{itemize}
 
@@ -216,14 +216,14 @@
 		\end{itemize}
 		\textbf{The rule is}: if the p-value is less than $\alpha$, there is evidence that, at a given $\alpha$, the null hypothesis is rejected (the alternative is accepted instead).
 	\subsection*{Individual contrasts}
-		Tests if a parameter is significantly different from a given value, $\theta$.
+		Tests if a parameter is significantly different from a given value, $\vartheta$.
 		\begin{itemize}[leftmargin=*]
-			\item $H_0: \beta_j = \theta$
-			\item $H_1: \beta_j \neq \theta$
+			\item $H_0: \beta_j = \vartheta$
+			\item $H_1: \beta_j \neq \vartheta$
 		\end{itemize}
 		Under $H_0$:
 		\begin{center}
-			$t = \frac{\hat{\beta}_j - \theta}{se(\hat{\beta}_j)} \sim t_{n-k-1, \alpha/2}$
+			$t = \frac{\hat{\beta}_j - \vartheta}{se(\hat{\beta}_j)} \sim t_{n-k-1, \alpha/2}$
 		\end{center}
 		If $\mid t \mid > t_{n-k-1, \alpha/2}$, there is evidence to reject the null hypothesis.
 		\\ \textbf{Individual significance test} - tests if a parameter is significantly \textbf{different from zero}.
@@ -370,7 +370,7 @@
 				\draw[thick, dashed, red, -latex] plot [domain=0:12] ({\x -9},{1.25 * \x - 7.2}); % upper red arrow
 			\end{tikzpicture}
 			\end{multicols}
-			\item \textbf{Formal tests} - White, Bartlett, Breusch-Pagan, etc. Commonly, the null hypothesis: $H_0 = \text{Homoscedasticity}$
+			\item \textbf{Formal tests} - White, Bartlett, Breusch-Pagan, etc. Commonly, the null hypothesis: $H_0$: Homoscedasticity.
 		\end{itemize}
 	\subsection*{Correction}
 		\begin{itemize}[leftmargin=*]
@@ -444,7 +444,7 @@
 					\draw[thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 - 0.5 * \x - 3}); % red arrow
 				\end{tikzpicture}
 			\end{multicols}
-			\item \textbf{Formal tests} - Durbin-Watson, Breusch-Godfrey, etc. Commonly, the null hypothesis: $H_0: \text{No auto-correlation}$
+			\item \textbf{Formal tests} - Durbin-Watson, Breusch-Godfrey, etc. Commonly, the null hypothesis: $H_0$: No auto-correlation.
 		\end{itemize}
 	\subsection*{Correction}
 		\begin{itemize}[leftmargin=*]

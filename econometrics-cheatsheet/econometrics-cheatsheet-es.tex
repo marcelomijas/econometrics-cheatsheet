@@ -25,7 +25,7 @@
 \begin{document}
 
 % page foot
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Versión 2.4-es - github.com/marcelomijas/econometrics-cheatsheet}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Versión 2.5-es - github.com/marcelomijas/econometrics-cheatsheet}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
@@ -98,7 +98,7 @@
 			\item De (1) a (4): MCO es \textbf{consistente}. $plim(\hat{\beta}_j) = \beta_j$ (a (4b) sin (4a), exogeneidad estricta, insesg. y consistente)
 			\item De (1) a (5): \textbf{normalidad asintótica} de MCO (entonces, (7) es necesariamente satisfecho): $u \sim_a N(0,\sigma^2)$.
 			\item De (1) a (6): \textbf{estimador insesgado de $\sigma^2$}. $E(\hat{\sigma}^2) = \sigma^2$
-			\item De (1) a (6): MCO es \textcolor{blue}{MELI} (Mejor Estimador Lineal Insesgado) ó \textbf{eficiente}. 
+			\item De (1) a (6): MCO es \textcolor{blue}{\href{https://www.youtube.com/watch?v=68ugkg9RePc}{MELI}} (Mejor Estimador Lineal Insesgado) ó \textbf{eficiente}. 
 			\item De (1) a (7): contrastes de hipótesis e intervalos de confianza son fiables.
 		\end{itemize}
 
@@ -216,14 +216,14 @@
 		\end{itemize}
 		\textbf{Regla general}: si el p-valor es menor que $\alpha$, existe evidencia para rechazar la hipótesis nula a ese determinado $\alpha$ (existe evidencia para aceptar la hipótesis alternativa).
 	\subsection*{Contrastes individuales}
-		Prueba si un parámetro es significativamente diferente de un cierto valor, $\theta$.
+		Prueba si un parámetro es significativamente diferente de un cierto valor, $\vartheta$.
 		\begin{itemize}[leftmargin=*]
-			\item $H_0: \beta_j = \theta$
-			\item $H_1: \beta_j \neq \theta$
+			\item $H_0: \beta_j = \vartheta$
+			\item $H_1: \beta_j \neq \vartheta$
 		\end{itemize}
 		Bajo $H_0$:
 		\begin{center}
-			$t = \frac{\hat{\beta}_j - \theta}{ee(\hat{\beta}_j)} \sim t_{n-k-1, \alpha/2}$
+			$t = \frac{\hat{\beta}_j - \vartheta}{ee(\hat{\beta}_j)} \sim t_{n-k-1, \alpha/2}$
 		\end{center}
 		Si $\mid t \mid > t_{n-k-1, \alpha/2}$, existe evidencia para rechazar la hipótesis nula.
 		\\ \textbf{Contraste de significación individual} - prueba si un parámetro es \textbf{significativamente distinto de cero}.
@@ -370,7 +370,7 @@
 				\draw[thick, dashed, red, -latex] plot [domain=0:12] ({\x -9},{1.25 * \x - 7.2}); % upper red arrow
 			\end{tikzpicture}
 			\end{multicols}
-			\item \textbf{Test formales} - White, Bartlett, Breusch-Pagan, etc. Comúnmente, la hipótesis nula: $H_0 = \text{Homocedasticidad}$
+			\item \textbf{Test formales} - White, Bartlett, Breusch-Pagan, etc. Comúnmente, la hipótesis nula: $H_0$: Homocedasticidad.
 		\end{itemize}
 	\subsection*{Corrección}
 		\begin{itemize}[leftmargin=*]
@@ -444,7 +444,7 @@
 					\draw[thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 - 0.5 * \x - 3}); % red arrow
 				\end{tikzpicture}
 			\end{multicols}
-			\item \textbf{Test formales} - Durbin-Watson, Breusch-Godfrey, etc. Comúnmente, la hipótesis nula: $H_0: \text{No autocorrelación}$
+			\item \textbf{Test formales} - Durbin-Watson, Breusch-Godfrey, etc. Comúnmente, la hipótesis nula: $H_0$: No autocorrelación.
 		\end{itemize}
 	\subsection*{Corrección}
 		\begin{itemize}[leftmargin=*]
