@@ -37,7 +37,7 @@ Econometrics cheat sheet created using $\LaTeX$ with a summarized review of:
 
 - [x] Release of an Spanish version of `econometrics-cheatsheet`.
 
-- [x] Release of a cheat sheet exclusively dedicated to time series in the context of econometrics (`time-series-cheatsheet`).
+- [x] Release of a cheat sheet exclusively dedicated to time series in the context of econometrics, `time-series-cheatsheet`.
 
 - [x] Release of an Spanish version of `time-series-cheatsheet`.
 
