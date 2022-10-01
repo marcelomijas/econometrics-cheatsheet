@@ -15,14 +15,14 @@ Econometrics cheat sheet created using $\LaTeX$ with a summarized review of:
 
 ### Download links
 
-**Econometrics Cheat Sheet**. Current version: `2.5` (last updated 30 sep. 2022)
+**Econometrics Cheat Sheet**. Current version: `2.6` (last updated 1 oct. 2022)
 
 |              | PDF file                                                          | TeX file                                                          |
 | :----------: | :---------------------------------------------------------------: | :---------------------------------------------------------------: |
 | English :uk: | [en.pdf](econometrics-cheatsheet/econometrics-cheatsheet-en.pdf)  | [en.tex](econometrics-cheatsheet/econometrics-cheatsheet-en.tex)  |
 | Spanish :es: | [es.pdf](econometrics-cheatsheet/econometrics-cheatsheet-es.pdf)  | [es.tex](econometrics-cheatsheet/econometrics-cheatsheet-es.tex)  |
 
-**Time Series Cheat Sheet**. Current version: `ts1.0` (last updated 1 oct. 2022)
+**Time Series Cheat Sheet**. Current version: `ts1.1` (last updated 1 oct. 2022)
 
 |              | PDF file                                                        | TeX file                                                        |
 | :----------: | :-------------------------------------------------------------: | :-------------------------------------------------------------: |
@@ -43,7 +43,7 @@ Econometrics cheat sheet created using $\LaTeX$ with a summarized review of:
 
 - [ ] Release of a cheat sheet dedicated to the most common problems in econometrics, `problems-cheatsheet`.
 
-:question: Syled version of the cheat sheets (background colors, styled sections, more appealing plots, etc.)
+- [ ] Syled version of the cheat sheets (background colors, styled sections, more appealing plots, etc.)
 
 ## Frequently Asked Questions (FAQ)
 
