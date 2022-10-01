@@ -25,7 +25,7 @@
 % -----document-----
 \begin{document}
 
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Versión ts1.0-es - github.com/marcelomijas/econometrics-cheatsheet}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Versión ts1.1-es - github.com/marcelomijas/econometrics-cheatsheet}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
@@ -121,12 +121,12 @@
 		\end{center}
 		donde:
 		\begin{center}
-			$y_t = \alpha_0 + \alpha_1 Trend + v_t$
-			\\ $x_t = \gamma_0 + \gamma_1 Trend + v_t$
+			$y_t = \alpha_0 + \alpha_1 Tendencia + v_t$
+			\\ $x_t = \gamma_0 + \gamma_1 Tendencia + v_t$
 		\end{center}
 		Añadir una tendencia al modelo puede resolver el problema:
 		\begin{center}
-			$y_t = \beta_0 + \beta_1 x_t + \beta_2 Trend + u_t$
+			$y_t = \beta_0 + \beta_1 x_t + \beta_2 Tendencia + u_t$
 		\end{center}
 		Una tendencia puede ser lineal o no lineal (cuadrática, cúbica, exponencial, etc.)
 		\\ Otra manera, es hacer uso del \textbf{filtro Hodrick-Prescott} y extraer la tendencia (suavizado) y el componente cíclico.
@@ -220,7 +220,7 @@
 			\end{tikzpicture}
 		\end{multicols}
 		\begin{itemize}[leftmargin=*]
-			\item Este problema es parte de lo que se conoce como \textbf{regresión espuria}. Un ajuste estacional lo soluciona.
+			\item Este problema es \textbf{regresión espuria}. Un ajuste estacional puede solucionarlo.
 		\end{itemize}
 		Un \textbf{ajuste estacional} sencillo es crear variables estacionales binarias y añadirlas al modelo. Por ejemplo, una serie trimestral ($QX_t$ son variables binarias):
 		\begin{center}
@@ -236,11 +236,10 @@
 \columnbreak
 
 \section*{Autocorrelación}
-	El residuo de cualquier observación, $u_t$, está correlacionado con el residuo de cualquier otra observación. Las observaciones no son independientes.
+	El residuo de cualquier observación, $u_t$, está correlacionado con el residuo de cualquier otra observación. Las observaciones no son independientes. Es el \textbf{incumplimiento de st5}.
 	\begin{center}
 		$Corr(u_t, u_s | x) \neq 0$ para cualquier $t \neq s$
 	\end{center}
-	El contexto ``natural" de este fenómeno son las series temporales. Es el \textbf{incumplimiento de st5}.
 	\subsection*{Consecuencias}
 		\begin{itemize}[leftmargin=*]
 			\item Estimadores MCO son insesgados.
@@ -362,6 +361,9 @@
 				\end{tikzpicture}
 			\end{center}
 			Conclusiones difieren entre procesos de autocorrelación.
+
+\columnbreak
+
 			\begin{itemize}[leftmargin=*]
 				\item \textbf{Proceso MA($q$)}. \textbf{FAC}: sólo los primeros $q$ coeficientes son significativos. El resto se anulan bruscamente. \textbf{FACP}: decrecimiento rápido exponencial atenuado u ondas sinusoidales.
 				\item \textbf{Proceso AR($p$)}. \textbf{FAC}: decrecimiento rápido exponencial atenuado u ondas sinusoidales. \textbf{FACP}: sólo los primeros $p$ coeficientes son significativos. El resto se anulan bruscamente.
@@ -450,7 +452,7 @@
 				\end{itemize}
 				\item \textbf{Prueba Ljung-Box Q}:
 				\begin{itemize}[leftmargin=*]
-					\item $H_1$: No hay autocorrelación.
+					\item $H_1$: Existe autocorrelación.
 				\end{itemize}
 			\end{itemize}
 		\end{itemize}
@@ -464,7 +466,7 @@
 					$y_t - \rho y_{t-1} = \beta_0 (1 - \rho) + \beta_1 (x_t - \rho x_{t-1}) + u_t - \rho u_{t-1}$
 					\ $y_t^* = \beta_0^* + \beta_1 x_t^* + u_t^*$
 				\end{center}
-				donde $u_t^*$ es ruido blanco y estimarlo por MCO.
+				donde $u_t^*$ es ruido blanco, y estimarlo por MCO.
 				\item Si \textbf{$\rho$ es desconocido, estimarlo} -por ejemplo- \textbf{el método de Cochrane-Orcutt} (el método de Prais-Winsten también es bueno):
 				\begin{enumerate}[leftmargin=*]
 					\item Obtener $\hat{u}_t$ del modelo original.
@@ -483,7 +485,7 @@
 		\end{itemize}
 
 \section*{Estacionariedad y dependencia débil}
-	Estacionariedad es estabilidad de las distribuciones conjuntas de probabilidad de un proceso a medida que progresa el tiempo. Permite identificar correctamente las relaciones -que se mantienen constantes en el tiempo- entre variables.
+	Estacionariedad es estabilidad de las distribuciones conjuntas de probabilidad de un proceso a medida que este progresa el tiempo. Permite identificar correctamente las relaciones -inalteradas en el tiempo- entre variables.
 	\subsection*{Procesos estacionarios y no estacionarios}
 		\begin{itemize}[leftmargin=*]
 			\item \textbf{Proceso estacionario} (estacionariedad fuerte) - la dist. de prob. es estable en el tiempo: si se toma cualquier colección de variables aleatorias, y se mueven $h$ periodos, la dist. conjunta de prob. debe permanecer inalterada.
@@ -499,12 +501,12 @@
 			\end{itemize}
 		\end{itemize}
 	\subsection*{Series temporales de dependencia débil}
-		Es importante porque reemplaza el supuesto de muestreo aleatorio, dando por supuesto la validez del teorema central del límite (requiere estacionariedad y una forma de dependencia débil). Los procesos débilmente dependientes \textbf{también se conocen como, I(0)}.
+		Es importante porque reemplaza el requisito de muestreo aleatorio, dando por supuesto la validez del Teorema Central del Límite (requiere estacionariedad y una forma de dependencia débil). Los procesos débilmente dependientes \textbf{también se conocen como, I(0)}.
 		\begin{itemize}[leftmargin=*]
 			\item \textbf{Dependencia débil} - restringe cuán cercana la relación entre $x_t$ y $x_{t+h}$ puede ser a medida que la distancia temporal entre las series aumenta ($h$).
 		\end{itemize}
-		Un proceso estacionario $\lbrace x_t: t = 1, 2, ..., T \rbrace$ es débilmente dependiente cuando $x_t$ y $x_{t+h}$ son casi independientes a medida que $h$ aumenta sin límite.
-		\\ Un proceso estacionario en covarianza es débilmente dependiente si la correlación entre $x_t$ y $x_{t+h}$ tiende a $0$ lo suficientemente rápido cuando $h \rightarrow \infty$ (no están asintóticamente correlacionados).
+		Un \textbf{proceso estacionario} $\lbrace x_t: t = 1, 2, ..., T \rbrace$ es débilmente dependiente cuando $x_t$ y $x_{t+h}$ son casi independientes a medida que $h$ aumenta sin límite.
+		\\ Un \textbf{proceso estacionario en covarianza} es débilmente dependiente si la correlación entre $x_t$ y $x_{t+h}$ tiende a $0$ lo suficientemente rápido cuando $h \rightarrow \infty$ (no están asintóticamente correlacionados).
 		\\ Algunos ejemplos de series estacionarias y débilmente dependientes:
 		\begin{itemize}[leftmargin=*]
 			\item \textbf{Media móvil} - $\lbrace x_t \rbrace$ es una media móvil de orden uno MA($q=1$):
@@ -528,28 +530,28 @@
 \columnbreak
 
 \section*{Series temporales de depend. fuerte}
-	La mayoría del tiempo, las series económicas presentan dependencia fuerte (o fuerte persistencia temporal). Algunos casos especiales de procesos de raíz unitaria:
+	La mayoría del tiempo, las series económicas presentan dependencia fuerte (o fuerte persistencia temporal). Algunos casos especiales de procesos de raíz unitaria, I(1):
 	\begin{itemize}[leftmargin=*]
 		\item \textbf{Paseo aleatorio} - un proceso AR(1) con $\rho_1 = 1$.
 		\begin{center}
 			$y_t = y_{t-1} + e_t$
 		\end{center}
 		donde $\lbrace e_t : t = 1, 2, ..., T \rbrace$ es una secuencia \textsl{i.i.d.} con media cero y varianza $\sigma^2_e$ (la última cambia con el tiempo).
-		\\ Esto es un paseo aleatorio ($\lbrace e_t \rbrace$ \textsl{i.i.d.} es la razón). No es estacionario, es persistente.
+		\\ El proceso no es estacionario, es persistente.
 		\item \textbf{Paseo aleatorio con \href{https://www.youtube.com/watch?v=pS5d77DQHOI}{deriva}} - un proceso AR(1) con $\rho_1 = 1$ y una constante.
 		\begin{center}
 			$y_t = \alpha + y_{t-1} + e_t$
 		\end{center}
 		donde $\lbrace e_t : t = 1, 2, ..., T \rbrace$ es una secuencia \textsl{i.i.d.} con media cero y varianza $\sigma^2_e$.
-		\\ Esto es un paseo aleatorio ($\lbrace e_t \rbrace$ \textsl{i.i.d.} es la razón). No es estacionario, es persistente.
+		\\ El proceso no es estacionario, es persistente.
 	\end{itemize}
 	\subsection*{Detección de I(1)}
 		\begin{itemize}[leftmargin=*]
-			\item \textbf{Prueba aumentada de Dickey-Fuller (ADF)} - donde $H_0$: proceso es raíz unitaria, I(1).
-			\item \textbf{Prueba Kwiatkowski–Phillips–Schmidt–Shin (KPSS)} - donde $H_0$: proceso no es raíz unitaria, I(0).
+			\item \textbf{Prueba aumentada de Dickey-Fuller (ADF)} - donde $H_0$: el proceso es raíz unitaria, I(1).
+			\item \textbf{Prueba Kwiatkowski–Phillips–Schmidt–Shin (KPSS)} - donde $H_0$: el proceso no es raíz unitaria, I(0).
 		\end{itemize}
 	\subsection*{Transformar raíz unitaria a depend. débil}
-		Procesos de raíz unitaria son \textbf{integrados de orden uno}, I(1). Esto significa que \textbf{la primera diferencia del proceso es débilmente dependiente} ó I(0) (y usualmente, estacionaria). Por ejemplo, un paseo aleatorio:
+		Los procesos de raíz unitaria son \textbf{integrados de orden uno}, I(1). Esto significa que \textbf{la primera diferencia del proceso es débilmente dependiente} ó I(0) (y usualmente, estacionaria). Por ejemplo, un paseo aleatorio:
 		\begin{multicols}{2} % set columns to 2
 			\begin{center}
 				$\Delta y_t = y_t - y_{t-1} = e_t$
@@ -645,20 +647,20 @@
 				(8,1.8972);
 			\end{tikzpicture}
 		\end{multicols}
-		Cuando una serie I(1) es estrictamente positiva, se suele transformar a logaritmos antes de tomar primeras diferencias. Esto es, para obtener el cambio porcentual (aprox.) de la serie, tomando la primera diferencia de un logaritmo:
+		Cuando una serie I(1) es estrictamente positiva, se suele transformar a logaritmos antes de tomar primeras diferencias. Esto es, para obtener el cambio porcentual (aprox.) de la serie:
 		\begin{center}
 			$\Delta log(y_t) = log(y_t) - log(y_{t-1}) \approx (y_t - y_{t-1}) / y_{t-1}$
 		\end{center}
 
 \columnbreak
 
-\section*{Cointegration}
+\section*{Cointegración}
 	Cuando \textbf{dos series son I(1), pero una combinación lineal de estas es I(0)}. Si es el caso, la regresión de una serie sobre la otra no es espuria, sino que expresa algo sobre la relación a largo plazo.
 	\\ Por ejemplo: $\lbrace x_t \rbrace$ y $\lbrace y_t \rbrace$ son I(1), pero $y_t - \beta x_t = u_t$ donde $\lbrace u_t \rbrace$ es I(0). ($\beta$ toma el nombre de parámetro cointegrador).
 
-\section*{Heterocedasticidad en series temporales}
-	\textbf{Afecta a ts4}, lo que lleva a que \textbf{MCO no sea eficiente}. 
-	\\ Algunas pruebas que funcionan pueden ser la de Breusch-Pagan o la de White, donde $H_0$: No heterocedasticidad. Es \textbf{importante que no haya autocorrelación para el correcto funcionamiento de las pruebas} (así que, primero es necesario probar la autocorrelación).
+\section*{Heterocedasticidad en series temp.}
+	\textbf{Afecta al supuesto st4}, lo que lleva a que \textbf{MCO no sea eficiente}. 
+	\\ Algunas pruebas que funcionan pueden ser la de Breusch-Pagan o la de White, donde $H_0$: No heterocedasticidad. Es \textbf{importante que no haya autocorrelación para el correcto funcionamiento de las pruebas} (así que, primero es necesario probar la existencia de autocorrelación).
 	\subsection*{ARCH}
 		La heterocedasticidad condicional autorregresiva (ARCH), es un modelo para analizar una forma de heterocedasticidad dinámica, donde la varianza del error sigue un proceso AR($p$).
 		\\ Dado el modelo:

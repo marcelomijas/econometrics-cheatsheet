@@ -25,7 +25,7 @@
 % -----document-----
 \begin{document}
 
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Version ts1.0-en - github.com/marcelomijas/econometrics-cheatsheet}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Version ts1.1-en - github.com/marcelomijas/econometrics-cheatsheet}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
@@ -115,7 +115,7 @@
 \section*{Trends and seasonality}
 	\textbf{Spurious regression} - is when the relation between $y$ and $x$ is due to factors that affect $y$ and have correlation with $x$, $Corr(x, u) \neq 0$. Is the \textbf{non-fulfillment of ts3}.
 	\subsection*{Trends}
-		Two time series can have the same (or contrary) trend, that should lend to a high level of correlation. This, can provoke a false appearance of causality, the problem is in what is known as \textbf{spurious regression}. Given the model:
+		Two time series can have the same (or contrary) trend, that should lend to a high level of correlation. This, can provoke a false appearance of causality, the problem is \textbf{spurious regression}. Given the model:
 		\begin{center}
 			$y_t = \beta_0 + \beta_1 x_t + u_t$
 		\end{center}
@@ -220,7 +220,7 @@
 			\end{tikzpicture}
 		\end{multicols}
 		\begin{itemize}[leftmargin=*]
-			\item This problem is part of what is known as \textbf{spurious regression}. A seasonal adjustment can solve the problem.
+			\item This problem is \textbf{spurious regression}. A seasonal adjustment can solve it.
 		\end{itemize}
 		A simple \textbf{seasonal adjustment} could be creating stationary binary variables and adding them to the model. For example, for quarterly series ($QX_t$ are binary variables):
 		\begin{center}
@@ -236,11 +236,10 @@
 \columnbreak
 
 \section*{Auto-correlation}
-	The residual of any observation, $u_t$, is correlated with the residual of any other observation. The observations are not independent.
+	The residual of any observation, $u_t$, is correlated with the residual of any other observation. The observations are not independent. Is the \textbf{non-fulfillment of ts5}.
 	\begin{center}
 		$Corr(u_t, u_s | x) \neq 0$ for any $t \neq s$
 	\end{center}
-	The ``natural" context of this phenomena is time series. Is the \textbf{non-fulfillment of ts5}.
 	\subsection*{Consequences}
 		\begin{itemize}[leftmargin=*]
 			\item OLS estimators still are unbiased.
@@ -361,7 +360,10 @@
 					\draw [blue, very thin] (0,3.5) -- (35,3.5); % below blue line
 				\end{tikzpicture}
 			\end{center}
-			Conclusions differ between auto-correlation process.
+			Conclusions differ between auto-correlation processes.
+
+\columnbreak			
+
 			\begin{itemize}[leftmargin=*]
 				\item \textbf{MA($q$) process}. \textbf{ACF}: only the first $q$ coefficients are significant. The rest are abruptly canceled. \textbf{PACF}: attenuated exponential fast decay or sine waves.
 				\item \textbf{AR($p$) process}. \textbf{ACF}: attenuated exponential fast decay or sine waves. \textbf{PACF}: only the first $p$ coefficients are significant. The rest are abruptly canceled.
@@ -464,7 +466,7 @@
 					$y_t - \rho y_{t-1} = \beta_0 (1 - \rho) + \beta_1 (x_t - \rho x_{t-1}) + u_t - \rho u_{t-1}$
 					\ $y_t^* = \beta_0^* + \beta_1 x_t^* + u_t^*$
 				\end{center}
-				where $u_t^*$ is white noise and estimate it by OLS.
+				where $u_t^*$ is white noise, and estimate it by OLS.
 				\item If \textbf{$\rho$ is not known, estimate it by} -for example- \textbf{the Cochrane-Orcutt method} (Prais-Winsten method is also good):
 				\begin{enumerate}[leftmargin=*]
 					\item Obtain $\hat{u}_t$ from the original model.
@@ -474,7 +476,7 @@
 						$y_t - \hat{\rho} y_{t-1} = \beta_0 (1 - \hat{\rho}) + \beta_1 (x_t - \hat{\rho} x_{t-1}) + u_t - \hat{\rho} u_{t-1}$
 						\ $y_t^* = \beta_0^* + \beta_1 x_t^* + u_t^*$
 					\end{center}
-					where $u_t^*$ is white noise and estimate it by OLS.
+					where $u_t^*$ is white noise, and estimate it by OLS.
 					\item Obtain $\hat{u}_t^*$ and repeat from step 2.
 					\item The method finish when the estimated parameters vary very little between iterations.
 				\end{enumerate}
@@ -484,13 +486,13 @@
 
 \section*{Stationarity and weak dependence}
 	Stationarity means stability of the joints distributions of a process as time progresses. It allows to correctly identify the relations --that stay unchange with time-- between variables.
-	\subsection*{Stationary and non-stationary process}
+	\subsection*{Stationary and non-stationary processes}
 		\begin{itemize}[leftmargin=*]
-			\item \textbf{Stationary process} (strong stationarity) - is the one in that the probability distribution are stable in time: if any collection of random variables is taken, and then are shifted $h$ periods, the joint probability distribution should stay unchanged.
+			\item \textbf{Stationary process} (strong stationarity) - is the one in that the probability distributions are stable in time: if any collection of random variables is taken, and then, shifted $h$ periods, the joint probability distribution should stay unchanged.
 
 \columnbreak
 
-			\item \textbf{Non-stationary process} - is, for example, a series with trend, where at least the mean changes with the time.
+			\item \textbf{Non-stationary process} - is, for example, a series with trend, where at least the mean changes with time.
 			\item \textbf{Covariance stationary process} - is a weaker form of stationarity:
 			\begin{itemize}[leftmargin=*]
 				\item $E(x_t)$ is constant.
@@ -499,12 +501,12 @@
 			\end{itemize}
 		\end{itemize}
 	\subsection*{Weak dependence time series}
-		It is important because it replaces the random sampling assumption, giving for granted the validity of the central limit theorem (requires stationality and a form of weak dependence). Weakly dependent process are \textbf{also known as integrated of order zero, I(0)}.
+		It is important because it replaces the random sampling assumption, giving for granted the validity of the Central Limit Theorem (requires stationarity and a form of weak dependence). Weakly dependent processes are \textbf{also known as integrated of order zero, I(0)}.
 		\begin{itemize}[leftmargin=*]
 			\item \textbf{Weak dependence} - restricts how close the relationship between $x_t$ and $x_{t+h}$ can be as the time distance between the series increases ($h$).
 		\end{itemize}
-		A stationary time process $\lbrace x_t: t = 1, 2, ..., T \rbrace$ is weakly dependent when $x_t$ and $x_{t+h}$ are almost independent as $h$ increases without a limit.
-		\\ A covariance stationary time process is weakly dependent if the correlation between $x_t$ and $x_{t+h}$ tends to $0$ fast enough when $h \rightarrow \infty$ (they are not asymptotically correlated).
+		An \textbf{stationary time process} $\lbrace x_t: t = 1, 2, ..., T \rbrace$ is weakly dependent when $x_t$ and $x_{t+h}$ are almost independent as $h$ increases without a limit.
+		\\ A \textbf{covariance stationary time process} is weakly dependent if the correlation between $x_t$ and $x_{t+h}$ tends to $0$ fast enough when $h \rightarrow \infty$ (they are not asymptotically correlated).
 		\\ Some examples of stationary and weakly dependent time series are:
 		\begin{itemize}[leftmargin=*]
 			\item \textbf{Moving average} - $\lbrace x_t \rbrace$ is a moving average of order one MA($q=1$):
@@ -528,20 +530,20 @@
 \columnbreak
 
 \section*{Strong dependence time series}
-	Most of the time, economics series are strong dependent (or high persistent in time). Some special cases of unit root processes:
+	Most of the time, economics series are strong dependent (or high persistent in time). Some special cases of unit root processes, I(1):
 	\begin{itemize}[leftmargin=*]
 		\item \textbf{Random walk} - an AR(1) process with $\rho_1 = 1$.
 		\begin{center}
 			$y_t = y_{t-1} + e_t$
 		\end{center}
 		where $\lbrace e_t : t = 1, 2, ..., T \rbrace$ is an \textsl{i.i.d.} sequence with zero mean and $\sigma^2_e$ variance (the latter changes with time).
-		\\ This is a random walk ($\lbrace e_t \rbrace$ \textsl{i.i.d.} is the reason). It is not stationary, is persistent.
+		\\ The process is not stationary, is persistent.
 		\item \textbf{Random walk with a \href{https://www.youtube.com/watch?v=pS5d77DQHOI}{drift}} - an AR(1) process with $\rho_1 = 1$ and a constant.
 		\begin{center}
 			$y_t = \alpha + y_{t-1} + e_t$
 		\end{center}
 		where $\lbrace e_t : t = 1, 2, ..., T \rbrace$ is an \textsl{i.i.d.} sequence with zero mean and $\sigma^2_e$ variance.
-		\\ This is a random walk ($\lbrace e_t \rbrace$ \textsl{i.i.d.} is the reason). It is not stationary, is persistent.
+		\\ The process is not stationary, is persistent.
 	\end{itemize}
 	\subsection*{I(1) detection}
 		\begin{itemize}[leftmargin=*]
@@ -645,7 +647,7 @@
 				(8,1.8972);
 			\end{tikzpicture}
 		\end{multicols}
-		When the I(1) series is strictly positive, usually it is converted to logarithms before taking the first difference. That is, to obtain the (approx.) percentage change of the series, by taking the first difference of a logarithm:
+		When an I(1) series is strictly positive, it is usually converted to logarithms before taking the first difference. That is, to obtain the (approx.) percentage change of the series:
 		\begin{center}
 			$\Delta log(y_t) = log(y_t) - log(y_{t-1}) \approx (y_t - y_{t-1}) / y_{t-1}$
 		\end{center}
@@ -658,7 +660,7 @@
 
 \section*{Heterocedasticity on time series}
 	The assumption \textbf{affected is ts4}, which leads to \textbf{OLS be not efficient}. 
-	\\ Some tests that work could be the Breusch-Pagan or White's, where $H_0$: No heterocedasticity. It is \textbf{important for the tests to work that there is no auto-correlation} (so first, it is important to test for auto-correlation).
+	\\ Some tests that work could be the Breusch-Pagan or White's, where $H_0$: No heterocedasticity. It is \textbf{important for the tests to work that there is no auto-correlation} (so first, it is important to test for it).
 	\subsection*{ARCH}
 		An auto-regressive conditional heterocedasticity (ARCH), is a model to analyze a form of dynamic heterocedasticity, where the error variance follows an AR($p$) process.
 		\\ Given the model:
