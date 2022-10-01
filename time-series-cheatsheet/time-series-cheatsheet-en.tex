@@ -29,13 +29,14 @@
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
-
+% start of column 1 page 1
+% titles
 \begin{center}
 	\textbf{\LARGE \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Time Series Cheat Sheet}}
 	\\ {\footnotesize By Marcelo Moreno - King Juan Carlos University} 
 	\\ {\footnotesize As part of the Econometrics Cheat Sheet Project}
 \end{center}
-
+% start of content
 \section*{Basic concepts}
 	\subsection*{Definitions}
 		\textbf{Time series} - is a succession of quantitative observations of a phenomena ordered in time.
@@ -72,9 +73,9 @@
 		 	\end{center}
 	 		\item Combinations of the above, like the rational distributed-lag models (distributed-lag + dynamic).
 		\end{itemize}
-
+% end of column 1 page 1
 \columnbreak
-
+% start of column 2 page 1
 \section*{Assumptions and properties}
 	\subsection*{OLS model assumptions under time series}
 		Under this assumptions, the estimators of the OLS parameters will present good properties. \textbf{Gauss-Markov assumptions extended applied to time series}:
@@ -109,9 +110,9 @@
 			\item Hold (1) to (5): OLS is \textcolor{blue}{\href{https://www.youtube.com/watch?v=68ugkg9RePc}{BLUE}} (Best Linear Unbiased Estimator) or \textbf{efficient}. 
 			\item Hold (1) to (6): hypothesis testing and confidence intervals can be done reliably.
 		\end{itemize}
-
+% end of column 2 page 1
 \columnbreak
-
+% start of column 3 page 1
 \section*{Trends and seasonality}
 	\textbf{Spurious regression} - is when the relation between $y$ and $x$ is due to factors that affect $y$ and have correlation with $x$, $Corr(x, u) \neq 0$. Is the \textbf{non-fulfillment of ts3}.
 	\subsection*{Trends}
@@ -133,9 +134,12 @@
 	\subsection*{Seasonality}
 		\setlength{\multicolsep}{0pt} % reduce vertical spacing betwen subsection and multicols
 		\begin{multicols}{2} % set columns to 2
-		A time series with can manifest seasonality. That is, the series is subject to a seasonal variations or pattern, usually related to climatology conditions.
-		\\ For example, GDP (black) is usually higher in summer and lower in winter. Seasonally adjusted series ({\color{red} red}) for comparison.
+		% start of text column
+			A time series with can manifest seasonality. That is, the series is subject to a seasonal variations or pattern, usually related to climatology conditions.
+			\\ For example, GDP (black) is usually higher in summer and lower in winter. Seasonally adjusted series ({\color{red} red}) for comparison.
+		% end of text column
 		\columnbreak
+		% start of graph column
 			\begin{tikzpicture}[scale=0.18]
 				\draw [step=2, gray, very thin] (-10,-10) grid (10,10); % background grid
 				\draw [thick, <->] (-10,10) node [anchor=south] {$y$} -- (-10,-10) -- (10,-10) node [anchor=north] {$t$}; %axis
@@ -218,6 +222,7 @@
 				(7.5676,6.9069) -- 
 				(8.0000,6.6008);
 			\end{tikzpicture}
+		% end of graph column
 		\end{multicols}
 		\begin{itemize}[leftmargin=*]
 			\item This problem is \textbf{spurious regression}. A seasonal adjustment can solve it.
@@ -232,9 +237,9 @@
 			$\hat{y}_t^{sa} = \beta_0 + \beta_1 \hat{x}_{1t}^{sa} + ... + \beta_k \hat{x}_{kt}^{sa} + u_t$
 		\end{center}
 		There are much better and complex methods to seasonally adjust a time series, like the \textbf{X-13ARIMA-SEATS}.
-		
+% end of column 3 page 1
 \columnbreak
-
+% start of column 1 page 2
 \section*{Auto-correlation}
 	The residual of any observation, $u_t$, is correlated with the residual of any other observation. The observations are not independent. Is the \textbf{non-fulfillment of ts5}.
 	\begin{center}
@@ -252,7 +257,9 @@
 			\item \textbf{Scatter plots} - look for scatter patterns on $u_{t-1}$ vs. $u_t$.
 			\setlength{\multicolsep}{0pt} % reduce vertical spacing betwen subsection and multicols
 			\setlength{\columnsep}{6pt} % increment spacing between columns
+			% scatter plots
 			\begin{multicols}{3} % set columns to 3
+			% start of Ac. plot
 				\begin{center}
 					\textbf{\footnotesize Ac.}
 				\end{center}
@@ -264,9 +271,9 @@
 					\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=50] (\x,{rnd * 6 + (-2 * (\x)^2 + 40) * 0.1}); % data points
 					\draw [thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 + (-2 * (\x)^2 + 40) * 0.1}); % red arrow
 				\end{tikzpicture}
-				
+			% end of Ac. plot
 			\columnbreak
-				
+			% start of Ac.(+) plot
 				\begin{center}
 					\textbf{\footnotesize Ac.(+)}
 				\end{center}
@@ -277,9 +284,9 @@
 					\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=25] (\x,{rnd * 6 + 0.5 * \x - 3}); % data points
 					\draw [thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 + 0.5 * \x - 3}); % red arrow
 				\end{tikzpicture}
-				
-				\columnbreak
-				
+			% end of Ac.(+) plot
+			\columnbreak
+			% start of Ac.(-) plot
 				\begin{center}
 					\textbf{\footnotesize Ac.(-)}
 				\end{center}
@@ -290,32 +297,36 @@
 					\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=25] (\x,{rnd * 6 - 0.5 * \x - 3}); % data points
 					\draw [thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 - 0.5 * \x - 3}); % red arrow
 				\end{tikzpicture}
+			% end of Ac.(-) plot
 			\end{multicols}
-			
+			% correlogram
 			\begin{multicols}{2} % set columns to 2
+			% start of text column 1
 				\item\textbf{Correlogram} - composed of the auto-correlation function (ACF) and the partial ACF (PACF).
-				
-				\columnbreak
-				
+			% end of text column 1
+			\columnbreak
+			% start of text column 2
 				\begin{itemize}[leftmargin=*]
 					\item Y axis: correlation [-1,1].
 					\item X axis: lag number.
 					\item Blue lines: $\pm 1.96/T^{0.5}$
 				\end{itemize}
+			% end of text column 2
 			\end{multicols}
 			\begin{center}
 				\begin{tikzpicture}[scale=0.22]
+					% acf plot
 					\node at (17.5,23) {\tiny \textbf{ACF}};
 					\node at (-1.5,22) {\tiny 1};
 					\node at (-1.5,17) {\tiny 0};
 					\node at (-1.5,12) {\tiny -1};
 					\draw [step=2, gray, very thin] (0,12) rectangle (35,22); % acf
 					\draw [thick,|->] (0,22) -- (0,12) -- (35,12); % axis
-					\fill [red] (1.5,17)  rectangle  (2,21.9);
-					\fill [red] (3.5,17)  rectangle  (4,21.8);
-					\fill [red] (5.5,17)  rectangle  (6,21.7);
-					\fill [red] (7.5,17)  rectangle  (8,21.6);
-					\fill [red] (9.5,17)  rectangle (10,21.5);
+					\fill [red] (1.5,17) rectangle (2,21.9);
+					\fill [red] (3.5,17) rectangle (4,21.8);
+					\fill [red] (5.5,17) rectangle (6,21.7);
+					\fill [red] (7.5,17) rectangle (8,21.6);
+					\fill [red] (9.5,17) rectangle (10,21.5);
 					\fill [red] (11.5,17) rectangle (12,21.5);
 					\fill [red] (13.5,17) rectangle (14,21.4);
 					\fill [red] (15.5,17) rectangle (16,21.3);
@@ -331,18 +342,18 @@
 					\draw [blue, very thin] (0,18.5) -- (35,18.5); % above blue line
 					\draw [dashed, very thin] (0,17) -- (35,17); % center blue dashed line
 					\draw [blue, very thin] (0,15.5) -- (35,15.5); % below blue line
-					
+					% pacf plot
 					\node at (17.5,11) {\tiny \textbf{PACF}};
 					\node at (-1.5,10) {\tiny 1};
 					\node at (-1.5,5) {\tiny 0};
 					\node at (-1.5,0) {\tiny -1};
 					\draw [step=2, gray, very thin] (0,0) rectangle (35,10); % pacf
 					\draw [thick,|->] (0,10) -- (0,0) -- (35,0); % axis
-					\fill [red] (1.5,5)  rectangle  (2,9.9);
-					\fill [red] (3.5,5)  rectangle  (4,4.8);
-					\fill [red] (5.5,5)  rectangle  (6,4.6);
-					\fill [red] (7.5,5)  rectangle  (8,4.5);
-					\fill [red] (9.5,5)  rectangle (10,4.5);
+					\fill [red] (1.5,5) rectangle (2,9.9);
+					\fill [red] (3.5,5) rectangle (4,4.8);
+					\fill [red] (5.5,5) rectangle (6,4.6);
+					\fill [red] (7.5,5) rectangle (8,4.5);
+					\fill [red] (9.5,5) rectangle (10,4.5);
 					\fill [red] (11.5,5) rectangle (12,4.7);
 					\fill [red] (13.5,5) rectangle (14,4.5);
 					\fill [red] (15.5,5) rectangle (16,4.8);
@@ -361,9 +372,9 @@
 				\end{tikzpicture}
 			\end{center}
 			Conclusions differ between auto-correlation processes.
-
+% end of column 1 page 2
 \columnbreak			
-
+% start of column 2 and 3 page 2
 			\begin{itemize}[leftmargin=*]
 				\item \textbf{MA($q$) process}. \textbf{ACF}: only the first $q$ coefficients are significant. The rest are abruptly canceled. \textbf{PACF}: attenuated exponential fast decay or sine waves.
 				\item \textbf{AR($p$) process}. \textbf{ACF}: attenuated exponential fast decay or sine waves. \textbf{PACF}: only the first $p$ coefficients are significant. The rest are abruptly canceled.
@@ -401,7 +412,7 @@
 							\hline
 						\end{tabular}
 					}
-					\begin{tikzpicture}[scale=0.28]
+					\begin{tikzpicture}[scale=0.28] % durbin-watson test plot
 						\node at (-1.5,9.5) {\scalebox{1.2}{\tiny $f(d)$}};
 						\draw [thick] (0,10) -- (0,0) -- (25,0); % axis
 						\draw [very thin, dashed] (12.5,0) -- (12.5,10);
@@ -411,7 +422,7 @@
 						\fill [pattern=north west lines, pattern color=black] (16,0) rectangle (20,10);
 						\draw (16,0) -- (16,10);
 						\draw (20,0) -- (20,10);
-						
+						% x axis labels
 						\node at (0,-0.6) {\scalebox{1.2}{\tiny 0}};
 						\node at (5,-0.6) {\scalebox{1.2}{\tiny $d_L$}};
 						\node at (9,-0.6) {\scalebox{1.2}{\tiny $d_U$}};
@@ -419,7 +430,7 @@
 						\node at (16.7,-1) {\scalebox{1.1}{\tiny \rotatebox{-20}{$4 - d_U$}}};
 						\node at (20.7,-1) {\scalebox{1.1}{\tiny \rotatebox{-20}{$4 - d_L$}}};
 						\node at (25,-0.6) {\scalebox{1.2}{\tiny 4}};
-						
+						% text inside plot
 						\node at (2.5,5.5) {\scalebox{1.2}{\tiny Rej. $H_0$}};
 						\node at (2.5,4.5) {\scalebox{1.2}{\tiny AR(+)}};
 						\node [text=red] at (7,5) {\scalebox{1.4}{\tiny \rotatebox{-70}{\textbf{INCONCLUSIVE}}}};
@@ -471,7 +482,7 @@
 				\begin{enumerate}[leftmargin=*]
 					\item Obtain $\hat{u}_t$ from the original model.
 					\item Estimate $\hat{u}_t = \rho \hat{u}_{t-1} + \varepsilon_t$ and obtain $\hat{\rho}$.
-					\item Estimate a quasi-differentiated model:
+					\item Create a quasi-differentiated model:
 					\begin{center}
 						$y_t - \hat{\rho} y_{t-1} = \beta_0 (1 - \hat{\rho}) + \beta_1 (x_t - \hat{\rho} x_{t-1}) + u_t - \hat{\rho} u_{t-1}$
 						\ $y_t^* = \beta_0^* + \beta_1 x_t^* + u_t^*$
@@ -489,9 +500,9 @@
 	\subsection*{Stationary and non-stationary processes}
 		\begin{itemize}[leftmargin=*]
 			\item \textbf{Stationary process} (strong stationarity) - is the one in that the probability distributions are stable in time: if any collection of random variables is taken, and then, shifted $h$ periods, the joint probability distribution should stay unchanged.
-
+% end of column 2 and 3 page 2
 \columnbreak
-
+% start of column 1 page 3
 			\item \textbf{Non-stationary process} - is, for example, a series with trend, where at least the mean changes with time.
 			\item \textbf{Covariance stationary process} - is a weaker form of stationarity:
 			\begin{itemize}[leftmargin=*]
@@ -526,9 +537,9 @@
 			\end{center}
 		\end{itemize}
 		A series with a trend cannot be stationary, but can be weakly dependent (and stationary if the series is de-trended).
-
+% end of column 1 page 3
 \columnbreak
-
+% start of column 2 page 3
 \section*{Strong dependence time series}
 	Most of the time, economics series are strong dependent (or high persistent in time). Some special cases of unit root processes, I(1):
 	\begin{itemize}[leftmargin=*]
@@ -553,6 +564,7 @@
 	\subsection*{Transforming unit root to weak dependent}
 		Unit root processes are \textbf{integrated of order one}, I(1). This means that \textbf{the first difference of the process is weakly dependent} or I(0) (and usually, stationary). For example, a random walk:
 		\begin{multicols}{2} % set columns to 2
+		% start of text column
 			\begin{center}
 				$\Delta y_t = y_t - y_{t-1} = e_t$
 			\end{center}
@@ -560,11 +572,14 @@
 			\\ 
 			\\ Getting the first difference of a series also deletes its trend.
 			\\ For example, a series with a trend (black), and it's first difference ({\color{red} red}).
-			\columnbreak
+		% end of text column
+		\columnbreak
+		% start of graph column
 			\begin{tikzpicture}[scale=0.18]
 				\draw [step=2, gray, very thin] (-10,-10) grid (10,10); % background grid
 				\draw [thick, <->] (-10,10) node [anchor=south] {$y$} -- (-10,-10) -- (10,-10) node [anchor=north] {$t$}; %axis
-				\draw (-8,-8) -- 
+				\draw [black]
+				(-8,-8) -- 
 				(-7.6,-7.5411) -- 
 				(-7.2,-7.2841) -- 
 				(-6.8,-6.7952) -- 
@@ -605,7 +620,8 @@
 				(7.2,6.8585) -- 
 				(7.6,7.5108) -- 
 				(8,8);
-				\draw [red] (-7.6,1.2835) -- 
+				\draw [red]
+				(-7.6,1.2835) -- 
 				(-7.2,-2.7995) -- 
 				(-6.8,1.8898) -- 
 				(-6.4,-0.5953) -- 
@@ -646,14 +662,15 @@
 				(7.6,5.1971) -- 
 				(8,1.8972);
 			\end{tikzpicture}
+		% end of graph column
 		\end{multicols}
 		When an I(1) series is strictly positive, it is usually converted to logarithms before taking the first difference. That is, to obtain the (approx.) percentage change of the series:
 		\begin{center}
 			$\Delta log(y_t) = log(y_t) - log(y_{t-1}) \approx (y_t - y_{t-1}) / y_{t-1}$
 		\end{center}
-
+% end of column 2 page 3
 \columnbreak
-
+% start of column 3 page 3
 \section*{Cointegration}
 	When \textbf{two series are I(1), but a linear combination of them is I(0)}. If the case, the regression of one series over the other is not spurious, but expresses something about the long term relation.
 	\\ For example: $\lbrace x_t \rbrace$ and $\lbrace y_t \rbrace$ are I(1), but $y_t - \beta x_t = u_t$ where $\lbrace u_t \rbrace$ is I(0). ($\beta$ get the name of cointegration parameter).
@@ -681,7 +698,8 @@
 		\item Of an individual value of $y$ for a specific value of $x$.
 	\end{itemize}
 	If the values of the variables ($x$) approximate to the mean values ($\overline{x}$), the confidence interval amplitude of the prediction will be shorter. 
-
+% end of column 3 page 3
+% end of content
 \end{multicols}
 
 \end{document}

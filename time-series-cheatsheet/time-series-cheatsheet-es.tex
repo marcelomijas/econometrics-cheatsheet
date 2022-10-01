@@ -29,13 +29,14 @@
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
-
+% start of column 1 page 1
+% titles
 \begin{center}
 	\textbf{\LARGE \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Cheat Sheet Series de Tiempo}}
 	\\ {\footnotesize Por Marcelo Moreno - Universidad Rey Juan Carlos} 
 	\\ {\footnotesize Como parte del Econometrics Cheat Sheet Project}
 \end{center}
-
+% start of content
 \section*{Conceptos básicos}
 	\subsection*{Definiciones}
 		\textbf{Serie temporal} -  es una sucesión de observaciones cuantitativas de un fenómeno ordenadas en el tiempo.
@@ -72,9 +73,9 @@
 		 	\end{center}
 	 		\item Combinaciones de lo anterior, como modelos de rezagos distribuidos racionales (rezagos distribuidos + dinámicos).
 		\end{itemize}
-
+% end of column 1 page 1
 \columnbreak
-
+% start of column 2 page 1
 \section*{Supuestos y propiedades}
 	\subsection*{Supuestos MCO bajo series temporales}
 		Bajo estos supuestos, los estimadores de los parámetros MCO presentarán buenas propiedades. \textbf{Supuestos Gauss-Markov extendidos en series temporales}:
@@ -109,9 +110,9 @@
 			\item De (1) a (5): MCO es \textcolor{blue}{\href{https://www.youtube.com/watch?v=68ugkg9RePc}{MELI}} (Mejor Estimador Lineal Insesgado) or \textbf{eficiente}. 
 			\item De (1) a (6): contrastes de hipótesis e intervalos de confianza son fiables.
 		\end{itemize}
-
+% end of column 2 page 1
 \columnbreak
-
+% start of column 3 page 1
 \section*{Tendencia y estacionalidad}
 	\textbf{Regresión espuria} - es cuando la relación entre $y$ y $x$ es debida a factores que afectan a $y$ y que tienen correlación con $x$, $Corr(x, u) \neq 0$. Es el  \textbf{incumplimiento de st3}.
 	\subsection*{Tendencia}
@@ -133,9 +134,12 @@
 	\subsection*{Estacionalidad}
 		\setlength{\multicolsep}{0pt} % reduce vertical spacing betwen subsection and multicols
 		\begin{multicols}{2} % set columns to 2
-		Una serie temporal puede manifestar estacionalidad. Esto es, que la serie está sujeta a variaciones estacionales o patrones usualmente relacionados al clima.
-		\\ Por ejemplo, el PIB (negro) es usualmente mayor en verano y menor en invierno. Serie ajustada estacionalmente ({\color{red} rojo}) en comparación.
+		% start of text column
+			Una serie temporal puede manifestar estacionalidad. Esto es, que la serie está sujeta a variaciones estacionales o patrones usualmente relacionados al clima.
+			\\ Por ejemplo, el PIB (negro) es usualmente mayor en verano y menor en invierno. Serie ajustada estacionalmente ({\color{red} rojo}) en comparación.
+		% end of text column
 		\columnbreak
+		% start of graph column
 			\begin{tikzpicture}[scale=0.18]
 				\draw [step=2, gray, very thin] (-10,-10) grid (10,10); % background grid
 				\draw [thick, <->] (-10,10) node [anchor=south] {$y$} -- (-10,-10) -- (10,-10) node [anchor=north] {$t$}; %axis
@@ -218,6 +222,7 @@
 				(7.5676,6.9069) -- 
 				(8.0000,6.6008);
 			\end{tikzpicture}
+		% end of graph column
 		\end{multicols}
 		\begin{itemize}[leftmargin=*]
 			\item Este problema es \textbf{regresión espuria}. Un ajuste estacional puede solucionarlo.
@@ -232,9 +237,9 @@
 			$\hat{y}_t^{sa} = \beta_0 + \beta_1 \hat{x}_{1t}^{sa} + ... + \beta_k \hat{x}_{kt}^{sa} + u_t$
 		\end{center}
 		Hay métodos mucho mejores y complejos para ajustar estacionalmente, como el \textbf{X-13ARIMA-SEATS}.
-		
+% end of column 3 page 1	
 \columnbreak
-
+% start of column 1 page 2
 \section*{Autocorrelación}
 	El residuo de cualquier observación, $u_t$, está correlacionado con el residuo de cualquier otra observación. Las observaciones no son independientes. Es el \textbf{incumplimiento de st5}.
 	\begin{center}
@@ -252,7 +257,9 @@
 			\item \textbf{Gráficos de dispersión} - buscar patrones de dispersión en $u_{t-1}$ vs. $u_t$.
 			\setlength{\multicolsep}{0pt} % reduce vertical spacing betwen subsection and multicols
 			\setlength{\columnsep}{6pt} % increment spacing between columns
+			% scatter plots
 			\begin{multicols}{3} % set columns to 3
+			% start of Ac. plot
 				\begin{center}
 					\textbf{\footnotesize Ac.}
 				\end{center}
@@ -264,9 +271,9 @@
 					\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=50] (\x,{rnd * 6 + (-2 * (\x)^2 + 40) * 0.1}); % data points
 					\draw [thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 + (-2 * (\x)^2 + 40) * 0.1}); % red arrow
 				\end{tikzpicture}
-				
+			% end of Ac. plot
 			\columnbreak
-				
+			% start of Ac.(+) plot
 				\begin{center}
 					\textbf{\footnotesize Ac.(+)}
 				\end{center}
@@ -277,9 +284,9 @@
 					\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=25] (\x,{rnd * 6 + 0.5 * \x - 3}); % data points
 					\draw [thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 + 0.5 * \x - 3}); % red arrow
 				\end{tikzpicture}
-				
-				\columnbreak
-				
+			% end of Ac.(+) plot	
+			\columnbreak
+			% start of Ac.(-) plot
 				\begin{center}
 					\textbf{\footnotesize Ac.(-)}
 				\end{center}
@@ -290,32 +297,36 @@
 					\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=25] (\x,{rnd * 6 - 0.5 * \x - 3}); % data points
 					\draw [thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 - 0.5 * \x - 3}); % red arrow
 				\end{tikzpicture}
+			% end of Ac.(-) plot
 			\end{multicols}
-			
+			% correlogram
 			\begin{multicols}{2} % set columns to 2
+			% start of text column 1
 				\item\textbf{Correlograma} - compuesto de la función de autocorrelación (FAC) y el FAC parcial (FACP).
-				
-				\columnbreak
-				
+			% end of text column 1
+			\columnbreak
+			% start of text column 2
 				\begin{itemize}[leftmargin=*]
 					\item Eje Y: correlación [-1,1].
 					\item Eje X: número de retardo.
 					\item Líneas azules: $\pm 1.96/T^{0.5}$
 				\end{itemize}
+			% end of text column 2
 			\end{multicols}
 			\begin{center}
 				\begin{tikzpicture}[scale=0.22]
+					% acf plot
 					\node at (17.5,23) {\tiny \textbf{FAC}};
 					\node at (-1.5,22) {\tiny 1};
 					\node at (-1.5,17) {\tiny 0};
 					\node at (-1.5,12) {\tiny -1};
 					\draw [step=2, gray, very thin] (0,12) rectangle (35,22); % acf
 					\draw [thick,|->] (0,22) -- (0,12) -- (35,12); % axis
-					\fill [red] (1.5,17)  rectangle  (2,21.9);
-					\fill [red] (3.5,17)  rectangle  (4,21.8);
-					\fill [red] (5.5,17)  rectangle  (6,21.7);
-					\fill [red] (7.5,17)  rectangle  (8,21.6);
-					\fill [red] (9.5,17)  rectangle (10,21.5);
+					\fill [red] (1.5,17) rectangle (2,21.9);
+					\fill [red] (3.5,17) rectangle (4,21.8);
+					\fill [red] (5.5,17) rectangle (6,21.7);
+					\fill [red] (7.5,17) rectangle (8,21.6);
+					\fill [red] (9.5,17) rectangle (10,21.5);
 					\fill [red] (11.5,17) rectangle (12,21.5);
 					\fill [red] (13.5,17) rectangle (14,21.4);
 					\fill [red] (15.5,17) rectangle (16,21.3);
@@ -331,18 +342,18 @@
 					\draw [blue, very thin] (0,18.5) -- (35,18.5); % above blue line
 					\draw [dashed, very thin] (0,17) -- (35,17); % center blue dashed line
 					\draw [blue, very thin] (0,15.5) -- (35,15.5); % below blue line
-					
+					% pacf plot
 					\node at (17.5,11) {\tiny \textbf{FACP}};
 					\node at (-1.5,10) {\tiny 1};
 					\node at (-1.5,5) {\tiny 0};
 					\node at (-1.5,0) {\tiny -1};
 					\draw [step=2, gray, very thin] (0,0) rectangle (35,10); % pacf
 					\draw [thick,|->] (0,10) -- (0,0) -- (35,0); % axis
-					\fill [red] (1.5,5)  rectangle  (2,9.9);
-					\fill [red] (3.5,5)  rectangle  (4,4.8);
-					\fill [red] (5.5,5)  rectangle  (6,4.6);
-					\fill [red] (7.5,5)  rectangle  (8,4.5);
-					\fill [red] (9.5,5)  rectangle (10,4.5);
+					\fill [red] (1.5,5) rectangle (2,9.9);
+					\fill [red] (3.5,5) rectangle (4,4.8);
+					\fill [red] (5.5,5) rectangle (6,4.6);
+					\fill [red] (7.5,5) rectangle (8,4.5);
+					\fill [red] (9.5,5) rectangle (10,4.5);
 					\fill [red] (11.5,5) rectangle (12,4.7);
 					\fill [red] (13.5,5) rectangle (14,4.5);
 					\fill [red] (15.5,5) rectangle (16,4.8);
@@ -361,9 +372,9 @@
 				\end{tikzpicture}
 			\end{center}
 			Conclusiones difieren entre procesos de autocorrelación.
-
+% end of column 1 page 2
 \columnbreak
-
+% start of column 2 and 3 page 2
 			\begin{itemize}[leftmargin=*]
 				\item \textbf{Proceso MA($q$)}. \textbf{FAC}: sólo los primeros $q$ coeficientes son significativos. El resto se anulan bruscamente. \textbf{FACP}: decrecimiento rápido exponencial atenuado u ondas sinusoidales.
 				\item \textbf{Proceso AR($p$)}. \textbf{FAC}: decrecimiento rápido exponencial atenuado u ondas sinusoidales. \textbf{FACP}: sólo los primeros $p$ coeficientes son significativos. El resto se anulan bruscamente.
@@ -401,7 +412,7 @@
 							\hline
 						\end{tabular}
 					}
-					\begin{tikzpicture}[scale=0.28]
+					\begin{tikzpicture}[scale=0.28] % durbin-watson test plot
 						\node at (-1.5,9.5) {\scalebox{1.2}{\tiny $f(d)$}};
 						\draw [thick] (0,10) -- (0,0) -- (25,0); % axis
 						\draw [very thin, dashed] (12.5,0) -- (12.5,10);
@@ -411,7 +422,7 @@
 						\fill [pattern=north west lines, pattern color=black] (16,0) rectangle (20,10);
 						\draw (16,0) -- (16,10);
 						\draw (20,0) -- (20,10);
-						
+						% x axis labels
 						\node at (0,-0.6) {\scalebox{1.2}{\tiny 0}};
 						\node at (5,-0.6) {\scalebox{1.2}{\tiny $d_L$}};
 						\node at (9,-0.6) {\scalebox{1.2}{\tiny $d_U$}};
@@ -419,7 +430,7 @@
 						\node at (16.7,-1) {\scalebox{1.1}{\tiny \rotatebox{-20}{$4 - d_U$}}};
 						\node at (20.7,-1) {\scalebox{1.1}{\tiny \rotatebox{-20}{$4 - d_L$}}};
 						\node at (25,-0.6) {\scalebox{1.2}{\tiny 4}};
-						
+						% text inside plot
 						\node at (2.5,5.5) {\scalebox{1.2}{\tiny Rech. $H_0$}};
 						\node at (2.5,4.5) {\scalebox{1.2}{\tiny AR(+)}};
 						\node [text=red] at (7,5) {\scalebox{1.2}{\tiny \rotatebox{-70}{\textbf{INCONCLUYENTE}}}};
@@ -471,7 +482,7 @@
 				\begin{enumerate}[leftmargin=*]
 					\item Obtener $\hat{u}_t$ del modelo original.
 					\item Estimar $\hat{u}_t = \rho \hat{u}_{t-1} + \varepsilon_t$ y obtener $\hat{\rho}$.
-					\item Estimar un modelo cuasi-diferenciado:
+					\item Crear un modelo cuasi-diferenciado:
 					\begin{center}
 						$y_t - \hat{\rho} y_{t-1} = \beta_0 (1 - \hat{\rho}) + \beta_1 (x_t - \hat{\rho} x_{t-1}) + u_t - \hat{\rho} u_{t-1}$
 						\ $y_t^* = \beta_0^* + \beta_1 x_t^* + u_t^*$
@@ -489,9 +500,9 @@
 	\subsection*{Procesos estacionarios y no estacionarios}
 		\begin{itemize}[leftmargin=*]
 			\item \textbf{Proceso estacionario} (estacionariedad fuerte) - la dist. de prob. es estable en el tiempo: si se toma cualquier colección de variables aleatorias, y se mueven $h$ periodos, la dist. conjunta de prob. debe permanecer inalterada.
-
+% end of column 2 and 3 page 2
 \columnbreak
-
+% start of column 1 page 3
 			\item \textbf{Proceso no estacionario} - por ejemplo, una serie con tendencia, donde al menos la media cambia con el tiempo.
 			\item \textbf{Proceso estacionario en covarianza} - es una forma más débil de estacionariedad:
 			\begin{itemize}[leftmargin=*]
@@ -526,9 +537,9 @@
 			\end{center}
 		\end{itemize}
 		Una serie con tendencia no puede ser estacionaria, pero puede ser débilmente dependiente (y estacionaria si la serie es filtrada de tendencia).
-
+% end of column 1 page 3
 \columnbreak
-
+% start of column 2 page 3
 \section*{Series temporales de depend. fuerte}
 	La mayoría del tiempo, las series económicas presentan dependencia fuerte (o fuerte persistencia temporal). Algunos casos especiales de procesos de raíz unitaria, I(1):
 	\begin{itemize}[leftmargin=*]
@@ -553,6 +564,7 @@
 	\subsection*{Transformar raíz unitaria a depend. débil}
 		Los procesos de raíz unitaria son \textbf{integrados de orden uno}, I(1). Esto significa que \textbf{la primera diferencia del proceso es débilmente dependiente} ó I(0) (y usualmente, estacionaria). Por ejemplo, un paseo aleatorio:
 		\begin{multicols}{2} % set columns to 2
+		% start of text column
 			\begin{center}
 				$\Delta y_t = y_t - y_{t-1} = e_t$
 			\end{center}
@@ -560,11 +572,14 @@
 			\\ 
 			\\ Tomar la primera diferencia de una serie también elimina su tendencia.
 			\\ Por ejemplo, una serie con tendencia (negro), y su primera diferencia ({\color{red} rojo}).
-			\columnbreak
+		% end of text column
+		\columnbreak
+		% start of graph column
 			\begin{tikzpicture}[scale=0.18]
 				\draw [step=2, gray, very thin] (-10,-10) grid (10,10); % background grid
 				\draw [thick, <->] (-10,10) node [anchor=south] {$y$} -- (-10,-10) -- (10,-10) node [anchor=north] {$t$}; %axis
-				\draw (-8,-8) -- 
+				\draw [black]
+				(-8,-8) -- 
 				(-7.6,-7.5411) -- 
 				(-7.2,-7.2841) -- 
 				(-6.8,-6.7952) -- 
@@ -605,7 +620,8 @@
 				(7.2,6.8585) -- 
 				(7.6,7.5108) -- 
 				(8,8);
-				\draw [red] (-7.6,1.2835) -- 
+				\draw [red]
+				(-7.6,1.2835) -- 
 				(-7.2,-2.7995) -- 
 				(-6.8,1.8898) -- 
 				(-6.4,-0.5953) -- 
@@ -646,14 +662,15 @@
 				(7.6,5.1971) -- 
 				(8,1.8972);
 			\end{tikzpicture}
+		% end of graph column
 		\end{multicols}
 		Cuando una serie I(1) es estrictamente positiva, se suele transformar a logaritmos antes de tomar primeras diferencias. Esto es, para obtener el cambio porcentual (aprox.) de la serie:
 		\begin{center}
 			$\Delta log(y_t) = log(y_t) - log(y_{t-1}) \approx (y_t - y_{t-1}) / y_{t-1}$
 		\end{center}
-
+% end of column 2 page 3
 \columnbreak
-
+% start of column 3 page 3
 \section*{Cointegración}
 	Cuando \textbf{dos series son I(1), pero una combinación lineal de estas es I(0)}. Si es el caso, la regresión de una serie sobre la otra no es espuria, sino que expresa algo sobre la relación a largo plazo.
 	\\ Por ejemplo: $\lbrace x_t \rbrace$ y $\lbrace y_t \rbrace$ son I(1), pero $y_t - \beta x_t = u_t$ donde $\lbrace u_t \rbrace$ es I(0). ($\beta$ toma el nombre de parámetro cointegrador).
@@ -681,7 +698,8 @@
 		\item De un valor individual de $y$ para un valor específico de $x$.
 	\end{itemize}
 	Si los valores de las variables ($x$) se aproximan al valor medio ($\overline{x}$), la amplitud del intervalo de confianza de la predicción será menor.
-
+% end of column 3 page 3
+% end of content
 \end{multicols}
 
 \end{document}
