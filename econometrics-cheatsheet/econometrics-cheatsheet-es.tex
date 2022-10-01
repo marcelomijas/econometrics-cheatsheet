@@ -29,12 +29,13 @@
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
-
+% start of column 1 page 1
+% titles
 \begin{center}
 	\textbf{\LARGE \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Cheat Sheet Econometría}}
 	\\ {\footnotesize Por Marcelo Moreno - Universidad Rey Juan Carlos}
 \end{center}
-
+% start of content
 \section*{Conceptos básicos}
 	\subsection*{Definiciones}
 		\textbf{Econometría} - es una disciplina de las ciencias sociales que tiene como objetivo cuantificar las relaciones entre agentes económicos, contrastar teorías económicas y evaluar e implementar políticas públicas y privadas.
@@ -67,9 +68,9 @@
 			\end{center}
 			\item La correlación parcial mide el grado de de asociación lineal entre dos variables controlando una tercera.
 		\end{itemize}
-
+% end of column 1 page 1
 \columnbreak
-
+% start of column 2 and 3 page 1
 \section*{Supuestos y propiedades}
 	\subsection*{Supuestos del modelo econométrico}
 		Bajo estos supuestos, los estimadores de los parámetros MCO presentarán buenas propiedades. \textbf{Supuestos de Gauss-Markov extendidos}:
@@ -111,50 +112,57 @@
 		\setlength{\multicolsep}{0pt} % reduce vertical spacing betwen subsection and multicols
 		\setlength{\columnsep}{-40pt} % reduce spacing between columns
 		\begin{multicols}{2} % set columns to 2
+		% start plot
 			\begin{tikzpicture}[scale=0.15]
-				\draw[step=2, gray, very thin] (-10,-10) grid (10,10); % background grid
-				\draw[thick, <->] (-10,10) node[anchor=south] {$y$} -- (-10,-10) -- (10,-10) node[anchor=north] {$x$}; %axis
-				\draw[red, thick] plot [domain=-10:10] (\x,{1 + 0.5 * \x}); % regression line
+				\draw [step=2, gray, very thin] (-10,-10) grid (10,10); % background grid
+				\draw [thick, <->] (-10,10) node [anchor=south] {$y$} -- (-10,-10) -- (10,-10) node [anchor=north] {$x$}; %axis
+				\draw [red, thick] plot [domain=-10:10] (\x,{1 + 0.5 * \x}); % regression line
 				\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=20] (\x,{rnd * 5 - 1.5 + 0.5 * \x}); % data points
-				\draw (-9.3,-9.6) -- (-9.5,-9.6) -- (-9.5,-4.3) -- (-9.3, -4.3) node[anchor=north west] {$\beta_0$}; % beta0
+				\draw (-9.3,-9.6) -- (-9.5,-9.6) -- (-9.5,-4.3) -- (-9.3, -4.3) node [anchor=north west] {$\beta_0$}; % beta0
 				\draw (-2,0) -- (1.5,0) arc (0:25:3.5); % beta1 arc
 				\draw (3,-0.5) node {$\beta_1$}; % beta1
 			\end{tikzpicture}
-			\columnbreak
+		% end plot
+		\columnbreak
+		% start text
 			\\ Ecuación: \\ $y_i = \beta_0 + \beta_1 x_{1i} + u_i$
 			\vspace*{1mm}
 			\\ Estimación:\\ $\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 x_{1i}$
 			\vspace*{1mm}
 			\\ Donde: \\ $\hat{\beta}_0 = \overline{y} - \hat{\beta}_1 \overline{x}$ \\ $\hat{\beta}_1 = \frac{Cov(y, x)}{Var(x)}$
+		% end text
 		\end{multicols}
 	\subsection*{Modelo de regresión múltiple}
 		\setlength{\multicolsep}{0pt} % reduce vertical spacing betwen subsection and multicols
 		\setlength{\columnsep}{-40pt} % reduce spacing between columns
 		\begin{multicols}{2} % set columns to 2
-				\begin{tikzpicture}[scale=0.15]
-				\draw[thick, ->] (-10,-10) -- (-3,-4) node[anchor=north west] {$x_2$}; % x2 axis
-				\draw[thick, <->] (-10,10) node[anchor=south] {$y$} -- (-10,-10) -- (10,-10) node[anchor=north] {$x_1$}; % y and x1 axis
+		% start plot
+			\begin{tikzpicture}[scale=0.15]
+				\draw [thick, ->] (-10,-10) -- (-3,-4) node [anchor=north west] {$x_2$}; % x2 axis
+				\draw [thick, <->] (-10,10) node [anchor=south] {$y$} -- (-10,-10) -- (10,-10) node [anchor=north] {$x_1$}; % y and x1 axis
 				% regression grid
-				\draw[red, thick] (-10,-4) -- (-5,3);
-				\draw[red, thick] (-8.5, -3.5) -- (-3.5,3.5);
-				\draw[red, thick] (-7, -3) -- (-2,4);
-				\draw[red, thick] (-5.5, -2.5) -- (-0.5,4.5);
-				\draw[red, thick] (-4, -2) -- (1,5);
-				\draw[red, thick] (-2.5, -1.5) -- (2.5,5.5);
-				\draw[red, thick] (-1, -1) -- (4,6);
-				\draw[red, thick] (0.5, -0.5) -- (5.5,6.5);
-				\draw[red, thick] (2, 0) -- (7,7);
-				\draw[red, thick] (3.5, 0.5) -- (8.5,7.5);
-				\draw[red, thick] (5, 1) -- (10,8);
-				\draw[red, thick] (-10, -4) -- (5, 1);
-				\draw[red, thick] (-8.75, -2.25) -- (6.25,2.75);
-				\draw[red, thick] (-7.5, -0.5) -- (7.5,4.5);
-				\draw[red, thick] (-6.25, 1.25) -- (8.75,6.25);
-				\draw[red, thick] (-5,3) -- (10,8);
+				\draw [red, thick] (-10,-4) -- (-5,3);
+				\draw [red, thick] (-8.5, -3.5) -- (-3.5,3.5);
+				\draw [red, thick] (-7, -3) -- (-2,4);
+				\draw [red, thick] (-5.5, -2.5) -- (-0.5,4.5);
+				\draw [red, thick] (-4, -2) -- (1,5);
+				\draw [red, thick] (-2.5, -1.5) -- (2.5,5.5);
+				\draw [red, thick] (-1, -1) -- (4,6);
+				\draw [red, thick] (0.5, -0.5) -- (5.5,6.5);
+				\draw [red, thick] (2, 0) -- (7,7);
+				\draw [red, thick] (3.5, 0.5) -- (8.5,7.5);
+				\draw [red, thick] (5, 1) -- (10,8);
+				\draw [red, thick] (-10, -4) -- (5, 1);
+				\draw [red, thick] (-8.75, -2.25) -- (6.25,2.75);
+				\draw [red, thick] (-7.5, -0.5) -- (7.5,4.5);
+				\draw [red, thick] (-6.25, 1.25) -- (8.75,6.25);
+				\draw [red, thick] (-5,3) -- (10,8);
 				\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=20] (\x,{rnd * 6.5 - 1.5 + 0.5 * \x}); % data points
-				\draw (-9.3,-9.6) -- (-9.5,-9.6) -- (-9.5,-4.3) -- (-9.3, -4.3) node[anchor=north west] {$\beta_0$}; % beta0
+				\draw (-9.3,-9.6) -- (-9.5,-9.6) -- (-9.5,-4.3) -- (-9.3, -4.3) node [anchor=north west] {$\beta_0$}; % beta0
 			\end{tikzpicture}
-			\columnbreak
+		% end plot
+		\columnbreak
+		% start text
 			\\ Ecuación: \\ $y_i = \beta_0 + \beta_1 x_{1i} + ... + \beta_k x_{ki} + u_i$
 			\vspace*{1mm}
 			\\ Estimación: \\ $\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 x_{1i} + ... + \hat{\beta}_k x_{ki}$
@@ -162,6 +170,7 @@
 			\\ Donde: \\ $\hat{\beta}_0 = \overline{y} - \hat{\beta}_1 \overline{x}_1 - ... - \hat{\beta}_k \overline{x}_k$ \\ $\hat{\beta}_j = \frac{Cov(y, \text{residualizado } x_j)}{Var(\text{residualizado } x_j)}$
 			\vspace*{1mm}
 			\\ Matriz: $\hat{\beta} = (X^T X)^{-1} (X^T y)$
+		% end text
 		\end{multicols}
 	\subsection*{Interpretación de coeficientes}
 		\scalebox{0.872}{ % scale the table to fit in the column
@@ -184,9 +193,9 @@
 		\\ Raíz Cuadrada del Error Cuadrático Medio: \hfill $\sqrt{\frac{\sum_{i=1}^n (\hat{u}_i - \overline{u})^2}{n}}$
 		\\ Error Medio Absoluto: \hfill $\frac{\sum_{i=1}^n |\hat{u}_i|}{n}$
 		\\ Porcentaje Medio de Error: \hfill $\frac{\sum_{i=1}^n |\hat{u}_i / y_i|}{n} \times 100$
-
+% end of column 2 and 3 page 1
 \columnbreak
-
+% start of column 1, 2 and 3 page 2
 \section*{R-cuadrado}
 	Es una \textbf{medida de la bondad del ajuste}, cómo la regresión se ajusta a los datos:
 	\begin{center}
@@ -287,9 +296,9 @@
 		\item De un valor individual de $y$ para un valor específico de $x$.
 	\end{itemize}
 	Si los valores de las variables ($x$) se aproximan al valor medio ($\overline{x}$), la amplitud del intervalo de confianza de la predicción será menor. 
-
+% end of column 1, 2 and 3 page 2
 \columnbreak
-
+% start of column 1 page 3
 \section*{Multicolinealidad}
 	\begin{itemize}[leftmargin=*]
 		\item \textbf{Multicolinealidad perfecta} - hay variables independientes que son constantes y/o hay una relación lineal exacta entre variables independientes. Es el \textbf{incumplimiento del tercer (3) supuesto del modelo}.
@@ -324,9 +333,9 @@
 			\item Realizar análisis factorial(u otra técnica de reducción de dimensiones) en las vairables colineales.
 			\item Interpretar los coeficientes con multicolinealidad de manera conjunta.
 		\end{itemize}
-
+% end of column 1 page 3
 \columnbreak
-
+% start of column 2 page 3
 \section*{Heterocedasticidad}
 	Los residuos $u_i$ de la función de regresión poblacional no tienen una varianza constante $\sigma^2$:
 	\begin{center}
@@ -345,30 +354,30 @@
 			\setlength{\multicolsep}{0pt} % reduce vertical spacing betwen subsection and multicols
 			\setlength{\columnsep}{20pt} % increment spacing between columns
 			\begin{multicols}{3} % set columns to 3
-			\item \textbf{Gráficos} - \\ buscar patrones de dispersión en gráficos $x$ vs. $u$ ó $x$ vs. $y$.
-
+			% start of text
+				\item \textbf{Gráficos} - \\ buscar patrones de dispersión en gráficos $x$ vs. $u$ ó $x$ vs. $y$.
+			% end of text
 			\columnbreak
-			\vspace*{-23pt}
-
-			\begin{tikzpicture}[scale=0.108]
-				\draw[step=2, gray, very thin] (-10,-10) grid (10,10); % grid
-				\draw[thick,->] (-10,0) -- (10,0) node[anchor=north] {$x$}; % x axis
-				\draw[thick,-] (-10,-10) -- (-10,10) node[anchor=west] {$u$}; % u axis
-				\draw plot [only marks, mark=*, mark size=6, domain=0:17, samples=50] ({\x - 9},{-0.5 * rand * \x - 1}); % data points
-				\draw[thick, dashed, red, -latex] plot [domain=1:17] ({\x - 10},{-0.5 * \x - 1}); % lower red arrow
-				\draw[thick, dashed, red, -latex] plot [domain=1:17] ({\x - 10},{0.5 * \x - 1}); % upper red arrow
-			\end{tikzpicture}
-
+			% start of plot 1
+				\begin{tikzpicture}[scale=0.108]
+					\draw [step=2, gray, very thin] (-10,-10) grid (10,10); % grid
+					\draw [thick,->] (-10,0) -- (10,0) node [anchor=north] {$x$}; % x axis
+					\draw [thick,-] (-10,-10) -- (-10,10) node [anchor=west] {$u$}; % u axis
+					\draw plot [only marks, mark=*, mark size=6, domain=0:17, samples=50] ({\x - 9},{-0.5 * rand * \x - 1}); % data points
+					\draw [thick, dashed, red, -latex] plot [domain=1:17] ({\x - 10},{-0.5 * \x - 1}); % lower red arrow
+					\draw [thick, dashed, red, -latex] plot [domain=1:17] ({\x - 10},{0.5 * \x - 1}); % upper red arrow
+				\end{tikzpicture}
+			% end of plot 1
 			\columnbreak
-			\vspace*{-24pt}
-
-			\begin{tikzpicture}[scale=0.108]
-				\draw[step=2, gray, very thin] (-10,-10) grid (10,10); % grid
-				\draw[thick,<->] (-10,10) node[anchor=west] {$y$} -- (-10,-10) -- (10,-10) node[anchor=south] {$x$}; % axis
-				\draw plot [only marks, mark=*, mark size=6, domain=0:13, samples=50] ({\x -9},{(-0.65 * rand * \x) + 0.6 * \x - 8}); % data points
-				\draw[thick, dashed, red, -latex] plot [domain=0:12] ({\x - 9},{-0.06 * \x - 8.5}); % lower red arrow
-				\draw[thick, dashed, red, -latex] plot [domain=0:12] ({\x -9},{1.25 * \x - 7.2}); % upper red arrow
-			\end{tikzpicture}
+			% start of plot 2
+				\begin{tikzpicture}[scale=0.108]
+					\draw [step=2, gray, very thin] (-10,-10) grid (10,10); % grid
+					\draw [thick,<->] (-10,10) node [anchor=west] {$y$} -- (-10,-10) -- (10,-10) node[anchor=south] {$x$}; % axis
+					\draw plot [only marks, mark=*, mark size=6, domain=0:13, samples=50] ({\x -9},{(-0.65 * rand * \x) + 0.6 * \x - 8}); % data points
+					\draw [thick, dashed, red, -latex] plot [domain=0:12] ({\x - 9},{-0.06 * \x - 8.5}); % lower red arrow
+					\draw [thick, dashed, red, -latex] plot [domain=0:12] ({\x -9},{1.25 * \x - 7.2}); % upper red arrow
+				\end{tikzpicture}
+			% end of plot 2
 			\end{multicols}
 			\item \textbf{Test formales} - White, Bartlett, Breusch-Pagan, etc. Comúnmente, la hipótesis nula: $H_0$: Homocedasticidad.
 		\end{itemize}
@@ -384,9 +393,9 @@
 			\end{itemize}
 			\item Nueva especificación del modelo, por ejemplo, transformación logarítmica.
 	\end{itemize}
-
+% end of column 2 page 3
 \columnbreak
-
+% start of column 3 page 3
 \section*{Autocorrelación}
 	El residuo de cualquier observación, $u_t$, está correlacionado con el residuo de cualquier otra observación. Las observaciones no son independientes.
 	\begin{center}
@@ -405,44 +414,47 @@
 			\item \textbf{Gráficos} - buscar patrones de dispersión en gráficos $u_{t-1}$ vs. $u_t$ o hacer uso del correlograma.
 			\setlength{\multicolsep}{0pt} % reduce vertical spacing betwen subsection and multicols
 			\setlength{\columnsep}{6pt} % increment spacing between columns
+			% scatter plots
 			\begin{multicols}{3} % set columns to 3
+			% start of Ac. plot
 				\begin{center}
 					\textbf{\footnotesize Ac.}
 				\end{center}
 				\vspace{2.0pt}
 				\begin{tikzpicture}[scale=0.11]
-					\draw[step=2, gray, very thin] (-10,-10) grid (10,10); % grid
-					\draw[thick,->] (-10,0) -- (10,0) node[anchor=south] {$u_{t-1}$}; % ut-1 axis
-					\draw[thick,-] (-10,-10) -- (-10,10) node[anchor=west] {$u_t$}; % ut axis
+					\draw [step=2, gray, very thin] (-10,-10) grid (10,10); % grid
+					\draw [thick,->] (-10,0) -- (10,0) node [anchor=south] {$u_{t-1}$}; % ut-1 axis
+					\draw [thick,-] (-10,-10) -- (-10,10) node [anchor=west] {$u_t$}; % ut axis
 					\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=50] (\x,{rnd * 6 + (-2 * (\x)^2 + 40) * 0.1}); % data points
-					\draw[thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 + (-2 * (\x)^2 + 40) * 0.1}); % red arrow
+					\draw [thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 + (-2 * (\x)^2 + 40) * 0.1}); % red arrow
 				\end{tikzpicture}
-			
+			% end of Ac. plot
 			\columnbreak
-
+			% start of Ac.(+) plot
 				\begin{center}
 					\textbf{\footnotesize Ac.(+)}
 				\end{center}
 				\begin{tikzpicture}[scale=0.11]
-					\draw[step=2, gray, very thin] (-10,-10) grid (10,10); % grid
-					\draw[thick,->] (-10,0) -- (10,0) node[anchor=north] {$ u_{t-1}$}; % ut-1 axis
-					\draw[thick,-] (-10,-10) -- (-10,10) node[anchor=west] {$u_t$}; % ut axis
+					\draw [step=2, gray, very thin] (-10,-10) grid (10,10); % grid
+					\draw [thick,->] (-10,0) -- (10,0) node [anchor=north] {$ u_{t-1}$}; % ut-1 axis
+					\draw [thick,-] (-10,-10) -- (-10,10) node [anchor=west] {$u_t$}; % ut axis
 					\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=25] (\x,{rnd * 6 + 0.5 * \x - 3}); % data points
-					\draw[thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 + 0.5 * \x - 3}); % red arrow
+					\draw [thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 + 0.5 * \x - 3}); % red arrow
 				\end{tikzpicture}
-
+			% end of Ac.(+) plot
 			\columnbreak
-
+			% start of Ac.(-) plot
 				\begin{center}
 					\textbf{\footnotesize Ac.(-)}
 				\end{center}
 				\begin{tikzpicture}[scale=0.11]
-					\draw[step=2, gray, very thin] (-10,-10) grid (10,10); % grid
-					\draw[thick,->] (-10,0) -- (10,0) node[anchor=south] {$u_{t-1}$}; % ut-1 axis
-					\draw[thick,-] (-10,-10) -- (-10,10) node[anchor=west] {$u_t$}; % ut axis
+					\draw [step=2, gray, very thin] (-10,-10) grid (10,10); % grid
+					\draw [thick,->] (-10,0) -- (10,0) node [anchor=south] {$u_{t-1}$}; % ut-1 axis
+					\draw [thick,-] (-10,-10) -- (-10,10) node [anchor=west] {$u_t$}; % ut axis
 					\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=25] (\x,{rnd * 6 - 0.5 * \x - 3}); % data points
-					\draw[thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 - 0.5 * \x - 3}); % red arrow
+					\draw [thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 - 0.5 * \x - 3}); % red arrow
 				\end{tikzpicture}
+			% end of Ac.(-) plot
 			\end{multicols}
 			\item \textbf{Test formales} - Durbin-Watson, Breusch-Godfrey, etc. Comúnmente, la hipótesis nula: $H_0$: No autocorrelación.
 		\end{itemize}
@@ -455,7 +467,8 @@
 				\item Si $\rho$ es desconocido, estimarlo -por ejemplo- por el método de Cochrane-Orcutt, crear un modelo cuasi-diferenciado donde $u_t$ es ruido blanco y estimarlo por MCO.
 			\end{itemize}
 		\end{itemize}
-
+% end of column 3 page 3
+% end of content
 \end{multicols}
 
 \end{document}
