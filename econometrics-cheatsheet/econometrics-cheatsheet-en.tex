@@ -25,7 +25,7 @@
 \begin{document}
 
 % page foot
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Version 2.6-en - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Version 2.7-en - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
@@ -230,21 +230,21 @@
 			\item $H_0: \beta_j = \vartheta$
 			\item $H_1: \beta_j \neq \vartheta$
 		\end{itemize}
-		Under $H_0$:
 		\begin{center}
+			Under $H_0$: \quad
 			$t = \frac{\hat{\beta}_j - \vartheta}{se(\hat{\beta}_j)} \sim t_{n-k-1, \alpha/2}$
 		\end{center}
-		If $\mid t \mid > t_{n-k-1, \alpha/2}$, there is evidence to reject the null hypothesis.
+		If $\mid t \mid > t_{n-k-1, \alpha/2}$, there is evidence to reject $H_0$.
 		\\ \textbf{Individual significance test} - tests if a parameter is significantly \textbf{different from zero}.
 		\begin{itemize}[leftmargin=*]
 			\item $H_0: \beta_j = 0$
 			\item $H_1: \beta_j \neq 0$
 		\end{itemize}
-		Under $H_0$:
 		\begin{center}
+			Under $H_0$: \quad
 			$t = \frac{\hat{\beta}_j}{se(\hat{\beta}_j)} \sim t_{n-k-1, \alpha/2}$
 		\end{center}
-		If $\mid t \mid > t_{n-k-1, \alpha/2}$, there is evidence to reject the null hypothesis.
+		If $\mid t \mid > t_{n-k-1, \alpha/2}$, there is evidence to reject $H_0$.
 	\subsection*{The F contrast}
 		Simultaneously contrasts multiple (linear) hypothesis about the parameters. It makes use of a non restricted model and a restricted model:
 		\begin{itemize}[leftmargin=*]
@@ -253,19 +253,26 @@
 		\end{itemize}
 		Then, looking at the errors, there are:
 		\begin{itemize}[leftmargin=*]
-			\item \textbf{$\sum_{i=1}^n \hat{u}_{nr}^2$} - is the Sum of Sq. Resid. of the non restricted model ($SSR_{nr}$).
-			\item \textbf{$\sum_{i=1}^n \hat{u}_r^2$} - is the Sum of Sq. Resid of the restricted model ($SSR_r$).
+			\item \textbf{$\sum_{i=1}^n \hat{u}_{N}^2$} - is the Sum of Sq. Resid. of the non restricted model ($SSR_{N}$).
+			\item \textbf{$\sum_{i=1}^n \hat{u}_R^2$} - is the Sum of Sq. Resid of the restricted model ($SSR_R$).
 		\end{itemize}
 		Under $H_0$:
 		\begin{center}
-			$F = \frac{SSR_r - SSR_{nr}}{SSR_{nr}} \frac{(n-k_{nr}-1)}{q} \sim F_{q, n-k_{nr}-1}$
+			$F = \frac{SSR_R - SSR_{N}}{SSR_{N}} \frac{(n-k_{N}-1)}{q} \sim F_{q, n-k_{N}-1}$
 		\end{center}
-		Where $k_{nr}$ is the number of parameters of the non restricted model and $q$ is the number of linear hypothesis tested.
-		\\ If $F_{q, n-k_{nr}-1} < F$, there is evidence to reject the null hypothesis.
-		\\ \textbf{Global significance test} - tests if all the parameters associated to $x$'s are simultaneously equal to zero.
-		\\ $H_0: \beta_1 = \beta_2 = ... = \beta_k = 0$
-		\\ $H_1: \beta_1 \neq 0$ and/or $\beta_2 \neq 0 ...$ and/or $\beta_k \neq 0$
-		\\ If $F_{k, n-k_{nr}-1} < F$, there is evidence to reject the null hypothesis.
+		Where $k_{N}$ is the number of parameters of the non restricted model and $q$ is the number of linear hypothesis tested.
+		\\ If $F_{q, n-k_{N}-1} < F$, there is evidence to reject $H_0$.
+		\\ \textbf{Global significance test} - tests if all the parameters associated to $x$'s are \textbf{simultaneously equal to zero}.
+		\begin{itemize}[leftmargin=*]
+			\item $H_0: \beta_1 = \beta_2 = ... = \beta_k = 0$
+			\item $H_1: \beta_1 \neq 0$ and/or $\beta_2 \neq 0 ...$ and/or $\beta_k \neq 0$
+		\end{itemize}
+		In this case, we can simplify the formula for the $F$ stat.
+		\\ Under $H_0$:
+		\begin{center}
+			$F = \frac{R^2}{1 - R^2} \frac{(n-k-1)}{k} \sim F_{k, n-k-1}$
+		\end{center}
+		If $F_{k, n-k-1} < F$, there is evidence to reject $H_0$.
 
 \section*{Confidence intervals}
 	The confidence intervals at ($1 - \alpha$) confidence level can be calculated:

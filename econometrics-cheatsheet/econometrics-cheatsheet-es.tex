@@ -25,7 +25,7 @@
 \begin{document}
 
 % page foot
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Versión 2.6-es - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Versión 2.7-es - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
@@ -230,21 +230,21 @@
 			\item $H_0: \beta_j = \vartheta$
 			\item $H_1: \beta_j \neq \vartheta$
 		\end{itemize}
-		Bajo $H_0$:
 		\begin{center}
+			Bajo $H_0$: \quad
 			$t = \frac{\hat{\beta}_j - \vartheta}{ee(\hat{\beta}_j)} \sim t_{n-k-1, \alpha/2}$
 		\end{center}
-		Si $\mid t \mid > t_{n-k-1, \alpha/2}$, existe evidencia para rechazar la hipótesis nula.
+		Si $\mid t \mid > t_{n-k-1, \alpha/2}$, existe evidencia para rechazar $H_0$.
 		\\ \textbf{Contraste de significación individual} - prueba si un parámetro es \textbf{significativamente distinto de cero}.
 		\begin{itemize}[leftmargin=*]
 			\item $H_0: \beta_j = 0$
 			\item $H_1: \beta_j \neq 0$
 		\end{itemize}
-		Bajo $H_0$:
 		\begin{center}
+			Bajo $H_0$: \quad
 			$t = \frac{\hat{\beta}_j}{ee(\hat{\beta}_j)} \sim t_{n-k-1, \alpha/2}$
 		\end{center}
-		Si $\mid t \mid > t_{n-k-1, \alpha/2}$, existe evidencia para rechazar la hipótesis nula.
+		Si $\mid t \mid > t_{n-k-1, \alpha/2}$, existe evidencia para rechazar $H_0$.
 	\subsection*{Contraste F}
 		Prueba simultáneamente múltiples hipótesis (lineales) sobre los parámetros. Hace uso de un modelo no restringido y uno restringido:
 		\begin{itemize}[leftmargin=*]
@@ -253,19 +253,26 @@
 		\end{itemize}
 		Entonces, viendo los errores, hay:
 		\begin{itemize}[leftmargin=*]
-			\item \textbf{$\sum_{i=1}^n \hat{u}_{nr}^2$} - es la Suma de Resid. Cuadrados del modelo no restringido ($SRC_{nr}$).
-			\item \textbf{$\sum_{i=1}^n \hat{u}_r^2$} - es la Suma de Resid. Cuadrados del modelo restringido ($SRC_r$).
+			\item \textbf{$\sum_{i=1}^n \hat{u}_{N}^2$} - es la Suma de Resid. Cuadrados del modelo no restringido ($SRC_{N}$).
+			\item \textbf{$\sum_{i=1}^n \hat{u}_R^2$} - es la Suma de Resid. Cuadrados del modelo restringido ($SRC_R$).
 		\end{itemize}
 		Bajo $H_0$:
 		\begin{center}
-			$F = \frac{SRC_r - SRC_{nr}}{SRC_{nr}} \frac{(n-k_{nr}-1)}{q} \sim F_{q, n-k_{nr}-1}$
+			$F = \frac{SRC_R - SRC_{N}}{SRC_{N}} \frac{(n-k_{N}-1)}{q} \sim F_{q, n-k_{N}-1}$
 		\end{center}
-		Donde $k_{nr}$ es el número de parámetros del modelo no restringido y $q$ es el número de hipótesis lineales a probar.
-		\\ Si $F_{q, n-k_{nr}-1} < F$, existe evidencia para rechazar la hipótesis nula.
-		\\ \textbf{Contraste de significación global} - prueba si todos los parametros asociados a $x$'s son simultáneamente iguales a cero.
-		\\ $H_0: \beta_1 = \beta_2 = ... = \beta_k = 0$
-		\\ $H_1: \beta_1 \neq 0$ and/or $\beta_2 \neq 0 ...$ and/or $\beta_k \neq 0$
-		\\ Si $F_{k, n-k_{nr}-1} < F$, existe evidencia para rechazar la hipótesis nula.
+		Donde $k_{N}$ es el número de parámetros del modelo no restringido y $q$ es el número de hipótesis lineales a probar.
+		\\ Si $F_{q, n-k_{N}-1} < F$, existe evidencia para rechazar $H_0$.
+		\\ \textbf{Contraste de significación global} - prueba si todos los parametros asociados a $x$'s son \textbf{simultáneamente iguales a cero}.
+		\begin{itemize}[leftmargin=*]
+			\item $H_0: \beta_1 = \beta_2 = ... = \beta_k = 0$
+			\item $H_1: \beta_1 \neq 0$ y/o $\beta_2 \neq 0 ...$ y/o $\beta_k \neq 0$
+		\end{itemize}
+		En este caso, podemos simplificar la fórmula para el estadístico $F$.
+		\\ Bajo $H_0$:
+		\begin{center}
+			$F = \frac{R^2}{1 - R^2} \frac{(n-k-1)}{k} \sim F_{k, n-k-1}$
+		\end{center}
+		Si $F_{k, n-k-1} < F$, existe evidencia para rechazar $H_0$.
 
 \section*{Intervalos de confianza}
 	Los intervalos de confianza al nivel de confianza ($1 - \alpha$), se pueden calcular:
