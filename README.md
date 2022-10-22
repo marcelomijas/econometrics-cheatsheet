@@ -15,7 +15,7 @@ Econometrics cheat sheet created using $\LaTeX$ with a summarized review of:
 
 ### Download links
 
-**Econometrics Cheat Sheet**. Current version: `2.6` (last updated 5 oct. 2022)
+**Econometrics Cheat Sheet**. Current version: `2.7` (last updated 22 oct. 2022)
 
 |              | PDF file                                                          | TeX file                                                          |
 | :----------: | :---------------------------------------------------------------: | :---------------------------------------------------------------: |
@@ -42,6 +42,7 @@ Econometrics cheat sheet created using $\LaTeX$ with a summarized review of:
 - [x] Release of an Spanish version of `time-series-cheatsheet`.
 
 - [ ] Release of a cheat sheet with more common problems in econometrics and additional models (VAR, VECM, ...), `additional-cheatsheet`.
+  - :warning: :construction: A work in progress can be found at [add-en.pdf](additional-cheatsheet/additional-cheatsheet-en.pdf)
 
 - [ ] Syled version of the cheat sheets (background colors, styled sections, more appealing plots, etc.)
 
