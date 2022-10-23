@@ -41,59 +41,97 @@
 \colorbox{yellow}{THIS IS A WORK IN PROGRESS}
 \\ \colorbox{yellow}{NOT INTENDEND FOR GENEAL PURPOSE}
 
-\section*{More about OLS in matrix notation}
+\section*{OLS in matrix notation}
 	The general econometric model:
 	\begin{center}
 		$y_i = \beta_0 + \beta_1 x_{1i} + ... + \beta_k x_{ki} + u_i$
 	\end{center}
-	Can be written in matrix notation:
+	Can be written in matrix notation as:
 	\begin{center}
 		$y = X \beta + u$
 	\end{center}
-	Let's call $e$ the vector of estimated residuals ($e \neq u$):
+	Let's call $\hat{u}$ the vector of estimated residuals ($\hat{u} \neq u$):
 	\begin{center}
-		$e = y - X \hat{\beta}$
+		$\hat{u} = y - X \hat{\beta}$
 	\end{center}
 	The objective of OLS is to minimize the SSR:
 	\begin{center}
-		$Min$ \quad $e^T e$
+		Min $\sum \hat{u}_i^2 = $ Min $\hat{u}^T \hat{u}$
 	\end{center}
-	Getting $e^T e$:
-	\begin{center}
-		$e^T e = (y - X \hat{\beta})^T (y - X \hat{\beta}) =$
-		\\ $= y^T y - \hat{\beta}^T X^T y - y^T X \hat{\beta} + \hat{\beta}^T X^T X \hat{\beta} =$
-		\\ $= y^T y -2 \hat{\beta}^T X^T y + \hat{\beta}^T X^T X \hat{\beta}$
-	\end{center}
-	where there is the fact that: $y^T X \hat{\beta} = (y^T X \hat{\beta})^T = \hat{\beta}^T X^T y$
-	Minimizing $e^T e$:
-	\begin{center}
-		$\frac{\partial e^T e}{\partial \hat{\beta}} = -2 X^T y +2 X^T X \hat{\beta} = 0$
-		\\ $\hat{\beta} = (X^T X)^{-1} (X^T y)$
-	\end{center}
-	The variance-covariance matrix:
-	\begin{center}
-		$Var(\hat{\beta}) = \hat{\sigma}^2 (X^T X)^{-1}$
-	\end{center}
-	where:
-	\begin{center}
-		$\hat{\sigma} = \frac{e^T e}{n - k}$
-	\end{center}
-	The standard errors are in the diagonal of:
-	\begin{center}
-		$se(\hat{\beta}) = \sqrt{Var(\hat{\beta})}$
-	\end{center}
-	Error measures:
 	\begin{itemize}[leftmargin=*]
-		\item $SSR = e^T e = y^T y - \hat{\beta}^T X^T y = \sum(y_i - \hat{y}_i)^2$
-		\item $SSE = \hat{\beta}^T X^T y - n \overline{y}^2 = \sum(\hat{y}_i - \overline{y})^2$
-		\item $SST = SSR + SSE = y^T y - n \overline{y}^2 = \sum(y_i - \overline{y})^2$
+		\item Defining $\hat{u}^T \hat{u}$:
+		\begin{center}
+			$\hat{u}^T \hat{u} = (y - X \hat{\beta})^T (y - X \hat{\beta}) =$
+			\\ $= y^T y -2 \hat{\beta}^T X^T y + \hat{\beta}^T X^T X \hat{\beta}$
+		\end{center}
+		\item Minimizing $\hat{u}^T \hat{u}$:
+		\begin{center}
+			$\frac{\partial \hat{u}^T \hat{u}}{\partial \hat{\beta}} = -2 X^T y +2 X^T X \hat{\beta} = 0$
+			\\ $\hat{\beta} = (X^T X)^{-1} (X^T y)$
+			\\ \scalebox{0.85}{
+				$
+				\begin{bmatrix}
+					\beta_0 \\
+					\beta_1 \\
+					\vdots \\
+					\beta_k
+				\end{bmatrix}
+				=
+				\begin{bmatrix}
+					n        & \sum x_1     & \hdots & \sum x_k     \\
+					\sum x_1 & \sum x_1^2   & \hdots & \sum x_1 x_k \\
+					\vdots   & \vdots       & \ddots & \vdots       \\
+					\sum x_k & \sum x_k x_1 & \hdots & \sum x_k^2
+				\end{bmatrix}
+				^{-1}
+				\cdot
+				\begin{bmatrix}
+					\sum y \\
+					\sum y x_1 \\
+					\vdots \\
+					\sum y x_k
+				\end{bmatrix}
+				$
+			}
+		\end{center}
 	\end{itemize}
-	The R-Squared:
+	\subsection*{Variance-covariance matrix}
+		\begin{center}
+			$Var(\hat{\beta}) = \hat{\sigma}^2 (X^T X)^{-1} =$
+			\scalebox{0.67}{
+			$
+			\begin{bmatrix}
+				Var(\hat{\beta}_0) & Cov(\hat{\beta}_0, \hat{\beta}_1) & \hdots & Cov(\hat{\beta}_0, \hat{\beta}_k) \\
+				Cov(\hat{\beta}_1, \hat{\beta}_0) & Var(\hat{\beta}_1) & \hdots & Cov(\hat{\beta}_1, \hat{\beta}_k) \\
+				\vdots & \vdots & \ddots & \vdots \\
+				Cov(\hat{\beta}_k, \hat{\beta}_0) & Cov(\hat{\beta}_k, \hat{\beta}_1) & \hdots & Var(\hat{\beta}_k)
+			\end{bmatrix}
+			$
+			}
+		\end{center}
+		\quad where: $\hat{\sigma} = \frac{\hat{u}^T \hat{u}}{n - k - 1}$
+		\\ The standard errors are in the diagonal of:
+		\begin{center}
+			$se(\hat{\beta}) = \sqrt{Var(\hat{\beta})}$
+		\end{center}
+	\subsection*{Error measures}
+		\begin{itemize}[leftmargin=*]
+			\item $SSR = \hat{u}^T \hat{u} = y^T y - \hat{\beta}^T X^T y = \sum(y_i - \hat{y}_i)^2$
+			\item $SSE = \hat{\beta}^T X^T y - n \overline{y}^2 = \sum(\hat{y}_i - \overline{y})^2$
+			\item $SST = SSR + SSE = y^T y - n \overline{y}^2 = \sum(y_i - \overline{y})^2$
+		\end{itemize}
+	\subsection*{R-squared}
 	\begin{center}
 		$R^2 = \frac{SSE}{SST} = 1 - \frac{SSR}{SST}$
 	\end{center}
+	The r-squared corrected by degrees of freedom:
+	\begin{center}
+		$\overline{R}^2 = 1 - \frac{n - 1}{n - k - 1} (1 - R^2)$
+	\end{center}
+	
+\columnbreak
 
-\section*{Omission of variables}
+\section*{Variables omission}
 	Most of the time, is hard to get all relevant variables for an analysis. For example, a true model with all variables:
 	\begin{center}
 		$y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + u$
@@ -102,7 +140,7 @@
 	\begin{center}
 		$\tilde{y} = \tilde{\beta}_0 + \tilde{\beta}_1 x_1 + u$
 	\end{center}
-	Omitted variables provoke OLS bias and inconsistency.
+	Omission of variables provoke OLS bias and inconsistency.
 	\\ Depending of the correlation between $x_1$ and $x_2$ and the sign of $\beta_2$, the bias on $\tilde{\beta}_1$ could be:
 	\begin{center}
 		\scalebox{0.9}{ % scale the table
@@ -119,21 +157,23 @@
 	\end{center}
 	$(+)$ bias $\rightarrow$ $\tilde{\beta}_1$ will be higher than it should be (it includes the effect of $x_2$). $\tilde{\beta}_1 > \beta_1$
 	\\ $(-)$ bias $\rightarrow$ $\tilde{\beta}_1$ will be lower than it should be (it includes the effect of $x_2$). $\tilde{\beta}_1 < \beta_1$
-	\\ If $Corr(x_1,x_2) = 0$, there is no bias on $\beta_1$, because the effect of $x_2$ will be picked up by the error term, $u$.
+	\\ If $Corr(x_1,x_2) = 0$, there is no bias on $\beta_1$, because the effect of $x_2$ will be fully picked up by the error term, $u$.
 	\\ There are two approaches to solve the problem:
 	\begin{itemize}[leftmargin=*]
 		\item Make use of proxy variables.
-		\item Make use of instrumental variables (IV)
+		\item Make use of instrumental variables (IV).
 	\end{itemize}
 	\subsection*{Proxy variables}
-		Is the approach when a relevant variable is not available for the model because is non-observable, and there is no data. A proxy variable is something related with te non-observable variable that has data available.
-		For example, the intellectual coefficient (IC) is a proxy variable for a subject's capacity (non-observable).
+		Is the approach when a relevant variable is not available for the model because is non-observable, and there is no data.
+		\\ A proxy variable is something related with the non-observable variable that has data available.
+		\\ For example, the intellectual coefficient is a proxy variable for a subject's capacity (non-observable).
 	\subsection*{Instrumental variables (IV)}
 	When proxy variables are not available, the alternative approach is to look for a variable, let's call it $z$, that has a relation with $x$. The $z$ variable must meet the following requirements to be called an Instrumental Variable (IV):
 		\begin{center}
 			$Cov(z,u) = 0$
 			\\ $Cov(z,x) \neq 0$
 		\end{center}
+	This method let the omitted variable in the error term, but instead of estimate the model by OLS, it utilizes a method that recognize the presence of an omitted variable. This method can also solve error measurements.
 	\subsection*{TSLS}
 		Can have multiple instrumental variables (is the IV, but with various instrumental variables at the same time). And $Cov(z,u) = 0$ can be relaxed, but there has to be a minimum of variables that satisfies it.
 		\\ Can have multicollinearity problems.
