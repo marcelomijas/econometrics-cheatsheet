@@ -44,7 +44,7 @@ Econometrics cheat sheet created using $\LaTeX$ with a summarized review of:
 - [ ] Release of a cheat sheet with more common problems in econometrics and additional models (VAR, VECM, ...), `additional-cheatsheet`.
   - :warning: :construction: A work in progress can be found at [add-en.pdf](additional-cheatsheet/additional-cheatsheet-en.pdf)
 
-- [ ] Syled version of the cheat sheets (background colors, styled sections, more appealing plots, etc.)
+- [ ] Styled version of the cheat sheets (background colors, styled sections, more appealing plots, etc.)
 
 ## Frequently Asked Questions (FAQ)
 
