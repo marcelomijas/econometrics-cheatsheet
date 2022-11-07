@@ -48,7 +48,7 @@ Econometrics cheat sheet created using $\LaTeX$ with a summarized review of:
 
 ## Frequently Asked Questions (FAQ)
 
-### What does $residualized$ $x_j$ means?
+### What does $\mathrm{residualized}$ $x_j$ means?
 
 Those are the residuals from a OLS regression between $x_j$ and all the other $x$ 's. Error measures and r-squared can also be obtained from this regression.
 
