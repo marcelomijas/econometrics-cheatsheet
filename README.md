@@ -52,14 +52,6 @@ Econometrics cheat sheet created using $\LaTeX$ with a summarized review of:
 
 Those are the residuals from a OLS regression between $x_j$ and all the other $x$ 's. Error measures and r-squared can also be obtained from this regression.
 
-### Where is the non matrix version of the standard error of the $\hat{\beta}$ 's?
-
-For space reasons, the version included in the cheatsheet is the matricial one. It is perfectly valid and equal to the non matrix version.
-
-The non matrix version:
-
-$$\mathrm{se}(\hat{\beta}_j)=\sqrt{\frac{\hat{\sigma}^2}{SST_j(1-R^2_j)}},j=1,...,k$$
-
 ### Why is $\beta_0$ the constant term? My reference manual / proffessor's definition of the econometric model is different.
 
 There is some debate about the correct way to name the coefficients and the sub-index of the coefficients and variables of a model. This could have an impact on how some statistics like the adjusted R-squared or some tests like the F contrast formulas are written.
@@ -85,6 +77,14 @@ The same cannot be said about specification (2), because there is a difference b
 $\mathrm{Specification (1)(3)} \rightarrow \overline{R}^2 = 1 - \frac{n-1}{n-k-1} (1-R^2)$
 
 $\mathrm{Specification (2)} \rightarrow \overline{R}^2 = 1 - \frac{n-1}{n-k} (1-R^2)$
+
+### Where is the non matrix version of the standard error of the $\hat{\beta}$ 's?
+
+For space reasons, the version included in the cheatsheet is the matricial one. It is perfectly valid and equal to the non matrix version.
+
+The non matrix version:
+
+$$\mathrm{se}(\hat{\beta}_j)=\sqrt{\frac{\hat{\sigma}^2}{SST_j(1-R^2_j)}},j=1,...,k$$
 
 ## Resources
 
