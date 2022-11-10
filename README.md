@@ -68,7 +68,7 @@ Others:
 
 $$y_i = \alpha + \beta_1 x_{1i} + \beta_2 x_{2i}  + ... + \beta_k x_{ki} + u_i \rightarrow \mathrm{Specification (3)}$$
 
-All the above are equally valid representations of the multiple regression model. In the specification $(1)$, $\beta_0$ represents the constant term, while in specification $(2)$ and $(3)$ it is represented by $\beta_1$ and $\alpha$, respectevely.
+All the above are equally valid representations of the multiple regression model. In the specification $(1)$, $\beta_0$ represents the constant term, while in specification $(2)$ and $(3)$ it is represented by $\beta_1$ and $\alpha$, respectively.
 
 In this project, the specification used is the first $(1)$, so we can say that there are $k$ independent variables and $k+1$ coefficients (including the constant term), the same could be said for the specification $(3)$. There are no difference in the statistics and tests formula definition between this two specifications, $k_{(1)} = k_{(3)}$.
 
