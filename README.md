@@ -68,15 +68,15 @@ Others:
 
 $$y_i = \alpha + \beta_1 x_{1i} + \beta_2 x_{2i}  + ... + \beta_k x_{ki} + u_i \rightarrow \mathrm{Specification (3)}$$
 
-All the above are definitions equally valid representations of the multiple regression model. In the specification (1), $\beta_0$ represents the constant term, while in specification (2) and (3) it is represented by $\beta_1$ and $\alpha$, respectevely.
+All the above are definitions equally valid representations of the multiple regression model. In the specification $(1)$, $\beta_0$ represents the constant term, while in specification $(2)$ and $(3)$ it is represented by $\beta_1$ and $\alpha$, respectevely.
 
-In this project, the specification used is the first (1), so we can say that there are $k$ independent variables and $k+1$ coefficients, the same could be said for the specification (3). There are no difference in the statistics and tests formula definition between this two specifications.
+In this project, the specification used is the first $(1)$, so we can say that there are $k$ independent variables and $k+1$ coefficients, the same could be said for the specification $(3)$. There are no difference in the statistics and tests formula definition between this two specifications, $k_{(1)} = k_{(3)}$.
 
-The same cannot be said about specification (2), because there is a difference between it and the rest: $k_{(1)} = k_{(3)} \neq k_{(2)}$. But there is a relation between the three, $k_{(2)} = k_{(1)}-1$ (also considering $k_{(1)} = k_{(3)}$). This way, a "translation" between formulas for different representations is possible. For example, for the adjusted R-squared:
+The same cannot be said about specification $(2)$, because there is a difference between it and the rest: $k_{(1)} = k_{(3)} \neq k_{(2)}$. But there is a relation between the three, $k_{(2)} = k_{(1)}-1$ (also considering $k_{(1)} = k_{(3)}$). This way, a "translation" between formulas for different representations is possible. For example, for the adjusted R-squared:
 
-$\mathrm{Specification (1)(3)} \rightarrow \overline{R}^2 = 1 - \frac{n-1}{n-k-1} (1-R^2)$
+$$\mathrm{Specification (1)(3)} \rightarrow \overline{R}^2 = 1 - \frac{n-1}{n-k-1} (1-R^2)$$
 
-$\mathrm{Specification (2)} \rightarrow \overline{R}^2 = 1 - \frac{n-1}{n-k} (1-R^2)$
+$$\mathrm{Specification (2)} \rightarrow \overline{R}^2 = 1 - \frac{n-1}{n-k} (1-R^2)$$
 
 ### Where is the non matrix version of the standard error of the $\hat{\beta}$ 's?
 
