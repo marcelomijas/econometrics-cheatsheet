@@ -54,7 +54,7 @@ Those are the residuals from a OLS regression between $x_j$ and all the other $x
 
 ### Why is $\beta_0$ the constant term? My reference manual / professor's definition of the econometric model is different.
 
-There is some debate about the correct way to name the coefficients and the sub-index of the coefficients and variables of a model. This could have an impact on how some statistics like the adjusted R-squared or some tests like the F contrast formulas are written.
+There is some debate about the correct way to name the coefficients, the sub-index of the coefficients and sub-index of the variables of a model. This could have an impact on how some statistics like the adjusted R-squared or some tests like the F contrast formulas are written.
 
 For example, while some econometricians write the multiple regression model with a constant term like this:
 
