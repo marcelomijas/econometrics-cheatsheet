@@ -52,7 +52,7 @@ Econometrics cheat sheet created using $\LaTeX$ with a summarized review of:
 
 Those are the residuals from a OLS regression between $x_j$ and all the other $x$ 's. Error measures and r-squared can also be obtained from this regression.
 
-### Why is $\beta_0$ the constant term? My reference manual / proffessor's definition of the econometric model is different.
+### Why is $\beta_0$ the constant term? My reference manual / professor's definition of the econometric model is different.
 
 There is some debate about the correct way to name the coefficients and the sub-index of the coefficients and variables of a model. This could have an impact on how some statistics like the adjusted R-squared or some tests like the F contrast formulas are written.
 
