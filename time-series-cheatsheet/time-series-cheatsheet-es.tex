@@ -13,6 +13,13 @@
 \usepackage{scrlayer-scrpage} % page foot
 \usepackage[compact]{titlesec} % titles spacing
 
+% -----custom commands-----
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\ee}{\mathrm{ee}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Corr}{\mathrm{Corr}}
+
 % -----page customization-----
 \geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} % margins configuration
 \pagenumbering{gobble} % remove page numeration
@@ -25,7 +32,7 @@
 % -----document-----
 \begin{document}
 
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Versión ts1.1-es - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Versión ts1.2-es - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
@@ -61,11 +68,11 @@
 			\end{center}
 			\item \textbf{Modelos de rezagos distribuidos} - la relación entre $y$ y $x$'s no es contemporánea. Conceptualmente:
 			\begin{center}
-				$y_t = \beta_0 + \beta_1 x_t + \beta_2 x_{t-1} + ... + \beta_{s+1} x_{t-s} + u_t$
+				$y_t = \beta_0 + \beta_1 x_t + \beta_2 x_{t-1} + ... + \beta_{s} x_{t-(s-1)} + u_t$
 			\end{center}
 			El efecto acumulado a largo plazo en $y$ cuando $\Delta x$ es:
 			\begin{center}
-			 	$\beta_1 + \beta_2 + ... + \beta_{s+1}$
+			 	$\beta_1 + \beta_2 + ... + \beta_{s}$
 			\end{center}
 		 	\item \textbf{Modelos dinámicos} - un rezago de la variable dependiente es parte de las variables independientes (endogeneidad). Conceptualmente:
 		 	\begin{center}
@@ -87,26 +94,26 @@
 			\end{enumerate} 
 			\item \textbf{No colinealidad perfecta}.
 			\begin{itemize}[leftmargin=*]
-				\item No hay variables independientes que sean constantes: $Var(x_j) \neq 0$
+				\item No hay variables independientes que sean constantes: $\Var(x_j) \neq 0$
 				\item No hay una relación lineal exacta entre variables independientes.
 			\end{itemize}
 			\item \textbf{Media condicional cero y correlación cero}.
 			\begin{enumerate}[leftmargin=*, label=\alph*.]
-				\item No hay errores sistemáticos: $E(u_t | x_{1t}, ..., x_{kt}) = E(u_t) = 0 \rightarrow$ \textbf{exogeneidad fuerte} (a implica b).
-				\item No hay variables relevantes no incluidas en el modelo: $Cov(x_{jt} , u_t) = 0$ para cualquier $j = 1, ..., k \rightarrow$ \textbf{exogeneidad débil}.
+				\item No hay errores sistemáticos: $\E(u_t | x_{1t}, ..., x_{kt}) = \E(u_t) = 0 \rightarrow$ \textbf{exogeneidad fuerte} (a implica b).
+				\item No hay variables relevantes no incluidas en el modelo: $\Cov(x_{jt} , u_t) = 0$ para cualquier $j = 1, ..., k \rightarrow$ \textbf{exogeneidad débil}.
 			\end{enumerate}
-			\item \textbf{Homocedasticidad}. Var. de los residuos es igual para cualquier nivel de $x$: $Var(u_t | x_{1t}, ..., x_{kt}) = \sigma^2$
-			\item \textbf{No autocorrelación}. Los residuos no contienen información sobre otros residuos: $Corr(u_t, u_s | x) = 0$ para cualquier $t \neq s$.
+			\item \textbf{Homocedasticidad}. Var. de los residuos es igual para cualquier nivel de $x$: $\Var(u_t | x_{1t}, ..., x_{kt}) = \sigma^2$
+			\item \textbf{No autocorrelación}. Los residuos no contienen información sobre otros residuos: $\Corr(u_t, u_s | x) = 0$ para cualquier $t \neq s$.
 			\item \textbf{Normalidad}. Los residuos son independientes e idénticamente distribuidos (\textbf{i.i.d.}): $u \sim N(0,\sigma^2)$
-			\item \textbf{Tamaño de datos}. El número de observaciones disponibles debe ser mayor a $(k + 1)$ parámetros a estimar. (YA satisfecho bajo situaciones asintóticas)
+			\item \textbf{Tamaño de datos}. El número de observaciones disponibles debe ser mayor a $(k + 1)$ parámetros a estimar. (Ya satisfecho bajo situaciones asintóticas)
 		\end{enumerate}	
 	\subsection*{Propiedades asintóticas de MCO}
 		Bajo los supuestos del modelo econométrico y el Teorema Central del Límite:
 		\begin{itemize}[leftmargin=*]
-			\item De (1) a (3a): MCO es \textbf{insesgado}. $E(\hat{\beta}_j) = \beta_j$
-			\item De (1) a (3): MCO es \textbf{consistente}. $plim(\hat{\beta}_j) = \beta_j$ (a (3b) sin (3a), exogeneidad débil, insesg. y consistente).
+			\item De (1) a (3a): MCO es \textbf{insesgado}. $\E(\hat{\beta}_j) = \beta_j$
+			\item De (1) a (3): MCO es \textbf{consistente}. $\mathrm{p.lim}(\hat{\beta}_j) = \beta_j$ (a (3b) sin (3a), exogeneidad débil, insesg. y consistente).
 			\item De (1) a (5): \textbf{normalidad asintótica} de MCO (entonces, (6) es necesariamente satisfecho): $u \sim_a N(0,\sigma^2)$.
-			\item De (1) a (5): \textbf{estimador insesgado de $\sigma^2$}. $E(\hat{\sigma}^2) = \sigma^2$
+			\item De (1) a (5): \textbf{estimador insesgado de $\sigma^2$}. $\E(\hat{\sigma}^2) = \sigma^2$
 			\item De (1) a (5): MCO es \textcolor{blue}{\href{https://www.youtube.com/watch?v=68ugkg9RePc}{MELI}} (Mejor Estimador Lineal Insesgado) or \textbf{eficiente}. 
 			\item De (1) a (6): contrastes de hipótesis e intervalos de confianza son fiables.
 		\end{itemize}
@@ -114,7 +121,7 @@
 \columnbreak
 % start of column 3 page 1
 \section*{Tendencia y estacionalidad}
-	\textbf{Regresión espuria} - es cuando la relación entre $y$ y $x$ es debida a factores que afectan a $y$ y que tienen correlación con $x$, $Corr(x, u) \neq 0$. Es el  \textbf{incumplimiento de st3}.
+	\textbf{Regresión espuria} - es cuando la relación entre $y$ y $x$ es debida a factores que afectan a $y$ y que tienen correlación con $x$, $\Corr(x, u) \neq 0$. Es el  \textbf{incumplimiento de st3}.
 	\subsection*{Tendencia}
 		Dos series temporales pueden tener la misma (o contraria) tendencia, lo que lleva a altos niveles de correlación. Esto provoca una falsa apariencia de causalidad, el problema es \textbf{regresión espuria}. Dado el modelo:
 		\begin{center}
@@ -122,12 +129,12 @@
 		\end{center}
 		donde:
 		\begin{center}
-			$y_t = \alpha_0 + \alpha_1 Tendencia + v_t$
-			\\ $x_t = \gamma_0 + \gamma_1 Tendencia + v_t$
+			$y_t = \alpha_0 + \alpha_1 \mathrm{Tendencia} + v_t$
+			\\ $x_t = \gamma_0 + \gamma_1 \mathrm{Tendencia} + v_t$
 		\end{center}
 		Añadir una tendencia al modelo puede resolver el problema:
 		\begin{center}
-			$y_t = \beta_0 + \beta_1 x_t + \beta_2 Tendencia + u_t$
+			$y_t = \beta_0 + \beta_1 x_t + \beta_2 \mathrm{Tendencia} + u_t$
 		\end{center}
 		Una tendencia puede ser lineal o no lineal (cuadrática, cúbica, exponencial, etc.)
 		\\ Otra manera, es hacer uso del \textbf{filtro Hodrick-Prescott} y extraer la tendencia (suavizado) y el componente cíclico.
@@ -227,13 +234,13 @@
 		\begin{itemize}[leftmargin=*]
 			\item Este problema es \textbf{regresión espuria}. Un ajuste estacional puede solucionarlo.
 		\end{itemize}
-		Un \textbf{ajuste estacional} sencillo es crear variables estacionales binarias y añadirlas al modelo. Por ejemplo, una serie trimestral ($QX_t$ son variables binarias):
+		Un \textbf{ajuste estacional} sencillo es crear variables estacionales binarias y añadirlas al modelo. Por ejemplo, una serie trimestral ($Qq_t$ son variables binarias):
 		\begin{center}
 			$y_t = \beta_0 + \beta_1 Q2_t + \beta_2 Q3_t + \beta_3 Q4_t + \beta_4 x_{1t} + ... + \beta_k x_{kt} + u_t$
 		\end{center}
 		Otro método es ajustar estacionalmente (sa) las variables, y entonces, hacer la regresión con las variables ajustadas:
 		\begin{center}
-			$z_t = \beta_0 + \beta_1 Q2_t + \beta_2 Q3_t + \beta_3 Q4_t  + v_t \rightarrow \hat{v}_t + E(z_t) = \hat{z}_t^{sa}$
+			$z_t = \beta_0 + \beta_1 Q2_t + \beta_2 Q3_t + \beta_3 Q4_t  + v_t \rightarrow \hat{v}_t + \E(z_t) = \hat{z}_t^{sa}$
 			$\hat{y}_t^{sa} = \beta_0 + \beta_1 \hat{x}_{1t}^{sa} + ... + \beta_k \hat{x}_{kt}^{sa} + u_t$
 		\end{center}
 		Hay métodos mucho mejores y complejos para ajustar estacionalmente, como el \textbf{X-13ARIMA-SEATS}.
@@ -243,7 +250,7 @@
 \section*{Autocorrelación}
 	El residuo de cualquier observación, $u_t$, está correlacionado con el residuo de cualquier otra observación. Las observaciones no son independientes. Es el \textbf{incumplimiento de st5}.
 	\begin{center}
-		$Corr(u_t, u_s | x) \neq 0$ para cualquier $t \neq s$
+		$\Corr(u_t, u_s | x) \neq 0$ para cualquier $t \neq s$
 	\end{center}
 	\subsection*{Consecuencias}
 		\begin{itemize}[leftmargin=*]
@@ -390,7 +397,7 @@
 			\begin{itemize}[leftmargin=*]
 				\item \textbf{Prueba t AR(1)} (regresores exógenos):
 				\begin{center}
-					$t = \frac{\hat{\rho}_1}{ee(\hat{\rho}_1)} \sim t_{T-k-1, \alpha/2}$
+					$t = \frac{\hat{\rho}_1}{\ee(\hat{\rho}_1)} \sim t_{T-k-1, \alpha/2}$
 				\end{center}
 				\begin{itemize}[leftmargin=*]
 					\item $H_1$: Autocorrelación de orden uno, AR(1).
@@ -451,7 +458,7 @@
 				\end{itemize}
 				\item \textbf{Prueba Breusch-Godfrey} (regresores endógenos): puede detectar procesos MA($q$) y AR($p$) ($\varepsilon_t$ ruido b.):
 				\begin{itemize}[leftmargin=*]
-					\item MA($q$): $u_t = \varepsilon_t - \theta_1 u_{t-1} - ... - \theta_q u_{t-q}$
+					\item MA($q$): $u_t = \varepsilon_t - m_1 u_{t-1} - ... - m_q u_{t-q}$
 					\item AR($p$): $u_t = \rho_1 u_{t-1} + ... + \rho_p u_{t-p} + \varepsilon_t$
 				\end{itemize}
 				Bajo $H_0$: No autocorrelación:
@@ -506,9 +513,9 @@
 			\item \textbf{Proceso no estacionario} - por ejemplo, una serie con tendencia, donde al menos la media cambia con el tiempo.
 			\item \textbf{Proceso estacionario en covarianza} - es una forma más débil de estacionariedad:
 			\begin{itemize}[leftmargin=*]
-				\item $E(x_t)$ es constante.
-				\item $Var(x_t)$ es constante.
-				\item Para cualquier $t$,  $h \geq 1$, la $Cov(x_t, x_{t+h})$ depende sólo de $h$, no de $t$.
+				\item $\E(x_t)$ es constante.
+				\item $\Var(x_t)$ es constante.
+				\item Para cualquier $t$,  $h \geq 1$, la $\Cov(x_t, x_{t+h})$ depende sólo de $h$, no de $t$.
 			\end{itemize}
 		\end{itemize}
 	\subsection*{Series temporales de dependencia débil}
@@ -520,20 +527,20 @@
 		\\ Un \textbf{proceso estacionario en covarianza} es débilmente dependiente si la correlación entre $x_t$ y $x_{t+h}$ tiende a $0$ lo suficientemente rápido cuando $h \rightarrow \infty$ (no están asintóticamente correlacionados).
 		\\ Algunos ejemplos de series estacionarias y débilmente dependientes:
 		\begin{itemize}[leftmargin=*]
-			\item \textbf{Media móvil} - $\lbrace x_t \rbrace$ es una media móvil de orden uno MA($q=1$):
+			\item \textbf{Media móvil} - $\lbrace x_t \rbrace$ es una media móvil de orden uno MA($q$):
 			\begin{center}
-				$x_t = e_t + \theta_1 e_{t-1}$
+				$x_t = e_t + m_1 e_{t-1} + ... + m_q e_{t-q}$
 			\end{center}
 			donde $\lbrace e_t: t = 0, 1, ..., T \rbrace$ es una secuencia \textsl{i.i.d.} con media cero y varianza $\sigma^2_e$.
-			\item \textbf{Proceso autorregresivo} - $\lbrace x_t \rbrace$ es un proceso autorregresivo de orden uno AR($p=1$):
+			\item \textbf{Proceso autorregresivo} - $\lbrace x_t \rbrace$ es un proceso autorregresivo de orden uno AR($p$):
 			\begin{center}
-				$x_t = \rho_1 x_{t-1} + e_t$
+				$x_t = \rho_1 x_{t-1} + ... + \rho_p x_{t-p} + e_t$
 			\end{center}
 			donde $\lbrace e_t: t = 0, 1, ..., T \rbrace$ es una secuencia \textsl{i.i.d.} con media cero y varianza $\sigma^2_e$.
-			\\ Si $|\rho_1|<1$, entonces $\lbrace x_t \rbrace$ es un proceso AR(1) que es débilmente dependiente. Es estacionario en covarianza, $Corr(x_t, x_{t-1}) = \rho_1$.
-			\item \textbf{Proceso ARMA} - es una combinación de los dos anteriores. $\lbrace x_t \rbrace$ es un ARMA($p=1$,$q=1$):
+			\\ Si $|\rho_1|<1$, entonces $\lbrace x_t \rbrace$ es un proceso AR(1) que es débilmente dependiente. Es estacionario en covarianza, $\Corr(x_t, x_{t-1}) = \rho_1$.
+			\item \textbf{Proceso ARMA} - es una combinación de los dos anteriores. $\lbrace x_t \rbrace$ es un ARMA($p$,$q$):
 			\begin{center}
-				$x_t = e_t + \theta_1 e_{t-1} + \rho_1 x_{t-1}$
+				$x_t = e_t + m_1 e_{t-1} + ... + m_q e_{t-q} + \rho_1 x_{t-1} + ... + \rho_p x_{t-p}$
 			\end{center}
 		\end{itemize}
 		Una serie con tendencia no puede ser estacionaria, pero puede ser débilmente dependiente (y estacionaria si la serie es filtrada de tendencia).
@@ -551,7 +558,7 @@
 		\\ El proceso no es estacionario, es persistente.
 		\item \textbf{Paseo aleatorio con \href{https://www.youtube.com/watch?v=pS5d77DQHOI}{deriva}} - un proceso AR(1) con $\rho_1 = 1$ y una constante.
 		\begin{center}
-			$y_t = \alpha + y_{t-1} + e_t$
+			$y_t = \beta_0 + y_{t-1} + e_t$
 		\end{center}
 		donde $\lbrace e_t : t = 1, 2, ..., T \rbrace$ es una secuencia \textsl{i.i.d.} con media cero y varianza $\sigma^2_e$.
 		\\ El proceso no es estacionario, es persistente.
@@ -666,7 +673,7 @@
 		\end{multicols}
 		Cuando una serie I(1) es estrictamente positiva, se suele transformar a logaritmos antes de tomar primeras diferencias. Esto es, para obtener el cambio porcentual (aprox.) de la serie:
 		\begin{center}
-			$\Delta log(y_t) = log(y_t) - log(y_{t-1}) \approx (y_t - y_{t-1}) / y_{t-1}$
+			$\Delta \log(y_t) = \log(y_t) - \log(y_{t-1}) \approx (y_t - y_{t-1}) / y_{t-1}$
 		\end{center}
 % end of column 2 page 3
 \columnbreak
@@ -686,7 +693,7 @@
 		\end{center}
 		donde, hay AR(1) y heterocedasticidad:
 		\begin{center}
-			$E(u^2_t | u_{t-1}) = \alpha_0 + \alpha_1 u^2_{t-1}$
+			$\E(u^2_t | u_{t-1}) = \alpha_0 + \alpha_1 u^2_{t-1}$
 		\end{center}
 	\subsection*{GARCH}
 		La heterocedasticidad condicional autorregresiva general (GARCH), es un modelo similar a ARCH, pero en este caso, la varianza del error sigue un proceso ARMA($p$,$q$).

@@ -13,6 +13,13 @@
 \usepackage{scrlayer-scrpage} % page foot
 \usepackage[compact]{titlesec} % titles spacing
 
+% -----custom commands-----
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\se}{\mathrm{se}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Corr}{\mathrm{Corr}}
+
 % -----page customization-----
 \geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} % margins configuration
 \pagenumbering{gobble} % remove page numeration
@@ -25,7 +32,7 @@
 % -----document-----
 \begin{document}
 
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Version ts1.1-en - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Version ts1.2-en - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
@@ -61,11 +68,11 @@
 			\end{center}
 			\item \textbf{Distributed-lag models} - the relation between $y$ and $x$'s is not contemporary. Conceptually:
 			\begin{center}
-				$y_t = \beta_0 + \beta_1 x_t + \beta_2 x_{t-1} + ... + \beta_{s+1} x_{t-s} + u_t$
+				$y_t = \beta_0 + \beta_1 x_t + \beta_2 x_{t-1} + ... + \beta_{s} x_{t-(s-1)} + u_t$
 			\end{center}
 			The long term cumulative effect in $y$ when $\Delta x$ is:
 			\begin{center}
-			 	$\beta_1 + \beta_2 + ... + \beta_{s+1}$
+			 	$\beta_1 + \beta_2 + ... + \beta_{s}$
 			\end{center}
 		 	\item \textbf{Dynamic models} - a temporal drift of the dependent variable is part of the independent variables (endogeneity). Conceptually:
 		 	\begin{center}
@@ -87,26 +94,26 @@
 			\end{enumerate} 
 			\item \textbf{No perfect collinearity}.
 			\begin{itemize}[leftmargin=*]
-				\item There are no independent variables that are constant: $Var(x_j) \neq 0$
+				\item There are no independent variables that are constant: $\Var(x_j) \neq 0$
 				\item There is not an exact linear relation between independent variables.
 			\end{itemize}
 			\item \textbf{Conditional mean zero and correlation zero}.
 			\begin{enumerate}[leftmargin=*, label=\alph*.]
-				\item There are no systematic errors: $E(u_t | x_{1t}, ..., x_{kt}) = E(u_t) = 0 \rightarrow$ \textbf{strong exogeneity} (a implies b).
-				\item There are no relevant variables left out of the model: $Cov(x_{jt} , u_t) = 0$ for any $j = 1, ..., k \rightarrow$ \textbf{weak exogeneity}.
+				\item There are no systematic errors: $\E(u_t | x_{1t}, ..., x_{kt}) = \E(u_t) = 0 \rightarrow$ \textbf{strong exogeneity} (a implies b).
+				\item There are no relevant variables left out of the model: $\Cov(x_{jt} , u_t) = 0$ for any $j = 1, ..., k \rightarrow$ \textbf{weak exogeneity}.
 			\end{enumerate}
-			\item \textbf{Homoscedasticity}. The variability of the residuals is the same for any $x$: $Var(u_t | x_{1t}, ..., x_{kt}) = \sigma^2$
-			\item \textbf{No auto-correlation}. The residuals do not contain information about other residuals: $Corr(u_t, u_s | x) = 0$ for any given $t \neq s$.
+			\item \textbf{Homoscedasticity}. The variability of the residuals is the same for any $x$: $\Var(u_t | x_{1t}, ..., x_{kt}) = \sigma^2$
+			\item \textbf{No auto-correlation}. The residuals do not contain information about other residuals: $\Corr(u_t, u_s | x) = 0$ for any given $t \neq s$.
 			\item \textbf{Normality}. The residuals are independent and identically distributed (\textbf{i.i.d.} so on): $u \sim N(0,\sigma^2)$
-			\item \textbf{Data size}. The number of observations available must be greater than $(k + 1)$ parameters to estimate. (IS already satisfied under asymptotic situations)
+			\item \textbf{Data size}. The number of observations available must be greater than $(k + 1)$ parameters to estimate. (It is already satisfied under asymptotic situations)
 		\end{enumerate}	
 	\subsection*{Asymptotic properties of OLS}
 		Under the econometric model assumptions and the Central Limit Theorem:
 		\begin{itemize}[leftmargin=*]
-			\item Hold (1) to (3a): OLS is \textbf{unbiased}. $E(\hat{\beta}_j) = \beta_j$
-			\item Hold (1) to (3): OLS is \textbf{consistent}. $plim(\hat{\beta}_j) = \beta_j$ (to (3b) left out (3a), weak exogeneity, biased but consistent)
+			\item Hold (1) to (3a): OLS is \textbf{unbiased}. $\E(\hat{\beta}_j) = \beta_j$
+			\item Hold (1) to (3): OLS is \textbf{consistent}. $\mathrm{p.lim}(\hat{\beta}_j) = \beta_j$ (to (3b) left out (3a), weak exogeneity, biased but consistent)
 			\item Hold (1) to (5): \textbf{asymptotic normality} of OLS (then, (6) is necessarily satisfied): $u \sim_a N(0,\sigma^2)$.
-			\item Hold (1) to (5): \textbf{unbiased estimate of $\sigma^2$}. $E(\hat{\sigma}^2) = \sigma^2$
+			\item Hold (1) to (5): \textbf{unbiased estimate of $\sigma^2$}. $\E(\hat{\sigma}^2) = \sigma^2$
 			\item Hold (1) to (5): OLS is \textcolor{blue}{\href{https://www.youtube.com/watch?v=68ugkg9RePc}{BLUE}} (Best Linear Unbiased Estimator) or \textbf{efficient}. 
 			\item Hold (1) to (6): hypothesis testing and confidence intervals can be done reliably.
 		\end{itemize}
@@ -114,7 +121,7 @@
 \columnbreak
 % start of column 3 page 1
 \section*{Trends and seasonality}
-	\textbf{Spurious regression} - is when the relation between $y$ and $x$ is due to factors that affect $y$ and have correlation with $x$, $Corr(x, u) \neq 0$. Is the \textbf{non-fulfillment of ts3}.
+	\textbf{Spurious regression} - is when the relation between $y$ and $x$ is due to factors that affect $y$ and have correlation with $x$, $\Corr(x, u) \neq 0$. Is the \textbf{non-fulfillment of ts3}.
 	\subsection*{Trends}
 		Two time series can have the same (or contrary) trend, that should lend to a high level of correlation. This, can provoke a false appearance of causality, the problem is \textbf{spurious regression}. Given the model:
 		\begin{center}
@@ -122,12 +129,12 @@
 		\end{center}
 		where:
 		\begin{center}
-			$y_t = \alpha_0 + \alpha_1 Trend + v_t$
-			\\ $x_t = \gamma_0 + \gamma_1 Trend + v_t$
+			$y_t = \alpha_0 + \alpha_1 \mathrm{Trend} + v_t$
+			\\ $x_t = \gamma_0 + \gamma_1 \mathrm{Trend} + v_t$
 		\end{center}
 		Adding a trend to the model can solve the problem:
 		\begin{center}
-			$y_t = \beta_0 + \beta_1 x_t + \beta_2 Trend + u_t$
+			$y_t = \beta_0 + \beta_1 x_t + \beta_2 \mathrm{Trend} + u_t$
 		\end{center}
 		The trend can be linear or non-linear (quadratic, cubic, exponential, etc.)
 		\\ Another way is making use of the \textbf{Hodrick-Prescott filter} to extract the trend (smooth) and the cyclical component.
@@ -227,13 +234,13 @@
 		\begin{itemize}[leftmargin=*]
 			\item This problem is \textbf{spurious regression}. A seasonal adjustment can solve it.
 		\end{itemize}
-		A simple \textbf{seasonal adjustment} could be creating stationary binary variables and adding them to the model. For example, for quarterly series ($QX_t$ are binary variables):
+		A simple \textbf{seasonal adjustment} could be creating stationary binary variables and adding them to the model. For example, for quarterly series ($Qq_t$ are binary variables):
 		\begin{center}
 			$y_t = \beta_0 + \beta_1 Q2_t + \beta_2 Q3_t + \beta_3 Q4_t + \beta_4 x_{1t} + ... + \beta_k x_{kt} + u_t$
 		\end{center}
 		Another way is to seasonally adjust (sa) the variables, and then, do the regression with the adjusted variables:
 		\begin{center}
-			$z_t = \beta_0 + \beta_1 Q2_t + \beta_2 Q3_t + \beta_3 Q4_t  + v_t \rightarrow \hat{v}_t + E(z_t) = \hat{z}_t^{sa}$
+			$z_t = \beta_0 + \beta_1 Q2_t + \beta_2 Q3_t + \beta_3 Q4_t  + v_t \rightarrow \hat{v}_t + \E(z_t) = \hat{z}_t^{sa}$
 			$\hat{y}_t^{sa} = \beta_0 + \beta_1 \hat{x}_{1t}^{sa} + ... + \beta_k \hat{x}_{kt}^{sa} + u_t$
 		\end{center}
 		There are much better and complex methods to seasonally adjust a time series, like the \textbf{X-13ARIMA-SEATS}.
@@ -243,7 +250,7 @@
 \section*{Auto-correlation}
 	The residual of any observation, $u_t$, is correlated with the residual of any other observation. The observations are not independent. Is the \textbf{non-fulfillment of ts5}.
 	\begin{center}
-		$Corr(u_t, u_s | x) \neq 0$ for any $t \neq s$
+		$\Corr(u_t, u_s | x) \neq 0$ for any $t \neq s$
 	\end{center}
 	\subsection*{Consequences}
 		\begin{itemize}[leftmargin=*]
@@ -390,7 +397,7 @@
 			\begin{itemize}[leftmargin=*]
 				\item \textbf{AR(1) t test} (exogenous regressors):
 				\begin{center}
-					$t = \frac{\hat{\rho}_1}{se(\hat{\rho}_1)} \sim t_{T-k-1, \alpha/2}$
+					$t = \frac{\hat{\rho}_1}{\se(\hat{\rho}_1)} \sim t_{T-k-1, \alpha/2}$
 				\end{center}
 				\begin{itemize}[leftmargin=*]
 					\item $H_1$: Auto-correlation of order one, AR(1).
@@ -451,7 +458,7 @@
 				\end{itemize}
 				\item \textbf{Breusch-Godfrey test} (endogenous regressors): it can detect MA($q$) and AR($p$) processes ($\varepsilon_t$ is w. noise):
 				\begin{itemize}[leftmargin=*]
-					\item MA($q$): $u_t = \varepsilon_t - \theta_1 u_{t-1} - ... - \theta_q u_{t-q}$
+					\item MA($q$): $u_t = \varepsilon_t - m_1 u_{t-1} - ... - m_q u_{t-q}$
 					\item AR($p$): $u_t = \rho_1 u_{t-1} + ... + \rho_p u_{t-p} + \varepsilon_t$
 				\end{itemize}
 				Under $H_0$: No auto-correlation:
@@ -506,9 +513,9 @@
 			\item \textbf{Non-stationary process} - is, for example, a series with trend, where at least the mean changes with time.
 			\item \textbf{Covariance stationary process} - is a weaker form of stationarity:
 			\begin{itemize}[leftmargin=*]
-				\item $E(x_t)$ is constant.
-				\item $Var(x_t)$ is constant.
-				\item For any $t$,  $h \geq 1$, the $Cov(x_t, x_{t+h})$ depends only of $h$, not of $t$.
+				\item $\E(x_t)$ is constant.
+				\item $\Var(x_t)$ is constant.
+				\item For any $t$,  $h \geq 1$, the $\Cov(x_t, x_{t+h})$ depends only of $h$, not of $t$.
 			\end{itemize}
 		\end{itemize}
 	\subsection*{Weak dependence time series}
@@ -520,20 +527,20 @@
 		\\ A \textbf{covariance stationary time process} is weakly dependent if the correlation between $x_t$ and $x_{t+h}$ tends to $0$ fast enough when $h \rightarrow \infty$ (they are not asymptotically correlated).
 		\\ Some examples of stationary and weakly dependent time series are:
 		\begin{itemize}[leftmargin=*]
-			\item \textbf{Moving average} - $\lbrace x_t \rbrace$ is a moving average of order one MA($q=1$):
+			\item \textbf{Moving average} - $\lbrace x_t \rbrace$ is a moving average of order one MA($q$):
 			\begin{center}
-				$x_t = e_t + \theta_1 e_{t-1}$
+				$x_t = e_t + m_1 e_{t-1} + ... + m_q e_{t-q}$
 			\end{center}
 			where $\lbrace e_t: t = 0, 1, ..., T \rbrace$ is an \textsl{i.i.d.} sequence with zero mean and $\sigma^2_e$ variance.
-			\item \textbf{Auto-regressive process} - $\lbrace x_t \rbrace$ is an auto-regressive process of order one AR($p=1$):
+			\item \textbf{Auto-regressive process} - $\lbrace x_t \rbrace$ is an auto-regressive process of order one AR($p$):
 			\begin{center}
-				$x_t = \rho_1 x_{t-1} + e_t$
+				$x_t = \rho_1 x_{t-1} + ... + \rho_p x_{t-p} + e_t$
 			\end{center}
 			where $\lbrace e_t: t = 0, 1, ..., T \rbrace$ is an \textsl{i.i.d.} sequence with zero mean and $\sigma^2_e$ variance.
-			\\ If $|\rho_1|<1$, then $\lbrace x_t \rbrace$ is an AR(1) stable process that is weakly dependent. It is stationary in covariance, $Corr(x_t, x_{t-1}) = \rho_1$.
-			\item \textbf{ARMA process} - is a combination of the two above. $\lbrace x_t \rbrace$ is an ARMA($p=1$,$q=1$):
+			\\ If $|\rho_1|<1$, then $\lbrace x_t \rbrace$ is an AR(1) stable process that is weakly dependent. It is stationary in covariance, $\Corr(x_t, x_{t-1}) = \rho_1$.
+			\item \textbf{ARMA process} - is a combination of the two above. $\lbrace x_t \rbrace$ is an ARMA($p$,$q$):
 			\begin{center}
-				$x_t = e_t + \theta_1 e_{t-1} + \rho_1 x_{t-1}$
+				$x_t = e_t + m_1 e_{t-1} + ... + m_q e_{t-q} + \rho_1 x_{t-1} + ... + \rho_p x_{t-p}$
 			\end{center}
 		\end{itemize}
 		A series with a trend cannot be stationary, but can be weakly dependent (and stationary if the series is de-trended).
@@ -551,7 +558,7 @@
 		\\ The process is not stationary, is persistent.
 		\item \textbf{Random walk with a \href{https://www.youtube.com/watch?v=pS5d77DQHOI}{drift}} - an AR(1) process with $\rho_1 = 1$ and a constant.
 		\begin{center}
-			$y_t = \alpha + y_{t-1} + e_t$
+			$y_t = \beta_0 + y_{t-1} + e_t$
 		\end{center}
 		where $\lbrace e_t : t = 1, 2, ..., T \rbrace$ is an \textsl{i.i.d.} sequence with zero mean and $\sigma^2_e$ variance.
 		\\ The process is not stationary, is persistent.
@@ -666,7 +673,7 @@
 		\end{multicols}
 		When an I(1) series is strictly positive, it is usually converted to logarithms before taking the first difference. That is, to obtain the (approx.) percentage change of the series:
 		\begin{center}
-			$\Delta log(y_t) = log(y_t) - log(y_{t-1}) \approx (y_t - y_{t-1}) / y_{t-1}$
+			$\Delta \log(y_t) = \log(y_t) - \log(y_{t-1}) \approx (y_t - y_{t-1}) / y_{t-1}$
 		\end{center}
 % end of column 2 page 3
 \columnbreak
@@ -686,7 +693,7 @@
 		\end{center}
 		where, there is AR(1) and heterocedasticity:
 		\begin{center}
-			$E(u^2_t | u_{t-1}) = \alpha_0 + \alpha_1 u^2_{t-1}$
+			$\E(u^2_t | u_{t-1}) = \alpha_0 + \alpha_1 u^2_{t-1}$
 		\end{center}
 	\subsection*{GARCH}
 		A general auto-regressive conditional heterocedasticity (GARCH), is a model similar to ARCH, but in this case, the error variance follows an ARMA($p$,$q$) process.
