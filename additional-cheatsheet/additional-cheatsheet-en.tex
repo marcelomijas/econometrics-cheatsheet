@@ -12,6 +12,12 @@
 \usepackage{scrlayer-scrpage} % page foot
 \usepackage[compact]{titlesec} % titles spacing
 
+% -----custom commands-----
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\se}{\mathrm{se}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Corr}{\mathrm{Corr}}
 
 % -----page customization-----
 \geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} % margins configuration
@@ -37,8 +43,6 @@
 	\\ {\footnotesize By Marcelo Moreno - King Juan Carlos University}
 	\\ {\footnotesize As part of the Econometrics Cheat Sheet Project}
 \end{center}
-
-\colorbox{yellow}{THIS IS A WORK IN PROGRESS}
 
 \section*{OLS in matrix notation}
 	The general econometric model:
@@ -93,25 +97,26 @@
 				$
 			}
 		\end{center}
+		The second derivative is $\frac{\partial^2 \hat{u}^T \hat{u}}{\partial \hat{\beta}^2} = X^T X > 0$ (is a min.)
 	\end{itemize}
 	\subsection*{Variance-covariance matrix}
 		\begin{center}
-			$Var(\hat{\beta}) = \hat{\sigma}^2 (X^T X)^{-1} =$
+			$\Var(\hat{\beta}) = \hat{\sigma}^2 (X^T X)^{-1} =$
 			\scalebox{0.67}{
 			$
 			\begin{bmatrix}
-				Var(\hat{\beta}_0) & Cov(\hat{\beta}_0, \hat{\beta}_1) & \hdots & Cov(\hat{\beta}_0, \hat{\beta}_k) \\
-				Cov(\hat{\beta}_1, \hat{\beta}_0) & Var(\hat{\beta}_1) & \hdots & Cov(\hat{\beta}_1, \hat{\beta}_k) \\
+				\Var(\hat{\beta}_0) & \Cov(\hat{\beta}_0, \hat{\beta}_1) & \hdots & \Cov(\hat{\beta}_0, \hat{\beta}_k) \\
+				\Cov(\hat{\beta}_1, \hat{\beta}_0) & \Var(\hat{\beta}_1) & \hdots & \Cov(\hat{\beta}_1, \hat{\beta}_k) \\
 				\vdots & \vdots & \ddots & \vdots \\
-				Cov(\hat{\beta}_k, \hat{\beta}_0) & Cov(\hat{\beta}_k, \hat{\beta}_1) & \hdots & Var(\hat{\beta}_k)
+				\Cov(\hat{\beta}_k, \hat{\beta}_0) & \Cov(\hat{\beta}_k, \hat{\beta}_1) & \hdots & \Var(\hat{\beta}_k)
 			\end{bmatrix}
 			$
 			}
 		\end{center}
-		\quad where: $\hat{\sigma} = \frac{\hat{u}^T \hat{u}}{n - k - 1}$
+		\quad where: $\hat{\sigma}^2 = \frac{\hat{u}^T \hat{u}}{n - k - 1}$
 		\\ The standard errors are in the diagonal of:
 		\begin{center}
-			$se(\hat{\beta}) = \sqrt{Var(\hat{\beta})}$
+			$\se(\hat{\beta}) = \sqrt{\Var(\hat{\beta})}$
 		\end{center}
 	\subsection*{Error measures}
 		\begin{itemize}[leftmargin=*]
@@ -123,7 +128,7 @@
 	\begin{center}
 		$R^2 = \frac{SSE}{SST} = 1 - \frac{SSR}{SST}$
 	\end{center}
-	The r-squared corrected by degrees of freedom:
+	The R-squared corrected by degrees of freedom:
 	\begin{center}
 		$\overline{R}^2 = 1 - \frac{n - 1}{n - k - 1} (1 - R^2)$
 	\end{center}
@@ -145,7 +150,7 @@
 		\scalebox{0.9}{ % scale the table
 			\begin{tabular}{| c | c | c |}
 				\hline
-				& $Corr(x_1, x_2) > 0$ & $Corr(x_1, x_2) < 0$ \\
+				& $\Corr(x_1, x_2) > 0$ & $\Corr(x_1, x_2) < 0$ \\
 				\hline
 				$\beta_2 > 0$ & $(+) \text{ bias}$ & $(-) \text{ bias}$ \\
 				\hline
@@ -156,7 +161,7 @@
 	\end{center}
 	$(+)$ bias $\rightarrow$ $\tilde{\beta}_1$ will be higher than it should be (it includes the effect of $x_2$). $\tilde{\beta}_1 > \beta_1$
 	\\ $(-)$ bias $\rightarrow$ $\tilde{\beta}_1$ will be lower than it should be (it includes the effect of $x_2$). $\tilde{\beta}_1 < \beta_1$
-	\\ If $Corr(x_1,x_2) = 0$, there is no bias on $\beta_1$, because the effect of $x_2$ will be fully picked up by the error term, $u$.
+	\\ If $\Corr(x_1,x_2) = 0$, there is no bias on $\beta_1$, because the effect of $x_2$ will be fully picked up by the error term, $u$.
 	\\ There are two approaches to solve the problem:
 	\begin{itemize}[leftmargin=*]
 		\item Make use of proxy variables.
@@ -169,24 +174,43 @@
 	\subsection*{Instrumental variables (IV)}
 	When proxy variables are not available, the alternative approach is to look for a variable, let's call it $z$, that has a relation with $x$. The $z$ variable must meet the following requirements to be called an Instrumental Variable (IV):
 		\begin{center}
-			$Cov(z,u) = 0$
-			\\ $Cov(z,x) \neq 0$
+			$\Cov(z,u) = 0$
+			\\ $\Cov(z,x) \neq 0$
 		\end{center}
 	This method let the omitted variable in the error term, but instead of estimate the model by OLS, it utilizes a method that recognize the presence of an omitted variable. This method can also solve error measurements.
 	\subsection*{TSLS}
-		Can have multiple instrumental variables (is the IV, but with various instrumental variables at the same time). And $Cov(z,u) = 0$ can be relaxed, but there has to be a minimum of variables that satisfies it.
+		Can have multiple instrumental variables (is the IV, but with various instrumental variables at the same time). And $\Cov(z,u) = 0$ can be relaxed, but there has to be a minimum of variables that satisfies it.
 		\\ Can have multicollinearity problems.
 		\\ \textbf{Some tests}:
 		\begin{itemize}[leftmargin=*]
 			\item Endogeneity tests:  is TSLS better than OLS when there are no endogenous variables? Do we really need TSLS? $\rightarrow$ Hausman test $\rightarrow H_0$: OLS is consistent (it is better to use OLS).
 			\item Over-identification. An IV should meet:
 			\begin{itemize}[leftmargin=*]
-				\item $Corr(z,u) = 0$ (exogeneity)
-				\item $Corr(z,x) \neq 0$ (relevance)
+				\item $\Corr(z,u) = 0$ (exogeneity)
+				\item $\Corr(z,x) \neq 0$ (relevance)
 			\end{itemize}
 			\item Is there too many IV? $\rightarrow$ Sagan test $\rightarrow H_0$: all IV seem ok
 		\end{itemize}
 	
+\section*{Information criteria for selecting AR order}
+	The general formula
+	\begin{center}
+		$Cr(n) = log(\hat{\sigma}_u^2(n)) + c_T \psi(n)$
+	\end{center}
+	where:
+	$\hat{\sigma}_u^2(n) = T^{-1} \sum_{t-1}^{T} \hat{u}_t(n)^2$ is the error variance estimator based on the OLS residuals $\hat{u}_t(n)$ from an AR model of order $n$. \\
+	$\psi(n)$ is a function that penalizes large AR orders. \\
+	$c_T$ is a sequence indexed by the sample size.
+	The order that minimizes the criterion is chosen as estimator $\hat{\rho}$ of the true AR order $\rho$.
+	\begin{itemize}[leftmargin=*]
+		\item Akaike (1973): \\
+		$AIC(n) = log(\hat{\sigma}_u^2(n)) + \frac{2}{T} n$
+		\item Hannan-Quinn (1979): \\
+		$HQ(n) = log(\hat{\sigma}_u^2(n)) + \frac{2 log(log(T))}{T} n$
+		\item Schwarz (1978): \\
+		$Sc(n) = log(\hat{\sigma}_u^2(n)) + \frac{log(T)}{T} n$
+	\end{itemize}
+
 \columnbreak
 
 
@@ -497,7 +521,7 @@ where:
 \begin{itemize}[leftmargin=*]
 	\item $y_t = (y_{1t}, ..., y_{Kt})'$ is a vector of $K$ observable endogenous variables.
 	\item $x_t = (x_{1t}, ..., x_{Mt})'$ is a vector of $M$ observable exogenous or unmodelled variables.
-	\item $\Pi = \alpha \beta'$. Suppose $rk(\Pi) = r = rk(\alpha) = rk(\beta)$
+	\item $\Pi = \alpha \beta'$. Suppose $\mathrm{rk}(\Pi) = r = \mathrm{rk}(\alpha) = \mathrm{rk}(\beta)$
 	\item $D_t$ contains all deterministic variables which may consist of a constant, a linear trend, seasonal dummy variables...
 	\item $u_t$ is a $K$-dimensional unobservable zero mean white noise process with positive definite covariance matrix $E(u_t u_t' = \Sigma_u)$.
 	\item The $A_i$, $B_j$ and $C$ are parameter matrices of suitable dimension.
