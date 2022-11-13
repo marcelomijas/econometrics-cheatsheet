@@ -12,6 +12,13 @@
 \usepackage{scrlayer-scrpage} % page foot
 \usepackage[compact]{titlesec} % titles spacing
 
+% -----custom commands-----
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\ee}{\mathrm{ee}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Corr}{\mathrm{Corr}}
+
 % -----page customization-----
 \geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} % margins configuration
 \pagenumbering{gobble} % remove page numeration
@@ -25,7 +32,7 @@
 \begin{document}
 
 % page foot
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Versión 2.7-es - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Versión 2.8-es - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
@@ -64,7 +71,7 @@
 		\begin{itemize}[leftmargin=*]
 			\item La correlación simple mide el grado de asociación lineal entre dos variables.
 			\begin{center}
-				$r = \frac{Cov(x,y)}{\sigma_x \sigma_y} = \frac{\sum_{i=1}^n (x_i - \overline{x})(y_i - \overline{y})}{\sqrt{\sum_{i=1}^n (x_i - \overline{x})^2 \sum_{i=1}^n (y_i - \overline{y})^2}}$
+				$r = \frac{\Cov(x,y)}{\sigma_x \sigma_y} = \frac{\sum_{i=1}^n (x_i - \overline{x})(y_i - \overline{y})}{\sqrt{\sum_{i=1}^n (x_i - \overline{x})^2 \sum_{i=1}^n (y_i - \overline{y})^2}}$
 			\end{center}
 			\item La correlación parcial mide el grado de de asociación lineal entre dos variables controlando una tercera.
 		\end{itemize}
@@ -76,29 +83,29 @@
 		Bajo estos supuestos, los estimadores de los parámetros MCO presentarán buenas propiedades. \textbf{Supuestos de Gauss-Markov extendidos}:
 		\begin{enumerate}[leftmargin=*]
 			\item \textbf{Linealidad en parámetros} (+ dependencia débil en series temporales). $y$ debe ser una función lineal de $\beta$'s.
-			\item \textbf{Muestreo aleatorio}. La muestra de la población se ha tomado de forma aleatoria. (SÓLO sección cruzada)
+			\item \textbf{Muestreo aleatorio}. La muestra de la población se ha tomado de forma aleatoria. (Sólo sección cruzada)
 			\item \textbf{No colinealidad perfecta}.
 			\begin{itemize}[leftmargin=*]
-				\item No hay variables independientes que sean constantes: $Var(x_j) \neq 0$
+				\item No hay variables independientes que sean constantes: $\Var(x_j) \neq 0$
 				\item No hay una relación lineal exacta entre variables independientes.
 			\end{itemize}
 			\item \textbf{Media condicional cero y correlación cero}.
 			\begin{enumerate}[leftmargin=*, label=\alph*.]
-				\item No hay errores sistemáticos: $E(u | x_1, ..., x_k) = E(u) = 0 \rightarrow$ \textbf{exogeneidad fuerte} (a implica b).
-				\item No hay variables relevantes no incluidas en el modelo: $Cov(x_j , u) = 0$ para cualquier $j = 1, ..., k \rightarrow$ \textbf{exogeneidad débil}.
+				\item No hay errores sistemáticos: $\E(u | x_1, ..., x_k) = \E(u) = 0 \rightarrow$ \textbf{exogeneidad fuerte} (a implica b).
+				\item No hay variables relevantes no incluidas en el modelo: $\Cov(x_j , u) = 0$ para cualquier $j = 1, ..., k \rightarrow$ \textbf{exogeneidad débil}.
 			\end{enumerate}
-			\item \textbf{Homocedasticidad}. La variabilidad de los residuos es la misma para todos los niveles de $x$: $Var(u | x) = \sigma^2$
-			\item \textbf{No autocorrelación}. Los residuos no contienen información sobre otros residuos: $Corr(u_t, u_s | x) = 0$ para cualquier $t \neq s$. (SÓLO series temporales)
+			\item \textbf{Homocedasticidad}. La variabilidad de los residuos es la misma para todos los niveles de $x$: $\Var(u | x) = \sigma^2$
+			\item \textbf{No autocorrelación}. Los residuos no contienen información sobre otros residuos: $\Corr(u_t, u_s | x) = 0$ para cualquier $t \neq s$. (Típico de series temporales)
 			\item \textbf{Normalidad}. Los residuos son independientes e idénticamente distribuidos: $u \sim N(0,\sigma^2)$
-			\item \textbf{Tamaño de datos}. El número de observaciones disponibles debe ser mayor a $(k + 1)$ parámetros a estimar. (YA satisfecho bajo situaciones asintóticas)
+			\item \textbf{Tamaño de datos}. El número de observaciones disponibles debe ser mayor a $(k + 1)$ parámetros a estimar. (Ya satisfecho bajo situaciones asintóticas)
 		\end{enumerate}
 	\subsection*{Propiedades asintóticas de MCO}
 		Bajo los supuestos del modelo econométrico y el Teorema Central del Límite:
 		\begin{itemize}[leftmargin=*]
-			\item De (1) a (4a): MCO es \textbf{insesgado}. $E(\hat{\beta}_j) = \beta_j$
-			\item De (1) a (4): MCO es \textbf{consistente}. $plim(\hat{\beta}_j) = \beta_j$ (a (4b) sin (4a), exogeneidad débil, insesg. y consistente).
+			\item De (1) a (4a): MCO es \textbf{insesgado}. $\E(\hat{\beta}_j) = \beta_j$
+			\item De (1) a (4): MCO es \textbf{consistente}. $\mathrm{p.lim}(\hat{\beta}_j) = \beta_j$ (a (4b) sin (4a), exogeneidad débil, insesg. y consistente).
 			\item De (1) a (5): \textbf{normalidad asintótica} de MCO (entonces, (7) es necesariamente satisfecho): $u \sim_a N(0,\sigma^2)$.
-			\item De (1) a (6): \textbf{estimador insesgado de $\sigma^2$}. $E(\hat{\sigma}^2) = \sigma^2$
+			\item De (1) a (6): \textbf{estimador insesgado de $\sigma^2$}. $\E(\hat{\sigma}^2) = \sigma^2$
 			\item De (1) a (6): MCO es \textcolor{blue}{\href{https://www.youtube.com/watch?v=68ugkg9RePc}{MELI}} (Mejor Estimador Lineal Insesgado) ó \textbf{eficiente}. 
 			\item De (1) a (7): contrastes de hipótesis e intervalos de confianza son fiables.
 		\end{itemize}
@@ -125,11 +132,21 @@
 		% end plot
 		\columnbreak
 		% start text
-			\\ Ecuación: \\ $y_i = \beta_0 + \beta_1 x_{1i} + u_i$
+			\\ Ecuación:
+			\begin{center}
+				$y_i = \beta_0 + \beta_1 x_{1i} + u_i$
+			\end{center}
 			\vspace*{1mm}
-			\\ Estimación:\\ $\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 x_{1i}$
+			Estimación:
+			\begin{center}
+				$\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 x_{1i}$
+			\end{center}
 			\vspace*{1mm}
-			\\ Donde: \\ $\hat{\beta}_0 = \overline{y} - \hat{\beta}_1 \overline{x}$ \\ $\hat{\beta}_1 = \frac{Cov(y, x)}{Var(x)}$
+			Donde:
+			\begin{center}
+				$\hat{\beta}_0 = \overline{y} - \hat{\beta}_1 \overline{x}$ \\
+				$\hat{\beta}_1 = \frac{\Cov(y, x)}{\Var(x)}$
+			\end{center}
 		% end text
 		\end{multicols}
 	\subsection*{Modelo de regresión múltiple}
@@ -163,13 +180,23 @@
 		% end plot
 		\columnbreak
 		% start text
-			\\ Ecuación: \\ $y_i = \beta_0 + \beta_1 x_{1i} + ... + \beta_k x_{ki} + u_i$
+			\\ Ecuación:
+			\begin{center}
+				$y_i = \beta_0 + \beta_1 x_{1i} + ... + \beta_k x_{ki} + u_i$
+			\end{center}
 			\vspace*{1mm}
-			\\ Estimación: \\ $\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 x_{1i} + ... + \hat{\beta}_k x_{ki}$
+			Estimación:
+			\begin{center}
+				$\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 x_{1i} + ... + \hat{\beta}_k x_{ki}$
+			\end{center}
 			\vspace*{1mm}
-			\\ Donde: \\ $\hat{\beta}_0 = \overline{y} - \hat{\beta}_1 \overline{x}_1 - ... - \hat{\beta}_k \overline{x}_k$ \\ $\hat{\beta}_j = \frac{Cov(y, \text{residualizado } x_j)}{Var(\text{residualizado } x_j)}$
+			Donde:
+			\begin{center}
+				$\hat{\beta}_0 = \overline{y} - \hat{\beta}_1 \overline{x}_1 - ... - \hat{\beta}_k \overline{x}_k$ \\
+				$\hat{\beta}_j = \frac{\Cov(y, \text{residualizado } x_j)}{\Var(\text{residualizado } x_j)}$
+			\end{center}
 			\vspace*{1mm}
-			\\ Matriz: $\hat{\beta} = (X^T X)^{-1} (X^T y)$
+			Matriz: $\hat{\beta} = (X^T X)^{-1} (X^T y)$
 		% end text
 		\end{multicols}
 	\subsection*{Interpretación de coeficientes}
@@ -178,9 +205,9 @@
 			Modelo & Depend. & Independ. & Interpretación $\beta_1$ \\
 			\hline
 			Nivel-nivel & $y$ & $x$ & $\Delta y = \beta_1 \Delta x$ \\ 
-			Nivel-log & $y$ & $log(x)$ & $\Delta y = (\beta_1/100) (\% \Delta x$) \\  
-			Log-nivel & $log(y)$ & $x$ & $\% \Delta y = (100 \beta_1) \Delta x$ \\
-			Log-log & $log(y)$ & $log(x)$ & $\% \Delta y = \beta_1 (\% \Delta x$) \\
+			Nivel-log & $y$ & $\log(x)$ & $\Delta y \approx (\beta_1/100) (\% \Delta x$) \\  
+			Log-nivel & $\log(y)$ & $x$ & $\% \Delta y \approx (100 \beta_1) \Delta x$ \\
+			Log-log & $\log(y)$ & $\log(x)$ & $\% \Delta y \approx \beta_1 (\% \Delta x$) \\
 			Cuadrático & $y$ & $x + x^2$ & $\Delta y = (\beta_1 + 2 \beta_2 x) \Delta x$ \\
 		\end{tabular}
 		}
@@ -188,8 +215,8 @@
 		Suma de Resid. Cuad.: \hfill $SRC = \sum_{i=1}^n \hat{u}_i^2 = \sum_{i=1}^n (y_i - \hat{y}_i)^2$
 		\\ Suma Expl. de Cuad.: \hfill $SEC = \sum_{i=1}^n (\hat{y}_i - \overline{y})^2$
 		\\ Suma Tot. de Cuad.: \hfill $STC = SEC + SRC = \sum_{i=1}^n (y_i - \overline{y})^2$
-		\\ Error Estándar de la Regresión: \hfill $\hat{\sigma} = \sqrt{\frac{SSR}{n-k-1}}$
-		\\ Error Estándar de los $\hat{\beta}$'s: \hfill $ee(\hat{\beta}) = \hat{\sigma} \sqrt{(X^T X)^{-1}}$
+		\\ Error Estándar de la Regresión: \hfill $\hat{\sigma} = \sqrt{\frac{SRC}{n-k-1}}$
+		\\ Error Estándar de los $\hat{\beta}$'s: \hfill $\ee(\hat{\beta}) = \hat{\sigma} \sqrt{(X^T X)^{-1}}$
 		\\ Raíz Cuadrada del Error Cuadrático Medio: \hfill $\sqrt{\frac{\sum_{i=1}^n (\hat{u}_i - \overline{u})^2}{n}}$
 		\\ Error Medio Absoluto: \hfill $\frac{\sum_{i=1}^n |\hat{u}_i|}{n}$
 		\\ Porcentaje Medio de Error: \hfill $\frac{\sum_{i=1}^n |\hat{u}_i / y_i|}{n} \times 100$
@@ -205,7 +232,7 @@
 		\item Mide el \textbf{porcentaje de variación en $y$ que es linealmente explicado por variaciones de las $x$'s}.
 		\item Toma valores \textbf{entre 0} (no hay explicación lineal de las variaciones de $y$) \textbf{y 1} (explicación total de las variaciones de $y$).
 	\end{itemize}
-	Cuando el número de regresores incrementa, el valor del r-cuadrado también lo hace, independientemente de si las nuevas variables son relevantes o no. Para resolver este problema, existe un \textbf{r-cuadrado corregido por grados de libertad} (o r-cuadrado ajustado):
+	Cuando el número de regresores incrementa, el valor del R-cuadrado también lo hace, independientemente de si las nuevas variables son relevantes o no. Para resolver este problema, existe un \textbf{R-cuadrado corregido por grados de libertad} (o R-cuadrado ajustado):
 	\begin{center}
 		$\overline{R}^2 = 1 - \frac{n-1}{n-k-1} \frac{SRC}{STC} = 1 - \frac{n-1}{n-k-1} (1-R^2)$
 	\end{center}
@@ -232,7 +259,7 @@
 		\end{itemize}
 		\begin{center}
 			Bajo $H_0$: \quad
-			$t = \frac{\hat{\beta}_j - \vartheta}{ee(\hat{\beta}_j)} \sim t_{n-k-1, \alpha/2}$
+			$t = \frac{\hat{\beta}_j - \vartheta}{\ee(\hat{\beta}_j)} \sim t_{n-k-1, \alpha/2}$
 		\end{center}
 		Si $\mid t \mid > t_{n-k-1, \alpha/2}$, existe evidencia para rechazar $H_0$.
 		\\ \textbf{Contraste de significación individual} - prueba si un parámetro es \textbf{significativamente distinto de cero}.
@@ -242,7 +269,7 @@
 		\end{itemize}
 		\begin{center}
 			Bajo $H_0$: \quad
-			$t = \frac{\hat{\beta}_j}{ee(\hat{\beta}_j)} \sim t_{n-k-1, \alpha/2}$
+			$t = \frac{\hat{\beta}_j}{\ee(\hat{\beta}_j)} \sim t_{n-k-1, \alpha/2}$
 		\end{center}
 		Si $\mid t \mid > t_{n-k-1, \alpha/2}$, existe evidencia para rechazar $H_0$.
 	\subsection*{Contraste F}
@@ -253,15 +280,15 @@
 		\end{itemize}
 		Entonces, viendo los errores, hay:
 		\begin{itemize}[leftmargin=*]
-			\item \textbf{$\sum_{i=1}^n \hat{u}_{N}^2$} - es la Suma de Resid. Cuadrados del modelo no restringido ($SRC_{N}$).
-			\item \textbf{$\sum_{i=1}^n \hat{u}_R^2$} - es la Suma de Resid. Cuadrados del modelo restringido ($SRC_R$).
+			\item \textbf{$\sum_{i=1}^n \hat{u}_{\mathrm{nr}}^2$} - es la Suma de Resid. Cuadrados del modelo no restringido ($SRC_{\mathrm{nr}}$).
+			\item \textbf{$\sum_{i=1}^n \hat{u}_\mathrm{r}^2$} - es la Suma de Resid. Cuadrados del modelo restringido ($SRC_\mathrm{r}$).
 		\end{itemize}
 		Bajo $H_0$:
 		\begin{center}
-			$F = \frac{SRC_R - SRC_{N}}{SRC_{N}} \frac{(n-k_{N}-1)}{q} \sim F_{q, n-k_{N}-1}$
+			$F = \frac{SRC_\mathrm{r} - SRC_{\mathrm{nr}}}{SRC_{\mathrm{nr}}} \frac{(n-k_{\mathrm{nr}}-1)}{q} \sim F_{q, n-k_{\mathrm{nr}}-1}$
 		\end{center}
-		Donde $k_{N}$ es el número de parámetros del modelo no restringido y $q$ es el número de hipótesis lineales a probar.
-		\\ Si $F_{q, n-k_{N}-1} < F$, existe evidencia para rechazar $H_0$.
+		Donde $k_{\mathrm{nr}}$ es el número de parámetros del modelo no restringido y $q$ es el número de hipótesis lineales a probar.
+		\\ Si $F_{q, n-k_{\mathrm{nr}}-1} < F$, existe evidencia para rechazar $H_0$.
 		\\ \textbf{Contraste de significación global} - prueba si todos los parametros asociados a $x$'s son \textbf{simultáneamente iguales a cero}.
 		\begin{itemize}[leftmargin=*]
 			\item $H_0: \beta_1 = \beta_2 = ... = \beta_k = 0$
@@ -277,7 +304,7 @@
 \section*{Intervalos de confianza}
 	Los intervalos de confianza al nivel de confianza ($1 - \alpha$), se pueden calcular:
 	\begin{center}
-		$\hat{\beta}_j \mp t_{n-k-1, \alpha/2} ee(\hat{\beta}_j)$
+		$\hat{\beta}_j \mp t_{n-k-1, \alpha/2} \ee(\hat{\beta}_j)$
 	\end{center}
 
 \section*{Variables ficticias y cambio estructural}
@@ -323,11 +350,11 @@
 	\subsection*{Detección}
 		\begin{itemize}[leftmargin=*]
 			\item \textbf{Análisis de correlación} - buscar altas correlaciones (mayores a 0.7) entre variables independientes.
-			\item \textbf{Factor de Inflación de la Varianza (FIV o VIF)} - indica el incremento en $Var(\hat{\beta}_j)$ debido a la multicolinealidad.
+			\item \textbf{Factor de Inflación de la Varianza (FIV o VIF)} - indica el incremento en $\Var(\hat{\beta}_j)$ debido a la multicolinealidad.
 			\begin{center}
 				$VIF(\hat{\beta}_j) = \frac{1}{1-R_j^2}$
 			\end{center}
-			Donde $R^2_j$ denota el r-cuadrado de una regresión entre $x_j$ y todas las otras $x$'s. 
+			Donde $R^2_j$ denota el R-cuadrado de una regresión entre $x_j$ y todas las otras $x$'s. 
 			\begin{itemize}[leftmargin=*]
 				\item Valores entre 4 y 10 sugieren que es recomendable analizar en mayor profundidad si pueden existir problemas de multicolinealidad.
 				\item Valores por encima de 10 indican que existen problemas de multicolinealidad.
@@ -346,7 +373,7 @@
 \section*{Heterocedasticidad}
 	Los residuos $u_i$ de la función de regresión poblacional no tienen una varianza constante $\sigma^2$:
 	\begin{center}
-		$Var(u|x) = Var(y|x) \neq \sigma^2$
+		$\Var(u|x) = \Var(y|x) \neq \sigma^2$
 	\end{center}
 	Es el \textbf{incumplimiento del quinto (5) supuesto del modelo}.
 	\subsection*{Consecuencias}
@@ -406,7 +433,7 @@
 \section*{Autocorrelación}
 	El residuo de cualquier observación, $u_t$, está correlacionado con el residuo de cualquier otra observación. Las observaciones no son independientes.
 	\begin{center}
-		$Corr(u_t, u_s | x) \neq 0$ para cualquier $t \neq s$
+		$\Corr(u_t, u_s | x) \neq 0$ para cualquier $t \neq s$
 	\end{center}
 	El contexto ``natural" de este fenómeno son las series temporales. Es el \textbf{incumplimiento del sexto (6) supuesto del modelo}.
 	\subsection*{Consecuencias}

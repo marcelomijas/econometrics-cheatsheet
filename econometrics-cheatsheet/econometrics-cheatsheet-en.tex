@@ -12,6 +12,13 @@
 \usepackage{scrlayer-scrpage} % page foot
 \usepackage[compact]{titlesec} % titles spacing
 
+% -----custom commands-----
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\se}{\mathrm{se}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Corr}{\mathrm{Corr}}
+
 % -----page customization-----
 \geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} % margins configuration
 \pagenumbering{gobble} % remove page numeration
@@ -25,7 +32,7 @@
 \begin{document}
 
 % page foot
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Version 2.7-en - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Version 2.8-en - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
@@ -64,9 +71,9 @@
 		\begin{itemize}[leftmargin=*]
 			\item The simple correlation measures the grade of linear association between two variables.
 			\begin{center}
-				$r = \frac{Cov(x,y)}{\sigma_x \sigma_y} = \frac{\sum_{i=1}^n (x_i - \overline{x})(y_i - \overline{y})}{\sqrt{\sum_{i=1}^n (x_i - \overline{x})^2 \sum_{i=1}^n (y_i - \overline{y})^2}}$
+				$r = \frac{\Cov(x,y)}{\sigma_x \sigma_y} = \frac{\sum_{i=1}^n (x_i - \overline{x})(y_i - \overline{y})}{\sqrt{\sum_{i=1}^n (x_i - \overline{x})^2 \sum_{i=1}^n (y_i - \overline{y})^2}}$
 			\end{center}
-			\item The partial correlation measures the grade of linear association between two variables controlling a third variable.
+			\item The partial correlation measures the grade of linear association between two variables controlling a third.
 		\end{itemize}
 % end of column 1 page 1
 \columnbreak
@@ -76,29 +83,29 @@
 		Under this assumptions, the estimators of the OLS parameters will present good properties. \textbf{Gauss-Markov assumptions extended}:
 		\begin{enumerate}[leftmargin=*]
 			\item \textbf{Parameters linearity} (plus weak dependence in time series). $y$ must be a linear function of the $\beta$'s.
-			\item \textbf{Random sampling}. The sample from the population has been randomly taken. (ONLY when cross section)
+			\item \textbf{Random sampling}. The sample from the population has been randomly taken. (Only when cross section)
 			\item \textbf{No perfect collinearity}.
 			\begin{itemize}[leftmargin=*]
-				\item There are no independent variables that are constant: $Var(x_j) \neq 0$
+				\item There are no independent variables that are constant: $\Var(x_j) \neq 0$
 				\item There is not an exact linear relation between independent variables.
 			\end{itemize}
 			\item \textbf{Conditional mean zero and correlation zero}.
 			\begin{enumerate}[leftmargin=*, label=\alph*.]
-				\item There are no systematic errors: $E(u | x_1, ..., x_k) = E(u) = 0 \rightarrow$ \textbf{strong exogeneity} (a implies b).
-				\item There are no relevant variables left out of the model: $Cov(x_j , u) = 0$ for any $j = 1, ..., k \rightarrow$ \textbf{weak exogeneity}.
+				\item There are no systematic errors: $\E(u | x_1, ..., x_k) = \E(u) = 0 \rightarrow$ \textbf{strong exogeneity} (a implies b).
+				\item There are no relevant variables left out of the model: $\Cov(x_j , u) = 0$ for any $j = 1, ..., k \rightarrow$ \textbf{weak exogeneity}.
 			\end{enumerate}
-			\item \textbf{Homoscedasticity}. The variability of the residuals is the same for all levels of $x$: $Var(u | x_1, ..., x_k) = \sigma^2$
-			\item \textbf{No auto-correlation}. The residuals do not contain information about other residuals: $Corr(u_t, u_s | x) = 0$ for any given $t \neq s$. (ONLY when time series)
+			\item \textbf{Homoscedasticity}. The variability of the residuals is the same for all levels of $x$: $\Var(u | x_1, ..., x_k) = \sigma^2$
+			\item \textbf{No auto-correlation}. The residuals do not contain information about other residuals: $\Corr(u_t, u_s | x) = 0$ for any given $t \neq s$. (Typical of time series)
 			\item \textbf{Normality}. The residuals are independent and identically distributed: $u \sim N(0,\sigma^2)$
-			\item \textbf{Data size}. The number of observations available must be greater than $(k + 1)$ parameters to estimate. (IS already satisfied under asymptotic situations)		
+			\item \textbf{Data size}. The number of observations available must be greater than $(k + 1)$ parameters to estimate. (It is already satisfied under asymptotic situations)		
 		\end{enumerate}		
 	\subsection*{Asymptotic properties of OLS}
 		Under the econometric model assumptions and the Central Limit Theorem:
 		\begin{itemize}[leftmargin=*]
-			\item Hold (1) to (4a): OLS is \textbf{unbiased}. $E(\hat{\beta}_j) = \beta_j$
-			\item Hold (1) to (4): OLS is \textbf{consistent}. $plim(\hat{\beta}_j) = \beta_j$ (to (4b) left out (4a), weak exogeneity, biased but consistent)
+			\item Hold (1) to (4a): OLS is \textbf{unbiased}. $\E(\hat{\beta}_j) = \beta_j$
+			\item Hold (1) to (4): OLS is \textbf{consistent}. $\mathrm{p.lim}(\hat{\beta}_j) = \beta_j$ (to (4b) left out (4a), weak exogeneity, biased but consistent)
 			\item Hold (1) to (5): \textbf{asymptotic normality} of OLS (then, (7) is necessarily satisfied): $u \sim_a N(0,\sigma^2)$.
-			\item Hold (1) to (6): \textbf{unbiased estimate of $\sigma^2$}. $E(\hat{\sigma}^2) = \sigma^2$
+			\item Hold (1) to (6): \textbf{unbiased estimate of $\sigma^2$}. $\E(\hat{\sigma}^2) = \sigma^2$
 			\item Hold (1) to (6): OLS is \textcolor{blue}{\href{https://www.youtube.com/watch?v=68ugkg9RePc}{BLUE}} (Best Linear Unbiased Estimator) or \textbf{efficient}. 
 			\item Hold (1) to (7): hypothesis testing and confidence intervals can be done reliably.
 		\end{itemize}
@@ -125,11 +132,21 @@
 		% end plot
 		\columnbreak
 		% start text
-			\\ Equation: \\ $y_i = \beta_0 + \beta_1 x_{1i} + u_i$
+			\\ Equation:
+			\begin{center}
+				$y_i = \beta_0 + \beta_1 x_{1i} + u_i$
+			\end{center}
 			\vspace*{1mm}
-			\\ Estimation: \\ $\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 x_{1i}$
+			Estimation:
+			\begin{center}
+				$\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 x_{1i}$
+			\end{center}
 			\vspace*{1mm}
-			\\ Where: \\ $\hat{\beta}_0 = \overline{y} - \hat{\beta}_1 \overline{x}$ \\ $\hat{\beta}_1 = \frac{Cov(y, x)}{Var(x)}$
+			Where:
+			\begin{center}
+				$\hat{\beta}_0 = \overline{y} - \hat{\beta}_1 \overline{x}$ \\
+				$\hat{\beta}_1 = \frac{\Cov(y, x)}{\Var(x)}$
+			\end{center}
 		% end text
 		\end{multicols}
 	\subsection*{Multiple regression model}
@@ -163,13 +180,23 @@
 		% end plot
 		\columnbreak
 		% start text
-			\\ Equation: \\ $y_i = \beta_0 + \beta_1 x_{1i} + ... + \beta_k x_{ki} + u_i$
+			\\ Equation:
+			\begin{center}
+				$y_i = \beta_0 + \beta_1 x_{1i} + ... + \beta_k x_{ki} + u_i$
+			\end{center}
 			\vspace*{1mm}
-			\\ Estimation: \\ $\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 x_{1i} + ... + \hat{\beta}_k x_{ki}$
+			Estimation:
+			\begin{center}
+				$\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 x_{1i} + ... + \hat{\beta}_k x_{ki}$
+			\end{center}
 			\vspace*{1mm}
-			\\ Where: \\ $\hat{\beta}_0 = \overline{y} - \hat{\beta}_1 \overline{x}_1 - ... - \hat{\beta}_k \overline{x}_k$ \\ $\hat{\beta}_j = \frac{Cov(y, \text{residualized } x_j)}{Var(\text{residualized } x_j)}$
+			Where:
+			\begin{center}
+				$\hat{\beta}_0 = \overline{y} - \hat{\beta}_1 \overline{x}_1 - ... - \hat{\beta}_k \overline{x}_k$ \\
+				$\hat{\beta}_j = \frac{\Cov(y, \text{residualized } x_j)}{\Var(\text{residualized } x_j)}$
+			\end{center}
 			\vspace*{1mm}
-			\\ Matrix: $\hat{\beta} = (X^T X)^{-1} (X^T y)$
+			Matrix: $\hat{\beta} = (X^T X)^{-1} (X^T y)$
 		% end text
 		\end{multicols}
 	\subsection*{Interpretation of coefficients}
@@ -178,9 +205,9 @@
 			Model & Dependent & Independent & $\beta_1$ interpretation \\
 			\hline
 			Level-level & $y$ & $x$ & $\Delta y = \beta_1 \Delta x$ \\ 
-			Level-log & $y$ & $log(x)$ & $\Delta y = (\beta_1/100) (\% \Delta x$) \\  
-			Log-level & $log(y)$ & $x$ & $\% \Delta y = (100 \beta_1) \Delta x$ \\
-			Log-log & $log(y)$ & $log(x)$ & $\% \Delta y = \beta_1 (\% \Delta x$) \\
+			Level-log & $y$ & $\log(x)$ & $\Delta y \approx (\beta_1/100) (\% \Delta x$) \\  
+			Log-level & $\log(y)$ & $x$ & $\% \Delta y \approx (100 \beta_1) \Delta x$ \\
+			Log-log & $\log(y)$ & $\log(x)$ & $\% \Delta y \approx \beta_1 (\% \Delta x$) \\
 			Quadratic & $y$ & $x + x^2$ & $\Delta y = (\beta_1 + 2 \beta_2 x) \Delta x$ \\
 		\end{tabular}
 		}
@@ -189,8 +216,8 @@
 		\\ Expl. Sum of Sq.: \hfill $SSE = \sum_{i=1}^n (\hat{y}_i - \overline{y})^2$
 		\\ Tot. Sum of Sq.: \hfill $SST = SSE + SSR = \sum_{i=1}^n (y_i - \overline{y})^2$
 		\\ Standard Error of the Regression: \hfill $\hat{\sigma} = \sqrt{\frac{SSR}{n-k-1}}$
-		\\ Standard Error of the $\hat{\beta}$'s: \hfill $se(\hat{\beta}) = \hat{\sigma} \sqrt{(X^T X)^{-1}}$
-		\\ Sqrt. of the Quadratic Mean Error: \hfill $\sqrt{\frac{\sum_{i=1}^n (\hat{u}_i - \overline{u})^2}{n}}$
+		\\ Standard Error of the $\hat{\beta}$'s: \hfill $\se(\hat{\beta}) = \hat{\sigma} \sqrt{(X^T X)^{-1}}$
+		\\ Square Root of the Quadratic Mean Error: \hfill $\sqrt{\frac{\sum_{i=1}^n (\hat{u}_i - \overline{u})^2}{n}}$
 		\\ Absolute Mean Error: \hfill $\frac{\sum_{i=1}^n |\hat{u}_i|}{n}$
 		\\ Mean Percentage Error: \hfill $\frac{\sum_{i=1}^n |\hat{u}_i / y_i|}{n} \times 100$
 % end of column 2 and 3 page 1
@@ -205,7 +232,7 @@
 		\item Measures the \textbf{percentage of variation of $y$ that is linearly explained by the variations of $x$'s}.
 		\item Takes values \textbf{between 0} (no linear explanation of the variations of $y$) \textbf{and 1} (total explanation of the variations of $y$).
 	\end{itemize}
-	When the number of regressors increment, the value of the r-squared increments as well, whatever the new variables are relevant or not. To solve this problem, there is an \textbf{r-squared corrected by degrees of freedom}:
+	When the number of regressors increment, the value of the R-squared increments as well, whatever the new variables are relevant or not. To solve this problem, there is an \textbf{R-squared corrected by degrees of freedom}:
 	\begin{center}
 		$\overline{R}^2 = 1 - \frac{n-1}{n-k-1} \frac{SSR}{SST} = 1 - \frac{n-1}{n-k-1} (1-R^2)$
 	\end{center}
@@ -232,7 +259,7 @@
 		\end{itemize}
 		\begin{center}
 			Under $H_0$: \quad
-			$t = \frac{\hat{\beta}_j - \vartheta}{se(\hat{\beta}_j)} \sim t_{n-k-1, \alpha/2}$
+			$t = \frac{\hat{\beta}_j - \vartheta}{\se(\hat{\beta}_j)} \sim t_{n-k-1, \alpha/2}$
 		\end{center}
 		If $\mid t \mid > t_{n-k-1, \alpha/2}$, there is evidence to reject $H_0$.
 		\\ \textbf{Individual significance test} - tests if a parameter is significantly \textbf{different from zero}.
@@ -242,7 +269,7 @@
 		\end{itemize}
 		\begin{center}
 			Under $H_0$: \quad
-			$t = \frac{\hat{\beta}_j}{se(\hat{\beta}_j)} \sim t_{n-k-1, \alpha/2}$
+			$t = \frac{\hat{\beta}_j}{\se(\hat{\beta}_j)} \sim t_{n-k-1, \alpha/2}$
 		\end{center}
 		If $\mid t \mid > t_{n-k-1, \alpha/2}$, there is evidence to reject $H_0$.
 	\subsection*{The F contrast}
@@ -253,15 +280,15 @@
 		\end{itemize}
 		Then, looking at the errors, there are:
 		\begin{itemize}[leftmargin=*]
-			\item \textbf{$\sum_{i=1}^n \hat{u}_{N}^2$} - is the Sum of Sq. Resid. of the non restricted model ($SSR_{N}$).
-			\item \textbf{$\sum_{i=1}^n \hat{u}_R^2$} - is the Sum of Sq. Resid of the restricted model ($SSR_R$).
+			\item \textbf{$\sum_{i=1}^n \hat{u}_{\mathrm{nr}}^2$} - is the Sum of Sq. Resid. of the non restricted model ($SSR_{\mathrm{nr}}$).
+			\item \textbf{$\sum_{i=1}^n \hat{u}_\mathrm{r}^2$} - is the Sum of Sq. Resid of the restricted model ($SSR_\mathrm{r}$).
 		\end{itemize}
 		Under $H_0$:
 		\begin{center}
-			$F = \frac{SSR_R - SSR_{N}}{SSR_{N}} \frac{(n-k_{N}-1)}{q} \sim F_{q, n-k_{N}-1}$
+			$F = \frac{SSR_\mathrm{r} - SSR_{\mathrm{nr}}}{SSR_{\mathrm{nr}}} \frac{(n-k_{\mathrm{nr}}-1)}{q} \sim F_{q, n-k_{\mathrm{nr}}-1}$
 		\end{center}
-		Where $k_{N}$ is the number of parameters of the non restricted model and $q$ is the number of linear hypothesis tested.
-		\\ If $F_{q, n-k_{N}-1} < F$, there is evidence to reject $H_0$.
+		Where $k_{\mathrm{nr}}$ is the number of parameters of the non restricted model and $q$ is the number of linear hypothesis tested.
+		\\ If $F_{q, n-k_{\mathrm{nr}}-1} < F$, there is evidence to reject $H_0$.
 		\\ \textbf{Global significance test} - tests if all the parameters associated to $x$'s are \textbf{simultaneously equal to zero}.
 		\begin{itemize}[leftmargin=*]
 			\item $H_0: \beta_1 = \beta_2 = ... = \beta_k = 0$
@@ -277,7 +304,7 @@
 \section*{Confidence intervals}
 	The confidence intervals at ($1 - \alpha$) confidence level can be calculated:
 	\begin{center}
-		$\hat{\beta}_j \mp t_{n-k-1, \alpha/2} se(\hat{\beta}_j)$
+		$\hat{\beta}_j \mp t_{n-k-1, \alpha/2} \se(\hat{\beta}_j)$
 	\end{center}
 
 \section*{Dummy variables and structural change}
@@ -323,11 +350,11 @@
 	\subsection*{Detection}
 		\begin{itemize}[leftmargin=*]
 			\item \textbf{Correlation analysis} - look for high correlations (greater than 0.7) between independent variables.
-			\item \textbf{Variance Inflation Factor (VIF)} - indicates the increment of $Var(\hat{\beta}_j)$ because of the multicollinearity.
+			\item \textbf{Variance Inflation Factor (VIF)} - indicates the increment of $\Var(\hat{\beta}_j)$ because of the multicollinearity.
 			\begin{center}
 				$VIF(\hat{\beta}_j) = \frac{1}{1-R_j^2}$
 			\end{center}
-			Where $R^2_j$ denotes the r-squared from a regression between $x_j$ and all the other $x$'s. 
+			Where $R^2_j$ denotes the R-squared from a regression between $x_j$ and all the other $x$'s. 
 			\begin{itemize}[leftmargin=*]
 				\item Values between 4 to 10 suggest that it is advisable to analyze in more depth if there might be multicollinearity problems.
 				\item Values bigger than 10 indicates that there are multicollinearity problems.
@@ -346,7 +373,7 @@
 \section*{Heteroscedasticity}
 	The residuals $u_i$ of the population regression function do not have the same variance $\sigma^2$:
 	\begin{center}
-		$Var(u|x) = Var(y|x) \neq \sigma^2$
+		$\Var(u|x) = \Var(y|x) \neq \sigma^2$
 	\end{center}
 	Is the \textbf{breaking of the fifth (5) econometric model assumption}.
 	\subsection*{Consequences}
@@ -406,7 +433,7 @@
 \section*{Auto-correlation}
 	The residual of any observation, $u_t$, is correlated with the residual of any other observation. The observations are not independent.
 	\begin{center}
-		$Corr(u_t, u_s | x) \neq 0$ for any $t \neq s$
+		$\Corr(u_t, u_s | x) \neq 0$ for any $t \neq s$
 	\end{center}
 	The ``natural" context of this phenomena is time series. Is the \textbf{breaking of the sixth (6) econometric model assumption}.
 	\subsection*{Consequences}
