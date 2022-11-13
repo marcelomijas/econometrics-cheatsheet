@@ -50,7 +50,7 @@ Econometrics cheat sheet created using $\LaTeX$ with a summarized review of:
 
 ### What does $\mathrm{residualized}$ $x_j$ means?
 
-Those are the residuals from a OLS regression between $x_j$ and all the other $x$ 's. Error measures and r-squared can also be obtained from this regression.
+Those are the residuals from a OLS regression between $x_j$ and all the other $x$ 's. Error measures and R-squared can also be obtained from this regression.
 
 ### Why is $\beta_0$ the constant term? My reference manual / professor's definition of the econometric model is different.
 
