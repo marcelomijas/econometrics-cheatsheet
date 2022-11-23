@@ -18,6 +18,13 @@
 \newcommand{\se}{\mathrm{se}}
 \newcommand{\Cov}{\mathrm{Cov}}
 \newcommand{\Corr}{\mathrm{Corr}}
+\newcommand{\SSR}{\mathrm{SSR}}
+\newcommand{\SSE}{\mathrm{SSE}}
+\newcommand{\SST}{\mathrm{SST}}
+\newcommand{\Cr}{\mathrm{Cr}}
+\newcommand{\AIC}{\mathrm{AIC}}
+\newcommand{\HQ}{\mathrm{HQ}}
+\newcommand{\Sc}{\mathrm{Sc}}
 
 % -----page customization-----
 \geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} % margins configuration
@@ -27,7 +34,6 @@
 \titlespacing{\section}{0pt}{2ex}{1ex}
 \titlespacing{\subsection}{0pt}{1ex}{0ex}
 \titlespacing{\subsubsection}{0pt}{0.5ex}{0ex}
-
 
 % -----document-----
 \begin{document}
@@ -39,9 +45,9 @@
 \begin{multicols}{3} % set columns to 3
 
 \begin{center}
-	\textbf{\LARGE \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Additional Cheat Sheet}}
-	\\ {\footnotesize By Marcelo Moreno - King Juan Carlos University}
-	\\ {\footnotesize As part of the Econometrics Cheat Sheet Project}
+	\textbf{\LARGE \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Additional Cheat Sheet}} \\
+	{\footnotesize By Marcelo Moreno - King Juan Carlos University} \\
+	{\footnotesize As part of the Econometrics Cheat Sheet Project}
 \end{center}
 
 \section*{OLS in matrix notation}
@@ -59,19 +65,19 @@
 	\end{center}
 	The objective of OLS is to minimize the SSR:
 	\begin{center}
-		Min $\sum \hat{u}_i^2 = $ Min $\hat{u}^T \hat{u}$
+		Min $\SSR =$ Min $\sum_{i=1}^n \hat{u}_i^2 = $ Min $\hat{u}^T \hat{u}$
 	\end{center}
 	\begin{itemize}[leftmargin=*]
 		\item Defining $\hat{u}^T \hat{u}$:
 		\begin{center}
-			$\hat{u}^T \hat{u} = (y - X \hat{\beta})^T (y - X \hat{\beta}) =$
-			\\ $= y^T y -2 \hat{\beta}^T X^T y + \hat{\beta}^T X^T X \hat{\beta}$
+			$\hat{u}^T \hat{u} = (y - X \hat{\beta})^T (y - X \hat{\beta}) =$ \\
+			$= y^T y -2 \hat{\beta}^T X^T y + \hat{\beta}^T X^T X \hat{\beta}$
 		\end{center}
 		\item Minimizing $\hat{u}^T \hat{u}$:
 		\begin{center}
-			$\frac{\partial \hat{u}^T \hat{u}}{\partial \hat{\beta}} = -2 X^T y +2 X^T X \hat{\beta} = 0$
-			\\ $\hat{\beta} = (X^T X)^{-1} (X^T y)$
-			\\ \scalebox{0.85}{
+			$\frac{\partial \hat{u}^T \hat{u}}{\partial \hat{\beta}} = -2 X^T y +2 X^T X \hat{\beta} = 0$ \\
+			$\hat{\beta} = (X^T X)^{-1} (X^T y)$ \\
+			\scalebox{0.85}{
 				$
 				\begin{bmatrix}
 					\beta_0 \\
@@ -113,20 +119,20 @@
 			$
 			}
 		\end{center}
-		\quad where: $\hat{\sigma}^2 = \frac{\hat{u}^T \hat{u}}{n - k - 1}$
-		\\ The standard errors are in the diagonal of:
+		\quad where: $\hat{\sigma}^2 = \frac{\hat{u}^T \hat{u}}{n - k - 1}$ \\
+		The standard errors are in the diagonal of:
 		\begin{center}
 			$\se(\hat{\beta}) = \sqrt{\Var(\hat{\beta})}$
 		\end{center}
 	\subsection*{Error measures}
 		\begin{itemize}[leftmargin=*]
-			\item $SSR = \hat{u}^T \hat{u} = y^T y - \hat{\beta}^T X^T y = \sum(y_i - \hat{y}_i)^2$
-			\item $SSE = \hat{\beta}^T X^T y - n \overline{y}^2 = \sum(\hat{y}_i - \overline{y})^2$
-			\item $SST = SSR + SSE = y^T y - n \overline{y}^2 = \sum(y_i - \overline{y})^2$
+			\item $\SSR = \hat{u}^T \hat{u} = y^T y - \hat{\beta}^T X^T y = \sum(y_i - \hat{y}_i)^2$
+			\item $\SSE = \hat{\beta}^T X^T y - n \overline{y}^2 = \sum(\hat{y}_i - \overline{y})^2$
+			\item $\SST = \SSR + \SSE = y^T y - n \overline{y}^2 = \sum(y_i - \overline{y})^2$
 		\end{itemize}
 	\subsection*{R-squared}
 	\begin{center}
-		$R^2 = \frac{SSE}{SST} = 1 - \frac{SSR}{SST}$
+		$R^2 = \frac{\SSE}{\SST} = 1 - \frac{\SSR}{\SST}$
 	\end{center}
 	The R-squared corrected by degrees of freedom:
 	\begin{center}
@@ -135,7 +141,7 @@
 	
 \columnbreak
 
-\section*{Variables omission}
+\section*{Variable omission}
 	Most of the time, is hard to get all relevant variables for an analysis. For example, a true model with all variables:
 	\begin{center}
 		$y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + u$
@@ -144,72 +150,68 @@
 	\begin{center}
 		$\tilde{y} = \tilde{\beta}_0 + \tilde{\beta}_1 x_1 + u$
 	\end{center}
-	Omission of variables provoke OLS bias and inconsistency.
-	\\ Depending of the correlation between $x_1$ and $x_2$ and the sign of $\beta_2$, the bias on $\tilde{\beta}_1$ could be:
+	Omission of variables provoke OLS bias and inconsistency. \\
+	Depending of the correlation between $x_1$ and $x_2$ and the sign of $\beta_2$, the bias on $\tilde{\beta}_1$ could be:
 	\begin{center}
 		\scalebox{0.9}{ % scale the table
 			\begin{tabular}{| c | c | c |}
 				\hline
-				& $\Corr(x_1, x_2) > 0$ & $\Corr(x_1, x_2) < 0$ \\
-				\hline
-				$\beta_2 > 0$ & $(+) \text{ bias}$ & $(-) \text{ bias}$ \\
-				\hline
-				$\beta_2 < 0$ & $(-) \text{ bias}$ & $(+) \text{ bias}$ \\
-				\hline
+				              & $\Corr(x_1, x_2) > 0$ & $\Corr(x_1, x_2) < 0$ \\ \hline
+				$\beta_2 > 0$ & $(+) \text{ bias}$    & $(-) \text{ bias}$    \\ \hline
+				$\beta_2 < 0$ & $(-) \text{ bias}$    & $(+) \text{ bias}$    \\ \hline
 			\end{tabular}
 		}
 	\end{center}
-	$(+)$ bias $\rightarrow$ $\tilde{\beta}_1$ will be higher than it should be (it includes the effect of $x_2$). $\tilde{\beta}_1 > \beta_1$
-	\\ $(-)$ bias $\rightarrow$ $\tilde{\beta}_1$ will be lower than it should be (it includes the effect of $x_2$). $\tilde{\beta}_1 < \beta_1$
-	\\ If $\Corr(x_1,x_2) = 0$, there is no bias on $\beta_1$, because the effect of $x_2$ will be fully picked up by the error term, $u$.
-	\\ There are two approaches to solve the problem:
+	$(+)$ bias $\rightarrow$ $\tilde{\beta}_1$ will be higher than it should be (it includes the effect of $x_2$). $\tilde{\beta}_1 > \beta_1$ \\
+	$(-)$ bias $\rightarrow$ $\tilde{\beta}_1$ will be lower than it should be (it includes the effect of $x_2$). $\tilde{\beta}_1 < \beta_1$ \\
+	If $\Corr(x_1,x_2) = 0$, there is no bias on $\beta_1$, because the effect of $x_2$ will be fully picked up by the error term, $u$. \\
+	There are two approaches to solve the problem:
 	\begin{itemize}[leftmargin=*]
 		\item Make use of proxy variables.
 		\item Make use of instrumental variables (IV).
 	\end{itemize}
 	\subsection*{Proxy variables}
 		Is the approach when a relevant variable is not available for the model because is non-observable, and there is no data.
-		\\ A proxy variable is something related with the non-observable variable that has data available.
-		\\ For example, the intellectual coefficient is a proxy variable for a subject's capacity (non-observable).
+		\begin{itemize}[leftmargin=*]
+			\item A proxy variable is something related with the non-observable variable that has data available.
+		\end{itemize}
+		For example, the intellectual coefficient is a proxy variable for a subject's capacity (non-observable).
 	\subsection*{Instrumental variables (IV)}
-	When proxy variables are not available, the alternative approach is to look for a variable, let's call it $z$, that has a relation with $x$. The $z$ variable must meet the following requirements to be called an Instrumental Variable (IV):
+		When proxy variables are not available, the alternative approach is to look for a variable, let's call it $z$, that has a relation with $x$. The $z$ variable must meet the following requirements to be called an Instrumental Variable (IV):
 		\begin{center}
-			$\Cov(z,u) = 0$
-			\\ $\Cov(z,x) \neq 0$
+			$\Cov(z,u) = 0$ (exogeneity) \\
+			$\Cov(z,x) \neq 0$ (relevance)
 		\end{center}
-	This method let the omitted variable in the error term, but instead of estimate the model by OLS, it utilizes a method that recognize the presence of an omitted variable. This method can also solve error measurements.
+		This method let the omitted variable in the error term, but instead of estimate the model by OLS, it utilizes a method that recognize the presence of an omitted variable. This method can also solve error measurements.
 	\subsection*{TSLS}
-		Can have multiple instrumental variables (is the IV, but with various instrumental variables at the same time). And $\Cov(z,u) = 0$ can be relaxed, but there has to be a minimum of variables that satisfies it.
-		\\ Can have multicollinearity problems.
-		\\ \textbf{Some tests}:
+		This is a method to estimate a model with multiple instrumental variables. \\
+		The $\Cov(z,u) = 0$ requirement can be relaxed, but there has to be a minimum of variables that satisfies it. \\
+		Can have multicollinearity problems. \\
+		\textbf{Some tests}:
 		\begin{itemize}[leftmargin=*]
 			\item Endogeneity tests:  is TSLS better than OLS when there are no endogenous variables? Do we really need TSLS? $\rightarrow$ Hausman test $\rightarrow H_0$: OLS is consistent (it is better to use OLS).
-			\item Over-identification. An IV should meet:
-			\begin{itemize}[leftmargin=*]
-				\item $\Corr(z,u) = 0$ (exogeneity)
-				\item $\Corr(z,x) \neq 0$ (relevance)
-			\end{itemize}
 			\item Is there too many IV? $\rightarrow$ Sagan test $\rightarrow H_0$: all IV seem ok
 		\end{itemize}
 	
-\section*{Information criteria for selecting AR order}
-	The general formula
+\section*{Information criterion}
+	It is used to compare models with different number of parameters ($k$). The general formula:
 	\begin{center}
-		$Cr(n) = log(\hat{\sigma}_u^2(n)) + c_T \psi(n)$
+		$\Cr(k) = \log(\frac{\SSR}{n}) + c_n \varphi (k)$
 	\end{center}
 	where:
-	$\hat{\sigma}_u^2(n) = T^{-1} \sum_{t-1}^{T} \hat{u}_t(n)^2$ is the error variance estimator based on the OLS residuals $\hat{u}_t(n)$ from an AR model of order $n$. \\
-	$\psi(n)$ is a function that penalizes large AR orders. \\
-	$c_T$ is a sequence indexed by the sample size.
-	The order that minimizes the criterion is chosen as estimator $\hat{\rho}$ of the true AR order $\rho$.
 	\begin{itemize}[leftmargin=*]
-		\item Akaike (1973): \\
-		$AIC(n) = log(\hat{\sigma}_u^2(n)) + \frac{2}{T} n$
-		\item Hannan-Quinn (1979): \\
-		$HQ(n) = log(\hat{\sigma}_u^2(n)) + \frac{2 log(log(T))}{T} n$
-		\item Schwarz (1978): \\
-		$Sc(n) = log(\hat{\sigma}_u^2(n)) + \frac{log(T)}{T} n$
+		\item $\SSR$ is the Sum of Squared Residuals from a model of order $k$.
+		\item $c_n$ is a sequence indexed by the sample size.
+		\item $\varphi(k)$ is a function that penalizes large $k$ orders.
 	\end{itemize}
+	The order of $k$ that minimizes the criterion is chosen. \\
+	The $c_n \varphi(k)$ function:
+	\begin{itemize}[leftmargin=*]
+		\item Akaike: $\AIC(k) = \log(\frac{\SSR}{n}) + \frac{2}{n} k$
+		\item Hannan-Quinn: $\HQ(k) = \log(\frac{\SSR}{n}) + \frac{2 \log(\log(n))}{n} k$
+		\item Schwarz: $\Sc(k) = \log(\frac{\SSR}{n}) + \frac{\log(n)}{n} k$
+	\end{itemize}
+	$\Sc(k) \leq \HQ(k) \leq \AIC(k)$
 
 \columnbreak
 
@@ -339,8 +341,6 @@ $
 $
 }
 
-\section*{Information criterias}
-
 \section*{VECM}
 \scalebox{0.7}{
 	$\Delta y_t = 
@@ -351,7 +351,7 @@ $
 	\end{bmatrix}
 	+ \Gamma_1 \Delta y_{t-1} + ... + \Gamma_{p} \Delta y_{t-p} + B_0 x_t + ... + B_q x_{t-q} + CD_t + u_t$
 }
-where:
+\\ where:
 \begin{itemize}[leftmargin=*]
 	\item $\Pi^* = \alpha \beta^{T*}$.
 	\item $D_t^{co}$ contains all deterministic terms included in the cointegration relations.
