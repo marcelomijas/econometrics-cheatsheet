@@ -13,7 +13,7 @@ Econometrics cheat sheet created using $\LaTeX$ with a summarized review of:
 
 :bulb: Opinions, ideas and collaboration proposals are heard through GitHub or by email (marcelomijas@gmail.com). Also, my [LinkedIn](https://www.linkedin.com/in/marcelomorenop/).
 
-:mortar_board: I am currently doing my PhD in macroeconomics and econometrics at the King Juan Carlos University (Madrid, Spain). Article collaborations and even academic stays in other universities are considered!
+:mortar_board: I am currently doing my PhD in macroeconomics and econometrics at the King Juan Carlos University (Madrid, Spain). Article collaborations proposals and academic stays offers in other universities (international) are considered!
 
 ### Download links
 
