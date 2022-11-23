@@ -78,7 +78,7 @@ For specification $(2)$ users, not everything is lost. There is a relation betwe
 
 $$(1)(3) \rightarrow \overline{R}^2 = 1 - \frac{n-1}{n-k-1} (1-R^2)$$
 
-$$(2) \rightarrow \overline{R}^2 = 1 - \frac{n-1}{n-k} (1-R^2)$$
+$$(2) \rightarrow \overline{R}^2 = 1 - \frac{n-1}{n-(k_{(1)}-1)-1} (1-R^2) = 1 - \frac{n-1}{n-k} (1-R^2)$$
 
 ### Where is the non matrix version of the standard error of the $\hat{\beta}$ 's?
 
