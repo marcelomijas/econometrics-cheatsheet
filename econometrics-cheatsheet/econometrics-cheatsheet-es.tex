@@ -18,6 +18,13 @@
 \newcommand{\ee}{\mathrm{ee}}
 \newcommand{\Cov}{\mathrm{Cov}}
 \newcommand{\Corr}{\mathrm{Corr}}
+\newcommand{\SRC}{\mathrm{SRC}}
+\newcommand{\SEC}{\mathrm{SEC}}
+\newcommand{\STC}{\mathrm{STC}}
+\newcommand{\ECM}{\mathrm{ECM}}
+\newcommand{\EMA}{\mathrm{EMA}}
+\newcommand{\PME}{\mathrm{PME}}
+\newcommand{\VIF}{\mathrm{VIF}}
 
 % -----page customization-----
 \geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} % margins configuration
@@ -32,27 +39,27 @@
 \begin{document}
 
 % page foot
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Versión 2.8-es - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Versión 2.9-es - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
 % start of column 1 page 1
 % titles
 \begin{center}
-	\textbf{\LARGE \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Cheat Sheet Econometría}}
-	\\ {\footnotesize Por Marcelo Moreno - Universidad Rey Juan Carlos}
+	\textbf{\LARGE \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Cheat Sheet Econometría}} \\
+	{\footnotesize Por Marcelo Moreno - Universidad Rey Juan Carlos}
 \end{center}
 % start of content
 \section*{Conceptos básicos}
 	\subsection*{Definiciones}
-		\textbf{Econometría} - es una disciplina de las ciencias sociales que tiene como objetivo cuantificar las relaciones entre agentes económicos, contrastar teorías económicas y evaluar e implementar políticas públicas y privadas.
-		\\ \textbf{Modelo econométrico} - es una representación simplificada de la realidad para explicar fenómenos económicos.
-		\\ \textbf{\textsl{Ceteris paribus}} - si todos los demás factores relevantes permanecen constantes.
+		\textbf{Econometría} - es una disciplina de las ciencias sociales que tiene como objetivo cuantificar las relaciones entre agentes económicos, contrastar teorías económicas y evaluar e implementar políticas públicas y privadas. \\
+		\textbf{Modelo econométrico} - es una representación simplificada de la realidad para explicar fenómenos económicos. \\
+		\textbf{\textsl{Ceteris paribus}} - si todos los demás factores relevantes permanecen constantes.
 	\subsection*{Tipos de datos}
-		\textbf{Sección cruzada} - datos recogidos en un momento dado en el tiempo, una \textsl{foto} estática. El orden no importa.
-		\\ \textbf{Series temporales} - observación de una/muchas variable/s durante un periodo de tiempo. El orden sí importa.
-		\\ \textbf{Datos de panel} - consiste una una serie temporal por cada observación de una sección cruzada.
-		\\ \textbf{Secciones transversales agrupadas} - combina secciones cruzadas de diferentes periodos temporales.
+		\textbf{Sección cruzada} - datos recogidos en un momento dado en el tiempo, una \textsl{foto} estática. El orden no importa. \\
+		\textbf{Series temporales} - observación de una/muchas variable/s durante un periodo de tiempo. El orden sí importa. \\
+		\textbf{Datos de panel} - consiste una una serie temporal por cada observación de una sección cruzada. \\
+		\textbf{Secciones transversales agrupadas} - combina secciones cruzadas de diferentes periodos temporales.
 	\subsection*{Fases de un modelo econométrico}
 		\begin{enumerate}[leftmargin=*]
 			\setlength{\multicolsep}{0pt}
@@ -200,33 +207,34 @@
 		% end text
 		\end{multicols}
 	\subsection*{Interpretación de coeficientes}
-		\scalebox{0.872}{ % scale the table to fit in the column
-		\begin{tabular}{ c c c c }
-			Modelo & Depend. & Independ. & Interpretación $\beta_1$ \\
-			\hline
-			Nivel-nivel & $y$ & $x$ & $\Delta y = \beta_1 \Delta x$ \\ 
-			Nivel-log & $y$ & $\log(x)$ & $\Delta y \approx (\beta_1/100) (\% \Delta x$) \\  
-			Log-nivel & $\log(y)$ & $x$ & $\% \Delta y \approx (100 \beta_1) \Delta x$ \\
-			Log-log & $\log(y)$ & $\log(x)$ & $\% \Delta y \approx \beta_1 (\% \Delta x$) \\
-			Cuadrático & $y$ & $x + x^2$ & $\Delta y = (\beta_1 + 2 \beta_2 x) \Delta x$ \\
-		\end{tabular}
-		}
+		\begin{center}
+			\scalebox{0.86}{ % scale the table to fit in the column
+				\begin{tabular}{ c c c c }
+					Modelo      & Depend.   & Independ. & Interpretación $\beta_1$                       \\ \hline
+					Nivel-nivel & $y$       & $x$       & $\Delta y = \beta_1 \Delta x$                  \\
+					Nivel-log   & $y$       & $\log(x)$ & $\Delta y \approx (\beta_1/100) (\% \Delta x$) \\
+					Log-nivel   & $\log(y)$ & $x$       & $\% \Delta y \approx (100 \beta_1) \Delta x$   \\
+					Log-log     & $\log(y)$ & $\log(x)$ & $\% \Delta y \approx \beta_1 (\% \Delta x$)    \\
+					Cuadrático  & $y$       & $x + x^2$ & $\Delta y = (\beta_1 + 2 \beta_2 x) \Delta x$
+				\end{tabular}
+			}
+		\end{center}
 	\subsection*{Medidas de error}
-		Suma de Resid. Cuad.: \hfill $SRC = \sum_{i=1}^n \hat{u}_i^2 = \sum_{i=1}^n (y_i - \hat{y}_i)^2$
-		\\ Suma Expl. de Cuad.: \hfill $SEC = \sum_{i=1}^n (\hat{y}_i - \overline{y})^2$
-		\\ Suma Tot. de Cuad.: \hfill $STC = SEC + SRC = \sum_{i=1}^n (y_i - \overline{y})^2$
-		\\ Error Estándar de la Regresión: \hfill $\hat{\sigma} = \sqrt{\frac{SRC}{n-k-1}}$
-		\\ Error Estándar de los $\hat{\beta}$'s: \hfill $\ee(\hat{\beta}) = \hat{\sigma} \sqrt{(X^T X)^{-1}}$
-		\\ Raíz Cuadrada del Error Cuadrático Medio: \hfill $\sqrt{\frac{\sum_{i=1}^n (\hat{u}_i - \overline{u})^2}{n}}$
-		\\ Error Medio Absoluto: \hfill $\frac{\sum_{i=1}^n |\hat{u}_i|}{n}$
-		\\ Porcentaje Medio de Error: \hfill $\frac{\sum_{i=1}^n |\hat{u}_i / y_i|}{n} \times 100$
+		Suma de Resid. Cuad.: \hfill $\SRC = \sum_{i=1}^n \hat{u}_i^2 = \sum_{i=1}^n (y_i - \hat{y}_i)^2$ \\
+		Suma Explicada de Cuadrados: \hfill $\SEC = \sum_{i=1}^n (\hat{y}_i - \overline{y})^2$ \\
+		Suma Tot. de Cuad.: \hfill $\STC = \SEC + \SRC = \sum_{i=1}^n (y_i - \overline{y})^2$ \\
+		Error Estándar de la Regresión: \hfill $\hat{\sigma} = \sqrt{\frac{\SRC}{n-k-1}}$ \\
+		Error Estándar de los $\hat{\beta}$'s: \hfill $\ee(\hat{\beta}) = \hat{\sigma} \cdot \sqrt{(X^T X)^{-1}}$ \\
+		Error Cuadrático Medio: \hfill $\ECM = \frac{1}{n} \sum_{i=1}^n (y_i - \hat{y}_i)^2$ \\
+		Error Medio Absoluto: \hfill $\EMA = \frac{\sum_{i=1}^n |y_i - \hat{y}_i|}{n}$ \\
+		Porcentaje Medio de Error: \hfill $\PME = \frac{\sum_{i=1}^n |\hat{u}_i / y_i|}{n} \cdot 100$
 % end of column 2 and 3 page 1
 \columnbreak
 % start of column 1, 2 and 3 page 2
 \section*{R-cuadrado}
 	Es una \textbf{medida de la bondad del ajuste}, cómo la regresión se ajusta a los datos:
 	\begin{center}
-		$R^2 = \frac{SEC}{STC} = 1 - \frac{SRC}{STC}$
+		$R^2 = \frac{\SEC}{\STC} = 1 - \frac{\SRC}{\STC}$
 	\end{center}
 	\begin{itemize}[leftmargin=*]
 		\item Mide el \textbf{porcentaje de variación en $y$ que es linealmente explicado por variaciones de las $x$'s}.
@@ -234,14 +242,14 @@
 	\end{itemize}
 	Cuando el número de regresores incrementa, el valor del R-cuadrado también lo hace, independientemente de si las nuevas variables son relevantes o no. Para resolver este problema, existe un \textbf{R-cuadrado corregido por grados de libertad} (o R-cuadrado ajustado):
 	\begin{center}
-		$\overline{R}^2 = 1 - \frac{n-1}{n-k-1} \frac{SRC}{STC} = 1 - \frac{n-1}{n-k-1} (1-R^2)$
+		$\overline{R}^2 = 1 - \frac{n-1}{n-k-1} \frac{\SRC}{\STC} = 1 - \frac{n-1}{n-k-1} (1-R^2)$
 	\end{center}
 	Para muestras grandes: $\overline{R}^2 \approx R^2$
 
 \section*{Contrastes de hipótesis}
 	\subsection*{Base de los contrastes de hipótesis}
-		Un contraste de hipótesis es una regla diseñada para, a partir de una muestra, \textbf{explicar si existe evidencia para rechazar (o no) una hipótesis} sobre uno o más parámetros poblacionales.
-		\\ Elementos de un contraste de hipótesis:
+		Un contraste de hipótesis es una regla diseñada para, a partir de una muestra, \textbf{explicar si existe evidencia para rechazar (o no) una hipótesis} sobre uno o más parámetros poblacionales. \\
+		Elementos de un contraste de hipótesis:
 		\begin{itemize}[leftmargin=*]
 			\item \textbf{Hipótesis nula ($H_0$)} - es la hipótesis a ser probada.
 			\item \textbf{Hipótesis alternativa ($H_1$)} - el la hipótesis que no puede rechazarse si la hipótesis nula es rechazada.
@@ -261,8 +269,8 @@
 			Bajo $H_0$: \quad
 			$t = \frac{\hat{\beta}_j - \vartheta}{\ee(\hat{\beta}_j)} \sim t_{n-k-1, \alpha/2}$
 		\end{center}
-		Si $\mid t \mid > t_{n-k-1, \alpha/2}$, existe evidencia para rechazar $H_0$.
-		\\ \textbf{Contraste de significación individual} - prueba si un parámetro es \textbf{significativamente distinto de cero}.
+		Si $\mid t \mid > t_{n-k-1, \alpha/2}$, existe evidencia para rechazar $H_0$. \\
+		\textbf{Contraste de significación individual} - prueba si un parámetro es \textbf{significativamente distinto de cero}.
 		\begin{itemize}[leftmargin=*]
 			\item $H_0: \beta_j = 0$
 			\item $H_1: \beta_j \neq 0$
@@ -280,22 +288,22 @@
 		\end{itemize}
 		Entonces, viendo los errores, hay:
 		\begin{itemize}[leftmargin=*]
-			\item \textbf{$\sum_{i=1}^n \hat{u}_{\mathrm{nr}}^2$} - es la Suma de Resid. Cuadrados del modelo no restringido ($SRC_{\mathrm{nr}}$).
-			\item \textbf{$\sum_{i=1}^n \hat{u}_\mathrm{r}^2$} - es la Suma de Resid. Cuadrados del modelo restringido ($SRC_\mathrm{r}$).
+			\item \textbf{$\sum_{i=1}^n \hat{u}_{\mathrm{nr}}^2$} - es la Suma de Resid. Cuadrados del modelo no restringido ($\SRC_{\mathrm{nr}}$).
+			\item \textbf{$\sum_{i=1}^n \hat{u}_\mathrm{r}^2$} - es la Suma de Resid. Cuadrados del modelo restringido ($\SRC_\mathrm{r}$).
 		\end{itemize}
 		Bajo $H_0$:
 		\begin{center}
-			$F = \frac{SRC_\mathrm{r} - SRC_{\mathrm{nr}}}{SRC_{\mathrm{nr}}} \frac{(n-k_{\mathrm{nr}}-1)}{q} \sim F_{q, n-k_{\mathrm{nr}}-1}$
+			$F = \frac{\SRC_\mathrm{r} - \SRC_{\mathrm{nr}}}{\SRC_{\mathrm{nr}}} \frac{(n-k_{\mathrm{nr}}-1)}{q} \sim F_{q, n-k_{\mathrm{nr}}-1}$
 		\end{center}
-		Donde $k_{\mathrm{nr}}$ es el número de parámetros del modelo no restringido y $q$ es el número de hipótesis lineales a probar.
-		\\ Si $F_{q, n-k_{\mathrm{nr}}-1} < F$, existe evidencia para rechazar $H_0$.
-		\\ \textbf{Contraste de significación global} - prueba si todos los parametros asociados a $x$'s son \textbf{simultáneamente iguales a cero}.
+		Donde $k_{\mathrm{nr}}$ es el número de parámetros del modelo no restringido y $q$ es el número de hipótesis lineales a probar. \\
+		Si $F_{q, n-k_{\mathrm{nr}}-1} < F$, existe evidencia para rechazar $H_0$. \\
+		\textbf{Contraste de significación global} - prueba si todos los parametros asociados a $x$'s son \textbf{simultáneamente iguales a cero}.
 		\begin{itemize}[leftmargin=*]
 			\item $H_0: \beta_1 = \beta_2 = ... = \beta_k = 0$
 			\item $H_1: \beta_1 \neq 0$ y/o $\beta_2 \neq 0 ...$ y/o $\beta_k \neq 0$
 		\end{itemize}
-		En este caso, podemos simplificar la fórmula para el estadístico $F$.
-		\\ Bajo $H_0$:
+		En este caso, podemos simplificar la fórmula para el estadístico $F$. \\
+		Bajo $H_0$:
 		\begin{center}
 			$F = \frac{R^2}{1 - R^2} \frac{(n-k-1)}{k} \sim F_{k, n-k-1}$
 		\end{center}
@@ -304,7 +312,7 @@
 \section*{Intervalos de confianza}
 	Los intervalos de confianza al nivel de confianza ($1 - \alpha$), se pueden calcular:
 	\begin{center}
-		$\hat{\beta}_j \mp t_{n-k-1, \alpha/2} \ee(\hat{\beta}_j)$
+		$\hat{\beta}_j \mp t_{n-k-1, \alpha/2} \cdot \ee(\hat{\beta}_j)$
 	\end{center}
 
 \section*{Variables ficticias y cambio estructural}
@@ -315,8 +323,8 @@
 	\end{itemize}
 	Si una variable cualitativa tiene $m$ categorías, sólo hay que incluir ($m-1$) variables ficticias en el modelo.
 	\subsection*{Cambio estructural}
-		El cambio estructural se refiere a los cambios en los valores de los parámetros del modelo producidos por el efecto de diferentes sub-poblaciones. El cambio estructural se puede incluir en el modelo a través de variables ficticias.
-		\\ La posición de las variables ficticias es importante:
+		El cambio estructural se refiere a los cambios en los valores de los parámetros del modelo producidos por el efecto de diferentes sub-poblaciones. El cambio estructural se puede incluir en el modelo a través de variables ficticias. \\
+		La ubicación de las variables ficticias es importante:
 		\begin{itemize}[leftmargin=*]
 			\item \textbf{En el intercepto ($\beta_0$)} - representa la diferencia media entre los valores producidos por el cambio estructural.
 			\item \textbf{En los parámetros que determinan la pendiente de la línea de regresión ($\beta_j$)} - representa la diferencia en el efecto (pendiente) entre los valores producidos por el cambio estructural.
@@ -352,7 +360,7 @@
 			\item \textbf{Análisis de correlación} - buscar altas correlaciones (mayores a 0.7) entre variables independientes.
 			\item \textbf{Factor de Inflación de la Varianza (FIV o VIF)} - indica el incremento en $\Var(\hat{\beta}_j)$ debido a la multicolinealidad.
 			\begin{center}
-				$VIF(\hat{\beta}_j) = \frac{1}{1-R_j^2}$
+				$\VIF(\hat{\beta}_j) = \frac{1}{1-R_j^2}$
 			\end{center}
 			Donde $R^2_j$ denota el R-cuadrado de una regresión entre $x_j$ y todas las otras $x$'s. 
 			\begin{itemize}[leftmargin=*]
@@ -389,7 +397,7 @@
 			\setlength{\columnsep}{20pt} % increment spacing between columns
 			\begin{multicols}{3} % set columns to 3
 			% start of text
-				\item \textbf{Gráficos} - \\ buscar patrones de dispersión en gráficos $x$ vs. $u$ ó $x$ vs. $y$.
+				\item \textbf{Gráficos} - buscar patrones de dispersión en gráficos $x$ vs. $u$ ó $x$ vs. $y$.
 			% end of text
 			\columnbreak
 			% start of plot 1
@@ -450,45 +458,44 @@
 			\setlength{\columnsep}{6pt} % increment spacing between columns
 			% scatter plots
 			\begin{multicols}{3} % set columns to 3
-			% start of Ac. plot
+				% start of Ac. plot
 				\begin{center}
-					\textbf{\footnotesize Ac.}
+					\begin{tikzpicture}[scale=0.11]
+						\node at (0,13) {\textbf{Ac.}};
+						\draw [step=2, gray, very thin] (-10,-10) grid (10,10); % grid
+						\draw [thick,->] (-10,0) -- (10,0) node [anchor=south] {$u_{t-1}$}; % ut-1 axis
+						\draw [thick,-] (-10,-10) -- (-10,10) node [anchor=west] {$u_t$}; % ut axis
+						\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=50] (\x,{rnd * 6 + (-2 * (\x)^2 + 40) * 0.1}); % data points
+						\draw [thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 + (-2 * (\x)^2 + 40) * 0.1}); % red arrow
+					\end{tikzpicture}
 				\end{center}
-				\vspace{2.0pt}
-				\begin{tikzpicture}[scale=0.11]
-					\draw [step=2, gray, very thin] (-10,-10) grid (10,10); % grid
-					\draw [thick,->] (-10,0) -- (10,0) node [anchor=south] {$u_{t-1}$}; % ut-1 axis
-					\draw [thick,-] (-10,-10) -- (-10,10) node [anchor=west] {$u_t$}; % ut axis
-					\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=50] (\x,{rnd * 6 + (-2 * (\x)^2 + 40) * 0.1}); % data points
-					\draw [thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 + (-2 * (\x)^2 + 40) * 0.1}); % red arrow
-				\end{tikzpicture}
-			% end of Ac. plot
-			\columnbreak
-			% start of Ac.(+) plot
+				% end of Ac. plot
+				\columnbreak
+				% start of Ac.(+) plot
 				\begin{center}
-					\textbf{\footnotesize Ac.(+)}
+					\begin{tikzpicture}[scale=0.11]
+						\node at (0,13) {\textbf{Ac.(+)}};
+						\draw [step=2, gray, very thin] (-10,-10) grid (10,10); % grid
+						\draw [thick,->] (-10,0) -- (10,0) node [anchor=north] {$ u_{t-1}$}; % ut-1 axis
+						\draw [thick,-] (-10,-10) -- (-10,10) node [anchor=west] {$u_t$}; % ut axis
+						\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=25] (\x,{rnd * 6 + 0.5 * \x - 3}); % data points
+						\draw [thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 + 0.5 * \x - 3}); % red arrow
+					\end{tikzpicture}
 				\end{center}
-				\begin{tikzpicture}[scale=0.11]
-					\draw [step=2, gray, very thin] (-10,-10) grid (10,10); % grid
-					\draw [thick,->] (-10,0) -- (10,0) node [anchor=north] {$ u_{t-1}$}; % ut-1 axis
-					\draw [thick,-] (-10,-10) -- (-10,10) node [anchor=west] {$u_t$}; % ut axis
-					\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=25] (\x,{rnd * 6 + 0.5 * \x - 3}); % data points
-					\draw [thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 + 0.5 * \x - 3}); % red arrow
-				\end{tikzpicture}
-			% end of Ac.(+) plot
-			\columnbreak
-			% start of Ac.(-) plot
+				% end of Ac.(+) plot
+				\columnbreak
+				% start of Ac.(-) plot	
 				\begin{center}
-					\textbf{\footnotesize Ac.(-)}
+					\begin{tikzpicture}[scale=0.11]
+						\node at (0,13) {\textbf{Ac.(-)}};
+						\draw [step=2, gray, very thin] (-10,-10) grid (10,10); % grid
+						\draw [thick,->] (-10,0) -- (10,0) node [anchor=south] {$u_{t-1}$}; % ut-1 axis
+						\draw [thick,-] (-10,-10) -- (-10,10) node [anchor=west] {$u_t$}; % ut axis
+						\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=25] (\x,{rnd * 6 - 0.5 * \x - 3}); % data points
+						\draw [thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 - 0.5 * \x - 3}); % red arrow
+					\end{tikzpicture}
 				\end{center}
-				\begin{tikzpicture}[scale=0.11]
-					\draw [step=2, gray, very thin] (-10,-10) grid (10,10); % grid
-					\draw [thick,->] (-10,0) -- (10,0) node [anchor=south] {$u_{t-1}$}; % ut-1 axis
-					\draw [thick,-] (-10,-10) -- (-10,10) node [anchor=west] {$u_t$}; % ut axis
-					\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=25] (\x,{rnd * 6 - 0.5 * \x - 3}); % data points
-					\draw [thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 - 0.5 * \x - 3}); % red arrow
-				\end{tikzpicture}
-			% end of Ac.(-) plot
+				% end of Ac.(-) plot
 			\end{multicols}
 			\item \textbf{Test formales} - Durbin-Watson, Breusch-Godfrey, etc. Comúnmente, la hipótesis nula: $H_0$: No autocorrelación.
 		\end{itemize}

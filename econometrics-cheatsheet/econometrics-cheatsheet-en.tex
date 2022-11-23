@@ -18,6 +18,13 @@
 \newcommand{\se}{\mathrm{se}}
 \newcommand{\Cov}{\mathrm{Cov}}
 \newcommand{\Corr}{\mathrm{Corr}}
+\newcommand{\SSR}{\mathrm{SSR}}
+\newcommand{\SSE}{\mathrm{SSE}}
+\newcommand{\SST}{\mathrm{SST}}
+\newcommand{\MSE}{\mathrm{MSE}}
+\newcommand{\AME}{\mathrm{AME}}
+\newcommand{\MPE}{\mathrm{MPE}}
+\newcommand{\VIF}{\mathrm{VIF}}
 
 % -----page customization-----
 \geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} % margins configuration
@@ -32,27 +39,27 @@
 \begin{document}
 
 % page foot
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Version 2.8-en - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Version 2.9-en - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
 % start of column 1 page 1
 %titles
 \begin{center}
-	\textbf{\LARGE \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Econometrics Cheat Sheet}}
-	\\ {\footnotesize By Marcelo Moreno - King Juan Carlos University}
+	\textbf{\LARGE \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Econometrics Cheat Sheet}} \\
+	{\footnotesize By Marcelo Moreno - King Juan Carlos University}
 \end{center}
 % start of content
 \section*{Basic concepts}
 	\subsection*{Definitions}
-		\textbf{Econometrics} - is a social science discipline with the objective of quantify the relationships between economic agents, contrast economic theories and evaluate and implement government and business policies.
-		\\ \textbf{Econometric model} - is a simplified representation of the reality to explain economic phenomena.
-		\\ \textbf{\textsl{Ceteris paribus}} - if all the other relevant factors remain constant.
+		\textbf{Econometrics} - is a social science discipline with the objective of quantify the relationships between economic agents, contrast economic theories and evaluate and implement government and business policies. \\
+		\textbf{Econometric model} - is a simplified representation of the reality to explain economic phenomena. \\
+		\textbf{\textsl{Ceteris paribus}} - if all the other relevant factors remain constant.
 	\subsection*{Data types}
-		\textbf{Cross section} - data taken at a given moment in time, an static \textsl{photo}. Order does not matter.
-		\\ \textbf{Time series} - observation of one/many variable/s across time. Order does matter.
-		\\ \textbf{Panel data} - consist of a time series for each observation of a cross section.
-		\\ \textbf{Pooled cross sections} - combines cross sections from different time periods.
+		\textbf{Cross section} - data taken at a given moment in time, an static \textsl{photo}. Order does not matter. \\
+		\textbf{Time series} - observation of one/many variable/s across time. Order does matter. \\
+		\textbf{Panel data} - consist of a time series for each observation of a cross section. \\
+		\textbf{Pooled cross sections} - combines cross sections from different time periods.
 	\subsection*{Phases of an econometric model}
 		\begin{enumerate}[leftmargin=*]
 			\setlength{\multicolsep}{0pt}
@@ -200,33 +207,34 @@
 		% end text
 		\end{multicols}
 	\subsection*{Interpretation of coefficients}
-		\scalebox{0.872}{ % scale the table to fit in the column
-		\begin{tabular}{ c c c c }
-			Model & Dependent & Independent & $\beta_1$ interpretation \\
-			\hline
-			Level-level & $y$ & $x$ & $\Delta y = \beta_1 \Delta x$ \\ 
-			Level-log & $y$ & $\log(x)$ & $\Delta y \approx (\beta_1/100) (\% \Delta x$) \\  
-			Log-level & $\log(y)$ & $x$ & $\% \Delta y \approx (100 \beta_1) \Delta x$ \\
-			Log-log & $\log(y)$ & $\log(x)$ & $\% \Delta y \approx \beta_1 (\% \Delta x$) \\
-			Quadratic & $y$ & $x + x^2$ & $\Delta y = (\beta_1 + 2 \beta_2 x) \Delta x$ \\
-		\end{tabular}
-		}
+		\begin{center}
+			\scalebox{0.86}{ % scale the table to fit in the column
+				\begin{tabular}{ c c c c }
+					Model       & Dependent & Independent & $\beta_1$ interpretation                       \\ \hline
+					Level-level & $y$       & $x$         & $\Delta y = \beta_1 \Delta x$                  \\
+					Level-log   & $y$       & $\log(x)$   & $\Delta y \approx (\beta_1/100) (\% \Delta x$) \\
+					Log-level   & $\log(y)$ & $x$         & $\% \Delta y \approx (100 \beta_1) \Delta x$   \\
+					Log-log     & $\log(y)$ & $\log(x)$   & $\% \Delta y \approx \beta_1 (\% \Delta x$)    \\
+					Quadratic   & $y$       & $x + x^2$   & $\Delta y = (\beta_1 + 2 \beta_2 x) \Delta x$
+				\end{tabular}
+			}
+		\end{center}		
 	\subsection*{Error measures}
-		Sum of Sq. Resid.: \hfill $SSR = \sum_{i=1}^n \hat{u}_i^2 = \sum_{i=1}^n (y_i - \hat{y}_i)^2$
-		\\ Expl. Sum of Sq.: \hfill $SSE = \sum_{i=1}^n (\hat{y}_i - \overline{y})^2$
-		\\ Tot. Sum of Sq.: \hfill $SST = SSE + SSR = \sum_{i=1}^n (y_i - \overline{y})^2$
-		\\ Standard Error of the Regression: \hfill $\hat{\sigma} = \sqrt{\frac{SSR}{n-k-1}}$
-		\\ Standard Error of the $\hat{\beta}$'s: \hfill $\se(\hat{\beta}) = \hat{\sigma} \sqrt{(X^T X)^{-1}}$
-		\\ Square Root of the Quadratic Mean Error: \hfill $\sqrt{\frac{\sum_{i=1}^n (\hat{u}_i - \overline{u})^2}{n}}$
-		\\ Absolute Mean Error: \hfill $\frac{\sum_{i=1}^n |\hat{u}_i|}{n}$
-		\\ Mean Percentage Error: \hfill $\frac{\sum_{i=1}^n |\hat{u}_i / y_i|}{n} \times 100$
+		Sum of Sq. Residuals: \hfill $\SSR = \sum_{i=1}^n \hat{u}_i^2 = \sum_{i=1}^n (y_i - \hat{y}_i)^2$ \\
+		Explained Sum of Squares: \hfill $\SSE = \sum_{i=1}^n (\hat{y}_i - \overline{y})^2$ \\
+		Total Sum of Sq.: \hfill $\SST = \SSE + \SSR = \sum_{i=1}^n (y_i - \overline{y})^2$ \\
+		Standard Error of the Regression: \hfill $\hat{\sigma} = \sqrt{\frac{\SSR}{n-k-1}}$ \\
+		Standard Error of the $\hat{\beta}$'s: \hfill $\se(\hat{\beta}) = \hat{\sigma} \cdot \sqrt{(X^T X)^{-1}}$ \\
+		Mean Squared Error: \hfill $\MSE = \frac{1}{n} \sum_{i=1}^n (y_i - \hat{y}_i)^2$ \\
+		Absolute Mean Error: \hfill $\AME = \frac{\sum_{i=1}^n |y_i - \hat{y}_i|}{n}$ \\
+		Mean Percentage Error: \hfill $\MPE = \frac{\sum_{i=1}^n |\hat{u}_i / y_i|}{n} \cdot 100$
 % end of column 2 and 3 page 1
 \columnbreak
 % start of column 1, 2 and 3 page 2
 \section*{R-squared}
 	Is a \textbf{measure of the goodness of the fit}, how the regression fits to the data:
 	\begin{center}
-		$R^2 = \frac{SSE}{SST} = 1 - \frac{SSR}{SST}$
+		$R^2 = \frac{\SSE}{\SST} = 1 - \frac{\SSR}{\SST}$
 	\end{center}
 	\begin{itemize}[leftmargin=*]
 		\item Measures the \textbf{percentage of variation of $y$ that is linearly explained by the variations of $x$'s}.
@@ -234,14 +242,14 @@
 	\end{itemize}
 	When the number of regressors increment, the value of the R-squared increments as well, whatever the new variables are relevant or not. To solve this problem, there is an \textbf{R-squared corrected by degrees of freedom}:
 	\begin{center}
-		$\overline{R}^2 = 1 - \frac{n-1}{n-k-1} \frac{SSR}{SST} = 1 - \frac{n-1}{n-k-1} (1-R^2)$
+		$\overline{R}^2 = 1 - \frac{n-1}{n-k-1} \frac{\SSR}{\SST} = 1 - \frac{n-1}{n-k-1} (1-R^2)$
 	\end{center}
 	For big sample sizes: $\overline{R}^2 \approx R^2$
 
 \section*{Hypothesis testing}
 	\subsection*{The basics of hypothesis testing}
-		An hypothesis test is a rule designed to explain from a sample, if \textbf{exist evidence or not to reject an hypothesis} that is made about one or more population parameters.
-		\\ Elements of an hypothesis contrast:
+		An hypothesis test is a rule designed to explain from a sample, if \textbf{exist evidence or not to reject an hypothesis} that is made about one or more population parameters. \\
+		Elements of an hypothesis contrast:
 		\begin{itemize}[leftmargin=*]
 			\item \textbf{Null hypothesis ($H_0$)} - is the hypothesis to be tested.
 			\item \textbf{Alternative hypothesis ($H_1$)} - is the hypothesis that cannot be rejected when the null hypothesis is rejected.
@@ -261,8 +269,8 @@
 			Under $H_0$: \quad
 			$t = \frac{\hat{\beta}_j - \vartheta}{\se(\hat{\beta}_j)} \sim t_{n-k-1, \alpha/2}$
 		\end{center}
-		If $\mid t \mid > t_{n-k-1, \alpha/2}$, there is evidence to reject $H_0$.
-		\\ \textbf{Individual significance test} - tests if a parameter is significantly \textbf{different from zero}.
+		If $\mid t \mid > t_{n-k-1, \alpha/2}$, there is evidence to reject $H_0$. \\
+		\textbf{Individual significance test} - tests if a parameter is significantly \textbf{different from zero}.
 		\begin{itemize}[leftmargin=*]
 			\item $H_0: \beta_j = 0$
 			\item $H_1: \beta_j \neq 0$
@@ -280,22 +288,22 @@
 		\end{itemize}
 		Then, looking at the errors, there are:
 		\begin{itemize}[leftmargin=*]
-			\item \textbf{$\sum_{i=1}^n \hat{u}_{\mathrm{nr}}^2$} - is the Sum of Sq. Resid. of the non restricted model ($SSR_{\mathrm{nr}}$).
-			\item \textbf{$\sum_{i=1}^n \hat{u}_\mathrm{r}^2$} - is the Sum of Sq. Resid of the restricted model ($SSR_\mathrm{r}$).
+			\item \textbf{$\sum_{i=1}^n \hat{u}_{\mathrm{nr}}^2$} - is the Sum of Sq. Resid. of the non restricted model ($\SSR_{\mathrm{nr}}$).
+			\item \textbf{$\sum_{i=1}^n \hat{u}_\mathrm{r}^2$} - is the Sum of Sq. Resid of the restricted model ($\SSR_\mathrm{r}$).
 		\end{itemize}
 		Under $H_0$:
 		\begin{center}
-			$F = \frac{SSR_\mathrm{r} - SSR_{\mathrm{nr}}}{SSR_{\mathrm{nr}}} \frac{(n-k_{\mathrm{nr}}-1)}{q} \sim F_{q, n-k_{\mathrm{nr}}-1}$
+			$F = \frac{\SSR_\mathrm{r} - \SSR_{\mathrm{nr}}}{\SSR_{\mathrm{nr}}} \frac{(n-k_{\mathrm{nr}}-1)}{q} \sim F_{q, n-k_{\mathrm{nr}}-1}$
 		\end{center}
-		Where $k_{\mathrm{nr}}$ is the number of parameters of the non restricted model and $q$ is the number of linear hypothesis tested.
-		\\ If $F_{q, n-k_{\mathrm{nr}}-1} < F$, there is evidence to reject $H_0$.
-		\\ \textbf{Global significance test} - tests if all the parameters associated to $x$'s are \textbf{simultaneously equal to zero}.
+		Where $k_{\mathrm{nr}}$ is the number of parameters of the non restricted model and $q$ is the number of linear hypothesis tested. \\
+		If $F_{q, n-k_{\mathrm{nr}}-1} < F$, there is evidence to reject $H_0$. \\
+		\textbf{Global significance test} - tests if all the parameters associated to $x$'s are \textbf{simultaneously equal to zero}.
 		\begin{itemize}[leftmargin=*]
 			\item $H_0: \beta_1 = \beta_2 = ... = \beta_k = 0$
 			\item $H_1: \beta_1 \neq 0$ and/or $\beta_2 \neq 0 ...$ and/or $\beta_k \neq 0$
 		\end{itemize}
-		In this case, we can simplify the formula for the $F$ stat.
-		\\ Under $H_0$:
+		In this case, we can simplify the formula for the $F$ stat. \\
+		Under $H_0$:
 		\begin{center}
 			$F = \frac{R^2}{1 - R^2} \frac{(n-k-1)}{k} \sim F_{k, n-k-1}$
 		\end{center}
@@ -304,7 +312,7 @@
 \section*{Confidence intervals}
 	The confidence intervals at ($1 - \alpha$) confidence level can be calculated:
 	\begin{center}
-		$\hat{\beta}_j \mp t_{n-k-1, \alpha/2} \se(\hat{\beta}_j)$
+		$\hat{\beta}_j \mp t_{n-k-1, \alpha/2} \cdot \se(\hat{\beta}_j)$
 	\end{center}
 
 \section*{Dummy variables and structural change}
@@ -315,8 +323,8 @@
 	\end{itemize}
 	If a qualitative variable have $m$ categories, we only have to include ($m-1$) dummy variables.
 	\subsection*{Structural change}
-		Structural change refers to changes in the values of the parameters of the econometric model produced by the effect of different sub-populations. Structural change can be included in the model through dummy variables.
-		\\ The position of the dummy variable matters:
+		Structural change refers to changes in the values of the parameters of the econometric model produced by the effect of different sub-populations. Structural change can be included in the model through dummy variables. \\
+		The location of the dummy variable matters:
 		\begin{itemize}[leftmargin=*]
 			\item \textbf{On the intercept ($\beta_0$)} - represents the mean difference between the values produced by the structural change.
 			\item \textbf{On the parameters that determines the slope of the regression line ($\beta_j$)} - represents the effect (slope) difference between the values produced by the structural change.
@@ -352,7 +360,7 @@
 			\item \textbf{Correlation analysis} - look for high correlations (greater than 0.7) between independent variables.
 			\item \textbf{Variance Inflation Factor (VIF)} - indicates the increment of $\Var(\hat{\beta}_j)$ because of the multicollinearity.
 			\begin{center}
-				$VIF(\hat{\beta}_j) = \frac{1}{1-R_j^2}$
+				$\VIF(\hat{\beta}_j) = \frac{1}{1-R_j^2}$
 			\end{center}
 			Where $R^2_j$ denotes the R-squared from a regression between $x_j$ and all the other $x$'s. 
 			\begin{itemize}[leftmargin=*]
@@ -452,42 +460,41 @@
 			\begin{multicols}{3} % set columns to 3
 			% start of Ac. plot
 				\begin{center}
-					\textbf{\footnotesize Ac.}
+					\begin{tikzpicture}[scale=0.11]
+						\node at (0,13) {\textbf{Ac.}};
+						\draw [step=2, gray, very thin] (-10,-10) grid (10,10); % grid
+						\draw [thick,->] (-10,0) -- (10,0) node [anchor=south] {$u_{t-1}$}; % ut-1 axis
+						\draw [thick,-] (-10,-10) -- (-10,10) node [anchor=west] {$u_t$}; % ut axis
+						\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=50] (\x,{rnd * 6 + (-2 * (\x)^2 + 40) * 0.1}); % data points
+						\draw [thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 + (-2 * (\x)^2 + 40) * 0.1}); % red arrow
+					\end{tikzpicture}
 				\end{center}
-				\vspace{2.0pt}
-				\begin{tikzpicture}[scale=0.11]
-					\draw [step=2, gray, very thin] (-10,-10) grid (10,10); % grid
-					\draw [thick,->] (-10,0) -- (10,0) node [anchor=south] {$u_{t-1}$}; % ut-1 axis
-					\draw [thick,-] (-10,-10) -- (-10,10) node [anchor=west] {$u_t$}; % ut axis
-					\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=50] (\x,{rnd * 6 + (-2 * (\x)^2 + 40) * 0.1}); % data points
-					\draw [thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 + (-2 * (\x)^2 + 40) * 0.1}); % red arrow
-				\end{tikzpicture}
 			% end of Ac. plot
 			\columnbreak
 			% start of Ac.(+) plot
 				\begin{center}
-					\textbf{\footnotesize Ac.(+)}
+					\begin{tikzpicture}[scale=0.11]
+						\node at (0,13) {\textbf{Ac.(+)}};
+						\draw [step=2, gray, very thin] (-10,-10) grid (10,10); % grid
+						\draw [thick,->] (-10,0) -- (10,0) node [anchor=north] {$ u_{t-1}$}; % ut-1 axis
+						\draw [thick,-] (-10,-10) -- (-10,10) node [anchor=west] {$u_t$}; % ut axis
+						\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=25] (\x,{rnd * 6 + 0.5 * \x - 3}); % data points
+						\draw [thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 + 0.5 * \x - 3}); % red arrow
+					\end{tikzpicture}
 				\end{center}
-				\begin{tikzpicture}[scale=0.11]
-					\draw [step=2, gray, very thin] (-10,-10) grid (10,10); % grid
-					\draw [thick,->] (-10,0) -- (10,0) node [anchor=north] {$ u_{t-1}$}; % ut-1 axis
-					\draw [thick,-] (-10,-10) -- (-10,10) node [anchor=west] {$u_t$}; % ut axis
-					\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=25] (\x,{rnd * 6 + 0.5 * \x - 3}); % data points
-					\draw [thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 + 0.5 * \x - 3}); % red arrow
-				\end{tikzpicture}
 			% end of Ac.(+) plot
 			\columnbreak
 			% start of Ac.(-) plot	
 				\begin{center}
-					\textbf{\footnotesize Ac.(-)}
+					\begin{tikzpicture}[scale=0.11]
+						\node at (0,13) {\textbf{Ac.(-)}};
+						\draw [step=2, gray, very thin] (-10,-10) grid (10,10); % grid
+						\draw [thick,->] (-10,0) -- (10,0) node [anchor=south] {$u_{t-1}$}; % ut-1 axis
+						\draw [thick,-] (-10,-10) -- (-10,10) node [anchor=west] {$u_t$}; % ut axis
+						\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=25] (\x,{rnd * 6 - 0.5 * \x - 3}); % data points
+						\draw [thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 - 0.5 * \x - 3}); % red arrow
+					\end{tikzpicture}
 				\end{center}
-				\begin{tikzpicture}[scale=0.11]
-					\draw [step=2, gray, very thin] (-10,-10) grid (10,10); % grid
-					\draw [thick,->] (-10,0) -- (10,0) node [anchor=south] {$u_{t-1}$}; % ut-1 axis
-					\draw [thick,-] (-10,-10) -- (-10,10) node [anchor=west] {$u_t$}; % ut axis
-					\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=25] (\x,{rnd * 6 - 0.5 * \x - 3}); % data points
-					\draw [thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 - 0.5 * \x - 3}); % red arrow
-				\end{tikzpicture}
 			% end of Ac.(-) plot
 			\end{multicols}
 			\item \textbf{Formal tests} - Durbin-Watson, Breusch-Godfrey, etc. Commonly, the null hypothesis: $H_0$: No auto-correlation.
