@@ -74,7 +74,7 @@ In this project, the main specification used is the first $(1)$, so we can say t
 
 The specification $(2)$, is different from the rest: $k_{(1)} = k_{(3)} \neq k_{(2)}$. In this specification, it could be said that there are $k-1$ independent variables and $k$ coefficients (including the constant term).
 
-For specification $(2)$ users, not everything is lost. There is a relation between the three specifications: $k_{(2)} = k_{(1)}-1$ (also considering $k_{(1)} = k_{(3)}$). This way, a "translation" between formulas for different representations is possible (by the user). For example, the adjusted R-squared:
+For specification $(2)$ users, not everything is lost. There is a relation between the three specifications: $k_{(2)} = k_{(1)} + 1$ (also considering $k_{(1)} = k_{(3)}$). This way, a "translation" between formulas for different representations is possible (by the user). For example, the adjusted R-squared:
 
 $$(1)(3) \rightarrow \overline{R}^2 = 1 - \frac{n-1}{n-k_{(1)}-1} (1-R^2)$$
 
