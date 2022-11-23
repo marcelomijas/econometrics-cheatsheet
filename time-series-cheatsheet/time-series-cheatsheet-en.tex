@@ -32,22 +32,22 @@
 % -----document-----
 \begin{document}
 
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Version ts1.2-en - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Version ts1.3-en - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
 % start of column 1 page 1
 % titles
 \begin{center}
-	\textbf{\LARGE \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Time Series Cheat Sheet}}
-	\\ {\footnotesize By Marcelo Moreno - King Juan Carlos University} 
-	\\ {\footnotesize As part of the Econometrics Cheat Sheet Project}
+	\textbf{\LARGE \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Time Series Cheat Sheet}} \\
+	{\footnotesize By Marcelo Moreno - King Juan Carlos University} \\
+	{\footnotesize As part of the Econometrics Cheat Sheet Project}
 \end{center}
 % start of content
 \section*{Basic concepts}
 	\subsection*{Definitions}
-		\textbf{Time series} - is a succession of quantitative observations of a phenomena ordered in time.
-		\\ There are some variations of time series:
+		\textbf{Time series} - is a succession of quantitative observations of a phenomena ordered in time. \\
+		There are some variations of time series:
 		\begin{itemize}[leftmargin=*]
 			\item \textbf{Panel data} - consist of a time series for each observation of a cross section.
 			\item \textbf{Pooled cross sections} - combines cross sections from different time periods.
@@ -129,21 +129,21 @@
 		\end{center}
 		where:
 		\begin{center}
-			$y_t = \alpha_0 + \alpha_1 \mathrm{Trend} + v_t$
-			\\ $x_t = \gamma_0 + \gamma_1 \mathrm{Trend} + v_t$
+			$y_t = \alpha_0 + \alpha_1 \mathrm{Trend} + v_t$ \\
+			$x_t = \gamma_0 + \gamma_1 \mathrm{Trend} + v_t$
 		\end{center}
 		Adding a trend to the model can solve the problem:
 		\begin{center}
 			$y_t = \beta_0 + \beta_1 x_t + \beta_2 \mathrm{Trend} + u_t$
 		\end{center}
-		The trend can be linear or non-linear (quadratic, cubic, exponential, etc.)
-		\\ Another way is making use of the \textbf{Hodrick-Prescott filter} to extract the trend (smooth) and the cyclical component.
+		The trend can be linear or non-linear (quadratic, cubic, exponential, etc.) \\
+		Another way is making use of the \textbf{Hodrick-Prescott filter} to extract the trend (smooth) and the cyclical component.
 	\subsection*{Seasonality}
 		\setlength{\multicolsep}{0pt} % reduce vertical spacing betwen subsection and multicols
 		\begin{multicols}{2} % set columns to 2
 		% start of text column
-			A time series with can manifest seasonality. That is, the series is subject to a seasonal variations or pattern, usually related to climatology conditions.
-			\\ For example, GDP (black) is usually higher in summer and lower in winter. Seasonally adjusted series ({\color{red} red}) for comparison.
+			A time series with can manifest seasonality. That is, the series is subject to a seasonal variations or pattern, usually related to climatology conditions. \\
+			For example, GDP (black) is usually higher in summer and lower in winter. Seasonally adjusted series ({\color{red} red}) for comparison.
 		% end of text column
 		\columnbreak
 		% start of graph column
@@ -266,45 +266,44 @@
 			\setlength{\columnsep}{6pt} % increment spacing between columns
 			% scatter plots
 			\begin{multicols}{3} % set columns to 3
-			% start of Ac. plot
+				% start of Ac. plot
 				\begin{center}
-					\textbf{\footnotesize Ac.}
+					\begin{tikzpicture}[scale=0.11]
+						\node at (0,13) {\textbf{Ac.}};
+						\draw [step=2, gray, very thin] (-10,-10) grid (10,10); % grid
+						\draw [thick,->] (-10,0) -- (10,0) node [anchor=south] {$u_{t-1}$}; % ut-1 axis
+						\draw [thick,-] (-10,-10) -- (-10,10) node [anchor=west] {$u_t$}; % ut axis
+						\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=50] (\x,{rnd * 6 + (-2 * (\x)^2 + 40) * 0.1}); % data points
+						\draw [thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 + (-2 * (\x)^2 + 40) * 0.1}); % red arrow
+					\end{tikzpicture}
 				\end{center}
-				\vspace{2.0pt}
-				\begin{tikzpicture}[scale=0.11]
-					\draw [step=2, gray, very thin] (-10,-10) grid (10,10); % grid
-					\draw [thick,->] (-10,0) -- (10,0) node [anchor=south] {$u_{t-1}$}; % ut-1 axis
-					\draw [thick,-] (-10,-10) -- (-10,10) node [anchor=west] {$u_t$}; % ut axis
-					\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=50] (\x,{rnd * 6 + (-2 * (\x)^2 + 40) * 0.1}); % data points
-					\draw [thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 + (-2 * (\x)^2 + 40) * 0.1}); % red arrow
-				\end{tikzpicture}
-			% end of Ac. plot
-			\columnbreak
-			% start of Ac.(+) plot
+				% end of Ac. plot
+				\columnbreak
+				% start of Ac.(+) plot
 				\begin{center}
-					\textbf{\footnotesize Ac.(+)}
+					\begin{tikzpicture}[scale=0.11]
+						\node at (0,13) {\textbf{Ac.(+)}};
+						\draw [step=2, gray, very thin] (-10,-10) grid (10,10); % grid
+						\draw [thick,->] (-10,0) -- (10,0) node [anchor=north] {$ u_{t-1}$}; % ut-1 axis
+						\draw [thick,-] (-10,-10) -- (-10,10) node [anchor=west] {$u_t$}; % ut axis
+						\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=25] (\x,{rnd * 6 + 0.5 * \x - 3}); % data points
+						\draw [thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 + 0.5 * \x - 3}); % red arrow
+					\end{tikzpicture}
 				\end{center}
-				\begin{tikzpicture}[scale=0.11]
-					\draw [step=2, gray, very thin] (-10,-10) grid (10,10); % grid
-					\draw [thick,->] (-10,0) -- (10,0) node [anchor=north] {$ u_{t-1}$}; % ut-1 axis
-					\draw [thick,-] (-10,-10) -- (-10,10) node [anchor=west] {$u_t$}; % ut axis
-					\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=25] (\x,{rnd * 6 + 0.5 * \x - 3}); % data points
-					\draw [thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 + 0.5 * \x - 3}); % red arrow
-				\end{tikzpicture}
-			% end of Ac.(+) plot
-			\columnbreak
-			% start of Ac.(-) plot
+				% end of Ac.(+) plot
+				\columnbreak
+				% start of Ac.(-) plot	
 				\begin{center}
-					\textbf{\footnotesize Ac.(-)}
+					\begin{tikzpicture}[scale=0.11]
+						\node at (0,13) {\textbf{Ac.(-)}};
+						\draw [step=2, gray, very thin] (-10,-10) grid (10,10); % grid
+						\draw [thick,->] (-10,0) -- (10,0) node [anchor=south] {$u_{t-1}$}; % ut-1 axis
+						\draw [thick,-] (-10,-10) -- (-10,10) node [anchor=west] {$u_t$}; % ut axis
+						\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=25] (\x,{rnd * 6 - 0.5 * \x - 3}); % data points
+						\draw [thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 - 0.5 * \x - 3}); % red arrow
+					\end{tikzpicture}
 				\end{center}
-				\begin{tikzpicture}[scale=0.11]
-					\draw [step=2, gray, very thin] (-10,-10) grid (10,10); % grid
-					\draw [thick,->] (-10,0) -- (10,0) node [anchor=south] {$u_{t-1}$}; % ut-1 axis
-					\draw [thick,-] (-10,-10) -- (-10,10) node [anchor=west] {$u_t$}; % ut axis
-					\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=25] (\x,{rnd * 6 - 0.5 * \x - 3}); % data points
-					\draw [thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 - 0.5 * \x - 3}); % red arrow
-				\end{tikzpicture}
-			% end of Ac.(-) plot
+				% end of Ac.(-) plot
 			\end{multicols}
 			% correlogram
 			\begin{multicols}{2} % set columns to 2
@@ -388,8 +387,8 @@
 				\item \textbf{ARMA($p$,$q$) process}. \textbf{ACF}: the coefficients are not abruptly canceled and presents a fast decay. \textbf{PACF}: the coefficients are not abruptly canceled and presents a fast decay.
 			\end{itemize}
 			If the ACF coefficients do not decay rapidly, there is a clear indicator of lack of stationarity in mean, which would lead to take first differences in the	original series.
-			\item \textbf{Formal tests} - $H_0$: No auto-correlation. 
-			\\ Supposing that $u_t$ follows an AR(1) process:
+			\item \textbf{Formal tests} - $H_0$: No auto-correlation. \\
+			Supposing that $u_t$ follows an AR(1) process:
 			\begin{center}
 				$u_t = \rho_1 u_{t-1} + \varepsilon_t$
 			\end{center}
@@ -413,10 +412,8 @@
 					\scalebox{0.8}{
 						\begin{tabular}{| c | c | c | c |}
 							\hline
-							$d = $ & 0 & 2 & 4 \\
-							\hline
-							$\rho \approx$ & -1 & 0 & 1 \\
-							\hline
+							$d = $         & 0  & 2 & 4 \\ \hline
+							$\rho \approx$ & -1 & 0 & 1 \\ \hline
 						\end{tabular}
 					}
 					\begin{tikzpicture}[scale=0.28] % durbin-watson test plot
@@ -450,7 +447,7 @@
 				\end{center}
 				\item \textbf{Durbin's h} (endogenous regressors):
 				\begin{center}
-					$h = \hat{\rho} \sqrt{\frac{T}{1 - T \times \upsilon}}$
+					$h = \hat{\rho} \sqrt{\frac{T}{1 - T \cdot \upsilon}}$
 				\end{center}
 				where $\upsilon$ is the estimated variance of the coefficient associated to the endogenous variable.
 				\begin{itemize}[leftmargin=*]
@@ -463,7 +460,7 @@
 				\end{itemize}
 				Under $H_0$: No auto-correlation:
 				\begin{center}
-					$\hfill T \times R^2_{\hat{u}_t} \sim_a \chi^2_q \hfill \textbf{or} \hfill T \times R^2_{\hat{u}_t} \sim_a \chi^2_p \hfill$
+					$\hfill T \cdot R^2_{\hat{u}_t} \sim_a \chi^2_q \hfill \textbf{or} \hfill T \cdot R^2_{\hat{u}_t} \sim_a \chi^2_p \hfill$
 				\end{center}
 				\begin{itemize}[leftmargin=*]
 					\item $H_1$: Auto-correlation of order $q$ (or $p$).
@@ -523,9 +520,9 @@
 		\begin{itemize}[leftmargin=*]
 			\item \textbf{Weak dependence} - restricts how close the relationship between $x_t$ and $x_{t+h}$ can be as the time distance between the series increases ($h$).
 		\end{itemize}
-		An \textbf{stationary time process} $\lbrace x_t: t = 1, 2, ..., T \rbrace$ is weakly dependent when $x_t$ and $x_{t+h}$ are almost independent as $h$ increases without a limit.
-		\\ A \textbf{covariance stationary time process} is weakly dependent if the correlation between $x_t$ and $x_{t+h}$ tends to $0$ fast enough when $h \rightarrow \infty$ (they are not asymptotically correlated).
-		\\ Some examples of stationary and weakly dependent time series are:
+		An \textbf{stationary time process} $\lbrace x_t: t = 1, 2, ..., T \rbrace$ is weakly dependent when $x_t$ and $x_{t+h}$ are almost independent as $h$ increases without a limit. \\
+		A \textbf{covariance stationary time process} is weakly dependent if the correlation between $x_t$ and $x_{t+h}$ tends to $0$ fast enough when $h \rightarrow \infty$ (they are not asymptotically correlated). \\
+		Some examples of stationary and weakly dependent time series are:
 		\begin{itemize}[leftmargin=*]
 			\item \textbf{Moving average} - $\lbrace x_t \rbrace$ is a moving average of order one MA($q$):
 			\begin{center}
@@ -536,8 +533,8 @@
 			\begin{center}
 				$x_t = \rho_1 x_{t-1} + ... + \rho_p x_{t-p} + e_t$
 			\end{center}
-			where $\lbrace e_t: t = 0, 1, ..., T \rbrace$ is an \textsl{i.i.d.} sequence with zero mean and $\sigma^2_e$ variance.
-			\\ If $|\rho_1|<1$, then $\lbrace x_t \rbrace$ is an AR(1) stable process that is weakly dependent. It is stationary in covariance, $\Corr(x_t, x_{t-1}) = \rho_1$.
+			where $\lbrace e_t: t = 0, 1, ..., T \rbrace$ is an \textsl{i.i.d.} sequence with zero mean and $\sigma^2_e$ variance. \\
+			If $|\rho_1|<1$, then $\lbrace x_t \rbrace$ is an AR(1) stable process that is weakly dependent. It is stationary in covariance, $\Corr(x_t, x_{t-1}) = \rho_1$.
 			\item \textbf{ARMA process} - is a combination of the two above. $\lbrace x_t \rbrace$ is an ARMA($p$,$q$):
 			\begin{center}
 				$x_t = e_t + m_1 e_{t-1} + ... + m_q e_{t-q} + \rho_1 x_{t-1} + ... + \rho_p x_{t-p}$
@@ -554,14 +551,14 @@
 		\begin{center}
 			$y_t = y_{t-1} + e_t$
 		\end{center}
-		where $\lbrace e_t : t = 1, 2, ..., T \rbrace$ is an \textsl{i.i.d.} sequence with zero mean and $\sigma^2_e$ variance (the latter changes with time).
-		\\ The process is not stationary, is persistent.
+		where $\lbrace e_t : t = 1, 2, ..., T \rbrace$ is an \textsl{i.i.d.} sequence with zero mean and $\sigma^2_e$ variance (the latter changes with time). \\
+		The process is not stationary, is persistent.
 		\item \textbf{Random walk with a \href{https://www.youtube.com/watch?v=pS5d77DQHOI}{drift}} - an AR(1) process with $\rho_1 = 1$ and a constant.
 		\begin{center}
 			$y_t = \beta_0 + y_{t-1} + e_t$
 		\end{center}
-		where $\lbrace e_t : t = 1, 2, ..., T \rbrace$ is an \textsl{i.i.d.} sequence with zero mean and $\sigma^2_e$ variance.
-		\\ The process is not stationary, is persistent.
+		where $\lbrace e_t : t = 1, 2, ..., T \rbrace$ is an \textsl{i.i.d.} sequence with zero mean and $\sigma^2_e$ variance. \\
+		The process is not stationary, is persistent.
 	\end{itemize}
 	\subsection*{I(1) detection}
 		\begin{itemize}[leftmargin=*]
@@ -575,10 +572,9 @@
 			\begin{center}
 				$\Delta y_t = y_t - y_{t-1} = e_t$
 			\end{center}
-			where $\lbrace e_t \rbrace = \lbrace \Delta y_t \rbrace$  is \textsl{i.i.d.}
-			\\ 
-			\\ Getting the first difference of a series also deletes its trend.
-			\\ For example, a series with a trend (black), and it's first difference ({\color{red} red}).
+			where $\lbrace e_t \rbrace = \lbrace \Delta y_t \rbrace$  is \textsl{i.i.d.} \\	\\ 
+			Getting the first difference of a series also deletes its trend. \\
+			For example, a series with a trend (black), and it's first difference ({\color{red} red}).
 		% end of text column
 		\columnbreak
 		% start of graph column
@@ -679,15 +675,15 @@
 \columnbreak
 % start of column 3 page 3
 \section*{Cointegration}
-	When \textbf{two series are I(1), but a linear combination of them is I(0)}. If the case, the regression of one series over the other is not spurious, but expresses something about the long term relation.
-	\\ For example: $\lbrace x_t \rbrace$ and $\lbrace y_t \rbrace$ are I(1), but $y_t - \beta x_t = u_t$ where $\lbrace u_t \rbrace$ is I(0). ($\beta$ get the name of cointegration parameter).
+	When \textbf{two series are I(1), but a linear combination of them is I(0)}. If the case, the regression of one series over the other is not spurious, but expresses something about the long term relation. \\
+	For example: $\lbrace x_t \rbrace$ and $\lbrace y_t \rbrace$ are I(1), but $y_t - \beta x_t = u_t$ where $\lbrace u_t \rbrace$ is I(0). ($\beta$ get the name of cointegration parameter).
 
 \section*{Heterocedasticity on time series}
-	The assumption \textbf{affected is ts4}, which leads to \textbf{OLS be not efficient}. 
-	\\ Some tests that work could be the Breusch-Pagan or White's, where $H_0$: No heterocedasticity. It is \textbf{important for the tests to work that there is no auto-correlation} (so first, it is important to test for it).
+	The assumption \textbf{affected is ts4}, which leads to \textbf{OLS be not efficient}. \\ 
+	Some tests that work could be the Breusch-Pagan or White's, where $H_0$: No heterocedasticity. It is \textbf{important for the tests to work that there is no auto-correlation} (so first, it is important to test for it).
 	\subsection*{ARCH}
-		An auto-regressive conditional heterocedasticity (ARCH), is a model to analyze a form of dynamic heterocedasticity, where the error variance follows an AR($p$) process.
-		\\ Given the model:
+		An auto-regressive conditional heterocedasticity (ARCH), is a model to analyze a form of dynamic heterocedasticity, where the error variance follows an AR($p$) process. \\
+		Given the model:
 		\begin{center}
 			$y_t = \beta_0 + \beta_1 z_t + u_t$
 		\end{center}
