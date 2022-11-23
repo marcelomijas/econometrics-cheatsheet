@@ -76,11 +76,11 @@ The specification $(2)$, is different from the rest: $k_{(1)} = k_{(3)} \neq k_{
 
 For specification $(2)$ users, not everything is lost. There is a relation between the three specifications: $k_{(2)} = k_{(1)}-1$ (also considering $k_{(1)} = k_{(3)}$). This way, a "translation" between formulas for different representations is possible (by the user). For example, the adjusted R-squared:
 
-$$(1)(3) \rightarrow \overline{R}^2 = 1 - \frac{n-1}{n-k-1} (1-R^2)$$
+$$(1)(3) \rightarrow \overline{R}^2 = 1 - \frac{n-1}{n-k_{(1)}-1} (1-R^2)$$
 
 $$(2) \rightarrow \overline{R}^2 = 1 - \frac{n-1}{n-(k_{(1)}-1)-1} (1-R^2) =$$
 
-$$= 1 - \frac{n-1}{n-k} (1-R^2)$$
+$$= 1 - \frac{n-1}{n-k_{(2)}} (1-R^2)$$
 
 ### Where is the non matrix version of the standard error of the $\hat{\beta}$ 's?
 
