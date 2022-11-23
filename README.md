@@ -72,7 +72,7 @@ All the above are equally valid representations of the multiple regression model
 
 In this project, the main specification used is the first $(1)$, so we can say that there are $k$ independent variables and $k+1$ coefficients (including the constant term), the same could be said for the specification $(3)$ (that it is used punctually). There are no differences in the statistics and tests formula definition between this two specifications, because $k_{(1)} = k_{(3)}$.
 
-The specification $(2)$, is different from the rest: $k_{(1)} = k_{(3)} \neq k_{(2)}$. In this specification could be said that there are $k-1$ independent variables and $k$ coefficients (including the constant term).
+The specification $(2)$, is different from the rest: $k_{(1)} = k_{(3)} \neq k_{(2)}$. In this specification, it could be said that there are $k-1$ independent variables and $k$ coefficients (including the constant term).
 
 For specification $(2)$ users, not everything is lost. There is a relation between the three specifications: $k_{(2)} = k_{(1)}-1$ (also considering $k_{(1)} = k_{(3)}$). This way, a "translation" between formulas for different representations is possible (by the user). For example, the adjusted R-squared:
 
