@@ -54,7 +54,7 @@ Those are the residuals from a OLS regression between $x_j$ and all the other $x
 
 ### Why is $\beta_0$ the constant term? My reference manual / professor's definition of the econometric model is different.
 
-There is some debate about the correct way to name the coefficients, the sub-index of the coefficients and sub-index of the variables of a model. This could have an impact on how some statistics like the adjusted R-squared or some tests like the F contrast formulas are written.
+There is some debate about the correct way to name the coefficients, their sub-index and the sub-index of the variables of a model. The naming could have an impact on how some statistics like the adjusted R-squared or some tests like the F contrast formulas are written.
 
 For example, while some econometricians write the multiple regression model with a constant term like this:
 
@@ -64,15 +64,17 @@ There are others that refer to that same econometric model as:
 
 $$y_i = \beta_1 + \beta_2 x_{2i} + ... + \beta_k x_{ki} + u_i \rightarrow (2)$$
 
-Others:
+And others refer as:
 
 $$y_i = \alpha + \beta_1 x_{1i} + ... + \beta_k x_{ki} + u_i \rightarrow (3)$$
 
-All the above are equally valid representations of the multiple regression model. In the specification $(1)$, $\beta_0$ represents the constant term, while in specification $(2)$ and $(3)$ it is represented by $\beta_1$ and $\alpha$, respectively.
+All the above are equally valid representations of the multiple regression model. In the specification $(1)$, $\beta_0$ represents the constant term, while in specifications $(2)$ and $(3)$, it is represented by $\beta_1$ and $\alpha$, respectively.
 
-In this project, the specification used is the first $(1)$, so we can say that there are $k$ independent variables and $k+1$ coefficients (including the constant term), the same could be said for the specification $(3)$. There are no difference in the statistics and tests formula definition between this two specifications, $k_{(1)} = k_{(3)}$.
+In this project, the main specification used is the first $(1)$, so we can say that there are $k$ independent variables and $k+1$ coefficients (including the constant term), the same could be said for the specification $(3)$ (that it is used punctually). There are no differences in the statistics and tests formula definition between this two specifications, because $k_{(1)} = k_{(3)}$.
 
-The same cannot be said about specification $(2)$, because there is a difference between it and the rest: $k_{(1)} = k_{(3)} \neq k_{(2)}$. But there is a relation between the three, $k_{(2)} = k_{(1)}-1$ (also considering $k_{(1)} = k_{(3)}$). This way, a "translation" between formulas for different representations is possible. For example, the adjusted R-squared:
+The specification $(2)$, is different from the rest: $k_{(1)} = k_{(3)} \neq k_{(2)}$. In this specification could be said that there are $k-1$ independent variables and $k$ coefficients (including the constant term).
+
+For specification $(2)$ users, not everything is lost. There is a relation between the three specifications: $k_{(2)} = k_{(1)}-1$ (also considering $k_{(1)} = k_{(3)}$). This way, a "translation" between formulas for different representations is possible (by the user). For example, the adjusted R-squared:
 
 $$(1)(3) \rightarrow \overline{R}^2 = 1 - \frac{n-1}{n-k-1} (1-R^2)$$
 
