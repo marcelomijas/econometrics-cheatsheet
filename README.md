@@ -11,9 +11,9 @@ Econometrics cheat sheet created using $\LaTeX$ with a summarized review of:
 * **Popular OLS problems** (multicollinearity, heteroscedasticity and auto-correlation): consequences, detection and correction.
 * **Time series** analysis and peculiarities.
 
-:bulb: Opinions, ideas and collaboration proposals are heard through GitHub or by email (marcelomijas@gmail.com). Also, my [LinkedIn](https://www.linkedin.com/in/marcelomorenop/).
+:bulb: Opinions, ideas and collaboration proposals are heard through GitHub or by email (marcelomijas@gmail.com). Also, my [LinkedIn](https://www.linkedin.com/in/marcelomorenop/) (please, send me a message before "connect" or I will ignore the request).
 
-:mortar_board: I am currently doing my PhD in macroeconomics and econometrics at the King Juan Carlos University (Madrid, Spain). Article collaborations proposals and academic stays offers in other universities (national and international) are considered!
+:mortar_board: I am currently doing my PhD in macroeconomics and econometrics at the King Juan Carlos University (Madrid, Spain). Article collaborations proposals and academic stays offers in other universities (national and international) are considered and can help me a lot in my career!
 
 ### Download links
 
