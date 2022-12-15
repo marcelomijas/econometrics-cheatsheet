@@ -17,14 +17,14 @@ Econometrics cheat sheet created using $\LaTeX$ with a summarized review of:
 
 ### Download links
 
-**Econometrics Cheat Sheet**. Current version: `2.9` (last updated 23 nov. 2022)
+**Econometrics Cheat Sheet**. Current version: `2.9.1` (last updated 15 dec. 2022)
 
 |              | PDF file                                                          | TeX file                                                          |
 | :----------: | :---------------------------------------------------------------: | :---------------------------------------------------------------: |
 | English :uk: | [en.pdf](econometrics-cheatsheet/econometrics-cheatsheet-en.pdf)  | [en.tex](econometrics-cheatsheet/econometrics-cheatsheet-en.tex)  |
 | Spanish :es: | [es.pdf](econometrics-cheatsheet/econometrics-cheatsheet-es.pdf)  | [es.tex](econometrics-cheatsheet/econometrics-cheatsheet-es.tex)  |
 
-**Time Series Cheat Sheet**. Current version: `ts1.3` (last updated 23 nov. 2022)
+**Time Series Cheat Sheet**. Current version: `ts1.4` (last updated 15 dec. 2022)
 
 |              | PDF file                                                        | TeX file                                                        |
 | :----------: | :-------------------------------------------------------------: | :-------------------------------------------------------------: |
