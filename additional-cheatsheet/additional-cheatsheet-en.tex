@@ -39,7 +39,7 @@
 \begin{document}
 
 % page foot
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Version add0.3-en - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize add0.4-en - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
@@ -105,15 +105,15 @@
 		\end{center}
 		The second derivative is $\frac{\partial^2 \hat{u}^T \hat{u}}{\partial \hat{\beta}^2} = X^T X > 0$ (is a min.)
 	\end{itemize}
-	\subsection*{Variance-covariance matrix}
+	\subsection*{Variance-covariance matrix of $\hat{\beta}$}
 		\begin{center}
 			$\Var(\hat{\beta}) = \hat{\sigma}^2 (X^T X)^{-1} =$
 			\scalebox{0.67}{
 			$
 			\begin{bmatrix}
-				\Var(\hat{\beta}_0) & \Cov(\hat{\beta}_0, \hat{\beta}_1) & \hdots & \Cov(\hat{\beta}_0, \hat{\beta}_k) \\
-				\Cov(\hat{\beta}_1, \hat{\beta}_0) & \Var(\hat{\beta}_1) & \hdots & \Cov(\hat{\beta}_1, \hat{\beta}_k) \\
-				\vdots & \vdots & \ddots & \vdots \\
+				\Var(\hat{\beta}_0)                & \Cov(\hat{\beta}_0, \hat{\beta}_1) & \hdots & \Cov(\hat{\beta}_0, \hat{\beta}_k) \\
+				\Cov(\hat{\beta}_1, \hat{\beta}_0) & \Var(\hat{\beta}_1)                & \hdots & \Cov(\hat{\beta}_1, \hat{\beta}_k) \\
+				\vdots                             & \vdots                             & \ddots & \vdots                             \\
 				\Cov(\hat{\beta}_k, \hat{\beta}_0) & \Cov(\hat{\beta}_k, \hat{\beta}_1) & \hdots & \Var(\hat{\beta}_k)
 			\end{bmatrix}
 			$
@@ -140,6 +140,71 @@
 	\end{center}
 	
 \columnbreak
+
+\section*{Variance-covariance matrix of $\hat{u}$}
+	\begin{center}
+		$\Var(\hat{u}) =$
+		\scalebox{0.80}{
+			$
+			\begin{bmatrix}
+				\Var(\hat{u}_1)            & \Cov(\hat{u}_1, \hat{u}_2) & \hdots & \Cov(\hat{u}_1, \hat{u}_n) \\
+				\Cov(\hat{u}_2, \hat{u}_1) & \Var(\hat{u}_2)            & \hdots & \Cov(\hat{u}_2, \hat{u}_n) \\
+				\vdots                     & \vdots                     & \ddots & \vdots                     \\
+				\Cov(\hat{u}_n, \hat{u}_1) & \Cov(\hat{u}_n, \hat{u}_2) & \hdots & \Var(\hat{u}_n)
+			\end{bmatrix}
+			$
+		}
+	\end{center}
+	When there is no heterocedasticity and no auto-correlation, the variance-covariance matrix of $u$ has the form:
+	\begin{center}
+		$\Var(\hat{u}) = \hat{\sigma}^2_u \cdot I_n =$
+		\scalebox{0.80}{
+			$
+			\begin{bmatrix}
+				\hat{\sigma}^2_u & 0                & \hdots & 0                \\
+				0                & \hat{\sigma}^2_u & \hdots & 0                \\
+				\vdots           & \vdots           & \ddots & \vdots           \\
+				0                & 0                & \hdots & \hat{\sigma}^2_u
+			\end{bmatrix}
+			$
+		}
+	\end{center}
+	where $I_n$ is an identity matrix of $n \times n$ elements. \\
+	When there is \textcolor{cyan}{heterocedasticity} and \textcolor{magenta}{auto-correlation}, the variance-covariance matrix of $u$ has the form:
+	\begin{center}
+		$\Var(\hat{u}) = \hat{\sigma}^2_u \cdot \Omega =$
+		\scalebox{0.80}{
+			$
+			\begin{bmatrix}
+				\hat{\sigma}^2_{u_{\textcolor{cyan}{1}}}   & \hat{\sigma}_{u_{\textcolor{magenta}{12}}} & \hdots & \hat{\sigma}_{u_{\textcolor{magenta}{1n}}} \\
+				\hat{\sigma}_{u_{\textcolor{magenta}{21}}} & \hat{\sigma}^2_{u_{\textcolor{cyan}{2}}}   & \hdots & \hat{\sigma}_{u_{\textcolor{magenta}{2n}}} \\
+				\vdots                                     & \vdots                                     & \ddots & \vdots                                     \\
+				\hat{\sigma}_{u_{\textcolor{magenta}{n1}}} & \hat{\sigma}_{u_{\textcolor{magenta}{n2}}} & \hdots & \hat{\sigma}^2_{u_{\textcolor{cyan}{n}}}
+			\end{bmatrix}
+			$
+		}
+	\end{center}
+	where $\Omega \neq I_n$
+
+\section*{Incorrect functional form}
+	\begin{itemize}[leftmargin=*]
+		\item Ramsey's RESET test for functional from. $H_0$: the model is correctly specified when compared to a model. The procedure:
+		\begin{enumerate}[leftmargin=*]
+			\item Estimate the original model and obtain $\hat{y}$ and $R^2$.
+			\begin{center}
+				$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x_1 + ... + \hat{\beta}_k x_k$
+			\end{center}
+			\item Estimate a new model adding powers of $\hat{y}$ and obtain the new $R^2_{new}$ For example, adding $m$ powers of $\hat{y}$:
+			\begin{center}
+				$\tilde{y} = \tilde{\beta}_0 + \tilde{\beta}_1 x_1 + ... + \tilde{\beta}_k x_k + \tilde{\beta}_{k+1} \hat{y}^2 + ... + \tilde{\beta}_{k+(m-1)} \hat{y}^m$
+			\end{center}
+			\item Define the statistic of contrast:
+			\begin{center}
+				$F = \dfrac{R^2_{new} - R^2}{1 - R^2_{new}} \dfrac{n -(k + m) - 1}{m} \sim F_{m-1, n-k-m}$
+			\end{center}
+		\end{enumerate} % https://de.wikipedia.org/wiki/RESET-Test_nach_Ramsey
+	where $m =$ number of powers of $\hat{y}$, $k =$ number of parameters associated with $x$
+	\end{itemize}
 
 \section*{Variable omission}
 	Most of the time, is hard to get all relevant variables for an analysis. For example, a true model with all variables:
