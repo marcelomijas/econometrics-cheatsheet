@@ -32,7 +32,7 @@
 % -----document-----
 \begin{document}
 
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Versión ts1.3-es - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ts1.4-es - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
@@ -382,12 +382,12 @@
 \columnbreak
 % start of column 2 and 3 page 2
 			\begin{itemize}[leftmargin=*]
-				\item \textbf{Proceso MA($q$)}. \textbf{FAC}: sólo los primeros $q$ coeficientes son significativos. El resto se anulan bruscamente. \textbf{FACP}: decrecimiento rápido exponencial atenuado u ondas sinusoidales.
-				\item \textbf{Proceso AR($p$)}. \textbf{FAC}: decrecimiento rápido exponencial atenuado u ondas sinusoidales. \textbf{FACP}: sólo los primeros $p$ coeficientes son significativos. El resto se anulan bruscamente.
-				\item \textbf{Proceso ARMA($p$,$q$)}. \textbf{FAC}: los coeficientes no se anulan bruscamente y presentan un decrecimiento rápido. \textbf{FACP}: los coeficientes no se anulan bruscamente y presentan un decrecimiento rápido.
+				\item \textbf{Proceso MA($q$)}. \textbf{FAC}: sólo los $q$ primeros coeficientes son significativos, el resto se anulan bruscamente. \textbf{FACP}: decrecimiento rápido exponencial atenuado u ondas sinusoidales.
+				\item \textbf{Proceso AR($p$)}. \textbf{FAC}: decrecimiento rápido exponencial atenuado u ondas sinusoidales. \textbf{FACP}: sólo los $p$ primeros coeficientes son significativos, el resto se anulan bruscamente.
+				\item \textbf{Proceso ARMA($p$,$q$)}. \textbf{FAC} y \textbf{FACP}: los coeficientes no se anulan bruscamente y presentan un decrecimiento rápido.
 			\end{itemize}
 			Si los coeficientes de la FAC no decaen rápidamente, hay claro indicio de falta de estacionariedad en media, lo que llevaría a tomar primeras diferencias en la serie original.
-			\item \textbf{Formal tests} - $H_0$: No auto-correlation. \\ 
+			\item \textbf{Formal tests} - Generalmente, $H_0$: No autocorrelación. \\ 
 			Suponiendo que $u_t$ sigue un proceso AR(1):
 			\begin{center}
 				$u_t = \rho_1 u_{t-1} + \varepsilon_t$
@@ -412,8 +412,8 @@
 					\scalebox{0.8}{
 						\begin{tabular}{| c | c | c | c |}
 							\hline
-							$d = $         & 0  & 2 & 4 \\ \hline
-							$\rho \approx$ & -1 & 0 & 1 \\ \hline
+							$d = $         & 0 & 2 & 4  \\ \hline
+							$\rho \approx$ & 1 & 0 & -1 \\ \hline
 						\end{tabular}
 					}
 					\begin{tikzpicture}[scale=0.28] % durbin-watson test plot
@@ -473,10 +473,10 @@
 		\end{itemize}
 	\subsection*{Corrección}
 		\begin{itemize}[leftmargin=*]
-			\item Usar MCO con un estimador de la \textbf{matriz de varianzas-covarianzas} \textbf{robusto a la autocorrelación}, por ejemplo, la propuesta de \textbf{Newey-West}.
-			\item Usar \textbf{Mínimos Cuadrados Generalizados}. Suponiendo $y_t = \beta_0 + \beta_1 x_t + u_t$, con $u_t = \rho u_{t-1} + \varepsilon_t$, donde $|\rho| < 1$ y $\varepsilon_t$ es ruido blanco.
+			\item Usar MCO con un estimador de la \textbf{matriz de varianzas-covarianzas} \textbf{robusto a la heterocedasticidad y autocorrelación} (HAC), por ejemplo, la propuesta de \textbf{Newey-West}.
+			\item Usar \textbf{Mínimos Cuadrados Generalizados} (MCG). Suponiendo $y_t = \beta_0 + \beta_1 x_t + u_t$, con $u_t = \rho u_{t-1} + \varepsilon_t$, donde $|\rho| < 1$ y $\varepsilon_t$ es ruido blanco.
 			\begin{itemize}[leftmargin=*]
-				\item Si \textbf{$\rho$ es conocido, crear un modelo cuasi-diferenciado}:
+				\item Si \textbf{$\rho$ es conocido, usar modelo cuasi-diferenciado}:
 				\begin{center}
 					$y_t - \rho y_{t-1} = \beta_0 (1 - \rho) + \beta_1 (x_t - \rho x_{t-1}) + u_t - \rho u_{t-1}$
 					\ $y_t^* = \beta_0^* + \beta_1 x_t^* + u_t^*$
@@ -496,7 +496,7 @@
 					\item El método termina cuando los parámetros estimados varían muy poco entre iteraciones.
 				\end{enumerate}
 			\end{itemize}
-		\item Si \textbf{no se arregla, buscar fuerte depend.} en la serie.
+		\item Si \textbf{no se arregla, buscar fuerte dependencia} en la serie.
 		\end{itemize}
 
 \section*{Estacionariedad y dependencia débil}
@@ -680,7 +680,7 @@
 
 \section*{Heterocedasticidad en series temp.}
 	\textbf{Afecta al supuesto st4}, lo que lleva a que \textbf{MCO no sea eficiente}. \\
-	Algunas pruebas que funcionan pueden ser la de Breusch-Pagan o la de White, donde $H_0$: No heterocedasticidad. Es \textbf{importante que no haya autocorrelación para el correcto funcionamiento de las pruebas} (así que, primero es necesario probar la existencia de autocorrelación).
+	Algunas pruebas que funcionan pueden ser la de Breusch-Pagan o la de White, donde $H_0$: No heterocedasticidad. Es \textbf{importante que no haya autocorrelación para el correcto funcionamiento de las pruebas} (así que, primero es imperativo probar la existencia de autocorrelación).
 	\subsection*{ARCH}
 		La heterocedasticidad condicional autorregresiva (ARCH), es un modelo para analizar una forma de heterocedasticidad dinámica, donde la varianza del error sigue un proceso AR($p$). \\
 		Dado el modelo:

@@ -32,7 +32,7 @@
 % -----document-----
 \begin{document}
 
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Version ts1.3-en - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ts1.4-en - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
@@ -380,14 +380,14 @@
 			Conclusions differ between auto-correlation processes.
 % end of column 1 page 2
 \columnbreak			
-% start of column 2 and 3 page 2
+% start of column 2 page 2
 			\begin{itemize}[leftmargin=*]
-				\item \textbf{MA($q$) process}. \textbf{ACF}: only the first $q$ coefficients are significant. The rest are abruptly canceled. \textbf{PACF}: attenuated exponential fast decay or sine waves.
-				\item \textbf{AR($p$) process}. \textbf{ACF}: attenuated exponential fast decay or sine waves. \textbf{PACF}: only the first $p$ coefficients are significant. The rest are abruptly canceled.
-				\item \textbf{ARMA($p$,$q$) process}. \textbf{ACF}: the coefficients are not abruptly canceled and presents a fast decay. \textbf{PACF}: the coefficients are not abruptly canceled and presents a fast decay.
+				\item \textbf{MA($q$) process}. \textbf{ACF}: only the first $q$ coefficients are significant, the rest are abruptly canceled. \textbf{PACF}: attenuated exponential fast decay or sine waves.
+				\item \textbf{AR($p$) process}. \textbf{ACF}: attenuated exponential fast decay or sine waves. \textbf{PACF}: only the first $p$ coefficients are significant, the rest are abruptly canceled.
+				\item \textbf{ARMA($p$,$q$) process}. \textbf{ACF} and \textbf{PACF}: the coefficients are not abruptly canceled and presents a fast decay.
 			\end{itemize}
 			If the ACF coefficients do not decay rapidly, there is a clear indicator of lack of stationarity in mean, which would lead to take first differences in the	original series.
-			\item \textbf{Formal tests} - $H_0$: No auto-correlation. \\
+			\item \textbf{Formal tests} - Generally, $H_0$: No auto-correlation. \\
 			Supposing that $u_t$ follows an AR(1) process:
 			\begin{center}
 				$u_t = \rho_1 u_{t-1} + \varepsilon_t$
@@ -412,8 +412,8 @@
 					\scalebox{0.8}{
 						\begin{tabular}{| c | c | c | c |}
 							\hline
-							$d = $         & 0  & 2 & 4 \\ \hline
-							$\rho \approx$ & -1 & 0 & 1 \\ \hline
+							$d = $         & 0 & 2 & 4  \\ \hline
+							$\rho \approx$ & 1 & 0 & -1 \\ \hline
 						\end{tabular}
 					}
 					\begin{tikzpicture}[scale=0.28] % durbin-watson test plot
@@ -458,6 +458,9 @@
 					\item MA($q$): $u_t = \varepsilon_t - m_1 u_{t-1} - ... - m_q u_{t-q}$
 					\item AR($p$): $u_t = \rho_1 u_{t-1} + ... + \rho_p u_{t-p} + \varepsilon_t$
 				\end{itemize}
+% end of column 2 page 2
+\columnbreak			
+% start of column 3 page 2
 				Under $H_0$: No auto-correlation:
 				\begin{center}
 					$\hfill T \cdot R^2_{\hat{u}_t} \sim_a \chi^2_q \hfill \textbf{or} \hfill T \cdot R^2_{\hat{u}_t} \sim_a \chi^2_p \hfill$
@@ -473,10 +476,10 @@
 		\end{itemize}
 	\subsection*{Correction}
 		\begin{itemize}[leftmargin=*]
-			\item Use OLS with a \textbf{variance-covariance matrix} estimator \textbf{robust to auto-correlation}, for example, the one proposed by \textbf{Newey-West}.
-			\item Use \textbf{Generalized Least Squares}. Supposing $y_t = \beta_0 + \beta_1 x_t + u_t$, with $u_t = \rho u_{t-1} + \varepsilon_t$, where $|\rho| < 1$ and $\varepsilon_t$ is white noise.
+			\item Use OLS with a \textbf{variance-covariance matrix} estimator that is \textbf{robust to heterocedasticity and auto-correlation} (HAC), for example, the one proposed by \textbf{Newey-West}.
+			\item Use \textbf{Generalized Least Squares} (GLS). Supposing $y_t = \beta_0 + \beta_1 x_t + u_t$, with $u_t = \rho u_{t-1} + \varepsilon_t$, where $|\rho| < 1$ and $\varepsilon_t$ is white noise.
 			\begin{itemize}[leftmargin=*]
-				\item If \textbf{$\rho$ is known, create a quasi-differentiated model}:
+				\item If \textbf{$\rho$ is known, use a quasi-differentiated model}:
 				\begin{center}
 					$y_t - \rho y_{t-1} = \beta_0 (1 - \rho) + \beta_1 (x_t - \rho x_{t-1}) + u_t - \rho u_{t-1}$
 					\ $y_t^* = \beta_0^* + \beta_1 x_t^* + u_t^*$
@@ -679,8 +682,8 @@
 	For example: $\lbrace x_t \rbrace$ and $\lbrace y_t \rbrace$ are I(1), but $y_t - \beta x_t = u_t$ where $\lbrace u_t \rbrace$ is I(0). ($\beta$ get the name of cointegration parameter).
 
 \section*{Heterocedasticity on time series}
-	The assumption \textbf{affected is ts4}, which leads to \textbf{OLS be not efficient}. \\ 
-	Some tests that work could be the Breusch-Pagan or White's, where $H_0$: No heterocedasticity. It is \textbf{important for the tests to work that there is no auto-correlation} (so first, it is important to test for it).
+	The assumption \textbf{affected is ts4}, which leads \textbf{OLS to be not efficient}. \\ 
+	Some tests that work could be the Breusch-Pagan or White's, where $H_0$: No heterocedasticity. It is \textbf{important for the tests to work that there is no auto-correlation} (so first, it is imperative to test for it).
 	\subsection*{ARCH}
 		An auto-regressive conditional heterocedasticity (ARCH), is a model to analyze a form of dynamic heterocedasticity, where the error variance follows an AR($p$) process. \\
 		Given the model:
