@@ -39,7 +39,7 @@
 \begin{document}
 
 % page foot
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Version 2.9-en - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize 2.9.1-en - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
@@ -253,9 +253,9 @@
 		\begin{itemize}[leftmargin=*]
 			\item \textbf{Null hypothesis ($H_0$)} - is the hypothesis to be tested.
 			\item \textbf{Alternative hypothesis ($H_1$)} - is the hypothesis that cannot be rejected when the null hypothesis is rejected.
-			\item \textbf{Statistic of contrast}: is a random variable whose probability distribution is known under the null hypothesis and is tabulated.
+			\item \textbf{Statistic of contrast} - is a random variable whose probability distribution is known under the null hypothesis.
+			\item \textbf{Critic value} - is the value against which the statistic of contrast is compared to determine if the null hypothesis is rejected or not. Is the value that makes the frontier between the regions of acceptance and rejection of the null hypothesis.
 			\item \textbf{Significance level ($\alpha$)} - is the probability of rejecting the null hypothesis being true (Type I error). Is chosen by who conduct the contrast. Commonly is 0.10, 0.05, 0.01 or 0.001.
-			\item \textbf{Critic value} - is the value against which the statistic of contrast is compared to determine if the null hypothesis is rejected or not.
 			\item \textbf{p-value} - is the highest level of significance by which the null hypothesis cannot be rejected ($H_0$).
 		\end{itemize}
 		\textbf{The rule is}: if the p-value is less than $\alpha$, there is evidence that, at a given $\alpha$, the null hypothesis is rejected (the alternative is accepted instead).
@@ -425,15 +425,14 @@
 		\end{itemize}
 	\subsection*{Correction}
 		\begin{itemize}[leftmargin=*]
-			\item Use OLS with a variance-covariance matrix estimator robust to heteroscedasticity, for example, the one proposed by White.
-			\item If the variance structure is known, make use of Weighted Least Squares (WLS) or Generalized Least Squares (GLS).
-			\item If the variance structure is not known, make use of Feasible Weighted Least Squared (FWLS), that estimates a possible variance, divides the model variables by it and then apply OLS.
-			\item Make assumptions about the possible variance:
+			\item Use OLS with a variance-covariance matrix estimator robust to heteroscedasticity (HC), for example, the one proposed by White.
+			\item If the variance structure is known, make use of Weighted Least Squares (WLS) or Generalized Least Squares (GLS):
 			\begin{itemize}[leftmargin=*]
-				\item Supposing that $\sigma_i^2$ is proportional to $x_i$, divide the model variables by the square root of $x_i$ and apply OLS.
-				\item Supposing that $\sigma_i^2$ is proportional to $x_i^2$, divide the model variables by $x_i$ and apply OLS.
+				\item Supposing that $\Var(u_i) = \sigma^2 \cdot x_i$, divide the model variables by the square root of $x_i$ and apply OLS.
+				\item Supposing that $\Var(u_i) = \sigma^2 \cdot x_i^2$, divide the model variables by $x_i$ (the square root of $x_i^2$) and apply OLS.
 			\end{itemize}
-			\item Make a new model specification, for example, logarithmic transformation.
+			\item If the variance structure is not known, make use of Feasible Weighted Least Squared (FWLS), that estimates a possible variance, divides the model variables by it and then apply OLS.
+			\item Make a new model specification, for example, logarithmic transformation (lower variance).
 		\end{itemize}
 % end of column 2 page 3
 \columnbreak
@@ -501,7 +500,7 @@
 		\end{itemize}
 	\subsection*{Correction}
 		\begin{itemize}[leftmargin=*]
-			\item Use OLS with a variance-covariance matrix estimator robust to auto-correlation, for example, the one proposed by Newey-West.
+			\item Use OLS with a variance-covariance matrix estimator robust to heterocedasticity and auto-correlation (HAC), for example, the one proposed by Newey-West.
 			\item Use Generalized Least Squares. Supposing $y_t = \beta_0 + \beta_1 x_t + u_t$, with $u_t = \rho u_{t-1} + \varepsilon_t$, where $|\rho| < 1$ and $\varepsilon_t$ is white noise.
 			\begin{itemize}[leftmargin=*]
 				\item If $\rho$ is known, create a quasi-differentiated model where $u_t$ is white noise and estimate it by OLS.

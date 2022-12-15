@@ -39,7 +39,7 @@
 \begin{document}
 
 % page foot
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize Versión 2.9-es - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize 2.9.1-es - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
@@ -253,9 +253,9 @@
 		\begin{itemize}[leftmargin=*]
 			\item \textbf{Hipótesis nula ($H_0$)} - es la hipótesis a ser probada.
 			\item \textbf{Hipótesis alternativa ($H_1$)} - el la hipótesis que no puede rechazarse si la hipótesis nula es rechazada.
-			\item \textbf{Estadístico de contraste}: es una variable aleatoria cuya distribución de probabilidad es conocida bajo la hipótesis nula y está tabulada.
+			\item \textbf{Estadístico de contraste} - es una variable aleatoria cuya distribución de probabilidad es conocida bajo la hipótesis nula.
 			\item \textbf{Nivel de significación ($\alpha$)} - es la probabilidad de rechazar la hipótesis nula siendo cierta (error Tipo I). Es elegido por quien conduce el contraste. Usualmente es 0.10, 0.05, 0.01 ó 0.001.
-			\item \textbf{Valor crítico} - es el valor contra el cual se compara el estadístico de contraste para determinar si se rechaza o no la hipótesis nula.
+			\item \textbf{Valor crítico} - es el valor contra el cual se compara el estadístico de contraste para determinar si se rechaza o no la hipótesis nula. Es el valor frontera entre la región de aceptación y la de rechazo de la hipótesis nula.
 			\item \textbf{p-valor} - es el nivel de significación máximo por el cual la hipótesis nula no puede ser rechazada ($H_0$).
 		\end{itemize}
 		\textbf{Regla general}: si el p-valor es menor que $\alpha$, existe evidencia para rechazar la hipótesis nula a ese determinado $\alpha$ (existe evidencia para aceptar la hipótesis alternativa).
@@ -425,15 +425,14 @@
 		\end{itemize}
 	\subsection*{Corrección}
 		\begin{itemize}[leftmargin=*]
-			\item Usar MCO con un estimador de la matriz de varianzas-covarianzas robusto a la heterocedasticidad, por ejemplo, la propuesta de White.
-			\item Si la estructura de la varianza es conocida, usar Mínimos Cuadrados Ponderados (MCP) o Mínimos Cuadrados Generalizados (MCG).
-			\item Si la estructura de la varianza es desconocida, hacer uso de Mínimos Curadrados Ponderados Factibles (MCPF), que estima una posible varianza, divide las variables del modelo entre ella y entonces aplica MCO.
-			\item Hacer suposiciones sobre la posible varianza:
+			\item Usar MCO con un estimador de la matriz de varianzas-covarianzas robusto a la heterocedasticidad (HC), por ejemplo, la propuesta de White.
+			\item Si la estructura de la varianza es conocida, usar Mínimos Cuadrados Ponderados (MCP) o Mínimos Cuadrados Generalizados (MCG):
 			\begin{itemize}[leftmargin=*]
-				\item Suponiendo que $\sigma_i^2$ es proporcional a $x_i$, dividir las variables del modelo entre la raíz cuadrada de $x_i$ y aplicar MCO.
-				\item Suponiendo que $\sigma_i^2$ es proporcional a $x_i^2$, dividir las variables del modelo entre $x_i$ y aplicar MCO.
+				\item Suponiendo que $\Var(u_i) = \sigma^2 \cdot x_i$, dividir las variables del modelo entre la raíz cuadrada de $x_i$ y aplicar MCO.
+				\item Suponiendo que $\Var(u_i) = \sigma^2 \cdot x_i^2$, dividir las variables del modelo entre $x_i$ (la raíz cuadrada de $x_i^2$) y aplicar MCO.
 			\end{itemize}
-			\item Nueva especificación del modelo, por ejemplo, transformación logarítmica.
+			\item Si la estructura de la varianza es desconocida, hacer uso de Mínimos Curadrados Ponderados Factibles (MCPF), que estima una posible varianza, divide las variables del modelo entre ella y entonces aplica MCO.
+			\item Nueva especificación del modelo, por ejemplo, transformación logarítmica (reduce la varianza).
 	\end{itemize}
 % end of column 2 page 3
 \columnbreak
@@ -501,7 +500,7 @@
 		\end{itemize}
 	\subsection*{Corrección}
 		\begin{itemize}[leftmargin=*]
-			\item Usar MCO con un estimador de la matriz de varianzas-covarianzas robusto a la autocorrelación, por ejemplo, la propuesta de Newey-West.
+			\item Usar MCO con un estimador de la matriz de varianzas-covarianzas robusto a la heterocedasticidad y autocorrelación (HAC), por ejemplo, la propuesta de Newey-West.
 			\item Usar Mínimos Cuadrados Generalizados. Suponiendo $y_t = \beta_0 + \beta_1 x_t + u_t$, con $u_t = \rho u_{t-1} + \varepsilon_t$, donde $|\rho| < 1$ y $\varepsilon_t$ es ruido blanco.
 			\begin{itemize}[leftmargin=*]
 				\item Si $\rho$ es conocido, crear un modelo cuasi-diferenciado donde $u_t$ es ruido blanco y estimarlo por MCO.
