@@ -90,7 +90,7 @@ For space reasons, the version included in the cheatsheet is the matricial one. 
 
 The non matrix version:
 
-$$\mathrm{se}(\hat{\beta}_j)=\sqrt{\frac{\hat{\sigma}^2}{\mathrm{SST}_j(1-R^2_j)}} \quad , \quad j=1,...,k$$
+$$\mathrm{se}(\hat{\beta}_j)=\sqrt{\frac{\hat{\sigma}^2_u}{\mathrm{SST}_j(1-R^2_j)}} \quad , \quad j=1,...,k$$
 
 ## Resources
 
