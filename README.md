@@ -1,15 +1,17 @@
 # Econometrics Cheat Sheet Project
 
-Econometrics cheat sheet created using $\LaTeX$ with a summarized review of:
+Econometrics cheat sheets created using $\LaTeX$ with a summarized review of:
 
-* **Basic econometrics concepts**: econometrics definitions, data type, phases of a model, regression and correlation analysis.
+* **Basic econometrics concepts**: econometrics definitions, data types, phases of a model, regression and correlation analysis.
 * **Assumptions and properties** of the linear regression model.
-* **Ordinary Least Squares** (OLS) equations, coefficient interpretatation, error measures, r-squared.
+* **Ordinary Least Squares** (OLS) equations, coefficient interpretatation, error measures, R-squared.
 * **Hypothesis testing and confidence intervals**.
 * **Dummy variables and structural change**.
-* **Predictions**.
+* **Predictions** basics.
 * **Popular OLS problems** (multicollinearity, heteroscedasticity and auto-correlation): consequences, detection and correction.
-* **Time series** analysis and peculiarities.
+* **Time series** analysis and peculiarities: trends and seasonality, auto-correlation, stationarity, weak and strong dependence time series, cointegration and heterocedasticity on time series.
+* **Matrix notation of OLS**.
+* **Additional problems, statistics and models**: variable omission problem, proxy variables, instrumental variables, Two Stage Least Squares, information criteria, incorrect functional form, VAR models, VECM.
 
 :bulb: Opinions, ideas and collaboration proposals are heard through GitHub or by email (marcelomijas@gmail.com). Also, my [LinkedIn](https://www.linkedin.com/in/marcelomorenop/) (please, send me a message before "connect" or I will ignore the request).
 
