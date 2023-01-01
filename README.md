@@ -10,8 +10,8 @@ Econometrics cheat sheets created using $\LaTeX$ with a summarized review of:
 * **Predictions** basics.
 * **Popular OLS problems** (multicollinearity, heteroscedasticity and auto-correlation): consequences, detection and correction.
 * **Time series** analysis and peculiarities: trends and seasonality, auto-correlation, stationarity, weak and strong dependence time series, cointegration and heterocedasticity on time series.
-* **Matrix notation of OLS**: estimation, variance-covariance of the betas and residuals, error measures.
-* **Additional problems, statistics and models**: variable omission problem, proxy variables, instrumental variables, Two Stage Least Squares, information criteria, incorrect functional form, VAR models, VECM.
+* (coming soon) **Matrix notation of OLS**: estimation, variance-covariance of the betas and residuals, error measures.
+* (coming soon) **Additional problems, statistics and models**: variable omission problem, proxy variables, instrumental variables, Two Stage Least Squares, information criteria, incorrect functional form, VAR models, VECM.
 
 :bulb: Opinions, ideas and collaboration proposals are heard through GitHub or by email (marcelomijas@gmail.com). Also, my [LinkedIn](https://www.linkedin.com/in/marcelomorenop/) (please, send me a message before "connect" or I will ignore the request).
 
