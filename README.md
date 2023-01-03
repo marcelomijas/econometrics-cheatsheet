@@ -31,8 +31,8 @@ Econometrics cheat sheets created using $\LaTeX$ with a summarized review of:
 
 |              | PDF file                                                        | TeX file                                                        |
 | :----------: | :-------------------------------------------------------------: | :-------------------------------------------------------------: |
-| English :uk: | [en.pdf](econometrics-cheatsheet/additional-cheatsheet-en.pdf)  | [en.tex](econometrics-cheatsheet/additional-cheatsheet-en.tex)  |
-| Spanish :es: | [es.pdf](econometrics-cheatsheet/additional-cheatsheet-es.pdf)  | [es.tex](econometrics-cheatsheet/additional-cheatsheet-es.tex)  |
+| English :uk: | [en.pdf](additional-cheatsheet/additional-cheatsheet-en.pdf)  | [en.tex](additional-cheatsheet/additional-cheatsheet-en.tex)  |
+| Spanish :es: | [es.pdf](additional-cheatsheet/additional-cheatsheet-es.pdf)  | [es.tex](additional-cheatsheet/additional-cheatsheet-es.tex)  |
 
 ## Roadmap
 
