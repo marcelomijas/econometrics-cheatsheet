@@ -4,7 +4,7 @@ Econometrics cheat sheets created using $\LaTeX$ with a summarized review of:
 
 * **Econometrics Cheat Sheet**: Basic econometrics concepts (econometrics definitions, data types, phases of a model, regression and correlation analysis), OLS assumptions and properties, equations, coefficient interpretatation, error measures, R-squared, hypothesis testing and confidence intervals, dummy variables and structural change, predictions basics and summary of popular OLS problems (multicollinearity, heteroscedasticity and auto-correlation): consequences, detection and correction.
 * **Time Series Cheat Sheet**: components of a time series, trends and seasonality, auto-correlation, stationarity, weak and strong dependence, cointegration and heterocedasticity on time series.
-* (coming soon) **Additional Cheat Sheet**: matrix notation of OLS (estimation, variance-covariance of the betas and residuals, error measures), variable omission problem, proxy variables, instrumental variables, Two Stage Least Squares, information criteria, incorrect functional form, VAR models, VECM.
+* **Additional Cheat Sheet**: matrix notation of OLS (estimation, variance-covariance of the betas and residuals, error measures), variable omission problem, proxy variables, instrumental variables, Two Stage Least Squares, information criteria, incorrect functional form, VAR models, VECM.
 
 :bulb: Opinions, ideas and collaboration proposals are heard through GitHub or by email (marcelomijas@gmail.com). Also, my [LinkedIn](https://www.linkedin.com/in/marcelomorenop/) (please, send me a message before "connect" or I will ignore the request).
 
@@ -12,19 +12,27 @@ Econometrics cheat sheets created using $\LaTeX$ with a summarized review of:
 
 ### Download links
 
-**Econometrics Cheat Sheet**. Current version: `2.9.1` (last updated 15 dec. 2022)
+**Econometrics Cheat Sheet**. Current version: `3.0` (last updated 3 jan. 2023)
 
 |              | PDF file                                                          | TeX file                                                          |
 | :----------: | :---------------------------------------------------------------: | :---------------------------------------------------------------: |
 | English :uk: | [en.pdf](econometrics-cheatsheet/econometrics-cheatsheet-en.pdf)  | [en.tex](econometrics-cheatsheet/econometrics-cheatsheet-en.tex)  |
 | Spanish :es: | [es.pdf](econometrics-cheatsheet/econometrics-cheatsheet-es.pdf)  | [es.tex](econometrics-cheatsheet/econometrics-cheatsheet-es.tex)  |
 
-**Time Series Cheat Sheet**. Current version: `ts1.4` (last updated 15 dec. 2022)
+**Time Series Cheat Sheet**. Current version: `ts1.5` (last updated 3 jan. 2023)
 
 |              | PDF file                                                        | TeX file                                                        |
 | :----------: | :-------------------------------------------------------------: | :-------------------------------------------------------------: |
 | English :uk: | [en.pdf](time-series-cheatsheet/time-series-cheatsheet-en.pdf)  | [en.tex](time-series-cheatsheet/time-series-cheatsheet-en.tex)  |
 | Spanish :es: | [es.pdf](time-series-cheatsheet/time-series-cheatsheet-es.pdf)  | [es.tex](time-series-cheatsheet/time-series-cheatsheet-es.tex)  |
+
+
+**Additional Cheat Sheet**. Current version: `add1.0` (last updated 15 dec. 2022)
+
+|              | PDF file                                                        | TeX file                                                        |
+| :----------: | :-------------------------------------------------------------: | :-------------------------------------------------------------: |
+| English :uk: | [en.pdf](econometrics-cheatsheet/additional-cheatsheet-en.pdf)  | [en.tex](econometrics-cheatsheet/additional-cheatsheet-en.tex)  |
+| Spanish :es: | [es.pdf](econometrics-cheatsheet/additional-cheatsheet-es.pdf)  | [es.tex](econometrics-cheatsheet/additional-cheatsheet-es.tex)  |
 
 ## Roadmap
 
@@ -38,8 +46,7 @@ Econometrics cheat sheets created using $\LaTeX$ with a summarized review of:
 
 - [x] Release of an Spanish version of `time-series-cheatsheet`.
 
-- [ ] Release of a cheat sheet with more common problems in econometrics and additional models (VAR, VECM, ...), `additional-cheatsheet`.
-  - :warning: :construction: A work in progress can be found at [add-en.pdf](additional-cheatsheet/additional-cheatsheet-en.pdf)
+- [x] Release of a cheat sheet with more common problems in econometrics and additional models (VAR, VECM, ...), `additional-cheatsheet`.
 
 - [ ] Styled version of the cheat sheets (background colors, styled sections, more appealing plots, etc.)
 
