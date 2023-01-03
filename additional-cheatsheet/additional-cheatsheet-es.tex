@@ -1,0 +1,459 @@
+\documentclass[10pt, a4paper, landscape]{extarticle}
+
+% -----packages-----
+\usepackage{amsmath, amsfonts, amssymb} % better math
+\usepackage{enumitem} % better lists
+\usepackage{geometry} % for margins
+\usepackage{graphicx} % for scale tables
+\usepackage{hyperref} % for hyperlinks
+\usepackage{multicol} % for multiple columns
+\usepackage{parskip} % paragraph spacing
+\usepackage{scrlayer-scrpage} % page foot
+\usepackage{tikz} % for plots
+\usepackage{titlesec} % titles spacing
+
+% -----custom commands-----
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\ee}{\mathrm{ee}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Corr}{\mathrm{Corr}}
+\newcommand{\SRC}{\mathrm{SRC}}
+\newcommand{\SEC}{\mathrm{SEC}}
+\newcommand{\STC}{\mathrm{STC}}
+\newcommand{\tr}{\mathsf{T}}
+\newcommand{\rg}{\mathrm{rg}}
+
+% -----page customization-----
+\geometry{margin=1cm} % margins config
+\pagenumbering{gobble} % remove page numeration
+\setlength{\parskip}{0cm} % paragraph spacing
+% title spacing:
+\titlespacing{\section}{0pt}{2ex}{1ex}
+\titlespacing{\subsection}{0pt}{1ex}{0ex}
+\titlespacing{\subsubsection}{0pt}{0.5ex}{0ex}
+
+% -----document-----
+\begin{document}
+
+% page foot
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize add1.0-es - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
+\setlength{\footskip}{12pt}
+
+\begin{multicols}{3} % set columns to 3
+% start of column 1 page 1
+% titles
+\begin{center}
+	\textbf{\LARGE \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Cheat Sheet Adicional}} \\
+	{\footnotesize Por Marcelo Moreno - Universidad Rey Juan Carlos} \\
+	{\footnotesize Como parte del Econometrics Cheat Sheet Project}
+\end{center}
+% start of content
+\section*{Notación matricial MCO}
+	El modelo econométrico general:
+	\begin{center}
+		$y_i = \beta_0 + \beta_1 x_{1i} + ... + \beta_k x_{ki} + u_i$
+	\end{center}
+	Puede ser escrito en notación matricial como:
+	\begin{center}
+		$y = X \beta + u$
+	\end{center}
+	Llamemos $\hat{u}$ al vector de residuos estimados ($\hat{u} \neq u$):
+	\begin{center}
+		$\hat{u} = y - X \hat{\beta}$
+	\end{center}
+	El \textbf{objetivo} de MCO es \textbf{minimizar} la SRC:
+	\begin{center}
+		$\min \SRC = \min \sum_{i=1}^n \hat{u}_i^2 = \min \hat{u}^\tr \hat{u}$
+	\end{center}
+	\begin{itemize}[leftmargin=*]
+		\item Definiendo $\hat{u}^\tr \hat{u}$:
+		\begin{center}
+			$\hat{u}^\tr \hat{u} = (y - X \hat{\beta})^\tr (y - X \hat{\beta}) =$ \\
+			$= y^\tr y -2 \hat{\beta}^\tr X^\tr y + \hat{\beta}^\tr X^\tr X \hat{\beta}$
+		\end{center}
+		\item Minimizando $\hat{u}^\tr \hat{u}$:
+		\begin{center}
+			$\frac{\partial \hat{u}^\tr \hat{u}}{\partial \hat{\beta}} = -2 X^\tr y +2 X^\tr X \hat{\beta} = 0$ \\
+			$\hat{\beta} = (X^\tr X)^{-1} (X^\tr y)$ \\
+			\scalebox{0.85}{
+				$
+				\begin{bmatrix}
+					\beta_0 \\
+					\beta_1 \\
+					\vdots \\
+					\beta_k
+				\end{bmatrix}
+				=
+				\begin{bmatrix}
+					n        & \sum x_1     & \hdots & \sum x_k     \\
+					\sum x_1 & \sum x_1^2   & \hdots & \sum x_1 x_k \\
+					\vdots   & \vdots       & \ddots & \vdots       \\
+					\sum x_k & \sum x_k x_1 & \hdots & \sum x_k^2
+				\end{bmatrix}
+				^{-1}
+				\cdot
+				\begin{bmatrix}
+					\sum y \\
+					\sum y x_1 \\
+					\vdots \\
+					\sum y x_k
+				\end{bmatrix}
+				$
+			}
+		\end{center}
+		La segunda derivada $\frac{\partial^2 \hat{u}^\tr \hat{u}}{\partial \hat{\beta}^2} = X^\tr X > 0$ (es un mín.)
+	\end{itemize}
+
+\section*{Matriz de varianzas-covarianzas de $\hat{\beta}$}
+	Tiene la siguiente forma:
+	\begin{center}
+		$\Var(\hat{\beta}) = \hat{\sigma}^2_u \cdot (X^\tr X)^{-1} =$
+	\end{center}
+	\begin{center}
+		\scalebox{0.85}{
+			$
+			=
+			\begin{bmatrix}
+				\Var(\hat{\beta}_0)                & \Cov(\hat{\beta}_0, \hat{\beta}_1) & \hdots & \Cov(\hat{\beta}_0, \hat{\beta}_k) \\
+				\Cov(\hat{\beta}_1, \hat{\beta}_0) & \Var(\hat{\beta}_1)                & \hdots & \Cov(\hat{\beta}_1, \hat{\beta}_k) \\
+				\vdots                             & \vdots                             & \ddots & \vdots                             \\
+				\Cov(\hat{\beta}_k, \hat{\beta}_0) & \Cov(\hat{\beta}_k, \hat{\beta}_1) & \hdots & \Var(\hat{\beta}_k)
+			\end{bmatrix}
+			$
+		}
+	\end{center}
+	\quad donde: $\hat{\sigma}^2_u = \frac{\hat{u}^\tr \hat{u}}{n - k - 1}$ \\
+	Los errores estándar están en la diagonal de:
+	\begin{center}
+		$\ee(\hat{\beta}) = \sqrt{\Var(\hat{\beta})}$
+	\end{center}
+
+\section*{Medidas de error}
+	\begin{itemize}[leftmargin=*]
+		\item $\SRC = \hat{u}^\tr \hat{u} = y^\tr y - \hat{\beta}^\tr X^\tr y = \sum(y_i - \hat{y}_i)^2$
+		\item $\SEC = \hat{\beta}^\tr X^\tr y - n \overline{y}^2 = \sum(\hat{y}_i - \overline{y})^2$
+		\item $\STC = \SRC + \SEC = y^\tr y - n \overline{y}^2 = \sum(y_i - \overline{y})^2$
+	\end{itemize}
+% end of column 1 page 1
+\columnbreak
+% start of column 2 page 1
+\section*{Matriz de varianzas-covarianzas de $u$}
+	Tiene la siguiente forma:
+	\begin{center}
+		$\Var(u) =$
+		\scalebox{0.85}{
+			$
+			\begin{bmatrix}
+				\Var(u_1)      & \Cov(u_1, u_2) & \hdots & \Cov(u_1, u_n) \\
+				\Cov(u_2, u_1) & \Var(u_2)      & \hdots & \Cov(u_2, u_n) \\
+				\vdots         & \vdots         & \ddots & \vdots         \\
+				\Cov(u_n, u_1) & \Cov(u_n, u_2) & \hdots & \Var(u_n)
+			\end{bmatrix}
+			$
+		}
+	\end{center}
+	Cuando no hay heterocedasticidad ni autocorrelación, la matriz de varianzas-covarianzas de $u$ tiene la forma:
+	\begin{center}
+		$\Var(u) = \sigma^2_u \cdot I_n =$
+		\scalebox{0.85}{
+			$
+			\begin{bmatrix}
+				\sigma^2_u & 0          & \hdots & 0          \\
+				0          & \sigma^2_u & \hdots & 0          \\
+				\vdots     & \vdots     & \ddots & \vdots     \\
+				0          & 0          & \hdots & \sigma^2_u
+			\end{bmatrix}
+			$
+		}
+	\end{center}
+	\quad donde $I_n$ es una matriz identidad con $n \times n$ elementos. \\
+	Cuando hay \textcolor{cyan}{\textbf{heterocedasticidad}} y \textcolor{magenta}{\textbf{autocorrelación}}, la matriz de varianzas-covarianzas de $u$ tiene la forma:
+	\begin{center}
+		$\Var(u) = \sigma^2_u \cdot \Omega =$
+		\scalebox{0.85}{
+			$
+			\begin{bmatrix}
+				\textcolor{cyan}{\sigma^2_{u_{1}}}   & \textcolor{magenta}{\sigma_{u_{12}}} & \hdots & \textcolor{magenta}{\sigma_{u_{1n}}} \\
+				\textcolor{magenta}{\sigma_{u_{21}}} & \textcolor{cyan}{\sigma^2_{u_{2}}}   & \hdots & \textcolor{magenta}{\sigma_{u_{2n}}} \\
+				\vdots                               & \vdots                               & \ddots & \vdots                               \\
+				\textcolor{magenta}{\sigma_{u_{n1}}} & \textcolor{magenta}{\sigma_{u_{n2}}} & \hdots & \textcolor{cyan}{\sigma^2_{u_{n}}}
+			\end{bmatrix}
+			$
+		}
+	\end{center}
+	\quad donde $\Omega \neq I_n$.
+	\begin{itemize}[leftmargin=*]
+		\item Heterocedasticidad: $\Var(u) = \sigma^2_{u_i} \neq \sigma^2_u$
+		\item Autocorrelación: $\Cov(u_i, u_j) = \sigma_{u_{ij}} \neq 0 \quad \forall i \neq j$
+	\end{itemize}
+
+\section*{Omisión de variables}
+	Casi siempre es difícil disponer de todas las variables relevantes. Por ejemplo, un modelo con todas las variables:
+	\begin{center}
+		$y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + v$
+	\end{center}
+	\quad donde $\beta_2 \neq 0$, $v$ el término de error y $\Cov(v|x_1,x_2) = 0$. \\
+	El modelo con las variables disponibles:
+	\begin{center}
+		$y = \alpha_0 + \alpha_1 x_1 + u$
+	\end{center}
+	\quad donde $u = v + \beta_2 x_2$. \\
+	Omisión de variables relevantes causa que los estimadores MCO sean \textbf{sesgados} e \textbf{inconsistentes},porque no hay exogeneidad estricta, $\Cov(x_1,u) \neq 0$. Dependiendo de $\Corr(x_1, x_2)$ y el signo de $\beta_2$, el sesgo en $\hat{\alpha}_1$ puede ser:
+	\begin{center}
+		\begin{tabular}{| c | c | c |}
+			\cline{2-3}
+			\multicolumn{1}{c|}{} & $\Corr(x_1, x_2) > 0$ & $\Corr(x_1, x_2) < 0$ \\ \hline
+			$\beta_2 > 0$         & $\text{sesgo } (+)$   & $\text{sesgo } (-)$   \\ \hline
+			$\beta_2 < 0$         & $\text{sesgo } (-)$   & $\text{sesgo } (+)$   \\ \hline
+		\end{tabular}
+	\end{center}
+	\begin{itemize}[leftmargin=*]
+		\item Sesgo $(+)$: $\hat{\alpha}_1$ será más alto de lo que debería (incluye el efecto de $x_2$) $\rightarrow \hat{\alpha}_1 > \beta_1$
+		\item Sesgo $(-)$: $\hat{\alpha}_1$ será más alto de lo que debería (incluye el efecto de $x_2$) $\rightarrow \hat{\alpha}_1 < \beta_1$
+	\end{itemize}
+	Si $\Corr(x_1,x_2) = 0$, no hay sesgo en $\hat{\alpha}_1$, porque el efecto de $x_2$ será totalmente recogido por el término de error, $u$.
+% end of column 2 page 1
+\columnbreak
+% start of column 3 page 1
+	\subsection*{Corrección de omisión de variables}
+		\subsubsection*{Variables proxy}
+			Es el camino cuando la variable relevante no está disponible porque no es observable, y no hay datos disponibles.
+			\begin{itemize}[leftmargin=*]
+				\item Una \textbf{variable proxy} es algo \textbf{relacionado} con la variable no observable que tiene datos disponibles.
+			\end{itemize}
+			Por ejemplo, el PIB per capita es una variable proxy para la calidad de vida (no observable).
+		\subsubsection*{Instrumental variables}
+			Cuando una variable de interés ($x$) es observable pero \textbf{endógena}, el camino de variables proxy ya no es válido.
+			\begin{itemize}[leftmargin=*]
+				\item Una \textbf{variable instrumental} (VI) \textbf{es una variable observable} ($z$) que está \textbf{relacionada} con la variable de interés que es endógena ($x$), y cumple los \textbf{requisitos}:
+				\begin{center}
+					$\Cov(z,u) = 0 \rightarrow$ exogeneidad del instrumento \\
+					$\Cov(z,x) \neq 0 \rightarrow$ relevancia del instrumento
+				\end{center}
+			\end{itemize}
+			Variables instrumentales deja la variable omitida en el término de error, pero en vez de estimar el modelo por MCO, utiliza un método que reconoce la omisión de variable. Puede también corregir errores de medida.
+			\begin{itemize}[leftmargin=*]
+				\item \textbf{Mínimos Cuadrados en Dos Etapas} (MC2E) es un método de estimar un modelo con múltiples variables instrumentales . El requisito $\Cov(z,u) = 0$ puede ser relajado, pero debe haber un mínimo de variables que lo satisfacen. \\
+				El \textbf{procedimiento de estimación} de MC2E:
+				\begin{enumerate}[leftmargin=*]
+					\item Estimar un modelo regresando $x$ por $z$ usando MCO, obteniendo $\hat{x}$:
+					\begin{center}
+						$\hat{x} = \hat{\pi}_0 + \hat{\pi}_1 z$
+					\end{center}
+					\item Reemplazar $x$ por $\hat{x}$ en el modelo final y estimarlo por MCO:
+					\begin{center}
+						$y = \beta_0 + \beta_1 \hat{x} + u$
+					\end{center}
+				\end{enumerate}
+				Hay algunas cosas \underline{importantes} sobre MC2E:
+				\begin{itemize}[leftmargin=*]
+					\item MC2E son menos eficientes que MCO cuando las variables explicativas son exógenas. El \textbf{test de Hausman} puede usarse para comprobarlo:
+					\begin{center}
+						$H_0$: los estimadores MCO son consistentes.
+					\end{center}
+					Si $H_0$ es aceptada, los estimadores MCO son mejores que MC2E y viceversa.
+					\item Pueden haber algunos instrumentos (o todos) que no sean válidos. Esto se conoce como sobre-identificación, el \textbf{test de Sargan} puede usarse para comprobarlo:
+					\begin{center}
+						$H_0$: todos los instrumentos son válidos.
+					\end{center}
+				\end{itemize}
+			\end{itemize}
+% end of column 3 page 1
+\columnbreak
+% start of column 1, 2 and 3 page 2 (1)
+\section*{Criterio de información}
+	Es usado para comparar modelos con diferente número de parámetros ($k$). La fórmula general:
+	\begin{center}
+		$\mathrm{Cr}(k) = \log(\frac{\SRC}{n}) + c_n \varphi (k)$
+	\end{center}
+	donde:
+	\begin{itemize}[leftmargin=*]
+		\item $\SRC$ es la Suma de Residuos Cuadráticos de un modelo de orden $k$.
+		\item $c_n$ es una secuencia indexada por el tamaño muestral.
+		\item $\varphi(k)$ es una función que penaliza órdenes grandes de $k$.
+	\end{itemize}
+	Interpretado como el tamaño relativo de información perdida por el modelo. Orden $k$ que min. el criterio es elegido. \\
+	Hay diferentes funciones $c_n \varphi(k)$:
+	\begin{itemize}[leftmargin=*]
+		\item Akaike: $\mathrm{AIC}(k) = \log(\frac{\SRC}{n}) + \frac{2}{n} k$
+		\item Hannan-Quinn: $\mathrm{HQ}(k) = \log(\frac{\SRC}{n}) + \frac{2 \log(\log(n))}{n} k$
+		\item Schwarz: $\mathrm{Sc}(k) = \log(\frac{\SRC}{n}) + \frac{\log(n)}{n} k$
+	\end{itemize}
+	$\mathrm{Sc}(k) \leq \mathrm{HQ}(k) \leq \mathrm{AIC}(k)$
+
+\section*{Forma funcional incorrecta}
+	Para comprobar si la \textbf{forma funcional} de un modelo es correcta, podemos usar el \textbf{Ramsey's RESET} (Regression Specification Error Test). Prueba el modelo original vs. un modelo con variables en potencias.
+	\begin{center}
+		$H_0$: el modelo está correctamente especificado.
+	\end{center}
+	Procedimiento del contraste:
+	\begin{enumerate}[leftmargin=*]
+		\item Estimar el modelo original y obtener $\hat{y}$ y $R^2$:
+		\begin{center}
+			$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x_1 + ... + \hat{\beta}_k x_k$
+		\end{center}
+		\item Estimar un nuevo modelo añadiendo potencias de $\hat{y}$ y obtener el nuevo $R^2_{\mathrm{new}}$:
+		\begin{center}
+			$\tilde{y} = \hat{y} + \tilde{\gamma}_2 \hat{y}^2 + ... + \tilde{\gamma}_l \hat{y}^l$
+		\end{center}
+		\item Definir el estadístico de contraste, bajo $\gamma_2 = ... = \gamma_l = 0$ como hipótesis nula:
+		\begin{center}
+			$F = \frac{R^2_{\mathrm{new}} - R^2}{1 - R^2_{\mathrm{new}}} \cdot \frac{n -(k + l) - 1}{l} \sim F_{l-1, n-k-l}$
+		\end{center}
+	\end{enumerate}
+	Si $F_{l-1, n-k-l} < F$, hay evidencia para rechazar $H_0$.
+% end of column 1, 2 and 3 page 2 (1)
+\end{multicols}
+
+\noindent\rule{\textwidth}{0.4pt} % horizontal line dividing page 2 (1) and page 2 (2)
+
+\begin{multicols}{2} % set columns to 2
+% start of column 1 page 2 (2)
+\section*{VAR (Vector Autoregressive)}
+	Un modelo VAR captura \textbf{interacciones dinámicas} entre series temporales. El VAR($p$):
+	\begin{center}
+		$y_t = A_1 y_{t-1} + \hdots + A_p y_{t-p} + B_0 x_t + \hdots + B_q x_{t-q} + CD_t + u_t$
+	\end{center}
+	donde:
+	\begin{itemize}[leftmargin=*]
+		\item $y_t = (y_{1t}, ..., y_{Kt})^\tr$ es un vector de $K$ series temporales observables endógenas.
+		\item $A_i$'s son $K \times K$ matrices de coeficientes.
+		\item $x_t = (x_{1t}, ..., x_{Mt})^\tr$ es un vector de $M$ series temporales observables exógenas.
+		\item $B_j$'s son $K \times M$ matrices de coeficientes.
+		\item $D_t$ es un vector que contiene todos los términos deterministas, que pueden ser: una constante, tendencia lineal, variables estacionales binarias, y/o cualquier otra variable ficticia especificada por el usuario.
+		\item $C$ es una matriz de coeficientes de dimensión apropiada.
+		\item $u_t = (u_{1t}, ..., u_{Kt})^\tr$ es un vector de $K$ series de ruido blanco.
+	\end{itemize}
+	El proceso es \textbf{estable} si:
+	\begin{center}
+		$\det(I_K - A_1 z - ... - A_p z^p) \neq 0 \quad \mathrm{para} \quad |z| \leq 1$
+	\end{center}
+	\quad esto es, \textbf{no hay raíces} en y sobre el círculo unitario complejo. \\ \\
+	Por ejemplo, un modelo VAR con dos variables endógenas ($K=2$), dos retardos ($p=2$), una variable exógena contemporánea ($M=1$), constante ($\mathrm{const}$) y tendencia ($\mathrm{Tend}_t$):
+	\begin{center}
+		\scalebox{0.80}{
+			$
+			\begin{bmatrix}
+				y_{1t} \\
+				y_{2t}
+			\end{bmatrix}
+			= 
+			\begin{bmatrix}
+				a_{11,1} & a_{12,1} \\
+				a_{21,1} & a_{22,1}
+			\end{bmatrix}
+			\cdot
+			\begin{bmatrix}
+				y_{1,t-1} \\
+				y_{2,t-1}
+			\end{bmatrix}
+			+
+			\begin{bmatrix}
+				a_{11,2} & a_{12,2} \\
+				a_{21,2} & a_{22,2}
+			\end{bmatrix}
+			\cdot
+			\begin{bmatrix}
+				y_{1,t-2} \\
+				y_{2,t-2}
+			\end{bmatrix}
+			+
+			\begin{bmatrix}
+				b_{11} \\
+				b_{21}
+			\end{bmatrix}
+			\cdot
+			\begin{bmatrix}
+				x_t
+			\end{bmatrix}
+			+
+			\begin{bmatrix}
+				c_{11} & c_{12} \\
+				c_{21} & c_{22}
+			\end{bmatrix}
+			\cdot
+			\begin{bmatrix}
+				const \\
+				Trend_t \\
+			\end{bmatrix}
+			+
+			\begin{bmatrix}
+				u_{1t} \\
+				u_{2t}
+			\end{bmatrix}
+			$
+		}
+	\end{center}
+	Visualizando las ecuaciones por separado:
+	\begin{center}
+		\scalebox{0.95}{
+			$y_{1t} = a_{11,1} y_{1,t-1} + a_{12,1} y_{2,t-1} + a_{11,2} y_{1,t-2} + a_{12,2} y_{2,t-2} + b_{11} x_t  + c_{11} + c_{12} \mathrm{Trend}_t + u_{1t}$
+		}
+		\scalebox{0.95}{
+			$y_{2t} = a_{21,1} y_{2,t-1} + a_{22,1} y_{1,t-1} + a_{21,2} y_{2,t-2} + a_{22,2} y_{1,t-2} + b_{21} x_t + c_{21} + c_{22} \mathrm{Trend}_t + u_{2t}$
+		}
+	\end{center}
+	\textcolor{white}{.} \\
+	Si hay una raíz unitaria, el determinante es cero para $z=1$, entonces una o todas las variables son integrados y el modelo VAR ya no es apropiado (es inestable).
+% end of column 1 page 2 (2)
+\columnbreak
+% start of column 2 page 2 (2)
+\section*{VECM (Vector Error Correction Model)}
+	Si existen \textbf{relaciones cointegradoras} en un sistema de variables, la forma VAR no es la más conveniente. Es mejor usar un VECM, esto es, la \textbf{versión en niveles} del VAR. El VECM($p-1$):
+	\begin{center}
+		$\Delta y_t = \Pi y_{t-1} + \Gamma_1 \Delta y_{t-1} + ... + \Gamma_{p-1} \Delta y_{t-p+1} + B_0 x_t + ... + B_q x_{t-q} + CD_t + u_t$
+	\end{center}
+	donde:
+	\begin{itemize}[leftmargin=*]
+		\item $y_t$, $x_t$, $D_t$ y $u_t$ son como especificados en VAR.
+		\item $\Pi = - (I_K - A_1 - \cdots - A_p)$ para $i = 1, ..., p-1$ ; $\Pi y_{t-1}$ es referido como la parte a \textbf{largo plazo}.
+		\item $\Gamma = - (A_{i+1} + \cdots + A_p)$ para $i = 1, ..., p-1$ es referido como parámetros a \textbf{corto plazo}.
+		\item $A_i$, $B_j$ y $C$ son matrices de coeficientes de dimensiones apropiadas.
+	\end{itemize}
+	Si el proceso VAR($p$) es inestable (no hay raíces), $\Pi$ puede ser escrito como el producto de ($K \times r$) matrices $\alpha$ (\textbf{matriz de carga}) y $\beta$ (\textbf{matriz de cointegración}) con $\rg(\Pi) = \rg(\alpha) = \rg(\beta) = r$ (\textbf{rango cointegrador}) como $\Pi = \alpha \beta^\tr$.
+	\begin{itemize}[leftmargin=*]
+		\item $\beta^\tr y_{t-1}$ contiene las relaciones cointegradoras.
+	\end{itemize}
+	\textcolor{white}{.} \\
+	Por ejemplo, si hay tres variables endógenas ($K=3$) con dos relaciones cointegradoras ($r=2$), la parte a largo plazo del VECM:
+	\begin{center}
+		\scalebox{0.95}{
+			$
+			\Pi y_{t-1} = \alpha \beta^\tr y_{t-1} =
+			\begin{bmatrix}
+				\alpha_{11} & \alpha_{12} \\
+				\alpha_{21} & \alpha_{22} \\
+				\alpha_{31} & \alpha_{32}
+			\end{bmatrix}
+			\begin{bmatrix}
+				\beta_{11} & \beta_{21} & \beta_{31} \\
+				\beta_{12} & \beta_{22} & \beta_{32}
+			\end{bmatrix}
+			\begin{bmatrix}
+				y_{1,t-1} \\
+				y_{2,t-1} \\
+				y_{3,t-1}
+			\end{bmatrix} =
+			\begin{bmatrix}
+				\alpha_{11} ec_{1,t-1} + \alpha_{12} ec_{2,t-1} \\
+				\alpha_{21} ec_{1,t-1} +
+				\alpha_{22} ec_{2,t-1} \\
+				\alpha_{31} ec_{1,t-1} + 
+				\alpha_{32} ec_{2,t-1}
+			\end{bmatrix}
+			$
+		}
+	\end{center}
+	\quad donde:
+	\begin{center}
+		$ec_{1,t-1} = \beta_{11} y_{1,t-1} + \beta_{21} y_{2,t-1} + \beta_{31} y_{3,t-1}$ \\
+		$ec_{2,t-1} = \beta_{12} y_{1,t-1} + \beta_{22} y_{2,t-1} + \beta_{32} y_{3,t-1}$
+	\end{center}
+	\textcolor{white}{.} \\ \\
+	\colorbox{yellow}{\textbf{Nota:}} esta es una introducción muy básica, hay mucha más literatura sobre el uso correcto específico de estos modelos y de más avanzados. Por ejemplo, el modelo VECM con términos deterministas en la relación cointegradora, el modelo Structural VAR, etc.
+% start of column 1 page 2 (2)
+% end of content
+\end{multicols}
+
+\end{document}

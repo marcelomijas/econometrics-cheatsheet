@@ -1,16 +1,16 @@
 \documentclass[10pt, a4paper, landscape]{extarticle}
 
 % -----packages-----
-\usepackage{multicol} % for multiple columns
-\usepackage[landscape]{geometry} % for landscape
-\usepackage{parskip} % remove text indentation
+\usepackage{amsmath, amsfonts, amssymb} % better math
+\usepackage{enumitem} % better lists
+\usepackage{geometry} % for margins
 \usepackage{graphicx} % for scale tables
-\usepackage{enumitem} % indent of lists
-\usepackage{tikz} % for plots
 \usepackage{hyperref} % for hyperlinks
-\usepackage{amsmath} % for writing normal text on equations
+\usepackage{multicol} % for multiple columns
+\usepackage{parskip} % paragraph spacing
 \usepackage{scrlayer-scrpage} % page foot
-\usepackage[compact]{titlesec} % titles spacing
+\usepackage{tikz} % for plots
+\usepackage{titlesec} % titles spacing
 
 % -----custom commands-----
 \newcommand{\E}{\mathrm{E}}
@@ -21,15 +21,13 @@
 \newcommand{\SSR}{\mathrm{SSR}}
 \newcommand{\SSE}{\mathrm{SSE}}
 \newcommand{\SST}{\mathrm{SST}}
-\newcommand{\Cr}{\mathrm{Cr}}
-\newcommand{\AIC}{\mathrm{AIC}}
-\newcommand{\HQ}{\mathrm{HQ}}
-\newcommand{\Sc}{\mathrm{Sc}}
+\newcommand{\tr}{\mathsf{T}}
+\newcommand{\rk}{\mathrm{rk}}
 
 % -----page customization-----
-\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} % margins configuration
+\geometry{margin=1cm} % margins config
 \pagenumbering{gobble} % remove page numeration
-\setlength{\parskip}{0cm} % paragraph skip length
+\setlength{\parskip}{0cm} % paragraph spacing
 % title spacing:
 \titlespacing{\section}{0pt}{2ex}{1ex}
 \titlespacing{\subsection}{0pt}{1ex}{0ex}
@@ -39,18 +37,19 @@
 \begin{document}
 
 % page foot
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize add0.4-en - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize add1.0-en - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
-
+% start of column 1 page 1
+% titles
 \begin{center}
 	\textbf{\LARGE \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Additional Cheat Sheet}} \\
 	{\footnotesize By Marcelo Moreno - King Juan Carlos University} \\
 	{\footnotesize As part of the Econometrics Cheat Sheet Project}
 \end{center}
-
-\section*{OLS in matrix notation}
+% start of content
+\section*{OLS matrix notation}
 	The general econometric model:
 	\begin{center}
 		$y_i = \beta_0 + \beta_1 x_{1i} + ... + \beta_k x_{ki} + u_i$
@@ -63,20 +62,20 @@
 	\begin{center}
 		$\hat{u} = y - X \hat{\beta}$
 	\end{center}
-	The objective of OLS is to minimize the SSR:
+	The \textbf{objective} of OLS is to \textbf{minimize} the SSR:
 	\begin{center}
-		Min $\SSR =$ Min $\sum_{i=1}^n \hat{u}_i^2 = $ Min $\hat{u}^T \hat{u}$
+		$\min \SSR = \min \sum_{i=1}^n \hat{u}_i^2 = \min \hat{u}^\tr \hat{u}$
 	\end{center}
 	\begin{itemize}[leftmargin=*]
-		\item Defining $\hat{u}^T \hat{u}$:
+		\item Defining $\hat{u}^\tr \hat{u}$:
 		\begin{center}
-			$\hat{u}^T \hat{u} = (y - X \hat{\beta})^T (y - X \hat{\beta}) =$ \\
-			$= y^T y -2 \hat{\beta}^T X^T y + \hat{\beta}^T X^T X \hat{\beta}$
+			$\hat{u}^\tr \hat{u} = (y - X \hat{\beta})^\tr (y - X \hat{\beta}) =$ \\
+			$= y^\tr y -2 \hat{\beta}^\tr X^\tr y + \hat{\beta}^\tr X^\tr X \hat{\beta}$
 		\end{center}
-		\item Minimizing $\hat{u}^T \hat{u}$:
+		\item Minimizing $\hat{u}^\tr \hat{u}$:
 		\begin{center}
-			$\frac{\partial \hat{u}^T \hat{u}}{\partial \hat{\beta}} = -2 X^T y +2 X^T X \hat{\beta} = 0$ \\
-			$\hat{\beta} = (X^T X)^{-1} (X^T y)$ \\
+			$\frac{\partial \hat{u}^\tr \hat{u}}{\partial \hat{\beta}} = -2 X^\tr y +2 X^\tr X \hat{\beta} = 0$ \\
+			$\hat{\beta} = (X^\tr X)^{-1} (X^\tr y)$ \\
 			\scalebox{0.85}{
 				$
 				\begin{bmatrix}
@@ -103,13 +102,18 @@
 				$
 			}
 		\end{center}
-		The second derivative is $\frac{\partial^2 \hat{u}^T \hat{u}}{\partial \hat{\beta}^2} = X^T X > 0$ (is a min.)
+		The second derivative $\frac{\partial^2 \hat{u}^\tr \hat{u}}{\partial \hat{\beta}^2} = X^\tr X > 0$ (is a min.)
 	\end{itemize}
-	\subsection*{Variance-covariance matrix of $\hat{\beta}$}
-		\begin{center}
-			$\Var(\hat{\beta}) = \hat{\sigma}^2 (X^T X)^{-1} =$
-			\scalebox{0.67}{
-			$
+
+\section*{Variance-covariance matrix of $\hat{\beta}$}
+	Has the following form:
+	\begin{center}
+		$\Var(\hat{\beta}) = \hat{\sigma}^2_u \cdot (X^\tr X)^{-1} =$
+	\end{center}
+	\begin{center}
+		\scalebox{0.85}{
+		$
+			=
 			\begin{bmatrix}
 				\Var(\hat{\beta}_0)                & \Cov(\hat{\beta}_0, \hat{\beta}_1) & \hdots & \Cov(\hat{\beta}_0, \hat{\beta}_k) \\
 				\Cov(\hat{\beta}_1, \hat{\beta}_0) & \Var(\hat{\beta}_1)                & \hdots & \Cov(\hat{\beta}_1, \hat{\beta}_k) \\
@@ -117,151 +121,151 @@
 				\Cov(\hat{\beta}_k, \hat{\beta}_0) & \Cov(\hat{\beta}_k, \hat{\beta}_1) & \hdots & \Var(\hat{\beta}_k)
 			\end{bmatrix}
 			$
-			}
-		\end{center}
-		\quad where: $\hat{\sigma}^2 = \frac{\hat{u}^T \hat{u}}{n - k - 1}$ \\
-		The standard errors are in the diagonal of:
-		\begin{center}
-			$\se(\hat{\beta}) = \sqrt{\Var(\hat{\beta})}$
-		\end{center}
-	\subsection*{Error measures}
-		\begin{itemize}[leftmargin=*]
-			\item $\SSR = \hat{u}^T \hat{u} = y^T y - \hat{\beta}^T X^T y = \sum(y_i - \hat{y}_i)^2$
-			\item $\SSE = \hat{\beta}^T X^T y - n \overline{y}^2 = \sum(\hat{y}_i - \overline{y})^2$
-			\item $\SST = \SSR + \SSE = y^T y - n \overline{y}^2 = \sum(y_i - \overline{y})^2$
-		\end{itemize}
-	\subsection*{R-squared}
-	\begin{center}
-		$R^2 = \frac{\SSE}{\SST} = 1 - \frac{\SSR}{\SST}$
+		}
 	\end{center}
-	The R-squared corrected by degrees of freedom:
+	\quad where: $\hat{\sigma}^2_u = \frac{\hat{u}^\tr \hat{u}}{n - k - 1}$ \\
+	The standard errors are in the diagonal of:
 	\begin{center}
-		$\overline{R}^2 = 1 - \frac{n - 1}{n - k - 1} (1 - R^2)$
+		$\se(\hat{\beta}) = \sqrt{\Var(\hat{\beta})}$
 	\end{center}
-	
-\columnbreak
 
-\section*{Variance-covariance matrix of $\hat{u}$}
+\section*{Error measures}
+	\begin{itemize}[leftmargin=*]
+		\item $\SSR = \hat{u}^\tr \hat{u} = y^\tr y - \hat{\beta}^\tr X^\tr y = \sum(y_i - \hat{y}_i)^2$
+		\item $\SSE = \hat{\beta}^\tr X^\tr y - n \overline{y}^2 = \sum(\hat{y}_i - \overline{y})^2$
+		\item $\SST = \SSR + \SSE = y^\tr y - n \overline{y}^2 = \sum(y_i - \overline{y})^2$
+	\end{itemize}
+% end of column 1 page 1
+\columnbreak
+% start of column 2 page 1
+\section*{Variance-covariance matrix of $u$}
+	Has the following form:
 	\begin{center}
-		$\Var(\hat{u}) =$
-		\scalebox{0.80}{
+		$\Var(u) =$
+		\scalebox{0.85}{
 			$
 			\begin{bmatrix}
-				\Var(\hat{u}_1)            & \Cov(\hat{u}_1, \hat{u}_2) & \hdots & \Cov(\hat{u}_1, \hat{u}_n) \\
-				\Cov(\hat{u}_2, \hat{u}_1) & \Var(\hat{u}_2)            & \hdots & \Cov(\hat{u}_2, \hat{u}_n) \\
-				\vdots                     & \vdots                     & \ddots & \vdots                     \\
-				\Cov(\hat{u}_n, \hat{u}_1) & \Cov(\hat{u}_n, \hat{u}_2) & \hdots & \Var(\hat{u}_n)
+				\Var(u_1)      & \Cov(u_1, u_2) & \hdots & \Cov(u_1, u_n) \\
+				\Cov(u_2, u_1) & \Var(u_2)      & \hdots & \Cov(u_2, u_n) \\
+				\vdots         & \vdots         & \ddots & \vdots         \\
+				\Cov(u_n, u_1) & \Cov(u_n, u_2) & \hdots & \Var(u_n)
 			\end{bmatrix}
 			$
 		}
 	\end{center}
 	When there is no heterocedasticity and no auto-correlation, the variance-covariance matrix of $u$ has the form:
 	\begin{center}
-		$\Var(\hat{u}) = \hat{\sigma}^2_u \cdot I_n =$
-		\scalebox{0.80}{
+		$\Var(u) = \sigma^2_u \cdot I_n =$
+		\scalebox{0.85}{
 			$
 			\begin{bmatrix}
-				\hat{\sigma}^2_u & 0                & \hdots & 0                \\
-				0                & \hat{\sigma}^2_u & \hdots & 0                \\
-				\vdots           & \vdots           & \ddots & \vdots           \\
-				0                & 0                & \hdots & \hat{\sigma}^2_u
+				\sigma^2_u & 0          & \hdots & 0          \\
+				0          & \sigma^2_u & \hdots & 0          \\
+				\vdots     & \vdots     & \ddots & \vdots     \\
+				0          & 0          & \hdots & \sigma^2_u
 			\end{bmatrix}
 			$
 		}
 	\end{center}
-	where $I_n$ is an identity matrix of $n \times n$ elements. \\
-	When there is \textcolor{cyan}{heterocedasticity} and \textcolor{magenta}{auto-correlation}, the variance-covariance matrix of $u$ has the form:
+	\quad where $I_n$ is an identity matrix of $n \times n$ elements. \\
+	When there is \textcolor{cyan}{\textbf{heterocedasticity}} and \textcolor{magenta}{\textbf{auto-correlation}}, the variance-covariance matrix of $u$ has the form:
 	\begin{center}
-		$\Var(\hat{u}) = \hat{\sigma}^2_u \cdot \Omega =$
-		\scalebox{0.80}{
+		$\Var(u) = \sigma^2_u \cdot \Omega =$
+		\scalebox{0.85}{
 			$
 			\begin{bmatrix}
-				\hat{\sigma}^2_{u_{\textcolor{cyan}{1}}}   & \hat{\sigma}_{u_{\textcolor{magenta}{12}}} & \hdots & \hat{\sigma}_{u_{\textcolor{magenta}{1n}}} \\
-				\hat{\sigma}_{u_{\textcolor{magenta}{21}}} & \hat{\sigma}^2_{u_{\textcolor{cyan}{2}}}   & \hdots & \hat{\sigma}_{u_{\textcolor{magenta}{2n}}} \\
-				\vdots                                     & \vdots                                     & \ddots & \vdots                                     \\
-				\hat{\sigma}_{u_{\textcolor{magenta}{n1}}} & \hat{\sigma}_{u_{\textcolor{magenta}{n2}}} & \hdots & \hat{\sigma}^2_{u_{\textcolor{cyan}{n}}}
+				\textcolor{cyan}{\sigma^2_{u_{1}}}   & \textcolor{magenta}{\sigma_{u_{12}}} & \hdots & \textcolor{magenta}{\sigma_{u_{1n}}} \\
+				\textcolor{magenta}{\sigma_{u_{21}}} & \textcolor{cyan}{\sigma^2_{u_{2}}}   & \hdots & \textcolor{magenta}{\sigma_{u_{2n}}} \\
+				\vdots                               & \vdots                               & \ddots & \vdots                               \\
+				\textcolor{magenta}{\sigma_{u_{n1}}} & \textcolor{magenta}{\sigma_{u_{n2}}} & \hdots & \textcolor{cyan}{\sigma^2_{u_{n}}}
 			\end{bmatrix}
 			$
 		}
 	\end{center}
-	where $\Omega \neq I_n$
-
-\section*{Incorrect functional form}
+	\quad where $\Omega \neq I_n$.
 	\begin{itemize}[leftmargin=*]
-		\item Ramsey's RESET test for functional from. $H_0$: the model is correctly specified when compared to a model. The procedure:
-		\begin{enumerate}[leftmargin=*]
-			\item Estimate the original model and obtain $\hat{y}$ and $R^2$.
-			\begin{center}
-				$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x_1 + ... + \hat{\beta}_k x_k$
-			\end{center}
-			\item Estimate a new model adding powers of $\hat{y}$ and obtain the new $R^2_{new}$ For example, adding $m$ powers of $\hat{y}$:
-			\begin{center}
-				$\tilde{y} = \tilde{\beta}_0 + \tilde{\beta}_1 x_1 + ... + \tilde{\beta}_k x_k + \tilde{\beta}_{k+1} \hat{y}^2 + ... + \tilde{\beta}_{k+(m-1)} \hat{y}^m$
-			\end{center}
-			\item Define the statistic of contrast:
-			\begin{center}
-				$F = \dfrac{R^2_{new} - R^2}{1 - R^2_{new}} \dfrac{n -(k + m) - 1}{m} \sim F_{m-1, n-k-m}$
-			\end{center}
-		\end{enumerate} % https://de.wikipedia.org/wiki/RESET-Test_nach_Ramsey
-	where $m =$ number of powers of $\hat{y}$, $k =$ number of parameters associated with $x$
+		\item Heterocedasticity: $\Var(u) = \sigma^2_{u_i} \neq \sigma^2_u$
+		\item Auto-correlation: $\Cov(u_i, u_j) = \sigma_{u_{ij}} \neq 0 \quad \forall i \neq j$
 	\end{itemize}
 
 \section*{Variable omission}
 	Most of the time, is hard to get all relevant variables for an analysis. For example, a true model with all variables:
 	\begin{center}
-		$y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + u$
+		$y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + v$
 	\end{center}
-	The estimated model (with the available variables):
+	\quad where $\beta_2 \neq 0$, $v$ is the error term and $\Cov(v|x_1,x_2) = 0$. \\
+	The model with the available variables:
 	\begin{center}
-		$\tilde{y} = \tilde{\beta}_0 + \tilde{\beta}_1 x_1 + u$
+		$y = \alpha_0 + \alpha_1 x_1 + u$
 	\end{center}
-	Omission of variables provoke OLS bias and inconsistency. \\
-	Depending of the correlation between $x_1$ and $x_2$ and the sign of $\beta_2$, the bias on $\tilde{\beta}_1$ could be:
+	\quad where $u = v + \beta_2 x_2$. \\
+	Relevant variable omission causes OLS estimators to be \textbf{biased} and \textbf{inconsistent}, because there is no weak exogeneity, $\Cov(x_1,u) \neq 0$. Depending on the $\Corr(x_1, x_2)$ and the sign of $\beta_2$, the bias on $\hat{\alpha}_1$ could be:
 	\begin{center}
-		\scalebox{0.9}{ % scale the table
-			\begin{tabular}{| c | c | c |}
-				\hline
-				              & $\Corr(x_1, x_2) > 0$ & $\Corr(x_1, x_2) < 0$ \\ \hline
-				$\beta_2 > 0$ & $(+) \text{ bias}$    & $(-) \text{ bias}$    \\ \hline
-				$\beta_2 < 0$ & $(-) \text{ bias}$    & $(+) \text{ bias}$    \\ \hline
-			\end{tabular}
-		}
+		\begin{tabular}{| c | c | c |}
+			\cline{2-3}
+			\multicolumn{1}{c|}{} & $\Corr(x_1, x_2) > 0$ & $\Corr(x_1, x_2) < 0$ \\ \hline
+			$\beta_2 > 0$         & $(+) \text{ bias}$    & $(-) \text{ bias}$    \\ \hline
+			$\beta_2 < 0$         & $(-) \text{ bias}$    & $(+) \text{ bias}$    \\ \hline
+		\end{tabular}
 	\end{center}
-	$(+)$ bias $\rightarrow$ $\tilde{\beta}_1$ will be higher than it should be (it includes the effect of $x_2$). $\tilde{\beta}_1 > \beta_1$ \\
-	$(-)$ bias $\rightarrow$ $\tilde{\beta}_1$ will be lower than it should be (it includes the effect of $x_2$). $\tilde{\beta}_1 < \beta_1$ \\
-	If $\Corr(x_1,x_2) = 0$, there is no bias on $\beta_1$, because the effect of $x_2$ will be fully picked up by the error term, $u$. \\
-	There are two approaches to solve the problem:
 	\begin{itemize}[leftmargin=*]
-		\item Make use of proxy variables.
-		\item Make use of instrumental variables (IV).
+		\item $(+)$ bias: $\hat{\alpha}_1$ will be higher than it should be (it includes the effect of $x_2$) $\rightarrow \hat{\alpha}_1 > \beta_1$
+		\item $(-)$ bias: $\hat{\alpha}_1$ will be lower than it should be (it includes the effect of $x_2$) $\rightarrow \hat{\alpha}_1 < \beta_1$
 	\end{itemize}
-	\subsection*{Proxy variables}
-		Is the approach when a relevant variable is not available for the model because is non-observable, and there is no data.
-		\begin{itemize}[leftmargin=*]
-			\item A proxy variable is something related with the non-observable variable that has data available.
-		\end{itemize}
-		For example, the intellectual coefficient is a proxy variable for a subject's capacity (non-observable).
-	\subsection*{Instrumental variables (IV)}
-		When proxy variables are not available, the alternative approach is to look for a variable, let's call it $z$, that has a relation with $x$. The $z$ variable must meet the following requirements to be called an Instrumental Variable (IV):
-		\begin{center}
-			$\Cov(z,u) = 0$ (exogeneity) \\
-			$\Cov(z,x) \neq 0$ (relevance)
-		\end{center}
-		This method let the omitted variable in the error term, but instead of estimate the model by OLS, it utilizes a method that recognize the presence of an omitted variable. This method can also solve error measurements.
-	\subsection*{TSLS}
-		This is a method to estimate a model with multiple instrumental variables. \\
-		The $\Cov(z,u) = 0$ requirement can be relaxed, but there has to be a minimum of variables that satisfies it. \\
-		Can have multicollinearity problems. \\
-		\textbf{Some tests}:
-		\begin{itemize}[leftmargin=*]
-			\item Endogeneity tests:  is TSLS better than OLS when there are no endogenous variables? Do we really need TSLS? $\rightarrow$ Hausman test $\rightarrow H_0$: OLS is consistent (it is better to use OLS).
-			\item Is there too many IV? $\rightarrow$ Sagan test $\rightarrow H_0$: all IV seem ok
-		\end{itemize}
-	
+	If $\Corr(x_1,x_2) = 0$, there is no bias on $\hat{\alpha}_1$, because the effect of $x_2$ will be fully picked up by the error term, $u$.
+% end of column 2 page 1
+\columnbreak
+% start of column 3 page 1
+	\subsection*{Variable omission correction}
+		\subsubsection*{Proxy variables}
+			Is the approach when a relevant variable is not available because it is non-observable, and there is no data available.
+			\begin{itemize}[leftmargin=*]
+				\item A \textbf{proxy variable} is something \textbf{related} with the non-observable variable that has data available.
+			\end{itemize}
+			For example, the GDP per capita is a proxy variable for the life quality (non-observable).
+		\subsubsection*{Instrumental variables}
+			When the variable of interest ($x$) is observable but \textbf{endogenous}, the proxy variables approach is no longer valid.
+			\begin{itemize}[leftmargin=*]
+				\item An \textbf{instrumental variable} (IV) \textbf{is an observable variable} ($z$) that is \textbf{related} with the variable of interest that is endogenous ($x$), and meet the \textbf{requirements}:
+				\begin{center}
+					$\Cov(z,u) = 0 \rightarrow$ instrument exogeneity \\
+					$\Cov(z,x) \neq 0 \rightarrow$ instrument relevance
+				\end{center}
+			\end{itemize}
+			Instrumental variables let the omitted variable in the error term, but instead of estimate the model by OLS, it utilizes a method that recognizes the presence of an omitted variable. It can also solve error measurement problems.
+			\begin{itemize}[leftmargin=*]
+				\item \textbf{Two-Stage Least Squares} (TSLS) is a method to estimate a model with multiple instrumental variables. The $\Cov(z,u) = 0$ requirement can be relaxed, but there has to be a minimum of variables that satisfies it. \\
+				The TSLS \textbf{estimation procedure} is as follows:
+				\begin{enumerate}[leftmargin=*]
+					\item Estimate a model regressing $x$ by $z$ using OLS, obtaining $\hat{x}$:
+					\begin{center}
+						$\hat{x} = \hat{\pi}_0 + \hat{\pi}_1 z$
+					\end{center}
+					\item Replace $x$ by $\hat{x}$ in the final model and estimate it by OLS:
+					\begin{center}
+						$y = \beta_0 + \beta_1 \hat{x} + u$
+					\end{center}
+				\end{enumerate}
+				There are some \underline{important} things to know about TSLS:
+				\begin{itemize}[leftmargin=*]
+					\item TSLS estimators are less efficient than OLS when the explanatory variables are exogenous. The \textbf{Hausman test} can be used to check it:
+					\begin{center}
+						$H_0$: OLS estimators are consistent.
+					\end{center}
+					If $H_0$ is accepted, the OLS estimators are better than TSLS and vice versa.
+					\item There could be some (or all) instrument that are not valid. This is known as over-identification, \textbf{Sargan test} can be used to check it:
+					\begin{center}
+						$H_0$: all instruments are valid.
+					\end{center}
+				\end{itemize}
+			\end{itemize}
+% end of column 3 page 1
+\columnbreak
+% start of column 1, 2 and 3 page 2 (1)
 \section*{Information criterion}
 	It is used to compare models with different number of parameters ($k$). The general formula:
 	\begin{center}
-		$\Cr(k) = \log(\frac{\SSR}{n}) + c_n \varphi (k)$
+		$\mathrm{Cr}(k) = \log(\frac{\SSR}{n}) + c_n \varphi (k)$
 	\end{center}
 	where:
 	\begin{itemize}[leftmargin=*]
@@ -269,330 +273,187 @@
 		\item $c_n$ is a sequence indexed by the sample size.
 		\item $\varphi(k)$ is a function that penalizes large $k$ orders.
 	\end{itemize}
-	The order of $k$ that minimizes the criterion is chosen. \\
-	The $c_n \varphi(k)$ function:
+	Is interpreted as the relative amount of information lost by the model. The $k$ order that min. the criterion is chosen. \\
+	There are different $c_n \varphi(k)$ functions:
 	\begin{itemize}[leftmargin=*]
-		\item Akaike: $\AIC(k) = \log(\frac{\SSR}{n}) + \frac{2}{n} k$
-		\item Hannan-Quinn: $\HQ(k) = \log(\frac{\SSR}{n}) + \frac{2 \log(\log(n))}{n} k$
-		\item Schwarz: $\Sc(k) = \log(\frac{\SSR}{n}) + \frac{\log(n)}{n} k$
+		\item Akaike: $\mathrm{AIC}(k) = \log(\frac{\SSR}{n}) + \frac{2}{n} k$
+		\item Hannan-Quinn: $\mathrm{HQ}(k) = \log(\frac{\SSR}{n}) + \frac{2 \log(\log(n))}{n} k$
+		\item Schwarz: $\mathrm{Sc}(k) = \log(\frac{\SSR}{n}) + \frac{\log(n)}{n} k$
 	\end{itemize}
-	$\Sc(k) \leq \HQ(k) \leq \AIC(k)$
+	$\mathrm{Sc}(k) \leq \mathrm{HQ}(k) \leq \mathrm{AIC}(k)$
 
+\section*{Incorrect functional form}
+	To check if the model \textbf{functional form} is correct, we can use \textbf{Ramsey's RESET} (Regression Specification Error Test). It test the original model vs. a model with variables in powers.
+	\begin{center}
+		$H_0$: the model is correctly specified.
+	\end{center}
+	Test procedure:
+	\begin{enumerate}[leftmargin=*]
+		\item Estimate the original model and obtain $\hat{y}$ and $R^2$:
+		\begin{center}
+			$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x_1 + ... + \hat{\beta}_k x_k$
+		\end{center}
+		\item Estimate a new model adding powers of $\hat{y}$ and obtain the new $R^2_{\mathrm{new}}$:
+		\begin{center}
+			$\tilde{y} = \hat{y} + \tilde{\gamma}_2 \hat{y}^2 + ... + \tilde{\gamma}_l \hat{y}^l$
+		\end{center}
+		\item Define the test statistic, under $\gamma_2 = ... = \gamma_l = 0$ as null hypothesis:
+		\begin{center}
+			$F = \frac{R^2_{\mathrm{new}} - R^2}{1 - R^2_{\mathrm{new}}} \cdot \frac{n -(k + l) - 1}{l} \sim F_{l-1, n-k-l}$
+		\end{center}
+	\end{enumerate}
+	If $F_{l-1, n-k-l} < F$, there is evidence to reject $H_0$.
+% end of column 1, 2 and 3 page 2 (1)
+\end{multicols}
+
+\noindent\rule{\textwidth}{0.4pt} % horizontal line dividing page 2 (1) and page 2 (2)
+
+\begin{multicols}{2} % set columns to 2
+% start of column 1 page 2 (2)
+\section*{VAR (Vector Autoregressive)}
+	A VAR model captures \textbf{dynamic interactions} between time series variables. The VAR($p$):
+	\begin{center}
+		$y_t = A_1 y_{t-1} + \hdots + A_p y_{t-p} + B_0 x_t + \hdots + B_q x_{t-q} + CD_t + u_t$
+	\end{center}
+	where:
+	\begin{itemize}[leftmargin=*]
+		\item $y_t = (y_{1t}, ..., y_{Kt})^\tr$ is a vector of $K$ observable endogenous time series variables.
+		\item $A_i$'s are $K \times K$ coefficient matrices.
+		\item $x_t = (x_{1t}, ..., x_{Mt})^\tr$ is a vector of $M$ observable exogenous time series variables.
+		\item $B_j$'s are $K \times M$ coefficient matrices.
+		\item $D_t$ is a vector that contains all deterministic terms, that may be a: constant, linear trend, seasonal dummy, and/or any other user specified dummy variables.
+		\item $C$ is a coefficient matrix of suitable dimension.
+		\item $u_t = (u_{1t}, ..., u_{Kt})^\tr$ is a vector of $K$ white noise series.
+	\end{itemize}
+	The process is \textbf{stable} if:
+	\begin{center}
+		$\det(I_K - A_1 z - ... - A_p z^p) \neq 0 \quad \mathrm{for} \quad |z| \leq 1$
+	\end{center}
+	\quad this is, there are \textbf{no roots} in and on the complex unit circle. \\ \\
+	For example, a VAR model with two endogenous variables ($K=2$), two lags ($p=2$), an exogenous contemporaneous variable ($M=1$), a constant ($\mathrm{const}$) and a trend ($\mathrm{Trend}_t$):
+	\begin{center}
+		\scalebox{0.80}{
+			$
+			\begin{bmatrix}
+				y_{1t} \\
+				y_{2t}
+			\end{bmatrix}
+			= 
+			\begin{bmatrix}
+				a_{11,1} & a_{12,1} \\
+				a_{21,1} & a_{22,1}
+			\end{bmatrix}
+			\cdot
+			\begin{bmatrix}
+				y_{1,t-1} \\
+				y_{2,t-1}
+			\end{bmatrix}
+			+
+			\begin{bmatrix}
+				a_{11,2} & a_{12,2} \\
+				a_{21,2} & a_{22,2}
+			\end{bmatrix}
+			\cdot
+			\begin{bmatrix}
+				y_{1,t-2} \\
+				y_{2,t-2}
+			\end{bmatrix}
+			+
+			\begin{bmatrix}
+				b_{11} \\
+				b_{21}
+			\end{bmatrix}
+			\cdot
+			\begin{bmatrix}
+				x_t
+			\end{bmatrix}
+			+
+			\begin{bmatrix}
+				c_{11} & c_{12} \\
+				c_{21} & c_{22}
+			\end{bmatrix}
+			\cdot
+			\begin{bmatrix}
+				const \\
+				Trend_t \\
+			\end{bmatrix}
+			+
+			\begin{bmatrix}
+				u_{1t} \\
+				u_{2t}
+			\end{bmatrix}
+			$
+		}
+	\end{center}
+	Visualizing the separate equations:
+	\begin{center}
+		\scalebox{0.95}{
+			$y_{1t} = a_{11,1} y_{1,t-1} + a_{12,1} y_{2,t-1} + a_{11,2} y_{1,t-2} + a_{12,2} y_{2,t-2} + b_{11} x_t  + c_{11} + c_{12} \mathrm{Trend}_t + u_{1t}$
+		}
+		\scalebox{0.95}{
+			$y_{2t} = a_{21,1} y_{2,t-1} + a_{22,1} y_{1,t-1} + a_{21,2} y_{2,t-2} + a_{22,2} y_{1,t-2} + b_{21} x_t + c_{21} + c_{22} \mathrm{Trend}_t + u_{2t}$
+		}
+	\end{center}
+	\textcolor{white}{.} \\
+	If there is an unit root, the determinant is zero for $z=1$, then some or all variables are integrated and a VAR model is no longer appropiate (is unstable).
+% end of column 1 page 2 (2)
 \columnbreak
-
-
-\section*{Incorrect functional forms}
-	Ramsey RESET test: it test the specification errors of a regression. $H_0$: the model is correctly specified.
-
-\section*{VAR}
-
-The VAR model general form:
-
-$y_t = A_1 y_{t-1} + ... + A_p y_{t-p} + B_0 x_t + ... + B_q x_{t-q} + CD_t + u_t$
-
-where:
-
-\begin{itemize}[leftmargin=*]
-	\item $y_t = (y_{1t}, ..., y_{Kt})'$ is a vector of $K$ observable endogenous variables.
-	\item $x_t = (x_{1t}, ..., x_{Mt})'$ is a vector of $M$ observable exogenous or unmodelled variables.
-	\item $D_t$ contains all deterministic variables which may consist of a constant, a linear trend, seasonal dummy variables...
-	\item $u_t$ is a $K$-dimensional unobservable zero mean white noise process with positive definite covariance matrix $E(u_t u_t' = \Sigma_u)$.
-	\item The $A_i$, $B_j$ and $C$ are parameter matrices of suitable dimension.
-\end{itemize}
-
-For example, a model with two endogenous variables (with two lags), an exogenous contemporaneous variable, a constant ($const$) and a trend ($Trend_t$):
-
-\scalebox{0.65}{
-	\\ $y_{1t} = a_{11,1} y_{1,t-1} + a_{12,1} y_{2,t-1} + a_{11,2} y_{1,t-2} + a_{12,2} y_{2,t-2} + b_{11} x_t  + c_{11} + c_{12} Trend_t + u_{1t}$
-}
-
-\scalebox{0.65}{
-	\\ $y_{2t} = a_{21,1} y_{2,t-1} + a_{22,1} y_{1,t-1} + a_{21,2} y_{2,t-2} + a_{22,2} y_{1,t-2} + b_{21} x_t + c_{21} + c_{22} Trend_t + u_{2t}$
-}
-
-For example, the equations:
-
-\scalebox{0.8}{
-	$
-	\begin{bmatrix}
-		y_{1t} \\
-		y_{2t}
-	\end{bmatrix}
-	= 
-	A_1
-	\cdot
-	\begin{bmatrix}
-		y_{1,t-1} \\
-		y_{2,t-1}
-	\end{bmatrix}
-	+
-	A_2
-	\cdot
-	\begin{bmatrix}
-		y_{1,t-2} \\
-		y_{2,t-2}
-	\end{bmatrix}
-	+
-	B_0
-	\cdot
-	\begin{bmatrix}
-		x_t
-	\end{bmatrix}
-	+
-	C
-	\cdot
-	\begin{bmatrix}
-		const \\
-		Trend_t \\
-	\end{bmatrix}
-	+
-	\begin{bmatrix}
-		u_{1t} \\
-		u_{2t}
-	\end{bmatrix}
-	$
-}
-
-\scalebox{0.55}{
-$
-\begin{bmatrix}
-	y_{1t} \\
-	y_{2t}
-\end{bmatrix}
-= 
-\begin{bmatrix}
-	a_{11,1} & a_{12,1} \\
-	a_{21,1} & a_{22,1}
-\end{bmatrix}
-\cdot
-\begin{bmatrix}
-	y_{1,t-1} \\
-	y_{2,t-1}
-\end{bmatrix}
-+
-\begin{bmatrix}
-	a_{11,2} & a_{12,2} \\
-	a_{21,2} & a_{22,2}
-\end{bmatrix}
-\cdot
-\begin{bmatrix}
-	y_{1,t-2} \\
-	y_{2,t-2}
-\end{bmatrix}
-+
-\begin{bmatrix}
-	b_{11} \\
-	b_{21}
-\end{bmatrix}
-\cdot
-\begin{bmatrix}
-	x_t
-\end{bmatrix}
-+
-\begin{bmatrix}
-	c_{11} & c_{12} \\
-	c_{21} & c_{22}
-\end{bmatrix}
-\cdot
-\begin{bmatrix}
-	const \\
-	Trend_t \\
-\end{bmatrix}
-+
-\begin{bmatrix}
-	u_{1t} \\
-	u_{2t}
-\end{bmatrix}
-$
-}
-
-\section*{VECM}
-\scalebox{0.7}{
-	$\Delta y_t = 
-	\Pi^*
-	\begin{bmatrix}
-		y_{t-1} \\
-		D_{t-1}^{co}
-	\end{bmatrix}
-	+ \Gamma_1 \Delta y_{t-1} + ... + \Gamma_{p} \Delta y_{t-p} + B_0 x_t + ... + B_q x_{t-q} + CD_t + u_t$
-}
-\\ where:
-\begin{itemize}[leftmargin=*]
-	\item $\Pi^* = \alpha \beta^{T*}$.
-	\item $D_t^{co}$ contains all deterministic terms included in the cointegration relations.
-	\item $D_t$ contains all remaining deterministic variables.
-\end{itemize}
-
-For example. The matrix form:
-
-\scalebox{0.5}{
-	$
-	\begin{bmatrix}
-		\Delta y_{1t} \\
-		\Delta y_{2t}
-	\end{bmatrix}
-	= 
-	\Pi^*
-	\begin{bmatrix}
-		y_{t-1} \\
-		const
-	\end{bmatrix}
-	+
-	\Gamma_1
-	\cdot
-	\begin{bmatrix}
-		\Delta y_{1,t-1} \\
-		\Delta y_{2,t-1}
-	\end{bmatrix}
-	+
-	B_0
-	\cdot
-	\begin{bmatrix}
-		x_t
-	\end{bmatrix}
-	+
-	C
-	\cdot
-	\begin{bmatrix}
-		Trend_t
-	\end{bmatrix}
-	+
-	\begin{bmatrix}
-		u_{1t} \\
-		u_{2t}
-	\end{bmatrix}
-	$
-}
-
-\scalebox{0.5}{
-	$
-	\begin{bmatrix}
-		\Delta y_{1t} \\
-		\Delta y_{2t}
-	\end{bmatrix}
-	= 
-	\alpha
-	\left[
-	\beta^T
-	\begin{bmatrix}
-		y_{1,t-1} \\
-		y_{2,t-1}
-	\end{bmatrix}
-	+
-	C^*
-	\begin{bmatrix}
-		const
-	\end{bmatrix}
-	\right]
-	+
-	\Gamma_1
-	\cdot
-	\begin{bmatrix}
-		\Delta y_{1,t-1} \\
-		\Delta y_{2,t-1}
-	\end{bmatrix}
-	+
-	B_0
-	\cdot
-	\begin{bmatrix}
-		x_t
-	\end{bmatrix}
-	+
-	C
-	\cdot
-	\begin{bmatrix}
-		Trend_t
-	\end{bmatrix}
-	+
-	\begin{bmatrix}
-		u_{1t} \\
-		u_{2t}
-	\end{bmatrix}
-	$
-}
-
-\scalebox{0.5}{
-	$
-	\begin{bmatrix}
-		\Delta y_{1t} \\
-		\Delta y_{2t}
-	\end{bmatrix}
-	= 
-	\begin{bmatrix}
-		\alpha_{11} \\
-		\alpha_{12}
-	\end{bmatrix}
-	\left[
-	\begin{bmatrix}
-		\beta_{11} & \beta_{21}
-	\end{bmatrix}
-	\begin{bmatrix}
-		y_{1,t-1} \\
-		y_{2,t-1}
-	\end{bmatrix}
-	+
-	\begin{bmatrix}
-		c^*
-	\end{bmatrix}
-	\begin{bmatrix}
-		const
-	\end{bmatrix}
-	\right]
-	+
-	\begin{bmatrix}
-		\gamma_{11} & \gamma_{12} \\
-		\gamma_{21} & \gamma_{22}
-	\end{bmatrix}
-	\cdot
-	\begin{bmatrix}
-		\Delta y_{1,t-1} \\
-		\Delta y_{2,t-1}
-	\end{bmatrix}
-	+
-	\begin{bmatrix}
-		b_{11} \\
-		b_{21}
-	\end{bmatrix}
-	\cdot
-	\begin{bmatrix}
-		x_t
-	\end{bmatrix}
-	+
-	\begin{bmatrix}
-		c_{11} \\
-		c_{21}
-	\end{bmatrix}
-	\cdot
-	\begin{bmatrix}
-		Trend_t
-	\end{bmatrix}
-	+
-	\begin{bmatrix}
-		u_{1t} \\
-		u_{2t}
-	\end{bmatrix}
-	$
-}
-
-The VECM model general form:
-
-
-
-\scalebox{0.8}{
-	$\Delta y_t = \Pi y_{t-1} + \Gamma_1 \Delta y_{t-1} + ... + \Gamma_{p} \Delta y_{t-p} + B_0 x_t + ... + B_q x_{t-q} + CD_t + u_t$
-}
-
-where:
-\begin{itemize}[leftmargin=*]
-	\item $y_t = (y_{1t}, ..., y_{Kt})'$ is a vector of $K$ observable endogenous variables.
-	\item $x_t = (x_{1t}, ..., x_{Mt})'$ is a vector of $M$ observable exogenous or unmodelled variables.
-	\item $\Pi = \alpha \beta'$. Suppose $\mathrm{rk}(\Pi) = r = \mathrm{rk}(\alpha) = \mathrm{rk}(\beta)$
-	\item $D_t$ contains all deterministic variables which may consist of a constant, a linear trend, seasonal dummy variables...
-	\item $u_t$ is a $K$-dimensional unobservable zero mean white noise process with positive definite covariance matrix $E(u_t u_t' = \Sigma_u)$.
-	\item The $A_i$, $B_j$ and $C$ are parameter matrices of suitable dimension.
-\end{itemize}
-
-
+% start of column 2 page 2 (2)
+\section*{VECM (Vector Error Correction Model)}
+	If \textbf{cointegrating relations} are present in a system of variables, the VAR form is not the most convenient. It is better to use a VECM, that is, the \textbf{levels version} of VAR. The VECM($p-1$):
+	\begin{center}
+		$\Delta y_t = \Pi y_{t-1} + \Gamma_1 \Delta y_{t-1} + ... + \Gamma_{p-1} \Delta y_{t-p+1} + B_0 x_t + ... + B_q x_{t-q} + CD_t + u_t$
+	\end{center}
+	where:
+	\begin{itemize}[leftmargin=*]
+		\item $y_t$, $x_t$, $D_t$ and $u_t$ are as specified in VAR.
+		\item $\Pi = - (I_K - A_1 - \cdots - A_p)$ for $i = 1, ..., p-1$ ; $\Pi y_{t-1}$ is referred as the \textbf{long-term} part.
+		\item $\Gamma = - (A_{i+1} + \cdots + A_p)$ for $i = 1, ..., p-1$ is referred as the \textbf{short-term} parameters.
+		\item $A_i$, $B_j$ and $C$ are coefficient matrices of suitable dimensions.
+	\end{itemize}
+	If the VAR($p$) proces is unstable (there are roots), $\Pi$ can be written as a product of ($K \times r$) matrices $\alpha$ (\textbf{loading matrix}) and $\beta$ (\textbf{cointegration matrix}) with $\rk(\Pi) = \rk(\alpha) = \rk(\beta) = r$ (\textbf{cointegrating rank}) as follows $\Pi = \alpha \beta^\tr$.
+	\begin{itemize}[leftmargin=*]
+		\item $\beta^\tr y_{t-1}$ contains the cointegrating relations.
+	\end{itemize}
+	\textcolor{white}{.} \\
+	For example, if there are three endogenous variables ($K=3$) with two cointegratig relations ($r=2$), the long term part of the VECM:
+	\begin{center}
+		\scalebox{0.95}{
+			$
+			\Pi y_{t-1} = \alpha \beta^\tr y_{t-1} =
+			\begin{bmatrix}
+				\alpha_{11} & \alpha_{12} \\
+				\alpha_{21} & \alpha_{22} \\
+				\alpha_{31} & \alpha_{32}
+			\end{bmatrix}
+			\begin{bmatrix}
+				\beta_{11} & \beta_{21} & \beta_{31} \\
+				\beta_{12} & \beta_{22} & \beta_{32}
+			\end{bmatrix}
+			\begin{bmatrix}
+				y_{1,t-1} \\
+				y_{2,t-1} \\
+				y_{3,t-1}
+			\end{bmatrix} =
+			\begin{bmatrix}
+				\alpha_{11} ec_{1,t-1} + \alpha_{12} ec_{2,t-1} \\
+				\alpha_{21} ec_{1,t-1} +
+				\alpha_{22} ec_{2,t-1} \\
+				\alpha_{31} ec_{1,t-1} + 
+				\alpha_{32} ec_{2,t-1}
+			\end{bmatrix}
+			$
+		}
+	\end{center}
+	\quad where:
+	\begin{center}
+		$ec_{1,t-1} = \beta_{11} y_{1,t-1} + \beta_{21} y_{2,t-1} + \beta_{31} y_{3,t-1}$ \\
+		$ec_{2,t-1} = \beta_{12} y_{1,t-1} + \beta_{22} y_{2,t-1} + \beta_{32} y_{3,t-1}$
+	\end{center}
+	\textcolor{white}{.} \\ \\
+	\colorbox{yellow}{\textbf{Note:}} this is a very basic introduction, there is a lot more literature about the correct specific use of this models and more advanced ones. For example, the VECM with deterministic terms inside the cointegrating relations, the Structural VAR model, etc.
+% start of column 1 page 2 (2)
+% end of content
 \end{multicols}
 
 \end{document}
