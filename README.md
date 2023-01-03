@@ -27,7 +27,7 @@ Econometrics cheat sheets created using $\LaTeX$ with a summarized review of:
 | Spanish :es: | [es.pdf](time-series-cheatsheet/time-series-cheatsheet-es.pdf)  | [es.tex](time-series-cheatsheet/time-series-cheatsheet-es.tex)  |
 
 
-**Additional Cheat Sheet**. Current version: `add1.0` (last updated 15 dec. 2022)
+**Additional Cheat Sheet**. Current version: `add1.0` (last updated 3 jan. 2023)
 
 |              | PDF file                                                        | TeX file                                                        |
 | :----------: | :-------------------------------------------------------------: | :-------------------------------------------------------------: |
