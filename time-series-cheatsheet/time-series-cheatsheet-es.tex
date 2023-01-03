@@ -1,17 +1,17 @@
 \documentclass[10pt, a4paper, landscape]{extarticle}
 
 % -----packages-----
-\usepackage{multicol} % for multiple columns
-\usepackage[landscape]{geometry} % for landscape
-\usepackage{parskip} % remove text indentation
+\usepackage{amsmath, amsfonts, amssymb} % better math
+\usepackage{enumitem} % better lists
+\usepackage{geometry} % for margins
 \usepackage{graphicx} % for scale tables
-\usepackage{enumitem} % indent of lists
-\usepackage{tikz} % for plots
-\usetikzlibrary{patterns} % for patterns
 \usepackage{hyperref} % for hyperlinks
-\usepackage{amsmath} % for writing normal text on equations
+\usepackage{multicol} % for multiple columns
+\usepackage{parskip} % paragraph spacing
 \usepackage{scrlayer-scrpage} % page foot
-\usepackage[compact]{titlesec} % titles spacing
+\usepackage{tikz} % for plots
+\usepackage{titlesec} % titles spacing
+\usetikzlibrary{patterns} % for patterns
 
 % -----custom commands-----
 \newcommand{\E}{\mathrm{E}}
@@ -21,9 +21,9 @@
 \newcommand{\Corr}{\mathrm{Corr}}
 
 % -----page customization-----
-\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} % margins configuration
+\geometry{margin=1cm} % margins config
 \pagenumbering{gobble} % remove page numeration
-\setlength{\parskip}{0cm} % paragraph skip length
+\setlength{\parskip}{0cm} % paragraph spacing
 % title spacing:
 \titlespacing{\section}{0pt}{2ex}{1ex}
 \titlespacing{\subsection}{0pt}{1ex}{0ex}
@@ -32,7 +32,7 @@
 % -----document-----
 \begin{document}
 
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ts1.4-es - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ts1.5-es - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
@@ -85,7 +85,7 @@
 % start of column 2 page 1
 \section*{Supuestos y propiedades}
 	\subsection*{Supuestos MCO bajo series temporales}
-		Bajo estos supuestos, los estimadores de los parámetros MCO presentarán buenas propiedades. \textbf{Supuestos Gauss-Markov extendidos en series temporales}:
+		Bajo estos supuestos, los estimadores de los parámetros MCO presentarán buenas propiedades. \textbf{Supuestos Gauss-Markov} extendidos en series temporales:
 		\begin{enumerate}[leftmargin=*, label=st\arabic*.]
 			\item \textbf{Linealidad de parámetros y dependencia débil}.
 			\begin{enumerate}[leftmargin=*, label=\alph*.]
@@ -102,18 +102,18 @@
 				\item No hay errores sistemáticos: $\E(u_t | x_{1t}, ..., x_{kt}) = \E(u_t) = 0 \rightarrow$ \textbf{exogeneidad fuerte} (a implica b).
 				\item No hay variables relevantes no incluidas en el modelo: $\Cov(x_{jt} , u_t) = 0$ para cualquier $j = 1, ..., k \rightarrow$ \textbf{exogeneidad débil}.
 			\end{enumerate}
-			\item \textbf{Homocedasticidad}. Var. de los residuos es igual para cualquier nivel de $x$: $\Var(u_t | x_{1t}, ..., x_{kt}) = \sigma^2$
+			\item \textbf{Homocedasticidad}. Var. de los residuos es igual para cualquier nivel de $x$: $\Var(u_t | x_{1t}, ..., x_{kt}) = \sigma^2_u$
 			\item \textbf{No autocorrelación}. Los residuos no contienen información sobre otros residuos: $\Corr(u_t, u_s | x) = 0$ para cualquier $t \neq s$.
-			\item \textbf{Normalidad}. Los residuos son independientes e idénticamente distribuidos (\textbf{i.i.d.}): $u \sim N(0,\sigma^2)$
+			\item \textbf{Normalidad}. Los residuos son independientes e idénticamente distribuidos (\textbf{i.i.d.}): $u \sim \mathcal{N}(0,\sigma^2_u)$
 			\item \textbf{Tamaño de datos}. El número de observaciones disponibles debe ser mayor a $(k + 1)$ parámetros a estimar. (Ya satisfecho bajo situaciones asintóticas)
 		\end{enumerate}	
 	\subsection*{Propiedades asintóticas de MCO}
 		Bajo los supuestos del modelo econométrico y el Teorema Central del Límite:
 		\begin{itemize}[leftmargin=*]
 			\item De (1) a (3a): MCO es \textbf{insesgado}. $\E(\hat{\beta}_j) = \beta_j$
-			\item De (1) a (3): MCO es \textbf{consistente}. $\mathrm{p.lim}(\hat{\beta}_j) = \beta_j$ (a (3b) sin (3a), exogeneidad débil, insesg. y consistente).
-			\item De (1) a (5): \textbf{normalidad asintótica} de MCO (entonces, (6) es necesariamente satisfecho): $u \sim_a N(0,\sigma^2)$.
-			\item De (1) a (5): \textbf{estimador insesgado de $\sigma^2$}. $\E(\hat{\sigma}^2) = \sigma^2$
+			\item De (1) a (3): MCO es \textbf{consistente}. $\mathrm{plim}(\hat{\beta}_j) = \beta_j$ (a (3b) sin (3a), exogeneidad débil, insesg. y consistente).
+			\item De (1) a (5): \textbf{normalidad asintótica} de MCO (entonces, (6) es necesariamente satisfecho): $u \underset{a}{\sim} \mathcal{N}(0,\sigma^2_u)$
+			\item De (1) a (5): \textbf{estimador insesgado} de $\sigma^2_u$. $\E(\hat{\sigma}^2_u) = \sigma^2_u$
 			\item De (1) a (5): MCO es \textcolor{blue}{\href{https://www.youtube.com/watch?v=68ugkg9RePc}{MELI}} (Mejor Estimador Lineal Insesgado) or \textbf{eficiente}. 
 			\item De (1) a (6): contrastes de hipótesis e intervalos de confianza son fiables.
 		\end{itemize}
@@ -248,7 +248,7 @@
 \columnbreak
 % start of column 1 page 2
 \section*{Autocorrelación}
-	El residuo de cualquier observación, $u_t$, está correlacionado con el residuo de cualquier otra observación. Las observaciones no son independientes. Es el \textbf{incumplimiento de st5}.
+	El residuo de cualquier observación, $u_t$, está correlacionado con el residuo de cualquier otra observación. Las observaciones no son independientes. Es el \textbf{incumplimiento} de \textbf{st5}.
 	\begin{center}
 		$\Corr(u_t, u_s | x) \neq 0$ para cualquier $t \neq s$
 	\end{center}
@@ -257,12 +257,12 @@
 			\item Estimadores MCO son insesgados.
 			\item Estimadores MCO son consistentes.
 			\item MCO ya \textbf{no es eficiente}, pero sigue siendo ELI (Estimador Lineal Insesgado).
-			\item La \textbf{estimación de la varianza de los estimadores es sesgada}: la construcción de intervalos de confianza y contraste de hipótesis no son fiables.
+			\item La \textbf{estimación de la varianza} de los estimadores es \textbf{sesgada}: la construcción de intervalos de confianza y contraste de hipótesis no son fiables.
 		\end{itemize}
 	\subsection*{Detección}
 		\begin{itemize}[leftmargin=*]
 			\item \textbf{Gráficos de dispersión} - buscar patrones de dispersión en $u_{t-1}$ vs. $u_t$.
-			\setlength{\multicolsep}{0pt} % reduce vertical spacing betwen subsection and multicols
+			\setlength{\multicolsep}{0pt} % reduce vertical spacing between subsection and multicols
 			\setlength{\columnsep}{6pt} % increment spacing between columns
 			% scatter plots
 			\begin{multicols}{3} % set columns to 3
@@ -308,7 +308,7 @@
 			% correlogram
 			\begin{multicols}{2} % set columns to 2
 			% start of text column 1
-				\item\textbf{Correlograma} - compuesto de la función de autocorrelación (FAC) y el FAC parcial (FACP).
+				\item \textbf{Correlograma} - compuesto de la función de autocorrelación (FAC) y el FAC parcial (FACP).
 			% end of text column 1
 			\columnbreak
 			% start of text column 2
@@ -403,7 +403,7 @@
 				\end{itemize}
 				\item \textbf{Estadístico Durbin-Watson} (regresores exógenos y normalidad de residuos):
 				\begin{center}
-					$d = \frac{\sum_{t=2}^n (\hat{u}_t - \hat{u}_{t-1})^2}{\sum_{t=1}^n \hat{u}_t^2} \approx 2 (1 - \hat{\rho}_1)$  ,  $0 \leq d \leq 4$
+					$d = \frac{\sum_{t=2}^n (\hat{u}_t - \hat{u}_{t-1})^2}{\sum_{t=1}^n \hat{u}_t^2} \approx 2 \cdot (1 - \hat{\rho}_1)$  ,  $0 \leq d \leq 4$
 				\end{center}
 				\begin{itemize}[leftmargin=*]
 					\item $H_1$: Autocorrelación de orden uno, AR(1).
@@ -417,15 +417,16 @@
 						\end{tabular}
 					}
 					\begin{tikzpicture}[scale=0.28] % durbin-watson test plot
-						\node at (-1.5,9.5) {\scalebox{1.2}{\tiny $f(d)$}};
-						\draw [thick] (0,10) -- (0,0) -- (25,0); % axis
-						\draw [very thin, dashed] (12.5,0) -- (12.5,10);
-						\fill [pattern=north west lines, pattern color=black] (5,0)  rectangle  (9,10);
-						\draw (5,0) -- (5,10);
-						\draw (9,0) -- (9,10);
-						\fill [pattern=north west lines, pattern color=black] (16,0) rectangle (20,10);
-						\draw (16,0) -- (16,10);
-						\draw (20,0) -- (20,10);
+						\fill [pattern=north east lines, pattern color=gray] (5,0)  rectangle  (9,9);
+						\draw (5,0) -- (5,9);
+						\draw (9,0) -- (9,9);
+						\fill [pattern=north east lines, pattern color=gray] (16,0) rectangle (20,9);
+						\draw (16,0) -- (16,9);
+						\draw (20,0) -- (20,9);
+						\draw [thick] (0,9) -- (0,0) -- (25,0); % axis
+						\draw [very thin, dashed] (12.5,0) -- (12.5,9);
+						% y axis labels
+						\node at (-1.5,8.5) {\scalebox{1.2}{\tiny $f(d)$}};
 						% x axis labels
 						\node at (0,-0.6) {\scalebox{1.2}{\tiny 0}};
 						\node at (5,-0.6) {\scalebox{1.2}{\tiny $d_L$}};
@@ -437,17 +438,17 @@
 						% text inside plot
 						\node at (2.5,5.5) {\scalebox{1.2}{\tiny Rech. $H_0$}};
 						\node at (2.5,4.5) {\scalebox{1.2}{\tiny AR(+)}};
-						\node [text=red] at (7,5) {\scalebox{1.2}{\tiny \rotatebox{-70}{\textbf{INCONCLUYENTE}}}};
-						\node at (12.5,5.5) {\scalebox{1.2}{\tiny Aceptar $H_0$}};
+						\node [text=red] at (7,4.5) {\scalebox{1.1}{\tiny \rotatebox{-70}{\textbf{INCONCLUYENTE}}}};
+						\node at (12.5,5.5) {\scalebox{1.2}{\tiny Acceptar $H_0$}};
 						\node at (12.5,4.5) {\scalebox{1.2}{\tiny No AR}};
-						\node [text=red] at (18,5) {\scalebox{1.2}{\tiny \rotatebox{-70}{\textbf{INCONCLUYENTE}}}};
+						\node [text=red] at (18,4.5) {\scalebox{1.1}{\tiny \rotatebox{-70}{\textbf{INCONCLUYENTE}}}};
 						\node at (22.5,5.5) {\scalebox{1.2}{\tiny Rech. $H_0$}};
 						\node at (22.5,4.5) {\scalebox{1.2}{\tiny AR(-)}};
 					\end{tikzpicture}
 				\end{center}
 				\item \textbf{h de Durbin} (regresores endógenos):
 				\begin{center}
-					$h = \hat{\rho} \sqrt{\frac{T}{1 - T \cdot \upsilon}}$
+					$h = \hat{\rho} \cdot \sqrt{\frac{T}{1 - T \cdot \upsilon}}$
 				\end{center}
 				donde $\upsilon$ es la varianza estimada del coeficiente asociado a la variable endógena.
 				\begin{itemize}[leftmargin=*]
@@ -460,7 +461,7 @@
 				\end{itemize}
 				Bajo $H_0$: No autocorrelación:
 				\begin{center}
-					$\hfill T \cdot R^2_{\hat{u}_t} \sim_a \chi^2_q \hfill \textbf{or} \hfill T \cdot R^2_{\hat{u}_t} \sim_a \chi^2_p \hfill$
+					$\hfill T \cdot R^2_{\hat{u}_t} \underset{a}{\sim} \chi^2_q \hfill \textbf{or} \hfill T \cdot R^2_{\hat{u}_t} \underset{a}{\sim} \chi^2_p \hfill$
 				\end{center}
 				\begin{itemize}[leftmargin=*]
 					\item $H_1$: Autocorrelación de orden $q$ (ó $p$).
@@ -473,16 +474,16 @@
 		\end{itemize}
 	\subsection*{Corrección}
 		\begin{itemize}[leftmargin=*]
-			\item Usar MCO con un estimador de la \textbf{matriz de varianzas-covarianzas} \textbf{robusto a la heterocedasticidad y autocorrelación} (HAC), por ejemplo, la propuesta de \textbf{Newey-West}.
+			\item Usar MCO con un estimador de la matriz de varianzas-covarianzas \textbf{robusto a la heterocedasticidad y autocorrelación} (HAC), por ejemplo, la propuesta de \textbf{Newey-West}.
 			\item Usar \textbf{Mínimos Cuadrados Generalizados} (MCG). Suponiendo $y_t = \beta_0 + \beta_1 x_t + u_t$, con $u_t = \rho u_{t-1} + \varepsilon_t$, donde $|\rho| < 1$ y $\varepsilon_t$ es ruido blanco.
 			\begin{itemize}[leftmargin=*]
-				\item Si \textbf{$\rho$ es conocido, usar modelo cuasi-diferenciado}:
+				\item Si $\rho$ es \textbf{conocido}, usar \textbf{modelo cuasi-diferenciado}:
 				\begin{center}
 					$y_t - \rho y_{t-1} = \beta_0 (1 - \rho) + \beta_1 (x_t - \rho x_{t-1}) + u_t - \rho u_{t-1}$
 					\ $y_t^* = \beta_0^* + \beta_1 x_t^* + u_t^*$
 				\end{center}
 				donde $u_t^*$ es ruido blanco, y estimarlo por MCO.
-				\item Si \textbf{$\rho$ es desconocido, estimarlo} -por ejemplo- \textbf{el método de Cochrane-Orcutt} (el método de Prais-Winsten también es bueno):
+				\item Si $\rho$ es \textbf{desconocido}, estimarlo -por ejemplo- el \textbf{método de Cochrane-Orcutt} (el método de Prais-Winsten también es bueno):
 				\begin{enumerate}[leftmargin=*]
 					\item Obtener $\hat{u}_t$ del modelo original.
 					\item Estimar $\hat{u}_t = \rho \hat{u}_{t-1} + \varepsilon_t$ y obtener $\hat{\rho}$.
@@ -496,7 +497,7 @@
 					\item El método termina cuando los parámetros estimados varían muy poco entre iteraciones.
 				\end{enumerate}
 			\end{itemize}
-		\item Si \textbf{no se arregla, buscar fuerte dependencia} en la serie.
+		\item Si no se arregla, buscar \textbf{fuerte dependencia} en la serie.
 		\end{itemize}
 
 \section*{Estacionariedad y dependencia débil}
@@ -516,7 +517,7 @@
 			\end{itemize}
 		\end{itemize}
 	\subsection*{Series temporales de dependencia débil}
-		Es importante porque reemplaza el requisito de muestreo aleatorio, dando por supuesto la validez del Teorema Central del Límite (requiere estacionariedad y una forma de dependencia débil). Los procesos débilmente dependientes \textbf{también se conocen como, I(0)}.
+		Es importante porque reemplaza el requisito de muestreo aleatorio, dando por supuesto la validez del Teorema Central del Límite (requiere estacionariedad y una forma de dependencia débil). Los procesos débilmente dependientes también se conocen como, \textbf{integrado de orden cero}, I(0).
 		\begin{itemize}[leftmargin=*]
 			\item \textbf{Dependencia débil} - restringe cuán cercana la relación entre $x_t$ y $x_{t+h}$ puede ser a medida que la distancia temporal entre las series aumenta ($h$).
 		\end{itemize}
@@ -545,7 +546,7 @@
 \columnbreak
 % start of column 2 page 3
 \section*{Series temporales de depend. fuerte}
-	La mayoría del tiempo, las series económicas presentan dependencia fuerte (o fuerte persistencia temporal). Algunos casos especiales de procesos de raíz unitaria, I(1):
+	La mayoría del tiempo, las series económicas presentan dependencia fuerte (o fuerte persistencia temporal). Algunos casos especiales de procesos de \textbf{raíz unitaria}, I(1):
 	\begin{itemize}[leftmargin=*]
 		\item \textbf{Paseo aleatorio} - un proceso AR(1) con $\rho_1 = 1$.
 		\begin{center}
@@ -562,17 +563,17 @@
 	\end{itemize}
 	\subsection*{Detección de I(1)}
 		\begin{itemize}[leftmargin=*]
-			\item \textbf{Prueba aumentada de Dickey-Fuller (ADF)} - donde $H_0$: el proceso es raíz unitaria, I(1).
-			\item \textbf{Prueba Kwiatkowski–Phillips–Schmidt–Shin (KPSS)} - donde $H_0$: el proceso no es raíz unitaria, I(0).
+			\item \textbf{Prueba aumentada de Dickey-Fuller} (ADF) - donde $H_0$: el proceso es raíz unitaria, I(1).
+			\item \textbf{Prueba Kwiatkowski–Phillips–Schmidt–Shin} (KPSS) - donde $H_0$: el proceso no es raíz unitaria, I(0).
 		\end{itemize}
 	\subsection*{Transformar raíz unitaria a depend. débil}
-		Los procesos de raíz unitaria son \textbf{integrados de orden uno}, I(1). Esto significa que \textbf{la primera diferencia del proceso es débilmente dependiente} ó I(0) (y usualmente, estacionaria). Por ejemplo, un paseo aleatorio:
+		Los procesos de \textbf{raíz unitaria} son \textbf{integrados de orden uno}, I(1). Esto significa que \textbf{la primera diferencia} del proceso es \textbf{débilmente dependiente} ó I(0) (y usualmente, estacionaria). Por ejemplo, un paseo aleatorio:
 		\begin{multicols}{2} % set columns to 2
 		% start of text column
 			\begin{center}
 				$\Delta y_t = y_t - y_{t-1} = e_t$
 			\end{center}
-			donde $\lbrace e_t \rbrace = \lbrace \Delta y_t \rbrace$  es \textsl{i.i.d.} \\	\\
+			donde $\lbrace e_t \rbrace = \lbrace \Delta y_t \rbrace$  es \textsl{i.i.d.} \\ \\
 			Tomar la primera diferencia de una serie también elimina su tendencia. \\
 			Por ejemplo, una serie con tendencia (negro), y su primera diferencia ({\color{red} rojo}).
 		% end of text column
@@ -669,18 +670,18 @@
 		\end{multicols}
 		Cuando una serie I(1) es estrictamente positiva, se suele transformar a logaritmos antes de tomar primeras diferencias. Esto es, para obtener el cambio porcentual (aprox.) de la serie:
 		\begin{center}
-			$\Delta \log(y_t) = \log(y_t) - \log(y_{t-1}) \approx (y_t - y_{t-1}) / y_{t-1}$
+			$\Delta \log(y_t) = \log(y_t) - \log(y_{t-1}) \approx \dfrac{y_t - y_{t-1}}{y_{t-1}}$
 		\end{center}
 % end of column 2 page 3
 \columnbreak
 % start of column 3 page 3
 \section*{Cointegración}
-	Cuando \textbf{dos series son I(1), pero una combinación lineal de estas es I(0)}. Si es el caso, la regresión de una serie sobre la otra no es espuria, sino que expresa algo sobre la relación a largo plazo. \\
+	Cuando \textbf{dos series son I(1), pero una combinación lineal de estas es I(0)}. Si es el caso, la regresión de una serie sobre la otra no es espuria, sino que expresa algo sobre la relación a largo plazo. Se llama cointegradas a las variables que tienen una tendencia estocástica común. \\
 	Por ejemplo: $\lbrace x_t \rbrace$ y $\lbrace y_t \rbrace$ son I(1), pero $y_t - \beta x_t = u_t$ donde $\lbrace u_t \rbrace$ es I(0). ($\beta$ toma el nombre de parámetro cointegrador).
 
 \section*{Heterocedasticidad en series temp.}
-	\textbf{Afecta al supuesto st4}, lo que lleva a que \textbf{MCO no sea eficiente}. \\
-	Algunas pruebas que funcionan pueden ser la de Breusch-Pagan o la de White, donde $H_0$: No heterocedasticidad. Es \textbf{importante que no haya autocorrelación para el correcto funcionamiento de las pruebas} (así que, primero es imperativo probar la existencia de autocorrelación).
+	Afecta al \textbf{supuesto st4}, lo que lleva a que \textbf{MCO no sea eficiente}. \\
+	Algunas pruebas que funcionan pueden ser la de Breusch-Pagan o la de White, donde $H_0$: No heterocedasticidad. Es \textbf{importante} que \textbf{no} haya \textbf{autocorrelación} para el correcto funcionamiento de las pruebas (así que, primero es imperativo probar la existencia de autocorrelación).
 	\subsection*{ARCH}
 		La heterocedasticidad condicional autorregresiva (ARCH), es un modelo para analizar una forma de heterocedasticidad dinámica, donde la varianza del error sigue un proceso AR($p$). \\
 		Dado el modelo:

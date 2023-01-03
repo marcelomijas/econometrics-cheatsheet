@@ -1,17 +1,17 @@
 \documentclass[10pt, a4paper, landscape]{extarticle}
 
 % -----packages-----
-\usepackage{multicol} % for multiple columns
-\usepackage[landscape]{geometry} % for landscape
-\usepackage{parskip} % remove text indentation
+\usepackage{amsmath, amsfonts, amssymb} % better math
+\usepackage{enumitem} % better lists
+\usepackage{geometry} % for margins
 \usepackage{graphicx} % for scale tables
-\usepackage{enumitem} % indent of lists
-\usepackage{tikz} % for plots
-\usetikzlibrary{patterns} % for patterns
 \usepackage{hyperref} % for hyperlinks
-\usepackage{amsmath} % for writing normal text on equations
+\usepackage{multicol} % for multiple columns
+\usepackage{parskip} % paragraph spacing
 \usepackage{scrlayer-scrpage} % page foot
-\usepackage[compact]{titlesec} % titles spacing
+\usepackage{tikz} % for plots
+\usepackage{titlesec} % titles spacing
+\usetikzlibrary{patterns} % for patterns
 
 % -----custom commands-----
 \newcommand{\E}{\mathrm{E}}
@@ -21,9 +21,9 @@
 \newcommand{\Corr}{\mathrm{Corr}}
 
 % -----page customization-----
-\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} % margins configuration
+\geometry{margin=1cm} % margins config
 \pagenumbering{gobble} % remove page numeration
-\setlength{\parskip}{0cm} % paragraph skip length
+\setlength{\parskip}{0cm} % paragraph spacing
 % title spacing:
 \titlespacing{\section}{0pt}{2ex}{1ex}
 \titlespacing{\subsection}{0pt}{1ex}{0ex}
@@ -32,7 +32,7 @@
 % -----document-----
 \begin{document}
 
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ts1.4-en - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ts1.5-en - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
@@ -85,7 +85,7 @@
 % start of column 2 page 1
 \section*{Assumptions and properties}
 	\subsection*{OLS model assumptions under time series}
-		Under this assumptions, the estimators of the OLS parameters will present good properties. \textbf{Gauss-Markov assumptions extended applied to time series}:
+		Under this assumptions, the estimators of the OLS parameters will present good properties. \textbf{Gauss-Markov assumptions} extended applied to time series:
 		\begin{enumerate}[leftmargin=*, label=ts\arabic*.]
 			\item \textbf{Parameters linearity and weak dependence}.
 			\begin{enumerate}[leftmargin=*, label=\alph*.]
@@ -102,18 +102,18 @@
 				\item There are no systematic errors: $\E(u_t | x_{1t}, ..., x_{kt}) = \E(u_t) = 0 \rightarrow$ \textbf{strong exogeneity} (a implies b).
 				\item There are no relevant variables left out of the model: $\Cov(x_{jt} , u_t) = 0$ for any $j = 1, ..., k \rightarrow$ \textbf{weak exogeneity}.
 			\end{enumerate}
-			\item \textbf{Homoscedasticity}. The variability of the residuals is the same for any $x$: $\Var(u_t | x_{1t}, ..., x_{kt}) = \sigma^2$
+			\item \textbf{Homoscedasticity}. The variability of the residuals is the same for any $x$: $\Var(u_t | x_{1t}, ..., x_{kt}) = \sigma^2_u$
 			\item \textbf{No auto-correlation}. The residuals do not contain information about other residuals: $\Corr(u_t, u_s | x) = 0$ for any given $t \neq s$.
-			\item \textbf{Normality}. The residuals are independent and identically distributed (\textbf{i.i.d.} so on): $u \sim N(0,\sigma^2)$
+			\item \textbf{Normality}. The residuals are independent and identically distributed (\textbf{i.i.d.} so on): $u \sim \mathcal{N}(0,\sigma^2_u)$
 			\item \textbf{Data size}. The number of observations available must be greater than $(k + 1)$ parameters to estimate. (It is already satisfied under asymptotic situations)
 		\end{enumerate}	
 	\subsection*{Asymptotic properties of OLS}
 		Under the econometric model assumptions and the Central Limit Theorem:
 		\begin{itemize}[leftmargin=*]
 			\item Hold (1) to (3a): OLS is \textbf{unbiased}. $\E(\hat{\beta}_j) = \beta_j$
-			\item Hold (1) to (3): OLS is \textbf{consistent}. $\mathrm{p.lim}(\hat{\beta}_j) = \beta_j$ (to (3b) left out (3a), weak exogeneity, biased but consistent)
-			\item Hold (1) to (5): \textbf{asymptotic normality} of OLS (then, (6) is necessarily satisfied): $u \sim_a N(0,\sigma^2)$.
-			\item Hold (1) to (5): \textbf{unbiased estimate of $\sigma^2$}. $\E(\hat{\sigma}^2) = \sigma^2$
+			\item Hold (1) to (3): OLS is \textbf{consistent}. $\mathrm{plim}(\hat{\beta}_j) = \beta_j$ (to (3b) left out (3a), weak exogeneity, biased but consistent)
+			\item Hold (1) to (5): \textbf{asymptotic normality} of OLS (then, (6) is necessarily satisfied): $u \underset{a}{\sim} \mathcal{N}(0,\sigma^2_u)$
+			\item Hold (1) to (5): \textbf{unbiased estimate} of $\sigma^2_u$. $\E(\hat{\sigma}^2_u) = \sigma^2_u$
 			\item Hold (1) to (5): OLS is \textcolor{blue}{\href{https://www.youtube.com/watch?v=68ugkg9RePc}{BLUE}} (Best Linear Unbiased Estimator) or \textbf{efficient}. 
 			\item Hold (1) to (6): hypothesis testing and confidence intervals can be done reliably.
 		\end{itemize}
@@ -248,7 +248,7 @@
 \columnbreak
 % start of column 1 page 2
 \section*{Auto-correlation}
-	The residual of any observation, $u_t$, is correlated with the residual of any other observation. The observations are not independent. Is the \textbf{non-fulfillment of ts5}.
+	The residual of any observation, $u_t$, is correlated with the residual of any other observation. The observations are not independent. Is the \textbf{non-fulfillment} of \textbf{ts5}.
 	\begin{center}
 		$\Corr(u_t, u_s | x) \neq 0$ for any $t \neq s$
 	\end{center}
@@ -257,12 +257,12 @@
 			\item OLS estimators still are unbiased.
 			\item OLS estimators still are consistent.
 			\item OLS is \textbf{not efficient} anymore, but still a LUE (Linear Unbiased Estimator).
-			\item \textbf{Variance estimations of the estimators are biased}: the construction of confidence intervals and the hypothesis contrast are not reliable.
+			\item \textbf{Variance estimations} of the estimators are \textbf{biased}: the construction of confidence intervals and the hypothesis testing is not reliable.
 		\end{itemize}
 	\subsection*{Detection}
 		\begin{itemize}[leftmargin=*]
 			\item \textbf{Scatter plots} - look for scatter patterns on $u_{t-1}$ vs. $u_t$.
-			\setlength{\multicolsep}{0pt} % reduce vertical spacing betwen subsection and multicols
+			\setlength{\multicolsep}{0pt} % reduce vertical spacing between subsection and multicols
 			\setlength{\columnsep}{6pt} % increment spacing between columns
 			% scatter plots
 			\begin{multicols}{3} % set columns to 3
@@ -308,7 +308,7 @@
 			% correlogram
 			\begin{multicols}{2} % set columns to 2
 			% start of text column 1
-				\item\textbf{Correlogram} - composed of the auto-correlation function (ACF) and the partial ACF (PACF).
+				\item \textbf{Correlogram} - composed of the auto-correlation function (ACF) and the partial ACF (PACF).
 			% end of text column 1
 			\columnbreak
 			% start of text column 2
@@ -380,10 +380,10 @@
 			Conclusions differ between auto-correlation processes.
 % end of column 1 page 2
 \columnbreak			
-% start of column 2 page 2
+% start of column 2 and 3 page 2
 			\begin{itemize}[leftmargin=*]
-				\item \textbf{MA($q$) process}. \textbf{ACF}: only the first $q$ coefficients are significant, the rest are abruptly canceled. \textbf{PACF}: attenuated exponential fast decay or sine waves.
-				\item \textbf{AR($p$) process}. \textbf{ACF}: attenuated exponential fast decay or sine waves. \textbf{PACF}: only the first $p$ coefficients are significant, the rest are abruptly canceled.
+				\item \textbf{MA($q$) process}. \textbf{ACF}: only the first $q$ coefficients are significant, the remaining are abruptly canceled. \textbf{PACF}: attenuated exponential fast decay or sine waves.
+				\item \textbf{AR($p$) process}. \textbf{ACF}: attenuated exponential fast decay or sine waves. \textbf{PACF}: only the first $p$ coefficients are significant, the remaining are abruptly canceled.
 				\item \textbf{ARMA($p$,$q$) process}. \textbf{ACF} and \textbf{PACF}: the coefficients are not abruptly canceled and presents a fast decay.
 			\end{itemize}
 			If the ACF coefficients do not decay rapidly, there is a clear indicator of lack of stationarity in mean, which would lead to take first differences in the	original series.
@@ -403,7 +403,7 @@
 				\end{itemize}
 				\item \textbf{Durbin-Watson statistic} (exogenous regressors and residual normality):
 				\begin{center}
-					$d = \frac{\sum_{t=2}^n (\hat{u}_t - \hat{u}_{t-1})^2}{\sum_{t=1}^n \hat{u}_t^2} \approx 2 (1 - \hat{\rho}_1)$  ,  $0 \leq d \leq 4$
+					$d = \frac{\sum_{t=2}^n (\hat{u}_t - \hat{u}_{t-1})^2}{\sum_{t=1}^n \hat{u}_t^2} \approx 2 \cdot (1 - \hat{\rho}_1)$  ,  $0 \leq d \leq 4$
 				\end{center}
 				\begin{itemize}[leftmargin=*]
 					\item $H_1$: Auto-correlation of order one, AR(1).
@@ -417,15 +417,16 @@
 						\end{tabular}
 					}
 					\begin{tikzpicture}[scale=0.28] % durbin-watson test plot
-						\node at (-1.5,9.5) {\scalebox{1.2}{\tiny $f(d)$}};
-						\draw [thick] (0,10) -- (0,0) -- (25,0); % axis
-						\draw [very thin, dashed] (12.5,0) -- (12.5,10);
-						\fill [pattern=north west lines, pattern color=black] (5,0)  rectangle  (9,10);
-						\draw (5,0) -- (5,10);
-						\draw (9,0) -- (9,10);
-						\fill [pattern=north west lines, pattern color=black] (16,0) rectangle (20,10);
-						\draw (16,0) -- (16,10);
-						\draw (20,0) -- (20,10);
+						\fill [pattern=north east lines, pattern color=gray] (5,0)  rectangle  (9,9);
+						\draw (5,0) -- (5,9);
+						\draw (9,0) -- (9,9);
+						\fill [pattern=north east lines, pattern color=gray] (16,0) rectangle (20,9);
+						\draw (16,0) -- (16,9);
+						\draw (20,0) -- (20,9);
+						\draw [thick] (0,9) -- (0,0) -- (25,0); % axis
+						\draw [very thin, dashed] (12.5,0) -- (12.5,9);
+						% y axis labels
+						\node at (-1.5,8.5) {\scalebox{1.2}{\tiny $f(d)$}};
 						% x axis labels
 						\node at (0,-0.6) {\scalebox{1.2}{\tiny 0}};
 						\node at (5,-0.6) {\scalebox{1.2}{\tiny $d_L$}};
@@ -437,17 +438,17 @@
 						% text inside plot
 						\node at (2.5,5.5) {\scalebox{1.2}{\tiny Rej. $H_0$}};
 						\node at (2.5,4.5) {\scalebox{1.2}{\tiny AR(+)}};
-						\node [text=red] at (7,5) {\scalebox{1.4}{\tiny \rotatebox{-70}{\textbf{INCONCLUSIVE}}}};
+						\node [text=red] at (7,4.5) {\scalebox{1.2}{\tiny \rotatebox{-70}{\textbf{INCONCLUSIVE}}}};
 						\node at (12.5,5.5) {\scalebox{1.2}{\tiny Accept $H_0$}};
 						\node at (12.5,4.5) {\scalebox{1.2}{\tiny No AR}};
-						\node [text=red] at (18,5) {\scalebox{1.4}{\tiny \rotatebox{-70}{\textbf{INCONCLUSIVE}}}};
+						\node [text=red] at (18,4.5) {\scalebox{1.2}{\tiny \rotatebox{-70}{\textbf{INCONCLUSIVE}}}};
 						\node at (22.5,5.5) {\scalebox{1.2}{\tiny Rej. $H_0$}};
 						\node at (22.5,4.5) {\scalebox{1.2}{\tiny AR(-)}};
 					\end{tikzpicture}
 				\end{center}
 				\item \textbf{Durbin's h} (endogenous regressors):
 				\begin{center}
-					$h = \hat{\rho} \sqrt{\frac{T}{1 - T \cdot \upsilon}}$
+					$h = \hat{\rho} \cdot \sqrt{\frac{T}{1 - T \cdot \upsilon}}$
 				\end{center}
 				where $\upsilon$ is the estimated variance of the coefficient associated to the endogenous variable.
 				\begin{itemize}[leftmargin=*]
@@ -458,12 +459,9 @@
 					\item MA($q$): $u_t = \varepsilon_t - m_1 u_{t-1} - ... - m_q u_{t-q}$
 					\item AR($p$): $u_t = \rho_1 u_{t-1} + ... + \rho_p u_{t-p} + \varepsilon_t$
 				\end{itemize}
-% end of column 2 page 2
-\columnbreak			
-% start of column 3 page 2
 				Under $H_0$: No auto-correlation:
 				\begin{center}
-					$\hfill T \cdot R^2_{\hat{u}_t} \sim_a \chi^2_q \hfill \textbf{or} \hfill T \cdot R^2_{\hat{u}_t} \sim_a \chi^2_p \hfill$
+					$\hfill T \cdot R^2_{\hat{u}_t} \underset{a}{\sim} \chi^2_q \hfill \textbf{or} \hfill T \cdot R^2_{\hat{u}_t} \underset{a}{\sim} \chi^2_p \hfill$
 				\end{center}
 				\begin{itemize}[leftmargin=*]
 					\item $H_1$: Auto-correlation of order $q$ (or $p$).
@@ -476,16 +474,16 @@
 		\end{itemize}
 	\subsection*{Correction}
 		\begin{itemize}[leftmargin=*]
-			\item Use OLS with a \textbf{variance-covariance matrix} estimator that is \textbf{robust to heterocedasticity and auto-correlation} (HAC), for example, the one proposed by \textbf{Newey-West}.
+			\item Use OLS with a variance-covariance matrix estimator that is \textbf{robust to heterocedasticity and auto-correlation} (HAC), for example, the one proposed by \textbf{Newey-West}.
 			\item Use \textbf{Generalized Least Squares} (GLS). Supposing $y_t = \beta_0 + \beta_1 x_t + u_t$, with $u_t = \rho u_{t-1} + \varepsilon_t$, where $|\rho| < 1$ and $\varepsilon_t$ is white noise.
 			\begin{itemize}[leftmargin=*]
-				\item If \textbf{$\rho$ is known, use a quasi-differentiated model}:
+				\item If $\rho$ is \textbf{known}, use a \textbf{quasi-differentiated model}:
 				\begin{center}
 					$y_t - \rho y_{t-1} = \beta_0 (1 - \rho) + \beta_1 (x_t - \rho x_{t-1}) + u_t - \rho u_{t-1}$
 					\ $y_t^* = \beta_0^* + \beta_1 x_t^* + u_t^*$
 				\end{center}
 				where $u_t^*$ is white noise, and estimate it by OLS.
-				\item If \textbf{$\rho$ is not known, estimate it by} -for example- \textbf{the Cochrane-Orcutt method} (Prais-Winsten method is also good):
+				\item If $\rho$ is \textbf{not known}, estimate it by -for example- the \textbf{Cochrane-Orcutt method} (Prais-Winsten method is also good):
 				\begin{enumerate}[leftmargin=*]
 					\item Obtain $\hat{u}_t$ from the original model.
 					\item Estimate $\hat{u}_t = \rho \hat{u}_{t-1} + \varepsilon_t$ and obtain $\hat{\rho}$.
@@ -499,7 +497,7 @@
 					\item The method finish when the estimated parameters vary very little between iterations.
 				\end{enumerate}
 			\end{itemize}
-		\item If \textbf{not solved, look for high dependence} in the series.
+		\item If not solved, look for \textbf{high dependence} in the series.
 		\end{itemize}
 
 \section*{Stationarity and weak dependence}
@@ -519,7 +517,7 @@
 			\end{itemize}
 		\end{itemize}
 	\subsection*{Weak dependence time series}
-		It is important because it replaces the random sampling assumption, giving for granted the validity of the Central Limit Theorem (requires stationarity and a form of weak dependence). Weakly dependent processes are \textbf{also known as integrated of order zero, I(0)}.
+		It is important because it replaces the random sampling assumption, giving for granted the validity of the Central Limit Theorem (requires stationarity and a form of weak dependence). Weakly dependent processes are also known as \textbf{integrated of order zero}, I(0).
 		\begin{itemize}[leftmargin=*]
 			\item \textbf{Weak dependence} - restricts how close the relationship between $x_t$ and $x_{t+h}$ can be as the time distance between the series increases ($h$).
 		\end{itemize}
@@ -548,7 +546,7 @@
 \columnbreak
 % start of column 2 page 3
 \section*{Strong dependence time series}
-	Most of the time, economics series are strong dependent (or high persistent in time). Some special cases of unit root processes, I(1):
+	Most of the time, economics series are strong dependent (or high persistent in time). Some special cases of \textbf{unit root} processes, I(1):
 	\begin{itemize}[leftmargin=*]
 		\item \textbf{Random walk} - an AR(1) process with $\rho_1 = 1$.
 		\begin{center}
@@ -565,11 +563,11 @@
 	\end{itemize}
 	\subsection*{I(1) detection}
 		\begin{itemize}[leftmargin=*]
-			\item \textbf{Augmented Dickey-Fuller (ADF) test} - where $H_0$: the process is unit root, I(1).
-			\item \textbf{Kwiatkowski–Phillips–Schmidt–Shin (KPSS) test} - where $H_0$: the process have no unit root, I(0).
+			\item \textbf{Augmented Dickey-Fuller} (ADF) \textbf{test} - where $H_0$: the process is unit root, I(1).
+			\item \textbf{Kwiatkowski–Phillips–Schmidt–Shin} (KPSS) \textbf{test} - where $H_0$: the process have no unit root, I(0).
 		\end{itemize}
 	\subsection*{Transforming unit root to weak dependent}
-		Unit root processes are \textbf{integrated of order one}, I(1). This means that \textbf{the first difference of the process is weakly dependent} or I(0) (and usually, stationary). For example, a random walk:
+		\textbf{Unit root} processes are \textbf{integrated of order one}, I(1). This means that \textbf{the first difference} of the process is \textbf{weakly dependent} or I(0) (and usually, stationary). For example, a random walk:
 		\begin{multicols}{2} % set columns to 2
 		% start of text column
 			\begin{center}
@@ -672,18 +670,18 @@
 		\end{multicols}
 		When an I(1) series is strictly positive, it is usually converted to logarithms before taking the first difference. That is, to obtain the (approx.) percentage change of the series:
 		\begin{center}
-			$\Delta \log(y_t) = \log(y_t) - \log(y_{t-1}) \approx (y_t - y_{t-1}) / y_{t-1}$
+			$\Delta \log(y_t) = \log(y_t) - \log(y_{t-1}) \approx \dfrac{y_t - y_{t-1}}{y_{t-1}}$
 		\end{center}
 % end of column 2 page 3
 \columnbreak
 % start of column 3 page 3
 \section*{Cointegration}
-	When \textbf{two series are I(1), but a linear combination of them is I(0)}. If the case, the regression of one series over the other is not spurious, but expresses something about the long term relation. \\
+	When \textbf{two series are I(1), but a linear combination of them is I(0)}. If the case, the regression of one series over the other is not spurious, but expresses something about the long term relation. Variables are called cointegrated if they have a common stochastic trend. \\
 	For example: $\lbrace x_t \rbrace$ and $\lbrace y_t \rbrace$ are I(1), but $y_t - \beta x_t = u_t$ where $\lbrace u_t \rbrace$ is I(0). ($\beta$ get the name of cointegration parameter).
 
 \section*{Heterocedasticity on time series}
-	The assumption \textbf{affected is ts4}, which leads \textbf{OLS to be not efficient}. \\ 
-	Some tests that work could be the Breusch-Pagan or White's, where $H_0$: No heterocedasticity. It is \textbf{important for the tests to work that there is no auto-correlation} (so first, it is imperative to test for it).
+	The \textbf{assumption} affected is \textbf{ts4}, which leads \textbf{OLS to be not efficient}. \\ 
+	Some tests that work could be the Breusch-Pagan or White's, where $H_0$: No heterocedasticity. It is \textbf{important} for the tests to work that there is \textbf{no auto-correlation} (so first, it is imperative to test for it).
 	\subsection*{ARCH}
 		An auto-regressive conditional heterocedasticity (ARCH), is a model to analyze a form of dynamic heterocedasticity, where the error variance follows an AR($p$) process. \\
 		Given the model:
