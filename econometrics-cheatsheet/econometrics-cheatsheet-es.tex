@@ -1,16 +1,16 @@
 \documentclass[10pt, a4paper, landscape]{extarticle}
 
 % -----packages-----
-\usepackage{multicol} % for multiple columns
-\usepackage[landscape]{geometry} % for landscape
-\usepackage{parskip} % remove text indentation
+\usepackage{amsmath, amsfonts, amssymb} % better math
+\usepackage{enumitem} % better lists
+\usepackage{geometry} % for margins
 \usepackage{graphicx} % for scale tables
-\usepackage{enumitem} % indent of lists
-\usepackage{tikz} % for plots
 \usepackage{hyperref} % for hyperlinks
-\usepackage{amsmath} % for writing normal text on equations
+\usepackage{multicol} % for multiple columns
+\usepackage{parskip} % paragraph spacing
 \usepackage{scrlayer-scrpage} % page foot
-\usepackage[compact]{titlesec} % titles spacing
+\usepackage{tikz} % for plots
+\usepackage{titlesec} % titles spacing
 
 % -----custom commands-----
 \newcommand{\E}{\mathrm{E}}
@@ -21,15 +21,12 @@
 \newcommand{\SRC}{\mathrm{SRC}}
 \newcommand{\SEC}{\mathrm{SEC}}
 \newcommand{\STC}{\mathrm{STC}}
-\newcommand{\ECM}{\mathrm{ECM}}
-\newcommand{\EMA}{\mathrm{EMA}}
-\newcommand{\PME}{\mathrm{PME}}
-\newcommand{\VIF}{\mathrm{VIF}}
+\newcommand{\tr}{\mathsf{T}}
 
 % -----page customization-----
-\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} % margins configuration
+\geometry{margin=1cm} % margins config
 \pagenumbering{gobble} % remove page numeration
-\setlength{\parskip}{0cm} % paragraph skip length
+\setlength{\parskip}{0cm} % paragraph spacing
 % title spacing:
 \titlespacing{\section}{0pt}{2ex}{1ex}
 \titlespacing{\subsection}{0pt}{1ex}{0ex}
@@ -39,7 +36,7 @@
 \begin{document}
 
 % page foot
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize 2.9.1-es - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize 3.0-es - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
@@ -78,7 +75,7 @@
 		\begin{itemize}[leftmargin=*]
 			\item La correlación simple mide el grado de asociación lineal entre dos variables.
 			\begin{center}
-				$r = \frac{\Cov(x,y)}{\sigma_x \sigma_y} = \frac{\sum_{i=1}^n (x_i - \overline{x})(y_i - \overline{y})}{\sqrt{\sum_{i=1}^n (x_i - \overline{x})^2 \sum_{i=1}^n (y_i - \overline{y})^2}}$
+				$r = \frac{\Cov(x,y)}{\sigma_x \cdot \sigma_y} = \frac{\sum_{i=1}^n ((x_i - \overline{x}) \cdot (y_i - \overline{y}))}{\sqrt{\sum_{i=1}^n (x_i - \overline{x})^2 \cdot \sum_{i=1}^n (y_i - \overline{y})^2}}$
 			\end{center}
 			\item La correlación parcial mide el grado de de asociación lineal entre dos variables controlando una tercera.
 		\end{itemize}
@@ -87,9 +84,9 @@
 % start of column 2 and 3 page 1
 \section*{Supuestos y propiedades}
 	\subsection*{Supuestos del modelo econométrico}
-		Bajo estos supuestos, los estimadores de los parámetros MCO presentarán buenas propiedades. \textbf{Supuestos de Gauss-Markov extendidos}:
+		Bajo estos supuestos, los estimadores de los parámetros MCO presentarán buenas propiedades. \textbf{Supuestos de Gauss-Markov} extendidos:
 		\begin{enumerate}[leftmargin=*]
-			\item \textbf{Linealidad en parámetros} (+ dependencia débil en series temporales). $y$ debe ser una función lineal de $\beta$'s.
+			\item \textbf{Linealidad en parámetros} (y dependencia débil en series temporales). $y$ debe ser una función lineal de $\beta$'s.
 			\item \textbf{Muestreo aleatorio}. La muestra de la población se ha tomado de forma aleatoria. (Sólo sección cruzada)
 			\item \textbf{No colinealidad perfecta}.
 			\begin{itemize}[leftmargin=*]
@@ -101,18 +98,18 @@
 				\item No hay errores sistemáticos: $\E(u | x_1, ..., x_k) = \E(u) = 0 \rightarrow$ \textbf{exogeneidad fuerte} (a implica b).
 				\item No hay variables relevantes no incluidas en el modelo: $\Cov(x_j , u) = 0$ para cualquier $j = 1, ..., k \rightarrow$ \textbf{exogeneidad débil}.
 			\end{enumerate}
-			\item \textbf{Homocedasticidad}. La variabilidad de los residuos es la misma para todos los niveles de $x$: $\Var(u | x) = \sigma^2$
+			\item \textbf{Homocedasticidad}. La variabilidad de los residuos es la misma para todos los niveles de $x$: $\Var(u | x) = \sigma^2_u$
 			\item \textbf{No autocorrelación}. Los residuos no contienen información sobre otros residuos: $\Corr(u_t, u_s | x) = 0$ para cualquier $t \neq s$. (Típico de series temporales)
-			\item \textbf{Normalidad}. Los residuos son independientes e idénticamente distribuidos: $u \sim N(0,\sigma^2)$
+			\item \textbf{Normalidad}. Los residuos son independientes e idénticamente distribuidos: $u \sim \mathcal{N}(0,\sigma^2_u)$
 			\item \textbf{Tamaño de datos}. El número de observaciones disponibles debe ser mayor a $(k + 1)$ parámetros a estimar. (Ya satisfecho bajo situaciones asintóticas)
 		\end{enumerate}
 	\subsection*{Propiedades asintóticas de MCO}
 		Bajo los supuestos del modelo econométrico y el Teorema Central del Límite:
 		\begin{itemize}[leftmargin=*]
 			\item De (1) a (4a): MCO es \textbf{insesgado}. $\E(\hat{\beta}_j) = \beta_j$
-			\item De (1) a (4): MCO es \textbf{consistente}. $\mathrm{p.lim}(\hat{\beta}_j) = \beta_j$ (a (4b) sin (4a), exogeneidad débil, insesg. y consistente).
-			\item De (1) a (5): \textbf{normalidad asintótica} de MCO (entonces, (7) es necesariamente satisfecho): $u \sim_a N(0,\sigma^2)$.
-			\item De (1) a (6): \textbf{estimador insesgado de $\sigma^2$}. $\E(\hat{\sigma}^2) = \sigma^2$
+			\item De (1) a (4): MCO es \textbf{consistente}. $\mathrm{plim}(\hat{\beta}_j) = \beta_j$ (a (4b) sin (4a), exogeneidad débil, insesg. y consistente).
+			\item De (1) a (5): \textbf{normalidad asintótica} de MCO (entonces, (7) es necesariamente satisfecho): $u \underset{a}{\sim} \mathcal{N}(0,\sigma^2_u)$
+			\item De (1) a (6): \textbf{estimador insesgado} de $\sigma^2_u$. $\E(\hat{\sigma}^2_u) = \sigma^2_u$
 			\item De (1) a (6): MCO es \textcolor{blue}{\href{https://www.youtube.com/watch?v=68ugkg9RePc}{MELI}} (Mejor Estimador Lineal Insesgado) ó \textbf{eficiente}. 
 			\item De (1) a (7): contrastes de hipótesis e intervalos de confianza son fiables.
 		\end{itemize}
@@ -120,7 +117,7 @@
 \section*{Mínimos Cuadrados Ordinarios}
 	\textbf{Objetivo} - minimizar Suma de Resid. Cuadrados (SRC):
 	\begin{center}
-		$\text{Min} \sum_{i=1}^n \hat{u}_i^2$, donde $\hat{u}_i = y_i - \hat{y}_i$
+		$\min \sum_{i=1}^n \hat{u}_i^2$, donde $\hat{u}_i = y_i - \hat{y}_i$
 	\end{center}
 	\subsection*{Modelo de regresión simple}
 		\setlength{\multicolsep}{0pt} % reduce vertical spacing betwen subsection and multicols
@@ -149,7 +146,7 @@
 				$\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 x_{1i}$
 			\end{center}
 			\vspace*{1mm}
-			Donde:
+			donde:
 			\begin{center}
 				$\hat{\beta}_0 = \overline{y} - \hat{\beta}_1 \overline{x}$ \\
 				$\hat{\beta}_1 = \frac{\Cov(y, x)}{\Var(x)}$
@@ -197,13 +194,13 @@
 				$\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 x_{1i} + ... + \hat{\beta}_k x_{ki}$
 			\end{center}
 			\vspace*{1mm}
-			Donde:
+			donde:
 			\begin{center}
 				$\hat{\beta}_0 = \overline{y} - \hat{\beta}_1 \overline{x}_1 - ... - \hat{\beta}_k \overline{x}_k$ \\
 				$\hat{\beta}_j = \frac{\Cov(y, \text{residualizado } x_j)}{\Var(\text{residualizado } x_j)}$
 			\end{center}
 			\vspace*{1mm}
-			Matriz: $\hat{\beta} = (X^T X)^{-1} (X^T y)$
+			Matriz: $\hat{\beta} = (X^\tr X)^{-1} (X^\tr y)$
 		% end text
 		\end{multicols}
 	\subsection*{Interpretación de coeficientes}
@@ -223,42 +220,42 @@
 		Suma de Resid. Cuad.: \hfill $\SRC = \sum_{i=1}^n \hat{u}_i^2 = \sum_{i=1}^n (y_i - \hat{y}_i)^2$ \\
 		Suma Explicada de Cuadrados: \hfill $\SEC = \sum_{i=1}^n (\hat{y}_i - \overline{y})^2$ \\
 		Suma Tot. de Cuad.: \hfill $\STC = \SEC + \SRC = \sum_{i=1}^n (y_i - \overline{y})^2$ \\
-		Error Estándar de la Regresión: \hfill $\hat{\sigma} = \sqrt{\frac{\SRC}{n-k-1}}$ \\
-		Error Estándar de los $\hat{\beta}$'s: \hfill $\ee(\hat{\beta}) = \hat{\sigma} \cdot \sqrt{(X^T X)^{-1}}$ \\
-		Error Cuadrático Medio: \hfill $\ECM = \frac{1}{n} \sum_{i=1}^n (y_i - \hat{y}_i)^2$ \\
-		Error Medio Absoluto: \hfill $\EMA = \frac{\sum_{i=1}^n |y_i - \hat{y}_i|}{n}$ \\
-		Porcentaje Medio de Error: \hfill $\PME = \frac{\sum_{i=1}^n |\hat{u}_i / y_i|}{n} \cdot 100$
+		Error Estándar de la Regresión: \hfill $\hat{\sigma}_u = \sqrt{\frac{\SRC}{n-k-1}}$ \\
+		Error Estándar de los $\hat{\beta}$'s: \hfill $\ee(\hat{\beta}) = \sqrt{\hat{\sigma}^2_u \cdot (X^\tr X)^{-1}}$ \\
+		Error Cuadrático Medio: \hfill $\mathrm{ECM} = \frac{\sum_{i=1}^n (y_i - \hat{y}_i)^2}{n}$ \\
+		Error Medio Absoluto: \hfill $\mathrm{EMA} = \frac{\sum_{i=1}^n |y_i - \hat{y}_i|}{n}$ \\
+		Porcentaje Medio de Error: \hfill $\mathrm{PME} = \frac{\sum_{i=1}^n |\hat{u}_i / y_i|}{n} \cdot 100$
 % end of column 2 and 3 page 1
 \columnbreak
 % start of column 1, 2 and 3 page 2
 \section*{R-cuadrado}
-	Es una \textbf{medida de la bondad del ajuste}, cómo la regresión se ajusta a los datos:
+	Es una medida de la \textbf{bondad del ajuste}, cómo la regresión se ajusta a los datos:
 	\begin{center}
 		$R^2 = \frac{\SEC}{\STC} = 1 - \frac{\SRC}{\STC}$
 	\end{center}
 	\begin{itemize}[leftmargin=*]
-		\item Mide el \textbf{porcentaje de variación en $y$ que es linealmente explicado por variaciones de las $x$'s}.
+		\item Mide el \textbf{porcentaje de variación} en $y$ que es linealmente \textbf{explicado} por variaciones de las $x$'s.
 		\item Toma valores \textbf{entre 0} (no hay explicación lineal de las variaciones de $y$) \textbf{y 1} (explicación total de las variaciones de $y$).
 	\end{itemize}
-	Cuando el número de regresores incrementa, el valor del R-cuadrado también lo hace, independientemente de si las nuevas variables son relevantes o no. Para resolver este problema, existe un \textbf{R-cuadrado corregido por grados de libertad} (o R-cuadrado ajustado):
+	Cuando el número de regresores incrementa, el valor del R-cuadrado también lo hace, independientemente de si las nuevas variables son relevantes o no. Para resolver este problema, existe un \textbf{R-cuadrado ajustado} por grados de libertad (o R-cuadrado corregido):
 	\begin{center}
-		$\overline{R}^2 = 1 - \frac{n-1}{n-k-1} \frac{\SRC}{\STC} = 1 - \frac{n-1}{n-k-1} (1-R^2)$
+		$\overline{R}^2 = 1 - \frac{n-1}{n-k-1} \cdot \frac{\SRC}{\STC} = 1 - \frac{n-1}{n-k-1} \cdot (1-R^2)$
 	\end{center}
 	Para muestras grandes: $\overline{R}^2 \approx R^2$
 
 \section*{Contrastes de hipótesis}
 	\subsection*{Base de los contrastes de hipótesis}
-		Un contraste de hipótesis es una regla diseñada para, a partir de una muestra, \textbf{explicar si existe evidencia para rechazar (o no) una hipótesis} sobre uno o más parámetros poblacionales. \\
+		Un contraste de hipótesis es una regla diseñada para, a partir de una muestra, explicar si existe \textbf{evidencia para rechazar (o no) una hipótesis} sobre uno o más parámetros poblacionales. \\
 		Elementos de un contraste de hipótesis:
 		\begin{itemize}[leftmargin=*]
-			\item \textbf{Hipótesis nula ($H_0$)} - es la hipótesis a ser probada.
-			\item \textbf{Hipótesis alternativa ($H_1$)} - el la hipótesis que no puede rechazarse si la hipótesis nula es rechazada.
+			\item \textbf{Hipótesis nula} ($H_0$) - es la hipótesis a ser probada.
+			\item \textbf{Hipótesis alternativa} ($H_1$) - el la hipótesis que no puede rechazarse si la hipótesis nula es rechazada.
 			\item \textbf{Estadístico de contraste} - es una variable aleatoria cuya distribución de probabilidad es conocida bajo la hipótesis nula.
-			\item \textbf{Nivel de significación ($\alpha$)} - es la probabilidad de rechazar la hipótesis nula siendo cierta (error Tipo I). Es elegido por quien conduce el contraste. Usualmente es 0.10, 0.05, 0.01 ó 0.001.
+			\item \textbf{Nivel de significación} ($\alpha$) - es la probabilidad de rechazar la hipótesis nula siendo cierta (error Tipo I). Es elegido por quien conduce el contraste. Usualmente es 0.10, 0.05 ó 0.01.
 			\item \textbf{Valor crítico} - es el valor contra el cual se compara el estadístico de contraste para determinar si se rechaza o no la hipótesis nula. Es el valor frontera entre la región de aceptación y la de rechazo de la hipótesis nula.
 			\item \textbf{p-valor} - es el nivel de significación máximo por el cual la hipótesis nula no puede ser rechazada ($H_0$).
 		\end{itemize}
-		\textbf{Regla general}: si el p-valor es menor que $\alpha$, existe evidencia para rechazar la hipótesis nula a ese determinado $\alpha$ (existe evidencia para aceptar la hipótesis alternativa).
+		\textbf{Regla general}: si el p-valor es \textbf{menor} que $\alpha$, existe evidencia para \textbf{rechazar} la \textbf{hipótesis nula} a ese determinado $\alpha$ (existe evidencia para aceptar la hipótesis alternativa).
 	\subsection*{Contrastes individuales}
 		Prueba si un parámetro es significativamente diferente de un cierto valor, $\vartheta$.
 		\begin{itemize}[leftmargin=*]
@@ -288,15 +285,15 @@
 		\end{itemize}
 		Entonces, viendo los errores, hay:
 		\begin{itemize}[leftmargin=*]
-			\item \textbf{$\sum_{i=1}^n \hat{u}_{\mathrm{nr}}^2$} - es la Suma de Resid. Cuadrados del modelo no restringido ($\SRC_{\mathrm{nr}}$).
-			\item \textbf{$\sum_{i=1}^n \hat{u}_\mathrm{r}^2$} - es la Suma de Resid. Cuadrados del modelo restringido ($\SRC_\mathrm{r}$).
+			\item \textbf{$\sum_{i=1}^n \hat{u}^2$} - es la Suma de Resid. Cuadrados del modelo no restringido: $\SRC$.
+			\item \textbf{$\sum_{i=1}^n \hat{u}_\mathrm{r}^2$} - es la Suma de Resid. Cuadrados del modelo restringido: $\SRC_\mathrm{r}$.
 		\end{itemize}
 		Bajo $H_0$:
 		\begin{center}
-			$F = \frac{\SRC_\mathrm{r} - \SRC_{\mathrm{nr}}}{\SRC_{\mathrm{nr}}} \frac{(n-k_{\mathrm{nr}}-1)}{q} \sim F_{q, n-k_{\mathrm{nr}}-1}$
+			$F = \frac{\SRC_\mathrm{r} - \SRC}{\SRC} \cdot \frac{n-k-1}{q} \sim F_{q, n-k-1}$
 		\end{center}
-		Donde $k_{\mathrm{nr}}$ es el número de parámetros del modelo no restringido y $q$ es el número de hipótesis lineales a probar. \\
-		Si $F_{q, n-k_{\mathrm{nr}}-1} < F$, existe evidencia para rechazar $H_0$. \\
+		donde $k$ es el número de parámetros del modelo no restringido y $q$ es el número de hipótesis lineales a probar. \\
+		Si $F_{q, n-k-1} < F$, existe evidencia para rechazar $H_0$. \\
 		\textbf{Contraste de significación global} - prueba si todos los parametros asociados a $x$'s son \textbf{simultáneamente iguales a cero}.
 		\begin{itemize}[leftmargin=*]
 			\item $H_0: \beta_1 = \beta_2 = ... = \beta_k = 0$
@@ -305,7 +302,7 @@
 		En este caso, podemos simplificar la fórmula para el estadístico $F$. \\
 		Bajo $H_0$:
 		\begin{center}
-			$F = \frac{R^2}{1 - R^2} \frac{(n-k-1)}{k} \sim F_{k, n-k-1}$
+			$F = \frac{R^2}{1 - R^2} \cdot \frac{n-k-1}{k} \sim F_{k, n-k-1}$
 		\end{center}
 		Si $F_{k, n-k-1} < F$, existe evidencia para rechazar $H_0$.
 
@@ -326,10 +323,10 @@
 		El cambio estructural se refiere a los cambios en los valores de los parámetros del modelo producidos por el efecto de diferentes sub-poblaciones. El cambio estructural se puede incluir en el modelo a través de variables ficticias. \\
 		La ubicación de las variables ficticias es importante:
 		\begin{itemize}[leftmargin=*]
-			\item \textbf{En el intercepto ($\beta_0$)} - representa la diferencia media entre los valores producidos por el cambio estructural.
-			\item \textbf{En los parámetros que determinan la pendiente de la línea de regresión ($\beta_j$)} - representa la diferencia en el efecto (pendiente) entre los valores producidos por el cambio estructural.
+			\item \textbf{En el intercepto} ($\beta_0$) - representa la diferencia media entre los valores producidos por el cambio estructural.
+			\item \textbf{En los parámetros que determinan la pendiente de la línea de regresión} ($\beta_j$) - representa la diferencia en el efecto (pendiente) entre los valores producidos por el cambio estructural.
 		\end{itemize}
-		\textbf{El contraste de Chow para cambio estructural} - cuando se quiere analizar la existencia de cambio estructural en todos los parámetros del modelo, es común hacer uso de una expresión particular del contraste F, conocido como el contraste de Chow, donde la hipótesis nula es: $H_0: \text{No hay cambio estructural}$.
+		El \textbf{contraste de Chow para cambio estructural} - cuando se quiere analizar la existencia de cambio estructural en todos los parámetros del modelo, es común hacer uso de una expresión particular del contraste F, conocido como el contraste de Chow, donde la hipótesis nula es: $H_0: \text{No hay cambio estructural}$.
 
 \section*{Predicciones}
 	Dos tipos de predicciones:
@@ -343,8 +340,8 @@
 % start of column 1 page 3
 \section*{Multicolinealidad}
 	\begin{itemize}[leftmargin=*]
-		\item \textbf{Multicolinealidad perfecta} - hay variables independientes que son constantes y/o hay una relación lineal exacta entre variables independientes. Es el \textbf{incumplimiento del tercer (3) supuesto del modelo}.
-		\item \textbf{Multicolinealidad aproximada} - hay variables independientes que son aproximadamente constantes y/o hay una relación lineal aproximada entre variables independientes. \textbf{No implica el incumplimiento de algún supuesto del modelo}, pero tiene un efecto en MCO.
+		\item \textbf{Multicolinealidad perfecta} - hay variables independientes que son constantes y/o hay una relación lineal exacta entre variables independientes. Es el \textbf{incumplimiento del tercer (3) supuesto} del modelo.
+		\item \textbf{Multicolinealidad aproximada} - hay variables independientes que son aproximadamente constantes y/o hay una relación lineal aproximada entre variables independientes. \textbf{No implica el incumplimiento de algún supuesto} del modelo, pero tiene un efecto en MCO.
 	\end{itemize}
 	\subsection*{Consecuencias}
 		\begin{itemize}[leftmargin=*]
@@ -360,9 +357,9 @@
 			\item \textbf{Análisis de correlación} - buscar altas correlaciones (mayores a 0.7) entre variables independientes.
 			\item \textbf{Factor de Inflación de la Varianza (FIV o VIF)} - indica el incremento en $\Var(\hat{\beta}_j)$ debido a la multicolinealidad.
 			\begin{center}
-				$\VIF(\hat{\beta}_j) = \frac{1}{1-R_j^2}$
+				$\mathrm{VIF} (\hat{\beta}_j) = \frac{1}{1-R_j^2}$
 			\end{center}
-			Donde $R^2_j$ denota el R-cuadrado de una regresión entre $x_j$ y todas las otras $x$'s. 
+			donde $R^2_j$ denota el R-cuadrado de una regresión entre $x_j$ y todas las otras $x$'s. 
 			\begin{itemize}[leftmargin=*]
 				\item Valores entre 4 y 10 sugieren que es recomendable analizar en mayor profundidad si pueden existir problemas de multicolinealidad.
 				\item Valores por encima de 10 indican que existen problemas de multicolinealidad.
@@ -379,17 +376,17 @@
 \columnbreak
 % start of column 2 page 3
 \section*{Heterocedasticidad}
-	Los residuos $u_i$ de la función de regresión poblacional no tienen una varianza constante $\sigma^2$:
+	Los residuos $u_i$ de la función de regresión poblacional no tienen una varianza constante $\sigma^2_u$:
 	\begin{center}
-		$\Var(u|x) = \Var(y|x) \neq \sigma^2$
+		$\Var(u|x) = \Var(y|x) \neq \sigma^2_u$
 	\end{center}
-	Es el \textbf{incumplimiento del quinto (5) supuesto del modelo}.
+	Es el \textbf{incumplimiento del quinto (5) supuesto} del modelo.
 	\subsection*{Consecuencias}
 		\begin{itemize}[leftmargin=*]
 			\item Estimadores MCO son insesgados.
 			\item Estimadores MCO son consistentes.
 			\item MCO ya \textbf{no es eficiente}, pero sigue siendo ELI (Estimador Lineal Insesgado).
-			\item La \textbf{estimación de la varianza de los estimadores es sesgada}: la construcción de intervalos de confianza y contraste de hipótesis no son fiables.
+			\item La \textbf{estimación de la varianza} de los estimadores es \textbf{sesgada}: la construcción de intervalos de confianza y contraste de hipótesis no son fiables.
 		\end{itemize}
 	\subsection*{Detección}
 		\begin{itemize}[leftmargin=*]
@@ -428,8 +425,8 @@
 			\item Usar MCO con un estimador de la matriz de varianzas-covarianzas robusto a la heterocedasticidad (HC), por ejemplo, la propuesta de White.
 			\item Si la estructura de la varianza es conocida, usar Mínimos Cuadrados Ponderados (MCP) o Mínimos Cuadrados Generalizados (MCG):
 			\begin{itemize}[leftmargin=*]
-				\item Suponiendo que $\Var(u_i) = \sigma^2 \cdot x_i$, dividir las variables del modelo entre la raíz cuadrada de $x_i$ y aplicar MCO.
-				\item Suponiendo que $\Var(u_i) = \sigma^2 \cdot x_i^2$, dividir las variables del modelo entre $x_i$ (la raíz cuadrada de $x_i^2$) y aplicar MCO.
+				\item Suponiendo que $\Var(u_i) = \sigma^2_u \cdot x_i$, dividir las variables del modelo entre la raíz cuadrada de $x_i$ y aplicar MCO.
+				\item Suponiendo que $\Var(u_i) = \sigma^2_u \cdot x_i^2$, dividir las variables del modelo entre $x_i$ (la raíz cuadrada de $x_i^2$) y aplicar MCO.
 			\end{itemize}
 			\item Si la estructura de la varianza es desconocida, hacer uso de Mínimos Curadrados Ponderados Factibles (MCPF), que estima una posible varianza, divide las variables del modelo entre ella y entonces aplica MCO.
 			\item Nueva especificación del modelo, por ejemplo, transformación logarítmica (reduce la varianza).
@@ -442,13 +439,13 @@
 	\begin{center}
 		$\Corr(u_t, u_s | x) \neq 0$ para cualquier $t \neq s$
 	\end{center}
-	El contexto ``natural" de este fenómeno son las series temporales. Es el \textbf{incumplimiento del sexto (6) supuesto del modelo}.
+	El contexto ``natural" de este fenómeno son las series temporales. Es el \textbf{incumplimiento del sexto (6) supuesto} del modelo.
 	\subsection*{Consecuencias}
 		\begin{itemize}[leftmargin=*]
 			\item Estimadores MCO son insesgados.
 			\item Estimadores MCO son consistentes.
 			\item MCO ya \textbf{no es eficiente}, pero sigue siendo ELI (Estimador Lineal Insesgado).
-			\item La \textbf{estimación de la varianza de los estimadores es sesgada}: la construcción de intervalos de confianza y contraste de hipótesis no son fiables.
+			\item La \textbf{estimación de la varianza} de los estimadores es \textbf{sesgada}: la construcción de intervalos de confianza y contraste de hipótesis no son fiables.
 		\end{itemize}
 	\subsection*{Detección}
 		\begin{itemize}[leftmargin=*]
