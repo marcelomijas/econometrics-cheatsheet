@@ -34,22 +34,6 @@ Econometrics cheat sheets created using $\LaTeX$ with a summarized review of:
 | English :uk: | [en.pdf](additional-cheatsheet/additional-cheatsheet-en.pdf)  | [en.tex](additional-cheatsheet/additional-cheatsheet-en.tex)  |
 | Spanish :es: | [es.pdf](additional-cheatsheet/additional-cheatsheet-es.pdf)  | [es.tex](additional-cheatsheet/additional-cheatsheet-es.tex)  |
 
-## Roadmap
-
-- [x] Release of pages 1 and 2 of `econometrics-cheatsheet` covering basic concepts, assumptions and properties, OLS equations, and more.
-
-- [x] Release of page 3 of `econometrics-cheatsheet` covering popular OLS problems.
-
-- [x] Release of an Spanish version of `econometrics-cheatsheet`.
-
-- [x] Release of a cheat sheet exclusively dedicated to time series in the context of econometrics, `time-series-cheatsheet`.
-
-- [x] Release of an Spanish version of `time-series-cheatsheet`.
-
-- [x] Release of a cheat sheet with more common problems in econometrics and additional models (VAR, VECM, ...), `additional-cheatsheet`.
-
-- [ ] Styled version of the cheat sheets (background colors, styled sections, more appealing plots, etc.)
-
 ## Frequently Asked Questions (FAQ)
 
 ### What does $\mathrm{residualized}$ $x_j$ means?
