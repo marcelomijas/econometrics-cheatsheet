@@ -29,8 +29,8 @@ Econometrics cheat sheets created using $\LaTeX$ with a summarized review of:
 
 **Additional Cheat Sheet**. Current version: `add1.0` (last updated 3 Jan. 2023)
 
-|              | PDF file                                                        | TeX file                                                        |
-| :----------: | :-------------------------------------------------------------: | :-------------------------------------------------------------: |
+|              | PDF file                                                      | TeX file                                                      |
+| :----------: | :-----------------------------------------------------------: | :-----------------------------------------------------------: |
 | English :uk: | [en.pdf](additional-cheatsheet/additional-cheatsheet-en.pdf)  | [en.tex](additional-cheatsheet/additional-cheatsheet-en.tex)  |
 | Spanish :es: | [es.pdf](additional-cheatsheet/additional-cheatsheet-es.pdf)  | [es.tex](additional-cheatsheet/additional-cheatsheet-es.tex)  |
 
@@ -42,7 +42,7 @@ Those are the residuals from a OLS regression between $x_j$ and all the other $x
 
 ### Why is $\beta_0$ the constant term? My reference manual / professor's definition of the econometric model is different.
 
-There is some debate about the correct way to name the coefficients, their sub-index and the sub-index of the variables of a model. The naming could have an impact on how some statistics like the adjusted R-squared or some tests like the F contrast formulas are written.
+There is some debate about the correct way to name the coefficients, their sub-index and the sub-index of the variables of a model. The naming could have an impact on how some statistics like the adjusted R-squared or some tests like the F test are written.
 
 For example, while some econometricians write the multiple regression model with a constant term like this:
 
