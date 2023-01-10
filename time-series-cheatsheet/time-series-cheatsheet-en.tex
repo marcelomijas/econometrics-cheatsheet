@@ -32,7 +32,7 @@
 % -----document-----
 \begin{document}
 
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ts1.5-en - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ts1.6-en - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
@@ -475,26 +475,26 @@
 	\subsection*{Correction}
 		\begin{itemize}[leftmargin=*]
 			\item Use OLS with a variance-covariance matrix estimator that is \textbf{robust to heterocedasticity and auto-correlation} (HAC), for example, the one proposed by \textbf{Newey-West}.
-			\item Use \textbf{Generalized Least Squares} (GLS). Supposing $y_t = \beta_0 + \beta_1 x_t + u_t$, with $u_t = \rho u_{t-1} + \varepsilon_t$, where $|\rho| < 1$ and $\varepsilon_t$ is white noise.
+			\item Use \textbf{Generalized Least Squares} (GLS). Supposing $y_t = \beta_0 + \beta_1 x_t + u_t$, with $u_t = \rho u_{t-1} + \varepsilon_t$, where $|\rho| < 1$ and $\varepsilon_t$ is \underline{white noise}.
 			\begin{itemize}[leftmargin=*]
 				\item If $\rho$ is \textbf{known}, use a \textbf{quasi-differentiated model}:
 				\begin{center}
 					$y_t - \rho y_{t-1} = \beta_0 (1 - \rho) + \beta_1 (x_t - \rho x_{t-1}) + u_t - \rho u_{t-1}$
-					\ $y_t^* = \beta_0^* + \beta_1 x_t^* + u_t^*$
+					\ $y_t^* = \beta_0^* + \beta_1' x_t^* + \varepsilon_t$
 				\end{center}
-				where $u_t^*$ is white noise, and estimate it by OLS.
-				\item If $\rho$ is \textbf{not known}, estimate it by -for example- the \textbf{Cochrane-Orcutt method} (Prais-Winsten method is also good):
+				where $\beta_1' = \beta_1$; and estimate it by OLS.
+				\item If $\rho$ is \textbf{not known}, estimate it by -for example- the \textbf{Cochrane-Orcutt iterative method} (Prais-Winsten method is also good):
 				\begin{enumerate}[leftmargin=*]
 					\item Obtain $\hat{u}_t$ from the original model.
 					\item Estimate $\hat{u}_t = \rho \hat{u}_{t-1} + \varepsilon_t$ and obtain $\hat{\rho}$.
 					\item Create a quasi-differentiated model:
 					\begin{center}
 						$y_t - \hat{\rho} y_{t-1} = \beta_0 (1 - \hat{\rho}) + \beta_1 (x_t - \hat{\rho} x_{t-1}) + u_t - \hat{\rho} u_{t-1}$
-						\ $y_t^* = \beta_0^* + \beta_1 x_t^* + u_t^*$
+						\ $y_t^* = \beta_0^* + \beta_1' x_t^* + \varepsilon_t$
 					\end{center}
-					where $u_t^*$ is white noise, and estimate it by OLS.
-					\item Obtain $\hat{u}_t^*$ and repeat from step 2.
-					\item The method finish when the estimated parameters vary very little between iterations.
+					where $\beta_1' = \beta_1$; and estimate it by OLS.
+					\item Obtain $\hat{u}_t^* = y_t - (\beta_0^* + \beta_1' x_t) \neq y_t - (\beta_0^* + \beta_1' x_t^*)$.
+					\item Repeat from step 2. The method finish when the estimated parameters vary very little between iterations.
 				\end{enumerate}
 			\end{itemize}
 		\item If not solved, look for \textbf{high dependence} in the series.

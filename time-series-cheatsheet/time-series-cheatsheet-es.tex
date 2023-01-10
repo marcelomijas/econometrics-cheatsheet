@@ -32,7 +32,7 @@
 % -----document-----
 \begin{document}
 
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ts1.5-es - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ts1.6-es - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
@@ -475,26 +475,26 @@
 	\subsection*{Corrección}
 		\begin{itemize}[leftmargin=*]
 			\item Usar MCO con un estimador de la matriz de varianzas-covarianzas \textbf{robusto a la heterocedasticidad y autocorrelación} (HAC), por ejemplo, la propuesta de \textbf{Newey-West}.
-			\item Usar \textbf{Mínimos Cuadrados Generalizados} (MCG). Suponiendo $y_t = \beta_0 + \beta_1 x_t + u_t$, con $u_t = \rho u_{t-1} + \varepsilon_t$, donde $|\rho| < 1$ y $\varepsilon_t$ es ruido blanco.
+			\item Usar \textbf{Mínimos Cuadrados Generalizados} (MCG). Suponiendo $y_t = \beta_0 + \beta_1 x_t + u_t$, con $u_t = \rho u_{t-1} + \varepsilon_t$, donde $|\rho| < 1$ y $\varepsilon_t$ es \underline{ruido blanco}.
 			\begin{itemize}[leftmargin=*]
 				\item Si $\rho$ es \textbf{conocido}, usar \textbf{modelo cuasi-diferenciado}:
 				\begin{center}
 					$y_t - \rho y_{t-1} = \beta_0 (1 - \rho) + \beta_1 (x_t - \rho x_{t-1}) + u_t - \rho u_{t-1}$
-					\ $y_t^* = \beta_0^* + \beta_1 x_t^* + u_t^*$
+					\ $y_t^* = \beta_0^* + \beta_1' x_t^* + \varepsilon_t$
 				\end{center}
-				donde $u_t^*$ es ruido blanco, y estimarlo por MCO.
-				\item Si $\rho$ es \textbf{desconocido}, estimarlo -por ejemplo- el \textbf{método de Cochrane-Orcutt} (el método de Prais-Winsten también es bueno):
+				donde $\beta_1' = \beta_1$; y estimarlo por MCO.
+				\item Si $\rho$ es \textbf{desconocido}, estimarlo -por ejemplo- el \textbf{método iterativo de Cochrane-Orcutt} (el método de Prais-Winsten también es bueno):
 				\begin{enumerate}[leftmargin=*]
 					\item Obtener $\hat{u}_t$ del modelo original.
 					\item Estimar $\hat{u}_t = \rho \hat{u}_{t-1} + \varepsilon_t$ y obtener $\hat{\rho}$.
 					\item Crear un modelo cuasi-diferenciado:
 					\begin{center}
 						$y_t - \hat{\rho} y_{t-1} = \beta_0 (1 - \hat{\rho}) + \beta_1 (x_t - \hat{\rho} x_{t-1}) + u_t - \hat{\rho} u_{t-1}$
-						\ $y_t^* = \beta_0^* + \beta_1 x_t^* + u_t^*$
+						\ $y_t^* = \beta_0^* + \beta_1' x_t^* + \varepsilon_t$
 					\end{center}
-					donde $u_t^*$ es ruido blanco, y estimarlo por MCO.
-					\item Obtener $\hat{u}_t^*$ y repetir desde el paso 2.
-					\item El método termina cuando los parámetros estimados varían muy poco entre iteraciones.
+					donde $\beta_1' = \beta_1$; y estimarlo por MCO.
+					\item Obtener $\hat{u}_t^* = y_t - (\beta_0^* + \beta_1' x_t) \neq y_t - (\beta_0^* + \beta_1' x_t^*)$.
+					\item Repetir desde el paso 2. El método termina cuando los parámetros estimados varían muy poco entre iteraciones.
 				\end{enumerate}
 			\end{itemize}
 		\item Si no se arregla, buscar \textbf{fuerte dependencia} en la serie.
