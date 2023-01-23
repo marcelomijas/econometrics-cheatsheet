@@ -37,7 +37,7 @@
 \begin{document}
 
 % page foot
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize add1.0-en - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize add1.1-en - github.com/marcelomijas/econometrics-cheatsheet - CC BY 4.0}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
@@ -400,7 +400,7 @@
 \columnbreak
 % start of column 2 page 2 (2)
 \section*{VECM (Vector Error Correction Model)}
-	If \textbf{cointegrating relations} are present in a system of variables, the VAR form is not the most convenient. It is better to use a VECM, that is, the \textbf{levels version} of VAR. The VECM($p-1$):
+	If \textbf{cointegrating relations} are present in a system of variables, the VAR form is not the most convenient. It is better to use a VECM, that is, the levels VAR substracting $y_{t-1}$ from both sides. The VECM($p-1$):
 	\begin{center}
 		$\Delta y_t = \Pi y_{t-1} + \Gamma_1 \Delta y_{t-1} + ... + \Gamma_{p-1} \Delta y_{t-p+1} + B_0 x_t + ... + B_q x_{t-q} + CD_t + u_t$
 	\end{center}
