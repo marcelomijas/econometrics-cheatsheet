@@ -12,14 +12,14 @@ Econometrics cheat sheets created using $\LaTeX$:
 
 ### Download links
 
-**Econometrics Cheat Sheet**. Current version: `3.0` (last updated 3 Jan. 2023)
+**Econometrics Cheat Sheet**. Current version: `3.0` (last updated 10 Apr. 2023)
 
 |              | PDF file                                                          | TeX file                                                          |
 | :----------: | :---------------------------------------------------------------: | :---------------------------------------------------------------: |
 | English :uk: | [en.pdf](econometrics-cheatsheet/econometrics-cheatsheet-en.pdf)  | [en.tex](econometrics-cheatsheet/econometrics-cheatsheet-en.tex)  |
 | Spanish :es: | [es.pdf](econometrics-cheatsheet/econometrics-cheatsheet-es.pdf)  | [es.tex](econometrics-cheatsheet/econometrics-cheatsheet-es.tex)  |
 
-**Time Series Cheat Sheet**. Current version: `ts1.6` (last updated 12 Jan. 2023)
+**Time Series Cheat Sheet**. Current version: `ts1.7` (last updated 10 Apr. 2023)
 
 |              | PDF file                                                        | TeX file                                                        |
 | :----------: | :-------------------------------------------------------------: | :-------------------------------------------------------------: |
@@ -27,7 +27,7 @@ Econometrics cheat sheets created using $\LaTeX$:
 | Spanish :es: | [es.pdf](time-series-cheatsheet/time-series-cheatsheet-es.pdf)  | [es.tex](time-series-cheatsheet/time-series-cheatsheet-es.tex)  |
 
 
-**Additional Cheat Sheet**. Current version: `add1.1` (last updated 23 Jan. 2023)
+**Additional Cheat Sheet**. Current version: `add1.1` (last updated 10 Apr. 2023)
 
 |              | PDF file                                                      | TeX file                                                      |
 | :----------: | :-----------------------------------------------------------: | :-----------------------------------------------------------: |
