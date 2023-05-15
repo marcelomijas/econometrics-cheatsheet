@@ -37,7 +37,7 @@
 \begin{document}
 
 % page foot
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize add1.1-en - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize add1.2-en - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
@@ -263,24 +263,24 @@
 \columnbreak
 % start of column 1, 2 and 3 page 2 (1)
 \section*{Information criterion}
-	It is used to compare models with different number of parameters ($k$). The general formula:
+	It is used to compare models with different number of parameters ($p$). The general formula:
 	\begin{center}
-		$\mathrm{Cr}(k) = \log(\frac{\SSR}{n}) + c_n \varphi (k)$
+		$\mathrm{Cr}(p) = \log(\frac{\SSR}{n}) + c_n \varphi (p)$
 	\end{center}
 	where:
 	\begin{itemize}[leftmargin=*]
-		\item $\SSR$ is the Sum of Squared Residuals from a model of order $k$.
+		\item $\SSR$ is the Sum of Squared Residuals from a model of order $p$.
 		\item $c_n$ is a sequence indexed by the sample size.
-		\item $\varphi(k)$ is a function that penalizes large $k$ orders.
+		\item $\varphi(p)$ is a function that penalizes large $p$ orders.
 	\end{itemize}
-	Is interpreted as the relative amount of information lost by the model. The $k$ order that min. the criterion is chosen. \\
-	There are different $c_n \varphi(k)$ functions:
+	Is interpreted as the relative amount of information lost by the model. The $p$ order that min. the criterion is chosen. \\
+	There are different $c_n \varphi(p)$ functions:
 	\begin{itemize}[leftmargin=*]
-		\item Akaike: $\mathrm{AIC}(k) = \log(\frac{\SSR}{n}) + \frac{2}{n} k$
-		\item Hannan-Quinn: $\mathrm{HQ}(k) = \log(\frac{\SSR}{n}) + \frac{2 \log(\log(n))}{n} k$
-		\item Schwarz: $\mathrm{Sc}(k) = \log(\frac{\SSR}{n}) + \frac{\log(n)}{n} k$
+		\item Akaike: $\mathrm{AIC}(p) = \log(\frac{\SSR}{n}) + \frac{2}{n} p$
+		\item Hannan-Quinn: $\mathrm{HQ}(p) = \log(\frac{\SSR}{n}) + \frac{2 \log(\log(n))}{n} p$
+		\item Schwarz: $\mathrm{Sc}(p) = \log(\frac{\SSR}{n}) + \frac{\log(n)}{n} p$
 	\end{itemize}
-	$\mathrm{Sc}(k) \leq \mathrm{HQ}(k) \leq \mathrm{AIC}(k)$
+	$\mathrm{Sc}(p) \leq \mathrm{HQ}(p) \leq \mathrm{AIC}(p)$
 
 \section*{Incorrect functional form}
 	To check if the model \textbf{functional form} is correct, we can use \textbf{Ramsey's RESET} (Regression Specification Error Test). It test the original model vs. a model with variables in powers.
@@ -299,10 +299,10 @@
 		\end{center}
 		\item Define the test statistic, under $\gamma_2 = ... = \gamma_l = 0$ as null hypothesis:
 		\begin{center}
-			$F = \frac{R^2_{\mathrm{new}} - R^2}{1 - R^2_{\mathrm{new}}} \cdot \frac{n -(k + l) - 1}{l} \sim F_{l-1, n-k-l}$
+			$F = \frac{R^2_{\mathrm{new}} - R^2}{1 - R^2_{\mathrm{new}}} \cdot \frac{n-(k+1)-l}{l} \sim F_{l, n-(k+1)-l}$
 		\end{center}
 	\end{enumerate}
-	If $F_{l-1, n-k-l} < F$, there is evidence to reject $H_0$.
+	If $F_{l, n-(k+1)-l} < F$, there is evidence to reject $H_0$.
 % end of column 1, 2 and 3 page 2 (1)
 \end{multicols}
 

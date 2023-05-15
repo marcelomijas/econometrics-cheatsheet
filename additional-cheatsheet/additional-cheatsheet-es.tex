@@ -37,7 +37,7 @@
 \begin{document}
 
 % page foot
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize add1.1-es - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize add1.2-es - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
@@ -263,24 +263,24 @@
 \columnbreak
 % start of column 1, 2 and 3 page 2 (1)
 \section*{Criterio de información}
-	Es usado para comparar modelos con diferente número de parámetros ($k$). La fórmula general:
+	Es usado para comparar modelos con diferente número de parámetros ($p$). La fórmula general:
 	\begin{center}
-		$\mathrm{Cr}(k) = \log(\frac{\SRC}{n}) + c_n \varphi (k)$
+		$\mathrm{Cr}(p) = \log(\frac{\SRC}{n}) + c_n \varphi (p)$
 	\end{center}
 	donde:
 	\begin{itemize}[leftmargin=*]
-		\item $\SRC$ es la Suma de Residuos Cuadráticos de un modelo de orden $k$.
+		\item $\SRC$ es la Suma de Residuos Cuadráticos de un modelo de orden $p$.
 		\item $c_n$ es una secuencia indexada por el tamaño muestral.
-		\item $\varphi(k)$ es una función que penaliza órdenes grandes de $k$.
+		\item $\varphi(p)$ es una función que penaliza órdenes grandes de $p$.
 	\end{itemize}
-	Interpretado como el tamaño relativo de información perdida por el modelo. Orden $k$ que min. el criterio es elegido. \\
-	Hay diferentes funciones $c_n \varphi(k)$:
+	Interpretado como el tamaño relativo de información perdida por el modelo. Orden $p$ que min. el criterio es elegido. \\
+	Hay diferentes funciones $c_n \varphi(p)$:
 	\begin{itemize}[leftmargin=*]
-		\item Akaike: $\mathrm{AIC}(k) = \log(\frac{\SRC}{n}) + \frac{2}{n} k$
-		\item Hannan-Quinn: $\mathrm{HQ}(k) = \log(\frac{\SRC}{n}) + \frac{2 \log(\log(n))}{n} k$
-		\item Schwarz: $\mathrm{Sc}(k) = \log(\frac{\SRC}{n}) + \frac{\log(n)}{n} k$
+		\item Akaike: $\mathrm{AIC}(p) = \log(\frac{\SRC}{n}) + \frac{2}{n} p$
+		\item Hannan-Quinn: $\mathrm{HQ}(p) = \log(\frac{\SRC}{n}) + \frac{2 \log(\log(n))}{n} p$
+		\item Schwarz: $\mathrm{Sc}(p) = \log(\frac{\SRC}{n}) + \frac{\log(n)}{n} p$
 	\end{itemize}
-	$\mathrm{Sc}(k) \leq \mathrm{HQ}(k) \leq \mathrm{AIC}(k)$
+	$\mathrm{Sc}(p) \leq \mathrm{HQ}(p) \leq \mathrm{AIC}(p)$
 
 \section*{Forma funcional incorrecta}
 	Para comprobar si la \textbf{forma funcional} de un modelo es correcta, podemos usar el \textbf{Ramsey's RESET} (Regression Specification Error Test). Prueba el modelo original vs. un modelo con variables en potencias.
@@ -299,10 +299,10 @@
 		\end{center}
 		\item Definir el estadístico de contraste, bajo $\gamma_2 = ... = \gamma_l = 0$ como hipótesis nula:
 		\begin{center}
-			$F = \frac{R^2_{\mathrm{new}} - R^2}{1 - R^2_{\mathrm{new}}} \cdot \frac{n -(k + l) - 1}{l} \sim F_{l-1, n-k-l}$
+			$F = \frac{R^2_{\mathrm{new}} - R^2}{1 - R^2_{\mathrm{new}}} \cdot \frac{n-(k+1)-l}{l} \sim F_{l, n-(k+1)-l}$
 		\end{center}
 	\end{enumerate}
-	Si $F_{l-1, n-k-l} < F$, hay evidencia para rechazar $H_0$.
+	Si $F_{l, n-(k+1)-l} < F$, hay evidencia para rechazar $H_0$.
 % end of column 1, 2 and 3 page 2 (1)
 \end{multicols}
 
