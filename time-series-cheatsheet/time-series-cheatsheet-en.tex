@@ -684,10 +684,7 @@
 	Some tests that work could be the Breusch-Pagan or White's, where $H_0$: No heterocedasticity. It is \textbf{important} for the tests to work that there is \textbf{no auto-correlation} (so first, it is imperative to test for it).
 	\subsection*{ARCH}
 		An auto-regressive conditional heterocedasticity (ARCH), is a model to analyze a form of dynamic heterocedasticity, where the error variance follows an AR($p$) process. \\
-		Given the model:
-		\begin{center}
-			$y_t = \beta_0 + \beta_1 z_t + u_t$
-		\end{center}
+		Given the model: $y_t = \beta_0 + \beta_1 z_t + u_t$
 		where, there is AR(1) and heterocedasticity:
 		\begin{center}
 			$\E(u^2_t | u_{t-1}) = \alpha_0 + \alpha_1 u^2_{t-1}$
@@ -695,13 +692,19 @@
 	\subsection*{GARCH}
 		A general auto-regressive conditional heterocedasticity (GARCH), is a model similar to ARCH, but in this case, the error variance follows an ARMA($p$,$q$) process.
 
+\section*{Exponential smoothing}
+	\begin{center}
+		$f_t = \alpha y_t + (1 - \alpha) f_{t-1}$
+	\end{center}
+	where $0 < \alpha < 1$ is the smoothing parameter.
+
 \section*{Predictions}
 	Two types of prediction:
 	\begin{itemize}[leftmargin=*]
 		\item Of the mean value of $y$ for a specific value of $x$.
 		\item Of an individual value of $y$ for a specific value of $x$.
 	\end{itemize}
-	If the values of the variables ($x$) approximate to the mean values ($\overline{x}$), the confidence interval amplitude of the prediction will be shorter. 
+	If the values of the variables ($x$) approximate to the mean values ($\overline{x}$), the confidence interval amplitude of the prediction will be shorter.
 % end of column 3 page 3
 % end of content
 \end{multicols}

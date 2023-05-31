@@ -683,11 +683,8 @@
 	Afecta al \textbf{supuesto st4}, lo que lleva a que \textbf{MCO no sea eficiente}. \\
 	Algunas pruebas que funcionan pueden ser la de Breusch-Pagan o la de White, donde $H_0$: No heterocedasticidad. Es \textbf{importante} que \textbf{no} haya \textbf{autocorrelación} para el correcto funcionamiento de las pruebas (así que, primero es imperativo probar la existencia de autocorrelación).
 	\subsection*{ARCH}
-		La heterocedasticidad condicional autorregresiva (ARCH), es un modelo para analizar una forma de heterocedasticidad dinámica, donde la varianza del error sigue un proceso AR($p$). \\
-		Dado el modelo:
-		\begin{center}
-			$y_t = \beta_0 + \beta_1 z_t + u_t$
-		\end{center}
+		Heterocedasticidad condicional autorregresiva (ARCH), es un modelo para analizar una forma de heteroced. dinámica, donde la varianza del error sigue un proceso AR($p$). \\
+		Dado el modelo: $y_t = \beta_0 + \beta_1 z_t + u_t$
 		donde, hay AR(1) y heterocedasticidad:
 		\begin{center}
 			$\E(u^2_t | u_{t-1}) = \alpha_0 + \alpha_1 u^2_{t-1}$
@@ -695,11 +692,17 @@
 	\subsection*{GARCH}
 		La heterocedasticidad condicional autorregresiva general (GARCH), es un modelo similar a ARCH, pero en este caso, la varianza del error sigue un proceso ARMA($p$,$q$).
 
+\section*{Suavizado exponencial}
+	\begin{center}
+		$f_t = \alpha y_t + (1 - \alpha) f_{t-1}$
+	\end{center}
+	donde $0 < \alpha < 1$ es el parámetro de suavizado.
+
 \section*{Predicciones}
 	Dos tipos de predicciones:
 	\begin{itemize}[leftmargin=*]
-		\item Del valor medio de $y$ para un valor específico de $x$.
-		\item De un valor individual de $y$ para un valor específico de $x$.
+		\item Valor medio de $y$ para un valor específico de $x$.
+		\item Valor individual de $y$ para un valor específico de $x$.
 	\end{itemize}
 	Si los valores de las variables ($x$) se aproximan al valor medio ($\overline{x}$), la amplitud del intervalo de confianza de la predicción será menor.
 % end of column 3 page 3
