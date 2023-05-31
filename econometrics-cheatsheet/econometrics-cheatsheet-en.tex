@@ -36,7 +36,7 @@
 \begin{document}
 
 % page foot
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize 3.0-en - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize 3.1-en - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
@@ -71,13 +71,13 @@
 	\subsection*{Regression analysis}
 		Study and predict the mean value of a variable (dependent variable, $y$) regarding the base of fixed values of other variables (independent variables, $x$'s). In econometrics it is common to use Ordinary Least Squares (OLS) for regression analysis.
 	\subsection*{Correlation analysis}
-		The correlation analysis not distinguish between dependent and independent variables.
+		Correlation analysis don't distinguish between dependent and independent variables.
 		\begin{itemize}[leftmargin=*]
-			\item The simple correlation measures the grade of linear association between two variables.
+			\item Simple correlation measures the grade of linear association between two variables.
 			\begin{center}
 				$r = \frac{\Cov(x,y)}{\sigma_x \cdot \sigma_y} = \frac{\sum_{i=1}^n ((x_i - \overline{x}) \cdot (y_i - \overline{y}))}{\sqrt{\sum_{i=1}^n (x_i - \overline{x})^2 \cdot \sum_{i=1}^n (y_i - \overline{y})^2}}$
 			\end{center}
-			\item The partial correlation measures the grade of linear association between two variables controlling a third.
+			\item Partial correlation measures the grade of linear association between two variables controlling a third.
 		\end{itemize}
 % end of column 1 page 1
 \columnbreak
@@ -86,21 +86,21 @@
 	\subsection*{Econometric model assumptions}
 		Under this assumptions, the estimators of the OLS parameters will present good properties. \textbf{Gauss-Markov assumptions} extended:
 		\begin{enumerate}[leftmargin=*]
-			\item \textbf{Parameters linearity} (plus weak dependence in time series). $y$ must be a linear function of the $\beta$'s.
+			\item \textbf{Parameters linearity} (and weak dependence in time series). $y$ must be a linear function of the $\beta$'s.
 			\item \textbf{Random sampling}. The sample from the population has been randomly taken. (Only when cross section)
 			\item \textbf{No perfect collinearity}.
 			\begin{itemize}[leftmargin=*]
-				\item There are no independent variables that are constant: $\Var(x_j) \neq 0$
+				\item There are no independent variables that are constant: $\Var(x_j) \neq 0 \quad \forall j = 1, ..., k$.
 				\item There is not an exact linear relation between independent variables.
 			\end{itemize}
 			\item \textbf{Conditional mean zero and correlation zero}.
 			\begin{enumerate}[leftmargin=*, label=\alph*.]
 				\item There are no systematic errors: $\E(u | x_1, ..., x_k) = \E(u) = 0 \rightarrow$ \textbf{strong exogeneity} (a implies b).
-				\item There are no relevant variables left out of the model: $\Cov(x_j , u) = 0$ for any $j = 1, ..., k \rightarrow$ \textbf{weak exogeneity}.
+				\item There are no relevant variables left out of the model: $\Cov(x_j , u) = 0 \quad \forall j = 1, ..., k \rightarrow$ \textbf{weak exogeneity}.
 			\end{enumerate}
 			\item \textbf{Homoscedasticity}. The variability of the residuals is the same for all levels of $x$: $\Var(u | x_1, ..., x_k) = \sigma^2_u$
-			\item \textbf{No auto-correlation}. The residuals do not contain information about other residuals: $\Corr(u_t, u_s | x) = 0$ for any given $t \neq s$. (Typical of time series)
-			\item \textbf{Normality}. The residuals are independent and identically distributed: $u \sim \mathcal{N}(0,\sigma^2_u)$
+			\item \textbf{No auto-correlation}. Residuals do not contain information about any other residuals: $\Corr(u_t, u_s | x_1, ..., x_k) = 0 \quad \forall t \neq s$. (Typical of time series)
+			\item \textbf{Normality}. Residuals are independent and identically distributed: $u \sim \mathcal{N}(0,\sigma^2_u)$
 			\item \textbf{Data size}. The number of observations available must be greater than $(k + 1)$ parameters to estimate. (It is already satisfied under asymptotic situations)		
 		\end{enumerate}		
 	\subsection*{Asymptotic properties of OLS}
@@ -138,12 +138,12 @@
 		% start text
 			\\ Equation:
 			\begin{center}
-				$y_i = \beta_0 + \beta_1 x_{1i} + u_i$
+				$y_i = \beta_0 + \beta_1 x_i + u_i$
 			\end{center}
 			\vspace*{1mm}
 			Estimation:
 			\begin{center}
-				$\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 x_{1i}$
+				$\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 x_i$
 			\end{center}
 			\vspace*{1mm}
 			where:
@@ -216,7 +216,7 @@
 				\end{tabular}
 			}
 		\end{center}		
-	\subsection*{Error measures}
+	\subsection*{Error measurements}
 		Sum of Sq. Residuals: \hfill $\SSR = \sum_{i=1}^n \hat{u}_i^2 = \sum_{i=1}^n (y_i - \hat{y}_i)^2$ \\
 		Explained Sum of Squares: \hfill $\SSE = \sum_{i=1}^n (\hat{y}_i - \overline{y})^2$ \\
 		Total Sum of Sq.: \hfill $\SST = \SSE + \SSR = \sum_{i=1}^n (y_i - \overline{y})^2$ \\
@@ -266,7 +266,7 @@
 			Under $H_0$: \quad
 			$t = \frac{\hat{\beta}_j - \vartheta}{\se(\hat{\beta}_j)} \sim t_{n-k-1, \alpha/2}$
 		\end{center}
-		If $\mid t \mid > t_{n-k-1, \alpha/2}$, there is evidence to reject $H_0$. \\
+		If $\mid t \mid > \mid t_{n-k-1, \alpha/2} \mid$, there is evidence to reject $H_0$. \\
 		\textbf{Individual significance test} - tests if a parameter is significantly \textbf{different from zero}.
 		\begin{itemize}[leftmargin=*]
 			\item $H_0: \beta_j = 0$
@@ -276,7 +276,7 @@
 			Under $H_0$: \quad
 			$t = \frac{\hat{\beta}_j}{\se(\hat{\beta}_j)} \sim t_{n-k-1, \alpha/2}$
 		\end{center}
-		If $\mid t \mid > t_{n-k-1, \alpha/2}$, there is evidence to reject $H_0$.
+		If $\mid t \mid > \mid t_{n-k-1, \alpha/2} \mid$, there is evidence to reject $H_0$.
 	\subsection*{The F test}
 		Simultaneously tests multiple (linear) hypothesis about the parameters. It makes use of a non restricted model and a restricted model:
 		\begin{itemize}[leftmargin=*]
@@ -378,7 +378,7 @@
 \section*{Heteroscedasticity}
 	The residuals $u_i$ of the population regression function do not have the same variance $\sigma^2_u$:
 	\begin{center}
-		$\Var(u|x) = \Var(y|x) \neq \sigma^2_u$
+		$\Var(u |x_1, ..., x_k) = \Var(u) \neq \sigma^2_u$
 	\end{center}
 	Is the \textbf{breaking of the fifth (5) econometric} model \textbf{assumption}.
 	\subsection*{Consequences}
@@ -425,8 +425,8 @@
 			\item Use OLS with a variance-covariance matrix estimator robust to heteroscedasticity (HC), for example, the one proposed by White.
 			\item If the variance structure is known, make use of Weighted Least Squares (WLS) or Generalized Least Squares (GLS):
 			\begin{itemize}[leftmargin=*]
-				\item Supposing that $\Var(u_i) = \sigma^2_u \cdot x_i$, divide the model variables by the square root of $x_i$ and apply OLS.
-				\item Supposing that $\Var(u_i) = \sigma^2_u \cdot x_i^2$, divide the model variables by $x_i$ (the square root of $x_i^2$) and apply OLS.
+				\item Supposing that $\Var(u) = \sigma^2_u \cdot x_i$, divide the model variables by the square root of $x_i$ and apply OLS.
+				\item Supposing that $\Var(u) = \sigma^2_u \cdot x_i^2$, divide the model variables by $x_i$ (the square root of $x_i^2$) and apply OLS.
 			\end{itemize}
 			\item If the variance structure is not known, make use of Feasible Weighted Least Squared (FWLS), that estimates a possible variance, divides the model variables by it and then apply OLS.
 			\item Make a new model specification, for example, logarithmic transformation (lower variance).
@@ -437,7 +437,7 @@
 \section*{Auto-correlation}
 	The residual of any observation, $u_t$, is correlated with the residual of any other observation. The observations are not independent.
 	\begin{center}
-		$\Corr(u_t, u_s | x) \neq 0$ for any $t \neq s$
+		$\Corr(u_t, u_s | x_1, ..., x_k) = \Corr(u_t, u_s) \neq 0 \quad \forall t \neq s$
 	\end{center}
 	The ``natural" context of this phenomena is time series. Is the \textbf{breaking of the sixth (6) econometric} model \textbf{assumption}.
 	\subsection*{Consequences}

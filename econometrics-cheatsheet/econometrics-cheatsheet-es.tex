@@ -36,7 +36,7 @@
 \begin{document}
 
 % page foot
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize 3.0-es - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize 3.1-es - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
@@ -90,16 +90,16 @@
 			\item \textbf{Muestreo aleatorio}. La muestra de la población se ha tomado de forma aleatoria. (Sólo sección cruzada)
 			\item \textbf{No colinealidad perfecta}.
 			\begin{itemize}[leftmargin=*]
-				\item No hay variables independientes que sean constantes: $\Var(x_j) \neq 0$
+				\item No hay variables independientes que sean constantes: $\Var(x_j) \neq 0 \quad \forall j = 1, ..., k$.
 				\item No hay una relación lineal exacta entre variables independientes.
 			\end{itemize}
 			\item \textbf{Media condicional cero y correlación cero}.
 			\begin{enumerate}[leftmargin=*, label=\alph*.]
 				\item No hay errores sistemáticos: $\E(u | x_1, ..., x_k) = \E(u) = 0 \rightarrow$ \textbf{exogeneidad fuerte} (a implica b).
-				\item No hay variables relevantes no incluidas en el modelo: $\Cov(x_j , u) = 0$ para cualquier $j = 1, ..., k \rightarrow$ \textbf{exogeneidad débil}.
+				\item No hay variables relevantes fuera del modelo: $\Cov(x_j , u) = 0 \quad \forall j = 1, ..., k \rightarrow$ \textbf{exogeneidad débil}.
 			\end{enumerate}
-			\item \textbf{Homocedasticidad}. La variabilidad de los residuos es la misma para todos los niveles de $x$: $\Var(u | x) = \sigma^2_u$
-			\item \textbf{No autocorrelación}. Los residuos no contienen información sobre otros residuos: $\Corr(u_t, u_s | x) = 0$ para cualquier $t \neq s$. (Típico de series temporales)
+			\item \textbf{Homocedasticidad}. La variabilidad de los residuos es igual para todos los niveles de $x$: $\Var(u | x_1, ..., x_k) = \sigma^2_u$
+			\item \textbf{No autocorrelación}. Los residuos no contienen información sobre otros residuos: $\Corr(u_t, u_s | x_1, ..., x_k) = 0 \quad \forall t \neq s$. (Típico de series temporales)
 			\item \textbf{Normalidad}. Los residuos son independientes e idénticamente distribuidos: $u \sim \mathcal{N}(0,\sigma^2_u)$
 			\item \textbf{Tamaño de datos}. El número de observaciones disponibles debe ser mayor a $(k + 1)$ parámetros a estimar. (Ya satisfecho bajo situaciones asintóticas)
 		\end{enumerate}
@@ -266,7 +266,7 @@
 			Bajo $H_0$: \quad
 			$t = \frac{\hat{\beta}_j - \vartheta}{\ee(\hat{\beta}_j)} \sim t_{n-k-1, \alpha/2}$
 		\end{center}
-		Si $\mid t \mid > t_{n-k-1, \alpha/2}$, existe evidencia para rechazar $H_0$. \\
+		Si $\mid t \mid > \mid t_{n-k-1, \alpha/2} \mid$, existe evidencia para rechazar $H_0$. \\
 		\textbf{Contraste de significación individual} - prueba si un parámetro es \textbf{significativamente distinto de cero}.
 		\begin{itemize}[leftmargin=*]
 			\item $H_0: \beta_j = 0$
@@ -276,7 +276,7 @@
 			Bajo $H_0$: \quad
 			$t = \frac{\hat{\beta}_j}{\ee(\hat{\beta}_j)} \sim t_{n-k-1, \alpha/2}$
 		\end{center}
-		Si $\mid t \mid > t_{n-k-1, \alpha/2}$, existe evidencia para rechazar $H_0$.
+		Si $\mid t \mid > \mid t_{n-k-1, \alpha/2} \mid$, existe evidencia para rechazar $H_0$.
 	\subsection*{Contraste F}
 		Prueba simultáneamente múltiples hipótesis (lineales) sobre los parámetros. Hace uso de un modelo no restringido y uno restringido:
 		\begin{itemize}[leftmargin=*]
@@ -378,7 +378,7 @@
 \section*{Heterocedasticidad}
 	Los residuos $u_i$ de la función de regresión poblacional no tienen una varianza constante $\sigma^2_u$:
 	\begin{center}
-		$\Var(u|x) = \Var(y|x) \neq \sigma^2_u$
+		$\Var(u |x_1, ..., x_k) = \Var(u) \neq \sigma^2_u$
 	\end{center}
 	Es el \textbf{incumplimiento del quinto (5) supuesto} del modelo.
 	\subsection*{Consecuencias}
@@ -425,8 +425,8 @@
 			\item Usar MCO con un estimador de la matriz de varianzas-covarianzas robusto a la heterocedasticidad (HC), por ejemplo, la propuesta de White.
 			\item Si la estructura de la varianza es conocida, usar Mínimos Cuadrados Ponderados (MCP) o Mínimos Cuadrados Generalizados (MCG):
 			\begin{itemize}[leftmargin=*]
-				\item Suponiendo que $\Var(u_i) = \sigma^2_u \cdot x_i$, dividir las variables del modelo entre la raíz cuadrada de $x_i$ y aplicar MCO.
-				\item Suponiendo que $\Var(u_i) = \sigma^2_u \cdot x_i^2$, dividir las variables del modelo entre $x_i$ (la raíz cuadrada de $x_i^2$) y aplicar MCO.
+				\item Suponiendo que $\Var(u) = \sigma^2_u \cdot x_i$, dividir las variables del modelo entre la raíz cuadrada de $x_i$ y aplicar MCO.
+				\item Suponiendo que $\Var(u) = \sigma^2_u \cdot x_i^2$, dividir las variables del modelo entre $x_i$ (la raíz cuadrada de $x_i^2$) y aplicar MCO.
 			\end{itemize}
 			\item Si la estructura de la varianza es desconocida, hacer uso de Mínimos Curadrados Ponderados Factibles (MCPF), que estima una posible varianza, divide las variables del modelo entre ella y entonces aplica MCO.
 			\item Nueva especificación del modelo, por ejemplo, transformación logarítmica (reduce la varianza).
@@ -437,7 +437,7 @@
 \section*{Autocorrelación}
 	El residuo de cualquier observación, $u_t$, está correlacionado con el residuo de cualquier otra observación. Las observaciones no son independientes.
 	\begin{center}
-		$\Corr(u_t, u_s | x) \neq 0$ para cualquier $t \neq s$
+		$\Corr(u_t, u_s | x_1, ..., x_k) = \Corr(u_t, u_s) \neq 0 \quad \forall t \neq s$
 	\end{center}
 	El contexto ``natural" de este fenómeno son las series temporales. Es el \textbf{incumplimiento del sexto (6) supuesto} del modelo.
 	\subsection*{Consecuencias}
