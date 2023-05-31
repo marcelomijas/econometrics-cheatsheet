@@ -37,7 +37,7 @@
 \begin{document}
 
 % page foot
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize add1.2-en - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize add1.3-en - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
@@ -129,7 +129,7 @@
 		$\se(\hat{\beta}) = \sqrt{\Var(\hat{\beta})}$
 	\end{center}
 
-\section*{Error measures}
+\section*{Error measurements}
 	\begin{itemize}[leftmargin=*]
 		\item $\SSR = \hat{u}^\tr \hat{u} = y^\tr y - \hat{\beta}^\tr X^\tr y = \sum(y_i - \hat{y}_i)^2$
 		\item $\SSE = \hat{\beta}^\tr X^\tr y - n \overline{y}^2 = \sum(\hat{y}_i - \overline{y})^2$
@@ -201,11 +201,10 @@
 	\quad where $u = v + \beta_2 x_2$. \\
 	Relevant variable omission causes OLS estimators to be \textbf{biased} and \textbf{inconsistent}, because there is no weak exogeneity, $\Cov(x_1,u) \neq 0$. Depending on the $\Corr(x_1, x_2)$ and the sign of $\beta_2$, the bias on $\hat{\alpha}_1$ could be:
 	\begin{center}
-		\begin{tabular}{| c | c | c |}
-			\cline{2-3}
+		\begin{tabular}{ c | c c }
 			\multicolumn{1}{c|}{} & $\Corr(x_1, x_2) > 0$ & $\Corr(x_1, x_2) < 0$ \\ \hline
-			$\beta_2 > 0$         & $(+) \text{ bias}$    & $(-) \text{ bias}$    \\ \hline
-			$\beta_2 < 0$         & $(-) \text{ bias}$    & $(+) \text{ bias}$    \\ \hline
+			$\beta_2 > 0$         & $(+) \text{ bias}$    & $(-) \text{ bias}$    \\
+			$\beta_2 < 0$         & $(-) \text{ bias}$    & $(+) \text{ bias}$    \\
 		\end{tabular}
 	\end{center}
 	\begin{itemize}[leftmargin=*]
@@ -261,7 +260,7 @@
 			\end{itemize}
 % end of column 3 page 1
 \columnbreak
-% start of column 1, 2 and 3 page 2 (1)
+% start of column 1 page 2
 \section*{Information criterion}
 	It is used to compare models with different number of parameters ($p$). The general formula:
 	\begin{center}
@@ -282,6 +281,40 @@
 	\end{itemize}
 	$\mathrm{Sc}(p) \leq \mathrm{HQ}(p) \leq \mathrm{AIC}(p)$
 
+\section*{The non-restricted hypothesis test}
+	Is an alternative to the F test when there are few hypothesis to test on the parameters. Let $\beta_i, \beta_j$ be parameters, $a, b, c \in \mathbb{R}$ are constants.
+	\begin{itemize}[leftmargin=*]
+		\item $H_0: a \beta_i + b \beta_j = c$
+		\item $H_1: a \beta_i + b \beta_j \neq c$
+	\end{itemize}
+	\begin{center}
+		Under $H_0$: \quad
+		$t = \dfrac{a \hat{\beta}_i + b \hat{\beta}_j - c}{\sqrt{\Var(a \hat{\beta}_i + b \hat{\beta}_j)}}$
+		$= \dfrac{a \hat{\beta}_i + b \hat{\beta}_j - c}{\sqrt{a^2 \Var(\hat{\beta}_i) + b^2 \cdot \Var(\hat{\beta}_j) \pm 2 a b \Cov(\hat{\beta}_i, \hat{\beta}_j)}}$
+	\end{center}
+	If $\mid t \mid > \mid t_{n-k-1, \alpha/2} \mid$, there is evidence to reject $H_0$.
+
+\section*{ANOVA}
+	Decompose the total sum of squared in sum of squared residuals and sum of squared explained:
+	$\SST = \SSR + \SSE$
+	\begin{center}
+		\scalebox{0.86}{
+			\begin{tabular}{ c c c c }
+				Variation origin & Sum Sq. & df      & Sum Sq. Avg.     \\ \hline
+				Regression       & $\SSE$  & $k$     & $\SSE / k$       \\
+				Residuals        & $\SSR$  & $n-k-1$ & $\SSR / (n-k-1)$ \\
+				Total            & $\SST$  & $n-1$   &
+			\end{tabular}
+		}
+	\end{center}
+	The F statistic:
+	\begin{center}
+		$F = \dfrac{\mathrm{SSA \; of \;} \SSE}{\mathrm{SSA \; of \;} \SSR} = \dfrac{\SSE}{\SSR} \cdot \dfrac{n-k-1}{k} \sim F_{k, n-k-1}$
+	\end{center}
+	If $F_{k, n-k-1} < F$, there is evidence to reject $H_0$.
+% end of column 1 page 2
+\columnbreak
+% start of column 2 page 2
 \section*{Incorrect functional form}
 	To check if the model \textbf{functional form} is correct, we can use \textbf{Ramsey's RESET} (Regression Specification Error Test). It test the original model vs. a model with variables in powers.
 	\begin{center}
@@ -303,13 +336,113 @@
 		\end{center}
 	\end{enumerate}
 	If $F_{l, n-(k+1)-l} < F$, there is evidence to reject $H_0$.
-% end of column 1, 2 and 3 page 2 (1)
-\end{multicols}
 
-\noindent\rule{\textwidth}{0.4pt} % horizontal line dividing page 2 (1) and page 2 (2)
+\section*{Logistic regression}
+	When there is a binary (0, 1) dependent variable, the linear regression model is no longer valid, we can use logistic regression instead. For example, a \textbf{logit model}:
+	\begin{center}
+		$P_i = \dfrac{1}{1 + e^{-(\beta_0 + \beta_1 x_i + u_i)}} = \dfrac{e^{\beta_0 + \beta_1 x_i + u_i}}{1 + e^{\beta_0 + \beta_1 x_i + u_i}}$
+	\end{center}
+	where $P_i = \E(y_i = 1 | x_i)$ and $(1 - P_i) = \E(y_i = 0 | x_i)$ \\
+	The \textbf{odds ratio} (in favor of $y_i = 1$):
+	\begin{center}
+		$\dfrac{P_i}{1 - P_i} = \dfrac{1 + e^{\beta_0 + \beta_1 x_i + u_i}}{1 + e^{- (\beta_0 + \beta_1 x_i + u_i)}} = e^{\beta_0 + \beta_1 x_i + u_i}$
+	\end{center}
+	Taking the natural logarithm of the odds ratio, we obtain the \textbf{logit}:
+	\begin{center}
+		$L_i = \ln \left( \dfrac{P_i}{1 - P_i} \right) = \beta_0 + \beta_1 x_i + u_i$
+	\end{center}
+	\setlength{\multicolsep}{6pt}
+	\begin{multicols}{2}
+		\vspace*{2mm}
+		$P_i$ is between 0 and 1, but $L_i$ goes from $-\infty$ to $+\infty$. \\ \\
+		If $L_i$ is positive, it means that when $x_i$ increments, the probability of $y_i = 1$ increases, and vice versa.
+		\columnbreak
+		\begin{tikzpicture}[scale=0.15]
+			\draw [step=2, gray, very thin] (-12,-10) grid (12,10); % background grid
+			\draw [thick, <->] (-12,10) node [anchor=south] {$P$} -- (-12,-10) -- (12,-10) node [anchor=north] {$x$}; %axis
+			\draw [red, thick, smooth] plot [domain=-12:12] (\x,{(1 / (1 + exp(-0.8 * \x))) * 19.5 - 9.75}); % regression line
+			\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=15] ({13 * rnd - 0.5},9.5); % data points
+			\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=15] ({-13 * rnd + 0.5},-9.5); % data points
+			\draw (-15,-9.5) node [anchor=west] {$0$}; % 0
+			\draw (-15,9.5) node [anchor=west] {$1$}; % 1
+		\end{tikzpicture}
+	\end{multicols}
+% end of column 2 page 2
+\columnbreak
+% start of column 3 page 2
+\section*{Statistical definitions}
+	Let $\xi, \eta$ be random variables, $a, b \in \mathbb{R}$ constants, and $P$ denotes probability.
+	\subsection*{Mean}
+	Definition: \quad $E(\xi) = \sum_{i=1}^{n} \xi_i \cdot P[\xi = \xi_i]$
+	\begin{multicols}{2}
+		Population mean:
+		\begin{center}
+			$\E(\xi) = \dfrac{1}{N} \sum_{i=1}^{N} \xi_i$
+		\end{center}
+		\columnbreak
+		Sample mean:
+		\begin{center}
+			$\E(\xi) = \dfrac{1}{n} \sum_{i=1}^{n} \xi_i$
+		\end{center}
+	\end{multicols}
+	Some properties:
+	\begin{itemize}[leftmargin=*]
+		\item $\E(a) = a$
+		\item $\E(\xi + a) = \E(\xi) + a$
+		\item $\E(a \cdot \xi) = a \cdot \E(\xi)$
+		\item $\E(\xi \pm \eta) = \E(\xi) + \E(\eta)$
+		\item $\E(\xi \cdot \eta) = \E(\xi) \cdot \E(\eta)$ \quad only if $\xi$ and $\eta$ are independent.
+		\item $\E(\xi - \E(\xi)) = 0$
+		\item $\E(a \cdot \xi + b \cdot \eta) = a \cdot \E(\xi) + b \cdot \E(\eta)$
+	\end{itemize}
+	\subsection*{Variance}
+	Definition: \quad $\Var(\xi) = \E(\xi - \E(\xi))^2$
+	\begin{multicols}{2}
+		Population variance:
+		\begin{center}
+			$\Var(\xi) = \dfrac{\sum_{i=1}^{n} (\xi_i - \E(\xi))^2}{N}$
+		\end{center}
+		\columnbreak
+		Sample variance:
+		\begin{center}
+			$\Var(\xi) = \dfrac{\sum_{i=1}^{n} (\xi_i - \E(\xi))^2}{n-1}$
+		\end{center}
+	\end{multicols}
+	Some properties:
+	\begin{itemize}[leftmargin=*]
+		\item $\Var(a) = 0$
+		\item $\Var(\xi + a) = \Var(\xi)$
+		\item $\Var(a \cdot \xi) = a^2 \cdot \Var(\xi)$
+		\item $\Var(\xi \pm \eta) = \Var(\xi) + \Var(\eta) \pm 2 \cdot \Cov(\xi, \eta)$
+		\item $\Var(a \cdot \xi \pm b \cdot \eta) = a^2 \cdot \Var(\xi) + b^2 \cdot \Var(\eta) \pm 2 a b \cdot \Cov(\xi, \eta)$
+	\end{itemize}
+	\subsection*{Covariance}
+	Definition: \quad $\Cov(\xi, \eta) = \E[(\xi - E(\xi)) \cdot (\eta - E(\eta))]$
+	\begin{multicols}{2}
+		Population covariance:
+		\begin{center}
+			$\dfrac{\sum_{i=1}^{n} (\xi_i - \E(\xi)) \cdot (\eta_i - \E(\eta))}{N}$
+		\end{center}
+		\columnbreak
+		Sample covariance:
+		\begin{center}
+			$\dfrac{\sum_{i=1}^{n} (\xi_i - \E(\xi)) \cdot (\eta_i - \E(\eta))}{n-1}$
+		\end{center}
+	\end{multicols}
+	Some properties:
+	\begin{itemize}[leftmargin=*]
+		\item $\Cov(\xi, a) = 0$
+		\item $\Cov(\xi + a, \eta + b) = \Cov(\xi, \eta)$
+		\item $\Cov(a \cdot \xi, b \cdot \eta) = a b \cdot \Cov(\xi, \eta)$
+		\item $\Cov(\xi, \xi) = \Var(\xi)$
+		\item $\Cov(\xi, \eta) = \Cov(\eta, \xi)$
+	\end{itemize}
+\end{multicols}
+% end of column 3 page 2
+\pagebreak
 
 \begin{multicols}{2} % set columns to 2
-% start of column 1 page 2 (2)
+% start of column 1 page 3
 \section*{VAR (Vector Autoregressive)}
 	A VAR model captures \textbf{dynamic interactions} between time series variables. The VAR($p$):
 	\begin{center}
@@ -396,9 +529,9 @@
 	\end{center}
 	\textcolor{white}{.} \\
 	If there is an unit root, the determinant is zero for $z=1$, then some or all variables are integrated and a VAR model is no longer appropiate (is unstable).
-% end of column 1 page 2 (2)
+% end of column 1 page 3
 \columnbreak
-% start of column 2 page 2 (2)
+% start of column 2 page 3
 \section*{VECM (Vector Error Correction Model)}
 	If \textbf{cointegrating relations} are present in a system of variables, the VAR form is not the most convenient. It is better to use a VECM, that is, the levels VAR substracting $y_{t-1}$ from both sides. The VECM($p-1$):
 	\begin{center}
@@ -452,7 +585,7 @@
 	\end{center}
 	\textcolor{white}{.} \\ \\
 	\colorbox{yellow}{\textbf{Note:}} this is a very basic introduction, there is a lot more literature about the correct specific use of this models and more advanced ones. For example, the VECM with deterministic terms inside the cointegrating relations, the Structural VAR model, etc.
-% start of column 1 page 2 (2)
+% end of column 2 page 3
 % end of content
 \end{multicols}
 

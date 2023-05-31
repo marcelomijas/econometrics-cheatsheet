@@ -37,7 +37,7 @@
 \begin{document}
 
 % page foot
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize add1.2-es - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize add1.3-es - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
@@ -201,11 +201,10 @@
 	\quad donde $u = v + \beta_2 x_2$. \\
 	Omisión de variables relevantes causa que los estimadores MCO sean \textbf{sesgados} e \textbf{inconsistentes},porque no hay exogeneidad estricta, $\Cov(x_1,u) \neq 0$. Dependiendo de $\Corr(x_1, x_2)$ y el signo de $\beta_2$, el sesgo en $\hat{\alpha}_1$ puede ser:
 	\begin{center}
-		\begin{tabular}{| c | c | c |}
-			\cline{2-3}
+		\begin{tabular}{ c | c  c }
 			\multicolumn{1}{c|}{} & $\Corr(x_1, x_2) > 0$ & $\Corr(x_1, x_2) < 0$ \\ \hline
-			$\beta_2 > 0$         & $\text{sesgo } (+)$   & $\text{sesgo } (-)$   \\ \hline
-			$\beta_2 < 0$         & $\text{sesgo } (-)$   & $\text{sesgo } (+)$   \\ \hline
+			$\beta_2 > 0$         & $\text{sesgo } (+)$   & $\text{sesgo } (-)$   \\
+			$\beta_2 < 0$         & $\text{sesgo } (-)$   & $\text{sesgo } (+)$   \\
 		\end{tabular}
 	\end{center}
 	\begin{itemize}[leftmargin=*]
@@ -261,7 +260,7 @@
 			\end{itemize}
 % end of column 3 page 1
 \columnbreak
-% start of column 1, 2 and 3 page 2 (1)
+% start of column 1 page 2
 \section*{Criterio de información}
 	Es usado para comparar modelos con diferente número de parámetros ($p$). La fórmula general:
 	\begin{center}
@@ -282,6 +281,40 @@
 	\end{itemize}
 	$\mathrm{Sc}(p) \leq \mathrm{HQ}(p) \leq \mathrm{AIC}(p)$
 
+\section*{Contraste de hipótesis no restrigido}
+	Es una alternativa al contraste F cuando hay pocas hipótesis a probar sobre los parámetros. Sean $\beta_i, \beta_j$ parámetros, $a, b, c \in \mathbb{R}$ constantes.
+	\begin{itemize}[leftmargin=*]
+		\item $H_0: a \beta_i + b \beta_j = c$
+		\item $H_1: a \beta_i + b \beta_j \neq c$
+	\end{itemize}
+	\begin{center}
+		Bajo $H_0$: \quad
+		$t = \dfrac{a \hat{\beta}_i + b \hat{\beta}_j - c}{\sqrt{\Var(a \hat{\beta}_i + b \hat{\beta}_j)}}$
+		$= \dfrac{a \hat{\beta}_i + b \hat{\beta}_j - c}{\sqrt{a^2 \Var(\hat{\beta}_i) + b^2 \cdot \Var(\hat{\beta}_j) \pm 2 a b \Cov(\hat{\beta}_i, \hat{\beta}_j)}}$
+	\end{center}
+	Si $\mid t \mid > \mid t_{n-k-1, \alpha/2} \mid$, existe evidencia para rechazar $H_0$.
+
+\section*{ANOVA}
+	Descomponer la suma total de cuad. en suma de residuos cuad. y suma explicada de cuad.:
+	$\STC = \SRC + \SEC$
+	\begin{center}
+		\scalebox{0.86}{
+			\begin{tabular}{ c c c c }
+				Variation origin & Suma Cuad. & df      & Suma Cuad. Prom.  \\ \hline
+				Regresión        & $\SEC$        & $k$     & $\SEC / k$       \\
+				Residuos         & $\SRC$        & $n-k-1$ & $\SRC / (n-k-1)$ \\
+				Total            & $\STC$        & $n-1$   &
+			\end{tabular}
+		}
+	\end{center}
+	El estadístico F:
+	\begin{center}
+		$F = \dfrac{\mathrm{SCP \; de \;} \SEC}{\mathrm{SCP \; de \;} \SRC} = \dfrac{\SEC}{\SRC} \cdot \dfrac{n-k-1}{k} \sim F_{k, n-k-1}$
+	\end{center}
+	Si $F_{k, n-k-1} < F$, existe evidencia para rechazar $H_0$.
+% end of column 1 page 2
+\columnbreak
+% start of column 2 page 2
 \section*{Forma funcional incorrecta}
 	Para comprobar si la \textbf{forma funcional} de un modelo es correcta, podemos usar el \textbf{Ramsey's RESET} (Regression Specification Error Test). Prueba el modelo original vs. un modelo con variables en potencias.
 	\begin{center}
@@ -303,13 +336,113 @@
 		\end{center}
 	\end{enumerate}
 	Si $F_{l, n-(k+1)-l} < F$, hay evidencia para rechazar $H_0$.
-% end of column 1, 2 and 3 page 2 (1)
-\end{multicols}
 
-\noindent\rule{\textwidth}{0.4pt} % horizontal line dividing page 2 (1) and page 2 (2)
+\section*{Regresión logística}
+	Cuando hay una variable dependiente binaria (0, 1), el modelo de regresión lineal ya no es válido, podemos usar la regresión logística en su lugar. Por ejemplo, un \textbf{modelo logit}:
+	\begin{center}
+		$P_i = \dfrac{1}{1 + e^{-(\beta_0 + \beta_1 x_i + u_i)}} = \dfrac{e^{\beta_0 + \beta_1 x_i + u_i}}{1 + e^{\beta_0 + \beta_1 x_i + u_i}}$
+	\end{center}
+	donde $P_i = \E(y_i = 1 | x_i)$ and $(1 - P_i) = \E(y_i = 0 | x_i)$ \\
+	La \textbf{razón de probabilidades} (a favor de $y_i = 1$):
+	\begin{center}
+		$\dfrac{P_i}{1 - P_i} = \dfrac{1 + e^{\beta_0 + \beta_1 x_i + u_i}}{1 + e^{- (\beta_0 + \beta_1 x_i + u_i)}} = e^{\beta_0 + \beta_1 x_i + u_i}$
+	\end{center}
+	Tomando el logaritmo natural de la razón de probabilidades, se obtiene el \textbf{logit}:
+	\begin{center}
+		$L_i = \ln \left( \dfrac{P_i}{1 - P_i} \right) = \beta_0 + \beta_1 x_i + u_i$
+	\end{center}
+	\setlength{\multicolsep}{6pt}
+	\begin{multicols}{2}
+		\vspace*{2mm}
+		$P_i$ se encuentra entre 0 y 1, pero $L_i$ va desde $-\infty$ a $+\infty$. \\ \\
+		Si $L_i$ es positivo, significa que cuando $x_i$ incrementa, la probabilidad de que $y_i = 1$ incrementa, y viceversa.
+		\columnbreak
+		\begin{tikzpicture}[scale=0.15]
+			\draw [step=2, gray, very thin] (-12,-10) grid (12,10); % background grid
+			\draw [thick, <->] (-12,10) node [anchor=south] {$P$} -- (-12,-10) -- (12,-10) node [anchor=north] {$x$}; %axis
+			\draw [red, thick, smooth] plot [domain=-12:12] (\x,{(1 / (1 + exp(-0.8 * \x))) * 19.5 - 9.75}); % regression line
+			\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=15] ({13 * rnd - 0.5},9.5); % data points
+			\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=15] ({-13 * rnd + 0.5},-9.5); % data points
+			\draw (-15,-9.5) node [anchor=west] {$0$}; % 0
+			\draw (-15,9.5) node [anchor=west] {$1$}; % 1
+		\end{tikzpicture}
+	\end{multicols}
+% end of column 2 page 2
+\columnbreak
+% start of column 3 page 2
+\section*{Definiciones estadísticas}
+	Sean $\xi, \eta$ variables aleatorias, $a, b \in \mathbb{R}$ constantes, y $P$ denota probabilidad.
+	\subsection*{Media}
+		Definición: \quad $E(\xi) = \sum_{i=1}^{n} \xi_i \cdot P[\xi = \xi_i]$
+		\begin{multicols}{2}
+			Media poblacional:
+			\begin{center}
+				$\E(\xi) = \dfrac{1}{N} \sum_{i=1}^{N} \xi_i$
+			\end{center}
+			\columnbreak
+			Media muestral:
+			\begin{center}
+				$\E(\xi) = \dfrac{1}{n} \sum_{i=1}^{n} \xi_i$
+			\end{center}
+		\end{multicols}
+		Algunas propiedades:
+		\begin{itemize}[leftmargin=*]
+			\item $\E(a) = a$
+			\item $\E(\xi + a) = \E(\xi) + a$
+			\item $\E(a \cdot \xi) = a \cdot \E(\xi)$
+			\item $\E(\xi \pm \eta) = \E(\xi) + \E(\eta)$
+			\item $\E(\xi \cdot \eta) = \E(\xi) \cdot \E(\eta)$ \quad sólo si $\xi$ y $\eta$ son independientes.
+			\item $\E(\xi - \E(\xi)) = 0$
+			\item $\E(a \cdot \xi + b \cdot \eta) = a \cdot \E(\xi) + b \cdot \E(\eta)$
+		\end{itemize}
+	\subsection*{Varianza}
+		Definición: \quad $\Var(\xi) = \E(\xi - \E(\xi))^2$
+		\begin{multicols}{2}
+			Varianza poblacional:
+			\begin{center}
+				$\Var(\xi) = \dfrac{\sum_{i=1}^{n} (\xi_i - \E(\xi))^2}{N}$
+			\end{center}
+			\columnbreak
+			Varianza muestral:
+			\begin{center}
+				$\Var(\xi) = \dfrac{\sum_{i=1}^{n} (\xi_i - \E(\xi))^2}{n-1}$
+			\end{center}
+		\end{multicols}
+		Algunas propiedades:
+		\begin{itemize}[leftmargin=*]
+			\item $\Var(a) = 0$
+			\item $\Var(\xi + a) = \Var(\xi)$
+			\item $\Var(a \cdot \xi) = a^2 \cdot \Var(\xi)$
+			\item $\Var(\xi \pm \eta) = \Var(\xi) + \Var(\eta) \pm 2 \cdot \Cov(\xi, \eta)$
+			\item $\Var(a \cdot \xi \pm b \cdot \eta) = a^2 \cdot \Var(\xi) + b^2 \cdot \Var(\eta) \pm 2 a b \cdot \Cov(\xi, \eta)$
+		\end{itemize}
+		\subsection*{Covarianza}
+		Definición: \quad $\Cov(\xi, \eta) = \E[(\xi - E(\xi)) \cdot (\eta - E(\eta))]$
+		\begin{multicols}{2}
+			Covarianza poblacional:
+			\begin{center}
+				$\dfrac{\sum_{i=1}^{n} (\xi_i - \E(\xi)) \cdot (\eta_i - \E(\eta))}{N}$
+			\end{center}
+			\columnbreak
+			Covarianza muestral:
+			\begin{center}
+				$\dfrac{\sum_{i=1}^{n} (\xi_i - \E(\xi)) \cdot (\eta_i - \E(\eta))}{n-1}$
+			\end{center}
+		\end{multicols}
+		Algunas propiedades:
+		\begin{itemize}[leftmargin=*]
+			\item $\Cov(\xi, a) = 0$
+			\item $\Cov(\xi + a, \eta + b) = \Cov(\xi, \eta)$
+			\item $\Cov(a \cdot \xi, b \cdot \eta) = a b \cdot \Cov(\xi, \eta)$
+			\item $\Cov(\xi, \xi) = \Var(\xi)$
+			\item $\Cov(\xi, \eta) = \Cov(\eta, \xi)$
+		\end{itemize}
+\end{multicols}
+% end of column 3 page 2
+\pagebreak
 
 \begin{multicols}{2} % set columns to 2
-% start of column 1 page 2 (2)
+% start of column 1 page 3
 \section*{VAR (Vector Autoregressive)}
 	Un modelo VAR captura \textbf{interacciones dinámicas} entre series temporales. El VAR($p$):
 	\begin{center}
@@ -396,9 +529,9 @@
 	\end{center}
 	\textcolor{white}{.} \\
 	Si hay una raíz unitaria, el determinante es cero para $z=1$, entonces una o todas las variables son integrados y el modelo VAR ya no es apropiado (es inestable).
-% end of column 1 page 2 (2)
+% end of column 1 page 3
 \columnbreak
-% start of column 2 page 2 (2)
+% start of column 2 page 3
 \section*{VECM (Vector Error Correction Model)}
 	Si existen \textbf{relaciones cointegradoras} en un sistema de variables, la forma VAR no es la más conveniente. Es mejor usar un VECM, esto es, el VAR en niveles sustrayendo $y_{t-1}$ de ambos lados. El VECM($p-1$):
 	\begin{center}
@@ -452,7 +585,7 @@
 	\end{center}
 	\textcolor{white}{.} \\ \\
 	\colorbox{yellow}{\textbf{Nota:}} esta es una introducción muy básica, hay mucha más literatura sobre el uso correcto específico de estos modelos y de más avanzados. Por ejemplo, el modelo VECM con términos deterministas en la relación cointegradora, el modelo Structural VAR, etc.
-% start of column 1 page 2 (2)
+% end of column 2 page 3
 % end of content
 \end{multicols}
 
