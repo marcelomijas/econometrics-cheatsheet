@@ -32,7 +32,7 @@
 % -----document-----
 \begin{document}
 
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ts1.7-en - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ts1.8-en - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
@@ -94,17 +94,17 @@
 			\end{enumerate} 
 			\item \textbf{No perfect collinearity}.
 			\begin{itemize}[leftmargin=*]
-				\item There are no independent variables that are constant: $\Var(x_j) \neq 0$
+				\item There are no independent variables that are constant: $\Var(x_j) \neq 0 \quad \forall j = 1, ..., k$.
 				\item There is not an exact linear relation between independent variables.
 			\end{itemize}
 			\item \textbf{Conditional mean zero and correlation zero}.
 			\begin{enumerate}[leftmargin=*, label=\alph*.]
-				\item There are no systematic errors: $\E(u_t | x_{1t}, ..., x_{kt}) = \E(u_t) = 0 \rightarrow$ \textbf{strong exogeneity} (a implies b).
-				\item There are no relevant variables left out of the model: $\Cov(x_{jt} , u_t) = 0$ for any $j = 1, ..., k \rightarrow$ \textbf{weak exogeneity}.
+				\item There are no systematic errors: $\E(u | x_1, ..., x_k) = \E(u) = 0 \rightarrow$ \textbf{strong exogeneity} (a implies b).
+				\item There are no relevant variables left out of the model: $\Cov(x_j , u) = 0 \quad \forall j = 1, ..., k \rightarrow$ \textbf{weak exogeneity}.
 			\end{enumerate}
-			\item \textbf{Homoscedasticity}. The variability of the residuals is the same for any $x$: $\Var(u_t | x_{1t}, ..., x_{kt}) = \sigma^2_u$
-			\item \textbf{No auto-correlation}. The residuals do not contain information about other residuals: $\Corr(u_t, u_s | x) = 0$ for any given $t \neq s$.
-			\item \textbf{Normality}. The residuals are independent and identically distributed (\textbf{i.i.d.} so on): $u \sim \mathcal{N}(0,\sigma^2_u)$
+			\item \textbf{Homoscedasticity}. The variability of the residuals is the same for any $x$: $\Var(u | x_1, ..., x_k) = \sigma^2_u$
+			\item \textbf{No auto-correlation}. Residuals do not contain information about any other residuals: $\Corr(u_t, u_s | x_1, ..., x_k) = 0 \quad \forall t \neq s$.
+			\item \textbf{Normality}. Residuals are independent and identically distributed (\textbf{i.i.d.} so on): $u \sim \mathcal{N}(0,\sigma^2_u)$
 			\item \textbf{Data size}. The number of observations available must be greater than $(k + 1)$ parameters to estimate. (It is already satisfied under asymptotic situations)
 		\end{enumerate}	
 	\subsection*{Asymptotic properties of OLS}
@@ -121,7 +121,7 @@
 \columnbreak
 % start of column 3 page 1
 \section*{Trends and seasonality}
-	\textbf{Spurious regression} - is when the relation between $y$ and $x$ is due to factors that affect $y$ and have correlation with $x$, $\Corr(x, u) \neq 0$. Is the \textbf{non-fulfillment of ts3}.
+	\textbf{Spurious regression} - is when the relation between $y$ and $x$ is due to factors that affect $y$ and have correlation with $x$, $\Corr(x_j, u) \neq 0$. Is the \textbf{non-fulfillment of ts3}.
 	\subsection*{Trends}
 		Two time series can have the same (or contrary) trend, that should lend to a high level of correlation. This, can provoke a false appearance of causality, the problem is \textbf{spurious regression}. Given the model:
 		\begin{center}
@@ -250,7 +250,7 @@
 \section*{Auto-correlation}
 	The residual of any observation, $u_t$, is correlated with the residual of any other observation. The observations are not independent. Is the \textbf{non-fulfillment} of \textbf{ts5}.
 	\begin{center}
-		$\Corr(u_t, u_s | x) \neq 0$ for any $t \neq s$
+		$\Corr(u_t, u_s | x_1, ..., x_k) = \Corr(u_t, u_s) \neq 0 \quad \forall t \neq s$
 	\end{center}
 	\subsection*{Consequences}
 		\begin{itemize}[leftmargin=*]

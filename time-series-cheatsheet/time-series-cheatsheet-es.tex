@@ -32,7 +32,7 @@
 % -----document-----
 \begin{document}
 
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ts1.7-es - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ts1.8-es - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3} % set columns to 3
@@ -94,16 +94,16 @@
 			\end{enumerate} 
 			\item \textbf{No colinealidad perfecta}.
 			\begin{itemize}[leftmargin=*]
-				\item No hay variables independientes que sean constantes: $\Var(x_j) \neq 0$
+				\item No hay variables independientes que sean constantes: $\Var(x_j) \neq 0 \quad \forall j = 1, ..., k$.
 				\item No hay una relación lineal exacta entre variables independientes.
 			\end{itemize}
 			\item \textbf{Media condicional cero y correlación cero}.
 			\begin{enumerate}[leftmargin=*, label=\alph*.]
-				\item No hay errores sistemáticos: $\E(u_t | x_{1t}, ..., x_{kt}) = \E(u_t) = 0 \rightarrow$ \textbf{exogeneidad fuerte} (a implica b).
-				\item No hay variables relevantes no incluidas en el modelo: $\Cov(x_{jt} , u_t) = 0$ para cualquier $j = 1, ..., k \rightarrow$ \textbf{exogeneidad débil}.
+				\item No hay errores sistemáticos: $\E(u | x_1, ..., x_k) = \E(u) = 0 \rightarrow$ \textbf{exogeneidad fuerte} (a implica b).
+				\item No hay variables relevantes no incluidas en el modelo: $\Cov(x_j , u) = 0 \quad \forall j = 1, ..., k \rightarrow$ \textbf{exogeneidad débil}.
 			\end{enumerate}
-			\item \textbf{Homocedasticidad}. Var. de los residuos es igual para cualquier nivel de $x$: $\Var(u_t | x_{1t}, ..., x_{kt}) = \sigma^2_u$
-			\item \textbf{No autocorrelación}. Los residuos no contienen información sobre otros residuos: $\Corr(u_t, u_s | x) = 0$ para cualquier $t \neq s$.
+			\item \textbf{Homocedasticidad}. La variabilidad de los resid. es igual para cualquier nivel de $x$: $\Var(u | x_1, ..., x_k) = \sigma^2_u$
+			\item \textbf{No autocorrelación}. Los residuos no contienen información sobre otros residuos: $\Corr(u_t, u_s | x_1, ..., x_k) = 0 \quad \forall t \neq s$.
 			\item \textbf{Normalidad}. Los residuos son independientes e idénticamente distribuidos (\textbf{i.i.d.}): $u \sim \mathcal{N}(0,\sigma^2_u)$
 			\item \textbf{Tamaño de datos}. El número de observaciones disponibles debe ser mayor a $(k + 1)$ parámetros a estimar. (Ya satisfecho bajo situaciones asintóticas)
 		\end{enumerate}	
@@ -250,7 +250,7 @@
 \section*{Autocorrelación}
 	El residuo de cualquier observación, $u_t$, está correlacionado con el residuo de cualquier otra observación. Las observaciones no son independientes. Es el \textbf{incumplimiento} de \textbf{st5}.
 	\begin{center}
-		$\Corr(u_t, u_s | x) \neq 0$ para cualquier $t \neq s$
+		$\Corr(u_t, u_s | x_1, ..., x_k) = \Corr(u_t, u_s) \neq 0 \quad \forall t \neq s$
 	\end{center}
 	\subsection*{Consecuencias}
 		\begin{itemize}[leftmargin=*]
