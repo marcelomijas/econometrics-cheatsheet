@@ -50,7 +50,7 @@ $$y_i = \beta_0 + \beta_1 x_{1i} + ... + \beta_k x_{ki} + u_i \rightarrow (1)$$
 
 There are others that refer to that same econometric model as:
 
-$$y_i = \beta_1 + \beta_2 x_{2i} + ... + \beta_k x_{ki} + u_i \rightarrow (2)$$
+$$y_i = \beta_1 + \beta_2 x_{2i} + ... + \beta_k x_{Ki} + u_i \rightarrow (2)$$
 
 And others refer as:
 
@@ -58,17 +58,17 @@ $$y_i = \alpha + \beta_1 x_{1i} + ... + \beta_k x_{ki} + u_i \rightarrow (3)$$
 
 All the above are equally valid representations of the multiple regression model. In the specification $(1)$, $\beta_0$ represents the constant term, while in specifications $(2)$ and $(3)$, it is represented by $\beta_1$ and $\alpha$, respectively.
 
-In this project, the main specification used is the first $(1)$, so we can say that there are $k$ independent variables and $k+1$ coefficients (including the constant term), the same could be said for the specification $(3)$ (that it is used punctually). There are no differences in the statistics and tests formula definition between this two specifications, because $k_{(1)} = k_{(3)}$.
+In this project, the main specification used is the first $(1)$, so we can say that there are $k$ independent variables and $k + 1$ coefficients (including the constant term). The same could be said for the specification $(3)$, that it is used punctually in the project. There are no differences in the statistics and tests formula definition between specifications $(1)$ and $(3)$.
 
-The specification $(2)$, is different from the rest: $k_{(1)} = k_{(3)} \neq k_{(2)}$. In this specification, it could be said that there are $k-1$ independent variables and $k$ coefficients (including the constant term).
+The specification $(2)$, is different from the rest: $k \neq K$. In this specification, it could be said that there are $K - 1$ independent variables and $K$ coefficients (including the constant term).
 
-For specification $(2)$ users, not everything is lost. There is a relation between the three specifications: $k_{(2)} = k_{(1)} + 1$, so $k_{(1)} = k_{(2)} - 1$, and also considering $k_{(1)} = k_{(3)}$. This way, a "translation" between formulas for different representations is possible (by the user). For example, the adjusted R-squared:
+For specification $(2)$ users, not everything is lost. There is a relation between these three specifications: $K = (k + 1)$, so $k = (K - 1)$. This way, a "translation" between formulas for different representations is possible (by the user). For example, the adjusted R-squared:
 
-$$(1)(3) \rightarrow \overline{R}^2 = 1 - \frac{n-1}{n-k_{(1)}-1} \cdot (1-R^2)$$
+$$(1)(3) \rightarrow \overline{R}^2 = 1 - \frac{n - 1}{n - k - 1} \cdot (1 - R^2)$$
 
-$$(2) \rightarrow \overline{R}^2 = 1 - \frac{n-1}{n-(k_{(2)}-1)-1} \cdot (1-R^2) =$$
+$$(2) \rightarrow \overline{R}^2 = 1 - \frac{n - 1}{n - (K - 1) - 1} \cdot (1 - R^2) =$$
 
-$$= 1 - \frac{n-1}{n-k_{(2)}} \cdot (1-R^2)$$
+$$= 1 - \frac{n - 1}{n - K} \cdot (1 - R^2)$$
 
 ### Where is the non matrix version of the standard error of the $\hat{\beta}$ 's?
 
