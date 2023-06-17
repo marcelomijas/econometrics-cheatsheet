@@ -36,7 +36,7 @@ My [LinkedIn](https://www.linkedin.com/in/marcelomorenop/) (please, send me a me
 
 ## Frequently Asked Questions (FAQ)
 
-### What does $\mathrm{residualized}$ $x_j$ means?
+### What does $\mathrm{resid}$ $x_j$ means?
 
 Those are the residuals from a OLS regression between $x_j$ and all the other $x$ 's. Error measures and R-squared can also be obtained from this regression.
 
