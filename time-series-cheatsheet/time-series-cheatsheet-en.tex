@@ -1,712 +1,802 @@
 \documentclass[10pt, a4paper, landscape]{extarticle}
 
-% -----packages-----
+% ----- packages -----
 \usepackage{amsmath, amsfonts, amssymb} % better math
 \usepackage{enumitem} % better lists
-\usepackage{geometry} % for margins
-\usepackage{graphicx} % for scale tables
-\usepackage{hyperref} % for hyperlinks
-\usepackage{multicol} % for multiple columns
+\usepackage{geometry} % margins
+\usepackage{graphicx} % scaling
+\usepackage{hyperref} % hyperlinks
+\usepackage{multicol} % multiple columns
 \usepackage{parskip} % paragraph spacing
 \usepackage{scrlayer-scrpage} % page foot
-\usepackage{tikz} % for plots
-\usepackage{titlesec} % titles spacing
-\usetikzlibrary{patterns} % for patterns
+\usepackage{tikz} % plots
+\usepackage{titlesec} % titles
+\usetikzlibrary{patterns} % patterns
 
-% -----custom commands-----
+% ----- random seed -----
+\pgfmathsetseed{12}
+
+% ----- custom commands -----
 \newcommand{\E}{\mathrm{E}}
 \newcommand{\Var}{\mathrm{Var}}
 \newcommand{\se}{\mathrm{se}}
 \newcommand{\Cov}{\mathrm{Cov}}
 \newcommand{\Corr}{\mathrm{Corr}}
 
-% -----page customization-----
+% ----- page customization -----
 \geometry{margin=1cm} % margins config
 \pagenumbering{gobble} % remove page numeration
 \setlength{\parskip}{0cm} % paragraph spacing
-% title spacing:
+% title spacing
 \titlespacing{\section}{0pt}{2ex}{1ex}
 \titlespacing{\subsection}{0pt}{1ex}{0ex}
 \titlespacing{\subsubsection}{0pt}{0.5ex}{0ex}
 
-% -----document-----
+% ----- document -----
 \begin{document}
 
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ts1.8-en - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ts1.9-en - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
-\begin{multicols}{3} % set columns to 3
-% start of column 1 page 1
-% titles
+\begin{multicols}{3}
+
 \begin{center}
-	\textbf{\LARGE \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Time Series Cheat Sheet}} \\
-	{\footnotesize By Marcelo Moreno - King Juan Carlos University} \\
+	\textbf{\LARGE \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Time Series Cheat Sheet}}
+
+	{\footnotesize By Marcelo Moreno - King Juan Carlos University}
+
 	{\footnotesize As part of the Econometrics Cheat Sheet Project}
 \end{center}
-% start of content
+
 \section*{Basic concepts}
-	\subsection*{Definitions}
-		\textbf{Time series} - is a succession of quantitative observations of a phenomena ordered in time. \\
-		There are some variations of time series:
-		\begin{itemize}[leftmargin=*]
-			\item \textbf{Panel data} - consist of a time series for each observation of a cross section.
-			\item \textbf{Pooled cross sections} - combines cross sections from different time periods.
-		\end{itemize}
-		\textbf{Stochastic process} - sequence of random variables that are indexed in time.
-	\subsection*{Components of a time series}
-		\begin{itemize}[leftmargin=*]
-			\item \textbf{Trend} - is the long-term general movement of a series.
-			\item \textbf{Seasonal variations} - are periodic oscillations that are produced in a period equal or inferior to a year, and can be easily identified on different years (usually are the result of climatology reasons).
-			\item \textbf{Cyclical variations} - are periodic oscillations that are produced in a period greater than a year (are the result of the economic cycle).
-			\item \textbf{Residual variations} - are movements that do not follow a recognizable periodic oscillation (are the result of eventual non-permanent phenomena that can affect the studied variable in a given moment).
-		\end{itemize}
-	\subsection*{Type of time series models}
-		\begin{itemize}[leftmargin=*]
-			\item \textbf{Static models} - the relation between $y$ and $x$'s is contemporary. Conceptually:
-			\begin{center}
-				$y_t = \beta_0 + \beta_1 x_t + u_t$
-			\end{center}
-			\item \textbf{Distributed-lag models} - the relation between $y$ and $x$'s is not contemporary. Conceptually:
-			\begin{center}
-				$y_t = \beta_0 + \beta_1 x_t + \beta_2 x_{t-1} + ... + \beta_{s} x_{t-(s-1)} + u_t$
-			\end{center}
-			The long term cumulative effect in $y$ when $\Delta x$ is:
-			\begin{center}
-			 	$\beta_1 + \beta_2 + ... + \beta_{s}$
-			\end{center}
-		 	\item \textbf{Dynamic models} - a temporal drift of the dependent variable is part of the independent variables (endogeneity). Conceptually:
-		 	\begin{center}
-		 		$y_t = \beta_0 + \beta_1 y_{t-1} + ... + \beta_s y_{t-s} + u_t$
-		 	\end{center}
-	 		\item Combinations of the above, like the rational distributed-lag models (distributed-lag + dynamic).
-		\end{itemize}
-% end of column 1 page 1
-\columnbreak
-% start of column 2 page 1
-\section*{Assumptions and properties}
-	\subsection*{OLS model assumptions under time series}
-		Under this assumptions, the estimators of the OLS parameters will present good properties. \textbf{Gauss-Markov assumptions} extended applied to time series:
-		\begin{enumerate}[leftmargin=*, label=ts\arabic*.]
-			\item \textbf{Parameters linearity and weak dependence}.
-			\begin{enumerate}[leftmargin=*, label=\alph*.]
-				\item $y_t$ must be a linear function of the $\beta$'s.
-				\item The stochastic $\lbrace(x_t, y_t): t = 1, 2, ..., T\rbrace$ is stationary and weakly dependent.
-			\end{enumerate} 
-			\item \textbf{No perfect collinearity}.
-			\begin{itemize}[leftmargin=*]
-				\item There are no independent variables that are constant: $\Var(x_j) \neq 0 \quad \forall j = 1, ..., k$.
-				\item There is not an exact linear relation between independent variables.
-			\end{itemize}
-			\item \textbf{Conditional mean zero and correlation zero}.
-			\begin{enumerate}[leftmargin=*, label=\alph*.]
-				\item There are no systematic errors: $\E(u | x_1, ..., x_k) = \E(u) = 0 \rightarrow$ \textbf{strong exogeneity} (a implies b).
-				\item There are no relevant variables left out of the model: $\Cov(x_j , u) = 0 \quad \forall j = 1, ..., k \rightarrow$ \textbf{weak exogeneity}.
-			\end{enumerate}
-			\item \textbf{Homoscedasticity}. The variability of the residuals is the same for any $x$: $\Var(u | x_1, ..., x_k) = \sigma^2_u$
-			\item \textbf{No auto-correlation}. Residuals do not contain information about any other residuals: $\Corr(u_t, u_s | x_1, ..., x_k) = 0 \quad \forall t \neq s$.
-			\item \textbf{Normality}. Residuals are independent and identically distributed (\textbf{i.i.d.} so on): $u \sim \mathcal{N}(0,\sigma^2_u)$
-			\item \textbf{Data size}. The number of observations available must be greater than $(k + 1)$ parameters to estimate. (It is already satisfied under asymptotic situations)
-		\end{enumerate}	
-	\subsection*{Asymptotic properties of OLS}
-		Under the econometric model assumptions and the Central Limit Theorem:
-		\begin{itemize}[leftmargin=*]
-			\item Hold (1) to (3a): OLS is \textbf{unbiased}. $\E(\hat{\beta}_j) = \beta_j$
-			\item Hold (1) to (3): OLS is \textbf{consistent}. $\mathrm{plim}(\hat{\beta}_j) = \beta_j$ (to (3b) left out (3a), weak exogeneity, biased but consistent)
-			\item Hold (1) to (5): \textbf{asymptotic normality} of OLS (then, (6) is necessarily satisfied): $u \underset{a}{\sim} \mathcal{N}(0,\sigma^2_u)$
-			\item Hold (1) to (5): \textbf{unbiased estimate} of $\sigma^2_u$. $\E(\hat{\sigma}^2_u) = \sigma^2_u$
-			\item Hold (1) to (5): OLS is \textcolor{blue}{\href{https://www.youtube.com/watch?v=68ugkg9RePc}{BLUE}} (Best Linear Unbiased Estimator) or \textbf{efficient}. 
-			\item Hold (1) to (6): hypothesis testing and confidence intervals can be done reliably.
-		\end{itemize}
-% end of column 2 page 1
-\columnbreak
-% start of column 3 page 1
-\section*{Trends and seasonality}
-	\textbf{Spurious regression} - is when the relation between $y$ and $x$ is due to factors that affect $y$ and have correlation with $x$, $\Corr(x_j, u) \neq 0$. Is the \textbf{non-fulfillment of ts3}.
-	\subsection*{Trends}
-		Two time series can have the same (or contrary) trend, that should lend to a high level of correlation. This, can provoke a false appearance of causality, the problem is \textbf{spurious regression}. Given the model:
-		\begin{center}
-			$y_t = \beta_0 + \beta_1 x_t + u_t$
-		\end{center}
-		where:
-		\begin{center}
-			$y_t = \alpha_0 + \alpha_1 \mathrm{Trend} + v_t$ \\
-			$x_t = \gamma_0 + \gamma_1 \mathrm{Trend} + v_t$
-		\end{center}
-		Adding a trend to the model can solve the problem:
-		\begin{center}
-			$y_t = \beta_0 + \beta_1 x_t + \beta_2 \mathrm{Trend} + u_t$
-		\end{center}
-		The trend can be linear or non-linear (quadratic, cubic, exponential, etc.) \\
-		Another way is making use of the \textbf{Hodrick-Prescott filter} to extract the trend (smooth) and the cyclical component.
-	\subsection*{Seasonality}
-		\setlength{\multicolsep}{0pt} % reduce vertical spacing betwen subsection and multicols
-		\begin{multicols}{2} % set columns to 2
-		% start of text column
-			A time series with can manifest seasonality. That is, the series is subject to a seasonal variations or pattern, usually related to climatology conditions. \\
-			For example, GDP (black) is usually higher in summer and lower in winter. Seasonally adjusted series ({\color{red} red}) for comparison.
-		% end of text column
-		\columnbreak
-		% start of graph column
-			\begin{tikzpicture}[scale=0.18]
-				\draw [step=2, gray, very thin] (-10,-10) grid (10,10); % background grid
-				\draw [thick, <->] (-10,10) node [anchor=south] {$y$} -- (-10,-10) -- (10,-10) node [anchor=north] {$t$}; %axis
-				\draw [black]
-				(-8.0000,-7.2061) -- 
-				(-7.5676,-5.1908) -- 
-				(-7.1351,-8.0000) -- 
-				(-6.7027,-2.3817) -- 
-				(-6.2703,-3.9695) -- 
-				(-5.8378,-1.1603) -- 
-				(-5.4054,-4.5802) -- 
-				(-4.9730,0.8550) -- 
-				(-4.5405,-1.5267) -- 
-				(-4.1081,-0.3053) -- 
-				(-3.6757,-4.5191) -- 
-				(-3.2432,-0.4885) -- 
-				(-2.8108,-2.3206) -- 
-				(-2.3784,-0.4275) -- 
-				(-1.9459,-4.2137) -- 
-				(-1.5135,0.3664) -- 
-				(-1.0811,-1.7099) -- 
-				(-0.6486,-0.5496) -- 
-				(-0.2162,-4.3969) -- 
-				( 0.2162, 1.0992) -- 
-				(0.6486,-1.0382) -- 
-				(1.0811,1.2824) -- 
-				(1.5135,-2.8702) -- 
-				(1.9459,1.7099) -- 
-				(2.3784,-1.0382) -- 
-				(2.8108,1.5267) -- 
-				(3.2432,-1.8321) -- 
-				(3.6757,3.3588) -- 
-				(4.1081,1.0992) -- 
-				(4.5405,4.2137) -- 
-				(4.9730,0.9160) -- 
-				(5.4054,6.2901) -- 
-				(5.8378,4.3969) -- 
-				(6.2703,6.5954) -- 
-				(6.7027,3.4198) -- 
-				(7.1351,8.0000) -- 
-				(7.5676,6.1069) -- 
-				(8.0000,6.9008);
-				\draw [red] 
-				(-8.0000,-6.2061) -- 
-				(-7.5676,-6.0018) -- 
-				(-7.1351,-6.1000) -- 
-				(-6.7027,-5.0817) -- 
-				(-6.2703,-3.9095) -- 
-				(-5.8378,-3.0603) -- 
-				(-5.4054,-3.0002) -- 
-				(-4.9730,-2.4550) -- 
-				(-4.5405,-2.5267) -- 
-				(-4.1081,-2.3053) -- 
-				(-3.6757,-2.5191) -- 
-				(-3.2432,-2.4885) -- 
-				(-2.8108,-2.3206) -- 
-				(-2.3784,-2.4275) -- 
-				(-1.9459,-2.2137) -- 
-				(-1.5135,-1.6664) -- 
-				(-1.0811,-2.0099) -- 
-				(-0.6486,-1.8496) -- 
-				(-0.2162,-1.3969) -- 
-				(0.2162,-1.0992) -- 
-				(0.6486,-1.0382) -- 
-				(1.0811,-1.2824) -- 
-				(1.5135,-1.0002) -- 
-				(1.9459,-0.8099) -- 
-				(2.3784,-0.6382) -- 
-				(2.8108,-0.6267) -- 
-				(3.2432,0.6321) -- 
-				(3.6757,1.0588) -- 
-				(4.1081,1.3992) -- 
-				(4.5405,2.2137) -- 
-				(4.9730,2.5160) -- 
-				(5.4054,3.5901) -- 
-				(5.8378,4.0969) -- 
-				(6.2703,5.2954) -- 
-				(6.7027,5.3198) -- 
-				(7.1351,6.2000) -- 
-				(7.5676,6.9069) -- 
-				(8.0000,6.6008);
-			\end{tikzpicture}
-		% end of graph column
-		\end{multicols}
-		\begin{itemize}[leftmargin=*]
-			\item This problem is \textbf{spurious regression}. A seasonal adjustment can solve it.
-		\end{itemize}
-		A simple \textbf{seasonal adjustment} could be creating stationary binary variables and adding them to the model. For example, for quarterly series ($Qq_t$ are binary variables):
-		\begin{center}
-			$y_t = \beta_0 + \beta_1 Q2_t + \beta_2 Q3_t + \beta_3 Q4_t + \beta_4 x_{1t} + ... + \beta_k x_{kt} + u_t$
-		\end{center}
-		Another way is to seasonally adjust (sa) the variables, and then, do the regression with the adjusted variables:
-		\begin{center}
-			$z_t = \beta_0 + \beta_1 Q2_t + \beta_2 Q3_t + \beta_3 Q4_t  + v_t \rightarrow \hat{v}_t + \E(z_t) = \hat{z}_t^{sa}$
-			$\hat{y}_t^{sa} = \beta_0 + \beta_1 \hat{x}_{1t}^{sa} + ... + \beta_k \hat{x}_{kt}^{sa} + u_t$
-		\end{center}
-		There are much better and complex methods to seasonally adjust a time series, like the \textbf{X-13ARIMA-SEATS}.
-% end of column 3 page 1
-\columnbreak
-% start of column 1 page 2
-\section*{Auto-correlation}
-	The residual of any observation, $u_t$, is correlated with the residual of any other observation. The observations are not independent. Is the \textbf{non-fulfillment} of \textbf{ts5}.
+
+\subsection*{Definitions}
+
+\textbf{Time series} - is a succession of quantitative observations of a phenomena ordered in time.
+
+There are some variations of time series:
+
+\begin{itemize}[leftmargin=*]
+	\item \textbf{Panel data} - consist of a time series for each observation of a cross section.
+	\item \textbf{Pooled cross sections} - combines cross sections from different time periods.
+\end{itemize}
+
+\textbf{Stochastic process} - sequence of random variables that are indexed in time.
+
+\subsection*{Components of a time series}
+
+\begin{itemize}[leftmargin=*]
+	\item \textbf{Trend} - is the long-term general movement of a series.
+	\item \textbf{Seasonal variations} - are periodic oscillations that are produced in a period equal or inferior to a year, and can be easily identified on different years (usually are the result of climatology reasons).
+	\item \textbf{Cyclical variations} - are periodic oscillations that are produced in a period greater than a year (are the result of the economic cycle).
+	\item \textbf{Residual variations} - are movements that do not follow a recognizable periodic oscillation (are the result of eventual non-permanent phenomena that can affect the studied variable in a given moment).
+\end{itemize}
+
+\subsection*{Type of time series models}
+
+\begin{itemize}[leftmargin=*]
+	\item \textbf{Static models} - the relation between $y$ and $x$'s is contemporary. Conceptually:
 	\begin{center}
-		$\Corr(u_t, u_s | x_1, ..., x_k) = \Corr(u_t, u_s) \neq 0 \quad \forall t \neq s$
+		$y_t = \beta_0 + \beta_1 x_t + u_t$
 	\end{center}
-	\subsection*{Consequences}
+	\item \textbf{Distributed-lag models} - the relation between $y$ and $x$'s is not contemporary. Conceptually:
+	\begin{center}
+		$y_t = \beta_0 + \beta_1 x_t + \beta_2 x_{t - 1} + \cdots + \beta_{s} x_{t - (s - 1)} + u_t$
+	\end{center}
+	The long term cumulative effect in $y$ when $\Delta x$ is:
+	\begin{center}
+	 	$\beta_1 + \beta_2 + \cdots + \beta_{s}$
+	\end{center}
+ 	\item \textbf{Dynamic models} - a temporal drift of the dependent variable is part of the independent variables (endogeneity). Conceptually:
+ 	\begin{center}
+ 		$y_t = \beta_0 + \beta_1 y_{t - 1} + \cdots + \beta_s y_{t - s} + u_t$
+ 	\end{center}
+	\item Combinations of the above, like the rational distributed-lag models (distributed-lag + dynamic).
+\end{itemize}
+
+\columnbreak
+
+\section*{Assumptions and properties}
+
+\subsection*{OLS model assumptions under time series}
+
+Under this assumptions, the OLS estimator will present good properties. \textbf{Gauss-Markov assumptions} extended applied to time series:
+
+\begin{enumerate}[leftmargin=*, label=t\arabic*.]
+	\item \textbf{Parameters linearity and weak dependence}.
+	\begin{enumerate}[leftmargin=*, label=\alph*.]
+		\item $y_t$ must be a linear function of the $\beta$'s.
+		\item The stochastic $\lbrace(x_t, y_t) : t = 1, 2, \ldots, T\rbrace$ is stationary and weakly dependent.
+	\end{enumerate}
+	\item \textbf{No perfect collinearity}.
+	\begin{itemize}[leftmargin=*]
+		\item There are no independent variables that are constant: $\Var(x_j) \neq 0, \; \forall j = 1, \ldots, k$.
+		\item There is not an exact linear relation between independent variables.
+	\end{itemize}
+	\item \textbf{Conditional mean zero and correlation zero}.
+	\begin{enumerate}[leftmargin=*, label=\alph*.]
+		\item There are no systematic errors: $\E(u \mid x_1, \ldots, x_k) = \E(u) = 0 \rightarrow$ \textbf{strong exogeneity} (a implies b).
+		\item There are no relevant variables left out of the model: $\Cov(x_j , u) = 0, \; \forall j = 1, \ldots, k \rightarrow$ \textbf{weak exogeneity}.
+	\end{enumerate}
+	\item \textbf{Homoscedasticity}. The variability of the residuals is the same for any $x$: $\Var(u \mid x_1, \ldots, x_k) = \sigma^2_u$
+	\item \textbf{No auto-correlation}. Residuals do not contain information about any other residuals: \\ $\Corr(u_t, u_s \mid x_1, \ldots, x_k) = 0, \; \forall t \neq s$.
+	\item \textbf{Normality}. Residuals are independent and identically distributed (\textbf{i.i.d.} so on): $u \sim \mathcal{N}(0, \sigma^2_u)$
+	\item \textbf{Data size}. The number of observations available must be greater than $(k + 1)$ parameters to estimate. (It is already satisfied under asymptotic situations)
+\end{enumerate}
+
+\subsection*{Asymptotic properties of OLS}
+
+Under the econometric model assumptions and the Central Limit Theorem:
+
+\begin{itemize}[leftmargin=*]
+	\item Hold t1 to t3a: OLS is \textbf{unbiased}. $\E(\hat{\beta}_j) = \beta_j$
+	\item Hold t1 to t3: OLS is \textbf{consistent}. $\mathrm{plim}(\hat{\beta}_j) = \beta_j$ (to t3b left out t3a, weak exogeneity, biased but consistent)
+	\item Hold t1 to t5: \textbf{asymptotic normality} of OLS (then, t6 is necessarily satisfied): $u \underset{a}{\sim} \mathcal{N}(0, \sigma^2_u)$
+	\item Hold t1 to t5: \textbf{unbiased estimate} of $\sigma^2_u$. $\E(\hat{\sigma}^2_u) = \sigma^2_u$
+	\item Hold t1 to t5: OLS is \textcolor{blue}{\href{https://www.youtube.com/watch?v=68ugkg9RePc}{BLUE}} (Best Linear Unbiased Estimator) or \textbf{efficient}. 
+	\item Hold t1 to t6: hypothesis testing and confidence intervals can be done reliably.
+\end{itemize}
+
+\columnbreak
+
+\section*{Trends and seasonality}
+
+\textbf{Spurious regression} - is when the relation between $y$ and $x$ is due to factors that affect $y$ and have correlation with $x$, $\Corr(x_j, u) \neq 0$. Is the \textbf{non-fulfillment of t3}.
+
+\subsection*{Trends}
+
+Two time series can have the same (or contrary) trend, that should lend to a high level of correlation. This, can provoke a false appearance of causality, the problem is \textbf{spurious regression}. Given the model:
+
+\begin{center}
+	$y_t = \beta_0 + \beta_1 x_t + u_t$
+\end{center}
+
+where:
+
+\begin{center}
+	$y_t = \alpha_0 + \alpha_1 \mathrm{Trend} + v_t$
+
+	$x_t = \gamma_0 + \gamma_1 \mathrm{Trend} + v_t$
+\end{center}
+
+Adding a trend to the model can solve the problem:
+
+\begin{center}
+	$y_t = \beta_0 + \beta_1 x_t + \beta_2 \mathrm{Trend} + u_t$
+\end{center}
+
+The trend can be linear or non-linear (quadratic, cubic, exponential, etc.)
+
+Another way is making use of the \textbf{Hodrick-Prescott filter} to extract the trend (smooth) and the cyclical component.
+
+\subsection*{Seasonality}
+
+\setlength{\multicolsep}{0pt}
+\begin{multicols}{2}
+
+	A time series with can manifest seasonality. That is, the series is subject to a seasonal variations or pattern, usually related to climatology conditions.
+	
+	For example, GDP (black) is usually higher in summer and lower in winter. Seasonally adjusted series ({\color{red} red}) for comparison.
+
+\columnbreak
+
+	\begin{tikzpicture}[scale=0.18]
+		% \draw [step=2, gray, very thin] (-10, -10) grid (10, 10); % grid
+		\draw [thick, <->] (-10, 10) node [anchor=south] {$y$} -- (-10, -10) -- (10, -10) node [anchor=north] {$t$}; %axis
+		\draw [black]
+		(-10.0, -7.206) -- 
+		(-9.5, -5.190) -- 
+		(-9.0, -8.000) -- 
+		(-8.5, -2.381) -- 
+		(-8.0, -3.969) -- 
+		(-7.5, -1.160) -- 
+		(-7.0, -4.580) -- 
+		(-6.5, 0.855) -- 
+		(-6.0, -1.526) -- 
+		(-5.5, -0.305) -- 
+		(-5.0, -4.519) -- 
+		(-4.5, -0.488) -- 
+		(-4.0, -2.320) -- 
+		(-3.5, -0.427) -- 
+		(-3.0, -4.213) -- 
+		(-2.5, 0.366) -- 
+		(-2.0, -1.709) -- 
+		(-1.5, -0.549) -- 
+		(-1.0, -4.396) -- 
+		(-0.5, 1.099) -- 
+		(0.0, -1.038) -- 
+		(0.5, 1.282) -- 
+		(1.0, -2.870) -- 
+		(1.5, 1.709) -- 
+		(2.0, -1.038) -- 
+		(2.5, 1.526) -- 
+		(3.0, -1.832) -- 
+		(3.5, 3.358) -- 
+		(4.0, 1.099) -- 
+		(4.5, 4.213) -- 
+		(5.0, 0.916) -- 
+		(5.5, 6.290) -- 
+		(6.0, 4.396) -- 
+		(6.5, 6.595) -- 
+		(7.0, 3.419) -- 
+		(7.5, 8.000) -- 
+		(8.0, 6.106) -- 
+		(8.5, 6.900);
+		\draw [red] 
+		(-10.0, -6.2061) -- 
+		(-9.5, -6.0018) -- 
+		(-9.0, -6.1000) -- 
+		(-8.5, -5.0817) -- 
+		(-8.0, -3.9095) -- 
+		(-7.5, -3.0603) -- 
+		(-7.0, -3.0002) -- 
+		(-6.5, -2.4550) -- 
+		(-6.0, -2.5267) -- 
+		(-5.5, -2.3053) -- 
+		(-5.0, -2.5191) -- 
+		(-4.5, -2.4885) -- 
+		(-4.0, -2.3206) -- 
+		(-3.5,  -2.4275) -- 
+		(-3.0, -2.2137) -- 
+		(-2.5, -1.6664) -- 
+		(-2.0, -2.0099) -- 
+		(-1.5, -1.8496) -- 
+		(-1.0, -1.3969) -- 
+		(-0.5, -1.0992) -- 
+		(0.0, -1.0382) -- 
+		(0.5, -1.2824) -- 
+		(1.0, -1.0002) -- 
+		(1.5, -0.8099) -- 
+		(2.0, -0.6382) -- 
+		(2.5, -0.6267) -- 
+		(3.0, 0.6321) -- 
+		(3.5, 1.0588) -- 
+		(4.0, 1.3992) -- 
+		(4.5, 2.2137) -- 
+		(5.0, 2.5160) -- 
+		(5.5, 3.5901) -- 
+		(6.0, 4.0969) -- 
+		(6.5, 5.2954) -- 
+		(7.0, 5.3198) -- 
+		(7.5, 6.2000) -- 
+		(8.0, 6.9069) -- 
+		(8.5, 7.2008);
+	\end{tikzpicture}
+
+\end{multicols}
+
+\begin{itemize}[leftmargin=*]
+	\item This problem is \textbf{spurious regression}. A seasonal adjustment can solve it.
+\end{itemize}
+
+A simple \textbf{seasonal adjustment} could be creating stationary binary variables and adding them to the model. For example, for quarterly series ($Qq_t$ are binary variables):
+
+\begin{center}
+	$y_t = \beta_0 + \beta_1 Q2_t + \beta_2 Q3_t + \beta_3 Q4_t + \beta_4 x_{1t} + \cdots + \beta_k x_{kt} + u_t$
+\end{center}
+
+Another way is to seasonally adjust (sa) the variables, and then, do the regression with the adjusted variables:
+
+\begin{center}
+	$z_t = \beta_0 + \beta_1 Q2_t + \beta_2 Q3_t + \beta_3 Q4_t  + v_t \rightarrow \hat{v}_t + \E(z_t) = \hat{z}_t^{sa}$
+
+	$\hat{y}_t^{sa} = \beta_0 + \beta_1 \hat{x}_{1t}^{sa} + \cdots + \beta_k \hat{x}_{kt}^{sa} + u_t$
+\end{center}
+
+There are much better and complex methods to seasonally adjust a time series, like the \textbf{X-13ARIMA-SEATS}.
+
+\columnbreak
+
+\section*{Auto-correlation}
+
+The residual of any observation, $u_t$, is correlated with the residual of any other observation. The observations are not independent. Is the \textbf{non-fulfillment} of \textbf{t5}.
+
+\begin{center}
+	$\Corr(u_t, u_s \mid x_1, \ldots, x_k) = \Corr(u_t, u_s) \neq 0, \; \forall t \neq s$
+\end{center}
+
+\subsection*{Consequences}
+
+\begin{itemize}[leftmargin=*]
+	\item OLS estimators still are unbiased.
+	\item OLS estimators still are consistent.
+	\item OLS is \textbf{not efficient} anymore, but still a LUE (Linear Unbiased Estimator).
+	\item \textbf{Variance estimations} of the estimators are \textbf{biased}: the construction of confidence intervals and the hypothesis testing is not reliable.
+\end{itemize}
+
+\subsection*{Detection}
+
+\begin{itemize}[leftmargin=*]
+	\item \textbf{Scatter plots} - look for scatter patterns on $u_{t - 1}$ vs. $u_t$.
+	\setlength{\multicolsep}{0pt}
+	\setlength{\columnsep}{6pt}
+	\begin{multicols}{3}
+		\begin{center}
+			\begin{tikzpicture}[scale=0.11]
+				\node at (0, 13) {\textbf{Ac.}};
+				% \draw [step=2, gray, very thin] (-10, -10) grid (10, 10); % grid
+				\draw [thick, ->] (-10, 0) -- (10, 0) node [anchor=south] {$u_{t - 1}$}; % ut-1 axis
+				\draw [thick, -] (-10, -10) -- (-10, 10) node [anchor=west] {$u_t$}; % ut axis
+				\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=50] (\x, {rnd*6 + (-2*(\x)^2 + 40)*0.1}); % data points
+				\draw [thick, dashed, red, -latex] plot [domain=-8:8] (\x, {3 + (-2*(\x)^2 + 40)*0.1}); % red arrow
+			\end{tikzpicture}
+		\end{center}
+
+	\columnbreak
+
+		\begin{center}
+			\begin{tikzpicture}[scale=0.11]
+				\node at (0, 13) {\textbf{Ac.(+)}};
+				% \draw [step=2, gray, very thin] (-10, -10) grid (10, 10); % grid
+				\draw [thick, ->] (-10, 0) -- (10, 0) node [anchor=north] {$ u_{t - 1}$}; % ut-1 axis
+				\draw [thick, -] (-10, -10) -- (-10, 10) node [anchor=west] {$u_t$}; % ut axis
+				\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=25] (\x, {rnd*6 + 0.5*\x - 3}); % data points
+				\draw [thick, dashed, red, -latex] plot [domain=-8:8] (\x, {3 + 0.5*\x - 3}); % red arrow
+			\end{tikzpicture}
+		\end{center}
+
+	\columnbreak
+
+		\begin{center}
+			\begin{tikzpicture}[scale=0.11]
+				\node at (0, 13) {\textbf{Ac.(-)}};
+				% \draw [step=2, gray, very thin] (-10, -10) grid (10, 10); % grid
+				\draw [thick, ->] (-10, 0) -- (10, 0) node [anchor=south] {$u_{t - 1}$}; % ut-1 axis
+				\draw [thick, -] (-10, -10) -- (-10, 10) node [anchor=west] {$u_t$}; % ut axis
+				\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=25] (\x, {rnd*6 - 0.5*\x - 3}); % data points
+				\draw [thick, dashed, red, -latex] plot [domain=-8:8] (\x, {3 - 0.5*\x - 3}); % red arrow
+			\end{tikzpicture}
+		\end{center}
+
+	\end{multicols}
+
+	\begin{multicols}{2}
+
+		\item \textbf{Correlogram} - composed of the auto-correlation function (ACF) and the partial ACF (PACF).
+
+	\columnbreak
+
 		\begin{itemize}[leftmargin=*]
-			\item OLS estimators still are unbiased.
-			\item OLS estimators still are consistent.
-			\item OLS is \textbf{not efficient} anymore, but still a LUE (Linear Unbiased Estimator).
-			\item \textbf{Variance estimations} of the estimators are \textbf{biased}: the construction of confidence intervals and the hypothesis testing is not reliable.
+			\item Y axis: correlation [-1, 1].
+			\item X axis: lag number.
+			\item Blue lines: $\pm 1.96/T^{0.5}$
 		\end{itemize}
-	\subsection*{Detection}
+	\end{multicols}
+
+	\begin{center}
+		\begin{tikzpicture}[scale=0.22]
+			% acf plot
+			\node at (17.5, 23) {\tiny \textbf{ACF}};
+			\node at (-1.5, 22) {\tiny 1};
+			\node at (-1.5, 17) {\tiny 0};
+			\node at (-1.5, 12) {\tiny -1};
+			\draw [step=2, gray, very thin] (0, 12) rectangle (35, 22); % acf
+			\draw [thick, |->] (0, 22) -- (0, 12) -- (35, 12); % axis
+			\fill [red] (1.5, 17) rectangle (2, 21.9);
+			\fill [red] (3.5, 17) rectangle (4, 21.8);
+			\fill [red] (5.5, 17) rectangle (6, 21.7);
+			\fill [red] (7.5, 17) rectangle (8, 21.6);
+			\fill [red] (9.5, 17) rectangle (10, 21.5);
+			\fill [red] (11.5, 17) rectangle (12, 21.5);
+			\fill [red] (13.5, 17) rectangle (14, 21.4);
+			\fill [red] (15.5, 17) rectangle (16, 21.3);
+			\fill [red] (17.5, 17) rectangle (18, 21.2);
+			\fill [red] (19.5, 17) rectangle (20, 21);
+			\fill [red] (21.5, 17) rectangle (22, 20.9);
+			\fill [red] (23.5, 17) rectangle (24, 20.7);
+			\fill [red] (25.5, 17) rectangle (26, 20.5);
+			\fill [red] (27.5, 17) rectangle (28, 20.3);
+			\fill [red] (29.5, 17) rectangle (30, 20.1);
+			\fill [red] (31.5, 17) rectangle (32, 19.8);
+			\fill [red] (33.5, 17) rectangle (34, 19.6);
+			\draw [blue, very thin] (0, 18.5) -- (35, 18.5); % above blue line
+			\draw [dashed, very thin] (0, 17) -- (35, 17); % center blue dashed line
+			\draw [blue, very thin] (0, 15.5) -- (35, 15.5); % below blue line
+			% pacf plot
+			\node at (17.5, 11) {\tiny \textbf{PACF}};
+			\node at (-1.5, 10) {\tiny 1};
+			\node at (-1.5, 5) {\tiny 0};
+			\node at (-1.5, 0) {\tiny -1};
+			\draw [step=2, gray, very thin] (0, 0) rectangle (35, 10); % pacf
+			\draw [thick, |->] (0, 10) -- (0, 0) -- (35, 0); % axis
+			\fill [red] (1.5, 5) rectangle (2, 9.9);
+			\fill [red] (3.5, 5) rectangle (4, 4.8);
+			\fill [red] (5.5, 5) rectangle (6, 4.6);
+			\fill [red] (7.5, 5) rectangle (8, 4.5);
+			\fill [red] (9.5, 5) rectangle (10, 4.5);
+			\fill [red] (11.5, 5) rectangle (12, 4.7);
+			\fill [red] (13.5, 5) rectangle (14, 4.5);
+			\fill [red] (15.5, 5) rectangle (16, 4.8);
+			\fill [red] (17.5, 5) rectangle (18, 4.6);
+			\fill [red] (19.5, 5) rectangle (20, 4.9);
+			\fill [red] (21.5, 5) rectangle (22, 4.7);
+			\fill [red] (23.5, 5) rectangle (24, 4.6);
+			\fill [red] (25.5, 5) rectangle (26, 4.8);
+			\fill [red] (27.5, 5) rectangle (28, 4.9);
+			\fill [red] (29.5, 5) rectangle (30, 4.8);
+			\fill [red] (31.5, 5) rectangle (32, 4.8);
+			\fill [red] (33.5, 5) rectangle (34, 4.9);
+			\draw [blue, very thin] (0, 6.5) -- (35, 6.5); % above blue line
+			\draw [dashed, very thin] (0, 5) -- (35, 5); % center blue dashed line
+			\draw [blue, very thin] (0, 3.5) -- (35, 3.5); % below blue line
+		\end{tikzpicture}
+	\end{center}
+
+	Conclusions differ between auto-correlation processes.
+
+\columnbreak
+
+	\begin{itemize}[leftmargin=*]
+		\item \textbf{MA($q$) process}. \textbf{ACF}: only the first $q$ coefficients are significant, the remaining are abruptly canceled. \textbf{PACF}: attenuated exponential fast decay or sine waves.
+		\item \textbf{AR($p$) process}. \textbf{ACF}: attenuated exponential fast decay or sine waves. \textbf{PACF}: only the first $p$ coefficients are significant, the remaining are abruptly canceled.
+		\item \textbf{ARMA($p, q$) process}. \textbf{ACF} and \textbf{PACF}: the coefficients are not abruptly canceled and presents a fast decay.
+	\end{itemize}
+
+	If the ACF coefficients do not decay rapidly, there is a clear indicator of lack of stationarity in mean, which would lead to take first differences in the	original series.
+
+	\item \textbf{Formal tests} - Generally, $H_0$: No auto-correlation.
+
+	Supposing that $u_t$ follows an AR(1) process:
+	
+	\begin{center}
+		$u_t = \rho_1 u_{t - 1} + \varepsilon_t$
+	\end{center}
+
+	where $\varepsilon_t$ is white noise.
+	
+	\begin{itemize}[leftmargin=*]
+		\item \textbf{AR(1) t test} (exogenous regressors):
+		\begin{center}
+			$t = \frac{\hat{\rho}_1}{\se(\hat{\rho}_1)} \sim t_{T - k - 1, \alpha/2}$
+		\end{center}
 		\begin{itemize}[leftmargin=*]
-			\item \textbf{Scatter plots} - look for scatter patterns on $u_{t-1}$ vs. $u_t$.
-			\setlength{\multicolsep}{0pt} % reduce vertical spacing between subsection and multicols
-			\setlength{\columnsep}{6pt} % increment spacing between columns
-			% scatter plots
-			\begin{multicols}{3} % set columns to 3
-				% start of Ac. plot
-				\begin{center}
-					\begin{tikzpicture}[scale=0.11]
-						\node at (0,13) {\textbf{Ac.}};
-						\draw [step=2, gray, very thin] (-10,-10) grid (10,10); % grid
-						\draw [thick,->] (-10,0) -- (10,0) node [anchor=south] {$u_{t-1}$}; % ut-1 axis
-						\draw [thick,-] (-10,-10) -- (-10,10) node [anchor=west] {$u_t$}; % ut axis
-						\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=50] (\x,{rnd * 6 + (-2 * (\x)^2 + 40) * 0.1}); % data points
-						\draw [thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 + (-2 * (\x)^2 + 40) * 0.1}); % red arrow
-					\end{tikzpicture}
-				\end{center}
-				% end of Ac. plot
-				\columnbreak
-				% start of Ac.(+) plot
-				\begin{center}
-					\begin{tikzpicture}[scale=0.11]
-						\node at (0,13) {\textbf{Ac.(+)}};
-						\draw [step=2, gray, very thin] (-10,-10) grid (10,10); % grid
-						\draw [thick,->] (-10,0) -- (10,0) node [anchor=north] {$ u_{t-1}$}; % ut-1 axis
-						\draw [thick,-] (-10,-10) -- (-10,10) node [anchor=west] {$u_t$}; % ut axis
-						\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=25] (\x,{rnd * 6 + 0.5 * \x - 3}); % data points
-						\draw [thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 + 0.5 * \x - 3}); % red arrow
-					\end{tikzpicture}
-				\end{center}
-				% end of Ac.(+) plot
-				\columnbreak
-				% start of Ac.(-) plot	
-				\begin{center}
-					\begin{tikzpicture}[scale=0.11]
-						\node at (0,13) {\textbf{Ac.(-)}};
-						\draw [step=2, gray, very thin] (-10,-10) grid (10,10); % grid
-						\draw [thick,->] (-10,0) -- (10,0) node [anchor=south] {$u_{t-1}$}; % ut-1 axis
-						\draw [thick,-] (-10,-10) -- (-10,10) node [anchor=west] {$u_t$}; % ut axis
-						\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=25] (\x,{rnd * 6 - 0.5 * \x - 3}); % data points
-						\draw [thick, dashed, red, -latex] plot [domain=-8:8] (\x,{3 - 0.5 * \x - 3}); % red arrow
-					\end{tikzpicture}
-				\end{center}
-				% end of Ac.(-) plot
-			\end{multicols}
-			% correlogram
-			\begin{multicols}{2} % set columns to 2
-			% start of text column 1
-				\item \textbf{Correlogram} - composed of the auto-correlation function (ACF) and the partial ACF (PACF).
-			% end of text column 1
-			\columnbreak
-			% start of text column 2
-				\begin{itemize}[leftmargin=*]
-					\item Y axis: correlation [-1,1].
-					\item X axis: lag number.
-					\item Blue lines: $\pm 1.96/T^{0.5}$
-				\end{itemize}
-			% end of text column 2
-			\end{multicols}
+			\item $H_1$: Auto-correlation of order one, AR(1).
+		\end{itemize}
+		\item \textbf{Durbin-Watson statistic} (exogenous regressors and residual normality):
+		\begin{center}
+			$d = \frac{\sum_{t=2}^n (\hat{u}_t - \hat{u}_{t - 1})^2}{\sum_{t=1}^n \hat{u}_t^2} \approx 2 \cdot (1 - \hat{\rho}_1), \; 0 \leq d \leq 4$
+		\end{center}
+		\begin{itemize}[leftmargin=*]
+			\item $H_1$: Auto-correlation of order one, AR(1).
+		\end{itemize}
+		\begin{center}
+			\scalebox{0.8}{
+				\begin{tabular}{| c | c | c | c |}
+					\hline
+					$d =$          & 0 & 2 & 4  \\ \hline
+					$\rho \approx$ & 1 & 0 & -1 \\ \hline
+				\end{tabular}
+			}
+			\begin{tikzpicture}[scale=0.28] % durbin-watson test plot
+				\fill [pattern=north east lines, pattern color=gray] (5, 0)  rectangle  (9, 9);
+				\draw (5, 0) -- (5, 9);
+				\draw (9, 0) -- (9, 9);
+				\fill [pattern=north east lines, pattern color=gray] (16, 0) rectangle (20, 9);
+				\draw (16, 0) -- (16, 9);
+				\draw (20, 0) -- (20, 9);
+				\draw [thick] (0, 9) -- (0, 0) -- (25, 0); % axis
+				\draw [very thin, dashed] (12.5, 0) -- (12.5, 9);
+				% y axis labels
+				\node at (-1.5, 8.5) {\scalebox{1.2}{\tiny $f(d)$}};
+				% x axis labels
+				\node at (0, -0.6) {\scalebox{1.2}{\tiny 0}};
+				\node at (5, -0.6) {\scalebox{1.2}{\tiny $d_L$}};
+				\node at (9, -0.6) {\scalebox{1.2}{\tiny $d_U$}};
+				\node at (12.5, -0.6) {\scalebox{1.2}{\tiny 2}};
+				\node at (16.7, -1) {\scalebox{1.1}{\tiny \rotatebox{-20}{$4 - d_U$}}};
+				\node at (20.7, -1) {\scalebox{1.1}{\tiny \rotatebox{-20}{$4 - d_L$}}};
+				\node at (25, -0.6) {\scalebox{1.2}{\tiny 4}};
+				% text inside plot
+				\node at (2.5, 5.5) {\scalebox{1.2}{\tiny Rej. $H_0$}};
+				\node at (2.5, 4.5) {\scalebox{1.2}{\tiny AR(+)}};
+				\node [text=red] at (7, 4.5) {\scalebox{1.2}{\tiny \rotatebox{-70}{\textbf{INCONCLUSIVE}}}};
+				\node at (12.5, 5.5) {\scalebox{1.2}{\tiny Accept $H_0$}};
+				\node at (12.5, 4.5) {\scalebox{1.2}{\tiny No AR}};
+				\node [text=red] at (18, 4.5) {\scalebox{1.2}{\tiny \rotatebox{-70}{\textbf{INCONCLUSIVE}}}};
+				\node at (22.5, 5.5) {\scalebox{1.2}{\tiny Rej. $H_0$}};
+				\node at (22.5, 4.5) {\scalebox{1.2}{\tiny AR(-)}};
+			\end{tikzpicture}
+		\end{center}
+		\item \textbf{Durbin's h} (endogenous regressors):
+		\begin{center}
+			$h = \hat{\rho} \cdot \sqrt{\frac{T}{1 - T \cdot \upsilon}}$
+		\end{center}
+		where $\upsilon$ is the estimated variance of the coefficient associated to the endogenous variable.
+		\begin{itemize}[leftmargin=*]
+			\item $H_1$: Auto-correlation of order one, AR(1).
+		\end{itemize}
+		\item \textbf{Breusch-Godfrey test} (endogenous regressors): it can detect MA($q$) and AR($p$) processes ($\varepsilon_t$ is w. noise):
+		\begin{itemize}[leftmargin=*]
+			\item MA($q$): $u_t = \varepsilon_t - m_1 u_{t - 1} - \cdots - m_q u_{t - q}$
+			\item AR($p$): $u_t = \rho_1 u_{t - 1} + \cdots + \rho_p u_{t - p} + \varepsilon_t$
+		\end{itemize}
+		Under $H_0$: No auto-correlation:
+		\begin{center}
+			$\hfill T \cdot R^2_{\hat{u}_t} \underset{a}{\sim} \chi^2_q \hfill \textbf{or} \hfill T \cdot R^2_{\hat{u}_t} \underset{a}{\sim} \chi^2_p \hfill$
+		\end{center}
+		\begin{itemize}[leftmargin=*]
+			\item $H_1$: Auto-correlation of order $q$ (or $p$).
+		\end{itemize}
+		\item \textbf{Ljung-Box Q test}:
+		\begin{itemize}[leftmargin=*]
+			\item $H_1$: There is auto-correlation.
+		\end{itemize}
+	\end{itemize}
+
+\end{itemize}
+
+\subsection*{Correction}
+
+\begin{itemize}[leftmargin=*]
+	\item Use OLS with a variance-covariance matrix estimator that is \textbf{robust to heterocedasticity and auto-correlation} (HAC), for example, the one proposed by \textbf{Newey-West}.
+	\item Use \textbf{Generalized Least Squares} (GLS). Supposing $y_t = \beta_0 + \beta_1 x_t + u_t$, with $u_t = \rho u_{t - 1} + \varepsilon_t$, where $\lvert \rho \rvert < 1$ and $\varepsilon_t$ is \underline{white noise}.
+	\begin{itemize}[leftmargin=*]
+		\item If $\rho$ is \textbf{known}, use a \textbf{quasi-differentiated model}:
+		\begin{center}
+			$y_t - \rho y_{t - 1} = \beta_0 (1 - \rho) + \beta_1 (x_t - \rho x_{t - 1}) + u_t - \rho u_{t - 1}$
+			
+			$y_t^* = \beta_0^* + \beta_1' x_t^* + \varepsilon_t$
+		\end{center}
+		where $\beta_1' = \beta_1$; and estimate it by OLS.
+		\item If $\rho$ is \textbf{not known}, estimate it by -for example- the \textbf{Cochrane-Orcutt iterative method} (Prais-Winsten method is also good):
+		\begin{enumerate}[leftmargin=*]
+			\item Obtain $\hat{u}_t$ from the original model.
+			\item Estimate $\hat{u}_t = \rho \hat{u}_{t-1} + \varepsilon_t$ and obtain $\hat{\rho}$.
+			\item Create a quasi-differentiated model:
 			\begin{center}
-				\begin{tikzpicture}[scale=0.22]
-					% acf plot
-					\node at (17.5,23) {\tiny \textbf{ACF}};
-					\node at (-1.5,22) {\tiny 1};
-					\node at (-1.5,17) {\tiny 0};
-					\node at (-1.5,12) {\tiny -1};
-					\draw [step=2, gray, very thin] (0,12) rectangle (35,22); % acf
-					\draw [thick,|->] (0,22) -- (0,12) -- (35,12); % axis
-					\fill [red] (1.5,17) rectangle (2,21.9);
-					\fill [red] (3.5,17) rectangle (4,21.8);
-					\fill [red] (5.5,17) rectangle (6,21.7);
-					\fill [red] (7.5,17) rectangle (8,21.6);
-					\fill [red] (9.5,17) rectangle (10,21.5);
-					\fill [red] (11.5,17) rectangle (12,21.5);
-					\fill [red] (13.5,17) rectangle (14,21.4);
-					\fill [red] (15.5,17) rectangle (16,21.3);
-					\fill [red] (17.5,17) rectangle (18,21.2);
-					\fill [red] (19.5,17) rectangle (20,21);
-					\fill [red] (21.5,17) rectangle (22,20.9);
-					\fill [red] (23.5,17) rectangle (24,20.7);
-					\fill [red] (25.5,17) rectangle (26,20.5);
-					\fill [red] (27.5,17) rectangle (28,20.3);
-					\fill [red] (29.5,17) rectangle (30,20.1);
-					\fill [red] (31.5,17) rectangle (32,19.8);
-					\fill [red] (33.5,17) rectangle (34,19.6);
-					\draw [blue, very thin] (0,18.5) -- (35,18.5); % above blue line
-					\draw [dashed, very thin] (0,17) -- (35,17); % center blue dashed line
-					\draw [blue, very thin] (0,15.5) -- (35,15.5); % below blue line
-					% pacf plot
-					\node at (17.5,11) {\tiny \textbf{PACF}};
-					\node at (-1.5,10) {\tiny 1};
-					\node at (-1.5,5) {\tiny 0};
-					\node at (-1.5,0) {\tiny -1};
-					\draw [step=2, gray, very thin] (0,0) rectangle (35,10); % pacf
-					\draw [thick,|->] (0,10) -- (0,0) -- (35,0); % axis
-					\fill [red] (1.5,5) rectangle (2,9.9);
-					\fill [red] (3.5,5) rectangle (4,4.8);
-					\fill [red] (5.5,5) rectangle (6,4.6);
-					\fill [red] (7.5,5) rectangle (8,4.5);
-					\fill [red] (9.5,5) rectangle (10,4.5);
-					\fill [red] (11.5,5) rectangle (12,4.7);
-					\fill [red] (13.5,5) rectangle (14,4.5);
-					\fill [red] (15.5,5) rectangle (16,4.8);
-					\fill [red] (17.5,5) rectangle (18,4.6);
-					\fill [red] (19.5,5) rectangle (20,4.9);
-					\fill [red] (21.5,5) rectangle (22,4.7);
-					\fill [red] (23.5,5) rectangle (24,4.6);
-					\fill [red] (25.5,5) rectangle (26,4.8);
-					\fill [red] (27.5,5) rectangle (28,4.9);
-					\fill [red] (29.5,5) rectangle (30,4.8);
-					\fill [red] (31.5,5) rectangle (32,4.8);
-					\fill [red] (33.5,5) rectangle (34,4.9);
-					\draw [blue, very thin] (0,6.5) -- (35,6.5); % above blue line
-					\draw [dashed, very thin] (0,5) -- (35,5); % center blue dashed line
-					\draw [blue, very thin] (0,3.5) -- (35,3.5); % below blue line
-				\end{tikzpicture}
+				$y_t - \hat{\rho} y_{t - 1} = \beta_0 (1 - \hat{\rho}) + \beta_1 (x_t - \hat{\rho} x_{t - 1}) + u_t - \hat{\rho} u_{t - 1}$
+				
+				$y_t^* = \beta_0^* + \beta_1' x_t^* + \varepsilon_t$
 			\end{center}
-			Conclusions differ between auto-correlation processes.
-% end of column 1 page 2
-\columnbreak			
-% start of column 2 and 3 page 2
-			\begin{itemize}[leftmargin=*]
-				\item \textbf{MA($q$) process}. \textbf{ACF}: only the first $q$ coefficients are significant, the remaining are abruptly canceled. \textbf{PACF}: attenuated exponential fast decay or sine waves.
-				\item \textbf{AR($p$) process}. \textbf{ACF}: attenuated exponential fast decay or sine waves. \textbf{PACF}: only the first $p$ coefficients are significant, the remaining are abruptly canceled.
-				\item \textbf{ARMA($p$,$q$) process}. \textbf{ACF} and \textbf{PACF}: the coefficients are not abruptly canceled and presents a fast decay.
-			\end{itemize}
-			If the ACF coefficients do not decay rapidly, there is a clear indicator of lack of stationarity in mean, which would lead to take first differences in the	original series.
-			\item \textbf{Formal tests} - Generally, $H_0$: No auto-correlation. \\
-			Supposing that $u_t$ follows an AR(1) process:
-			\begin{center}
-				$u_t = \rho_1 u_{t-1} + \varepsilon_t$
-			\end{center}
-			where $\varepsilon_t$ is white noise.
-			\begin{itemize}[leftmargin=*]
-				\item \textbf{AR(1) t test} (exogenous regressors):
-				\begin{center}
-					$t = \frac{\hat{\rho}_1}{\se(\hat{\rho}_1)} \sim t_{T-k-1, \alpha/2}$
-				\end{center}
-				\begin{itemize}[leftmargin=*]
-					\item $H_1$: Auto-correlation of order one, AR(1).
-				\end{itemize}
-				\item \textbf{Durbin-Watson statistic} (exogenous regressors and residual normality):
-				\begin{center}
-					$d = \frac{\sum_{t=2}^n (\hat{u}_t - \hat{u}_{t-1})^2}{\sum_{t=1}^n \hat{u}_t^2} \approx 2 \cdot (1 - \hat{\rho}_1)$  ,  $0 \leq d \leq 4$
-				\end{center}
-				\begin{itemize}[leftmargin=*]
-					\item $H_1$: Auto-correlation of order one, AR(1).
-				\end{itemize}
-				\begin{center}
-					\scalebox{0.8}{
-						\begin{tabular}{| c | c | c | c |}
-							\hline
-							$d = $         & 0 & 2 & 4  \\ \hline
-							$\rho \approx$ & 1 & 0 & -1 \\ \hline
-						\end{tabular}
-					}
-					\begin{tikzpicture}[scale=0.28] % durbin-watson test plot
-						\fill [pattern=north east lines, pattern color=gray] (5,0)  rectangle  (9,9);
-						\draw (5,0) -- (5,9);
-						\draw (9,0) -- (9,9);
-						\fill [pattern=north east lines, pattern color=gray] (16,0) rectangle (20,9);
-						\draw (16,0) -- (16,9);
-						\draw (20,0) -- (20,9);
-						\draw [thick] (0,9) -- (0,0) -- (25,0); % axis
-						\draw [very thin, dashed] (12.5,0) -- (12.5,9);
-						% y axis labels
-						\node at (-1.5,8.5) {\scalebox{1.2}{\tiny $f(d)$}};
-						% x axis labels
-						\node at (0,-0.6) {\scalebox{1.2}{\tiny 0}};
-						\node at (5,-0.6) {\scalebox{1.2}{\tiny $d_L$}};
-						\node at (9,-0.6) {\scalebox{1.2}{\tiny $d_U$}};
-						\node at (12.5,-0.6) {\scalebox{1.2}{\tiny 2}};
-						\node at (16.7,-1) {\scalebox{1.1}{\tiny \rotatebox{-20}{$4 - d_U$}}};
-						\node at (20.7,-1) {\scalebox{1.1}{\tiny \rotatebox{-20}{$4 - d_L$}}};
-						\node at (25,-0.6) {\scalebox{1.2}{\tiny 4}};
-						% text inside plot
-						\node at (2.5,5.5) {\scalebox{1.2}{\tiny Rej. $H_0$}};
-						\node at (2.5,4.5) {\scalebox{1.2}{\tiny AR(+)}};
-						\node [text=red] at (7,4.5) {\scalebox{1.2}{\tiny \rotatebox{-70}{\textbf{INCONCLUSIVE}}}};
-						\node at (12.5,5.5) {\scalebox{1.2}{\tiny Accept $H_0$}};
-						\node at (12.5,4.5) {\scalebox{1.2}{\tiny No AR}};
-						\node [text=red] at (18,4.5) {\scalebox{1.2}{\tiny \rotatebox{-70}{\textbf{INCONCLUSIVE}}}};
-						\node at (22.5,5.5) {\scalebox{1.2}{\tiny Rej. $H_0$}};
-						\node at (22.5,4.5) {\scalebox{1.2}{\tiny AR(-)}};
-					\end{tikzpicture}
-				\end{center}
-				\item \textbf{Durbin's h} (endogenous regressors):
-				\begin{center}
-					$h = \hat{\rho} \cdot \sqrt{\frac{T}{1 - T \cdot \upsilon}}$
-				\end{center}
-				where $\upsilon$ is the estimated variance of the coefficient associated to the endogenous variable.
-				\begin{itemize}[leftmargin=*]
-					\item $H_1$: Auto-correlation of order one, AR(1).
-				\end{itemize}
-				\item \textbf{Breusch-Godfrey test} (endogenous regressors): it can detect MA($q$) and AR($p$) processes ($\varepsilon_t$ is w. noise):
-				\begin{itemize}[leftmargin=*]
-					\item MA($q$): $u_t = \varepsilon_t - m_1 u_{t-1} - ... - m_q u_{t-q}$
-					\item AR($p$): $u_t = \rho_1 u_{t-1} + ... + \rho_p u_{t-p} + \varepsilon_t$
-				\end{itemize}
-				Under $H_0$: No auto-correlation:
-				\begin{center}
-					$\hfill T \cdot R^2_{\hat{u}_t} \underset{a}{\sim} \chi^2_q \hfill \textbf{or} \hfill T \cdot R^2_{\hat{u}_t} \underset{a}{\sim} \chi^2_p \hfill$
-				\end{center}
-				\begin{itemize}[leftmargin=*]
-					\item $H_1$: Auto-correlation of order $q$ (or $p$).
-				\end{itemize}
-				\item \textbf{Ljung-Box Q test}:
-				\begin{itemize}[leftmargin=*]
-					\item $H_1$: There is auto-correlation.
-				\end{itemize}
-			\end{itemize}
-		\end{itemize}
-	\subsection*{Correction}
-		\begin{itemize}[leftmargin=*]
-			\item Use OLS with a variance-covariance matrix estimator that is \textbf{robust to heterocedasticity and auto-correlation} (HAC), for example, the one proposed by \textbf{Newey-West}.
-			\item Use \textbf{Generalized Least Squares} (GLS). Supposing $y_t = \beta_0 + \beta_1 x_t + u_t$, with $u_t = \rho u_{t-1} + \varepsilon_t$, where $|\rho| < 1$ and $\varepsilon_t$ is \underline{white noise}.
-			\begin{itemize}[leftmargin=*]
-				\item If $\rho$ is \textbf{known}, use a \textbf{quasi-differentiated model}:
-				\begin{center}
-					$y_t - \rho y_{t-1} = \beta_0 (1 - \rho) + \beta_1 (x_t - \rho x_{t-1}) + u_t - \rho u_{t-1}$
-					\ $y_t^* = \beta_0^* + \beta_1' x_t^* + \varepsilon_t$
-				\end{center}
-				where $\beta_1' = \beta_1$; and estimate it by OLS.
-				\item If $\rho$ is \textbf{not known}, estimate it by -for example- the \textbf{Cochrane-Orcutt iterative method} (Prais-Winsten method is also good):
-				\begin{enumerate}[leftmargin=*]
-					\item Obtain $\hat{u}_t$ from the original model.
-					\item Estimate $\hat{u}_t = \rho \hat{u}_{t-1} + \varepsilon_t$ and obtain $\hat{\rho}$.
-					\item Create a quasi-differentiated model:
-					\begin{center}
-						$y_t - \hat{\rho} y_{t-1} = \beta_0 (1 - \hat{\rho}) + \beta_1 (x_t - \hat{\rho} x_{t-1}) + u_t - \hat{\rho} u_{t-1}$
-						\ $y_t^* = \beta_0^* + \beta_1' x_t^* + \varepsilon_t$
-					\end{center}
-					where $\beta_1' = \beta_1$; and estimate it by OLS.
-					\item Obtain $\hat{u}_t^* = y_t - (\hat{\beta}_0^* + \hat{\beta}_1' x_t) \neq y_t - (\hat{\beta}_0^* + \hat{\beta}_1' x_t^*)$.
-					\item Repeat from step 2. The method finish when the estimated parameters vary very little between iterations.
-				\end{enumerate}
-			\end{itemize}
-		\item If not solved, look for \textbf{high dependence} in the series.
-		\end{itemize}
+			where $\beta_1' = \beta_1$; and estimate it by OLS.
+			\item Obtain $\hat{u}_t^* = y_t - (\hat{\beta}_0^* + \hat{\beta}_1' x_t) \neq y_t - (\hat{\beta}_0^* + \hat{\beta}_1' x_t^*)$.
+			\item Repeat from step 2. The method finish when the estimated parameters vary very little between iterations.
+		\end{enumerate}
+	\end{itemize}
+	\item If not solved, look for \textbf{high dependence} in the series.
+\end{itemize}
 
 \section*{Stationarity and weak dependence}
-	Stationarity means stability of the joints distributions of a process as time progresses. It allows to correctly identify the relations --that stay unchange with time-- between variables.
-	\subsection*{Stationary and non-stationary processes}
-		\begin{itemize}[leftmargin=*]
-			\item \textbf{Stationary process} (strong stationarity) - is the one in that the probability distributions are stable in time: if any collection of random variables is taken, and then, shifted $h$ periods, the joint probability distribution should stay unchanged.
-% end of column 2 and 3 page 2
+
+Stationarity means stability of the joints distributions of a process as time progresses. It allows to correctly identify the relations --that stay unchange with time-- between variables.
+
+\subsection*{Stationary and non-stationary processes}
+
+\begin{itemize}[leftmargin=*]
+	\item \textbf{Stationary process} (strong stationarity) - is the one in that the probability distributions are stable in time: if any collection of random variables is taken, and then, shifted $h$ periods, the joint probability distribution should stay unchanged.
+
 \columnbreak
-% start of column 1 page 3
-			\item \textbf{Non-stationary process} - is, for example, a series with trend, where at least the mean changes with time.
-			\item \textbf{Covariance stationary process} - is a weaker form of stationarity:
-			\begin{itemize}[leftmargin=*]
-				\item $\E(x_t)$ is constant.
-				\item $\Var(x_t)$ is constant.
-				\item For any $t$,  $h \geq 1$, the $\Cov(x_t, x_{t+h})$ depends only of $h$, not of $t$.
-			\end{itemize}
-		\end{itemize}
-	\subsection*{Weak dependence time series}
-		It is important because it replaces the random sampling assumption, giving for granted the validity of the Central Limit Theorem (requires stationarity and a form of weak dependence). Weakly dependent processes are also known as \textbf{integrated of order zero}, I(0).
-		\begin{itemize}[leftmargin=*]
-			\item \textbf{Weak dependence} - restricts how close the relationship between $x_t$ and $x_{t+h}$ can be as the time distance between the series increases ($h$).
-		\end{itemize}
-		An \textbf{stationary time process} $\lbrace x_t: t = 1, 2, ..., T \rbrace$ is weakly dependent when $x_t$ and $x_{t+h}$ are almost independent as $h$ increases without a limit. \\
-		A \textbf{covariance stationary time process} is weakly dependent if the correlation between $x_t$ and $x_{t+h}$ tends to $0$ fast enough when $h \rightarrow \infty$ (they are not asymptotically correlated). \\
-		Some examples of stationary and weakly dependent time series are:
-		\begin{itemize}[leftmargin=*]
-			\item \textbf{Moving average} - $\lbrace x_t \rbrace$ is a moving average of order one MA($q$):
-			\begin{center}
-				$x_t = e_t + m_1 e_{t-1} + ... + m_q e_{t-q}$
-			\end{center}
-			where $\lbrace e_t: t = 0, 1, ..., T \rbrace$ is an \textsl{i.i.d.} sequence with zero mean and $\sigma^2_e$ variance.
-			\item \textbf{Auto-regressive process} - $\lbrace x_t \rbrace$ is an auto-regressive process of order one AR($p$):
-			\begin{center}
-				$x_t = \rho_1 x_{t-1} + ... + \rho_p x_{t-p} + e_t$
-			\end{center}
-			where $\lbrace e_t: t = 0, 1, ..., T \rbrace$ is an \textsl{i.i.d.} sequence with zero mean and $\sigma^2_e$ variance. \\
-			If $|\rho_1|<1$, then $\lbrace x_t \rbrace$ is an AR(1) stable process that is weakly dependent. It is stationary in covariance, $\Corr(x_t, x_{t-1}) = \rho_1$.
-			\item \textbf{ARMA process} - is a combination of the two above. $\lbrace x_t \rbrace$ is an ARMA($p$,$q$):
-			\begin{center}
-				$x_t = e_t + m_1 e_{t-1} + ... + m_q e_{t-q} + \rho_1 x_{t-1} + ... + \rho_p x_{t-p}$
-			\end{center}
-		\end{itemize}
-		A series with a trend cannot be stationary, but can be weakly dependent (and stationary if the series is de-trended).
-% end of column 1 page 3
-\columnbreak
-% start of column 2 page 3
-\section*{Strong dependence time series}
-	Most of the time, economics series are strong dependent (or high persistent in time). Some special cases of \textbf{unit root} processes, I(1):
+
+	\item \textbf{Non-stationary process} - is, for example, a series with trend, where at least the mean changes with time.
+	\item \textbf{Covariance stationary process} - is a weaker form of stationarity:
 	\begin{itemize}[leftmargin=*]
-		\item \textbf{Random walk} - an AR(1) process with $\rho_1 = 1$.
-		\begin{center}
-			$y_t = y_{t-1} + e_t$
-		\end{center}
-		where $\lbrace e_t : t = 1, 2, ..., T \rbrace$ is an \textsl{i.i.d.} sequence with zero mean and $\sigma^2_e$ variance (the latter changes with time). \\
-		The process is not stationary, is persistent.
-		\item \textbf{Random walk with a \href{https://www.youtube.com/watch?v=pS5d77DQHOI}{drift}} - an AR(1) process with $\rho_1 = 1$ and a constant.
-		\begin{center}
-			$y_t = \beta_0 + y_{t-1} + e_t$
-		\end{center}
-		where $\lbrace e_t : t = 1, 2, ..., T \rbrace$ is an \textsl{i.i.d.} sequence with zero mean and $\sigma^2_e$ variance. \\
-		The process is not stationary, is persistent.
+		\item $\E(x_t)$ is constant.
+		\item $\Var(x_t)$ is constant.
+		\item For any $t$,  $h \geq 1$, the $\Cov(x_t, x_{t + h})$ depends only of $h$, not of $t$.
 	\end{itemize}
-	\subsection*{I(1) detection}
-		\begin{itemize}[leftmargin=*]
-			\item \textbf{Augmented Dickey-Fuller} (ADF) \textbf{test} - where $H_0$: the process is unit root, I(1).
-			\item \textbf{Kwiatkowski–Phillips–Schmidt–Shin} (KPSS) \textbf{test} - where $H_0$: the process have no unit root, I(0).
-		\end{itemize}
-	\subsection*{Transforming unit root to weak dependent}
-		\textbf{Unit root} processes are \textbf{integrated of order one}, I(1). This means that \textbf{the first difference} of the process is \textbf{weakly dependent} or I(0) (and usually, stationary). For example, a random walk:
-		\begin{multicols}{2} % set columns to 2
-		% start of text column
-			\begin{center}
-				$\Delta y_t = y_t - y_{t-1} = e_t$
-			\end{center}
-			where $\lbrace e_t \rbrace = \lbrace \Delta y_t \rbrace$  is \textsl{i.i.d.} \\	\\ 
-			Getting the first difference of a series also deletes its trend. \\
-			For example, a series with a trend (black), and it's first difference ({\color{red} red}).
-		% end of text column
-		\columnbreak
-		% start of graph column
-			\begin{tikzpicture}[scale=0.18]
-				\draw [step=2, gray, very thin] (-10,-10) grid (10,10); % background grid
-				\draw [thick, <->] (-10,10) node [anchor=south] {$y$} -- (-10,-10) -- (10,-10) node [anchor=north] {$t$}; %axis
-				\draw [black]
-				(-8,-8) -- 
-				(-7.6,-7.5411) -- 
-				(-7.2,-7.2841) -- 
-				(-6.8,-6.7952) -- 
-				(-6.4,-6.4292) -- 
-				(-6,-6.0486) -- 
-				(-5.6,-5.9534) -- 
-				(-5.2,-5.4861) -- 
-				(-4.8,-5.2817) -- 
-				(-4.4,-4.8405) -- 
-				(-4,-4.3267) -- 
-				(-3.6,-4.0131) -- 
-				(-3.2,-3.7582) -- 
-				(-2.8,-3.5296) -- 
-				(-2.4,-3.0564) -- 
-				(-2,-2.8965) -- 
-				(-1.6,-2.4169) -- 
-				(-1.2,-1.9134) -- 
-				(-0.8,-1.8881) -- 
-				(-0.4,-1.1661) -- 
-				(0,-0.53) -- 
-				(0.4,-0.2821) -- 
-				(0.8,0.0327) -- 
-				(1.2,0.4915) -- 
-				(1.6,0.7483) -- 
-				(2,0.8053) -- 
-				(2.4,1.0167) -- 
-				(2.8,1.4391) -- 
-				(3.2,1.8107) -- 
-				(3.6,2.2473) -- 
-				(4,2.6688) -- 
-				(4.4,3.052) -- 
-				(4.8,3.5867) -- 
-				(5.2,4.322) -- 
-				(5.6,4.9132) -- 
-				(6,5.7041) -- 
-				(6.4,6.0819) -- 
-				(6.8,6.4316) -- 
-				(7.2,6.8585) -- 
-				(7.6,7.5108) -- 
-				(8,8);
-				\draw [red]
-				(-7.6,1.2835) -- 
-				(-7.2,-2.7995) -- 
-				(-6.8,1.8898) -- 
-				(-6.4,-0.5953) -- 
-				(-6,-0.2992) -- 
-				(-5.6,-6.0745) -- 
-				(-5.2,1.4544) -- 
-				(-4.8,-3.8646) -- 
-				(-4.4,0.9266) -- 
-				(-4,2.3932) -- 
-				(-3.6,-1.6553) -- 
-				(-3.2,-2.8432) -- 
-				(-2.8,-3.3737) -- 
-				(-2.4,1.5724) -- 
-				(-2,-4.7658) -- 
-				(-1.6,1.7033) -- 
-				(-1.2,2.1863) -- 
-				(-0.8,-7.4877) -- 
-				(-0.4,6.6075) -- 
-				(0,4.869) -- 
-				(0.4,-2.9853) -- 
-				(0.8,-1.6322) -- 
-				(1.2,1.2832) -- 
-				(1.6,-2.8046) -- 
-				(2,-6.8477) -- 
-				(2.4,-3.7232) -- 
-				(2.8,0.547) -- 
-				(3.2,-0.4838) -- 
-				(3.6,0.8346) -- 
-				(4,0.5268) -- 
-				(4.4,-0.2468) -- 
-				(4.8,2.816) -- 
-				(5.2,6.8759) -- 
-				(5.6,3.9619) -- 
-				(6,8) -- 
-				(6.4,-0.3568) -- 
-				(6.8,-0.9251) -- 
-				(7.2,0.6366) -- 
-				(7.6,5.1971) -- 
-				(8,1.8972);
-			\end{tikzpicture}
-		% end of graph column
-		\end{multicols}
-		When an I(1) series is strictly positive, it is usually converted to logarithms before taking the first difference. That is, to obtain the (approx.) percentage change of the series:
-		\begin{center}
-			$\Delta \log(y_t) = \log(y_t) - \log(y_{t-1}) \approx \dfrac{y_t - y_{t-1}}{y_{t-1}}$
-		\end{center}
-% end of column 2 page 3
+\end{itemize}
+
+\subsection*{Weak dependence time series}
+
+It is important because it replaces the random sampling assumption, giving for granted the validity of the Central Limit Theorem (requires stationarity and a form of weak dependence). Weakly dependent processes are also known as \textbf{integrated of order zero}, I(0).
+
+\begin{itemize}[leftmargin=*]
+	\item \textbf{Weak dependence} - restricts how close the relationship between $x_t$ and $x_{t + h}$ can be as the time distance between the series increases ($h$).
+\end{itemize}
+
+An \textbf{stationary time process} $\lbrace x_t : t = 1, 2, \ldots, T \rbrace$ is weakly dependent when $x_t$ and $x_{t + h}$ are almost independent as $h$ increases without a limit.
+
+A \textbf{covariance stationary time process} is weakly dependent if the correlation between $x_t$ and $x_{t + h}$ tends to $0$ fast enough when $h \rightarrow \infty$ (they are not asymptotically correlated).
+
+Some examples of stationary and weakly dependent time series are:
+
+\begin{itemize}[leftmargin=*]
+	\item \textbf{Moving average} - $\lbrace x_t \rbrace$ is a moving average of order one MA($q$):
+	\begin{center}
+		$x_t = e_t + m_1 e_{t - 1} + \cdots + m_q e_{t - q}$
+	\end{center}
+	where $\lbrace e_t : t = 0, 1, \ldots, T \rbrace$ is an \textsl{i.i.d.} sequence with zero mean and $\sigma^2_e$ variance.
+	\item \textbf{Auto-regressive process} - $\lbrace x_t \rbrace$ is an auto-regressive process of order one AR($p$):
+	\begin{center}
+		$x_t = \rho_1 x_{t - 1} + \cdots + \rho_p x_{t - p} + e_t$
+	\end{center}
+	where $\lbrace e_t : t = 0, 1, \ldots, T \rbrace$ is an \textsl{i.i.d.} sequence with zero mean and $\sigma^2_e$ variance.
+
+	If $\lvert \rho_1 \rvert < 1$, then $\lbrace x_t \rbrace$ is an AR(1) stable process that is weakly dependent. It is stationary in covariance, $\Corr(x_t, x_{t - 1}) = \rho_1$.
+	\item \textbf{ARMA process} - is a combination of the two above. $\lbrace x_t \rbrace$ is an ARMA($p, q$):
+	\begin{center}
+		$x_t = e_t + m_1 e_{t - 1} + \cdots + m_q e_{t - q} + \rho_1 x_{t - 1} + \cdots + \rho_p x_{t - p}$
+	\end{center}
+\end{itemize}
+
+A series with a trend cannot be stationary, but can be weakly dependent (and stationary if the series is de-trended).
+
 \columnbreak
-% start of column 3 page 3
+
+\section*{Strong dependence time series}
+
+Most of the time, economics series are strong dependent (or high persistent in time). Some special cases of \textbf{unit root} processes, I(1):
+
+\begin{itemize}[leftmargin=*]
+		\item \textbf{Random walk} - an AR(1) process with $\rho_1 = 1$.
+	\begin{center}
+		$y_t = y_{t - 1} + e_t$
+	\end{center}
+	where $\lbrace e_t : t = 1, 2, \ldots, T \rbrace$ is an \textsl{i.i.d.} sequence with zero mean and $\sigma^2_e$ variance (the latter changes with time).
+	
+	The process is not stationary, is persistent.
+	
+	\item \textbf{Random walk with a \href{https://www.youtube.com/watch?v=pS5d77DQHOI}{drift}} - an AR(1) process with $\rho_1 = 1$ and a constant.
+	\begin{center}
+		$y_t = \beta_0 + y_{t - 1} + e_t$
+	\end{center}
+	where $\lbrace e_t : t = 1, 2, \ldots, T \rbrace$ is an \textsl{i.i.d.} sequence with zero mean and $\sigma^2_e$ variance.
+
+	The process is not stationary, is persistent.
+\end{itemize}
+
+\subsection*{I(1) detection}
+
+\begin{itemize}[leftmargin=*]
+	\item \textbf{Augmented Dickey-Fuller} (ADF) \textbf{test} - where $H_0$: the process is unit root, I(1).
+	\item \textbf{Kwiatkowski–Phillips–Schmidt–Shin} (KPSS) \textbf{test} - where $H_0$: the process have no unit root, I(0).
+\end{itemize}
+
+\subsection*{Transforming unit root to weak dependent}
+
+\textbf{Unit root} processes are \textbf{integrated of order one}, I(1). This means that \textbf{the first difference} of the process is \textbf{weakly dependent} or I(0) (and usually, stationary). For example, a random walk:
+
+\begin{multicols}{2}
+
+\begin{center}
+	$\Delta y_t = y_t - y_{t - 1} = e_t$
+\end{center}
+
+where $\lbrace e_t \rbrace = \lbrace \Delta y_t \rbrace$  is \textsl{i.i.d.} \\
+
+Getting the first difference of a series also deletes its trend. \\
+
+For example, a series with a trend (black), and it's first difference ({\color{red} red}).
+
+\columnbreak
+
+\begin{tikzpicture}[scale=0.18]
+	% \draw [step=2, gray, very thin] (-10, -10) grid (10, 10); % grid
+	\draw [thick, <->] (-10, 10) node [anchor=south west] {$y, {\color{red} \Delta y}$} -- (-10, -10) -- (10, -10) node [anchor=north] {$t$}; %axis
+	\draw [black]
+	(-10.0, -8.000) -- 
+	(-9.5, -7.541) -- 
+	(-9.0, -7.284) -- 
+	(-8.5, -6.795) -- 
+	(-8.0, -6.429) -- 
+	(-7.5, -6.048) -- 
+	(-7.0, -5.953) -- 
+	(-6.5, -5.486) -- 
+	(-6.0, -5.281) -- 
+	(-5.5, -4.840) -- 
+	(-5.0, -4.326) -- 
+	(-4.5, -4.013) -- 
+	(-4.0, -3.758) -- 
+	(-3.5, -3.529) -- 
+	(-3.0, -3.056) -- 
+	(-2.5, -2.896) -- 
+	(-2.0, -2.416) -- 
+	(-1.5, -1.913) -- 
+	(-1.0, -1.888) -- 
+	(-0.5, -1.166) -- 
+	(0.0, -0.530) -- 
+	(0.5, -0.282) -- 
+	(1.0, 0.032) -- 
+	(1.5, 0.491) -- 
+	(2.0, 0.748) -- 
+	(2.5, 0.805) -- 
+	(3.0, 1.016) -- 
+	(3.5, 1.439) -- 
+	(4.0, 1.810) -- 
+	(4.5, 2.247) -- 
+	(5.0, 2.668) -- 
+	(5.5, 3.052) -- 
+	(6.0, 3.586) -- 
+	(6.5, 4.322) -- 
+	(7.0, 4.913) -- 
+	(7.5, 5.704) -- 
+	(8.0, 6.081) -- 
+	(8.5, 6.431);
+	\draw [red]
+	(-9.5, 1.283) -- 
+	(-9.0, -2.799) -- 
+	(-8.5, 1.889) -- 
+	(-8.0, -0.595) -- 
+	(-7.5, -0.299) -- 
+	(-7.0, -6.074) -- 
+	(-6.5, 1.454) -- 
+	(-6.0, -3.864) -- 
+	(-5.5, 0.926) -- 
+	(-5.0, 2.393) -- 
+	(-4.5, -1.655) -- 
+	(-4.0, -2.843) -- 
+	(-3.5, -3.373) -- 
+	(-3.0, 1.572) -- 
+	(-2.5, -4.765) -- 
+	(-2.0, 1.703) -- 
+	(-1.5, 2.186) -- 
+	(-1.0, -7.487) -- 
+	(-0.5, 6.607) -- 
+	(0.0, 4.869) -- 
+	(0.5, -2.985) -- 
+	(1.0, -1.632) -- 
+	(1.5, 1.283) -- 
+	(2.0, -2.804) -- 
+	(2.5, -6.847) -- 
+	(3.0, -3.723) -- 
+	(3.5, 0.547) -- 
+	(4.0, -0.483) -- 
+	(4.5, 0.834) -- 
+	(5.0, 0.526) -- 
+	(5.5, -0.246) -- 
+	(6.0, 2.816) -- 
+	(6.5, 6.875) -- 
+	(7.0, 3.961) -- 
+	(7.5, 8.000) -- 
+	(8.0, -0.356) -- 
+	(8.5, -0.925);
+\end{tikzpicture}
+
+\end{multicols}
+
+When an I(1) series is strictly positive, it is usually converted to logarithms before taking the first difference. That is, to obtain the (approx.) percentage change of the series:
+
+\begin{center}
+	$\Delta \log(y_t) = \log(y_t) - \log(y_{t - 1}) \approx \dfrac{y_t - y_{t - 1}}{y_{t - 1}}$
+\end{center}
+
+\columnbreak
+
 \section*{Cointegration}
-	When \textbf{two series are I(1), but a linear combination of them is I(0)}. If the case, the regression of one series over the other is not spurious, but expresses something about the long term relation. Variables are called cointegrated if they have a common stochastic trend. \\
-	For example: $\lbrace x_t \rbrace$ and $\lbrace y_t \rbrace$ are I(1), but $y_t - \beta x_t = u_t$ where $\lbrace u_t \rbrace$ is I(0). ($\beta$ get the name of cointegration parameter).
+
+When \textbf{two series are I(1), but a linear combination of them is I(0)}. If the case, the regression of one series over the other is not spurious, but expresses something about the long term relation. Variables are called cointegrated if they have a common stochastic trend.
+
+For example: $\lbrace x_t \rbrace$ and $\lbrace y_t \rbrace$ are I(1), but $y_t - \beta x_t = u_t$ where $\lbrace u_t \rbrace$ is I(0). ($\beta$ get the name of cointegration parameter).
 
 \section*{Heterocedasticity on time series}
-	The \textbf{assumption} affected is \textbf{ts4}, which leads \textbf{OLS to be not efficient}. \\ 
-	Some tests that work could be the Breusch-Pagan or White's, where $H_0$: No heterocedasticity. It is \textbf{important} for the tests to work that there is \textbf{no auto-correlation} (so first, it is imperative to test for it).
-	\subsection*{ARCH}
-		An auto-regressive conditional heterocedasticity (ARCH), is a model to analyze a form of dynamic heterocedasticity, where the error variance follows an AR($p$) process. \\
-		Given the model: $y_t = \beta_0 + \beta_1 z_t + u_t$
-		where, there is AR(1) and heterocedasticity:
-		\begin{center}
-			$\E(u^2_t | u_{t-1}) = \alpha_0 + \alpha_1 u^2_{t-1}$
-		\end{center}
-	\subsection*{GARCH}
-		A general auto-regressive conditional heterocedasticity (GARCH), is a model similar to ARCH, but in this case, the error variance follows an ARMA($p$,$q$) process.
+
+The \textbf{assumption} affected is \textbf{t4}, which leads \textbf{OLS to be not efficient}.
+
+Some tests that work could be the Breusch-Pagan or White's, where $H_0$: No heterocedasticity. It is \textbf{important} for the tests to work that there is \textbf{no auto-correlation} (so first, it is imperative to test for it).
+
+\subsection*{ARCH}
+
+An auto-regressive conditional heterocedasticity (ARCH), is a model to analyze a form of dynamic heterocedasticity, where the error variance follows an AR($p$) process.
+
+Given the model: $y_t = \beta_0 + \beta_1 z_t + u_t$ where, there is AR(1) and heterocedasticity:
+
+\begin{center}
+	$\E(u^2_t \mid u_{t - 1}) = \alpha_0 + \alpha_1 u^2_{t - 1}$
+\end{center}
+
+\subsection*{GARCH}
+
+A general auto-regressive conditional heterocedasticity (GARCH), is a model similar to ARCH, but in this case, the error variance follows an ARMA($p, q$) process.
 
 \section*{Exponential smoothing}
-	\begin{center}
-		$f_t = \alpha y_t + (1 - \alpha) f_{t-1}$
-	\end{center}
-	where $0 < \alpha < 1$ is the smoothing parameter.
+
+\begin{center}
+	$f_t = \alpha y_t + (1 - \alpha) f_{t - 1}$
+\end{center}
+
+where $0 < \alpha < 1$ is the smoothing parameter.
 
 \section*{Predictions}
-	Two types of prediction:
-	\begin{itemize}[leftmargin=*]
-		\item Of the mean value of $y$ for a specific value of $x$.
-		\item Of an individual value of $y$ for a specific value of $x$.
-	\end{itemize}
-	If the values of the variables ($x$) approximate to the mean values ($\overline{x}$), the confidence interval amplitude of the prediction will be shorter.
-% end of column 3 page 3
-% end of content
+
+Two types of prediction:
+
+\begin{itemize}[leftmargin=*]
+	\item Of the mean value of $y$ for a specific value of $x$.
+	\item Of an individual value of $y$ for a specific value of $x$.
+\end{itemize}
+
+If the values of the variables ($x$) approximate to the mean values ($\overline{x}$), the confidence interval amplitude of the prediction will be shorter.
+
 \end{multicols}
 
 \end{document}
