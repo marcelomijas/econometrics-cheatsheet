@@ -1,4 +1,4 @@
-# Econometrics Cheat Sheet Project
+# The Econometrics Cheat Sheet Project
 
 Econometrics cheat sheets created using $\LaTeX$:
 
