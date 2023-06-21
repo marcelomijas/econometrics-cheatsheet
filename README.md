@@ -10,7 +10,7 @@ Econometrics cheat sheets created using $\LaTeX$:
 
 My [LinkedIn](https://www.linkedin.com/in/marcelomorenop/) (please, send me a message when "connect" or I will ignore the request).
 
-### Download links
+## Download links
 
 **Econometrics Cheat Sheet**. Current version: `3.2` (last updated June 22, 2023)
 
