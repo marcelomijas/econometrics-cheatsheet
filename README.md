@@ -16,23 +16,23 @@ My [LinkedIn](https://www.linkedin.com/in/marcelomorenop/) (please, send me a me
 
 |              | PDF file                                                          | TeX file                                                          |
 | :----------: | :---------------------------------------------------------------: | :---------------------------------------------------------------: |
-| English :uk: | [en.pdf](econometrics-cheatsheet/econometrics-cheatsheet-en.pdf)  | [en.tex](econometrics-cheatsheet/econometrics-cheatsheet-en.tex)  |
-| Spanish :es: | [es.pdf](econometrics-cheatsheet/econometrics-cheatsheet-es.pdf)  | [es.tex](econometrics-cheatsheet/econometrics-cheatsheet-es.tex)  |
+| English :uk: | [en.pdf](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/econometrics-cheatsheet/econometrics-cheatsheet-en.pdf)  | [en.tex](econometrics-cheatsheet/econometrics-cheatsheet-en.tex)  |
+| Spanish :es: | [es.pdf](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/econometrics-cheatsheet/econometrics-cheatsheet-es.pdf)  | [es.tex](econometrics-cheatsheet/econometrics-cheatsheet-es.tex)  |
 
 **Time Series Cheat Sheet**. Current version: `ts1.9` (last updated June 22, 2023)
 
 |              | PDF file                                                        | TeX file                                                        |
 | :----------: | :-------------------------------------------------------------: | :-------------------------------------------------------------: |
-| English :uk: | [en.pdf](time-series-cheatsheet/time-series-cheatsheet-en.pdf)  | [en.tex](time-series-cheatsheet/time-series-cheatsheet-en.tex)  |
-| Spanish :es: | [es.pdf](time-series-cheatsheet/time-series-cheatsheet-es.pdf)  | [es.tex](time-series-cheatsheet/time-series-cheatsheet-es.tex)  |
+| English :uk: | [en.pdf](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/time-series-cheatsheet/time-series-cheatsheet-en.pdf)  | [en.tex](time-series-cheatsheet/time-series-cheatsheet-en.tex)  |
+| Spanish :es: | [es.pdf](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/time-series-cheatsheet/time-series-cheatsheet-es.pdf)  | [es.tex](time-series-cheatsheet/time-series-cheatsheet-es.tex)  |
 
 
 **Additional Cheat Sheet**. Current version: `add1.4` (last updated June 22, 2023)
 
 |              | PDF file                                                      | TeX file                                                      |
 | :----------: | :-----------------------------------------------------------: | :-----------------------------------------------------------: |
-| English :uk: | [en.pdf](additional-cheatsheet/additional-cheatsheet-en.pdf)  | [en.tex](additional-cheatsheet/additional-cheatsheet-en.tex)  |
-| Spanish :es: | [es.pdf](additional-cheatsheet/additional-cheatsheet-es.pdf)  | [es.tex](additional-cheatsheet/additional-cheatsheet-es.tex)  |
+| English :uk: | [en.pdf](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/additional-cheatsheet/additional-cheatsheet-en.pdf)  | [en.tex](additional-cheatsheet/additional-cheatsheet-en.tex)  |
+| Spanish :es: | [es.pdf](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/additional-cheatsheet/additional-cheatsheet-es.pdf)  | [es.tex](additional-cheatsheet/additional-cheatsheet-es.tex)  |
 
 ## Frequently Asked Questions (FAQ)
 
