@@ -183,10 +183,10 @@ Otra manera, es hacer uso del \textbf{filtro Hodrick-Prescott} y extraer la tend
 	\begin{tikzpicture}[scale=0.18]
 		% \draw [step=2, gray, very thin] (-10, -10) grid (10, 10); % grid
 		\draw [thick, <->] (-10, 10) node [anchor=south] {$y$} -- (-10, -10) -- (10, -10) node [anchor=north] {$t$}; %axis
-		\draw [black]
+		\draw [thick, black]
 		(-10.0, -7.206) -- 
 		(-9.5, -5.190) -- 
-		(-9.0, -8.000) -- 
+		(-9.0, -7.500) -- 
 		(-8.5, -2.381) -- 
 		(-8.0, -3.969) -- 
 		(-7.5, -1.160) -- 
@@ -222,7 +222,7 @@ Otra manera, es hacer uso del \textbf{filtro Hodrick-Prescott} y extraer la tend
 		(7.5, 8.000) -- 
 		(8.0, 6.106) -- 
 		(8.5, 6.900);
-		\draw [red] 
+		\draw [thick, red] 
 		(-10.0, -6.2061) -- 
 		(-9.5, -6.0018) -- 
 		(-9.0, -6.1000) -- 
@@ -366,59 +366,59 @@ El residuo de cualquier observación, $u_t$, está correlacionado con el residuo
 	\begin{center}
 		\begin{tikzpicture}[scale=0.22]
 			% acf plot
-			\node at (17.5, 23) {\tiny \textbf{FAC}};
+			\node at (17.5, 23) {\tiny \textbf{ACF}};
 			\node at (-1.5, 22) {\tiny 1};
 			\node at (-1.5, 17) {\tiny 0};
 			\node at (-1.5, 12) {\tiny -1};
-			\draw [step=2, gray, very thin] (0, 12) rectangle (35, 22); % acf
-			\draw [thick, |->] (0, 22) -- (0, 12) -- (35, 12); % axis
+			\draw [step=2, gray, thin] (0, 12) rectangle (35, 22);
+			\draw [thick, |->] (0, 22) -- (0, 12) -- (35, 12);
 			\fill [red] (1.5, 17) rectangle (2, 21.9);
-			\fill [red] (3.5, 17) rectangle (4, 21.8);
-			\fill [red] (5.5, 17) rectangle (6, 21.7);
-			\fill [red] (7.5, 17) rectangle (8, 21.6);
-			\fill [red] (9.5, 17) rectangle (10, 21.5);
-			\fill [red] (11.5, 17) rectangle (12, 21.5);
-			\fill [red] (13.5, 17) rectangle (14, 21.4);
-			\fill [red] (15.5, 17) rectangle (16, 21.3);
-			\fill [red] (17.5, 17) rectangle (18, 21.2);
-			\fill [red] (19.5, 17) rectangle (20, 21);
-			\fill [red] (21.5, 17) rectangle (22, 20.9);
-			\fill [red] (23.5, 17) rectangle (24, 20.7);
-			\fill [red] (25.5, 17) rectangle (26, 20.5);
-			\fill [red] (27.5, 17) rectangle (28, 20.3);
-			\fill [red] (29.5, 17) rectangle (30, 20.1);
-			\fill [red] (31.5, 17) rectangle (32, 19.8);
-			\fill [red] (33.5, 17) rectangle (34, 19.6);
-			\draw [blue, very thin] (0, 18.5) -- (35, 18.5); % above blue line
-			\draw [dashed, very thin] (0, 17) -- (35, 17); % center blue dashed line
-			\draw [blue, very thin] (0, 15.5) -- (35, 15.5); % below blue line
+			\fill [red] (3.5, 17) rectangle (4, 21.7);
+			\fill [red] (5.5, 17) rectangle (6, 21.5);
+			\fill [red] (7.5, 17) rectangle (8, 21.2);
+			\fill [red] (9.5, 17) rectangle (10, 20.8);
+			\fill [red] (11.5, 17) rectangle (12, 20.6);
+			\fill [red] (13.5, 17) rectangle (14, 20.4);
+			\fill [red] (15.5, 17) rectangle (16, 20.3);
+			\fill [red] (17.5, 17) rectangle (18, 20.2);
+			\fill [red] (19.5, 17) rectangle (20, 20.1);
+			\fill [red] (21.5, 17) rectangle (22, 20.0);
+			\fill [red] (23.5, 17) rectangle (24, 19.9);
+			\fill [red] (25.5, 17) rectangle (26, 19.8);
+			\fill [red] (27.5, 17) rectangle (28, 19.7);
+			\fill [red] (29.5, 17) rectangle (30, 19.6);
+			\fill [red] (31.5, 17) rectangle (32, 19.5);
+			\fill [red] (33.5, 17) rectangle (34, 19.3);
+			\draw [blue, thin] (0, 18.5) -- (35, 18.5);
+			\draw [dashed, thin] (0, 17) -- (35, 17);
+			\draw [blue, thin] (0, 15.5) -- (35, 15.5);
 			% pacf plot
-			\node at (17.5, 11) {\tiny \textbf{FACP}};
+			\node at (17.5, 11) {\tiny \textbf{PACF}};
 			\node at (-1.5, 10) {\tiny 1};
 			\node at (-1.5, 5) {\tiny 0};
 			\node at (-1.5, 0) {\tiny -1};
-			\draw [step=2, gray, very thin] (0, 0) rectangle (35, 10); % pacf
-			\draw [thick, |->] (0, 10) -- (0, 0) -- (35, 0); % axis
+			\draw [step=2, gray, thin] (0, 0) rectangle (35, 10);
+			\draw [thick, |->] (0, 10) -- (0, 0) -- (35, 0);
 			\fill [red] (1.5, 5) rectangle (2, 9.9);
-			\fill [red] (3.5, 5) rectangle (4, 4.8);
-			\fill [red] (5.5, 5) rectangle (6, 4.6);
-			\fill [red] (7.5, 5) rectangle (8, 4.5);
-			\fill [red] (9.5, 5) rectangle (10, 4.5);
+			\fill [red] (3.5, 5) rectangle (4, 3.0);
+			\fill [red] (5.5, 5) rectangle (6, 4.5);
+			\fill [red] (7.5, 5) rectangle (8, 4.2);
+			\fill [red] (9.5, 5) rectangle (10, 5.8);
 			\fill [red] (11.5, 5) rectangle (12, 4.7);
 			\fill [red] (13.5, 5) rectangle (14, 4.5);
 			\fill [red] (15.5, 5) rectangle (16, 4.8);
-			\fill [red] (17.5, 5) rectangle (18, 4.6);
+			\fill [red] (17.5, 5) rectangle (18, 5.6);
 			\fill [red] (19.5, 5) rectangle (20, 4.9);
 			\fill [red] (21.5, 5) rectangle (22, 4.7);
 			\fill [red] (23.5, 5) rectangle (24, 4.6);
-			\fill [red] (25.5, 5) rectangle (26, 4.8);
+			\fill [red] (25.5, 5) rectangle (26, 5.4);
 			\fill [red] (27.5, 5) rectangle (28, 4.9);
 			\fill [red] (29.5, 5) rectangle (30, 4.8);
 			\fill [red] (31.5, 5) rectangle (32, 4.8);
-			\fill [red] (33.5, 5) rectangle (34, 4.9);
-			\draw [blue, very thin] (0, 6.5) -- (35, 6.5); % above blue line
-			\draw [dashed, very thin] (0, 5) -- (35, 5); % center blue dashed line
-			\draw [blue, very thin] (0, 3.5) -- (35, 3.5); % below blue line
+			\fill [red] (33.5, 5) rectangle (34, 5.1);
+			\draw [blue, thin] (0, 6.5) -- (35, 6.5);
+			\draw [dashed, thin] (0, 5) -- (35, 5);
+			\draw [blue, thin] (0, 3.5) -- (35, 3.5);
 		\end{tikzpicture}
 	\end{center}
 
@@ -467,18 +467,16 @@ El residuo de cualquier observación, $u_t$, está correlacionado con el residuo
 					$\rho \approx$ & 1 & 0 & -1 \\ \hline
 				\end{tabular}
 			}
-			\begin{tikzpicture}[scale=0.28] % durbin-watson test plot
-				\fill [pattern=north east lines, pattern color=gray] (5, 0)  rectangle  (9, 9);
+			\begin{tikzpicture}[scale=0.28]
+				\fill [pattern=north east lines, pattern color=gray] (5, 0) rectangle  (9, 9);
 				\draw (5, 0) -- (5, 9);
 				\draw (9, 0) -- (9, 9);
 				\fill [pattern=north east lines, pattern color=gray] (16, 0) rectangle (20, 9);
 				\draw (16, 0) -- (16, 9);
 				\draw (20, 0) -- (20, 9);
-				\draw [thick] (0, 9) -- (0, 0) -- (25, 0); % axis
-				\draw [very thin, dashed] (12.5, 0) -- (12.5, 9);
-				% y axis labels
+				\draw [thick] (0, 9) -- (0, 0) -- (25, 0);
+				\draw [dashed] (12.5, 0) -- (12.5, 9);
 				\node at (-1.5, 8.5) {\scalebox{1.2}{\tiny $f(d)$}};
-				% x axis labels
 				\node at (0, -0.6) {\scalebox{1.2}{\tiny 0}};
 				\node at (5, -0.6) {\scalebox{1.2}{\tiny $d_L$}};
 				\node at (9, -0.6) {\scalebox{1.2}{\tiny $d_U$}};
@@ -486,7 +484,6 @@ El residuo de cualquier observación, $u_t$, está correlacionado con el residuo
 				\node at (16.7, -1) {\scalebox{1.1}{\tiny \rotatebox{-20}{$4 - d_U$}}};
 				\node at (20.7, -1) {\scalebox{1.1}{\tiny \rotatebox{-20}{$4 - d_L$}}};
 				\node at (25, -0.6) {\scalebox{1.2}{\tiny 4}};
-				% text inside plot
 				\node at (2.5, 5.5) {\scalebox{1.2}{\tiny Rech. $H_0$}};
 				\node at (2.5, 4.5) {\scalebox{1.2}{\tiny AR(+)}};
 				\node [text=red] at (7,4.5) {\scalebox{1.1}{\tiny \rotatebox{-70}{\textbf{INCONCLUYENTE}}}};
@@ -663,7 +660,7 @@ Por ejemplo, una serie con tendencia (negro), y su primera diferencia ({\color{r
 \begin{tikzpicture}[scale=0.18]
 	% \draw [step=2, gray, very thin] (-10, -10) grid (10, 10); % grid
 	\draw [thick, <->] (-10, 10) node [anchor=south west] {$y, {\color{red} \Delta y}$} -- (-10, -10) -- (10, -10) node [anchor=north] {$t$}; %axis
-	\draw [black]
+	\draw [thick, black]
 	(-10.0, -8.000) -- 
 	(-9.5, -7.541) -- 
 	(-9.0, -7.284) -- 
@@ -702,7 +699,7 @@ Por ejemplo, una serie con tendencia (negro), y su primera diferencia ({\color{r
 	(7.5, 5.704) -- 
 	(8.0, 6.081) -- 
 	(8.5, 6.431);
-	\draw [red]
+	\draw [thick, red]
 	(-9.5, 1.283) -- 
 	(-9.0, -2.799) -- 
 	(-8.5, 1.889) -- 
