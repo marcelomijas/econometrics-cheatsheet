@@ -46,15 +46,15 @@ There is some debate about the correct way to name the coefficients, their sub-i
 
 For example, while some econometricians write the multiple regression model with a constant term like this:
 
-$$y_i = \beta_0 + \beta_1 x_{1i} + ... + \beta_k x_{ki} + u_i \rightarrow (1)$$
+$$y_i = \beta_0 + \beta_1 x_{1i} + ... + \beta_k x_{ki} + u_i \quad (1)$$
 
 There are others that refer to that same econometric model as:
 
-$$y_i = \beta_1 + \beta_2 x_{2i} + ... + \beta_k x_{Ki} + u_i \rightarrow (2)$$
+$$y_i = \beta_1 + \beta_2 x_{2i} + ... + \beta_k x_{Ki} + u_i \quad (2)$$
 
 And others refer as:
 
-$$y_i = \alpha + \beta_1 x_{1i} + ... + \beta_k x_{ki} + u_i \rightarrow (3)$$
+$$y_i = \alpha + \beta_1 x_{1i} + ... + \beta_k x_{ki} + u_i \quad (3)$$
 
 All the above are equally valid representations of the multiple regression model. In the specification $(1)$, $\beta_0$ represents the constant term, while in specifications $(2)$ and $(3)$, it is represented by $\beta_1$ and $\alpha$, respectively.
 
@@ -64,9 +64,9 @@ The specification $(2)$, is different from the rest, since $K \neq k$. In this s
 
 For specification $(2)$ users, not everything is lost. There is a relation between these three specifications: $K = k + 1$, so $k = K - 1$. This way, a "translation" between formulas for different representations is possible (by the user). For example, the adjusted R-squared:
 
-$$(1)(3) \rightarrow \overline{R}^2 = 1 - \frac{n - 1}{n - k - 1} \cdot (1 - R^2)$$
+$$(1, 3) \quad \overline{R}^2 = 1 - \frac{n - 1}{n - k - 1} \cdot (1 - R^2)$$
 
-$$(2) \rightarrow \overline{R}^2 = 1 - \frac{n - 1}{n - (K - 1) - 1} \cdot (1 - R^2) =$$
+$$(2) \quad \overline{R}^2 = 1 - \frac{n - 1}{n - (K - 1) - 1} \cdot (1 - R^2) =$$
 
 $$= 1 - \frac{n - 1}{n - K} \cdot (1 - R^2)$$
 
