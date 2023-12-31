@@ -12,14 +12,14 @@ My [LinkedIn](https://www.linkedin.com/in/marcelomorenop/). ❗ Please, send me 
 
 ## Download links
 
-**Econometrics Cheat Sheet**. Current version: `3.2` (last updated June 22, 2023)
+**Econometrics Cheat Sheet**. Current version: `3.3` (last updated December 31, 2023)
 
 |              | PDF file                                                          | TeX file                                                          |
 | :----------: | :---------------------------------------------------------------: | :---------------------------------------------------------------: |
 | English :uk: | [en.pdf](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/econometrics-cheatsheet/econometrics-cheatsheet-en.pdf)  | [en.tex](econometrics-cheatsheet/econometrics-cheatsheet-en.tex)  |
 | Spanish :es: | [es.pdf](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/econometrics-cheatsheet/econometrics-cheatsheet-es.pdf)  | [es.tex](econometrics-cheatsheet/econometrics-cheatsheet-es.tex)  |
 
-**Time Series Cheat Sheet**. Current version: `ts2.0` (last updated August 13, 2023)
+**Time Series Cheat Sheet**. Current version: `ts2.1` (last updated December 31, 2023)
 
 |              | PDF file                                                        | TeX file                                                        |
 | :----------: | :-------------------------------------------------------------: | :-------------------------------------------------------------: |
@@ -27,7 +27,7 @@ My [LinkedIn](https://www.linkedin.com/in/marcelomorenop/). ❗ Please, send me 
 | Spanish :es: | [es.pdf](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/time-series-cheatsheet/time-series-cheatsheet-es.pdf)  | [es.tex](time-series-cheatsheet/time-series-cheatsheet-es.tex)  |
 
 
-**Additional Cheat Sheet**. Current version: `add1.4` (last updated June 22, 2023)
+**Additional Cheat Sheet**. Current version: `add1.5` (last updated December 31, 2023)
 
 |              | PDF file                                                      | TeX file                                                      |
 | :----------: | :-----------------------------------------------------------: | :-----------------------------------------------------------: |
