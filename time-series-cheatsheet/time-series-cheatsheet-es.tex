@@ -35,7 +35,7 @@
 % ----- document -----
 \begin{document}
 
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ts2.0-es - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ts2.1-es - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3}
@@ -120,7 +120,7 @@ Bajo estos supuestos, los estimadores de los parámetros MCO presentarán buenas
 	\end{enumerate}
 	\item \textbf{Homocedasticidad}. La variabilidad de los resid. es igual para cualquier nivel de $x$: $\Var(u \mid x_1, \ldots, x_k) = \sigma^2_u$
 	\item \textbf{No autocorrelación}. Los residuos no contienen información sobre otros residuos: \\ $\Corr(u_t, u_s \mid x_1, \ldots, x_k) = 0, \; \forall t \neq s$.
-	\item \textbf{Normalidad}. Los residuos son independientes e idénticamente distribuidos (\textbf{i.i.d.}): $u \sim \mathcal{N}(0, \sigma^2_u)$
+	\item \textbf{Normalidad}. Los residuos son independientes e idénticamente distribuidos (\textbf{i.i.d.}): $u \sim N(0, \sigma^2_u)$
 			\item \textbf{Tamaño de datos}. El número de observaciones disponibles debe ser mayor a $(k + 1)$ parámetros a estimar. (Ya satisfecho bajo situaciones asintóticas)
 \end{enumerate}
 
@@ -131,9 +131,9 @@ Bajo los supuestos del modelo econométrico y el Teorema Central del Límite:
 \begin{itemize}[leftmargin=*]
 	\item De t1 a t3a: MCO es \textbf{insesgado}. $\E(\hat{\beta}_j) = \beta_j$
 	\item De t1 a t3: MCO es \textbf{consistente}. $\mathrm{plim}(\hat{\beta}_j) = \beta_j$ (a t3b sin t3a, exogeneidad débil, insesg. y consistente).
-	\item De t1 a t5: \textbf{normalidad asintótica} de MCO (entonces, t6 es necesariamente satisfecho): $u \underset{a}{\sim} \mathcal{N}(0, \sigma^2_u)$
+	\item De t1 a t5: \textbf{normalidad asintótica} de MCO (entonces, t6 es necesariamente satisfecho): $u \underset{a}{\sim} N(0, \sigma^2_u)$
 	\item De t1 a t5: \textbf{estimador insesgado} de $\sigma^2_u$. $\E(\hat{\sigma}^2_u) = \sigma^2_u$
-	\item De t1 a t5: MCO es \textcolor{blue}{\href{https://www.youtube.com/watch?v=68ugkg9RePc}{MELI}} (Mejor Estimador Lineal Insesgado) or \textbf{eficiente}. 
+	\item De t1 a t5: MCO es \textcolor{blue}{MELI} (Mejor Estimador Lineal Insesgado, BLUE en inglés) or \textbf{eficiente}. 
 	\item De t1 a t6: contrastes de hipótesis e intervalos de confianza son fiables.
 \end{itemize}
 
@@ -547,7 +547,7 @@ El residuo de cualquier observación, $u_t$, está correlacionado con el residuo
 			\end{center}
 			donde $\beta_1' = \beta_1$; y estimarlo por MCO.
 			\item Obtener $\hat{u}_t^* = y_t - (\hat{\beta}_0^* + \hat{\beta}_1' x_t) \neq y_t - (\hat{\beta}_0^* + \hat{\beta}_1' x_t^*)$.
-			\item Repetir desde el paso 2. El método termina cuando los parámetros estimados varían muy poco entre iteraciones.
+			\item Repetir desde el paso 2. El algoritmo termina cuando los parámetros estimados varían muy poco entre iteraciones.
 		\end{enumerate}
 	\end{itemize}
 	\item Si no se arregla, buscar \textbf{fuerte dependencia} en la serie.
@@ -623,7 +623,7 @@ La mayoría del tiempo, las series económicas presentan dependencia fuerte (o f
 	
 		El proceso no es estacionario, es persistente.
 	
-	\item \textbf{Paseo aleatorio con \href{https://www.youtube.com/watch?v=pS5d77DQHOI}{deriva}} - un proceso AR(1) con $\rho_1 = 1$ y una constante.
+	\item \textbf{Paseo aleatorio con deriva} - un proceso AR(1) con $\rho_1 = 1$ y una constante.
 	\begin{center}
 		$y_t = \beta_0 + y_{t - 1} + e_t$
 	\end{center}
