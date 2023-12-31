@@ -39,7 +39,7 @@
 % ----- document -----
 \begin{document}
 
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize add1.4-es - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize add1.5-es - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3}
@@ -622,7 +622,7 @@ Por ejemplo, un modelo VAR con dos variables endógenas ($K=2$), dos retardos ($
 		\cdot
 		\begin{bmatrix}
 			\mathrm{const}   \\
-			\mathrm{Trend}_t
+			\mathrm{Tend}_t
 		\end{bmatrix}
 		+
 		\begin{bmatrix}
@@ -636,9 +636,9 @@ Por ejemplo, un modelo VAR con dos variables endógenas ($K=2$), dos retardos ($
 Visualizando las ecuaciones por separado:
 
 \begin{center}
-	$y_{1t} = a_{11, 1} y_{1, t - 1} + a_{12, 1} y_{2, t - 1} + a_{11, 2} y_{1, t - 2} + a_{12, 2} y_{2, t - 2} + b_{11} x_t + c_{11} + c_{12} \mathrm{Trend}_t + u_{1t}$
+	$y_{1t} = a_{11, 1} y_{1, t - 1} + a_{12, 1} y_{2, t - 1} + a_{11, 2} y_{1, t - 2} + a_{12, 2} y_{2, t - 2} + b_{11} x_t + c_{11} + c_{12} \mathrm{Tend}_t + u_{1t}$
 
-	$y_{2t} = a_{21, 1} y_{2, t - 1} + a_{22, 1} y_{1, t - 1} + a_{21, 2} y_{2, t - 2} + a_{22, 2} y_{1, t - 2} + b_{21} x_t + c_{21} + c_{22} \mathrm{Trend}_t + u_{2t}$
+	$y_{2t} = a_{21, 1} y_{2, t - 1} + a_{22, 1} y_{1, t - 1} + a_{21, 2} y_{2, t - 2} + a_{22, 2} y_{1, t - 2} + b_{21} x_t + c_{21} + c_{22} \mathrm{Tend}_t + u_{2t}$
 \end{center}
 
 Si hay una raíz unitaria, el determinante es cero para $z=1$, entonces una o todas las variables son integrados y el modelo VAR ya no es apropiado (es inestable).
@@ -706,10 +706,6 @@ Por ejemplo, si hay tres variables endógenas ($K=3$) con dos relaciones cointeg
 	
 	$ec_{2, t - 1} = \beta_{12} y_{1, t - 1} + \beta_{22} y_{2, t - 1} + \beta_{32} y_{3, t - 1}$
 \end{center}
-
-\vspace{1cm}
-
-\colorbox{yellow}{\textbf{Nota:}} esta es una introducción muy básica, hay mucha más literatura sobre el uso correcto específico de estos modelos y de más avanzados. Por ejemplo, el modelo VECM con términos deterministas en la relación cointegradora, el modelo Structural VAR, etc.
 
 \end{multicols}
 
