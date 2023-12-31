@@ -38,7 +38,7 @@
 % ----- document -----
 \begin{document}
 
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize 3.2-es - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize 3.3-es - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3}
@@ -123,7 +123,7 @@ Bajo estos supuestos, el estimador de MCO presentará buenas propiedades. Supues
 	\end{enumerate}
 	\item \textbf{Homocedasticidad}. La variabilidad de los residuos es igual para todos los niveles de $x$: \\ $\Var(u \mid x_1, \ldots, x_k) = \sigma^2_u$
 	\item \textbf{No autocorrelación}. Los residuos no contienen información sobre otros residuos: \\ $\Corr(u_t, u_s \mid x_1, \ldots, x_k) = 0, \; \forall t \neq s$.
-	\item \textbf{Normalidad}. Los residuos son independientes e idénticamente distribuidos: $u \sim \mathcal{N}(0, \sigma^2_u)$
+	\item \textbf{Normalidad}. Los residuos son independientes e idénticamente distribuidos: $u \sim N(0, \sigma^2_u)$
 	\item \textbf{Tamaño de datos}. El número de observaciones disponibles debe ser mayor a $(k + 1)$ parámetros a estimar. (Ya satisfecho bajo situaciones asintóticas)
 \end{enumerate}
 
@@ -134,9 +134,9 @@ Bajo los supuestos del modelo econométrico y el Teorema Central del Límite (TC
 \begin{itemize}[leftmargin=*]
 	\item De 1 a 4a: MCO es \textbf{insesgado}. $\E(\hat{\beta}_j) = \beta_j$
 	\item De 1 a 4: MCO es \textbf{consistente}. $\mathrm{plim}(\hat{\beta}_j) = \beta_j$ (a 4b sin 4a, exogeneidad débil, insesgado y consistente).
-	\item De 1 a 5: \textbf{normalidad asintótica} de MCO (entonces, 7 es necesariamente satisfecho): $u \underset{a}{\sim} \mathcal{N}(0, \sigma^2_u)$
+	\item De 1 a 5: \textbf{normalidad asintótica} de MCO (entonces, 7 es necesariamente satisfecho): $u \underset{a}{\sim} N(0, \sigma^2_u)$
 	\item De 1 a 6: \textbf{estimador insesgado} de $\sigma^2_u$. $\E(\hat{\sigma}^2_u) = \sigma^2_u$
-	\item De 1 a 6: MCO es \textcolor{blue}{\href{https://www.youtube.com/watch?v=68ugkg9RePc}{MELI}} (Mejor Estimador Lineal Insesgado) ó \textbf{eficiente}. 
+	\item De 1 a 6: MCO es \textcolor{blue}{MELI} (Mejor Estimador Lineal Insesgado, BLUE en inglés) ó \textbf{eficiente}. 
 	\item De 1 a 7: contrastes de hipótesis e intervalos de confianza son fiables.
 \end{itemize}
 
