@@ -35,7 +35,7 @@
 % ----- document -----
 \begin{document}
 
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ts2.1-es - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ts2.2-es - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3}
@@ -120,7 +120,7 @@ Bajo estos supuestos, los estimadores de los parámetros MCO presentarán buenas
 	\end{enumerate}
 	\item \textbf{Homocedasticidad}. La variabilidad de los resid. es igual para cualquier nivel de $x$: $\Var(u \mid x_1, \ldots, x_k) = \sigma^2_u$
 	\item \textbf{No autocorrelación}. Los residuos no contienen información sobre otros residuos: \\ $\Corr(u_t, u_s \mid x_1, \ldots, x_k) = 0, \; \forall t \neq s$.
-	\item \textbf{Normalidad}. Los residuos son independientes e idénticamente distribuidos (\textbf{i.i.d.}): $u \sim N(0, \sigma^2_u)$
+	\item \textbf{Normalidad}. Los residuos son independientes e idénticamente distribuidos (\textbf{i.i.d.}): $u \sim \mathcal{N} (0, \sigma^2_u)$
 			\item \textbf{Tamaño de datos}. El número de observaciones disponibles debe ser mayor a $(k + 1)$ parámetros a estimar. (Ya satisfecho bajo situaciones asintóticas)
 \end{enumerate}
 
@@ -131,9 +131,9 @@ Bajo los supuestos del modelo econométrico y el Teorema Central del Límite:
 \begin{itemize}[leftmargin=*]
 	\item De t1 a t3a: MCO es \textbf{insesgado}. $\E(\hat{\beta}_j) = \beta_j$
 	\item De t1 a t3: MCO es \textbf{consistente}. $\mathrm{plim}(\hat{\beta}_j) = \beta_j$ (a t3b sin t3a, exogeneidad débil, insesg. y consistente).
-	\item De t1 a t5: \textbf{normalidad asintótica} de MCO (entonces, t6 es necesariamente satisfecho): $u \underset{a}{\sim} N(0, \sigma^2_u)$
+	\item De t1 a t5: \textbf{normalidad asintótica} de MCO (entonces, t6 es necesariamente satisfecho): $u \underset{a}{\sim} \mathcal{N} (0, \sigma^2_u)$
 	\item De t1 a t5: \textbf{estimador insesgado} de $\sigma^2_u$. $\E(\hat{\sigma}^2_u) = \sigma^2_u$
-	\item De t1 a t5: MCO es \textcolor{blue}{MELI} (Mejor Estimador Lineal Insesgado, BLUE en inglés) or \textbf{eficiente}. 
+	\item De t1 a t5: MCO es MELI (Mejor Estimador Lineal Insesgado, \textcolor{blue}{BLUE} en inglés) or \textbf{eficiente}. 
 	\item De t1 a t6: contrastes de hipótesis e intervalos de confianza son fiables.
 \end{itemize}
 
@@ -167,7 +167,7 @@ Añadir una tendencia al modelo puede resolver el problema:
 
 Una tendencia puede ser lineal o no lineal (cuadrática, cúbica, exponencial, etc.)
 
-Otra manera, es hacer uso del \textbf{filtro Hodrick-Prescott} y extraer la tendencia (suavizado) y el componente cíclico.
+Otra manera, es hacer uso del \textbf{filtro Hodrick-Prescott} y extraer la tendencia y el componente cíclico.
 
 \subsection*{Estacionalidad}
 
@@ -597,7 +597,7 @@ Algunos ejemplos de series estacionarias y débilmente dependientes:
 	\begin{center}
 		$x_t = \rho_1 x_{t - 1} + \cdots + \rho_p x_{t - p} + e_t$
 	\end{center}
-	donde $\lbrace e_t: t = 0, 1, \ldots, T \rbrace$ es una secuencia \textsl{i.i.d.} con media cero y varianza $\sigma^2_e$.
+	donde $\lbrace e_t: t = 1, 2, \ldots, T \rbrace$ es una secuencia \textsl{i.i.d.} con media cero y varianza $\sigma^2_e$.
 
 	Si $\lvert \rho_1 \rvert < 1$, entonces $\lbrace x_t \rbrace$ es un proceso AR(1) que es débilmente dependiente. Es estacionario en covarianza, $\Corr(x_t, x_{t - 1}) = \rho_1$.
 	\item \textbf{Proceso ARMA} - es una combinación de los dos anteriores. $\lbrace x_t \rbrace$ es un ARMA($p, q$):
@@ -619,24 +619,21 @@ La mayoría del tiempo, las series económicas presentan dependencia fuerte (o f
 	\begin{center}
 		$y_t = y_{t - 1} + e_t$
 	\end{center}
-	donde $\lbrace e_t : t = 1, 2, \ldots, T \rbrace$ es una secuencia \textsl{i.i.d.} con media cero y varianza $\sigma^2_e$ (la última cambia con el tiempo).
-	
-		El proceso no es estacionario, es persistente.
+	donde $\lbrace e_t : t = 1, 2, \ldots, T \rbrace$ es una secuencia \textsl{i.i.d.} con media cero y varianza $\sigma^2_e$.
 	
 	\item \textbf{Paseo aleatorio con deriva} - un proceso AR(1) con $\rho_1 = 1$ y una constante.
 	\begin{center}
 		$y_t = \beta_0 + y_{t - 1} + e_t$
 	\end{center}
 	donde $\lbrace e_t : t = 1, 2, \ldots, T \rbrace$ es una secuencia \textsl{i.i.d.} con media cero y varianza $\sigma^2_e$.
-
-	El proceso no es estacionario, es persistente.
 \end{itemize}
 
 \subsection*{Detección de I(1)}
 
 \begin{itemize}[leftmargin=*]
-	\item \textbf{Prueba aumentada de Dickey-Fuller} (ADF) - donde $H_0$: el proceso es raíz unitaria, I(1).
+	\item \textbf{Prueba Aumentada de Dickey-Fuller} (ADF) - donde $H_0$: el proceso es raíz unitaria, I(1).
 	\item \textbf{Prueba Kwiatkowski–Phillips–Schmidt–Shin} (KPSS) - donde $H_0$: el proceso no es raíz unitaria, I(0).
+	\item \textbf{Prueba Phillips-Perron} (PP) - donde $H_0$: el proceso no es raíz unitaria, I(0).
 \end{itemize}
 
 \subsection*{Transformar raíz unitaria a depend. débil}

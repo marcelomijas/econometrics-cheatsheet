@@ -35,7 +35,7 @@
 % ----- document -----
 \begin{document}
 
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ts2.1-en - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ts2.2-en - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3}
@@ -120,7 +120,7 @@ Under this assumptions, the OLS estimator will present good properties. \textbf{
 	\end{enumerate}
 	\item \textbf{Homoscedasticity}. The variability of the residuals is the same for any $x$: $\Var(u \mid x_1, \ldots, x_k) = \sigma^2_u$
 	\item \textbf{No auto-correlation}. Residuals do not contain information about any other residuals: \\ $\Corr(u_t, u_s \mid x_1, \ldots, x_k) = 0, \; \forall t \neq s$.
-	\item \textbf{Normality}. Residuals are independent and identically distributed (\textbf{i.i.d.} so on): $u \sim N(0, \sigma^2_u)$
+	\item \textbf{Normality}. Residuals are independent and identically distributed (\textbf{i.i.d.} so on): $u \sim \mathcal{N} (0, \sigma^2_u)$
 	\item \textbf{Data size}. The number of observations available must be greater than $(k + 1)$ parameters to estimate. (It is already satisfied under asymptotic situations)
 \end{enumerate}
 
@@ -131,7 +131,7 @@ Under the econometric model assumptions and the Central Limit Theorem:
 \begin{itemize}[leftmargin=*]
 	\item Hold t1 to t3a: OLS is \textbf{unbiased}. $\E(\hat{\beta}_j) = \beta_j$
 	\item Hold t1 to t3: OLS is \textbf{consistent}. $\mathrm{plim}(\hat{\beta}_j) = \beta_j$ (to t3b left out t3a, weak exogeneity, biased but consistent)
-	\item Hold t1 to t5: \textbf{asymptotic normality} of OLS (then, t6 is necessarily satisfied): $u \underset{a}{\sim} N(0, \sigma^2_u)$
+	\item Hold t1 to t5: \textbf{asymptotic normality} of OLS (then, t6 is necessarily satisfied): $u \underset{a}{\sim} \mathcal{N} (0, \sigma^2_u)$
 	\item Hold t1 to t5: \textbf{unbiased estimate} of $\sigma^2_u$. $\E(\hat{\sigma}^2_u) = \sigma^2_u$
 	\item Hold t1 to t5: OLS is \textcolor{blue}{BLUE} (Best Linear Unbiased Estimator) or \textbf{efficient}. 
 	\item Hold t1 to t6: hypothesis testing and confidence intervals can be done reliably.
@@ -167,7 +167,7 @@ Adding a trend to the model can solve the problem:
 
 The trend can be linear or non-linear (quadratic, cubic, exponential, etc.)
 
-Another way is making use of the \textbf{Hodrick-Prescott filter} to extract the trend (smooth) and the cyclical component.
+Another way is make use of the \textbf{Hodrick-Prescott filter} to extract the trend and the cyclical component.
 
 \subsection*{Seasonality}
 
@@ -555,7 +555,7 @@ The residual of any observation, $u_t$, is correlated with the residual of any o
 
 \section*{Stationarity and weak dependence}
 
-Stationarity means stability of the joints distributions of a process as time progresses. It allows to correctly identify the relations --that stay unchange with time-- between variables.
+Stationarity means stability of the joint distributions of a process as time progresses. It allows to correctly identify the relations --that stay unchange with time-- between variables.
 
 \subsection*{Stationary and non-stationary processes}
 
@@ -573,12 +573,12 @@ Stationarity means stability of the joints distributions of a process as time pr
 	\end{itemize}
 \end{itemize}
 
-\subsection*{Weak dependence time series}
+\subsection*{Weakly dependent time series}
 
 It is important because it replaces the random sampling assumption, giving for granted the validity of the Central Limit Theorem (requires stationarity and a form of weak dependence). Weakly dependent processes are also known as \textbf{integrated of order zero}, I(0).
 
 \begin{itemize}[leftmargin=*]
-	\item \textbf{Weak dependence} - restricts how close the relationship between $x_t$ and $x_{t + h}$ can be as the time distance between the series increases ($h$).
+	\item \textbf{Weakly dependent} - restricts how close the relationship between $x_t$ and $x_{t + h}$ can be as the time distance between the series increases ($h$).
 \end{itemize}
 
 An \textbf{stationary time process} $\lbrace x_t : t = 1, 2, \ldots, T \rbrace$ is weakly dependent when $x_t$ and $x_{t + h}$ are almost independent as $h$ increases without a limit.
@@ -597,7 +597,7 @@ Some examples of stationary and weakly dependent time series are:
 	\begin{center}
 		$x_t = \rho_1 x_{t - 1} + \cdots + \rho_p x_{t - p} + e_t$
 	\end{center}
-	where $\lbrace e_t : t = 0, 1, \ldots, T \rbrace$ is an \textsl{i.i.d.} sequence with zero mean and $\sigma^2_e$ variance.
+	where $\lbrace e_t : t = 1, 2, \ldots, T \rbrace$ is an \textsl{i.i.d.} sequence with zero mean and $\sigma^2_e$ variance.
 
 	If $\lvert \rho_1 \rvert < 1$, then $\lbrace x_t \rbrace$ is an AR(1) stable process that is weakly dependent. It is stationary in covariance, $\Corr(x_t, x_{t - 1}) = \rho_1$.
 	\item \textbf{ARMA process} - is a combination of the two above. $\lbrace x_t \rbrace$ is an ARMA($p, q$):
@@ -610,26 +610,22 @@ A series with a trend cannot be stationary, but can be weakly dependent (and sta
 
 \columnbreak
 
-\section*{Strong dependence time series}
+\section*{Strongly dependent time series}
 
-Most of the time, economics series are strong dependent (or high persistent in time). Some special cases of \textbf{unit root} processes, I(1):
+Most of the time, economics series are strongly dependent (or high persistent in time). Some special cases of \textbf{unit root} processes, I(1):
 
 \begin{itemize}[leftmargin=*]
 		\item \textbf{Random walk} - an AR(1) process with $\rho_1 = 1$.
 	\begin{center}
 		$y_t = y_{t - 1} + e_t$
 	\end{center}
-	where $\lbrace e_t : t = 1, 2, \ldots, T \rbrace$ is an \textsl{i.i.d.} sequence with zero mean and $\sigma^2_e$ variance (the latter changes with time).
-	
-	The process is not stationary, is persistent.
+	where $\lbrace e_t : t = 1, 2, \ldots, T \rbrace$ is an \textsl{i.i.d.} sequence with zero mean and $\sigma^2_e$ variance.
 	
 	\item \textbf{Random walk with a drift} - an AR(1) process with $\rho_1 = 1$ and a constant.
 	\begin{center}
 		$y_t = \beta_0 + y_{t - 1} + e_t$
 	\end{center}
 	where $\lbrace e_t : t = 1, 2, \ldots, T \rbrace$ is an \textsl{i.i.d.} sequence with zero mean and $\sigma^2_e$ variance.
-
-	The process is not stationary, is persistent.
 \end{itemize}
 
 \subsection*{I(1) detection}
@@ -637,6 +633,7 @@ Most of the time, economics series are strong dependent (or high persistent in t
 \begin{itemize}[leftmargin=*]
 	\item \textbf{Augmented Dickey-Fuller} (ADF) \textbf{test} - where $H_0$: the process is unit root, I(1).
 	\item \textbf{Kwiatkowski–Phillips–Schmidt–Shin} (KPSS) \textbf{test} - where $H_0$: the process have no unit root, I(0).
+	\item \textbf{Phillips-Perron} (PP) \textbf{test} - where $H_0$: the process have no unit root, I(0).
 \end{itemize}
 
 \subsection*{Transforming unit root to weak dependent}
