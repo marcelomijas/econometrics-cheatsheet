@@ -38,7 +38,7 @@
 % ----- document -----
 \begin{document}
 
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize 3.3-en - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize 3.4-en - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3}
@@ -123,7 +123,7 @@ Under this assumptions, the OLS estimator will present good properties. \textbf{
 	\end{enumerate}
 	\item \textbf{Homoscedasticity}. The variability of the residuals is the same for all levels of $x$: \\ $\Var(u \mid x_1, \ldots, x_k) = \sigma^2_u$
 	\item \textbf{No auto-correlation}. Residuals don't contain information about any other residuals: \\ $\Corr(u_t, u_s \mid x_1, \ldots, x_k) = 0, \; \forall t \neq s$.
-	\item \textbf{Normality}. Residuals are independent and identically distributed: $u \sim N(0, \sigma^2_u)$
+	\item \textbf{Normality}. Residuals are independent and identically distributed: $u \sim \mathcal{N} (0, \sigma^2_u)$
 	\item \textbf{Data size}. The number of observations available must be greater than $(k + 1)$ parameters to estimate. (It is already satisfied under asymptotic situations)		
 \end{enumerate}
 
@@ -134,7 +134,7 @@ Under the econometric model assumptions and the Central Limit Theorem (CLT):
 \begin{itemize}[leftmargin=*]
 	\item Hold 1 to 4a: OLS is \textbf{unbiased}. $\E(\hat{\beta}_j) = \beta_j$
 	\item Hold 1 to 4: OLS is \textbf{consistent}. $\mathrm{plim}(\hat{\beta}_j) = \beta_j$ (to 4b left out 4a, weak exogeneity, biased but consistent)
-	\item Hold 1 to 5: \textbf{asymptotic normality} of OLS (then, 7 is necessarily satisfied): $u \underset{a}{\sim} N(0, \sigma^2_u)$
+	\item Hold 1 to 5: \textbf{asymptotic normality} of OLS (then, 7 is necessarily satisfied): $u \underset{a}{\sim} \mathcal{N} (0, \sigma^2_u)$
 	\item Hold 1 to 6: \textbf{unbiased estimate} of $\sigma^2_u$. $\E(\hat{\sigma}^2_u) = \sigma^2_u$
 	\item Hold 1 to 6: OLS is \textcolor{blue}{BLUE} (Best Linear Unbiased Estimator) or \textbf{efficient}. 
 	\item Hold 1 to 7: hypothesis testing and confidence intervals can be done reliably.
@@ -271,7 +271,7 @@ Standard Error of the Regression: \hfill $\hat{\sigma}_u = \sqrt{\frac{\SSR}{n -
 
 Standard Error of the $\hat{\beta}$'s: \hfill $\se(\hat{\beta}) = \sqrt{\hat{\sigma}^2_u \cdot (X^\tr X)^{-1}}$
 
-Mean Squared Error: \hfill $\mathrm{MSE} = \frac{\sum_{i=1}^n (y_i - \hat{y}_i)^2}{n}$
+Root Mean Squared Error: \hfill $\mathrm{RMSE} = \sqrt{\frac{\sum_{i=1}^n (y_i - \hat{y}_i)^2}{n}}$
 
 Absolute Mean Error: \hfill $\mathrm{AME} = \frac{\sum_{i=1}^n \lvert y_i - \hat{y}_i \rvert}{n}$
 
@@ -461,7 +461,7 @@ Changes in the \textbf{measurement origin} of the variables (endogenous or exoge
 \subsection*{Detection}
 
 \begin{itemize}[leftmargin=*]
-	\item \textbf{Correlation analysis} - look for high correlations between independent variables, $> \lvert 0.7 \rvert$.
+	\item \textbf{Correlation analysis} - look for high correlations between independent variables, $\lvert r \rvert > 0.7$.
 	\item \textbf{Variance Inflation Factor (VIF)} - indicates the increment of $\Var(\hat{\beta}_j)$ because of the multicollinearity.
 	\begin{center}
 		$\mathrm{VIF} (\hat{\beta}_j) = \frac{1}{1 - R_j^2}$
@@ -552,7 +552,7 @@ Is the \textbf{breaking of the fifth (5) econometric} model \textbf{assumption}.
 The residual of any observation, $u_t$, is correlated with the residual of any other observation. The observations are not independent.
 
 \begin{center}
-	$\Corr(u_t, u_s \mid x_1, \ldots, x_k) = \Corr(u_t, u_s) \neq 0 \quad \forall t \neq s$
+	$\Corr(u_t, u_s \mid x_1, \ldots, x_k) = \Corr(u_t, u_s) \neq 0, \quad \forall t \neq s$
 \end{center}
 
 The ``natural" context of this phenomena is time series. Is the \textbf{breaking of the sixth (6) econometric} model \textbf{assumption}.
