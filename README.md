@@ -12,14 +12,14 @@ My [LinkedIn](https://www.linkedin.com/in/marcelomorenop/). ❗ Please, send me 
 
 ## Download links
 
-**Econometrics Cheat Sheet**. Current version: `3.4` (last updated January 20, 2024)
+**Econometrics Cheat Sheet**. Current version: `CS-24.2`
 
 |              | PDF file                                                          | TeX file                                                          |
 | :----------: | :---------------------------------------------------------------: | :---------------------------------------------------------------: |
 | English :uk: | [en.pdf](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/econometrics-cheatsheet/econometrics-cheatsheet-en.pdf)  | [en.tex](econometrics-cheatsheet/econometrics-cheatsheet-en.tex)  |
 | Spanish :es: | [es.pdf](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/econometrics-cheatsheet/econometrics-cheatsheet-es.pdf)  | [es.tex](econometrics-cheatsheet/econometrics-cheatsheet-es.tex)  |
 
-**Time Series Cheat Sheet**. Current version: `ts2.2` (last updated January 20, 2024)
+**Time Series Cheat Sheet**. Current version: `TS-24.2`
 
 |              | PDF file                                                        | TeX file                                                        |
 | :----------: | :-------------------------------------------------------------: | :-------------------------------------------------------------: |
@@ -27,7 +27,7 @@ My [LinkedIn](https://www.linkedin.com/in/marcelomorenop/). ❗ Please, send me 
 | Spanish :es: | [es.pdf](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/time-series-cheatsheet/time-series-cheatsheet-es.pdf)  | [es.tex](time-series-cheatsheet/time-series-cheatsheet-es.tex)  |
 
 
-**Additional Cheat Sheet**. Current version: `add1.5` (last updated December 31, 2023)
+**Additional Cheat Sheet**. Current version: `ADD-24.2`
 
 |              | PDF file                                                      | TeX file                                                      |
 | :----------: | :-----------------------------------------------------------: | :-----------------------------------------------------------: |
