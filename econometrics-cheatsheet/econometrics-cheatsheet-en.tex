@@ -51,9 +51,9 @@
 	{\footnotesize The Econometrics Cheat Sheet Project}
 \end{center}
 
-\section*{Basic concepts}
+\section{Basic concepts}
 
-\subsection*{Definitions}
+\subsection{Definitions}
 
 \textbf{Econometrics} - is a social science discipline with the objective of quantify the relationships between economic agents, test economic theories and evaluate and implement government and business policies.
 
@@ -61,7 +61,7 @@
 
 \textbf{\textsl{Ceteris paribus}} - if all the other relevant factors remain constant.
 
-\subsection*{Data types}
+\subsection{Data types}
 
 \textbf{Cross section} - data taken at a given moment in time, an static \textsl{photo}. Order doesn't matter.
 
@@ -71,7 +71,7 @@
 
 \textbf{Pooled cross sections} - combines cross section from different time periods.
 
-\subsection*{Phases of an econometric model}
+\subsection{Phases of an econometric model}
 
 \begin{enumerate}[leftmargin=*]
 	\setlength{\multicolsep}{0pt}
@@ -84,11 +84,11 @@
 	\end{multicols}
 \end{enumerate}
 
-\subsection*{Regression analysis}
+\subsection{Regression analysis}
 
 Study and predict the mean value of a variable (dependent variable, $y$) regarding the base of fixed values of other variables (independent variables, $x$'s). In econometrics it is common to use Ordinary Least Squares (OLS) for regression analysis.
 
-\subsection*{Correlation analysis}
+\subsection{Correlation analysis}
 
 Correlation analysis don't distinguish between dependent and independent variables.
 
@@ -102,9 +102,9 @@ Correlation analysis don't distinguish between dependent and independent variabl
 
 \columnbreak
 
-\section*{Assumptions and properties}
+\section{Assumptions and properties}
 
-\subsection*{Econometric model assumptions}
+\subsection{Econometric model assumptions}
 
 Under this assumptions, the OLS estimator will present good properties. \textbf{Gauss-Markov} assumptions:
 
@@ -127,7 +127,7 @@ Under this assumptions, the OLS estimator will present good properties. \textbf{
 	\item \textbf{Data size}. The number of observations available must be greater than $(k + 1)$ parameters to estimate. (It is already satisfied under asymptotic situations)		
 \end{enumerate}
 
-\subsection*{Asymptotic properties of OLS}
+\subsection{Asymptotic properties of OLS}
 
 Under the econometric model assumptions and the Central Limit Theorem (CLT):
 
@@ -140,7 +140,7 @@ Under the econometric model assumptions and the Central Limit Theorem (CLT):
 	\item Hold 1 to 7: hypothesis testing and confidence intervals can be done reliably.
 \end{itemize}
 
-\section*{Ordinary Least Squares}
+\section{Ordinary Least Squares}
 
 \textbf{Objective} - minimize the Sum of Squared Residuals (SSR):
 
@@ -148,7 +148,7 @@ Under the econometric model assumptions and the Central Limit Theorem (CLT):
 	$\min \sum_{i=1}^n \hat{u}_i^2$, where $\hat{u}_i = y_i - \hat{y}_i$
 \end{center}
 
-\subsection*{Simple regression model}
+\subsection{Simple regression model}
 
 \setlength{\multicolsep}{2pt}
 \setlength{\columnsep}{-40pt}
@@ -188,7 +188,7 @@ where:
 
 \end{multicols}
 
-\subsection*{Multiple regression model}
+\subsection{Multiple regression model}
 
 \setlength{\multicolsep}{2pt}
 \setlength{\columnsep}{-40pt}
@@ -244,7 +244,7 @@ Matrix: $\hat{\beta} = (X^\tr X)^{-1} (X^\tr y)$
 
 \end{multicols}
 
-\subsection*{Interpretation of coefficients}
+\subsection{Interpretation of coefficients}
 
 \begin{center}
 	\scalebox{0.85}{
@@ -259,7 +259,7 @@ Matrix: $\hat{\beta} = (X^\tr X)^{-1} (X^\tr y)$
 	}
 \end{center}
 
-\subsection*{Error measurements}
+\subsection{Error measurements}
 
 Sum of Sq. Residuals: \hfill $\SSR = \sum_{i=1}^n \hat{u}_i^2 = \sum_{i=1}^n (y_i - \hat{y}_i)^2$
 
@@ -279,7 +279,7 @@ Mean Percentage Error: \hfill $\mathrm{MPE} = \frac{\sum_{i=1}^n \lvert \hat{u}_
 
 \columnbreak
 
-\section*{R-squared}
+\section{R-squared}
 
 Is a measure of the \textbf{goodness of the fit}, how the regression fits to the data:
 
@@ -300,9 +300,9 @@ When the number of regressors increment, the value of the R-squared increments a
 
 For big sample sizes: $\overline{R}^2 \approx R^2$
 
-\section*{Hypothesis testing}
+\section{Hypothesis testing}
 
-\subsection*{Definitions}
+\subsection{Definitions}
 
 An hypothesis test is a rule designed to explain from a sample, if exist \textbf{evidence or not to reject an hypothesis} that is made about one or more population parameters.
 
@@ -319,7 +319,7 @@ Elements of an hypothesis test:
 
 \textbf{The rule is}: if the p-value is \textbf{less} than $\alpha$, there is evidence to \textbf{reject} the \textbf{null hypothesis} at that given $\alpha$ (there is evidence to accept the alternative hypothesis).
 
-\subsection*{Individual tests}
+\subsection{Individual tests}
 
 Tests if a parameter is significantly different from a given value, $\vartheta$.
 
@@ -347,7 +347,7 @@ If $\lvert t \rvert > \lvert t_{n - k - 1, \alpha/2} \rvert$, there is evidence 
 
 If $\lvert t \rvert > \lvert t_{n - k - 1, \alpha/2} \rvert$, there is evidence to reject $H_0$.
 
-\subsection*{The F test}
+\subsection{The F test}
 
 Simultaneously tests multiple (linear) hypothesis about the parameters. It makes use of a non restricted model and a restricted model:
 
@@ -386,7 +386,7 @@ In this case, we can simplify the formula for the $F$ statistic.
 
 If $F_{k, n - k - 1} < F$, there is evidence to reject $H_0$.
 
-\section*{Confidence intervals}
+\section{Confidence intervals}
 
 The confidence intervals at ($1 - \alpha$) confidence level can be calculated:
 
@@ -394,7 +394,7 @@ The confidence intervals at ($1 - \alpha$) confidence level can be calculated:
 	$\hat{\beta}_j \mp t_{n - k - 1, \alpha/2} \cdot \se(\hat{\beta}_j)$
 \end{center}
 
-\section*{Dummy variables}
+\section{Dummy variables}
 
 Dummy (or binary) variables are used for qualitative information like sex, civil state, country, etc.
 
@@ -405,7 +405,7 @@ Dummy (or binary) variables are used for qualitative information like sex, civil
 
 If a qualitative variable have $m$ categories, we only have to include ($m - 1$) dummy variables.
 
-\subsection*{Structural change}
+\subsection{Structural change}
 
 Structural change refers to changes in the values of the parameters of the econometric model produced by the effect of different sub-populations. Structural change can be included in the model through dummy variables.
 
@@ -424,7 +424,7 @@ The location of the dummy variables ($D$) matters:
 
 \textbf{Chow's structural test} - is used when we want to analyze the existence of structural changes in all the model parameters, it's a particular expression of the F test, where the null hypothesis is: $H_0$: No structural change (all $\delta = 0$).
 
-\section*{Changes of scale}
+\section{Changes of scale}
 
 Changes in the \textbf{measurement units} of the variables:
 
@@ -434,20 +434,20 @@ Changes in the \textbf{measurement units} of the variables:
 	\item Same scale change on endogenous and exogenous - only affects the intercept, $\beta_0^* = \beta_0 \cdot \lambda$
 \end{itemize}
 
-\section*{Changes of origin}
+\section{Changes of origin}
 
 Changes in the \textbf{measurement origin} of the variables (endogenous or exogenous), $y^* = y + \lambda$ - only affects the model's intercept, $\beta_0^* = \beta_0 + \lambda$
 
 \columnbreak
 
-\section*{Multicollinearity}
+\section{Multicollinearity}
 
 \begin{itemize}[leftmargin=*]
 	\item \textbf{Perfect multicollinearity} - there are independent variables that are constant and/or there is an exact linear relation between independent variables. Is the \textbf{breaking of the third (3) econometric} model \textbf{assumption}.
 	\item \textbf{Approximate multicollinearity} - there are independent variables that are approximately constant and/or there is an approximately linear relation between independent variables. It \textbf{does not break any econometric} model \textbf{assumption}, but has an effect on OLS.
 \end{itemize}
 
-\subsection*{Consequences}
+\subsection{Consequences}
 
 \begin{itemize}[leftmargin=*]
 	\item \textbf{Perfect multicollinearity} - the equation system of OLS cannot be solved due to infinite solutions.
@@ -458,7 +458,7 @@ Changes in the \textbf{measurement origin} of the variables (endogenous or exoge
 	\end{itemize}
 \end{itemize}
 
-\subsection*{Detection}
+\subsection{Detection}
 
 \begin{itemize}[leftmargin=*]
 	\item \textbf{Correlation analysis} - look for high correlations between independent variables, $\lvert r \rvert > 0.7$.
@@ -475,7 +475,7 @@ Changes in the \textbf{measurement origin} of the variables (endogenous or exoge
 
 One typical characteristic of multicollinearity is that the regression coefficients of the model aren't individually different from zero (due to high variances), but jointly they are different from zero.
 
-\subsection*{Correction}
+\subsection{Correction}
 
 \begin{itemize}[leftmargin=*]
 	\item Delete one of the collinear variables.
@@ -485,7 +485,7 @@ One typical characteristic of multicollinearity is that the regression coefficie
 
 \columnbreak
 
-\section*{Heteroscedasticity}
+\section{Heteroscedasticity}
 
 The residuals $u_i$ of the population regression function do not have the same variance $\sigma^2_u$:
 
@@ -495,7 +495,7 @@ The residuals $u_i$ of the population regression function do not have the same v
 
 Is the \textbf{breaking of the fifth (5) econometric} model \textbf{assumption}.
 
-\subsection*{Consequences}
+\subsection{Consequences}
 
 \begin{itemize}[leftmargin=*]
 	\item OLS estimators still are unbiased.
@@ -504,7 +504,7 @@ Is the \textbf{breaking of the fifth (5) econometric} model \textbf{assumption}.
 	\item \textbf{Variance estimations} of the estimators are \textbf{biased}: the construction of confidence intervals and the hypothesis testing is not reliable.
 \end{itemize}
 
-\subsection*{Detection}
+\subsection{Detection}
 
 \begin{itemize}[leftmargin=*]
 	\setlength{\multicolsep}{0pt}
@@ -532,7 +532,7 @@ Is the \textbf{breaking of the fifth (5) econometric} model \textbf{assumption}.
 	\item \textbf{Formal tests} - White, Bartlett, Breusch-Pagan, etc. Commonly, the null hypothesis: $H_0$: Homoscedasticity.
 \end{itemize}
 
-\subsection*{Correction}
+\subsection{Correction}
 
 \begin{itemize}[leftmargin=*]
 	\item Use OLS with a variance-covariance matrix estimator robust to heteroscedasticity (HC), for example, the one proposed by White.
@@ -547,7 +547,7 @@ Is the \textbf{breaking of the fifth (5) econometric} model \textbf{assumption}.
 
 \columnbreak
 
-\section*{Auto-correlation}
+\section{Auto-correlation}
 
 The residual of any observation, $u_t$, is correlated with the residual of any other observation. The observations are not independent.
 
@@ -557,7 +557,7 @@ The residual of any observation, $u_t$, is correlated with the residual of any o
 
 The ``natural" context of this phenomena is time series. Is the \textbf{breaking of the sixth (6) econometric} model \textbf{assumption}.
 
-\subsection*{Consequences}
+\subsection{Consequences}
 
 \begin{itemize}[leftmargin=*]
 	\item OLS estimators still are unbiased.
@@ -566,7 +566,7 @@ The ``natural" context of this phenomena is time series. Is the \textbf{breaking
 	\item \textbf{Variance estimations} of the estimators are \textbf{biased}: the construction of confidence intervals and the hypothesis testing is not reliable.
 \end{itemize}
 
-\subsection*{Detection}
+\subsection{Detection}
 
 \begin{itemize}[leftmargin=*]
 	\item \textbf{Graphs} - look for scatter patterns on $u_{t - 1}$ vs. $u_t$ or make use of a correlogram.
@@ -609,7 +609,7 @@ The ``natural" context of this phenomena is time series. Is the \textbf{breaking
 	\item \textbf{Formal tests} - Durbin-Watson, Breusch-Godfrey, etc. Commonly, the null hypothesis: $H_0$: No auto-correlation.
 \end{itemize}
 
-\subsection*{Correction}
+\subsection{Correction}
 
 \begin{itemize}[leftmargin=*]
 	\item Use OLS with a variance-covariance matrix estimator robust to heterocedasticity and auto-correlation (HAC), for example, the one proposed by Newey-West.
