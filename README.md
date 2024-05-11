@@ -6,9 +6,9 @@ Econometrics cheat sheets created using $\LaTeX$:
 * **Time Series Cheat Sheet**: Components of a time series, trends and seasonality, auto-correlation, stationarity, weak and strong dependence, cointegration and heterocedasticity on time series.
 * **Additional Cheat Sheet**: Matrix notation of OLS, variable omission problem, proxy variables, instrumental variables, Two Stage Least Squares, information criteria, non-restricted hypothesis test, incorrect functional form, logistic regression, statistical definitions, VAR models, VECM.
 
-:bulb: I am currently pursuing a PhD in macroeconomics and econometrics at Universidad Rey Juan Carlos (Madrid, Spain). Also, I am a researcher and professor at the same institution. Collaboration proposals and academic stays offers in other universities (national and international) are welcome and can help me a lot in my career! :rocket:
+:bulb: I am currently pursuing a PhD in macroeconomics and econometrics at Universidad Rey Juan Carlos (Madrid, Spain). Also, I am a [researcher and professor](https://gestion2.urjc.es/pdi/ver/marcelo.moreno) at the same institution. Collaboration proposals and academic stays offers in other universities (national and international) are welcome and can help me a lot in my career! :rocket:
 
-My [LinkedIn](https://www.linkedin.com/in/marcelomorenop/). ❗ Please, send me a message when "connect" or I will ignore the request.
+My [LinkedIn](https://www.linkedin.com/in/marcelomorenop/). Please, send me a message when "connect" or I will ignore the request ❗.
 
 ## Download links
 
