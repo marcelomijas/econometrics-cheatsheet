@@ -8,7 +8,7 @@ Econometrics cheat sheets created using $\LaTeX$:
 
 :bulb: I am currently pursuing a PhD in macroeconomics and econometrics at Universidad Rey Juan Carlos (Madrid, Spain). Also, I am a [researcher and professor](https://gestion2.urjc.es/pdi/ver/marcelo.moreno) at the same institution. Collaboration proposals and academic stays offers in other universities (national and international) are welcome and can help me a lot in my career! :rocket:
 
-My [LinkedIn](https://www.linkedin.com/in/marcelomorenop/). Please, send me a message when "connect" or I will ignore the request ❗.
+:exclamation: My [LinkedIn](https://www.linkedin.com/in/marcelomorenop/). Please, send me a message when "connect" or I will ignore the request.
 
 ## Download links
 
