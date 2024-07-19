@@ -35,7 +35,7 @@
 % ----- document -----
 \begin{document}
 
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-24.5-ES - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-24.6-ES - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3}
@@ -628,13 +628,18 @@ La mayoría del tiempo, las series económicas presentan dependencia fuerte (o f
 	donde $\lbrace e_t : t = 1, 2, \ldots, T \rbrace$ es una secuencia \textsl{i.i.d.} con media cero y varianza $\sigma^2_e$.
 \end{itemize}
 
-\subsection*{Detección de I(1)}
+\subsection*{Contrastes de raíz unitaria}
 
-\begin{itemize}[leftmargin=*]
-	\item \textbf{Prueba Aumentada de Dickey-Fuller} (ADF) - donde $H_0$: el proceso es raíz unitaria, I(1).
-	\item \textbf{Prueba Kwiatkowski–Phillips–Schmidt–Shin} (KPSS) - donde $H_0$: el proceso no es raíz unitaria, I(0).
-	\item \textbf{Prueba Phillips-Perron} (PP) - donde $H_0$: el proceso es raíz unitaria, I(1).
-\end{itemize}
+\begin{center}
+	\begin{tabular}{ c | c | c }
+		Contraste       & $H_0$          & Rechazar $H_0$                    \\ \hline
+		ADF             & I(1)           & tau \textless \, Valor crítico    \\ \hline
+		KPSS            & I(0) nivel     & mu \textgreater \, Valor crítico  \\
+		                & I(0) tendencia & tau \textgreater \, Valor crítico \\ \hline
+		Phillips-Perron & I(1)           & Z-tau \textless \, Val. crítico   \\ \hline
+		Zivot-Andrews   & I(1) c. rotura & tau \textless \, Valor crítico
+	\end{tabular}
+\end{center}
 
 \subsection*{Transformar raíz unitaria a depend. débil}
 

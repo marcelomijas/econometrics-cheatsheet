@@ -35,7 +35,7 @@
 % ----- document -----
 \begin{document}
 
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-24.5-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-24.6-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3}
@@ -628,13 +628,18 @@ Most of the time, economics series are strongly dependent (or high persistent in
 	where $\lbrace e_t : t = 1, 2, \ldots, T \rbrace$ is an \textsl{i.i.d.} sequence with zero mean and $\sigma^2_e$ variance.
 \end{itemize}
 
-\subsection*{I(1) detection}
+\subsection*{Unit root tests}
 
-\begin{itemize}[leftmargin=*]
-	\item \textbf{Augmented Dickey-Fuller} (ADF) \textbf{test} - where $H_0$: the process is unit root, I(1).
-	\item \textbf{Kwiatkowski–Phillips–Schmidt–Shin} (KPSS) \textbf{test} - where $H_0$: the process have no unit root, I(0).
-	\item \textbf{Phillips-Perron} (PP) \textbf{test} - where $H_0$: the process is unit root, I(1).
-\end{itemize}
+\begin{center}
+	\begin{tabular}{ c | c | c }
+		Test            & $H_0$         & Reject $H_0$                       \\ \hline
+		ADF             & I(1)          & tau \textless \, Critical value    \\ \hline
+		KPSS            & I(0) level    & mu \textgreater \, Critical value  \\
+		                & I(0) trend    & tau \textgreater \, Critical value \\ \hline
+		Phillips-Perron & I(1)          & Z-tau \textless \, Critical val.   \\ \hline
+		Zivot-Andrews   & I(1) w. break & tau \textless \, Critical value
+	\end{tabular}
+\end{center}
 
 \subsection*{Transforming unit root to weak dependent}
 
