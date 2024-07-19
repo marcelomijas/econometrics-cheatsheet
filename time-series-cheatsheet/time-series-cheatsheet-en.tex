@@ -35,7 +35,7 @@
 % ----- document -----
 \begin{document}
 
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-24.2-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-24.5-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3}
@@ -110,7 +110,7 @@ Under this assumptions, the OLS estimator will present good properties. \textbf{
 	\end{enumerate}
 	\item \textbf{No perfect collinearity}.
 	\begin{itemize}[leftmargin=*]
-		\item There are no independent variables that are constant: $\Var(x_j) \neq 0, \; \forall j = 1, \ldots, k$.
+		\item There are no independent variables that are constant: $\Var(x_j) \neq 0, \; \forall j = 1, \ldots, k$
 		\item There is not an exact linear relation between independent variables.
 	\end{itemize}
 	\item \textbf{Conditional mean zero and correlation zero}.
@@ -119,7 +119,7 @@ Under this assumptions, the OLS estimator will present good properties. \textbf{
 		\item There are no relevant variables left out of the model: $\Cov(x_j , u) = 0, \; \forall j = 1, \ldots, k \rightarrow$ \textbf{weak exogeneity}.
 	\end{enumerate}
 	\item \textbf{Homoscedasticity}. The variability of the residuals is the same for any $x$: $\Var(u \mid x_1, \ldots, x_k) = \sigma^2_u$
-	\item \textbf{No auto-correlation}. Residuals do not contain information about any other residuals: \\ $\Corr(u_t, u_s \mid x_1, \ldots, x_k) = 0, \; \forall t \neq s$.
+	\item \textbf{No auto-correlation}. Residuals do not contain information about any other residuals: \\ $\Corr(u_t, u_s \mid x_1, \ldots, x_k) = 0, \; \forall t \neq s$
 	\item \textbf{Normality}. Residuals are independent and identically distributed (\textbf{i.i.d.} so on): $u \sim \mathcal{N} (0, \sigma^2_u)$
 	\item \textbf{Data size}. The number of observations available must be greater than $(k + 1)$ parameters to estimate. (It is already satisfied under asymptotic situations)
 \end{enumerate}

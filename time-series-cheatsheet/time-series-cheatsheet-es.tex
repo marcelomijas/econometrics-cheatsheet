@@ -35,7 +35,7 @@
 % ----- document -----
 \begin{document}
 
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-24.2-ES - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-24.5-ES - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3}
@@ -110,7 +110,7 @@ Bajo estos supuestos, los estimadores de los parámetros MCO presentarán buenas
 	\end{enumerate}
 	\item \textbf{No colinealidad perfecta}.
 	\begin{itemize}[leftmargin=*]
-		\item No hay variables independientes que sean constantes: $\Var(x_j) \neq 0, \; \forall j = 1, \ldots, k$.
+		\item No hay variables independientes que sean constantes: $\Var(x_j) \neq 0, \; \forall j = 1, \ldots, k$
 		\item No hay una relación lineal exacta entre variables independientes.
 	\end{itemize}
 	\item \textbf{Media condicional cero y correlación cero}.
@@ -119,7 +119,7 @@ Bajo estos supuestos, los estimadores de los parámetros MCO presentarán buenas
 		\item No hay variables relevantes no incluidas en el modelo: $\Cov(x_j , u) = 0, \; \forall j = 1, \ldots, k \rightarrow$ \textbf{exogeneidad débil}.
 	\end{enumerate}
 	\item \textbf{Homocedasticidad}. La variabilidad de los resid. es igual para cualquier nivel de $x$: $\Var(u \mid x_1, \ldots, x_k) = \sigma^2_u$
-	\item \textbf{No autocorrelación}. Los residuos no contienen información sobre otros residuos: \\ $\Corr(u_t, u_s \mid x_1, \ldots, x_k) = 0, \; \forall t \neq s$.
+	\item \textbf{No autocorrelación}. Los residuos no contienen información sobre otros residuos: \\ $\Corr(u_t, u_s \mid x_1, \ldots, x_k) = 0, \; \forall t \neq s$
 	\item \textbf{Normalidad}. Los residuos son independientes e idénticamente distribuidos (\textbf{i.i.d.}): $u \sim \mathcal{N} (0, \sigma^2_u)$
 			\item \textbf{Tamaño de datos}. El número de observaciones disponibles debe ser mayor a $(k + 1)$ parámetros a estimar. (Ya satisfecho bajo situaciones asintóticas)
 \end{enumerate}
