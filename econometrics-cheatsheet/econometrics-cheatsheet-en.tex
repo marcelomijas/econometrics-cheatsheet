@@ -38,7 +38,7 @@
 % ----- document -----
 \begin{document}
 
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize CS-24.2-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize CS-24.5-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3}
@@ -113,7 +113,7 @@ Under this assumptions, the OLS estimator will present good properties. \textbf{
 	\item \textbf{Random sampling}. The sample from the population has been randomly taken. (Only when cross section)
 	\item \textbf{No perfect collinearity}.
 	\begin{itemize}[leftmargin=*]
-		\item There are no independent variables that are constant: $\Var(x_j) \neq 0, \; \forall j = 1, \ldots, k$.
+		\item There are no independent variables that are constant: $\Var(x_j) \neq 0, \; \forall j = 1, \ldots, k$
 		\item There isn't an exact linear relation between independent variables.
 	\end{itemize}
 	\item \textbf{Conditional mean zero and correlation zero}.
@@ -122,7 +122,7 @@ Under this assumptions, the OLS estimator will present good properties. \textbf{
 		\item There are no relevant variables left out of the model: $\Cov(x_j, u) = 0, \; \forall j = 1, \ldots, k \rightarrow$ \textbf{weak exogeneity}.
 	\end{enumerate}
 	\item \textbf{Homoscedasticity}. The variability of the residuals is the same for all levels of $x$: \\ $\Var(u \mid x_1, \ldots, x_k) = \sigma^2_u$
-	\item \textbf{No auto-correlation}. Residuals don't contain information about any other residuals: \\ $\Corr(u_t, u_s \mid x_1, \ldots, x_k) = 0, \; \forall t \neq s$.
+	\item \textbf{No auto-correlation}. Residuals don't contain information about any other residuals: \\ $\Corr(u_t, u_s \mid x_1, \ldots, x_k) = 0, \; \forall t \neq s$
 	\item \textbf{Normality}. Residuals are independent and identically distributed: $u \sim \mathcal{N} (0, \sigma^2_u)$
 	\item \textbf{Data size}. The number of observations available must be greater than $(k + 1)$ parameters to estimate. (It is already satisfied under asymptotic situations)		
 \end{enumerate}
@@ -281,7 +281,7 @@ Mean Percentage Error: \hfill $\mathrm{MPE} = \frac{\sum_{i=1}^n \lvert \hat{u}_
 
 \section*{R-squared}
 
-Is a measure of the \textbf{goodness of the fit}, how the regression fits to the data:
+Is a measure of the \textbf{goodness of the fit}, how the regression fits the data:
 
 \begin{center}
 	$R^2 = \frac{\SSE}{\SST} = 1 - \frac{\SSR}{\SST}$
@@ -289,10 +289,10 @@ Is a measure of the \textbf{goodness of the fit}, how the regression fits to the
 
 \begin{itemize}[leftmargin=*]
 	\item Measures the \textbf{percentage of variation} of $y$ that is linearly \textbf{explained} by the variations of $x$'s.
-	\item Takes values \textbf{between 0} (no linear explanation of the variations of $y$) \textbf{and 1} (total explanation of the variations of $y$).
+	\item Takes values \textbf{between 0} (no linear explanation) \textbf{and 1} (total explanation).
 \end{itemize}
 
-When the number of regressors increment, the value of the R-squared increments as well, whatever the new variables are relevant or not. To solve this problem, there is an \textbf{adjusted R-squared} by degrees of freedom (or corrected R-squared):
+When the number of regressors increases, the value of the R-squared also increases, whatever the new variables are relevant or not. To solve this problem, there is an \textbf{adjusted R-squared} by degrees of freedom (or corrected):
 
 \begin{center}
 	$\overline{R}^2 = 1 - \frac{n - 1}{n - k - 1} \cdot \frac{\SSR}{\SST} = 1 - \frac{n - 1}{n - k - 1} \cdot (1 - R^2)$
@@ -304,20 +304,52 @@ For big sample sizes: $\overline{R}^2 \approx R^2$
 
 \subsection*{Definitions}
 
-An hypothesis test is a rule designed to explain from a sample, if exist \textbf{evidence or not to reject an hypothesis} that is made about one or more population parameters.
+Is a rule designed to explain from a sample, if exist \textbf{evidence or not to reject an hypothesis} that is made about one or more population parameters.
 
 Elements of an hypothesis test:
 
 \begin{itemize}[leftmargin=*]
 	\item \textbf{Null hypothesis} ($H_0$) - is the hypothesis to be tested.
-	\item \textbf{Alternative hypothesis} ($H_1$) - is the hypothesis that cannot be rejected when the null hypothesis is rejected.
-	\item \textbf{Test statistic} - is a random variable whose probability distribution is known under the null hypothesis.
-	\item \textbf{Critic value} - is the value against which the test statistic is compared to determine if the null hypothesis is rejected or not. Is the value that makes the frontier between the regions of acceptance and rejection of the null hypothesis.
-	\item \textbf{Significance level} ($\alpha$) - is the probability of rejecting the null hypothesis being true (Type I Error). Is chosen by who conduct the test. Commonly is 0.10, 0.05 or 0.01.
-	\item \textbf{p-value} - is the highest level of significance by which the null hypothesis cannot be rejected ($H_0$).
+	\item \textbf{Alternative hypothesis} ($H_1$) - is the hypothesis that cannot be rejected when $H_0$ is rejected.
+	\item \textbf{Test statistic} - is a random variable whose probability distribution is known under $H_0$.
+	\item \textbf{Critical value} ($C$) - is the value against which the test statistic is compared to determine if $H_0$ is rejected or not. It sets the frontier between the regions of acceptance and rejection of $H_0$.
+	\item \textbf{Significance level} ($\alpha$) - is the probability of rejecting the null hypothesis being true (Type I Error). Is chosen by who conduct the test. Commonly is 10\%, 5\% or 1\%.
+	\item \textbf{p-value} - is the highest level of significance by which $H_0$ cannot be rejected.
 \end{itemize}
 
-\textbf{The rule is}: if the p-value is \textbf{less} than $\alpha$, there is evidence to \textbf{reject} the \textbf{null hypothesis} at that given $\alpha$ (there is evidence to accept the alternative hypothesis).
+\setlength{\multicolsep}{0pt}
+\setlength{\columnsep}{20pt}
+\begin{multicols}{2}
+	\begin{tikzpicture}[scale=0.10]
+		\node at (0, 15) {Two-tailed test. $H_0$ dist.};
+		\fill [red] (12, 0) -- plot [domain=12:18, smooth] (\x, {cos(\x*10)*6 + 6});
+		\fill [red] (-12, 0) -- plot [domain=-18:-12, smooth] (\x, {cos(\x*10)*6 + 6});
+		\draw [thick] plot [domain=-18:18, smooth] (\x, {cos(\x*10)*6 + 6});
+		\draw [thick, <->] (-20, 0) -- (20, 0);
+		\draw [thick, dashed] (12, 0) -- (12, 7);
+		\draw [thick, dashed] (-12, 0) -- (-12, 7);
+		\node at (0, 2) {Accept. region};
+		\node at (0, 7) {$1 - \alpha$};
+		\node [red] at (-16, 4) {$\alpha /\ 2$};
+		\node [red] at (16, 4) {$\alpha /\ 2$};
+		\node at (12, 9) {$C$};
+		\node at (-13, 9) {$-C$};
+	\end{tikzpicture}
+\columnbreak
+	\begin{tikzpicture}[scale=0.10]
+		\node at (0, 15) {One-tailed test. $H_0$ dist.};
+		\fill [red] (9, 0) -- plot [domain=9:18, smooth] (\x, {cos(\x*10)*6 + 6});
+		\draw [thick] plot [domain=-18:18, smooth] (\x, {cos(\x*10)*6 + 6});
+		\draw [thick, <->] (-20, 0) -- (20, 0);
+		\draw [thick, dashed] (9, 0) -- (9, 7);
+		\node at (-1, 2) {Accept. reg.};
+		\node at (0, 7) {$1 - \alpha$};
+		\node [red] at (14, 4) {$\alpha$};
+		\node at (9, 9) {$C$};
+	\end{tikzpicture}
+\end{multicols}
+
+\textbf{The rule is}: if p-value $< \alpha$ holds, there is evidence to reject $H_0$, thus, there is evidence to accept $H_1$.
 
 \subsection*{Individual tests}
 
@@ -369,7 +401,7 @@ Then, looking at the errors, there are:
 
 where $k$ is the number of parameters of the non restricted model and $q$ is the number of linear hypothesis tested.
 
-If $F_{q, n - k - 1} < F$, there is evidence to reject $H_0$.
+If $F > F_{q, n - k - 1}$, there is evidence to reject $H_0$.
 
 \textbf{Global significance test} - tests if all the parameters associated to $x$'s are \textbf{simultaneously equal to zero}.
 
@@ -378,13 +410,13 @@ If $F_{q, n - k - 1} < F$, there is evidence to reject $H_0$.
 	\item $H_1: \beta_1 \neq 0$ and/or $\beta_2 \neq 0 \ldots$ and/or $\beta_k \neq 0$
 \end{itemize}
 
-In this case, we can simplify the formula for the $F$ statistic.
+In this case, we can simplify the formula for the $F$ statistic:
 
 \begin{center}
 	Under $H_0$: \quad $F = \frac{R^2}{1 - R^2} \cdot \frac{n - k - 1}{k} \sim F_{k, n - k - 1}$
 \end{center}
 
-If $F_{k, n - k - 1} < F$, there is evidence to reject $H_0$.
+If $F > F_{k, n - k - 1}$, there is evidence to reject $H_0$.
 
 \section*{Confidence intervals}
 
@@ -422,7 +454,7 @@ The location of the dummy variables ($D$) matters:
 	\end{center}
 \end{itemize}
 
-\textbf{Chow's structural test} - is used when we want to analyze the existence of structural changes in all the model parameters, it's a particular expression of the F test, where the null hypothesis is: $H_0$: No structural change (all $\delta = 0$).
+\textbf{Chow's structural test} - analyze the existence of structural changes in all the model parameters, it's a particular expression of the F test, where $H_0$: No structural change (all $\delta = 0$).
 
 \section*{Changes of scale}
 
@@ -468,8 +500,8 @@ Changes in the \textbf{measurement origin} of the variables (endogenous or exoge
 	\end{center}
 	where $R^2_j$ denotes the R-squared from a regression between $x_j$ and all the other $x$'s. 
 	\begin{itemize}[leftmargin=*]
-		\item Values between 4 to 10 suggest that it is advisable to analyze in more depth if there might be multicollinearity problems.
-		\item Values bigger than 10 indicates that there are multicollinearity problems.
+		\item Values between 4 to 10 - there might be multicollinearity problems.
+		\item Values $>$ 10 - there are multicollinearity problems.
 	\end{itemize}
 \end{itemize}
 
@@ -529,7 +561,7 @@ Is the \textbf{breaking of the fifth (5) econometric} model \textbf{assumption}.
 			\draw [thick, dashed, red, -latex] plot [domain=0:12] ({\x -9}, {1.25*\x - 7.2}); % upper red arrow
 		\end{tikzpicture}
 	\end{multicols}
-	\item \textbf{Formal tests} - White, Bartlett, Breusch-Pagan, etc. Commonly, the null hypothesis: $H_0$: Homoscedasticity.
+	\item \textbf{Formal tests} - White, Bartlett, Breusch-Pagan, etc. Commonly, $H_0$: No heteroscedasticity.
 \end{itemize}
 
 \subsection*{Correction}
@@ -606,7 +638,7 @@ The ``natural" context of this phenomena is time series. Is the \textbf{breaking
 			\end{tikzpicture}
 		\end{center}
 	\end{multicols}
-	\item \textbf{Formal tests} - Durbin-Watson, Breusch-Godfrey, etc. Commonly, the null hypothesis: $H_0$: No auto-correlation.
+	\item \textbf{Formal tests} - Durbin-Watson, Breusch-Godfrey, etc. Commonly, $H_0$: No auto-correlation.
 \end{itemize}
 
 \subsection*{Correction}

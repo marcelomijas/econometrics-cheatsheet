@@ -38,7 +38,7 @@
 % ----- document -----
 \begin{document}
 
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize CS-24.2-ES - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize CS-24.5-ES - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3}
@@ -113,7 +113,7 @@ Bajo estos supuestos, el estimador de MCO presentará buenas propiedades. Supues
 	\item \textbf{Muestreo aleatorio}. La muestra de la población se ha tomado de forma aleatoria. (Sólo sección cruzada)
 	\item \textbf{No colinealidad perfecta}.
 	\begin{itemize}[leftmargin=*]
-		\item No hay variables independientes que sean constantes: $\Var(x_j) \neq 0, \; \forall j = 1, \ldots, k$.
+		\item No hay variables independientes que sean constantes: $\Var(x_j) \neq 0, \; \forall j = 1, \ldots, k$
 		\item No hay una relación lineal exacta entre variables independientes.
 	\end{itemize}
 	\item \textbf{Media condicional cero y correlación cero}.
@@ -122,7 +122,7 @@ Bajo estos supuestos, el estimador de MCO presentará buenas propiedades. Supues
 		\item No hay variables relevantes fuera del modelo: $\Cov(x_j, u) = 0, \; \forall j = 1, \ldots, k \rightarrow$ \textbf{exogeneidad débil}.
 	\end{enumerate}
 	\item \textbf{Homocedasticidad}. La variabilidad de los residuos es igual para todos los niveles de $x$: \\ $\Var(u \mid x_1, \ldots, x_k) = \sigma^2_u$
-	\item \textbf{No autocorrelación}. Los residuos no contienen información sobre otros residuos: \\ $\Corr(u_t, u_s \mid x_1, \ldots, x_k) = 0, \; \forall t \neq s$.
+	\item \textbf{No autocorrelación}. Los residuos no contienen información sobre otros residuos: \\ $\Corr(u_t, u_s \mid x_1, \ldots, x_k) = 0, \; \forall t \neq s$
 	\item \textbf{Normalidad}. Los residuos son independientes e idénticamente distribuidos: $u \sim \mathcal{N} (0, \sigma^2_u)$
 	\item \textbf{Tamaño de datos}. El número de observaciones disponibles debe ser mayor a $(k + 1)$ parámetros a estimar. (Ya satisfecho bajo situaciones asintóticas)
 \end{enumerate}
@@ -289,10 +289,10 @@ Es una medida de la \textbf{bondad del ajuste}, cómo la regresión se ajusta a 
 
 \begin{itemize}[leftmargin=*]
 	\item Mide el \textbf{porcentaje de variación} en $y$ que es linealmente \textbf{explicado} por variaciones de las $x$'s.
-	\item Toma valores \textbf{entre 0} (no hay explicación lineal de las variaciones de $y$) \textbf{y 1} (explicación total de las variaciones de $y$).
+	\item Toma valores \textbf{entre 0} (no hay explicación lineal) \textbf{y 1} (explicación total).
 \end{itemize}
 
-Cuando el número de regresores incrementa, el valor del R-cuadrado también lo hace, independientemente de si las nuevas variables son relevantes o no. Para resolver este problema, existe un \textbf{R-cuadrado ajustado} por grados de libertad (o R-cuadrado corregido):
+Cuando el número de regresores incrementa, el R-cuadrado también, independientemente de si las nuevas variables son relevantes o no. Para resolver este problema, hay un \textbf{R-cuadrado ajustado} por grados de libertad (o corregido):
 
 \begin{center}
 	$\overline{R}^2 = 1 - \frac{n - 1}{n - k - 1} \cdot \frac{\SSR}{\SST} = 1 - \frac{n - 1}{n - k - 1} \cdot (1 - R^2)$
@@ -304,20 +304,52 @@ Para muestras grandes: $\overline{R}^2 \approx R^2$
 
 \subsection*{Definiciones}
 
-Un contraste de hipótesis es una regla diseñada para, a partir de una muestra, explicar si existe \textbf{evidencia para rechazar (o no) una hipótesis} sobre uno o más parámetros poblacionales.
+Es una regla diseñada para, a partir de una muestra, explicar si existe \textbf{evidencia para rechazar (o no) una hipótesis} sobre uno o más parámetros poblacionales.
 
 Elementos de un contraste de hipótesis:
 
 \begin{itemize}[leftmargin=*]
 	\item \textbf{Hipótesis nula} ($H_0$) - es la hipótesis a ser probada.
-	\item \textbf{Hipótesis alternativa} ($H_1$) - el la hipótesis que no puede rechazarse si la hipótesis nula es rechazada.
-	\item \textbf{Estadístico de contraste} - es una variable aleatoria cuya distribución de probabilidad es conocida bajo la hipótesis nula.
-	\item \textbf{Nivel de significación} ($\alpha$) - es la probabilidad de rechazar la hipótesis nula siendo cierta (Error Tipo I). Es elegido por quien conduce el contraste. Usualmente es 0.10, 0.05 ó 0.01.
-	\item \textbf{Valor crítico} - es el valor contra el cual se compara el estadístico de contraste para determinar si se rechaza o no la hipótesis nula. Es el valor frontera entre la región de aceptación y la de rechazo de la hipótesis nula.
-	\item \textbf{p-valor} - es el nivel de significación máximo por el cual la hipótesis nula no puede ser rechazada ($H_0$).
+	\item \textbf{Hipótesis alternativa} ($H_1$) - el la hipótesis que no puede rechazarse si $H_0$ es rechazada.
+	\item \textbf{Estadístico de contraste} - es una variable aleatoria cuya distribución de probabilidad es conocida bajo $H_0$.
+	\item \textbf{Nivel de significación} ($\alpha$) - es la probabilidad de rechazar la $H_0$ siendo cierta (Error Tipo I). Es elegido por quien conduce el contraste. Usualmente 10\%, 5\% ó 1\%.
+	\item \textbf{Valor crítico} - es el valor contra el cual se compara el estadístico de contraste para determinar si se rechaza o no la hipótesis nula. Determina la frontera entre la región de aceptación y la de rechazo de $H_0$.
+	\item \textbf{p-valor} - es el nivel de significación máximo por el cual $H_0$ no puede ser rechazada.
 \end{itemize}
 
-\textbf{Regla general}: si el p-valor es \textbf{menor} que $\alpha$, existe evidencia para \textbf{rechazar} la \textbf{hipótesis nula} a ese determinado $\alpha$ (existe evidencia para aceptar la hipótesis alternativa).
+\setlength{\multicolsep}{0pt}
+\setlength{\columnsep}{20pt}
+\begin{multicols}{2}
+	\begin{tikzpicture}[scale=0.10]
+		\node at (0, 15) {Dos colas. Distrib. $H_0$};
+		\fill [red] (12, 0) -- plot [domain=12:18, smooth] (\x, {cos(\x*10)*6 + 6});
+		\fill [red] (-12, 0) -- plot [domain=-18:-12, smooth] (\x, {cos(\x*10)*6 + 6});
+		\draw [thick] plot [domain=-18:18, smooth] (\x, {cos(\x*10)*6 + 6});
+		\draw [thick, <->] (-20, 0) -- (20, 0);
+		\draw [thick, dashed] (12, 0) -- (12, 7);
+		\draw [thick, dashed] (-12, 0) -- (-12, 7);
+		\node at (0, 2) {Región Acept.};
+		\node at (0, 7) {$1 - \alpha$};
+		\node [red] at (-16, 4) {$\alpha /\ 2$};
+		\node [red] at (16, 4) {$\alpha /\ 2$};
+		\node at (12, 9) {$C$};
+		\node at (-13, 9) {$-C$};
+	\end{tikzpicture}
+	\columnbreak
+	\begin{tikzpicture}[scale=0.10]
+		\node at (0, 15) {Una cola. Distrib. $H_0$};
+		\fill [red] (9, 0) -- plot [domain=9:18, smooth] (\x, {cos(\x*10)*6 + 6});
+		\draw [thick] plot [domain=-18:18, smooth] (\x, {cos(\x*10)*6 + 6});
+		\draw [thick, <->] (-20, 0) -- (20, 0);
+		\draw [thick, dashed] (9, 0) -- (9, 7);
+		\node at (-1, 2) {Región Acept.};
+		\node at (0, 7) {$1 - \alpha$};
+		\node [red] at (14, 4) {$\alpha$};
+		\node at (9, 9) {$C$};
+	\end{tikzpicture}
+\end{multicols}
+
+\textbf{Regla general}: si p-valor $< \alpha$, existe evidencia para rechazar $H_0$, es decir, existe evidencia para aceptar $H_1$.
 
 \subsection*{Contrastes individuales}
 
@@ -369,22 +401,22 @@ Entonces, viendo los errores, hay:
 
 donde $k$ es el número de parámetros del modelo no restringido y $q$ es el número de hipótesis lineales a probar.
 
-Si $F_{q, n - k - 1} < F$, existe evidencia para rechazar $H_0$.
+Si $F > F_{q, n - k - 1}$, existe evidencia para rechazar $H_0$.
 
-\textbf{Contraste de significación global} - prueba si todos los parametros asociados a $x$'s son \textbf{simultáneamente iguales a cero}.
+\textbf{Contraste de significación global} - prueba si todos los parametros asociados a $x$'s son \textbf{simultáneamente cero}.
 
 \begin{itemize}[leftmargin=*]
 	\item $H_0: \beta_1 = \beta_2 = \cdots = \beta_k = 0$
 	\item $H_1: \beta_1 \neq 0$ y/o $\beta_2 \neq 0 \ldots$ y/o $\beta_k \neq 0$
 \end{itemize}
 
-En este caso, podemos simplificar la fórmula para el estadístico $F$.
+Podemos simplificar la fórmula para el estadístico $F$:
 
 \begin{center}
 	Bajo $H_0$: \quad $F = \frac{R^2}{1 - R^2} \cdot \frac{n - k - 1}{k} \sim F_{k, n - k - 1}$
 \end{center}
 
-Si $F_{k, n - k - 1} < F$, existe evidencia para rechazar $H_0$.
+Si $F > F_{k, n - k - 1}$, existe evidencia para rechazar $H_0$.
 
 \section*{Intervalos de confianza}
 
@@ -422,7 +454,7 @@ La ubicación de las variables ficticias ($D$) es importante:
 	\end{center}
 \end{itemize}
 
-El \textbf{contraste de Chow para cambio estructural} - cuando se quiere analizar la existencia de cambio estructural en todos los parámetros del modelo, es una expresión particular del contraste F, conocido como el contraste de Chow, donde la hipótesis nula es: $H_0$: No hay cambio estructural (todos $\delta = 0$).
+\textbf{Contraste de Chow para cambio estructural} - analiza la existencia de cambio estructural en todos los parámetros del modelo, es una expresión particular del contraste F, donde $H_0$: No hay cambio estructural (todos $\delta = 0$).
 
 \section*{Cambios de escala}
 
@@ -468,8 +500,8 @@ Cambios en el \textbf{origen de medida} de las variables (endógenas o exógenas
 	\end{center}
 	donde $R^2_j$ denota el R-cuadrado de una regresión entre $x_j$ y todas las otras $x$'s. 
 	\begin{itemize}[leftmargin=*]
-		\item Valores entre 4 y 10 sugieren que es recomendable analizar en mayor profundidad si pueden existir problemas de multicolinealidad.
-		\item Valores por encima de 10 indican que existen problemas de multicolinealidad.
+		\item Valores entre 4 y 10 - pueden existir problemas de multicolinealidad.
+		\item Valores $>$ 10 - existen problemas de multicolinealidad.
 	\end{itemize}
 \end{itemize}
 
@@ -480,7 +512,7 @@ Una característica típica de la multicolinealidad es que los coeficientes de r
 \begin{itemize}[leftmargin=*]
 			\item Eliminar una de las variables colineales.
 			\item Realizar análisis factorial(u otra técnica de reducción de dimensiones) en las vairables colineales.
-			\item Interpretar los coeficientes con multicolinealidad de manera conjunta.
+			\item Interpretar los coeficientes con multicolinealidad conjuntamente.
 \end{itemize}
 
 \columnbreak
@@ -529,7 +561,7 @@ Es el \textbf{incumplimiento del quinto (5) supuesto} del modelo.
 			\draw [thick, dashed, red, -latex] plot [domain=0:12] ({\x -9}, {1.25*\x - 7.2}); % upper red arrow
 		\end{tikzpicture}
 	\end{multicols}
-	\item \textbf{Test formales} - White, Bartlett, Breusch-Pagan, etc. Comúnmente, la hipótesis nula: $H_0$: Homocedasticidad.
+	\item \textbf{Test formales} - White, Bartlett, Breusch-Pagan, etc. Comúnmente, $H_0$: No heterocedasticidad.
 \end{itemize}
 
 \subsection*{Corrección}
@@ -606,7 +638,7 @@ El contexto ``natural" de este fenómeno son las series temporales. Es el \textb
 			\end{tikzpicture}
 		\end{center}
 	\end{multicols}
-	\item \textbf{Test formales} - Durbin-Watson, Breusch-Godfrey, etc. Comúnmente, la hipótesis nula: $H_0$: No autocorrelación.
+	\item \textbf{Test formales} - Durbin-Watson, Breusch-Godfrey, etc. Comúnmente, $H_0$: No autocorrelación.
 \end{itemize}
 
 \subsection*{Corrección}
