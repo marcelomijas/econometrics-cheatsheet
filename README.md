@@ -12,7 +12,7 @@ Econometrics cheat sheets created using $\LaTeX$:
 
 ## Download links
 
-**Econometrics Cheat Sheet**. Current version: `CS-24.2`
+**Econometrics Cheat Sheet**. Current version: `CS-24.5`
 
 |              | PDF file                                                          | TeX file                                                          |
 | :----------: | :---------------------------------------------------------------: | :---------------------------------------------------------------: |
