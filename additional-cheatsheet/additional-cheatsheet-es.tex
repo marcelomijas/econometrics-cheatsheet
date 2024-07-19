@@ -39,7 +39,7 @@
 % ----- document -----
 \begin{document}
 
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ADD-24.2-ES - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ADD-24.5-ES - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3}
@@ -240,9 +240,9 @@ Omisión de variables relevantes causa que los estimadores MCO sean \textbf{sesg
 
 \begin{center}
 	\begin{tabular}{ c | c c }
-		\multicolumn{1}{c|}{} & $\Corr(x_1, x_2) > 0$ & $\Corr(x_1, x_2) < 0$ \\ \hline
-		$\beta_2 > 0$         & $\text{sesgo } (+)$   & $\text{sesgo } (-)$   \\
-		$\beta_2 < 0$         & $\text{sesgo } (-)$   & $\text{sesgo } (+)$
+		              & $\Corr(x_1, x_2) > 0$ & $\Corr(x_1, x_2) < 0$ \\ \hline
+		$\beta_2 > 0$ & sesgo $(+)$           & sesgo $(-)$           \\
+		$\beta_2 < 0$ & sesgo $(-)$           & sesgo $(+)$
 	\end{tabular}
 \end{center}
 
@@ -383,7 +383,7 @@ El estadístico F:
 	$F = \dfrac{\mathrm{SCP \; de \;} \SSE}{\mathrm{SCP \; de \;} \SSR} = \dfrac{\SSE}{\SSR} \cdot \dfrac{n - k - 1}{k} \sim F_{k, n - k - 1}$
 \end{center}
 
-Si $F_{k, n - k - 1} < F$, existe evidencia para rechazar $H_0$.
+Si $F > F_{k, n - k - 1}$, existe evidencia para rechazar $H_0$: No hay diferencia entre las medias de los grupos.
 
 \columnbreak
 
@@ -412,7 +412,7 @@ Procedimiento del contraste:
 	\end{center}
 \end{enumerate}
 
-Si $F_{l, n - (k + 1) - l} < F$, hay evidencia para rechazar $H_0$.
+Si $F > F_{l, n - (k + 1) - l}$, hay evidencia para rechazar $H_0$.
 
 \section*{Regresión logística}
 
@@ -542,9 +542,51 @@ Algunas propiedades:
 	\item $\Cov(\xi, \eta) = \Cov(\eta, \xi)$
 \end{itemize}
 
-\end{multicols}
-
 \pagebreak
+
+\section*{Contraste de hipótesis (extra)}
+
+\begin{center}
+	\begin{tabular}{ c | c | c }
+		               & $H_0$ verdadera         & $H_0$ falsa             \\ \hline
+		Rechazar $H_0$ & Falso positivo          & Verdadero pos.          \\
+		               & Error Tipo I $(\alpha)$ & $(1 - \beta)$           \\ \hline
+		Aceptar $H_0$  & Verdadero neg.          & Falso negativo          \\
+		               & $(1 - \alpha)$          & Error Tipo II $(\beta)$
+	\end{tabular}
+\end{center}
+
+\columnbreak
+
+Típico contraste de una cola:
+
+\begin{center}
+	\begin{tikzpicture}[scale=0.108]
+		\fill [magenta] (4, 0) -- plot [domain=4:16, smooth] (\x, {cos(\x*7 + 70)*6 + 6});
+		\fill [cyan] (4, 0) -- plot [domain=-16:4, smooth] (\x, {cos(\x*7 - 70)*6 + 6});
+		\draw [thick, cyan] plot [domain=-16:36, smooth] (\x, {cos(\x*7 - 70)*6 + 6});
+		\draw [thick, magenta] plot [domain=-36:16, smooth] (\x, {cos(\x*7 + 70)*6 + 6});
+		\draw [thick, <->] (-40, 0) -- (40, 0);
+		\draw [thick, dashed] (4, 0) -- (4, 11);
+		\node at (-20, 15) {Distribución $H_0$};
+		\node at (20, 15) {Distribución $H_1$};
+		\node at (-10, 7) {$1 - \alpha$};
+		\node at (10, 7) {$1 - \beta$};
+		\node at (6, 2) {$\alpha$};
+		\node at (-2, 2) {$\beta$};
+		\node at (4, 13) {$C$};
+	\end{tikzpicture}
+\end{center}
+
+donde $(1 - \alpha)$ es nivel de confianza, $\alpha$ es nivel de significación, $C$ es valor crítico, $(1 - \beta)$ es potencia estadística.
+
+\section*{Bootstraping}
+
+\textbf{Problema} - Aprox. asint. a las distribuciones de los estadísticos de contraste no funcionan en muestras pequeñas.
+
+\textbf{Solución} - Boostrap es básicamente muestreo con reemplazo. Los datos observados se tratan como una población y se extraen varias muestras para recalcular un estimador o estadístico varias veces (mejora la precisión).
+
+\end{multicols}
 
 \begin{multicols}{2}
 

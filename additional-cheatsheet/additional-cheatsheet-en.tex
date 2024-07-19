@@ -39,7 +39,7 @@
 % ----- document -----
 \begin{document}
 
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ADD-24.2-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ADD-24.5-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 \begin{multicols}{3}
@@ -240,9 +240,9 @@ Relevant variable omission causes OLS estimators to be \textbf{biased} and \text
 
 \begin{center}
 	\begin{tabular}{ c | c c }
-		\multicolumn{1}{c|}{} & $\Corr(x_1, x_2) > 0$ & $\Corr(x_1, x_2) < 0$ \\ \hline
-		$\beta_2 > 0$         & $(+) \text{ bias}$    & $(-) \text{ bias}$    \\
-		$\beta_2 < 0$         & $(-) \text{ bias}$    & $(+) \text{ bias}$
+		              & $\Corr(x_1, x_2) > 0$ & $\Corr(x_1, x_2) < 0$ \\ \hline
+		$\beta_2 > 0$ & $(+)$ bias            & $(-)$ bias            \\
+		$\beta_2 < 0$ & $(-)$ bias            & $(+)$ bias
 	\end{tabular}
 \end{center}
 
@@ -383,7 +383,7 @@ The F statistic:
 	$F = \dfrac{\mathrm{SSA \; of \;} \SSE}{\mathrm{SSA \; of \;} \SSR} = \dfrac{\SSE}{\SSR} \cdot \dfrac{n - k - 1}{k} \sim F_{k, n - k - 1}$
 \end{center}
 
-If $F_{k, n - k - 1} < F$, there is evidence to reject $H_0$.
+If $F > F_{k, n - k - 1}$, there is evidence to reject $H_0$: There is no difference among group means.
 
 \columnbreak
 
@@ -412,7 +412,7 @@ Test procedure:
 	\end{center}
 \end{enumerate}
 
-If $F_{l, n - (k + 1) - l} < F$, there is evidence to reject $H_0$.
+If $F > F_{l, n - (k + 1) - l}$, there is evidence to reject $H_0$.
 
 \section*{Logistic regression}
 
@@ -542,9 +542,51 @@ Some properties:
 	\item $\Cov(\xi, \eta) = \Cov(\eta, \xi)$
 \end{itemize}
 
-\end{multicols}
-
 \pagebreak
+
+\section*{Hypothesis testing (extra)}
+
+\begin{center}
+	\begin{tabular}{ c | c | c }
+		             & $H_0$ true              & $H_0$ false             \\ \hline
+		Reject $H_0$ & False positive          & True positive           \\
+		             & Type I Error $(\alpha)$ & $(1 - \beta)$           \\ \hline
+		Accept $H_0$ & True negative           & False negative          \\
+		             & $(1 - \alpha)$          & Type II Error $(\beta)$
+	\end{tabular}
+\end{center}
+
+\columnbreak
+
+Typical one-tail test:
+
+\begin{center}
+	\begin{tikzpicture}[scale=0.108]
+		\fill [magenta] (4, 0) -- plot [domain=4:16, smooth] (\x, {cos(\x*7 + 70)*6 + 6});
+		\fill [cyan] (4, 0) -- plot [domain=-16:4, smooth] (\x, {cos(\x*7 - 70)*6 + 6});
+		\draw [thick, cyan] plot [domain=-16:36, smooth] (\x, {cos(\x*7 - 70)*6 + 6});
+		\draw [thick, magenta] plot [domain=-36:16, smooth] (\x, {cos(\x*7 + 70)*6 + 6});
+		\draw [thick, <->] (-40, 0) -- (40, 0);
+		\draw [thick, dashed] (4, 0) -- (4, 11);
+		\node at (-20, 15) {$H_0$ distribution};
+		\node at (20, 15) {$H_1$ distribution};
+		\node at (-10, 7) {$1 - \alpha$};
+		\node at (10, 7) {$1 - \beta$};
+		\node at (6, 2) {$\alpha$};
+		\node at (-2, 2) {$\beta$};
+		\node at (4, 13) {$C$};
+	\end{tikzpicture}
+\end{center}
+
+where $(1 - \alpha)$ is the confidence level, $\alpha$ is the significance level, $C$ is the critical value, $(1 - \beta)$ is the statistical power.
+
+\section*{Bootstraping}
+
+\textbf{Problem} - Asymptotic approximations to the distributions of test statistics do not work on small samples.
+
+\textbf{Solution} - Boostrap is basically sampling with replacement. The observed data is treated like a population, and multiple samples are exracted to recalculate an estimator or test statistic multiple times (improve accuracy).
+
+\end{multicols}
 
 \begin{multicols}{2}
 
