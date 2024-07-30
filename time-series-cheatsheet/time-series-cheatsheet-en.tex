@@ -37,7 +37,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-24.7.1-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-24.8-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -599,7 +599,7 @@
 			\end{itemize}
 		\end{itemize}
 		
-		\subsection*{Weakly dependent time series}
+		\subsection*{Weak dependence}
 		
 		It is important because it replaces the random sampling assumption for time series. Weakly dependent processes are known as \textbf{integrated of order zero}, I(0).
 		
@@ -643,7 +643,7 @@
 		
 		A series with a trend cannot be stationary, but can be weakly dependent (and stationary if the series is de-trended).
 		
-		\section*{Strongly dependent time series}
+		\section*{Strong dependence}
 		
 		Most of the time, economics series are strongly dependent (or high persistent in time). Some special cases of \textbf{unit root} processes, I(1):
 		
@@ -678,7 +678,7 @@
 			\end{tabular}
 		\end{center}
 		
-		\subsection*{Transforming unit root to weak dependent}
+		\subsection*{From unit root to weak dependence}
 		
 		Unit root processes are \textbf{integrated of order one}, I(1). This means that \textbf{the first difference} of the process is \textbf{weakly dependent} or I(0) (and usually, stationary). For example, a random walk:
 		
@@ -745,7 +745,7 @@
 		
 		\subsubsection*{From unit root to percentage change}
 		
-		When an I(1) series is strictly positive, it is usually converted to logarithms before taking the first difference. That is, to obtain the (approx.) percentage change of the series:
+		When an I(1) series is strictly positive, it is usually converted to logarithms before taking the first difference to obtain the (approx.) percentage change of the series:
 		
 		\begin{center}
 			$\Delta \log(y_{t}) = \log(y_{t}) - \log(y_{t - 1}) \approx \dfrac{y_t - y_{t - 1}} {y_{t - 1}}$
@@ -755,13 +755,31 @@
 		
 		When \textbf{two series are I(1), but a linear combination of them is I(0)}. If the case, the regression of one series over the other is not spurious, but expresses something about the long term relation. Variables are called cointegrated if they have a common stochastic trend.
 		
-		For example: $\lbrace x_{t} \rbrace$ and $\lbrace y_{t} \rbrace$ are I(1), but $y_{t} - \beta x_{t} = u_{t}$ where $\lbrace u_{t} \rbrace$ is I(0). ($\beta$ get the name of cointegration parameter).
+		For example, $\lbrace x_{t} \rbrace$ and $\lbrace y_{t} \rbrace$ are I(1), but $y_{t} - \beta x_{t} = u_{t}$ where $\lbrace u_{t} \rbrace$ is I(0). ($\beta$ is the cointegrating parameter).
+
+		\subsection*{Cointegration test}
+		
+		Following the example above:
+		
+		\begin{enumerate}[leftmargin=*]
+			\item Estimate $y_{t} = \alpha + \beta x_{t} + \varepsilon_{t}$ and obtain $\hat{\varepsilon}_{t}$.
+			\item Perform an ADF test on $\hat{\varepsilon}_{t}$ with a modified distribution.
+			
+			The result of this test is equivalent to:
+			
+			\begin{itemize}[leftmargin=*]
+				\item $H_{0}$: $\beta = 0$ (no cointegration)
+				\item $H_{1}$: $\beta \neq 0$ (cointegration)
+			\end{itemize}
+			
+			if test statistic $>$ critical value, reject $H_0$.
+		\end{enumerate}
 		
 		\section*{Heterocedasticity on time series}
 		
 		The \textbf{assumption} affected is \textbf{t4}, which leads \textbf{OLS to be not efficient}.
 		
-		Some tests that work could be the Breusch-Pagan or White's, where $H_{0}$: No heterocedasticity. It is \textbf{important} for the tests to work that there is \textbf{no auto-correlation} (so first, it is imperative to test for it).
+		Use tests like Breusch-Pagan or White's, where $H_{0}$: No heterocedasticity. It is \textbf{important} for the tests to work that there is \textbf{no auto-correlation}.
 		
 		\subsection*{ARCH}
 		

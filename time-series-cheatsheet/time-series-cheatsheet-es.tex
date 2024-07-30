@@ -37,7 +37,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-24.7.1-ES - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-24.8-ES - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -411,7 +411,7 @@
 			
 			Si los coeficientes de la FAC no decaen rápidamente, hay claro indicio de falta de estacionariedad en media, lo que llevaría a tomar primeras diferencias en la serie original.
 			
-			\item \textbf{Formal tests} - Generalmente, $H_{0}$: No autocorrelación.
+			\item \textbf{Contrastes} - Generalmente, $H_{0}$: No autocorrelación.
 			
 			Suponiendo que $u_{t}$ sigue un proceso AR(1):
 			
@@ -599,7 +599,7 @@
 			\end{itemize}
 		\end{itemize}
 		
-		\subsection*{Series temporales de dependencia débil}
+		\subsection*{Dependencia débil}
 		
 		Es importante porque reemplaza el supuesto de muestreo aleatorio en series temporales. Los procesos débilmente dependientes se llaman \textbf{integrados de orden cero}, I(0).
 		
@@ -643,7 +643,7 @@
 		
 		Una serie con tendencia no puede ser estacionaria, pero puede ser débilmente dependiente (y estacionaria si la serie es filtrada de tendencia).
 		
-		\section*{Series temporales de depend. fuerte}
+		\section*{Dependencia fuerte}
 		
 		La mayoría del tiempo, las series económicas presentan dependencia fuerte (o fuerte persistencia temporal). Algunos casos especiales de procesos de \textbf{raíz unitaria}, I(1):
 		
@@ -678,7 +678,7 @@
 			\end{tabular}
 		\end{center}
 		
-		\subsection*{Transformar raíz unitaria a depend. débil}
+		\subsection*{De raíz unitaria a dependencia débil}
 		
 		Los procesos de raíz unitaria son \textbf{integrados de orden uno}, I(1). Esto significa que \textbf{la primera diferencia} del proceso es \textbf{débilmente dependiente} ó I(0) (y usualmente, estacionaria). Por ejemplo, un paseo aleatorio:
 		
@@ -745,7 +745,7 @@
 		
 		\subsubsection*{De raíz unitaria a cambio porcentual}
 		
-		Cuando una serie I(1) es estrictamente positiva, se suele transformar a logaritmos antes de tomar primeras diferencias. Esto es, para obtener el cambio porcentual (aprox.) de la serie:
+		Cuando una serie I(1) es estrictamente positiva, se suele transformar a logaritmos antes de tomar primeras diferencias para obtener el cambio porcentual (aprox.) de la serie:
 		
 		\begin{center}
 			$\Delta \log(y_{t}) = \log(y_{t}) - \log(y_{t - 1}) \approx \dfrac{y_t - y_{t - 1}} {y_{t - 1}}$
@@ -755,13 +755,31 @@
 		
 		Cuando \textbf{dos series son I(1), pero una combinación lineal de estas es I(0)}. Si es el caso, la regresión de una serie sobre la otra no es espuria, sino que expresa algo sobre la relación a largo plazo. Se llama cointegradas a las variables que tienen una tendencia estocástica común.
 		
-		Por ejemplo: $\lbrace x_{t} \rbrace$ y $\lbrace y_{t} \rbrace$ son I(1), pero $y_{t} - \beta x_{t} = u_{t}$ donde $\lbrace u_{t} \rbrace$ es I(0). ($\beta$ toma el nombre de parámetro cointegrador).
+		Por ejemplo, $\lbrace x_{t} \rbrace$ y $\lbrace y_{t} \rbrace$ son I(1), pero $y_{t} - \beta x_{t} = u_{t}$ donde $\lbrace u_{t} \rbrace$ es I(0). ($\beta$ es el parámetro cointegrador).
 		
+		\subsection*{Contraste de cointegración}
+
+		Siguiendo el ejemplo de arriba:
+		
+		\begin{enumerate}[leftmargin=*]
+			\item Estimar $y_{t} = \alpha + \beta x_{t} + \varepsilon_{t}$ y obtener $\hat{\varepsilon}_{t}$
+			\item Realizar el ADF sobre $\hat{\varepsilon}_{t}$ con una distribución especial.
+			
+			El resultado del contraste es equivalente a:
+			
+			\begin{itemize}[leftmargin=*]
+				\item $H_{0}$: $\beta = 0$ (no cointegración)
+				\item $H_{1}$: $\beta \neq 0$ (cointegración)
+			\end{itemize}
+			
+			si el estadístico de contraste $>$ valor crítico, rechazar $H_0$.
+		\end{enumerate}
+
 		\section*{Heterocedasticidad en series temp.}
 		
 		Afecta al \textbf{supuesto t4}, lo que lleva a que \textbf{MCO no sea eficiente}.
 		
-		Algunas pruebas que funcionan pueden ser la de Breusch-Pagan o la de White, donde $H_{0}$: No heterocedasticidad. Es \textbf{importante} que \textbf{no} haya \textbf{autocorrelación} para el correcto funcionamiento de las pruebas (así que, primero es imperativo probar la existencia de autocorrelación).
+		Usar contrastes como el Breusch-Pagan o White, donde $H_{0}$: No heterocedasticidad. Es \textbf{importante} que \textbf{no} haya \textbf{autocorrelación} para que los contrastes funcionen.
 		
 		\subsection*{ARCH}
 		
@@ -775,6 +793,6 @@
 		
 		\subsection*{GARCH}
 		
-		La heterocedasticidad condicional autorregresiva general (GARCH), es un modelo similar a ARCH, pero en este caso, la varianza del error sigue un proceso ARMA($p, q$).
+		Heterocedasticidad condicional autorregresiva general (GARCH), es un modelo similar a ARCH, pero en este caso, la varianza del error sigue un proceso ARMA($p, q$).
 	\end{multicols}
 \end{document}
