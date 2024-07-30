@@ -40,7 +40,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ADD-24.5.1-ES - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ADD-24.5.2-ES - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -309,7 +309,7 @@
 			Hay algunas cosas \underline{importantes} sobre MC2E:
 			
 			\begin{itemize}[leftmargin=*]
-				\item MC2E son menos eficientes que MCO cuando las variables explicativas son exógenas. El \textbf{test de Hausman} puede usarse para comprobarlo:
+				\item MC2E son menos eficientes que MCO cuando las variables explicativas son exógenas. El \textbf{contraste de Hausman} puede usarse para comprobarlo:
 				
 				\begin{center}
 					$H_{0}$: los estimadores MCO son consistentes.
@@ -317,7 +317,7 @@
 				
 				Si $H_{0}$ es aceptada, los estimadores MCO son mejores que MC2E y viceversa.
 				
-				\item Pueden haber algunos instrumentos (o todos) que no sean válidos. Esto se conoce como sobre-identificación, el \textbf{test de Sargan} puede usarse para comprobarlo:
+				\item Pueden haber algunos instrumentos (o todos) que no sean válidos. Esto se conoce como sobre-identificación, el \textbf{contraste de Sargan} puede usarse para comprobarlo:
 				
 				\begin{center}
 					$H_{0}$: todos los instrumentos son válidos.
