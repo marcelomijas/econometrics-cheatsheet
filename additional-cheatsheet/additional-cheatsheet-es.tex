@@ -40,7 +40,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ADD-24.5.2-ES - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ADD-24.5.3-ES - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -350,10 +350,10 @@
 		\begin{itemize}[leftmargin=*]
 			\item Akaike: $\mathrm{AIC}(p) = \log(\frac{\SSR}{n}) + \frac{2}{n}p$
 			\item Hannan-Quinn: $\mathrm{HQ}(p) = \log(\frac{\SSR}{n}) + \frac{2 \log(\log(n))}{n}p$
-			\item Schwarz: $\mathrm{Sc}(p) = \log(\frac{\SSR}{n}) + \frac{\log(n)}{n}p$
+			\item Schwarz / Bayesian: $\mathrm{BIC}(p) = \log(\frac{\SSR}{n}) + \frac{\log(n)}{n}p$
 		\end{itemize}
 		
-		$\mathrm{Sc}(p) \leq \mathrm{HQ}(p) \leq \mathrm{AIC}(p)$
+		$\mathrm{BIC}(p) \leq \mathrm{HQ}(p) \leq \mathrm{AIC}(p)$
 		
 		\section*{Contraste de hipótesis no restrigido}
 		
