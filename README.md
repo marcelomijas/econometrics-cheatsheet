@@ -38,7 +38,7 @@ Econometrics cheat sheets created using $\LaTeX$:
 
 ### What does $\mathrm{resid}$ $x_j$ mean?
 
-Those are the residuals from a OLS regression between $x_j$ and all the other $x$ 's. Error measures and R-squared can also be obtained from this regression.
+Those are the residuals from a OLS regression between $x_j$ and all the other $x$ 's.
 
 ### Why is $\beta_0$ the constant term? My reference manual / professor's definition of the econometric model is different.
 
@@ -102,6 +102,6 @@ In addition to the notes taken from the [Degree in Economics](https://www.urjc.e
 
 ## Support the project
 
-The first (and I think, **the best**) way to help the project is to **directly support the authors of the manuals that are included in the resources section** (for example, by buying their works). Each and every one of the authors of the manuals are wonderful minds who have contributed a lot to econometrics and statistics. 
+The first way to help the project is to **directly support the authors of the manuals that are included in the resources section** (for example, by buying their works). Each and every one of the authors of the manuals are wonderful minds who have contributed a lot to econometrics and statistics. 
 
 Another great way to support the project is by sharing it and :star: it!
