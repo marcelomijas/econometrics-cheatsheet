@@ -10,6 +10,8 @@ Econometrics cheat sheets created using $\LaTeX$:
 
 :exclamation: My [LinkedIn](https://www.linkedin.com/in/marcelomorenop/). Please, send me a message when connecting or I will ignore the request.
 
+:united_nations: Do you want to translate any of these cheat sheets to your language? Open an issue for instructions.
+
 ## Download links
 
 **Econometrics Cheat Sheet**. Current version: `CS-24.5.2`
@@ -27,7 +29,7 @@ Econometrics cheat sheets created using $\LaTeX$:
 | Spanish :es: | [es.pdf](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/time-series-cheatsheet/time-series-cheatsheet-es.pdf)  | [es.tex](time-series-cheatsheet/time-series-cheatsheet-es.tex)  |
 
 
-**Additional Cheat Sheet**. Current version: `ADD-24.5.3`
+**Additional Cheat Sheet**. Current version: `ADD-24.6`
 
 |              | PDF file                                                      | TeX file                                                      |
 | :----------: | :-----------------------------------------------------------: | :-----------------------------------------------------------: |
