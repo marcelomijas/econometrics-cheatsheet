@@ -10,7 +10,7 @@ Econometrics cheat sheets created using $\LaTeX$:
 
 :triangular_flag_on_post: [LinkedIn](https://www.linkedin.com/in/marcelomorenop/). Please, send me a message when connecting or I will ignore the request.
 
-:globe_with_meridians: Do you want to translate any of these cheat sheets to your language? Open an issue for instructions.
+:globe_with_meridians: Do you want to translate any of these cheat sheets to your language? Open an issue and I will provide instructions.
 
 ## Download links
 
