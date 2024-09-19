@@ -14,7 +14,7 @@ Econometrics cheat sheets created using $\LaTeX$:
 
 ## Download links
 
-| | Econometrics `CS-24.5.2` | Time Series `TS-24.8` | Additional `ADD-24.6` |
+| | Econometrics | Time Series | Additional |
 | :---: | :---: | :---: | :---: |
 | English :uk: | [PDF](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/econometrics-cheatsheet/econometrics-cheatsheet-en.pdf) &#124; [TeX](econometrics-cheatsheet/econometrics-cheatsheet-en.tex) | [PDF](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/time-series-cheatsheet/time-series-cheatsheet-en.pdf) &#124; [TeX](time-series-cheatsheet/time-series-cheatsheet-en.tex) | [PDF](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/additional-cheatsheet/additional-cheatsheet-en.pdf) &#124; [TeX](additional-cheatsheet/additional-cheatsheet-en.tex) |
 | Spanish :es: | [PDF](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/econometrics-cheatsheet/econometrics-cheatsheet-es.pdf) &#124; [TeX](econometrics-cheatsheet/econometrics-cheatsheet-es.tex) | [PDF](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/time-series-cheatsheet/time-series-cheatsheet-es.pdf) &#124; [TeX](time-series-cheatsheet/time-series-cheatsheet-es.tex) | [PDF](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/additional-cheatsheet/additional-cheatsheet-es.pdf) &#124; [TeX](additional-cheatsheet/additional-cheatsheet-es.tex) |
