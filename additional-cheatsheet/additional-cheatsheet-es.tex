@@ -368,7 +368,7 @@
 			Bajo $H_{0}$: \quad
 			$t = \dfrac{a \hat{\beta}_{i} + b \hat{\beta}_{j} - c}{\se(a \hat{\beta}_{i} + b \hat{\beta}_{j})}$
 			
-			$= \dfrac{a \hat{\beta}_{i} + b \hat{\beta}_{j} - c}{\sqrt{a^{2} \Var(\hat{\beta}_{i}) + b^{2} \cdot \Var(\hat{\beta}_{j}) \pm 2 a b \Cov(\hat{\beta}_{i}, \hat{\beta}_{j})}}$
+			$= \dfrac{a \hat{\beta}_{i} + b \hat{\beta}_{j} - c}{\sqrt{a^{2} \Var(\hat{\beta}_{i}) + b^{2} \cdot \Var(\hat{\beta}_{j}) + 2 a b \Cov(\hat{\beta}_{i}, \hat{\beta}_{j})}}$
 		\end{center}
 		
 		Si $\lvert t \rvert > \lvert t_{n - k - 1, \alpha/2}\rvert$, existe evidencia para rechazar $H_{0}$.
