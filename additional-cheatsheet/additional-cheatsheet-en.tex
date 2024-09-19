@@ -40,7 +40,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ADD-24.5.3-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ADD-24.6-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -181,7 +181,7 @@
 			}
 		\end{center}
 		
-		When there is no heterocedasticity and no auto-correlation, the variance-covariance matrix of $u$ has the form:
+		Under no heterocedasticity and no auto-correlation, the variance-covariance matrix:
 		
 		\begin{center}
 			$\Var(u) = \sigma^{2}_{u} \cdot I_{n} =$ 
@@ -199,7 +199,7 @@
 		
 		\quad where $I_{n}$ is an identity matrix of $n \times n$ elements.
 		
-		When there is \textcolor{cyan}{\textbf{heterocedasticity}} and \textcolor{magenta}{\textbf{auto-correlation}}, the variance-covariance matrix of $u$ has the shape:
+		Under \textcolor{cyan}{\textbf{heterocedasticity}} and \textcolor{magenta}{\textbf{auto-correlation}}, the variance-covariance matrix:
 		
 		\begin{center}
 			$\Var(u) = \sigma^{2}_{u} \cdot \Omega =$
@@ -224,7 +224,7 @@
 		
 		\section*{Variable omission}
 		
-		Most of the time, is hard to get all relevant variables for an analysis. For example, a true model with all variables:
+		Most of the time, it is hard to get all relevant variables for an analysis. For example, a true model with all variables:
 		
 		\begin{center}
 			$y = \beta_{0} + \beta_{1} x_{1} + \beta_{2} x_{2} + v$
@@ -240,7 +240,7 @@
 		
 		\quad where $u = v + \beta_{2} x_{2}$.
 		
-		Relevant variable omission causes OLS estimators to be \textbf{biased} and \textbf{inconsistent}, because there is no weak exogeneity, $\Cov(x_{1}, u) \neq 0$. Depending on the $\Corr(x_{1}, x_{2})$ and the sign of $\beta_{2}$, the bias on $\hat{\alpha}_{1}$ could be:
+		Relevant variable omission can cause OLS estimators to be \textbf{biased} and \textbf{inconsistent}, because there is no weak exogeneity, $\Cov(x_{1}, u) \neq 0$. Depending on the $\Corr(x_{1}, x_{2})$ and the sign of $\beta_{2}$, the bias on $\hat{\alpha}_{1}$ could be:
 		
 		\begin{center}
 			\begin{tabular}{ c | c c }
@@ -366,9 +366,9 @@
 		
 		\begin{center}
 			Under $H_{0}$: \quad
-			$t = \dfrac{a \hat{\beta}_{i} + b \hat{\beta}_{j} - c}{\sqrt{\Var(a \hat{\beta}_{i} + b \hat{\beta}_{j})}}$
+			$t = \dfrac{a \hat{\beta}_{i} + b \hat{\beta}_{j} - c}{\se(a \hat{\beta}_{i} + b \hat{\beta}_{j})}$
 			
-			$= \dfrac{a \hat{\beta}_{i} + b \hat{\beta}_{j} - c}{\sqrt{a^{2} \Var(\hat{\beta}_{i}) + b^{2} \cdot \Var(\hat{\beta}_{j}) \pm 2 a b \Cov(\hat{\beta}_{i}, \hat{\beta}_{j})}}$
+			$= \dfrac{a \hat{\beta}_{i} + b \hat{\beta}_{j} - c}{\sqrt{a^{2} \Var(\hat{\beta}_{i}) + b^{2} \cdot \Var(\hat{\beta}_{j}) + 2 a b \Cov(\hat{\beta}_{i}, \hat{\beta}_{j})}}$
 		\end{center}
 		
 		If $\lvert t \rvert > \lvert t_{n - k - 1, \alpha/2}\rvert$, there is evidence to reject $H_{0}$.

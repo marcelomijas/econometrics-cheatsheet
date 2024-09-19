@@ -40,7 +40,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ADD-24.5.3-ES - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ADD-24.6-ES - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -181,7 +181,7 @@
 			}
 		\end{center}
 		
-		Cuando no hay heterocedasticidad ni autocorrelación, la matriz de varianzas-covarianzas de $u$ tiene la forma:
+		Bajo no heterocedasticidad y no autocorrelación, la matriz de varianzas-covarianzas:
 		
 		\begin{center}
 			$\Var(u) = \sigma^{2}_{u} \cdot I_{n} =$ 
@@ -199,7 +199,7 @@
 		
 		\quad donde $I_{n}$ es una matriz identidad con $n \times n$ elementos.
 		
-		Cuando hay \textcolor{cyan}{\textbf{heterocedasticidad}} y \textcolor{magenta}{\textbf{autocorrelación}}, la matriz de varianzas-covarianzas de $u$ tiene la forma:
+		Bajo \textcolor{cyan}{\textbf{heterocedasticidad}} y \textcolor{magenta}{\textbf{autocorrelación}}, la matriz de varianzas-covarianzas:
 		
 		\begin{center}
 			$\Var(u) = \sigma^{2}_{u} \cdot \Omega =$
@@ -240,7 +240,7 @@
 		
 		\quad donde $u = v + \beta_{2} x_{2}$.
 		
-		Omisión de variables relevantes causa que los estimadores MCO sean \textbf{sesgados} e \textbf{inconsistentes},porque no hay exogeneidad estricta, $\Cov(x_{1}, u) \neq 0$. Dependiendo de $\Corr(x_{1}, x_{2})$ y el signo de $\beta_{2}$, el sesgo en $\hat{\alpha}_{1}$ puede ser:
+		Omisión de variables relevantes puede causar que los estimadores MCO sean \textbf{sesgados} e \textbf{inconsistentes},porque no hay exogeneidad estricta, $\Cov(x_{1}, u) \neq 0$. Dependiendo de $\Corr(x_{1}, x_{2})$ y el signo de $\beta_{2}$, el sesgo en $\hat{\alpha}_{1}$ puede ser:
 		
 		\begin{center}
 			\begin{tabular}{ c | c c }
@@ -366,7 +366,7 @@
 		
 		\begin{center}
 			Bajo $H_{0}$: \quad
-			$t = \dfrac{a \hat{\beta}_{i} + b \hat{\beta}_{j} - c}{\sqrt{\Var(a \hat{\beta}_{i} + b \hat{\beta}_{j})}}$
+			$t = \dfrac{a \hat{\beta}_{i} + b \hat{\beta}_{j} - c}{\se(a \hat{\beta}_{i} + b \hat{\beta}_{j})}$
 			
 			$= \dfrac{a \hat{\beta}_{i} + b \hat{\beta}_{j} - c}{\sqrt{a^{2} \Var(\hat{\beta}_{i}) + b^{2} \cdot \Var(\hat{\beta}_{j}) \pm 2 a b \Cov(\hat{\beta}_{i}, \hat{\beta}_{j})}}$
 		\end{center}
