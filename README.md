@@ -8,9 +8,9 @@ Econometrics cheat sheets created using $\LaTeX$:
 
 :bulb: I am currently pursuing a PhD in macroeconomics and econometrics at Universidad Rey Juan Carlos (Madrid, Spain). Also, I am a [researcher and professor](https://gestion2.urjc.es/pdi/ver/marcelo.moreno) at the same institution. Collaboration proposals and academic stays offers in other universities (national and international) are welcome and can help me a lot in my career! :rocket:
 
-:exclamation: My [LinkedIn](https://www.linkedin.com/in/marcelomorenop/). Please, send me a message when connecting or I will ignore the request.
+:triangular_flag_on_post: [LinkedIn](https://www.linkedin.com/in/marcelomorenop/). Please, send me a message when connecting or I will ignore the request.
 
-:united_nations: Do you want to translate any of these cheat sheets to your language? Open an issue for instructions.
+:globe_with_meridians: Do you want to translate any of these cheat sheets to your language? Open an issue for instructions.
 
 ## Download links
 
