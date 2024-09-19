@@ -19,6 +19,8 @@ Econometrics cheat sheets created using $\LaTeX$:
 | English :uk: | [PDF](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/econometrics-cheatsheet/econometrics-cheatsheet-en.pdf) &#124; [TeX](econometrics-cheatsheet/econometrics-cheatsheet-en.tex) | [PDF](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/time-series-cheatsheet/time-series-cheatsheet-en.pdf) &#124; [TeX](time-series-cheatsheet/time-series-cheatsheet-en.tex) | [PDF](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/additional-cheatsheet/additional-cheatsheet-en.pdf) &#124; [TeX](additional-cheatsheet/additional-cheatsheet-en.tex) |
 | Spanish :es: | [PDF](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/econometrics-cheatsheet/econometrics-cheatsheet-es.pdf) &#124; [TeX](econometrics-cheatsheet/econometrics-cheatsheet-es.tex) | [PDF](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/time-series-cheatsheet/time-series-cheatsheet-es.pdf) &#124; [TeX](time-series-cheatsheet/time-series-cheatsheet-es.tex) | [PDF](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/additional-cheatsheet/additional-cheatsheet-es.pdf) &#124; [TeX](additional-cheatsheet/additional-cheatsheet-es.tex) |
 
+Complete set (PDF and TeX, all languages): [ZIP](https://github.com/marcelomijas/econometrics-cheatsheet/archive/refs/heads/main.zip)
+
 ## Frequently Asked Questions (FAQ)
 
 ### What does $\mathrm{resid}$ $x_j$ mean?
