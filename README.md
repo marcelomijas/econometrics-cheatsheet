@@ -14,27 +14,10 @@ Econometrics cheat sheets created using $\LaTeX$:
 
 ## Download links
 
-**Econometrics Cheat Sheet**. Current version: `CS-24.5.2`
-
-|              | PDF file                                                          | TeX file                                                          |
-| :----------: | :---------------------------------------------------------------: | :---------------------------------------------------------------: |
-| English :uk: | [en.pdf](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/econometrics-cheatsheet/econometrics-cheatsheet-en.pdf)  | [en.tex](econometrics-cheatsheet/econometrics-cheatsheet-en.tex)  |
-| Spanish :es: | [es.pdf](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/econometrics-cheatsheet/econometrics-cheatsheet-es.pdf)  | [es.tex](econometrics-cheatsheet/econometrics-cheatsheet-es.tex)  |
-
-**Time Series Cheat Sheet**. Current version: `TS-24.8`
-
-|              | PDF file                                                        | TeX file                                                        |
-| :----------: | :-------------------------------------------------------------: | :-------------------------------------------------------------: |
-| English :uk: | [en.pdf](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/time-series-cheatsheet/time-series-cheatsheet-en.pdf)  | [en.tex](time-series-cheatsheet/time-series-cheatsheet-en.tex)  |
-| Spanish :es: | [es.pdf](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/time-series-cheatsheet/time-series-cheatsheet-es.pdf)  | [es.tex](time-series-cheatsheet/time-series-cheatsheet-es.tex)  |
-
-
-**Additional Cheat Sheet**. Current version: `ADD-24.6`
-
-|              | PDF file                                                      | TeX file                                                      |
-| :----------: | :-----------------------------------------------------------: | :-----------------------------------------------------------: |
-| English :uk: | [en.pdf](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/additional-cheatsheet/additional-cheatsheet-en.pdf)  | [en.tex](additional-cheatsheet/additional-cheatsheet-en.tex)  |
-| Spanish :es: | [es.pdf](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/additional-cheatsheet/additional-cheatsheet-es.pdf)  | [es.tex](additional-cheatsheet/additional-cheatsheet-es.tex)  |
+| | Econometrics `CS-24.5.2` | Time Series `TS-24.8` | Additional `ADD-24.6` |
+| :---: | :---: | :---: | :---: |
+| English :uk: | [PDF](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/econometrics-cheatsheet/econometrics-cheatsheet-en.pdf) &#124; [TeX](econometrics-cheatsheet/econometrics-cheatsheet-en.tex) | [PDF](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/time-series-cheatsheet/time-series-cheatsheet-en.pdf) &#124; [TeX](time-series-cheatsheet/time-series-cheatsheet-en.tex) | [PDF](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/additional-cheatsheet/additional-cheatsheet-en.pdf) &#124; [TeX](additional-cheatsheet/additional-cheatsheet-en.tex) |
+| Spanish :es: | [PDF](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/econometrics-cheatsheet/econometrics-cheatsheet-es.pdf) &#124; [TeX](econometrics-cheatsheet/econometrics-cheatsheet-es.tex) | [PDF](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/time-series-cheatsheet/time-series-cheatsheet-es.pdf) &#124; [TeX](time-series-cheatsheet/time-series-cheatsheet-es.tex) | [PDF](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/additional-cheatsheet/additional-cheatsheet-es.pdf) &#124; [TeX](additional-cheatsheet/additional-cheatsheet-es.tex) |
 
 ## Frequently Asked Questions (FAQ)
 
@@ -104,6 +87,4 @@ In addition to the notes taken from the [Degree in Economics](https://www.urjc.e
 
 ## Support the project
 
-The first way to help the project is to **directly support the authors of the manuals that are included in the resources section** (for example, by buying their works). Each and every one of the authors of the manuals are wonderful minds who have contributed a lot to econometrics and statistics. 
-
-Another great way to support the project is by sharing it and :star: it!
+The first way to help the project is to **directly support the authors of the manuals that are included in the resources section** (for example, by buying their works). Each and every one of the authors of the manuals are wonderful minds who have contributed a lot to econometrics and statistics. Another great way to support the project is by sharing it and :star: it!
