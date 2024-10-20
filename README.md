@@ -12,6 +12,8 @@ Econometrics cheat sheets created using $\LaTeX$:
 
 :globe_with_meridians: Do you want to translate any of these cheat sheets to your language? Open an issue and I will provide instructions.
 
+:printer: If you want to print them two-sided, select the flip on short edge option on your printer.
+
 ## Download links
 
 | Econometrics | PDF | TeX |
@@ -74,6 +76,14 @@ For space reasons, the version included in the cheatsheet is the matricial one. 
 The non matrix version:
 
 $$\mathrm{se}(\hat{\beta}_j)=\sqrt{\frac{\hat{\sigma}^2_u}{\mathrm{SST}_j \cdot (1-R^2_j)}} \quad , \quad j=1,...,k$$
+
+### Why don't they have 2 or 4 pages each?
+
+Each of them are 3 pages long, and there are no plans on changing that for the time being.
+
+I understand that if you print them two-sided, the second page ends up with an empty side. Consider this as an space to take your own notes :smile:.
+
+Currently, I am very comfortable with the content and font size used. Also, all cheat cheets are made in a way that you can combine any page of one with any page of another or skip them, and the same can be said for the columns of each page (with the exception of the columns of the last page of the Additional Cheat Sheet).
 
 ## Resources
 
