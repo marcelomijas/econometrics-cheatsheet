@@ -12,7 +12,7 @@ Econometrics cheat sheets created using $\LaTeX$:
 
 :globe_with_meridians: Do you want to translate any of these cheat sheets to your language? Open an issue and I will provide instructions.
 
-:printer: If you want to print them two-sided, select the flip on short edge option on your printer.
+:printer: If you want to print them two-sided, select the *Flip on Short Edge* option on your printer.
 
 ## Download links
 
