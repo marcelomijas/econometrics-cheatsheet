@@ -83,7 +83,7 @@ Each of them are 3 pages long, and there are no plans on changing that for the t
 
 I understand that if you print them two-sided, the second page ends up with an empty side. Consider this as an space to take your own notes :smile:.
 
-Currently, I am very comfortable with the content and font size used. Also, all cheat cheets are made in a way that you can combine any page of one with any page of another or skip them, and the same can be said for the columns of each page (with the exception of the columns of the last page of the Additional Cheat Sheet).
+Currently, I am very comfortable with the content and font size used. Also, all cheat cheets are made in a way that you can combine any page of one with any page of another or skip them.
 
 ## Resources
 
