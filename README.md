@@ -89,19 +89,21 @@ Currently, I am very comfortable with the content and font size used. Also, all 
 
 In addition to the notes taken from the [Degree in Economics](https://www.urjc.es/universidad/calidad/560-economia) and [Master in Modern Economic Analysis](https://www.urjc.es/estudios/master/786-analisis-economico-moderno) by Universidad Rey Juan Carlos, and the [Master in Applied Statistics](https://www.maximaformacion.es/masters/master-de-estadistica-aplicada-con-r-software/) by Máxima Formación and Universidad Nebrija, the books used:
 
-[1] Baltagi, B. H. (2011). *Econometrics*. New York: springer.
+[1] Baltagi, B. H. (2011). *Econometrics*. New York: Springer.
 
 [2] Gujarati, D. N., Porter, D. C., & Gunasekar, S. (2012). *Basic econometrics*. Tata McGraw-Hill Education.
 
-[3] James, G., Witten, D., Hastie, T., & Tibshirani, R. (2013). *An introduction to statistical learning*. New York: springer.
+[3] James, G., Witten, D., Hastie, T., & Tibshirani, R. (2013). *An introduction to statistical learning*. New York: Springer.
 
 [4] Lütkepohl, H., & Krätzig, M. (Eds.). (2004). *Applied Time Series Econometrics*. Cambridge: Cambridge University Press.
 
-[5] Ruiz-Maya, L., & Pliego, F. J. M. (2004). *Fundamentos de inferencia estadística*. AC.
+[5] Pfaff, B. (2011). *Analysis of integrated and cointegrated time series with R*. New York: Springer.
 
-[6] Stock, J. H., & Watson, M. W. (2012). *Introduction to econometrics*. New York: Pearson.
+[6] Ruiz-Maya, L., & Pliego, F. J. M. (2004). *Fundamentos de inferencia estadística*. AC.
 
-[7] Wooldridge, J. M. (2015). *Introductory econometrics: A modern approach*. Cengage learning.
+[7] Stock, J. H., & Watson, M. W. (2012). *Introduction to econometrics*. New York: Pearson.
+
+[8] Wooldridge, J. M. (2015). *Introductory econometrics: A modern approach*. Cengage learning.
 
 ## Contributions
 
