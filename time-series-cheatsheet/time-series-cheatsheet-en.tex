@@ -37,7 +37,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-24.8.1-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-24.11-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -136,7 +136,7 @@
 			\end{enumerate}
 			
 			\item \textbf{Homoscedasticity}. The variability of the residuals is the same for any $x$: $\Var(u \mid x_{1}, \ldots, x_{k}) = \sigma^{2}_{u}$
-			\item \textbf{No auto-correlation}. Residuals do not contain information about any other residuals: \\
+			\item \textbf{No autocorrelation}. Residuals do not contain information about any other residuals: \\
 			$\Corr(u_{t}, u_{s} \mid x_{1}, \ldots, x_{k}) = 0, \; \forall t \neq s$
 			\item \textbf{Normality}. Residuals are independent and identically distributed (\textbf{i.i.d.} so on): $u \sim \mathcal{N}(0, \sigma^{2}_{u})$
 			\item \textbf{Data size}. The number of observations available must be greater than $(k + 1)$ parameters to estimate. (It is already satisfied under asymptotic situations)
@@ -265,7 +265,7 @@
 		
 		\columnbreak
 		
-		\section*{Auto-correlation}
+		\section*{Autocorrelation}
 		
 		The residual of any observation, $u_{t}$, is correlated with the residual of any other observation. The observations are not independent. Is the \textbf{non-fulfillment} of \textbf{t5}.
 		
@@ -329,7 +329,7 @@
 			\end{multicols}
 			
 			\begin{multicols}{2}
-				\item \textbf{Correlogram} - composed of the auto-correlation function (ACF) and the partial ACF (PACF).
+				\item \textbf{Correlogram} - composed of the autocorrelation function (ACF) and the partial ACF (PACF).
 				
 				\columnbreak
 				
@@ -387,7 +387,7 @@
 				\end{tikzpicture}
 			\end{center}
 			
-			Conclusions differ between auto-correlation processes.
+			Conclusions differ between autocorrelation processes.
 			
 			\columnbreak
 			
@@ -399,7 +399,7 @@
 			
 			If the ACF coefficients do not decay rapidly, there is a clear indicator of lack of stationarity in mean, which would lead to take first differences in the original series.
 			
-			\item \textbf{Formal tests} - Generally, $H_{0}$: No auto-correlation.
+			\item \textbf{Formal tests} - Generally, $H_{0}$: No autocorrelation.
 			
 			Supposing that $u_{t}$ follows an AR(1) process:
 			
@@ -417,7 +417,7 @@
 				\end{center}
 				
 				\begin{itemize}[leftmargin=*]
-					\item $H_{1}$: Auto-correlation of order one, AR(1).
+					\item $H_{1}$: Autocorrelation of order one, AR(1).
 				\end{itemize}
 				
 				\item \textbf{Durbin-Watson statistic} (exogenous regressors and residual normality):
@@ -427,7 +427,7 @@
 				\end{center}
 				
 				\begin{itemize}[leftmargin=*]
-					\item $H_{1}$: Auto-correlation of order one, AR(1).
+					\item $H_{1}$: Autocorrelation of order one, AR(1).
 				\end{itemize}
 				
 				\begin{center}
@@ -476,7 +476,7 @@
 				where $\upsilon$ is the estimated variance of the coefficient associated to the endogenous variable.
 				
 				\begin{itemize}[leftmargin=*]
-					\item $H_{1}$: Auto-correlation of order one, AR(1).
+					\item $H_{1}$: Autocorrelation of order one, AR(1).
 				\end{itemize}
 				
 				\item \textbf{Breusch-Godfrey test} (endogenous regressors): it can detect MA($q$) and AR($p$) processes ($\varepsilon_{t}$ is w. noise):
@@ -488,20 +488,20 @@
 				
 			\columnbreak
 				
-				Under $H_{0}$: No auto-correlation:
+				Under $H_{0}$: No autocorrelation:
 				
 				\begin{center}
 					$\hfill T \cdot R^{2}_{\hat{u}_t}\underset{a}{\sim}\chi^{2}_{q} \hfill \textbf{or} \hfill T \cdot R^{2}_{\hat{u}_t}\underset{a}{\sim}\chi^{2}_{p} \hfill$
 				\end{center}
 				
 				\begin{itemize}[leftmargin=*]
-					\item $H_{1}$: Auto-correlation of order $q$ (or $p$).
+					\item $H_{1}$: Autocorrelation of order $q$ (or $p$).
 				\end{itemize}
 				
 				\item \textbf{Ljung-Box Q test}:
 				
 				\begin{itemize}[leftmargin=*]
-					\item $H_{1}$: There is auto-correlation.
+					\item $H_{1}$: There is autocorrelation.
 				\end{itemize}
 			\end{itemize}
 		\end{itemize}
@@ -509,7 +509,7 @@
 		\subsection*{Correction}
 		
 		\begin{itemize}[leftmargin=*]
-			\item Use OLS with a variance-covariance matrix estimator that is \textbf{robust to heterocedasticity and auto-correlation} (HAC), for example, the one proposed by \textbf{Newey-West}.
+			\item Use OLS with a variance-covariance matrix estimator that is \textbf{robust to heterocedasticity and autocorrelation} (HAC), for example, the one proposed by \textbf{Newey-West}.
 			\item Use \textbf{Generalized Least Squares} (GLS). Supposing $y_{t} = \beta_{0} + \beta_{1} x_{t} + u_{t}$, with $u_{t} = \rho u_{t - 1}+ \varepsilon_{t}$, where $\lvert \rho \rvert < 1$ and $\varepsilon_{t}$ is \underline{white noise}.
 			
 			\begin{itemize}[leftmargin=*]
@@ -767,7 +767,7 @@
 		
 		The \textbf{assumption} affected is \textbf{t4}, which leads \textbf{OLS to be not efficient}.
 		
-		Use tests like Breusch-Pagan or White's, where $H_{0}$: No heterocedasticity. It is \textbf{important} for the tests to work that there is \textbf{no auto-correlation}.
+		Use tests like Breusch-Pagan or White's, where $H_{0}$: No heterocedasticity. It is \textbf{important} for the tests to work that there is \textbf{no autocorrelation}.
 		
 		\subsection*{ARCH}
 		
