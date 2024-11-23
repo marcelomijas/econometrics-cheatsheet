@@ -38,7 +38,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize CS-24.5.2-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize CS-24.11-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -134,7 +134,7 @@
 			
 			$\Var(u \mid x_{1}, \ldots, x_{k}) = \sigma^{2}_{u}$
 			
-			\item \textbf{No auto-correlation}. Residuals don't contain information about any other residuals:
+			\item \textbf{No autocorrelation}. Residuals don't contain information about any other residuals:
 			
 			$\Corr(u_{t}, u_{s} \mid x_{1}, \ldots, x_{k}) = 0, \; \forall t \neq s$
 			
@@ -607,7 +607,7 @@
 		
 		\columnbreak
 		
-		\section*{Auto-correlation}
+		\section*{Autocorrelation}
 		
 		The residual of any observation, $u_{t}$, is correlated with the residual of any other observation. The observations are not independent.
 		
@@ -672,13 +672,13 @@
 				\end{center}
 			\end{multicols}
 			
-			\item \textbf{Formal tests} - Durbin-Watson, Breusch-Godfrey, etc. Commonly, $H_{0}$: No auto-correlation.
+			\item \textbf{Formal tests} - Durbin-Watson, Breusch-Godfrey, etc. Commonly, $H_{0}$: No autocorrelation.
 		\end{itemize}
 		
 		\subsection*{Correction}
 		
 		\begin{itemize}[leftmargin=*]
-			\item Use OLS with a variance-covariance matrix estimator robust to heterocedasticity and auto-correlation (HAC), for example, the one proposed by Newey-West.
+			\item Use OLS with a variance-covariance matrix estimator robust to heterocedasticity and autocorrelation (HAC), for example, the one proposed by Newey-West.
 			\item Use Generalized Least Squares. Supposing $y_{t} = \beta_{0} + \beta_{1} x_{t} + u_{t}$, with $u_{t} = \rho u_{t - 1} + \varepsilon_{t}$, where $\lvert \rho \rvert < 1$ and $\varepsilon_{t}$ is white noise.
 			
 			\begin{itemize}[leftmargin=*]
