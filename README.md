@@ -3,7 +3,7 @@
 Econometrics cheat sheets created using $\LaTeX$:
 
 * **Econometrics Cheat Sheet**: Basic concepts, OLS assumptions, properties, interpretation, error measuremets, hypothesis testing, confidence intervals, dummy variables, structural change, popular OLS problems and more!
-* **Time Series Cheat Sheet**: Time series components, seasonality, auto-correlation, stationarity, cointegration and heterocedasticity on time series.
+* **Time Series Cheat Sheet**: Time series components, seasonality, autocorrelation, stationarity, cointegration and heterocedasticity on time series.
 * **Additional Cheat Sheet**: OLS matrix notation, variable omission, proxy and instrumental variables, TSLS, information criterias, hypothesis testing (+), functional form test, logistic regression, statistical definitions, VAR, SVAR, VECM.
 
 :bulb: I am currently pursuing a PhD at Universidad Rey Juan Carlos (Madrid, Spain). Also, I am a [researcher and professor](https://gestion2.urjc.es/pdi/ver/marcelo.moreno) at the same institution. Collaboration proposals and academic stays offers in national/international universities are welcome! :rocket:
