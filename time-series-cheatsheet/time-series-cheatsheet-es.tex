@@ -37,7 +37,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-24.11-ES - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-24.12-ES - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -565,14 +565,14 @@
 		
 		\columnbreak
 		
-		\section*{Estacionariedad y dependencia débil}
+		\section*{Estacionariedad}
 		
-		Estacionariedad es estabilidad de las distrib. conjuntas de prob. de un proceso según avanza el tiempo. Permite reconocer relaciones -inalteradas en el tiempo- entre variables.
+		La estacionariedad permite reconocer relaciones --inalteradas en el tiempo-- entre variables.
 		
 		\begin{itemize}[leftmargin=*]
-			\item \textbf{Proceso estacionario} (estacionariedad fuerte) - distrib. de prob. estable en el tiempo: si se toma cualquier colección de variables aleatorias y se mueven $h$ periodos, la distrib. conjunta de prob. debe quedarse inalterada.
+			\item \textbf{Proceso estacionario} (estacionariedad estricta) - si se toma cualquier colección de variables aleatorias y se mueven $h$ periodos (el tiempo cambia), la distribución conjunta de probabilidades debe permanecer inalterada.
 			\item \textbf{Proceso no estacionario} - por ejemplo, una serie con tendencia, donde al menos la media cambia con el tiempo.
-			\item \textbf{Proceso estacionario en covarianza} - forma más débil de estacionariedad:
+			\item \textbf{Proceso estacionario en covarianza} - es una forma más débil de estacionariedad:
 			
 			\begin{itemize}[leftmargin=*]
 				\begin{multicols}{2}
@@ -587,22 +587,19 @@
 			\end{itemize}
 		\end{itemize}
 		
-		\subsection*{Dependencia débil}
+		\section*{Dependencia débil}
 		
-		Es importante porque reemplaza el supuesto de muestreo aleatorio en series temporales. Los procesos débilmente dependientes se llaman \textbf{integrados de orden cero}, I(0).
+		La dependencia débil reemplaza el supuesto de muestreo aleatorio en series temporales.
 		
 		\begin{itemize}[leftmargin=*]
-			\item \textbf{Dependencia débil} - restringe cuán cercana la relación entre $x_{t}$ y $x_{t + h}$ puede ser a medida que la distancia temporal entre las series aumenta ($h$).
+			\item Un proceso estacionario $\lbrace x_{t} \rbrace$ es \textbf{débilmente dependiente} cuando $x_{t}$ y $x_{t + h}$ son casi independientes a medida que $h$ aumenta sin límite.
+			\item Un proceso estacionario en covarianza es \textbf{débilmente dependiente} si la correlación entre $x_{t}$ y $x_{t + h}$ tiende a $0$ lo suficientemente rápido cuando $h \rightarrow \infty$ (no están asintóticamente correlacionados).
 		\end{itemize}
 		
-		Un \textbf{proceso estacionario} $\lbrace x_{t} : t = 1, 2, \ldots, T \rbrace$ es débilmente dependiente cuando $x_{t}$ y $x_{t + h}$ son casi independientes a medida que $h$ aumenta sin límite.
-		
-		Un \textbf{proceso estacionario en covarianza} es débilmente dependiente si la correlación entre $x_{t}$ y $x_{t + h}$ tiende a $0$ lo suficientemente rápido cuando $h \rightarrow \infty$ (no están asintóticamente correlacionados).
-		
-		Ejemplos de series estacionarias y débilmente dependientes:
+		Los procesos débilmente dependientes se llaman \textbf{integrados de orden cero}, I(0). Algunos ejemplos:
 		
 		\begin{itemize}[leftmargin=*]
-			\item \textbf{Media móvil} - $\lbrace x_{t} \rbrace$ es una media móvil de orden uno MA($q$):
+			\item \textbf{Media móvil} - $\lbrace x_{t} \rbrace$ es una media móvil de orden $q$, MA($q$):
 			
 			\begin{center}
 				$x_{t} = e_{t} + m_{1} e_{t - 1} + \cdots + m_{q} e_{t - q}$
@@ -610,30 +607,36 @@
 			
 			donde $\lbrace e_{t} : t = 0, 1, \ldots, T \rbrace$ es una secuencia \textsl{i.i.d.} con media cero y varianza $\sigma^{2}_{e}$.
 			
-			\item \textbf{Proceso autorregresivo} - $\lbrace x_{t} \rbrace$ es un proceso autorregresivo de orden uno AR($p$):
+			\item \textbf{Proceso autorregresivo} - $\lbrace x_{t} \rbrace$ es un proceso autorregresivo de orden $p$, AR($p$):
 			
 			\begin{center}
-				$x_{t} = \rho_{1} x_{t - 1} + \cdots + \rho_{p} x_{t - p}+ e_{t}$
+				$x_{t} = \rho_{1} x_{t - 1} + \cdots + \rho_{p} x_{t - p} + e_{t}$
 			\end{center}
 			
 			donde $\lbrace e_{t}: t = 1, 2, \ldots, T \rbrace$ es una secuencia \textsl{i.i.d.} con media cero y varianza $\sigma^{2}_{e}$.
 			
-			Si $\lvert \rho_{1} \rvert < 1$, entonces $\lbrace x_{t} \rbrace$ es un proceso AR(1) que es débilmente dependiente. Es estacionario en covarianza, $\Corr(x_{t}, x_{t - 1}) = \rho_{1}$.
+			\textbf{Condición de estabilidad}: si $1 - \rho_{1} z - \cdots - \rho_{p} z^{p} = 0$ para $\lvert z \rvert > 1$, entonces $\lbrace x_{t} \rbrace$ es un proceso AR débilmente dependiente. Para AR(1), la condición es: $\lvert \rho_{1} \rvert < 1$.
 		
-		\columnbreak
-		
-			\item \textbf{Proceso ARMA} - es una combinación de los dos anteriores. $\lbrace x_{t} \rbrace$ es un ARMA($p, q$):
+			\item \textbf{Proceso ARMA} - es una combinación de los dos anteriores; $\lbrace x_{t} \rbrace$ es un ARMA($p, q$):
 			
 			\begin{center}
 				$x_{t} = e_{t} + m_{1} e_{t - 1} + \cdots + m_{q} e_{t - q} + \rho_{1} x_{t - 1} + \cdots + \rho_{p} x_{t - p}$
 			\end{center}
 		\end{itemize}
 		
-		Una serie con tendencia no puede ser estacionaria, pero puede ser débilmente dependiente (y estacionaria si la serie es filtrada de tendencia).
+		\columnbreak
 		
-		\section*{Dependencia fuerte}
+		\section*{Raíces unitarias}
 		
-		La mayoría del tiempo, las series económicas presentan dependencia fuerte (o fuerte persistencia temporal). Algunos casos especiales de procesos de \textbf{raíz unitaria}, I(1):
+		Un proceso es I($d$), esto es, integrado de orden $d$, si al aplicar diferencias $d$ veces hace al proceso estacionario.
+		
+		Cuando $d \geq 1$, al proceso se le llama \textbf{proceso de raíz unitaria} o se dice que tiene una raíz unitaria.
+		
+		Un proceso tiene una raíz unitaria cuando la condición de estabilidad no se cumple (hay raíces en el círculo unitario).
+		
+		\subsection*{Dependencia fuerte}
+		
+		La mayoría del tiempo, las series económicas presentan dependencia fuerte (o fuerte persistencia temporal). Algunos casos especiales de procesos de \textbf{raíz unitaria} I(1):
 		
 		\begin{itemize}[leftmargin=*]
 			\item \textbf{Paseo aleatorio} - un proceso AR(1) con $\rho_{1} = 1$.
@@ -668,7 +671,7 @@
 		
 		\subsection*{De raíz unitaria a dependencia débil}
 		
-		Los procesos de raíz unitaria son \textbf{integrados de orden uno}, I(1). Esto significa que \textbf{la primera diferencia} del proceso es \textbf{débilmente dependiente} ó I(0) (y usualmente, estacionaria). Por ejemplo, un paseo aleatorio:
+		Integrado de \textbf{orden uno}, I(1), significa que \textbf{la primera diferencia} del proceso es \textbf{débilmente dependiente} ó I(0) (y usualmente, estacionaria). Por ejemplo, sea $\lbrace y_{t} \rbrace$ un paseo aleatorio:
 		
 		\begin{multicols}{2}
 			\begin{center}
@@ -676,10 +679,12 @@
 			\end{center}
 			
 			donde $\lbrace e_{t} \rbrace = \lbrace \Delta y_{t} \rbrace$ es \textsl{i.i.d.} \\
-			
-			Tomar la primera diferencia de una serie también elimina su tendencia. \\
-			
-			Por ejemplo, una serie con tendencia (negro), y su primera diferencia ({\color{red} rojo}).
+
+			Nota:
+			\begin{itemize}[leftmargin=*]
+				\item La primera diferencia de una serie elimina su tendencia.
+				\item El logaritmo de una serie estabiliza su varianza.
+			\end{itemize}
 			
 			\columnbreak
 			

@@ -37,7 +37,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-24.11-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-24.12-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -565,14 +565,14 @@
 		
 		\columnbreak
 		
-		\section*{Stationarity and weak dependence}
+		\section*{Stationarity}
 		
-		Stationarity means stability of the joint distributions of a process as time progresses. It allows to correctly identify relations --that stay unchange with time-- between variables.
+		Stationarity allows to correctly identify relations --that stay unchanged with time-- between variables.
 		
 		\begin{itemize}[leftmargin=*]
-			\item \textbf{Stationary process} (strong stationarity) - probability distributions are stable in time: if any collection of random variables is taken and shifted $h$ periods, the joint probability distribution should stay unchanged.
+			\item \textbf{Stationary process} (strict stationarity) - if any collection of random variables is taken and shifted $h$ periods (time changes), the joint probability distribution should stay unchanged.
 			\item \textbf{Non-stationary process} - for example, a series with trend, where at least the mean changes with time.
-			\item \textbf{Covariance stationary process} - weaker form of stationarity:
+			\item \textbf{Covariance stationary process} - its a weaker form of stationarity:
 			
 			\begin{itemize}[leftmargin=*]
 				\begin{multicols}{2}
@@ -587,22 +587,19 @@
 			\end{itemize}
 		\end{itemize}
 		
-		\subsection*{Weak dependence}
+		\section*{Weak dependence}
 		
-		It is important because it replaces the random sampling assumption for time series. Weakly dependent processes are known as \textbf{integrated of order zero}, I(0).
+		Weak dependence replaces the random sampling assumption for time series.
 		
 		\begin{itemize}[leftmargin=*]
-			\item \textbf{Weakly dependent} - restricts how close the relationship between $x_{t}$ and $x_{t + h}$ can be as the time distance between the series increases ($h$).
+			\item An stationary process $\lbrace x_{t} \rbrace$ is \textbf{weakly dependent} when $x_{t}$ and $x_{t + h}$ are almost independent as $h$ increases without a limit.
+			\item A covariance stationary process is \textbf{weakly dependent} if the correlation between $x_{t}$ and $x_{t + h}$ tends to $0$ fast enough when $h \rightarrow \infty$ (they are not asymptotically correlated).
 		\end{itemize}
 		
-		An \textbf{stationary time process} $\lbrace x_{t} : t = 1, 2, \ldots, T \rbrace$ is weakly dependent when $x_{t}$ and $x_{t + h}$ are almost independent as $h$ increases without a limit.
-		
-		A \textbf{covariance stationary time process} is weakly dependent if the correlation between $x_{t}$ and $x_{t + h}$ tends to $0$ fast enough when $h \rightarrow \infty$ (they are not asymptotically correlated).
-		
-		Examples of stationary and weakly dependent time series:
+		Weakly dependent processes are known as \textbf{integrated of order zero}, I(0). Some examples:
 		
 		\begin{itemize}[leftmargin=*]
-			\item \textbf{Moving average} - $\lbrace x_{t} \rbrace$ is a moving average of order one MA($q$):
+			\item \textbf{Moving average} - $\lbrace x_{t} \rbrace$ is a moving average of order $q$, MA($q$):
 			
 			\begin{center}
 				$x_{t} = e_{t} + m_{1} e_{t - 1} + \cdots + m_{q} e_{t - q}$
@@ -610,30 +607,36 @@
 			
 			where $\lbrace e_{t} : t = 0, 1, \ldots, T \rbrace$ is an \textsl{i.i.d.} sequence with zero mean and $\sigma^{2}_{e}$ variance.
 			
-			\item \textbf{Auto-regressive process} - $\lbrace x_{t} \rbrace$ is an auto-regressive process of order one AR($p$):
+			\item \textbf{Autoregressive process} - $\lbrace x_{t} \rbrace$ is an autoregressive process of order $p$, AR($p$):
 			
 			\begin{center}
-				$x_{t} = \rho_{1} x_{t - 1} + \cdots + \rho_{p} x_{t - p}+ e_{t}$
+				$x_{t} = \rho_{1} x_{t - 1} + \cdots + \rho_{p} x_{t - p} + e_{t}$
 			\end{center}
 			
 			where $\lbrace e_{t} : t = 1, 2, \ldots, T \rbrace$ is an \textsl{i.i.d.} sequence with zero mean and $\sigma^{2}_{e}$ variance.
 			
-			If $\lvert \rho_{1} \rvert < 1$, then $\lbrace x_{t} \rbrace$ is an AR(1) stable process that is weakly dependent. It is stationary in covariance, $\Corr(x_{t}, x_{t - 1}) = \rho_{1}$.
+			\textbf{Stability condition}: if $1 - \rho_{1} z - \cdots - \rho_{p} z^{p} = 0$ for $\lvert z \rvert > 1$ then $\lbrace x_{t} \rbrace$ is an AR($p$) stable process that is weakly dependent. For AR(1), the condition is: $\lvert \rho_{1} \rvert < 1$.
 		
-		\columnbreak
-		
-			\item \textbf{ARMA process} - is a combination of AR($p$) and MA($q$). $\lbrace x_{t} \rbrace$ is an ARMA($p, q$):
+			\item \textbf{ARMA process} - is a combination of AR($p$) and MA($q$); $\lbrace x_{t} \rbrace$ is an ARMA($p, q$):
 			
 			\begin{center}
 				$x_{t} = e_{t} + m_{1} e_{t - 1} + \cdots + m_{q} e_{t - q} + \rho_{1} x_{t - 1} + \cdots + \rho_{p} x_{t - p}$
 			\end{center}
 		\end{itemize}
 		
-		A series with a trend cannot be stationary, but can be weakly dependent (and stationary if the series is de-trended).
+		\columnbreak
 		
-		\section*{Strong dependence}
+		\section*{Unit roots}
 		
-		Most of the time, economics series are strongly dependent (or high persistent in time). Some special cases of \textbf{unit root} processes, I(1):
+		A process is I($d$), that is, integrated of order $d$, if applying differences $d$ times makes the process stationary.
+		
+		When $d \geq 1$, the process is called a \textbf{unit root process} or it is said to have an unit root.
+		
+		A process have an unit root when the stability condition is not met (there are roots on the unit circle).
+		
+		\subsection*{Strong dependence}
+		
+		Most of the time, economics series are strongly dependent (or high persistent). Some examples of \textbf{unit root} I(1):
 		
 		\begin{itemize}[leftmargin=*]
 			\item \textbf{Random walk} - an AR(1) process with $\rho_{1} = 1$.
@@ -668,7 +671,7 @@
 		
 		\subsection*{From unit root to weak dependence}
 		
-		Unit root processes are \textbf{integrated of order one}, I(1). This means that \textbf{the first difference} of the process is \textbf{weakly dependent} or I(0) (and usually, stationary). For example, a random walk:
+		Integrated of \textbf{order one}, I(1), means that \textbf{the first difference} of the process is \textbf{weakly dependent} or I(0) (and usually, stationary). For example, let $\lbrace y_{t} \rbrace$ be a random walk:
 		
 		\begin{multicols}{2}
 			\begin{center}
@@ -677,10 +680,12 @@
 			
 			where $\lbrace e_{t} \rbrace = \lbrace \Delta y_{t} \rbrace$ is \textsl{i.i.d.} \\
 			
-			Getting the first difference of a series also deletes its trend. \\
-			
-			For example, a series with a trend (black), and it's first difference ({\color{red} red}).
-			
+			Note:
+			\begin{itemize}[leftmargin=*]
+				\item The first difference of a series removes its trend.
+				\item Logarithms of a series stabilizes its variance.
+			\end{itemize}
+						
 			\columnbreak
 			
 			\begin{tikzpicture}[scale=0.18]
@@ -771,7 +776,7 @@
 		
 		\subsection*{ARCH}
 		
-		An auto-regressive conditional heterocedasticity (ARCH), is a model to analyze a form of dynamic heterocedasticity, where the error variance follows an AR($p$) process.
+		An autoregressive conditional heterocedasticity (ARCH), is a model to analyze a form of dynamic heterocedasticity, where the error variance follows an AR($p$) process.
 		
 		Given the model: $y_{t} = \beta_{0} + \beta_{1} z_{t} + u_{t}$ where, there is AR(1) and heterocedasticity:
 		
@@ -781,6 +786,6 @@
 		
 		\subsection*{GARCH}
 		
-		A general auto-regressive conditional heterocedasticity (GARCH), is a model similar to ARCH, but in this case, the error variance follows an ARMA($p, q$) process.
+		A general autoregressive conditional heterocedasticity (GARCH), is a model similar to ARCH, but in this case, the error variance follows an ARMA($p, q$) process.
 	\end{multicols}
 \end{document}
