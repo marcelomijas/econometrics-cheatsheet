@@ -28,8 +28,8 @@ Econometrics cheat sheets created using $\LaTeX$:
 
 | Additional | PDF | TeX |
 | :---: | :---: | :---: |
-| English :uk: | [`ADD-24.11`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/additional-cheatsheet/additional-cheatsheet-en.pdf) | [`ADD-24.11`](additional-cheatsheet/additional-cheatsheet-en.tex)
-| Spanish :es: | [`ADD-24.11`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/additional-cheatsheet/additional-cheatsheet-es.pdf) | [`ADD-24.11`](additional-cheatsheet/additional-cheatsheet-es.tex)
+| English :uk: | [`ADD-24.11`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/additional-cheatsheet/additional-cheatsheet-en.pdf) | [`ADD-24.12`](additional-cheatsheet/additional-cheatsheet-en.tex)
+| Spanish :es: | [`ADD-24.11`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/additional-cheatsheet/additional-cheatsheet-es.pdf) | [`ADD-24.12`](additional-cheatsheet/additional-cheatsheet-es.tex)
 
 Complete set (PDF and TeX, all languages): [ZIP](https://github.com/marcelomijas/econometrics-cheatsheet/archive/refs/heads/main.zip)
 
