@@ -40,7 +40,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ADD-24.11-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ADD-24.12-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -635,7 +635,7 @@
 			\item $u_{t} = (u_{1t}, \ldots, u_{Kt})^{\tr}$ is a vector of $K$ white noise series.
 		\end{itemize}
 		
-		The process is \textbf{stable} if:
+		\textbf{Stability condition}:
 		
 		\begin{center}
 			$\det(I_{K} - A_{1} z - \cdots - A_{p} z^{p}) \neq 0 \quad \mathrm{for}\quad \lvert z \rvert \leq 1$
@@ -801,11 +801,16 @@
 		
 		\begin{center}
 			\scalebox{0.95}{
-				$\Gamma_{1} \Delta y_{t - 1} =
+				$\Gamma_{1} \Delta y_{t - 1} = 
 				\begin{bmatrix}
 					\gamma_{11} & \gamma_{12} & \gamma_{13} \\
 					\gamma_{21} & \gamma_{22} & \gamma_{23} \\
 					\gamma_{31} & \gamma_{32} & \gamma_{33}
+				\end{bmatrix}
+				\begin{bmatrix}
+					\Delta y_{1, t - 1} \\
+					\Delta y_{2, t - 1} \\
+					\Delta y_{3, t - 1}
 				\end{bmatrix}
 				\quad
 				u_t =
