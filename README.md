@@ -81,7 +81,7 @@ $$\mathrm{se}(\hat{\beta}_j)=\sqrt{\frac{\hat{\sigma}^2_u}{\mathrm{SST}_j \cdot 
 
 Each of them are 3 pages long, and there are no plans on changing that for the time being.
 
-I understand that if you print them two-sided, the second page ends up with an empty side. Consider this as an space to take your own notes :smile:.
+I understand that if you print them two-sided, the second page ends up with an empty side. Consider this as an space to take your own notes.
 
 Currently, I am very comfortable with the content and font size used. Also, all cheat cheets are made in a way that you can combine any page of one with any page of another or skip them.
 
@@ -112,3 +112,5 @@ In addition to the notes taken from the [Degree in Economics](https://www.urjc.e
 ## Support the project
 
 The first way to help the project is to **directly support the authors of the manuals that are included in the resources section** (for example, by buying their works). Each and every one of the authors of the manuals are wonderful minds who have contributed a lot to econometrics and statistics. Another great way to support the project is by sharing it and :star: it!
+
+This project is also published on the Universidad Rey Juan Carlos Institutional Repository: https://hdl.handle.net/10115/44997
