@@ -18,18 +18,18 @@ Econometrics cheat sheets created using $\LaTeX$:
 
 | Econometrics | PDF | TeX |
 | :---: | :---: | :---: |
-| English :uk: | [`CS-24.11`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/econometrics-cheatsheet/econometrics-cheatsheet-en.pdf) | [`CS-24.11`](econometrics-cheatsheet/econometrics-cheatsheet-en.tex)
-| Spanish :es: | [`CS-24.11`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/econometrics-cheatsheet/econometrics-cheatsheet-es.pdf) | [`CS-24.11`](econometrics-cheatsheet/econometrics-cheatsheet-es.tex)
+| English :uk: | [`CS-25.01`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/econometrics-cheatsheet/econometrics-cheatsheet-en.pdf) | [`CS-25.01`](econometrics-cheatsheet/econometrics-cheatsheet-en.tex)
+| Spanish :es: | [`CS-25.01`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/econometrics-cheatsheet/econometrics-cheatsheet-es.pdf) | [`CS-25.01`](econometrics-cheatsheet/econometrics-cheatsheet-es.tex)
 
 | Time Series | PDF | TeX |
 | :---: | :---: | :---: |
-| English :uk: | [`TS-24.12`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/time-series-cheatsheet/time-series-cheatsheet-en.pdf) | [`TS-24.12`](time-series-cheatsheet/time-series-cheatsheet-en.tex)
-| Spanish :es: | [`TS-24.12`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/time-series-cheatsheet/time-series-cheatsheet-es.pdf) | [`TS-24.12`](time-series-cheatsheet/time-series-cheatsheet-es.tex)
+| English :uk: | [`TS-25.01`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/time-series-cheatsheet/time-series-cheatsheet-en.pdf) | [`TS-25.01`](time-series-cheatsheet/time-series-cheatsheet-en.tex)
+| Spanish :es: | [`TS-25.01`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/time-series-cheatsheet/time-series-cheatsheet-es.pdf) | [`TS-25.01`](time-series-cheatsheet/time-series-cheatsheet-es.tex)
 
 | Additional | PDF | TeX |
 | :---: | :---: | :---: |
-| English :uk: | [`ADD-24.11`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/additional-cheatsheet/additional-cheatsheet-en.pdf) | [`ADD-24.12`](additional-cheatsheet/additional-cheatsheet-en.tex)
-| Spanish :es: | [`ADD-24.11`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/additional-cheatsheet/additional-cheatsheet-es.pdf) | [`ADD-24.12`](additional-cheatsheet/additional-cheatsheet-es.tex)
+| English :uk: | [`ADD-25.01`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/additional-cheatsheet/additional-cheatsheet-en.pdf) | [`ADD-25.01`](additional-cheatsheet/additional-cheatsheet-en.tex)
+| Spanish :es: | [`ADD-25.01`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/additional-cheatsheet/additional-cheatsheet-es.pdf) | [`ADD-25.01`](additional-cheatsheet/additional-cheatsheet-es.tex)
 
 Complete set (PDF and TeX, all languages): [`ZIP`](https://github.com/marcelomijas/econometrics-cheatsheet/archive/refs/heads/main.zip)
 
