@@ -37,7 +37,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-24.12-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-25.01-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -72,7 +72,7 @@
 			\item \textbf{Trend} - is the long-term general movement of a series.
 			\item \textbf{Seasonal variations} - are periodic oscillations that are produced in a period equal or inferior to a year, and can be easily identified on different years (usually are the result of climatology reasons).
 			\item \textbf{Cyclical variations} - are periodic oscillations that are produced in a period greater than a year (are the result of the economic cycle).
-			\item \textbf{Residual variations} - are movements that do not follow a recognizable periodic oscillation (are the result of eventual non-permanent phenomena that can affect the studied variable in a given moment).
+			\item \textbf{Residual variations} - are movements that do not follow a recognizable periodic oscillation (are the result of eventual phenomena).
 		\end{itemize}
 		
 		\subsection*{Type of time series models}
@@ -96,7 +96,7 @@
 				$\beta_{1} + \beta_{2} + \cdots + \beta_{s}$
 			\end{center}
 			
-			\item \textbf{Dynamic models} - a temporal drift of the dependent variable is part of the independent variables (endogeneity). Conceptually:
+			\item \textbf{Dynamic models} - lags of the dependent variable (endogeneity). Conceptually:
 			
 			\begin{center}
 				$y_{t} = \beta_{0} + \beta_{1} y_{t - 1} + \cdots + \beta_{s} y_{t - s} + u_{t}$

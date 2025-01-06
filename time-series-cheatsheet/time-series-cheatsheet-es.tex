@@ -37,14 +37,14 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-24.12-ES - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-25.01-ES - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
 \begin{document}
 	\begin{multicols}{3}
 		\begin{center}
-			\textbf{\LARGE \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Cheat Sheet Series de Tiempo}}
+			\textbf{\LARGE \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Hoja de Referencia Series Temporales}}
 			
 			{\footnotesize Por Marcelo Moreno - Universidad Rey Juan Carlos}
 			
@@ -72,7 +72,7 @@
 			\item \textbf{Tendencia} - es el movimiento general a l/p de una serie.
 			\item \textbf{Variaciones estacionales} - son oscilaciones periódicas que son producidas en un período igual o inferior al año, y pueden ser fácilmente identificadas en diferentes años (usualmente son el resultado de la climatología).
 			\item \textbf{Ciclo} - son oscilaciones periódicas que se producen en un periodo mayor al año (son resultado del ciclo económico).
-			\item \textbf{Variaciones residuales} - son movimientos que no siguen una oscilación periódica identificable (resultado de fenómenos eventuales no permanentes que pueden afectar a la variable estudiada en un momento dado).
+			\item \textbf{Variaciones residuales} - son movimientos que no siguen una oscilación periódica identificable (resultado de fenómenos eventuales).
 		\end{itemize}
 		
 		\subsection*{Tipos de modelos de series temporales}
@@ -96,7 +96,7 @@
 				$\beta_{1} + \beta_{2} + \cdots + \beta_{s}$
 			\end{center}
 			
-			\item \textbf{Modelos dinámicos} - un rezago de la variable dependiente es parte de las variables independientes (endogeneidad). Conceptualmente:
+			\item \textbf{Modelos dinámicos} - rezagos de la variable dependiente (endogeneidad). Conceptualmente:
 			
 			\begin{center}
 				$y_{t} = \beta_{0} + \beta_{1} y_{t - 1} + \cdots + \beta_{s} y_{t - s} + u_{t}$
