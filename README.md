@@ -2,17 +2,13 @@
 
 Econometrics cheat sheets created using $\LaTeX$:
 
-* **Econometrics Cheat Sheet**: Basic concepts, OLS assumptions, properties, interpretation, error measuremets, hypothesis testing, confidence intervals, dummy variables, structural change, popular OLS problems and more!
-* **Time Series Cheat Sheet**: Time series components, seasonality, autocorrelation, stationarity, cointegration and heterocedasticity on time series.
-* **Additional Cheat Sheet**: OLS matrix notation, variable omission, proxy and instrumental variables, TSLS, information criterias, hypothesis testing (+), functional form test, logistic regression, statistical definitions, VAR, SVAR, VECM.
+* **Econometrics Cheat Sheet**: Basic concepts, OLS assumptions, properties, interpretation, error measuremets, hypothesis testing, confidence intervals, dummy variables, structural change, popular problems and more!
+* **Time Series Cheat Sheet**: Series components, seasonality, autocorrelation, stationarity, cointegration and heterocedasticity on time series.
+* **Additional Cheat Sheet**: OLS matrix notation, variable omission, proxy and instrumental variables, TSLS, information criterias, hypothesis testing (+), functional form, logistic regression, statistical definitions, VAR, SVAR, VECM.
 
 :bulb: I am currently pursuing a PhD at Universidad Rey Juan Carlos (Madrid, Spain). Also, I am a [researcher and professor](https://gestion2.urjc.es/pdi/ver/marcelo.moreno) at the same institution. Collaboration proposals and academic stays offers in national/international universities are welcome! :rocket:
 
 :triangular_flag_on_post: [LinkedIn](https://www.linkedin.com/in/marcelomorenop/). Please, send me a message when connecting or I will ignore the request.
-
-:globe_with_meridians: Do you want to translate any of these cheat sheets to your language? Open an issue and I will provide instructions.
-
-:printer: If you want to print them two-sided, select the *Flip on Short Edge* option on your printer.
 
 ## Download links
 
@@ -32,6 +28,12 @@ Econometrics cheat sheets created using $\LaTeX$:
 | Spanish :es: | [`ADD-25.01`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/additional-cheatsheet/additional-cheatsheet-es.pdf) | [`ADD-25.01`](additional-cheatsheet/additional-cheatsheet-es.tex)
 
 Complete set (PDF and TeX, all languages): [`ZIP`](https://github.com/marcelomijas/econometrics-cheatsheet/archive/refs/heads/main.zip)
+
+:printer: If you want to print them two-sided, select the *Flip on Short Edge* option on your printer.
+
+:clipboard: You could help me by providing some information about you and your feedback with this [survey](https://docs.google.com/forms/d/1VDzvWhkDNZIzXcrtYKuVvqKctRgpo1567KIej8eP2VY/preview).
+
+:globe_with_meridians: Do you want to translate any of these cheat sheets to your language? Open an issue and I will provide instructions.
 
 ## Frequently Asked Questions (FAQ)
 
