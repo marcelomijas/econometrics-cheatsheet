@@ -113,4 +113,4 @@ In addition to the notes taken from the [Degree in Economics](https://www.urjc.e
 
 The first way to help the project is to **directly support the authors of the manuals that are included in the resources section** (for example, by buying their works). Each and every one of the authors of the manuals are wonderful minds who have contributed a lot to econometrics and statistics. Another great way to support the project is by sharing it and :star: it!
 
-This project is also published on the Universidad Rey Juan Carlos Institutional Repository: https://hdl.handle.net/10115/44997
+A 2024 snapshot of this project is also published on the Universidad Rey Juan Carlos Institutional Repository: https://hdl.handle.net/10115/44997
