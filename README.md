@@ -31,8 +31,6 @@ Complete set (PDF and TeX, all languages): [`ZIP`](https://github.com/marcelomij
 
 :printer: If you want to print them two-sided, select the *Flip on Short Edge* option on your printer.
 
-:clipboard: You could help me by providing some information about you and your feedback with this [survey](https://docs.google.com/forms/d/1VDzvWhkDNZIzXcrtYKuVvqKctRgpo1567KIej8eP2VY/preview).
-
 :globe_with_meridians: Do you want to translate any of these cheat sheets to your language? Open an issue and I will provide instructions.
 
 ## Frequently Asked Questions (FAQ)
