@@ -40,7 +40,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ADD-25.01-ES - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ADD-25.05-ES - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -329,7 +329,7 @@
 		
 		\section*{Criterio de información}
 		
-		Es usado para comparar modelos con diferente número de parámetros ($p$). La fórmula general:
+		Comparar modelos con diferente número de parámetros ($p$). La fórmula general:
 		
 		\begin{center}
 			$\mathrm{Cr}(p) = \log(\frac{\SSR}{n}) + c_{n} \varphi (p)$
@@ -338,7 +338,7 @@
 		donde:
 		
 		\begin{itemize}[leftmargin=*]
-			\item $\SSR$ es la Suma de Residuos Cuadráticos de un modelo de orden $p$.
+			\item $\SSR$ de un modelo de orden $p$.
 			\item $c_{n}$ es una secuencia indexada por el tamaño muestral.
 			\item $\varphi(p)$ es una función que penaliza órdenes grandes de $p$.
 		\end{itemize}
@@ -357,7 +357,7 @@
 		
 		\section*{Contraste de hipótesis no restrigido}
 		
-		Es una alternativa al contraste F cuando hay pocas hipótesis a probar sobre los parámetros. Sean $\beta_{i}, \beta_{j}$ parámetros, $a, b, c \in \mathbb{R}$ constantes.
+		Alternativa al contraste F cuando hay pocas hipótesis a probar sobre los parámetros. Sean $\beta_{i}, \beta_{j}$ parámetros, $a, b, c \in \mathbb{R}$ constantes.
 		
 		\begin{itemize}[leftmargin=*]
 			\item $H_{0}: a \beta_{i} + b \beta_{j} = c$
@@ -375,12 +375,12 @@
 		
 		\section*{ANOVA}
 		
-		Descomponer la suma total de cuad. en suma de residuos cuad. y suma explicada de cuad.: $\SST = \SSR + \SSE$
+		Descomponer $\SST$:
 		
 		\begin{center}
-			\scalebox{0.86}{
+			\scalebox{0.93}{
 				\begin{tabular}{ c c c c }
-					Origen var. & Suma Cuad. & df          & Suma Cuad. Prom.     \\ \hline
+					Origen var. & Suma Cuad. & df          & Suma Cuad. Media     \\ \hline
 					Regresión   & $\SSE$     & $k$         & $\SSE / k$           \\
 					Residuos    & $\SSR$     & $n - k - 1$ & $\SSR / (n - k - 1)$ \\
 					Total       & $\SST$     & $n - 1$     &
@@ -388,51 +388,78 @@
 			}
 		\end{center}
 		
-		El estadístico F:
+		\begin{itemize}[leftmargin=*]
+			\item $H_{0}: \beta_{1} = \beta_{2} = \cdots = \beta_{k} = 0$
+			\item $H_{1}: \beta_{1} \neq 0$ and/or $\beta_{2} \neq 0 \ldots$ and/or $\beta_{k} \neq 0$
+		\end{itemize}
+		
+		Bajo $H_0$:
 		
 		\begin{center}
 			$F = \dfrac{\mathrm{SCP \; de \;} \SSE}{\mathrm{SCP \; de \;} \SSR} = \dfrac{\SSE}{\SSR} \cdot \dfrac{n - k - 1}{k} \sim F_{k, n - k - 1}$
 		\end{center}
 		
-		Si $F > F_{k, n - k - 1}$, existe evidencia para rechazar $H_{0}$: No hay diferencia entre las medias de los grupos.
+		Si $F > F_{k, n - k - 1}$, existe evidencia para rechazar $H_{0}$.
 		
 		\columnbreak
 		
-		\section*{Forma funcional incorrecta}
+		\section*{Datos de panel}
 		
-		Para comprobar si la \textbf{forma funcional} de un modelo es correcta, podemos usar el \textbf{Ramsey's RESET} (Regression Specification Error Test). Prueba el modelo original vs. un modelo con variables en potencias.
+		Observaciones de $n$ entidades durante $T$ períodos.
 		
 		\begin{center}
-			$H_{0}$: el modelo está correctamente especificado.
+			$y_{it} = X_{it} \beta + \alpha_{i} + u_{it}$
 		\end{center}
 		
-		Procedimiento del contraste:
+		$\alpha_{i}$ es heterogeneidad no observada invariante en el tiempo.
 		
-		\begin{enumerate}[leftmargin=*]
-			\item Estimar el modelo original y obtener $\hat{y}$ y $R^{2}$:
-			
-			\begin{center}
-				$\hat{y} = \hat{\beta}_{0} + \hat{\beta}_{1} x_{1} + \cdots + \hat{\beta}_{k} x_{k}$
-			\end{center}
-			
-			\item Estimar un nuevo modelo añadiendo potencias de $\hat{y}$ y obtener el nuevo $R^{2}_{\mathrm{new}}$:
-			
-			\begin{center}
-				$\tilde{y} = \hat{y} + \tilde{\gamma}_{2} \hat{y}^{2} + \cdots + \tilde{\gamma}_{l} \hat{y}^{l}$
-			\end{center}
-			
-			\item Definir el estadístico de contraste, bajo $\gamma_{2} = \cdots = \gamma_{l} = 0$ como hipótesis nula:
-			
-			\begin{center}
-				$F = \frac{R^{2}_{\mathrm{new}} - R^{2}}{1 - R^{2}_{\mathrm{new}}} \cdot \frac{n - (k + 1) - l}{l} \sim F_{l, n - (k + 1) - l}$
-			\end{center}
-		\end{enumerate}
+		\textbf{Pooled OLS}
 		
-		Si $F > F_{l, n - (k + 1) - l}$, hay evidencia para rechazar $H_{0}$.
+		\begin{itemize}[leftmargin=*]
+			\item Aplicar MCO a los datos directamente.
+			\item Supuesto: $\alpha_i$ es constante.
+		\end{itemize}
+		
+		\textbf{Modelo de efectos fijos} (within estimator)
+		
+		\begin{center}
+			$y_{it} - \overline{y}_{i} = (X_{i} - \overline{X}_{it}) \beta + (\alpha_{i} - \overline{\alpha}_i) + (u_{it} - \overline{u}_{i})$
+		\end{center}
+		
+		\begin{itemize}[leftmargin=*]
+			\item Se realiza centrado para eliminar $\alpha_i$.
+			\item Controla efectos específicos de la entidad no observados.
+			\item Supuesto: $\Corr(X_{it}, \alpha_i) \neq 0$.
+		\end{itemize}
+		
+		\textbf{Modelo de variable ficticia de mín. cuad.} (LSDV)
+		
+		Se agregan variables ficticias para cada entidad y/o período de tiempo para capturar los efectos fijos.
+		
+		\textbf{Modelo de primeras diferencias}
+		
+		\begin{center}
+			$y_{it} - y_{i,t-1} = (X_{it} - X_{i,t-1}) \beta + (\alpha_{i} - \alpha_i) + (u_{it} - u_{i,t-1})$
+		\end{center}
+		
+		\begin{itemize}[leftmargin=*]
+			\item Se realizan primeras diferencias para eliminar $\alpha_i$.
+			\item Supuesto: $\Corr(u_{it} - u_{i,t-1} | X_{it} - X_{i,t-1}) = 0$.
+		\end{itemize}
+		
+		\textbf{Modelo de efectos aleatorios}
+		
+		\begin{center}
+			$y_{it} = X_{it} \beta + \alpha_{i} + \epsilon_{it}$ donde $u_{it} = \alpha_{i} + \epsilon_{it}$ 
+		\end{center}
+		
+		\begin{itemize}[leftmargin=*]
+			\item Supuesto: $\Corr(X_{it}, \alpha_i) = 0$.
+		\end{itemize}
 		
 		\section*{Regresión logística}
 		
-		Cuando hay una variable dependiente binaria (0, 1), el modelo de regresión lineal ya no es válido, podemos usar la regresión logística en su lugar. Por ejemplo, un \textbf{modelo logit}:
+		Variable dependiente binaria (0, 1). \textbf{Modelo logit}:
 		
 		\begin{center}
 			$P_{i} = \dfrac{1}{1 + e^{-(\beta_{0} + \beta_{1} x_{i} + u_{i})}}= \dfrac{e^{\beta_{0} + \beta_{1} x_{i} + u_{i}}}{1 + e^{\beta_{0} + \beta_{1} x_{i} + u_{i}}}$
@@ -446,7 +473,7 @@
 			$\dfrac{P_{i}}{1 - P_{i}} = \dfrac{1 + e^{\beta_{0} + \beta_{1} x_{i} + u_{i}}}{1 + e^{-(\beta_{0} + \beta_{1} x_{i} + u_{i})}} = e^{\beta_{0} + \beta_{1} x_{i} + u_{i}}$
 		\end{center}
 		
-		Tomando el logaritmo natural de la razón de probabilidades, se obtiene el \textbf{logit}:
+		Tomando el logaritmo natural de la razón, el \textbf{logit}:
 		
 		\begin{center}
 			$L_{i} = \ln \left( \dfrac{P_i}{1 - P_i}\right) = \beta_{0} + \beta_{1} x_{i} + u_{i}$
@@ -473,31 +500,45 @@
 		
 		\columnbreak
 		
+		\section*{Forma funcional incorrecta}
+		
+		\textbf{Ramsey's RESET} (Regression Specification Error Test).
+		
+		\begin{center}
+			$H_{0}$: el modelo está correctamente especificado.
+		\end{center}
+		
+		\begin{enumerate}[leftmargin=*]
+			\item Estimar el modelo original y obtener $\hat{y}$ y $R^{2}$:
+			
+			\begin{center}
+				$\hat{y} = \hat{\beta}_{0} + \hat{\beta}_{1} x_{1} + \cdots + \hat{\beta}_{k} x_{k}$
+			\end{center}
+			
+			\item Estimar modelo con potencias de $\hat{y}$ y obtener $R^{2}_{\mathrm{new}}$:
+			
+			\begin{center}
+				$\tilde{y} = \hat{y} + \tilde{\gamma}_{2} \hat{y}^{2} + \cdots + \tilde{\gamma}_{l} \hat{y}^{l}$
+			\end{center}
+			
+			\item Estadístico, bajo $\gamma_{2} = \cdots = \gamma_{l} = 0$ como $H_0$:
+			
+			\begin{center}
+				$F = \frac{R^{2}_{\mathrm{new}} - R^{2}}{1 - R^{2}_{\mathrm{new}}} \cdot \frac{n - (k + 1) - l}{l} \sim F_{l, n - (k + 1) - l}$
+			\end{center}
+		\end{enumerate}
+		
+		Si $F > F_{l, n - (k + 1) - l}$, hay evidencia para rechazar $H_{0}$.
+		
 		\section*{Definiciones estadísticas}
 		
 		Sean $\xi, \eta$ variables aleatorias, $a, b \in \mathbb{R}$ constantes, y $P$ denota probabilidad.
 		
-		\subsection*{Media}
+		\textbf{Media} \quad $E(\xi) = \sum_{i=1}^{n}\xi_{i} \cdot P[\xi = \xi_{i}]$
 		
-		Definición: \quad $E(\xi) = \sum_{i=1}^{n}\xi_{i} \cdot P[\xi = \xi_{i}]$
+		Media muestral: \quad $\E(\xi) = \dfrac{1}{n}\sum_{i=1}^{n}\xi_{i}$
 		
-		\begin{multicols}{2}
-			Media poblacional:
-			
-			\begin{center}
-				$\E(\xi) = \dfrac{1}{N}\sum_{i=1}^{N}\xi_{i}$
-			\end{center}
-			
-			\columnbreak
-			
-			Media muestral:
-			
-			\begin{center}
-				$\E(\xi) = \dfrac{1}{n}\sum_{i=1}^{n}\xi_{i}$
-			\end{center}
-		\end{multicols}
-		
-		Algunas propiedades:
+		Propiedades de la media:
 		
 		\begin{itemize}[leftmargin=*]
 			\item $\E(a) = a$
@@ -509,27 +550,11 @@
 			\item $\E(a \cdot \xi + b \cdot \eta) = a \cdot \E(\xi) + b \cdot \E(\eta)$
 		\end{itemize}
 		
-		\subsection*{Varianza}
+		\textbf{Varianza} \quad $\Var(\xi) = \E[(\xi - \E(\xi))^{2}]$
 		
-		Definición: \quad $\Var(\xi) = \E[(\xi - \E(\xi))^{2}]$
+		Varianza muestral: \quad $\Var(\xi) = \dfrac{\sum_{i=1}^{n} (\xi_{i} - \E(\xi))^2}{n - 1}$
 		
-		\begin{multicols}{2}
-			Varianza poblacional:
-			
-			\begin{center}
-				$\Var(\xi) = \dfrac{\sum_{i=1}^{N} (\xi_{i} - \E(\xi))^2}{N}$
-			\end{center}
-			
-			\columnbreak
-			
-			Varianza muestral:
-			
-			\begin{center}
-				$\Var(\xi) = \dfrac{\sum_{i=1}^{n} (\xi_{i} - \E(\xi))^2}{n - 1}$
-			\end{center}
-		\end{multicols}
-		
-		Algunas propiedades:
+		Propiedades de la varianza:
 		
 		\begin{itemize}[leftmargin=*]
 			\item $\Var(a) = 0$
@@ -539,27 +564,11 @@
 			\item $\Var(a \cdot \xi \pm b \cdot \eta) = a^{2} \cdot \Var(\xi) + b^{2} \cdot \Var(\eta) \pm 2 a b \cdot \Cov(\xi, \eta)$
 		\end{itemize}
 		
-		\subsection*{Covarianza}
+		\textbf{Covarianza} \quad $\Cov(\xi, \eta) = \E[(\xi - E(\xi)) \cdot (\eta - E(\eta))]$
 		
-		Definición: \quad $\Cov(\xi, \eta) = \E[(\xi - E(\xi)) \cdot (\eta - E(\eta))]$
+		Covarianza muestral: \quad $\dfrac{\sum_{i=1}^{n} (\xi_{i} - \E(\xi)) \cdot (\eta_{i} - \E(\eta))}{n - 1}$
 		
-		\begin{multicols}{2}
-			Covarianza poblacional:
-			
-			\begin{center}
-				$\dfrac{\sum_{i=1}^{N} (\xi_{i} - \E(\xi)) \cdot (\eta_{i} - \E(\eta))}{N}$
-			\end{center}
-			
-			\columnbreak
-			
-			Covarianza muestral:
-			
-			\begin{center}
-				$\dfrac{\sum_{i=1}^{n} (\xi_{i} - \E(\xi)) \cdot (\eta_{i} - \E(\eta))}{n - 1}$
-			\end{center}
-		\end{multicols}
-		
-		Algunas propiedades:
+		Propiedades de la covarianza:
 		
 		\begin{itemize}[leftmargin=*]
 			\item $\Cov(\xi, a) = 0$

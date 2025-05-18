@@ -37,7 +37,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-25.01-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-25.05-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -292,8 +292,7 @@
 			\begin{multicols}{3}
 				\begin{center}
 					\begin{tikzpicture}[scale=0.11]
-						% \draw [step=1, gray, very thin] (0, 0) grid (20, 23);
-						\node at (10, 23) {\textbf{Ac.}}; 
+						\node at (16, 20) {\textbf{Ac.}}; 
 						\draw [thick, ->] (0, 10) -- (20, 10) node [anchor=south] {$u_{t - 1}$}; 
 						\draw [thick, -] (0, 0) -- (0, 20) node [anchor=west] {$u_{t}$}; 
 						\draw plot [only marks, mark=*, mark size=6, domain=2:18, samples=50] (\x, {-0.2*(\x - 10)^2 + 13 + 6*rnd}); 
@@ -305,8 +304,7 @@
 				
 				\begin{center}
 					\begin{tikzpicture}[scale=0.11]
-						% \draw [step=1, gray, very thin] (0, 0) grid (20, 23);
-						\node at (10, 23) {\textbf{Ac. $+$}}; 
+						\node at (16, 20) {\textbf{Ac. $+$}}; 
 						\draw [thick, ->] (0, 10) -- (20, 10) node [anchor=north] {$u_{t - 1}$}; 
 						\draw [thick, -] (0, 0) -- (0, 20) node [anchor=west] {$u_{t}$}; 
 						\draw plot [only marks, mark=*, mark size=6, domain=2:18, samples=20] (\x, {5*rnd + 2.5 + 0.5*\x}); 
@@ -318,8 +316,7 @@
 				
 				\begin{center}
 					\begin{tikzpicture}[scale=0.11]
-						% \draw [step=1, gray, very thin] (0, 0) grid (20, 23);
-						\node at (10, 23) {\textbf{Ac. $-$}}; 
+						\node at (16, 20) {\textbf{Ac. $-$}}; 
 						\draw [thick, ->] (0, 10) -- (20, 10) node [anchor=south] {$u_{t - 1}$}; 
 						\draw [thick, -] (0, 0) -- (0, 20) node [anchor=west] {$u_{t}$}; 
 						\draw plot [only marks, mark=*, mark size=6, domain=2:18, samples=20] (\x, {5*rnd + 12.5 - 0.5*\x}); 
@@ -329,75 +326,67 @@
 			\end{multicols}
 			
 			\begin{multicols}{2}
-				\item \textbf{Correlogram} - composed of the autocorrelation function (ACF) and the partial ACF (PACF).
+				\item \textbf{Correlogram} - autocorrelation function (ACF) and partial ACF (PACF).
 				
 				\columnbreak
 				
 				\begin{itemize}[leftmargin=*]
-					\item Y axis: correlation [-1, 1].
+					\item Y axis: correlation.
 					\item X axis: lag number.
-					\item Blue lines: $\pm 1.96/T^{0.5}$
+					\item Grey area: $\pm 1.96/T^{0.5}$
 				\end{itemize}
 			\end{multicols}
 			
 			\begin{center}
-				\begin{tikzpicture}[scale=0.22]
+				\begin{tikzpicture}[scale=0.25]
 					% acf plot
-					\node at (17.5, 23) {\tiny \textbf{ACF}}; 
-					\node at (-1.5, 22) {\tiny 1};
-					\node at (-1.5, 17) {\tiny 0}; 
-					\node at (-1.5, 12) {\tiny -1}; 
-					\draw [step=2, gray, thin] (0, 12) rectangle (35, 22); 
-					\draw [thick, |->] (0, 22) -- (0, 12) -- (35, 12); 
-					\fill [red] (2.0, 17) rectangle (2.5, 21.00);
-					\fill [red] (5.0, 17) rectangle (5.5, 19.64); 
-					\fill [red] (8.0, 17) rectangle (8.5, 18.85); 
-					\fill [red] (11.0, 17) rectangle (11.5, 18.28);
-					\fill [red] (14.0, 17) rectangle (14.5, 17.74);
-					\fill [red] (17.0, 17) rectangle (17.5, 17.31);
-					\fill [red] (20.0, 17) rectangle (20.5, 17.17);
-					\fill [red] (23.0, 17) rectangle (23.5, 17.05);
-					\fill [red] (26.0, 17) rectangle (26.5, 16.80);
-					\fill [red] (29.0, 17) rectangle (29.5, 16.62);
-					\fill [red] (32.0, 17) rectangle (32.5, 16.67);
-					\draw [blue, thin] (0, 17.5) -- (35, 17.5); 
-					\draw [dashed, thin] (0, 17) -- (35, 17); 
-					\draw [blue, thin] (0, 16.5) -- (35, 16.5);
+					\node at (-2.5, 14) {\small \rotatebox{90}{\textbf{ACF}}}; 
+					\node at (-1, 17.5) {\small 1};
+					\node at (-1, 14) {\small 0};
+					\node at (-1, 10.5) {\small -1}; 
+					\fill [lightgray] (0, 13) rectangle (30.5, 15); 
+					\draw [dashed, thin] (0, 14) -- (30.5, 14); 
+					\draw [thick, |->] (0, 18) -- (0, 10) -- (30.5, 10);
+					\fill [red] (2, 14) rectangle (2.5, 17.95);
+					\fill [red] (5, 14) rectangle (5.5, 16.96);
+					\fill [red] (8, 14) rectangle (8.5, 16.22); 
+					\fill [red] (11, 14) rectangle (11.5, 15.67);
+					\fill [red] (14, 14) rectangle (14.5, 15.25);
+					\fill [red] (17, 14) rectangle (17.5, 14.94);
+					\fill [red] (20, 14) rectangle (20.5, 14.70);
+					\fill [red] (23, 14) rectangle (23.5, 14.53);
+					\fill [red] (26, 14) rectangle (26.5, 14.40);
+					\fill [red] (29, 14) rectangle (29.5, 14.30);
 					% pacf plot
-					\node at (17.5, 11) {\tiny \textbf{PACF}}; 
-					\node at (-1.5, 10) {\tiny 1}; 
-					\node at (-1.5, 5) {\tiny 0}; 
-					\node at (-1.5, 0) {\tiny -1}; 
-					\draw [step=2, gray, thin] (0, 0) rectangle (35, 10);
-					\draw [thick, |->] (0, 10) -- (0, 0) -- (35, 0); 
-					\fill [red] (2.0, 5) rectangle (2.5, 9.00);
-					\fill [red] (5.0, 5) rectangle (5.5, 3.47);
-					\fill [red]	(8.0, 5) rectangle (8.5, 5.94);
-					\fill [red] (11.0, 5) rectangle (11.5, 4.43);
-					\fill [red] (14.0, 5) rectangle (14.5, 4.89);
-					\fill [red] (17.0, 5) rectangle (17.5, 4.86);
-					\fill [red] (20.0, 5) rectangle (20.5, 5.38);
-					\fill [red] (23.0, 5) rectangle (23.5, 4.56);
-					\fill [red] (26.0, 5) rectangle (26.5, 4.76);
-					\fill [red] (29.0, 5) rectangle (29.5, 5.01);
-					\fill [red] (32.0, 5) rectangle (32.5, 5.24);
-					\draw [blue, thin] (0, 5.5) -- (35, 5.5); 
-					\draw [dashed, thin] (0, 5) -- (35, 5); 
-					\draw [blue, thin] (0, 4.5) -- (35, 4.5);
+					\node at (-2.5, 4) {\small \rotatebox{90}{\textbf{PACF}}};
+					\node at (-1, 7.5) {\small 1};
+					\node at (-1, 4) {\small 0};
+					\node at (-1, 0.5) {\small -1};
+					\fill [lightgray] (0, 3) rectangle (30.5, 5);
+					\draw [dashed, thin] (0, 4) -- (30.5, 4);
+					\draw [thick, |->] (0, 8) -- (0, 0) -- (30.5, 0);
+					\fill [red] (2, 4) rectangle (2.5, 7.90);
+					\fill [red] (5, 4) rectangle (5.5, 7.00);
+					\fill [red] (8, 4) rectangle (8.5, 3.47);
+					\fill [red]	(11, 4) rectangle (11.5, 4.24);
+					\fill [red] (14, 4) rectangle (14.5, 4.43);
+					\fill [red] (17, 4) rectangle (17.5, 4.89);
+					\fill [red] (20, 4) rectangle (20.5, 3.09);
+					\fill [red] (23, 4) rectangle (23.5, 3.58);
+					\fill [red] (26, 4) rectangle (26.5, 4.46);
+					\fill [red] (29, 4) rectangle (29.5, 4.86);
 				\end{tikzpicture}
 			\end{center}
 			
-			Conclusions differ between autocorrelation processes.
+			\textbf{MA($q$) process}. \underline{ACF}: only the first $q$ coefficients are significant, the remaining are abruptly canceled. \underline{PACF}: attenuated exponential fast decay or sine waves.
+			
+			\textbf{AR($p$) process}. \underline{ACF}: attenuated exponential fast decay or sine waves. \underline{PACF}: only the first $p$ coefficients are significant, the remaining are abruptly canceled.
 			
 			\columnbreak
 			
-			\begin{itemize}[leftmargin=*]
-				\item \textbf{MA($q$) process}. \textbf{ACF}: only the first $q$ coefficients are significant, the remaining are abruptly canceled. \textbf{PACF}: attenuated exponential fast decay or sine waves.
-				\item \textbf{AR($p$) process}. \textbf{ACF}: attenuated exponential fast decay or sine waves. \textbf{PACF}: only the first $p$ coefficients are significant, the remaining are abruptly canceled.
-				\item \textbf{ARMA($p, q$) process}. \textbf{ACF} and \textbf{PACF}: the coefficients are not abruptly canceled and presents a fast decay.
-			\end{itemize}
-			
-			If the ACF coefficients do not decay rapidly, there is a clear indicator of lack of stationarity in mean, which would lead to take first differences in the original series.
+			\textbf{ARMA($p, q$) process}. \underline{ACF} and \underline{PACF}: the coefficients are not abruptly canceled and presents a fast decay.
+
+			If the ACF coefficients do not decay rapidly, there is a clear indicator of lack of stationarity in mean.
 			
 			\item \textbf{Formal tests} - Generally, $H_{0}$: No autocorrelation.
 			
@@ -408,103 +397,102 @@
 			\end{center}
 			
 			where $\varepsilon_{t}$ is white noise.
+
+			\textbf{AR(1) t test} (exogenous regressors):
+
+			\begin{center}
+				$t = \dfrac{\hat{\rho}_{1}}{\se(\hat{\rho}_{1})} \sim t_{T - k - 1, \alpha/2}$
+			\end{center}
+
+			\begin{itemize}[leftmargin=*]
+				\item $H_{1}$: Autocorrelation of order one, AR(1).
+			\end{itemize}
+
+			\textbf{Durbin-Watson statistic} (exogenous regressors and residual normality):
+
+			\begin{center}
+				$d = \dfrac{\sum_{t=2}^{n} (\hat{u}_{t} - \hat{u}_{t - 1})^{2}}{\sum_{t=1}^{n} \hat{u}_{t}^{2}} \approx 2 \cdot (1 - \hat{\rho}_{1})$
+			\end{center}
+			
+			Where $0 \leq d \leq 4$
 			
 			\begin{itemize}[leftmargin=*]
-				\item \textbf{AR(1) t test} (exogenous regressors):
-				
-				\begin{center}
-					$t = \frac{\hat{\rho}_{1}}{\se(\hat{\rho}_{1})} \sim t_{T - k - 1, \alpha/2}$
-				\end{center}
-				
-				\begin{itemize}[leftmargin=*]
-					\item $H_{1}$: Autocorrelation of order one, AR(1).
-				\end{itemize}
-				
-				\item \textbf{Durbin-Watson statistic} (exogenous regressors and residual normality):
-				
-				\begin{center}
-					$d = \frac{\sum_{t=2}^{n} (\hat{u}_{t} - \hat{u}_{t - 1})^{2}}{\sum_{t=1}^{n} \hat{u}_{t}^{2}} \approx 2 \cdot (1 - \hat{\rho}_{1}), \; 0 \leq d \leq 4$
-				\end{center}
-				
-				\begin{itemize}[leftmargin=*]
-					\item $H_{1}$: Autocorrelation of order one, AR(1).
-				\end{itemize}
-				
-				\begin{center}
-					\scalebox{0.8}{
-						\begin{tabular}{| c | c | c | c |}
-							\hline
-							$d =$          & 0 & 2 & 4  \\ \hline
-							$\rho \approx$ & 1 & 0 & -1 \\ \hline
-						\end{tabular}
-					}
-					
-					\begin{tikzpicture}[scale=0.28]
-						\fill [pattern=north east lines, pattern color=gray] (5, 0) rectangle (9, 9); 
-						\draw (5, 0) -- (5, 9); 
-						\draw (9, 0) -- (9, 9); 
-						\fill [pattern=north east lines, pattern color=gray] (16, 0) rectangle (20, 9); 
-						\draw (16, 0) -- (16, 9); 
-						\draw (20, 0) -- (20, 9); 
-						\draw [thick] (0, 9) -- (0, 0) -- (25, 0); 
-						\draw [dashed] (12.5, 0) -- (12.5, 9); 
-						\node at (-1.5, 8.5) {\scalebox{1.2}{\tiny $f(d)$}}; 
-						\node at (0, -0.6) {\scalebox{1.2}{\tiny 0}}; 
-						\node at (5, -0.6) {\scalebox{1.2}{\tiny $d_{L}$}};
-						\node at (9, -0.6) {\scalebox{1.2}{\tiny $d_{U}$}}; 
-						\node at (12.5, -0.6) {\scalebox{1.2}{\tiny 2}}; 
-						\node at (16.7, -1) {\scalebox{1.1}{\tiny \rotatebox{-20}{$4 - d_{U}$}}}; 
-						\node at (20.7, -1) {\scalebox{1.1}{\tiny \rotatebox{-20}{$4 - d_{L}$}}}; 
-						\node at (25, -0.6) {\scalebox{1.2}{\tiny 4}}; 
-						\node at (2.5, 5.5) {\scalebox{1.2}{\tiny Rej. $H_{0}$}}; 
-						\node at (2.5, 4.5) {\scalebox{1.2}{\tiny AR $+$}}; 
-						\node [text=red] at (7, 4.5) {\scalebox{1.2}{\tiny \rotatebox{-70}{\textbf{INCONCLUSIVE}}}}; 
-						\node at (12.5, 5.5) {\scalebox{1.2}{\tiny Accept $H_{0}$}}; 
-						\node at (12.5, 4.5) {\scalebox{1.2}{\tiny No AR}}; 
-						\node [text=red] at (18, 4.5) {\scalebox{1.2}{\tiny \rotatebox{-70}{\textbf{INCONCLUSIVE}}}}; 
-						\node at (22.5, 5.5) {\scalebox{1.2}{\tiny Rej. $H_{0}$}}; 
-						\node at (22.5, 4.5) {\scalebox{1.2}{\tiny AR $-$}};
-					\end{tikzpicture}
-				\end{center}
-				
-				\item \textbf{Durbin's h} (endogenous regressors):
-				
-				\begin{center}
-					$h = \hat{\rho} \cdot \sqrt{\frac{T}{1 - T \cdot \upsilon}}$
-				\end{center}
-				
-				where $\upsilon$ is the estimated variance of the coefficient associated to the endogenous variable.
-				
-				\begin{itemize}[leftmargin=*]
-					\item $H_{1}$: Autocorrelation of order one, AR(1).
-				\end{itemize}
-				
-				\item \textbf{Breusch-Godfrey test} (endogenous regressors): it can detect MA($q$) and AR($p$) processes ($\varepsilon_{t}$ is w. noise):
-				
-				\begin{itemize}[leftmargin=*]
-					\item MA($q$): $u_{t} = \varepsilon_{t} - m_{1} u_{t - 1} - \cdots - m_{q} u_{t - q}$
-					\item AR($p$): $u_{t} = \rho_{1} u_{t - 1} + \cdots + \rho_{p} u_{t - p}+ \varepsilon_{t}$
-				\end{itemize}
-				
-			\columnbreak
-				
-				Under $H_{0}$: No autocorrelation:
-				
-				\begin{center}
-					$\hfill T \cdot R^{2}_{\hat{u}_t}\underset{a}{\sim}\chi^{2}_{q} \hfill \textbf{or} \hfill T \cdot R^{2}_{\hat{u}_t}\underset{a}{\sim}\chi^{2}_{p} \hfill$
-				\end{center}
-				
-				\begin{itemize}[leftmargin=*]
-					\item $H_{1}$: Autocorrelation of order $q$ (or $p$).
-				\end{itemize}
-				
-				\item \textbf{Ljung-Box Q test}:
-				
-				\begin{itemize}[leftmargin=*]
-					\item $H_{1}$: There is autocorrelation.
-				\end{itemize}
+				\item $H_{1}$: Autocorrelation of order one, AR(1).
 			\end{itemize}
+			
+			\begin{center}
+				\begin{tabular}{| c | c | c | c |}
+					\hline
+					$d =$          & 0 & 2 & 4  \\ \hline
+					$\rho \approx$ & 1 & 0 & -1 \\ \hline
+				\end{tabular}
+				
+				\begin{tikzpicture}[scale=0.3]
+					\fill [lightgray] (5, 0) rectangle (9, 6); 
+					\draw (5, 0) -- (5, 6);
+					\draw (9, 0) -- (9, 6);
+					\fill [lightgray] (16, 0) rectangle (20, 6);
+					\draw (16, 0) -- (16, 6);
+					\draw (20, 0) -- (20, 6);
+					\draw [thick] (0, 6) -- (0, 0) -- (25, 0);
+					\draw [dashed] (12.5, 0) -- (12.5, 6);
+					\node at (-0.5, 6.5) {\small $f(d)$};
+					\node at (0, -0.6) {\small 0};
+					\node at (5, -0.6) {\small $d_{L}$};
+					\node at (9, -0.6) {\small $d_{U}$};
+					\node at (12.5, -0.6) {\small 2};
+					\node at (16.7, -0.6) {\tiny $(4 - d_{U})$};
+					\node at (20.7, -0.6) {\tiny $(4 - d_{L})$};
+					\node at (25, -0.6) {\small 4};
+					\node at (2.5, 3.5) {\small Rej. $H_{0}$};
+					\node at (2.5, 2.5) {\small AR $+$};
+					\node [text=red] at (7, 3) {\textbf{?}};
+					\node at (12.5, 3.5) {\small Accept $H_{0}$};
+					\node at (12.5, 2.5) {\small No AR};
+					\node [text=red] at (18, 3) {\textbf{?}};
+					\node at (22.5, 3.5) {\small Rej. $H_{0}$};
+					\node at (22.5, 2.5) {\small AR $-$};
+				\end{tikzpicture}
+			\end{center}
+			
+			\textbf{Durbin's h} (endogenous regressors):
+			
+			\begin{center}
+				$h = \hat{\rho} \cdot \sqrt{\dfrac{T}{1 - T \cdot \upsilon}}$
+			\end{center}
+			
+			where $\upsilon$ is the estimated variance of the coefficient associated to the endogenous variable.
+			
+			\begin{itemize}[leftmargin=*]
+				\item $H_{1}$: Autocorrelation of order one, AR(1).
+			\end{itemize}
+			
+			\textbf{Breusch-Godfrey test} (endogenous regressors): it can detect MA($q$) and AR($p$) processes ($\varepsilon_{t}$ is w. noise):
+			
+			\begin{itemize}[leftmargin=*]
+				\item MA($q$): $u_{t} = \varepsilon_{t} - m_{1} u_{t - 1} - \cdots - m_{q} u_{t - q}$
+				\item AR($p$): $u_{t} = \rho_{1} u_{t - 1} + \cdots + \rho_{p} u_{t - p}+ \varepsilon_{t}$
+			\end{itemize}
+			
+			Under $H_{0}$: No autocorrelation:
+			
+			\begin{center}
+				$\hfill T \cdot R^{2}_{\hat{u}_t}\underset{a}{\sim}\chi^{2}_{q} \hfill \textbf{or} \hfill T \cdot R^{2}_{\hat{u}_t}\underset{a}{\sim}\chi^{2}_{p} \hfill$
+			\end{center}
+			
+			\begin{itemize}[leftmargin=*]
+				\item $H_{1}$: Autocorrelation of order $q$ (or $p$).
+			\end{itemize}
+			
+			\textbf{Ljung-Box Q test}:
+			
+			\begin{itemize}[leftmargin=*]
+				\item $H_{1}$: Autocorrelation up to lag $h$.
+			\end{itemize}
+			
 		\end{itemize}
+		
+		\columnbreak
 		
 		\subsection*{Correction}
 		
@@ -561,6 +549,18 @@
 		\begin{itemize}[leftmargin=*]
 			\item Of the mean value of $y$ for a specific value of $x$.
 			\item Of an individual value of $y$ for a specific value of $x$.
+		\end{itemize}
+		
+		\textbf{Theil's U statistic} - compares the forecasted results with the results of forecasting with minimal historical data.
+		
+		\begin{center}
+			$U = \sqrt{\frac{\sum_{t=1}^{T-1} \left( \frac{\hat{y}_{t+1} - y_{t+1}}{y_t} \right)^2}{\sum_{t=1}^{T-1} \left( \frac{y_{t+1} - y_t}{y_t} \right)^2}}$
+		\end{center}
+		
+		\begin{itemize}[leftmargin=*]
+			\item $< 1$: The forecast is better than guessing.
+			\item $= 1$: The forecast is about as good as guessing.
+			\item $> 1$: The forecast is worse than guessing.
 		\end{itemize}
 		
 		\columnbreak
@@ -659,13 +659,14 @@
 		\subsection*{Unit root tests}
 		
 		\begin{center}
-			\begin{tabular}{ c | c | c }
-				Test            & $H_{0}$    & Reject $H_{0}$                     \\ \hline
+			\begin{tabular}{| c | c | c |}
+				\hline
+				\textbf{Test}   & $H_{0}$    & \textbf{Reject} $H_{0}$            \\ \hline
 				ADF             & I(1)       & tau \textless \, Critical value    \\ \hline
 				KPSS            & I(0) level & mu \textgreater \, Critical value  \\
 				                & I(0) trend & tau \textgreater \, Critical value \\ \hline
 				Phillips-Perron & I(1)       & Z-tau \textless \, Critical value  \\ \hline
-				Zivot-Andrews   & I(1)       & tau \textless \, Critical value
+				Zivot-Andrews   & I(1)       & tau \textless \, Critical value    \\ \hline
 			\end{tabular}
 		\end{center}
 		
@@ -679,13 +680,13 @@
 			\end{center}
 			
 			where $\lbrace e_{t} \rbrace = \lbrace \Delta y_{t} \rbrace$ is \textsl{i.i.d.} \\
-			
+
 			Note:
 			\begin{itemize}[leftmargin=*]
 				\item The first difference of a series removes its trend.
 				\item Logarithms of a series stabilizes its variance.
 			\end{itemize}
-						
+			
 			\columnbreak
 			
 			\begin{tikzpicture}[scale=0.18]
@@ -767,7 +768,7 @@
 			
 			if test statistic $>$ critical value, reject $H_0$.
 		\end{enumerate}
-		
+
 		\section*{Heterocedasticity on time series}
 		
 		The \textbf{assumption} affected is \textbf{t4}, which leads \textbf{OLS to be not efficient}.

@@ -40,7 +40,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ADD-25.01-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ADD-25.05-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -329,7 +329,7 @@
 		
 		\section*{Information criterion}
 		
-		It is used to compare models with different number of parameters ($p$). The general formula:
+		Compare models with different number of parameters ($p$). The general formula:
 		
 		\begin{center}
 			$\mathrm{Cr}(p) = \log(\frac{\SSR}{n}) + c_{n} \varphi (p)$
@@ -338,7 +338,7 @@
 		where:
 		
 		\begin{itemize}[leftmargin=*]
-			\item $\SSR$ is the Sum of Squared Residuals from a model of order $p$.
+			\item $\SSR$ from a model of order $p$.
 			\item $c_{n}$ is a sequence indexed by the sample size.
 			\item $\varphi(p)$ is a function that penalizes large $p$ orders.
 		\end{itemize}
@@ -357,7 +357,7 @@
 		
 		\section*{The non-restricted hypothesis test}
 		
-		Is an alternative to the F test when there are few hypothesis to test on the parameters. Let $\beta_{i}, \beta_{j}$ be parameters, $a, b, c \in \mathbb{R}$ are constants.
+		An alternative to the F test when there are few hypothesis to test on the parameters. Let $\beta_{i}, \beta_{j}$ be parameters, $a, b, c \in \mathbb{R}$ are constants.
 		
 		\begin{itemize}[leftmargin=*]
 			\item $H_{0}: a \beta_{i} + b \beta_{j} = c$
@@ -375,10 +375,10 @@
 		
 		\section*{ANOVA}
 		
-		Decompose the total sum of squared in sum of squared residuals and sum of squared explained: $\SST = \SSR + \SSE$
+		Decompose $\SST$:
 		
 		\begin{center}
-			\scalebox{0.86}{
+			\scalebox{0.93}{
 				\begin{tabular}{ c c c c }
 					Variation origin & Sum Sq. & df          & Sum Sq. Avg.         \\ \hline
 					Regression       & $\SSE$  & $k$         & $\SSE / k$           \\
@@ -388,51 +388,78 @@
 			}
 		\end{center}
 		
-		The F statistic:
+		\begin{itemize}[leftmargin=*]
+			\item $H_{0}: \beta_{1} = \beta_{2} = \cdots = \beta_{k} = 0$
+			\item $H_{1}: \beta_{1} \neq 0$ and/or $\beta_{2} \neq 0 \ldots$ and/or $\beta_{k} \neq 0$
+		\end{itemize}
+		
+		Under $H_0$:
 		
 		\begin{center}
 			$F = \dfrac{\mathrm{SSA \; of \;} \SSE}{\mathrm{SSA \; of \;} \SSR} = \dfrac{\SSE}{\SSR} \cdot \dfrac{n - k - 1}{k} \sim F_{k, n - k - 1}$
 		\end{center}
 		
-		If $F > F_{k, n - k - 1}$, there is evidence to reject $H_{0}$: There is no difference among group means.
+		If $F > F_{k, n - k - 1}$, there is evidence to reject $H_{0}$.
 		
 		\columnbreak
 		
-		\section*{Incorrect functional form}
+		\section*{Panel data}
 		
-		To check if the model \textbf{functional form} is correct, we can use \textbf{Ramsey's RESET} (Regression Specification Error Test). It test the original model vs. a model with variables in powers.
-		
+		Observations on $n$ entities over $T$ periods.
+						
 		\begin{center}
-			$H_{0}$: the model is correctly specified.
+			$y_{it} = X_{it} \beta + \alpha_{i} + u_{it}$
 		\end{center}
 		
-		Test procedure:
+		$\alpha_{i}$ represent the time-invariant unobserved heterogeneity.
 		
-		\begin{enumerate}[leftmargin=*]
-			\item Estimate the original model and obtain $\hat{y}$ and $R^{2}$:
-			
-			\begin{center}
-				$\hat{y} = \hat{\beta}_{0} + \hat{\beta}_{1} x_{1} + \cdots + \hat{\beta}_{k} x_{k}$
-			\end{center}
-			
-			\item Estimate a new model adding powers of $\hat{y}$ and obtain the new $R^{2}_{\mathrm{new}}$:
-			
-			\begin{center}
-				$\tilde{y} = \hat{y} + \tilde{\gamma}_{2} \hat{y}^{2} + \cdots + \tilde{\gamma}_{l} \hat{y}^{l}$
-			\end{center}
-			
-			\item Define the test statistic, under $\gamma_{2} = \cdots = \gamma_{l} = 0$ as null hypothesis:
-			
-			\begin{center}
-				$F = \frac{R^{2}_{\mathrm{new}} - R^{2}}{1 - R^{2}_{\mathrm{new}}} \cdot \frac{n - (k + 1) - l}{l} \sim F_{l, n - (k + 1) - l}$
-			\end{center}
-		\end{enumerate}
+		\textbf{Pooled OLS model}
 		
-		If $F > F_{l, n - (k + 1) - l}$, there is evidence to reject $H_{0}$.
+		\begin{itemize}[leftmargin=*]
+			\item Apply OLS to the data directly.
+			\item Assumption: $\alpha_i$ is constant.
+		\end{itemize}
+		
+		\textbf{Fixed effects model} (within estimator)
+		
+		\begin{center}
+			$y_{it} - \overline{y}_{i} = (X_{i} - \overline{X}_{it}) \beta + (\alpha_{i} - \overline{\alpha}_i) + (u_{it} - \overline{u}_{i})$
+		\end{center}
+		
+		\begin{itemize}[leftmargin=*]
+			\item Demeaning is performed to remove $\alpha_i$.
+			\item Control for unobserved entity-specific effects.
+			\item Assumption: $\Corr(X_{it}, \alpha_i) \neq 0$.
+		\end{itemize}
+		
+		\textbf{Least square dummy variable model} (LSDV)
+		
+		Dummy variables are added for each entity and/or time period to capture the fixed effects.
+		
+		\textbf{First difference model}
+		
+		\begin{center}
+			$y_{it} - y_{i,t-1} = (X_{it} - X_{i,t-1}) \beta + (\alpha_{i} - \alpha_i) + (u_{it} - u_{i,t-1})$
+		\end{center}
+		
+		\begin{itemize}[leftmargin=*]
+			\item First differences is performed to remove $\alpha_i$.
+			\item Assumption: $\Corr(u_{it} - u_{i,t-1} | X_{it} - X_{i,t-1}) = 0$.
+		\end{itemize}
+		
+		\textbf{Random effects model}
+		
+		\begin{center}
+			$y_{it} = X_{it} \beta + \alpha_{i} + \epsilon_{it}$ where $u_{it} = \alpha_{i} + \epsilon_{it}$
+		\end{center}
+		
+		\begin{itemize}[leftmargin=*]
+			\item Assumption: $\Corr(X_{it}, \alpha_i) = 0$.
+		\end{itemize}
 		
 		\section*{Logistic regression}
 		
-		When there is a binary (0, 1) dependent variable, the linear regression model is no longer valid, we can use logistic regression instead. For example, a \textbf{logit model}:
+		Dependent variable is binary (0 or 1). \textbf{Logit model}:
 		
 		\begin{center}
 			$P_{i} = \dfrac{1}{1 + e^{-(\beta_{0} + \beta_{1} x_{i} + u_{i})}}= \dfrac{e^{\beta_{0} + \beta_{1} x_{i} + u_{i}}}{1 + e^{\beta_{0} + \beta_{1} x_{i} + u_{i}}}$
@@ -446,7 +473,7 @@
 			$\dfrac{P_{i}}{1 - P_{i}} = \dfrac{1 + e^{\beta_{0} + \beta_{1} x_{i} + u_{i}}}{1 + e^{-(\beta_{0} + \beta_{1} x_{i} + u_{i})}} = e^{\beta_{0} + \beta_{1} x_{i} + u_{i}}$
 		\end{center}
 		
-		Taking the natural logarithm of the odds ratio, we obtain the \textbf{logit}:
+		Taking the natural logarithm of the odds ratio, the \textbf{logit}:
 		
 		\begin{center}
 			$L_{i} = \ln \left( \dfrac{P_i}{1 - P_i}\right) = \beta_{0} + \beta_{1} x_{i} + u_{i}$
@@ -473,31 +500,45 @@
 		
 		\columnbreak
 		
+		\section*{Incorrect functional form}
+		
+		\textbf{Ramsey's RESET} (Regression Specification Error Test).
+		
+		\begin{center}
+			$H_{0}$: the model is correctly specified.
+		\end{center}
+		
+		\begin{enumerate}[leftmargin=*]
+			\item Estimate the original model and obtain $\hat{y}$ and $R^{2}$:
+			
+			\begin{center}
+				$\hat{y} = \hat{\beta}_{0} + \hat{\beta}_{1} x_{1} + \cdots + \hat{\beta}_{k} x_{k}$
+			\end{center}
+			
+			\item Estimate a model adding powers of $\hat{y}$ and obtain $R^{2}_{\mathrm{new}}$:
+			
+			\begin{center}
+				$\tilde{y} = \hat{y} + \tilde{\gamma}_{2} \hat{y}^{2} + \cdots + \tilde{\gamma}_{l} \hat{y}^{l}$
+			\end{center}
+			
+			\item Test statistic, under $\gamma_{2} = \cdots = \gamma_{l} = 0$ as $H_0$:
+			
+			\begin{center}
+				$F = \frac{R^{2}_{\mathrm{new}} - R^{2}}{1 - R^{2}_{\mathrm{new}}} \cdot \frac{n - (k + 1) - l}{l} \sim F_{l, n - (k + 1) - l}$
+			\end{center}
+		\end{enumerate}
+		
+		If $F > F_{l, n - (k + 1) - l}$, there is evidence to reject $H_{0}$.
+		
 		\section*{Statistical definitions}
 		
 		Let $\xi, \eta$ be random variables, $a, b \in \mathbb{R}$ constants, and $P$ denotes probability.
 		
-		\subsection*{Mean}
+		\textbf{Mean} \quad $E(\xi) = \sum_{i=1}^{n}\xi_{i} \cdot P[\xi = \xi_{i}]$
 		
-		Definition: \quad $E(\xi) = \sum_{i=1}^{n}\xi_{i} \cdot P[\xi = \xi_{i}]$
+		Sample mean: \quad $\E(\xi) = \dfrac{1}{n}\sum_{i=1}^{n}\xi_{i}$
 		
-		\begin{multicols}{2}
-			Population mean:
-			
-			\begin{center}
-				$\E(\xi) = \dfrac{1}{N}\sum_{i=1}^{N}\xi_{i}$
-			\end{center}
-			
-			\columnbreak
-			
-			Sample mean:
-			
-			\begin{center}
-				$\E(\xi) = \dfrac{1}{n}\sum_{i=1}^{n}\xi_{i}$
-			\end{center}
-		\end{multicols}
-		
-		Some properties:
+		Properties of the mean:
 		
 		\begin{itemize}[leftmargin=*]
 			\item $\E(a) = a$
@@ -508,28 +549,12 @@
 			\item $\E(\xi - \E(\xi)) = 0$
 			\item $\E(a \cdot \xi + b \cdot \eta) = a \cdot \E(\xi) + b \cdot \E(\eta)$
 		\end{itemize}
+				
+		\textbf{Variance} \quad $\Var(\xi) = \E[(\xi - \E(\xi))^{2}]$
 		
-		\subsection*{Variance}
-		
-		Definition: \quad $\Var(\xi) = \E[(\xi - \E(\xi))^{2}]$
-		
-		\begin{multicols}{2}
-			Population variance:
+		Sample variance: \quad $\Var(\xi) = \dfrac{\sum_{i=1}^{n} (\xi_{i} - \E(\xi))^2}{n - 1}$
 			
-			\begin{center}
-				$\Var(\xi) = \dfrac{\sum_{i=1}^{N} (\xi_{i} - \E(\xi))^2}{N}$
-			\end{center}
-			
-			\columnbreak
-			
-			Sample variance:
-			
-			\begin{center}
-				$\Var(\xi) = \dfrac{\sum_{i=1}^{n} (\xi_{i} - \E(\xi))^2}{n - 1}$
-			\end{center}
-		\end{multicols}
-		
-		Some properties:
+		Properties of the variance:
 		
 		\begin{itemize}[leftmargin=*]
 			\item $\Var(a) = 0$
@@ -539,27 +564,11 @@
 			\item $\Var(a \cdot \xi \pm b \cdot \eta) = a^{2} \cdot \Var(\xi) + b^{2} \cdot \Var(\eta) \pm 2 a b \cdot \Cov(\xi, \eta)$
 		\end{itemize}
 		
-		\subsection*{Covariance}
+		\textbf{Covariance} \quad $\Cov(\xi, \eta) = \E[(\xi - E(\xi)) \cdot (\eta - E(\eta))]$
 		
-		Definition: \quad $\Cov(\xi, \eta) = \E[(\xi - E(\xi)) \cdot (\eta - E(\eta))]$
+		Sample covariance: \quad $\dfrac{\sum_{i=1}^{n} (\xi_{i} - \E(\xi)) \cdot (\eta_{i} - \E(\eta))}{n - 1}$
 		
-		\begin{multicols}{2}
-			Population covariance:
-			
-			\begin{center}
-				$\dfrac{\sum_{i=1}^{N} (\xi_{i} - \E(\xi)) \cdot (\eta_{i} - \E(\eta))}{N}$
-			\end{center}
-			
-			\columnbreak
-			
-			Sample covariance:
-			
-			\begin{center}
-				$\dfrac{\sum_{i=1}^{n} (\xi_{i} - \E(\xi)) \cdot (\eta_{i} - \E(\eta))}{n - 1}$
-			\end{center}
-		\end{multicols}
-		
-		Some properties:
+		Properties of the covariance:
 		
 		\begin{itemize}[leftmargin=*]
 			\item $\Cov(\xi, a) = 0$

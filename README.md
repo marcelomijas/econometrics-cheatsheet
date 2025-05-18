@@ -19,13 +19,13 @@ Econometrics cheat sheets created using $\LaTeX$:
 
 | Time Series | PDF | TeX |
 | :---: | :---: | :---: |
-| English :uk: | [`TS-25.01`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/time-series-cheatsheet/time-series-cheatsheet-en.pdf) | [`TS-25.01`](time-series-cheatsheet/time-series-cheatsheet-en.tex)
-| Spanish :es: | [`TS-25.01`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/time-series-cheatsheet/time-series-cheatsheet-es.pdf) | [`TS-25.01`](time-series-cheatsheet/time-series-cheatsheet-es.tex)
+| English :uk: | [`TS-25.05`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/time-series-cheatsheet/time-series-cheatsheet-en.pdf) | [`TS-25.01`](time-series-cheatsheet/time-series-cheatsheet-en.tex)
+| Spanish :es: | [`TS-25.05`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/time-series-cheatsheet/time-series-cheatsheet-es.pdf) | [`TS-25.01`](time-series-cheatsheet/time-series-cheatsheet-es.tex)
 
 | Additional | PDF | TeX |
 | :---: | :---: | :---: |
-| English :uk: | [`ADD-25.01`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/additional-cheatsheet/additional-cheatsheet-en.pdf) | [`ADD-25.01`](additional-cheatsheet/additional-cheatsheet-en.tex)
-| Spanish :es: | [`ADD-25.01`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/additional-cheatsheet/additional-cheatsheet-es.pdf) | [`ADD-25.01`](additional-cheatsheet/additional-cheatsheet-es.tex)
+| English :uk: | [`ADD-25.05`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/additional-cheatsheet/additional-cheatsheet-en.pdf) | [`ADD-25.01`](additional-cheatsheet/additional-cheatsheet-en.tex)
+| Spanish :es: | [`ADD-25.05`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/additional-cheatsheet/additional-cheatsheet-es.pdf) | [`ADD-25.01`](additional-cheatsheet/additional-cheatsheet-es.tex)
 
 Complete set (PDF and TeX, all languages): [`ZIP`](https://github.com/marcelomijas/econometrics-cheatsheet/archive/refs/heads/main.zip)
 
@@ -97,13 +97,17 @@ In addition to the notes taken from the [Degree in Economics](https://www.urjc.e
 
 [4] Lütkepohl, H., & Krätzig, M. (Eds.). (2004). *Applied Time Series Econometrics*. Cambridge: Cambridge University Press.
 
-[5] Pfaff, B. (2011). *Analysis of integrated and cointegrated time series with R*. New York: Springer.
+[5] Oracle Crystal Ball Reference and Examples Guide. *Theil's U*. https://docs.oracle.com/cd/E57185_01/CBREG/ch06s02s03s04.html. Accessed May 18, 2025.
 
-[6] Ruiz-Maya, L., & Pliego, F. J. M. (2004). *Fundamentos de inferencia estadística*. AC.
+[6] Pfaff, B. (2011). *Analysis of integrated and cointegrated time series with R*. New York: Springer.
 
-[7] Stock, J. H., & Watson, M. W. (2012). *Introduction to econometrics*. New York: Pearson.
+[7] Ruiz-Maya, L., & Pliego, F. J. M. (2004). *Fundamentos de inferencia estadística*. AC.
 
-[8] Wooldridge, J. M. (2015). *Introductory econometrics: A modern approach*. Cengage learning.
+[8] Stock, J. H., & Watson, M. W. (2012). *Introduction to econometrics*. New York: Pearson.
+
+[9] Tilburg Science Hub. *Panel Data*. https://tilburgsciencehub.com/topics/analyze/causal-inference/panel-data/#. Accessed May 18, 2025.
+
+[10] Wooldridge, J. M. (2015). *Introductory econometrics: A modern approach*. Cengage learning.
 
 ## Contributions
 
