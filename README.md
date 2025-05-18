@@ -19,13 +19,13 @@ Econometrics cheat sheets created using $\LaTeX$:
 
 | Time Series | PDF | TeX |
 | :---: | :---: | :---: |
-| English :uk: | [`TS-25.05`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/time-series-cheatsheet/time-series-cheatsheet-en.pdf) | [`TS-25.01`](time-series-cheatsheet/time-series-cheatsheet-en.tex)
-| Spanish :es: | [`TS-25.05`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/time-series-cheatsheet/time-series-cheatsheet-es.pdf) | [`TS-25.01`](time-series-cheatsheet/time-series-cheatsheet-es.tex)
+| English :uk: | [`TS-25.05`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/time-series-cheatsheet/time-series-cheatsheet-en.pdf) | [`TS-25.05`](time-series-cheatsheet/time-series-cheatsheet-en.tex)
+| Spanish :es: | [`TS-25.05`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/time-series-cheatsheet/time-series-cheatsheet-es.pdf) | [`TS-25.05`](time-series-cheatsheet/time-series-cheatsheet-es.tex)
 
 | Additional | PDF | TeX |
 | :---: | :---: | :---: |
-| English :uk: | [`ADD-25.05`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/additional-cheatsheet/additional-cheatsheet-en.pdf) | [`ADD-25.01`](additional-cheatsheet/additional-cheatsheet-en.tex)
-| Spanish :es: | [`ADD-25.05`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/additional-cheatsheet/additional-cheatsheet-es.pdf) | [`ADD-25.01`](additional-cheatsheet/additional-cheatsheet-es.tex)
+| English :uk: | [`ADD-25.05`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/additional-cheatsheet/additional-cheatsheet-en.pdf) | [`ADD-25.05`](additional-cheatsheet/additional-cheatsheet-en.tex)
+| Spanish :es: | [`ADD-25.05`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/additional-cheatsheet/additional-cheatsheet-es.pdf) | [`ADD-25.05`](additional-cheatsheet/additional-cheatsheet-es.tex)
 
 Complete set (PDF and TeX, all languages): [`ZIP`](https://github.com/marcelomijas/econometrics-cheatsheet/archive/refs/heads/main.zip)
 
