@@ -315,7 +315,7 @@
 					$H_{0}$: los estimadores MCO son consistentes.
 				\end{center}
 				
-				Si $H_{0}$ es aceptada, los estimadores MCO son mejores que MC2E y viceversa.
+				Si $H_{0}$ no es rechazada, los estimadores MCO son mejores que MC2E y viceversa.
 				
 				\item Pueden haber algunos instrumentos (o todos) que no sean válidos. Esto se conoce como sobre-identificación, el \textbf{contraste de Sargan} puede usarse para comprobarlo:
 				
@@ -584,11 +584,11 @@
 		
 		\begin{center}
 			\begin{tabular}{ c | c | c }
-				                 & $H_{0}$ verdadera       & $H_{0}$ falsa           \\ \hline
-				Rechazar $H_{0}$ & Falso positivo          & Verdadero pos.          \\
-				                 & Error Tipo I $(\alpha)$ & $(1 - \beta)$           \\ \hline
-				Aceptar $H_{0}$  & Verdadero neg.          & Falso negativo          \\
-				                 & $(1 - \alpha)$          & Error Tipo II $(\beta)$
+				                    & $H_{0}$ verdadera       & $H_{0}$ falsa           \\ \hline
+				Rechazar $H_{0}$    & Falso positivo          & Verdadero pos.          \\
+				                    & Error Tipo I $(\alpha)$ & $(1 - \beta)$           \\ \hline
+				No rechazar $H_{0}$ & Verdadero neg.          & Falso negativo          \\
+				                    & $(1 - \alpha)$          & Error Tipo II $(\beta)$
 			\end{tabular}
 		\end{center}
 		

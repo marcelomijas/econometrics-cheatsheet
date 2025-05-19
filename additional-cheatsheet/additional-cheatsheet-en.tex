@@ -315,7 +315,7 @@
 					$H_{0}$: OLS estimators are consistent.
 				\end{center}
 				
-				If $H_{0}$ is accepted, the OLS estimators are better than TSLS and vice versa.
+				If $H_{0}$ is not rejected, the OLS estimators are better than TSLS and vice versa.
 				
 				\item There could be some (or all) instrument that are not valid. This is known as over-identification, \textbf{Sargan test} can be used to check it:
 				
@@ -584,11 +584,11 @@
 		
 		\begin{center}
 			\begin{tabular}{ c | c | c }
-				               & $H_{0}$ true            & $H_{0}$ false           \\ \hline
-				Reject $H_{0}$ & False positive          & True positive           \\
-				               & Type I Error $(\alpha)$ & $(1 - \beta)$           \\ \hline
-				Accept $H_{0}$ & True negative           & False negative          \\
-				               & $(1 - \alpha)$          & Type II Error $(\beta)$
+				                   & $H_{0}$ true            & $H_{0}$ false           \\ \hline
+				Reject $H_{0}$     & False positive          & True positive           \\
+				                   & Type I Error $(\alpha)$ & $(1 - \beta)$           \\ \hline
+				Not reject $H_{0}$ & True negative           & False negative          \\
+				                   & $(1 - \alpha)$          & Type II Error $(\beta)$
 			\end{tabular}
 		\end{center}
 		
