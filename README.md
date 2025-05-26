@@ -33,7 +33,7 @@ Complete set (PDF and TeX, all languages): [`ZIP`](https://github.com/marcelomij
 
 :globe_with_meridians: Do you want to translate any of these cheat sheets to your language? Open an issue and I will provide instructions.
 
-:computer: Do you use R? Check out [*Applied Econometrics with R*](https://www.zeileis.org/teaching/AER/) by Kleiber, Christian, and Achim Zeileis!
+:computer: Do you use R? Check out [*Applied Econometrics with R*](https://www.zeileis.org/teaching/AER/) by Christian Kleiber and Achim Zeileis!
 
 ## Frequently Asked Questions (FAQ)
 
