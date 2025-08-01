@@ -14,18 +14,18 @@ Econometrics cheat sheets created using $\LaTeX$:
 
 | Econometrics | PDF | TeX |
 | :---: | :---: | :---: |
-| English :uk: | [`CS-25.01`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/econometrics-cheatsheet/econometrics-cheatsheet-en.pdf) | [`CS-25.01`](econometrics-cheatsheet/econometrics-cheatsheet-en.tex)
-| Spanish :es: | [`CS-25.01`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/econometrics-cheatsheet/econometrics-cheatsheet-es.pdf) | [`CS-25.01`](econometrics-cheatsheet/econometrics-cheatsheet-es.tex)
+| English :uk: | [`CS-25.08`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/econometrics-cheatsheet/econometrics-cheatsheet-en.pdf) | [`CS-25.08`](econometrics-cheatsheet/econometrics-cheatsheet-en.tex)
+| Spanish :es: | [`CS-25.08`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/econometrics-cheatsheet/econometrics-cheatsheet-es.pdf) | [`CS-25.08`](econometrics-cheatsheet/econometrics-cheatsheet-es.tex)
 
 | Time Series | PDF | TeX |
 | :---: | :---: | :---: |
-| English :uk: | [`TS-25.05`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/time-series-cheatsheet/time-series-cheatsheet-en.pdf) | [`TS-25.05`](time-series-cheatsheet/time-series-cheatsheet-en.tex)
-| Spanish :es: | [`TS-25.05`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/time-series-cheatsheet/time-series-cheatsheet-es.pdf) | [`TS-25.05`](time-series-cheatsheet/time-series-cheatsheet-es.tex)
+| English :uk: | [`TS-25.08`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/time-series-cheatsheet/time-series-cheatsheet-en.pdf) | [`TS-25.08`](time-series-cheatsheet/time-series-cheatsheet-en.tex)
+| Spanish :es: | [`TS-25.08`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/time-series-cheatsheet/time-series-cheatsheet-es.pdf) | [`TS-25.08`](time-series-cheatsheet/time-series-cheatsheet-es.tex)
 
 | Additional | PDF | TeX |
 | :---: | :---: | :---: |
-| English :uk: | [`ADD-25.05`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/additional-cheatsheet/additional-cheatsheet-en.pdf) | [`ADD-25.05`](additional-cheatsheet/additional-cheatsheet-en.tex)
-| Spanish :es: | [`ADD-25.05`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/additional-cheatsheet/additional-cheatsheet-es.pdf) | [`ADD-25.05`](additional-cheatsheet/additional-cheatsheet-es.tex)
+| English :uk: | [`ADD-25.08`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/additional-cheatsheet/additional-cheatsheet-en.pdf) | [`ADD-25.08`](additional-cheatsheet/additional-cheatsheet-en.tex)
+| Spanish :es: | [`ADD-25.08`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/additional-cheatsheet/additional-cheatsheet-es.pdf) | [`ADD-25.08`](additional-cheatsheet/additional-cheatsheet-es.tex)
 
 Complete set (PDF and TeX, all languages): [`ZIP`](https://github.com/marcelomijas/econometrics-cheatsheet/archive/refs/heads/main.zip)
 
@@ -37,39 +37,39 @@ Complete set (PDF and TeX, all languages): [`ZIP`](https://github.com/marcelomij
 
 ## Frequently Asked Questions (FAQ)
 
-### What does $\mathrm{resid}$ $x_j$ mean?
+### What does $\text{resid}$ $x_{j}$ mean?
 
-Those are the residuals from an OLS regression between $x_j$ and all the other $x$ 's.
+Those are the residuals from an OLS regression between $x_{j}$ and all the other $x$ 's.
 
-### Why is $\beta_0$ the constant term? My reference manual/professor's definition of the econometric model is different.
+### Why is $\beta_{0}$ the constant term? My reference manual/professor's definition of the econometric model is different.
 
 There is some debate about the correct way to name the coefficients, their sub-index and the sub-index of the variables of a model. The naming could have an impact on how some statistics like the adjusted R-squared or some tests like the F test are written.
 
 For example, while some econometricians write the multiple regression model with a constant term like this:
 
-$$y_i = \beta_0 + \beta_1 x_{1i} + ... + \beta_k x_{ki} + u_i \quad (1)$$
+$$y_{i} = \beta_{0} + \beta_{1} x_{1i} + ... + \beta_{k} x_{ki} + u_{i} \quad (1)$$
 
 Others refer to that same econometric model as:
 
-$$y_i = \beta_1 + \beta_2 x_{2i} + ... + \beta_K x_{Ki} + u_i \quad (2)$$
+$$y_{i} = \beta_{1} + \beta_{2} x_{2i} + ... + \beta_{K} x_{Ki} + u_{i} \quad (2)$$
 
 And others refer to as:
 
-$$y_i = \alpha + \beta_1 x_{1i} + ... + \beta_k x_{ki} + u_i \quad (3)$$
+$$y_{i} = \alpha + \beta_1 x_{1i} + ... + \beta_{k} x_{ki} + u_{i} \quad (3)$$
 
-All the above are equally valid representations of the multiple regression model. In the specification $(1)$, $\beta_0$ represents the constant term, while in specifications $(2)$ and $(3)$, it is represented by $\beta_1$ and $\alpha$, respectively.
+All the above are equally valid representations of the multiple regression model. In the specification $(1)$, $\beta_{0}$ represents the constant term, while in specifications $(2)$ and $(3)$, it is represented by $\beta_{1}$ and $\alpha$, respectively.
 
 In this project, the main specification used is the first $(1)$, so we can say that there are $k$ independent variables and $k + 1$ coefficients (including the constant term). The same could be said for the specification $(3)$, that it is used punctually in the project. There are no differences in the statistics and tests formula definition between specifications $(1)$ and $(3)$.
 
-The specification $(2)$ is different from the rest, since $K \neq k$. In this specification, it could be said that there are $K-1$ independent variables and $K$ coefficients (including the constant term).
+Specification $(2)$ is different from the rest, since $K \neq k$. In this specification, it could be said that there are $K - 1$ independent variables and $K$ coefficients (including the constant term).
 
 For specification $(2)$ users, not everything is lost. There is a relation between these three specifications: $K = k + 1$, so $k = K - 1$. This way, a "translation" between formulas for different representations is possible (by the user). For example, the adjusted R-squared:
 
-$$(1, 3) \quad \overline{R}^2 = 1 - \frac{n - 1}{n - k - 1} \cdot (1 - R^2)$$
+$$(1, 3) \quad \overline{R}^{2} = 1 - \frac{n - 1}{n - k - 1} \cdot (1 - R^{2})$$
 
-$$(2) \quad \overline{R}^2 = 1 - \frac{n - 1}{n - (K - 1) - 1} \cdot (1 - R^2) =$$
+$$(2) \quad \overline{R}^{2} = 1 - \frac{n - 1}{n - (K - 1) - 1} \cdot (1 - R^{2}) =$$
 
-$$= 1 - \frac{n - 1}{n - K} \cdot (1 - R^2)$$
+$$= 1 - \frac{n - 1}{n - K} \cdot (1 - R^{2})$$
 
 ### Where is the nonmatrix version of the standard error of the $\hat{\beta}$ 's?
 
@@ -77,7 +77,7 @@ For space reasons, the version included in the cheatsheet is the matrix one. It 
 
 The nonmatrix version:
 
-$$\mathrm{se}(\hat{\beta}_j)=\sqrt{\frac{\hat{\sigma}^2_u}{\mathrm{SST}_j \cdot (1-R^2_j)}} \quad , \quad j=1,...,k$$
+$$\mathrm{se}(\hat{\beta}_{j}) = \sqrt{\frac{\hat{\sigma}_{u}^{2}}{\text{SST}_{j} \cdot (1 - R_{j}^{2})}} \quad , \quad j = 1, ..., k$$
 
 ### Why don't they have 2 or 4 pages each?
 
@@ -113,7 +113,9 @@ In addition to the notes taken from the [Degree in Economics](https://www.urjc.e
 
 ## Contributions
 
-* Reddit user \_bheg_ - Pointed out about the importance of including strong and weak exogeneity and their consequences on bias and consistency properties of OLS.
+* Reddit user \_bheg_ - Pointed out the importance of including strong and weak exogeneity and their consequences on bias and consistency properties of OLS.
+
+* [Matteo Girelli](https://www.linkedin.com/in/matteo-girelli/) - Contributed with a revision and some ideas, pointing out the importance of considering ergodicity and reviewed a new time-series version that included the changes.
 
 ## Support the project
 
