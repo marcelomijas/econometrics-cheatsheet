@@ -56,7 +56,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ADD-25.08-ES - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ADD-25.08.1-ES - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -301,7 +301,7 @@ Cuando una variable de interés \( (x) \) es observable pero \textbf{endógena},
 Variables instrumentales deja la variable omitida en el término de error, pero en vez de estimar el modelo por MCO, utiliza un método que reconoce la omisión de variable. Puede también corregir errores de medida.
 
 \begin{itemize}[leftmargin=*]
-	\item \textbf{Mínimos Cuadrados en Dos Etapas} (MC2E) es un método de estimar un modelo con múltiples variables instrumentales . El requisito \( \Cov(z, u) = 0 \) puede ser relajado, pero debe haber un mínimo de variables que lo satisfacen.
+	\item \textbf{Mínimos Cuadrados en Dos Etapas} (MC2E) es un método de estimar un modelo con múltiples variables instrumentales. Que \( \Cov(z, u) = 0 \) puede ser relajado, pero debe haber un mínimo de variables que lo satisfacen.
 
 	El \textbf{procedimiento de estimación} de MC2E:
 	\begin{enumerate}[leftmargin=*]
@@ -316,12 +316,12 @@ Variables instrumentales deja la variable omitida en el término de error, pero 
 	\end{enumerate}
 	Hay algunas cosas \underline{importantes} sobre MC2E:
 	\begin{itemize}[leftmargin=*]
-		\item MC2E son menos eficientes que MCO cuando las variables explicativas son exógenas. El \textbf{contraste de Hausman} puede usarse para comprobarlo:
+		\item MC2E son menos eficientes que MCO cuando las variables explicativas son exógenas; el \textbf{contraste de Hausman} puede usarse para comprobarlo:
 		\begin{center}
 			\( H_{0} \): los estimadores MCO son consistentes.
 		\end{center}
 		Si \( H_{0} \) no es rechazada, los estimadores MCO son mejores que MC2E y viceversa.
-		\item Pueden haber algunos instrumentos (o todos) que no sean válidos. Esto se conoce como sobre-identificación, el \textbf{contraste de Sargan} puede usarse para comprobarlo:
+		\item Cuando se usan más instrumentos que variables endógenas, el modelo puede estar sobre-identificado; el \textbf{contraste de Sargan} puede usarse para comprobarlo:
 		\begin{center}
 			\( H_{0} \): todos los instrumentos son válidos.
 		\end{center}
@@ -619,7 +619,7 @@ donde \( (1 - \alpha) \) es nivel de confianza, \( \alpha \) es nivel de signifi
 
 \textbf{Problema} - Aprox. asint. a las distribuciones de los estadísticos de contraste no funcionan en muestras pequeñas.
 
-\textbf{Solución} - Boostrap es básicamente muestreo con reemplazo. Los datos observados se tratan como una población y se extraen varias muestras para recalcular un estimador o estadístico varias veces (mejora la precisión).
+\textbf{Solución} - Boostrap es muestreo con reemplazo. Los datos observados se tratan como una población y se extraen varias muestras para recalcular un estimador o estadístico varias veces (mejora la precisión).
 
 \end{multicols}
 
@@ -718,11 +718,11 @@ Visualizando las ecuaciones por separado:
 	\( y_{2t} = a_{21, 1} y_{2, t - 1} + a_{22, 1} y_{1, t - 1} + a_{21, 2} y_{2, t - 2} + a_{22, 2} y_{1, t - 2} + b_{21} x_{t} + c_{21} + c_{22} \trend + u_{2t} \)
 \end{center}
 
-Si hay una raíz unitaria, el determinante es cero para \( z = 1 \), entonces una o todas las variables son integrados y el modelo VAR ya no es apropiado (es inestable).
+Si hay una raíz unitaria, el determinante es cero para \( z = 1 \); entonces una o todas las variables son integrados, y el modelo VAR ya no es apropiado (es inestable).
 
 \subsection*{SVAR (Structural VAR)}
 
-En un modelo VAR, las interpretaciones de causalidad no son explícitas y los resultados pueden variar según el orden de las variables. Un SVAR extiende el VAR al imponer restricciones sobre las matrices \( \mathsf{A} \) y/o \( \mathsf{B} \). Esto permite una interpretación causal y un análisis de shocks sin necesidad de depender de un orden arbitrario.
+En un modelo VAR, las interpretaciones de causalidad no son explícitas, y los resultados pueden variar según el orden de las variables. Un SVAR extiende el VAR al imponer restricciones sobre las matrices \( \mathsf{A} \) y/o \( \mathsf{B} \). Esto permite una interpretación causal y un análisis de shocks sin necesidad de depender de un orden arbitrario.
 
 Por ejemplo, un modelo \( \text{SVAR}(p) \) básico:
 
@@ -741,7 +741,7 @@ donde:
 
 \section*{VECM (Vector Error Correction Model)}
 
-Si existen \textbf{relaciones cointegradoras} en un sistema de variables, la forma VAR no es la más conveniente. Es mejor usar un VECM, esto es, el VAR en niveles sustrayendo \( y_{t - 1} \) de ambos lados. El VECM \( \text{VECM}(p - 1) \):
+Si existen \textbf{relaciones cointegradoras} en un sistema de variables, la forma VAR no es la más conveniente. Es mejor usar un VECM, esto es, el VAR en niveles, sustrayendo \( y_{t - 1} \) de ambos lados. El \( \text{VECM}(p - 1) \):
 
 \begin{center}
 	\( \Delta y_{t} = \Pi y_{t - 1} + \sum_{i = 1}^{p - 1} \Gamma_{i} \Delta y_{t - i} + B x_{t} + CD_{t} + u_{t} \)

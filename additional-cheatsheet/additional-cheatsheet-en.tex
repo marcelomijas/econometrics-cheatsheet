@@ -56,7 +56,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ADD-25.08-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ADD-25.08.1-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -161,7 +161,7 @@ Has the following shape:
 
 \quad where: \( \hat{\sigma}_{u}^{2} = \frac{\hat{u}^{\top} \hat{u}}{n - k - 1} \)
 
-The standard errors are in the diagonal of:
+The standard errors are on the diagonal of:
 
 \begin{center}
 	\( \se(\hat{\beta}) = \sqrt{\Var(\hat{\beta})} \)
@@ -269,7 +269,7 @@ Relevant variable omission can cause OLS estimators to be \textbf{biased} and \t
 	\item \( (-) \) bias: \( \hat{\alpha}_{1} \) will be lower than it should be (it includes the effect of \( x_{2} \)) \( \rightarrow \hat{\alpha}_{1} < \beta_{1} \)
 \end{itemize}
 
-If \( \Corr(x_{1}, x_{2}) = 0 \), there is no bias on \( \hat{\alpha}_{1} \), because the effect of \( x_{2} \) will be fully picked up by the error term, \( u \).
+If \( \Corr(x_{1}, x_{2}) = 0 \), there is no bias on \( \hat{\alpha}_{1} \), because the effect of \( x_{2} \) will be fully captured by the error term, \( u \).
 
 \columnbreak
 
@@ -277,20 +277,20 @@ If \( \Corr(x_{1}, x_{2}) = 0 \), there is no bias on \( \hat{\alpha}_{1} \), be
 
 \subsubsection*{Proxy variables}
 
-Is the approach when a relevant variable is not available because it is non-observable, and there is no data available.
+Is the approach when a relevant variable is not available because it is non-observable, and no data is available.
 
 \begin{itemize}[leftmargin=*]
-	\item A \textbf{proxy variable} is something \textbf{related} with the non-observable variable that has data available.
+	\item A \textbf{proxy variable} is something \textbf{related} to the non-observable variable that has data available.
 \end{itemize}
 
-For example, the GDP per capita is a proxy variable for the life quality (non-observable).
+For example, the GDP per capita is a proxy variable for life quality (non-observable).
 
 \subsubsection*{Instrumental variables}
 
 When the variable of interest \( (x) \) is observable but \textbf{endogenous}, the proxy variables approach is no longer valid.
 
 \begin{itemize}[leftmargin=*]
-	\item An \textbf{instrumental variable} (IV) \textbf{is an observable variable} \( (z) \) that is \textbf{related} with the variable of interest that is endogenous \( (x) \), and meet the \textbf{requirements}:
+	\item An \textbf{instrumental variable} (IV) \textbf{is an observable variable} \( (z) \) that is \textbf{related} to the variable of interest that is endogenous \( (x) \), and meets the \textbf{requirements}:
 	\begin{center}
 		\( \Cov(z, u) = 0 \rightarrow \) instrument exogeneity
 
@@ -298,10 +298,10 @@ When the variable of interest \( (x) \) is observable but \textbf{endogenous}, t
 	\end{center}
 \end{itemize}
 
-Instrumental variables let the omitted variable in the error term, but instead of estimate the model by OLS, it utilizes a method that recognizes the presence of an omitted variable. It can also solve error measurement problems.
+Instrumental variables let the omitted variable into the error term, but instead of estimating the model by OLS, it utilizes a method that recognizes the presence of an omitted variable. It can also solve error measurement problems.
 
 \begin{itemize}[leftmargin=*]
-	\item \textbf{Two-Stage Least Squares} (TSLS) is a method to estimate a model with multiple instrumental variables. The \( \Cov(z, u) = 0 \) requirement can be relaxed, but there has to be a minimum of variables that satisfies it.
+	\item \textbf{Two-Stage Least Squares} (TSLS) is a method to estimate a model with multiple instrumental variables. The \( \Cov(z, u) = 0 \) can be relaxed, but there has to be a minimum number of variables that satisfy it.
 
 	The TSLS \textbf{estimation procedure} is as follows:
 	\begin{enumerate}[leftmargin=*]
@@ -316,14 +316,14 @@ Instrumental variables let the omitted variable in the error term, but instead o
 	\end{enumerate}
 	There are some \underline{important} things to know about TSLS:
 	\begin{itemize}[leftmargin=*]
-		\item TSLS estimators are less efficient than OLS when the explanatory variables are exogenous. The \textbf{Hausman test} can be used to check it:
+		\item TSLS estimators are less efficient than OLS when the explanatory variables are exogenous; the \textbf{Hausman test} can be used to check this:
 		\begin{center}
 			\( H_{0} \): OLS estimators are consistent.
 		\end{center}
 		If \( H_{0} \) is not rejected, the OLS estimators are better than TSLS and vice versa.
-		\item There could be some (or all) instrument that are not valid. This is known as over-identification, \textbf{Sargan test} can be used to check it:
+		\item When more instruments than endogenous variables are used, the model may be over-identified; the \textbf{Sargan test} can be used to check this:
 		\begin{center}
-			\( H_{0} \): all instruments are valid.
+			\( H_{0} \): All instruments are valid.
 		\end{center}
 	\end{itemize}
 \end{itemize}
@@ -332,7 +332,7 @@ Instrumental variables let the omitted variable in the error term, but instead o
 
 \section*{Information criterion}
 
-Compare models with different number of parameters \( (p) \). The general formula:
+Compare models with different numbers of parameters \( (p) \). The general formula:
 
 \begin{center}
 	\( \Cr(p) = \log(\frac{\SSR}{n}) + c_{n} \varphi(p) \)
@@ -346,7 +346,7 @@ where:
 	\item \( \varphi(p) \) is a function that penalizes large \( p \) orders.
 \end{itemize}
 
-Is interpreted as the relative amount of information lost by the model. The \( p \) order that min. the criterion is chosen.
+It is interpreted as the relative amount of information lost by the model. The order \( p \) that min. the criterion is chosen.
 
 There are different \( c_{n} \varphi(p) \) functions:
 
@@ -414,7 +414,7 @@ Observations on \( n \) entities over \( T \) periods.
 	\( y_{it} = X_{it} \beta + \alpha_{i} + u_{it} \)
 \end{center}
 
-\( \alpha_{i} \) represent the time-invariant unobserved heterogeneity.
+\( \alpha_{i} \) represents the time-invariant unobserved heterogeneity.
 
 \textbf{Pooled OLS model}
 
@@ -446,7 +446,7 @@ Dummy variables are added for each entity and/or time period to capture the fixe
 \end{center}
 
 \begin{itemize}[leftmargin=*]
-	\item First differences is performed to remove \( \alpha_{i} \).
+	\item First differences are performed to remove \( \alpha_{i} \).
 	\item Assumption: \( \Corr(u_{it} - u_{i, t - 1} \mid X_{it} - X_{i, t - 1}) = 0 \).
 \end{itemize}
 
@@ -462,7 +462,7 @@ Dummy variables are added for each entity and/or time period to capture the fixe
 
 \section*{Logistic regression}
 
-Dependent variable is binary (0, 1). \textbf{Logit model}:
+Binary (0, 1) dependent variable. \textbf{Logit model}:
 
 \begin{center}
 	\( P_{i} = \dfrac{1}{1 + e^{-(\beta_{0} + \beta_{1} x_{i} + u_{i})}}= \dfrac{e^{\beta_{0} + \beta_{1} x_{i} + u_{i}}}{1 + e^{\beta_{0} + \beta_{1} x_{i} + u_{i}}} \)
@@ -509,7 +509,7 @@ If \( L_{i} \) is positive, it means that when \( x_{i} \) increases, the probab
 \textbf{Ramsey's RESET} (Regression Specification Error Test).
 
 \begin{center}
-	\( H_{0} \): the model is correctly specified.
+	\( H_{0} \): The model is correctly specified.
 \end{center}
 
 \begin{enumerate}[leftmargin=*]
@@ -531,7 +531,7 @@ If \( F > F_{l, n - (k + 1) - l} \), there is evidence to reject \( H_{0} \).
 
 \section*{Statistical definitions}
 
-Let \( \xi, \eta \) be random variables, \( a, b \in \mathbb{R} \) constants, and \( P \) denotes probability.
+Let \( \xi, \eta \) be random variables, \( a, b \in \mathbb{R} \) be constants, and \( P \) denotes probability.
 
 \textbf{Mean} \quad \( E(\xi) = \sum_{i = 1}^{n} \xi_{i} \cdot P[\xi = \xi_{i}] \)
 
@@ -619,7 +619,7 @@ where \( (1 - \alpha) \) is the confidence level, \( \alpha \) is the significan
 
 \textbf{Problem} - Asymptotic approximations to the distributions of test statistics do not work on small samples.
 
-\textbf{Solution} - Bootstrap is basically sampling with replacement. The observed data is treated like a population, and multiple samples are extracted to recalculate an estimator or test statistic multiple times (improve accuracy).
+\textbf{Solution} - Bootstrap is sampling with replacement. The observed data is treated like a population, and multiple samples are extracted to recalculate an estimator or test statistic multiple times (improves accuracy).
 
 \end{multicols}
 
@@ -639,8 +639,8 @@ where:
 	\item \( y_{t} = (y_{1t}, \ldots, y_{Kt})^{\top} \) is a vector of \( K \) observable endogenous time series.
 	\item \( A_{i} \)'s are \( K \times K \) coefficient matrices.
 	\item \( x_{t} = (x_{1t}, \ldots, x_{Mt})^{\top} \) is a vector of \( M \) observable exogenous time series.
-	\item \( B \) is an \( K \times M \) coefficient matrix.
-	\item \( D_{t} \) is a vector that contains all deterministic terms: a constant, linear trend, seasonal dummy, and/or any other user specified dummy variables.
+	\item \( B \) is a \( K \times M \) coefficient matrix.
+	\item \( D_{t} \) is a vector that contains all deterministic terms: a constant, linear trend, seasonal dummy, and/or any other user-specified dummy variables.
 	\item \( C \) is a coefficient matrix of suitable dimension.
 	\item \( u_{t} = (u_{1t}, \ldots, u_{Kt})^{\top} \) is a vector of \( K \) white noise series.
 \end{itemize}
@@ -718,11 +718,11 @@ Visualizing the separate equations:
 	\( y_{2t} = a_{21, 1} y_{2, t - 1} + a_{22, 1} y_{1, t - 1} + a_{21, 2} y_{2, t - 2} + a_{22, 2} y_{1, t - 2} + b_{21} x_{t} + c_{21} + c_{22} \trend + u_{2t} \)
 \end{center}
 
-If there is an unit root, the determinant is zero for \( z = 1 \), then some or all variables are integrated and a VAR model is no longer appropriate (is unstable).
+If there is a unit root, the determinant is zero for \( z = 1 \); then some or all variables are integrated, and a VAR model is no longer appropriate (it becomes unstable).
 
 \subsection*{SVAR (Structural VAR)}
 
-In a VAR model, causal interpretation is not explicit and results are sensitive to variable ordering. An SVAR extends VAR by imposing theory-based restrictions on \( \mathsf{A} \) and/or \( \mathsf{B} \) matrices. This can enable causal interpretation and shock analysis without reliance on arbitrary ordering.
+In a VAR model, causal interpretation is not explicit, and results are sensitive to variable ordering. A SVAR extends VAR by imposing theory-based restrictions on \( \mathsf{A} \) and/or \( \mathsf{B} \) matrices. This can enable causal interpretation and shock analysis without reliance on arbitrary ordering.
 
 For example, a basic \( \text{SVAR}(p) \) model:
 
@@ -741,7 +741,7 @@ where:
 
 \section*{VECM (Vector Error Correction Model)}
 
-If \textbf{cointegrating relations} are present in a system of variables, the VAR form is not the most convenient. It is better to use a VECM, that is, the levels VAR subtracting \( y_{t - 1} \) from both sides. The \( \text{VECM}(p - 1) \):
+If \textbf{cointegrating relations} are present in a system of variables, the VAR form is not the most convenient. It is better to use a VECM, that is, the levels VAR, subtracting \( y_{t - 1} \) from both sides. The \( \text{VECM}(p - 1) \):
 
 \begin{center}
 	\( \Delta y_{t} = \Pi y_{t - 1} + \sum_{i = 1}^{p - 1} \Gamma_{i} \Delta y_{t - i} + B x_{t} + CD_{t} + u_{t} \)
@@ -755,7 +755,7 @@ where:
 	\begin{itemize}[leftmargin=*, label={\( \diamond \)}]
 		\item \( \Pi = - (I_{K} - A_{1} - \cdots - A_{p}) \) for \( i = 1, \ldots, p - 1 \)
 		\item \( \Pi = \alpha \beta^{\top} \)
-		\item \( \alpha \) is the \textbf{loading matrix} \( (K \times r) \). It represents the speed-of-adjustment.
+		\item \( \alpha \) is the \textbf{loading matrix} \( (K \times r) \). It represents the speed of adjustment.
 		\item \( \beta \) is the \textbf{cointegration matrix} \( (K \times r) \).
 		\item \( \beta^{\top} y_{t - 1} \) is the \textbf{cointegrating equation}. It represents the long-run equilibrium.
 		\item \( \rk(\Pi) = \rk(\alpha) = \rk(\beta) = r \) is the \textbf{cointegrating rank}.
