@@ -1,8 +1,8 @@
 % !TeX spellcheck = en_US
+% !TeX encoding = UTF-8
 \documentclass[10pt, a4paper, landscape]{article}
 
 % ----- packages -----
-\usepackage[T1]{fontenc}
 \usepackage{amsmath} % AMS mathematical facilities for LaTeX
 \usepackage{enumitem} % Control layout of itemize, enumerate, description
 \usepackage{fancyhdr} % Extensive control of page headers and footers in LaTeX2
@@ -45,7 +45,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-25.08-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-25.08.1-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -72,16 +72,16 @@ Given the format of a time series:
 \begin{itemize}[leftmargin=*]
 	\item \textbf{Point-in-time (stock)} - a single value is recorded for each period.
 	\item \textbf{Aggregated (flow)} - values represent totals or averages over the period.
-	\item \textbf{Range / interval (OHLC)} - each period records multiple summary statistics, such as min, max, open, close.
+	\item \textbf{Range/interval (OHLC)} - each period records multiple summary statistics, such as min, max, open, close.
 \end{itemize}
 
-\textbf{Stochastic process} - sequence of random variables that are indexed in time.
+\textbf{Stochastic process} - a sequence of random variables that are indexed in time.
 
 \subsection*{Components of a time series}
 
 \begin{itemize}[leftmargin=*]
 	\item \textbf{Trend} - the long-term general movement of a series.
-	\item \textbf{Seasonal variations} - periodic oscillations that are produced in a period equal or inferior to a year, and can be easily identified on different years (usually are the result of climatology).
+	\item \textbf{Seasonal variations} - periodic oscillations that are produced in a period equal to or inferior than a year, and can be easily identified across different years (usually the result of climatology).
 	\item \textbf{Cyclical variations} - periodic oscillations that are produced in a period greater than a year (are the result of the economic cycle).
 	\item \textbf{Residual variations} - movements that do not follow a recognizable periodic oscillation (irregular events).
 \end{itemize}
@@ -97,7 +97,7 @@ Given the format of a time series:
 	\begin{center}
 		\( y_{t} = \beta_{0} + \beta_{1} x_{t} + \beta_{2} x_{t - 1} + \cdots + \beta_{s} x_{t - (s - 1)} + u_{t} \)
 	\end{center}
-	The long term cumulative effect in \( y \) when \( \Delta x \) is:
+	The long-term cumulative effect in \( y \) when \( \Delta x \) is:
 	\begin{center}
 		\( \beta_{1} + \beta_{2} + \cdots + \beta_{s} \)
 	\end{center}
@@ -114,7 +114,7 @@ Given the format of a time series:
 
 \subsection*{OLS model assumptions under time series}
 
-Under this assumptions, the OLS estimator will present good properties. \textbf{Gauss-Markov assumptions} extended applied to time series:
+Under these assumptions, the OLS estimator will present good properties. \textbf{Gauss-Markov assumptions} extended for time series:
 
 \begin{enumerate}[leftmargin=*, label=t\arabic{*}.]
 	\item \textbf{Parameters linearity and weak dependence}.
@@ -125,7 +125,7 @@ Under this assumptions, the OLS estimator will present good properties. \textbf{
 	\item \textbf{No perfect collinearity}.
 	\begin{itemize}[leftmargin=*]
 		\item There are no independent variables that are constant: \( \Var(x_{j}) \neq 0, \; \forall j = 1, \ldots, k \)
-		\item There is not an exact linear relation between independent variables.
+		\item There is no exact linear relation between independent variables.
 	\end{itemize}
 	\item \textbf{Conditional mean zero and correlation zero}.
 	\begin{enumerate}[leftmargin=*, label=\alph{*}.]
@@ -146,21 +146,21 @@ Under the econometric model assumptions and the Central Limit Theorem:
 \begin{itemize}[leftmargin=*]
 	\item Hold t1 to t3a: OLS is \textbf{unbiased}. \( \E(\hat{\beta}_{j}) = \beta_{j} \)
 	\item Hold t1 to t3: OLS is \textbf{consistent}. \( \operatorname{plim}(\hat{\beta}_{j}) = \beta_{j} \) (to t3b left out t3a, weak exogeneity, biased but consistent)
-	\item Hold t1 to t5: \textbf{asymptotic normality} of OLS (then, t6 is necessarily satisfied): \( u \underset{a}{\sim} \mathcal{N} (0, \sigma_{u}^{2}) \)
-	\item Hold t1 to t5: \textbf{unbiased estimate} of \( \sigma_{u}^{2} \). \( \E(\hat{\sigma}_{u}^{2}) = \sigma^{2}_{u} \)
+	\item Hold t1 to t5: \textbf{Asymptotic normality} of OLS (then, t6 is necessarily satisfied): \( u \underset{a}{\sim} \mathcal{N} (0, \sigma_{u}^{2}) \)
+	\item Hold t1 to t5: \textbf{Unbiased estimate} of \( \sigma_{u}^{2} \). \( \E(\hat{\sigma}_{u}^{2}) = \sigma^{2}_{u} \)
 	\item Hold t1 to t5: OLS is \textcolor{blue}{BLUE} (Best Linear Unbiased Estimator) or \textbf{efficient}.
-	\item Hold t1 to t6: hypothesis testing and confidence intervals can be done reliably.
+	\item Hold t1 to t6: Hypothesis testing and confidence intervals can be done reliably.
 \end{itemize}
 
 \columnbreak
 
 \section*{Trends and seasonality}
 
-\textbf{Spurious regression} - is when the relation between \( y \) and \( x \) is due to factors that affect \( y \) and have correlation with \( x \), \( \Corr(x_{j}, u) \neq 0 \). Is the \textbf{non-fulfillment of t3}.
+\textbf{Spurious regression} - is when the relation between \( y \) and \( x \) is due to factors that affect \( y \) and have a correlation with \( x \), \( \Corr(x_{j}, u) \neq 0 \). Is the \textbf{non-fulfillment of t3}.
 
 \subsection*{Trends}
 
-Two time series can have the same (or contrary) trend, that should lend to a high level of correlation. This, can provoke a false appearance of causality, the problem is \textbf{spurious regression}. Given the model:
+Two time series can have the same (or contrary) trend, which should lead to a high level of correlation. This can provoke a false appearance of causality; the problem is \textbf{spurious regression}. Given the model:
 
 \begin{center}
 	\( y_{t} = \beta_{0} + \beta_{1} x_{t} + u_{t} \)
@@ -182,14 +182,14 @@ Adding a trend to the model can solve the problem:
 
 The trend can be linear or non-linear (quadratic, cubic, exponential, etc.)
 
-Another way is make use of the \textbf{Hodrick-Prescott filter} to extract the trend and the cyclical component.
+Another way is to make use of the \textbf{Hodrick-Prescott filter} to extract the trend and the cyclical component.
 
 \subsection*{Seasonality}
 
 \setlength{\multicolsep}{0pt}
 \begin{multicols}{2}
 
-A time series with can manifest seasonality. That is, the series is subject to a seasonal variations or pattern, usually related to climatology conditions.
+A time series with can manifest seasonality. That is, the series is subject to a seasonal variations or patterns, usually related to climatology conditions.
 
 \columnbreak
 
@@ -260,8 +260,8 @@ The residual of any observation, \( u_{t} \), is correlated with the residual of
 \subsection*{Consequences}
 
 \begin{itemize}[leftmargin=*]
-	\item OLS estimators still are unbiased.
-	\item OLS estimators still are consistent.
+	\item OLS estimators are still unbiased.
+	\item OLS estimators are still consistent.
 	\item OLS is \textbf{not efficient} anymore, but still a LUE (Linear Unbiased Estimator).
 	\item \textbf{Variance estimations} of the estimators are \textbf{biased}: the construction of confidence intervals and the hypothesis testing is not reliable.
 \end{itemize}
@@ -373,10 +373,10 @@ The residual of any observation, \( u_{t} \), is correlated with the residual of
 \columnbreak
 
 \begin{itemize}[leftmargin=*]
-	\item \textbf{\( \text{ARMA}(p, q) \) process}. \underline{ACF} and \underline{PACF}: the coefficients are not abruptly canceled and presents a fast decay.
+	\item \textbf{\( \text{ARMA}(p, q) \) process}. \underline{ACF} and \underline{PACF}: the coefficients are not abruptly canceled and present a fast decay.
 \end{itemize}
 
-If the ACF coefficients do not decay rapidly, there is a clear indicator of lack of stationarity in mean.
+If the ACF coefficients do not decay rapidly, there is a clear indicator of a lack of stationarity in mean.
 
 \textbf{Formal tests} - Generally, \( H_{0} \): No autocorrelation.
 
@@ -445,7 +445,7 @@ where \( \varepsilon_{t} \) is white noise.
 	\begin{center}
 		\( h = \hat{\rho} \cdot \sqrt{\dfrac{T}{1 - T \cdot \upsilon}} \)
 	\end{center}
-	where \( \upsilon \) is the estimated variance of the coefficient associated to the endogenous variable.
+	where \( \upsilon \) is the estimated variance of the coefficient associated with the endogenous variable.
 
 	\( H_{1} \): Autocorrelation of order one, AR(1).
 \end{itemize}
@@ -484,7 +484,7 @@ where \( \varepsilon_{t} \) is white noise.
 			\( y_{t}^{*} = \beta_{0}^{*} + \beta_{1}' x_{t}^{*} + \varepsilon_{t} \)
 		\end{center}
 		where \( \beta_{1}' = \beta_{1} \); and estimate it by OLS.
-		\item If \( \rho \) is \textbf{not known}, estimate it by -for example- the \textbf{Cochrane-Orcutt iterative method} (Prais-Winsten method is also good):
+		\item If \( \rho \) is \textbf{not known}, estimate it by -for example- the \textbf{Cochrane-Orcutt iterative method} (Prais-Winsten's method is also good):
 		\begin{enumerate}[leftmargin=*]
 			\item Obtain \( \hat{u}_{t} \) from the original model.
 			\item Estimate \( \hat{u}_{t} = \rho \hat{u}_{t - 1} + \varepsilon_{t} \) and obtain \( \hat{\rho} \).
@@ -542,7 +542,7 @@ Stationarity allows to correctly identify relations --that stay unchanged with t
 \begin{itemize}[leftmargin=*]
 	\item \textbf{Stationary process} (strict stationarity) - the joint probability distribution of the process remains unchanged when shifted \( h \) periods.
 	\item \textbf{Non-stationary process} - for example, a series with trend, where at least the mean changes with time.
-	\item \textbf{Covariance stationary process} - its a weaker form of stationarity:
+	\item \textbf{Covariance stationary process} - it is a weaker form of stationarity:
 	\begin{itemize}[leftmargin=*]
 		\begin{multicols}{2}
 			\item \( \E(x_{t}) \) is constant.
@@ -594,7 +594,7 @@ When \( d \geq 1 \), the process is said to have a \textbf{unit root}. A process
 
 \subsection*{Strong dependence}
 
-Generally, economics series are high persistent in time. Some examples of \textbf{unit root} I(1):
+Generally, economic series are highly persistent in time. Some examples of \textbf{unit root} I(1):
 
 \begin{itemize}[leftmargin=*]
 	\item \textbf{Random walk} - an AR(1) process with \( \rho_{1} = 1 \).
@@ -696,7 +696,7 @@ Without it, sample moments may not reflect population moments. Estimators are in
 
 \section*{Cointegration}
 
-Two I(1) series are \textbf{cointegrated} if a linear combination is I(0). In that case, a regression between them is not spurious, but reflects a valid \textbf{long-run} relationship. Cointegrated variables share a common stochastic trend.
+Two I(1) series are \textbf{cointegrated} if a linear combination is I(0). In that case, a regression between them is not spurious but reflects a valid \textbf{long-run} relationship. Cointegrated variables share a common stochastic trend.
 
 For example, \( \{ x_{t} \} \) and \( \{ y_{t} \} \) are I(1), but \( y_{t} - \beta x_{t} = u_{t} \) where \( \{ u_{t} \} \) is I(0). (\( \beta \) is the cointegrating parameter).
 
@@ -713,7 +713,7 @@ For example, \( \{ x_{t} \} \) and \( \{ y_{t} \} \) are I(1), but \( y_{t} - \b
 	if test statistic \( > \) critical value, reject \( H_{0} \).
 \end{enumerate}
 
-\section*{Heteroscedasticity on time series}
+\section*{Heteroscedasticity in time series}
 
 The \textbf{assumption} affected is \textbf{t4}, which leads \textbf{OLS to be not efficient}.
 

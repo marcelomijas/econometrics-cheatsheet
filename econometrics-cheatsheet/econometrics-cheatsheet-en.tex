@@ -1,8 +1,8 @@
 % !TeX spellcheck = en_US
+% !TeX encoding = UTF-8
 \documentclass[10pt, a4paper, landscape]{article}
 
 % ----- packages -----
-\usepackage[T1]{fontenc}
 \usepackage{amsmath} % AMS mathematical facilities for LaTeX
 \usepackage{enumitem} % Control layout of itemize, enumerate, description
 \usepackage{fancyhdr} % Extensive control of page headers and footers in LaTeX2
@@ -49,7 +49,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize CS-25.08-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize CS-25.08.1-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -69,7 +69,7 @@
 
 \subsection*{Definitions}
 
-\textbf{Econometrics} - is a social science discipline with the objective of quantify the relationships between economic agents, test economic theories and evaluate and implement government and business policies.
+\textbf{Econometrics} - is a social science discipline with the objective of quantifying the relationships between economic agents, test economic theories and evaluate and implement government and business policies.
 
 \textbf{Econometric model} - is a simplified representation of the reality to explain economic phenomena.
 
@@ -77,13 +77,13 @@
 
 \subsection*{Data structures}
 
-\textbf{Cross section} - sample taken at a given point in time, an static \textsl{photo}. Order doesn't matter.
+\textbf{Cross-section} - sample taken at a given point in time, an static \textsl{photo}. Order does not matter.
 
 \textbf{Time series} - observations over time. Order does matter.
 
-\textbf{Panel data} - a time series for each observation of a cross section.
+\textbf{Panel data} - a time series for each observation of a cross-section.
 
-\textbf{Pooled cross sections} - cross sections from different time periods.
+\textbf{Pooled cross-sections} - cross sections from different time periods.
 
 \subsection*{Phases of an econometric model}
 
@@ -100,11 +100,11 @@
 
 \subsection*{Regression analysis}
 
-Study and predict the mean value of a variable (dependent variable, \( y \)) regarding the base of fixed values of other variables (independent variables, \( x \)'s). In econometrics it is common to use Ordinary Least Squares (OLS) for regression analysis.
+Study and predict the mean value of a variable (dependent variable, \( y \)) regarding the base of fixed values of other variables (independent variables, \( x \)'s). In econometrics, it is common to use Ordinary Least Squares (OLS) for regression analysis.
 
 \subsection*{Correlation analysis}
 
-Correlation analysis don't distinguish between dependent and independent variables.
+Correlation analysis does not distinguish between dependent and independent variables.
 
 \begin{itemize}[leftmargin=*]
 	\item Simple correlation measures the grade of linear association between two variables.
@@ -120,23 +120,23 @@ Correlation analysis don't distinguish between dependent and independent variabl
 
 \subsection*{Econometric model assumptions}
 
-Under this assumptions, the OLS estimator will present good properties. \textbf{Gauss-Markov} assumptions:
+Under these assumptions, the OLS estimator will present good properties. \textbf{Gauss-Markov} assumptions:
 
 \begin{enumerate}[leftmargin=*]
 	\item \textbf{Parameters linearity} (and weak dependence in time series). \( y \) must be a linear function of the \( \beta \)'s.
-	\item \textbf{Random sampling}. The sample from the population has been randomly taken. (Only when cross section)
+	\item \textbf{Random sampling}. The sample from the population has been randomly taken. (Only when cross-section)
 	\item \textbf{No perfect collinearity}.
 	\begin{itemize}[leftmargin=*]
 		\item There are no independent variables that are constant: \( \Var(x_{j}) \neq 0, \; \forall j = 1, \ldots, k \)
-		\item There isn't an exact linear relation between independent variables.
+		\item There is no exact linear relation between independent variables.
 	\end{itemize}
 	\item \textbf{Conditional mean zero and correlation zero}.
 	\begin{enumerate}[leftmargin=*, label=\alph{*}.]
-		\item There aren't systematic errors: \( \E(u \mid x_{1}, \ldots, x_{k}) = \E(u) = 0 \rightarrow \) \textbf{strong exogeneity} (a implies b).
+		\item There are no systematic errors: \( \E(u \mid x_{1}, \ldots, x_{k}) = \E(u) = 0 \rightarrow \) \textbf{strong exogeneity} (a implies b).
 		\item There are no relevant variables left out of the model: \( \Cov(x_{j}, u) = 0, \; \forall j = 1, \ldots, k \rightarrow \) \textbf{weak exogeneity}.
 	\end{enumerate}
 	\item \textbf{Homoscedasticity}. The variability of the residuals is the same for all levels of \( x \): \\ \( \Var(u \mid x_{1}, \ldots, x_{k}) = \sigma_{u}^{2} \)
-	\item \textbf{No autocorrelation}. Residuals don't contain information about any other residuals: \\ \( \Corr(u_{t}, u_{s} \mid x_{1}, \ldots, x_{k}) = 0, \; \forall t \neq s \)
+	\item \textbf{No autocorrelation}. Residuals do not contain information about any other residuals: \\ \( \Corr(u_{t}, u_{s} \mid x_{1}, \ldots, x_{k}) = 0, \; \forall t \neq s \)
 	\item \textbf{Normality}. Residuals are independent and identically distributed: \( u \sim \mathcal{N} (0, \sigma_{u}^{2}) \)
 	\item \textbf{Data size}. The number of observations available must be greater than \( (k + 1) \) parameters to estimate. (It is already satisfied under asymptotic situations)
 \end{enumerate}
@@ -148,10 +148,10 @@ Under the econometric model assumptions and the Central Limit Theorem (CLT):
 \begin{itemize}[leftmargin=*]
 	\item Hold 1 to 4a: OLS is \textbf{unbiased}. \( \E(\hat{\beta}_{j}) = \beta_{j} \)
 	\item Hold 1 to 4: OLS is \textbf{consistent}. \( \operatorname{plim}(\hat{\beta}_{j}) = \beta_{j} \) (to 4b left out 4a, weak exogeneity, biased but consistent)
-	\item Hold 1 to 5: \textbf{asymptotic normality} of OLS (then, 7 is necessarily satisfied): \( u \underset{a}{\sim} \mathcal{N} (0, \sigma_{u}^{2}) \)
-	\item Hold 1 to 6: \textbf{unbiased estimate} of \( \sigma_{u}^{2} \). \( \E(\hat{\sigma}_{u}^{2}) = \sigma_{u}^{2} \)
+	\item Hold 1 to 5: \textbf{Asymptotic normality} of OLS (then, 7 is necessarily satisfied): \( u \underset{a}{\sim} \mathcal{N} (0, \sigma_{u}^{2}) \)
+	\item Hold 1 to 6: \textbf{Unbiased estimate} of \( \sigma_{u}^{2} \). \( \E(\hat{\sigma}_{u}^{2}) = \sigma_{u}^{2} \)
 	\item Hold 1 to 6: OLS is \textcolor{blue}{BLUE} (Best Linear Unbiased Estimator) or \textbf{efficient}.
-	\item Hold 1 to 7: hypothesis testing and confidence intervals can be done reliably.
+	\item Hold 1 to 7: Hypothesis testing and confidence intervals can be done reliably.
 \end{itemize}
 
 \columnbreak
@@ -290,7 +290,7 @@ Mean Percentage Error: \hfill \( \text{MPE} = \frac{\sum_{i = 1}^{n} \lvert \hat
 
 \section*{R-squared}
 
-Is a measure of the \textbf{goodness of the fit}, how the regression fits the data:
+It is a measure of the \textbf{goodness of the fit}, how the regression fits the data:
 
 \begin{center}
 	\( R^{2} = \frac{\SSE}{\SST} = 1 - \frac{\SSR}{\SST} \)
@@ -313,16 +313,16 @@ For big sample sizes: \( \overline{R}^{2} \approx R^{2} \)
 
 \subsection*{Definitions}
 
-Is a rule designed to explain from a sample, if exist \textbf{evidence or not to reject an hypothesis} that is made about one or more population parameters.
+It is a rule designed to explain from a sample, if exists \textbf{evidence or not to reject a hypothesis} that is made about one or more population parameters.
 
-Elements of an hypothesis test:
+Elements of a hypothesis test:
 
 \begin{itemize}[leftmargin=*]
 	\item \textbf{Null hypothesis} \( (H_{0}) \) - is the hypothesis to be tested.
 	\item \textbf{Alternative hypothesis} \( (H_{1}) \) - is the hypothesis that cannot be rejected when \( H_{0} \) is rejected.
 	\item \textbf{Test statistic} - is a random variable whose probability distribution is known under \( H_{0} \).
 	\item \textbf{Critical value} \( (C) \) - is the value against which the test statistic is compared to determine if \( H_{0} \) is rejected or not. It sets the frontier between the regions of acceptance and rejection of \( H_{0} \).
-	\item \textbf{Significance level} \( (\alpha) \) - is the probability of rejecting \( H_{0} \) being true (Type I Error). Is chosen by who conduct the test. Commonly is 10\%, 5\% or 1\%.
+	\item \textbf{Significance level} \( (\alpha) \) - is the probability of rejecting \( H_{0} \) being true (Type I Error). It is chosen by those who conduct the test. It is commonly 10\%, 5\% or 1\%.
 	\item \textbf{p-value} - is the highest level of significance by which \( H_{0} \) cannot be rejected.
 \end{itemize}
 
@@ -396,17 +396,17 @@ If \( \lvert t \rvert > \lvert t_{n - k - 1, \alpha / 2} \rvert \), there is evi
 
 \subsection*{The F test}
 
-Simultaneously tests multiple (linear) hypothesis about the parameters. It makes use of a non restricted model and a restricted model:
+Simultaneously tests multiple (linear) hypothesis about the parameters. It makes use of a non-restricted model and a restricted model:
 
 \begin{itemize}[leftmargin=*]
-	\item \textbf{Non restricted model} - is the model on which we want to test the hypothesis.
-	\item \textbf{Restricted model} - is the model on which the hypothesis that we want to test have been imposed.
+	\item \textbf{Non-restricted model} - is the model on which we want to test the hypothesis.
+	\item \textbf{Restricted model} - is the model on which the hypothesis that we want to test has been imposed.
 \end{itemize}
 
 Then, looking at the errors, there are:
 
 \begin{itemize}[leftmargin=*]
-	\item \textbf{\( \SSR_{\text{UR}} \)} - is the \( \SSR \) of the non restricted model.
+	\item \textbf{\( \SSR_{\text{UR}} \)} - is the \( \SSR \) of the non-restricted model.
 	\item \textbf{\( \SSR_{\text{R}} \)} - is the \( \SSR \) of the restricted model.
 \end{itemize}
 
@@ -414,11 +414,11 @@ Then, looking at the errors, there are:
 	Under \( H_{0} \): \quad \( F = \frac{\SSR_{\text{R}} - \SSR_{\text{UR}}}{\SSR_{\text{UR}}} \cdot \frac{n - k - 1}{q} \sim F_{q, n - k - 1} \)
 \end{center}
 
-where \( k \) is the number of parameters of the non restricted model and \( q \) is the number of linear hypothesis tested.
+where \( k \) is the number of parameters of the non-restricted model and \( q \) is the number of linear hypothesis tested.
 
 If \( F > F_{q, n - k - 1} \), there is evidence to reject \( H_{0} \).
 
-\textbf{Global significance test} - tests if all the parameters associated to \( x \)'s are \textbf{simultaneously equal to zero}.
+\textbf{Global significance test} - tests if all the parameters associated with \( x \)'s are \textbf{simultaneously equal to zero}.
 
 \begin{itemize}[leftmargin=*]
 	\item \( H_{0}: \beta_{1} = \beta_{2} = \cdots = \beta_{k} = 0 \)
@@ -445,14 +445,14 @@ The confidence intervals at \( (1 - \alpha) \) confidence level can be calculate
 
 \section*{Dummy variables}
 
-Dummy (or binary) variables are used for qualitative information like sex, civil state, country, etc.
+Dummy (or binary) variables are used for qualitative information like sex, civil status, country, etc.
 
 \begin{itemize}[leftmargin=*]
 	\item Takes the \textbf{value 1} in a given category and \textbf{0 in the rest}.
-	\item Are used to analyze and modeling \textbf{structural changes} in the model parameters.
+	\item Are used to analyze and model \textbf{structural changes} in the parameters.
 \end{itemize}
 
-If a qualitative variable have \( m \) categories, we only have to include \( (m - 1) \) dummy variables.
+If a qualitative variable has \( m \) categories, only \( (m - 1) \) dummy variables must be included in the model.
 
 \subsection*{Structural change}
 
@@ -493,7 +493,7 @@ Changes in the \textbf{measurement origin} of the variables (endogenous or exoge
 
 \begin{itemize}[leftmargin=*]
 	\item \textbf{Perfect multicollinearity} - there are independent variables that are constant and/or there is an exact linear relation between independent variables. Is the \textbf{breaking of the third (3) econometric} model \textbf{assumption}.
-	\item \textbf{Approximate multicollinearity} - there are independent variables that are approximately constant and/or there is an approximately linear relation between independent variables. It \textbf{does not break any econometric} model \textbf{assumption}, but has an effect on OLS.
+	\item \textbf{Approximate multicollinearity} - there are independent variables that are approximately constant and/or there is an approximately linear relation between independent variables. It \textbf{does not break any econometric} model \textbf{assumption} but affects OLS.
 \end{itemize}
 
 \subsection*{Consequences}
@@ -522,7 +522,7 @@ Changes in the \textbf{measurement origin} of the variables (endogenous or exoge
 	\end{itemize}
 \end{itemize}
 
-One typical characteristic of multicollinearity is that the regression coefficients of the model aren't individually different from zero (due to high variances), but jointly they are different from zero.
+One typical characteristic of multicollinearity is that the regression coefficients of the model are not individually different from zero (due to high variances), but jointly they are different from zero.
 
 \subsection*{Correction}
 
@@ -547,8 +547,8 @@ Is the \textbf{breaking of the fifth (5) econometric} model \textbf{assumption}.
 \subsection*{Consequences}
 
 \begin{itemize}[leftmargin=*]
-	\item OLS estimators still are unbiased.
-	\item OLS estimators still are consistent.
+	\item OLS estimators are still unbiased.
+	\item OLS estimators are still consistent.
 	\item OLS is \textbf{not efficient} anymore, but still a LUE (Linear Unbiased Estimator).
 	\item \textbf{Variance estimations} of the estimators are \textbf{biased}: the construction of confidence intervals and the hypothesis testing is not reliable.
 \end{itemize}
@@ -588,7 +588,7 @@ Is the \textbf{breaking of the fifth (5) econometric} model \textbf{assumption}.
 		\item Supposing that \( \Var(u) = \sigma_{u}^{2} \cdot x_{i} \), divide the model variables by the square root of \( x_{i} \) and apply OLS.
 		\item Supposing that \( \Var(u) = \sigma_{u}^{2} \cdot x_{i}^{2} \), divide the model variables by \( x_{i} \) (the square root of \( x_{i}^{2} \)) and apply OLS.
 	\end{itemize}
-	\item If the variance structure is not known, make use of Feasible Weighted Least Squared (FWLS), that estimates a possible variance, divides the model variables by it and then apply OLS.
+	\item If the variance structure is not known, make use of Feasible Weighted Least Squares (FWLS), which estimates a possible variance, divides the model variables by it, and then apply OLS.
 	\item Make a new model specification, for example, logarithmic transformation (lower variance).
 \end{itemize}
 
@@ -602,13 +602,13 @@ The residual of any observation, \( u_{t} \), is correlated with the residual of
 	\( \Corr(u_{t}, u_{s} \mid x_{1}, \ldots, x_{k}) = \Corr(u_{t}, u_{s}) \neq 0, \quad \forall t \neq s \)
 \end{center}
 
-The ``natural" context of this phenomena is time series. Is the \textbf{breaking of the sixth (6) econometric} model \textbf{assumption}.
+The ``natural" context of this phenomenon is time series. Is the \textbf{breaking of the sixth (6) econometric} model \textbf{assumption}.
 
 \subsection*{Consequences}
 
 \begin{itemize}[leftmargin=*]
-	\item OLS estimators still are unbiased.
-	\item OLS estimators still are consistent.
+	\item OLS estimators are still unbiased.
+	\item OLS estimators are still consistent.
 	\item OLS is \textbf{not efficient} anymore, but still a LUE (Linear Unbiased Estimator).
 	\item \textbf{Variance estimations} of the estimators are \textbf{biased}: the construction of confidence intervals and the hypothesis testing is not reliable.
 \end{itemize}

@@ -3,7 +3,7 @@
 Econometrics cheat sheets created using $\LaTeX$:
 
 * **Econometrics Cheat Sheet**: Basic concepts, OLS assumptions, properties, interpretation, error measurements, hypothesis testing, confidence intervals, dummy variables, structural change, popular problems, and more!
-* **Time Series Cheat Sheet**: Series components, seasonality, autocorrelation, stationarity, cointegration and heterocedasticity on time series.
+* **Time Series Cheat Sheet**: Series components, seasonality, autocorrelation, stationarity, cointegration and heterocedasticity in time series.
 * **Additional Cheat Sheet**: OLS matrix notation, variable omission, proxy and instrumental variables, TSLS, information criteria, hypothesis testing (+), functional form, logistic regression, statistical definitions, VAR, SVAR, VECM.
 
 :bulb: I am currently pursuing a PhD at Universidad Rey Juan Carlos (Madrid, Spain). Also, I am a [researcher and professor](https://gestion2.urjc.es/pdi/ver/marcelo.moreno) at the same institution. Collaboration proposals and academic stays offers in national/international universities are welcome! :rocket:
@@ -14,13 +14,13 @@ Econometrics cheat sheets created using $\LaTeX$:
 
 | Econometrics | PDF | TeX |
 | :---: | :---: | :---: |
-| English :uk: | [`CS-25.08`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/econometrics-cheatsheet/econometrics-cheatsheet-en.pdf) | [`CS-25.08`](econometrics-cheatsheet/econometrics-cheatsheet-en.tex)
-| Spanish :es: | [`CS-25.08`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/econometrics-cheatsheet/econometrics-cheatsheet-es.pdf) | [`CS-25.08`](econometrics-cheatsheet/econometrics-cheatsheet-es.tex)
+| English :uk: | [`CS-25.08.1`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/econometrics-cheatsheet/econometrics-cheatsheet-en.pdf) | [`CS-25.08.1`](econometrics-cheatsheet/econometrics-cheatsheet-en.tex)
+| Spanish :es: | [`CS-25.08.1`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/econometrics-cheatsheet/econometrics-cheatsheet-es.pdf) | [`CS-25.08.1`](econometrics-cheatsheet/econometrics-cheatsheet-es.tex)
 
 | Time Series | PDF | TeX |
 | :---: | :---: | :---: |
-| English :uk: | [`TS-25.08`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/time-series-cheatsheet/time-series-cheatsheet-en.pdf) | [`TS-25.08`](time-series-cheatsheet/time-series-cheatsheet-en.tex)
-| Spanish :es: | [`TS-25.08`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/time-series-cheatsheet/time-series-cheatsheet-es.pdf) | [`TS-25.08`](time-series-cheatsheet/time-series-cheatsheet-es.tex)
+| English :uk: | [`TS-25.08.1`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/time-series-cheatsheet/time-series-cheatsheet-en.pdf) | [`TS-25.08.1`](time-series-cheatsheet/time-series-cheatsheet-en.tex)
+| Spanish :es: | [`TS-25.08.1`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/time-series-cheatsheet/time-series-cheatsheet-es.pdf) | [`TS-25.08.1`](time-series-cheatsheet/time-series-cheatsheet-es.tex)
 
 | Additional | PDF | TeX |
 | :---: | :---: | :---: |
@@ -43,7 +43,7 @@ Those are the residuals from an OLS regression between $x_{j}$ and all the other
 
 ### Why is $\beta_{0}$ the constant term? My reference manual/professor's definition of the econometric model is different.
 
-There is some debate about the correct way to name the coefficients, their sub-index and the sub-index of the variables of a model. The naming could have an impact on how some statistics like the adjusted R-squared or some tests like the F test are written.
+There is some debate about the correct way to name the coefficients, their sub-index and the sub-index of the variables of a model. The naming could have an impact on how some statistics, like the adjusted R-squared or some tests like the F test, are written.
 
 For example, while some econometricians write the multiple regression model with a constant term like this:
 
@@ -59,7 +59,7 @@ $$y_{i} = \alpha + \beta_1 x_{1i} + ... + \beta_{k} x_{ki} + u_{i} \quad (3)$$
 
 All the above are equally valid representations of the multiple regression model. In the specification $(1)$, $\beta_{0}$ represents the constant term, while in specifications $(2)$ and $(3)$, it is represented by $\beta_{1}$ and $\alpha$, respectively.
 
-In this project, the main specification used is the first $(1)$, so we can say that there are $k$ independent variables and $k + 1$ coefficients (including the constant term). The same could be said for the specification $(3)$, that it is used punctually in the project. There are no differences in the statistics and tests formula definition between specifications $(1)$ and $(3)$.
+In this project, the main specification used is the first $(1)$, so we can say that there are $k$ independent variables and $k + 1$ coefficients (including the constant term). The same could be said for the specification $(3)$, it is used punctually in the project. There are no differences in the statistics and tests formula definition between specifications $(1)$ and $(3)$.
 
 Specification $(2)$ is different from the rest, since $K \neq k$. In this specification, it could be said that there are $K - 1$ independent variables and $K$ coefficients (including the constant term).
 
@@ -73,7 +73,7 @@ $$= 1 - \frac{n - 1}{n - K} \cdot (1 - R^{2})$$
 
 ### Where is the nonmatrix version of the standard error of the $\hat{\beta}$ 's?
 
-For space reasons, the version included in the cheatsheet is the matrix one. It is perfectly valid and equal to the nonmatrix version.
+For space reasons, the version included in the cheat sheets is the matrix one. It is perfectly valid and equal to the nonmatrix version.
 
 The nonmatrix version:
 
@@ -83,9 +83,9 @@ $$\mathrm{se}(\hat{\beta}_{j}) = \sqrt{\frac{\hat{\sigma}_{u}^{2}}{\text{SST}_{j
 
 Each of them are 3 pages long, and there are no plans on changing that for the time being.
 
-I understand that if you print them two-sided, the second page ends up with an empty side. Consider this a space to take your notes.
+I understand that if you print them two-sided, the second page ends up with an empty side. Consider this space to take your notes.
 
-Currently, I am very comfortable with the content and font size used. Also, all cheat cheets are made in a way that you can combine any page of one with any page of another or skip them.
+Currently, I am very comfortable with the content and font size used. Also, all cheat sheets are made in a way that you can combine any page of one with any page of another or skip them.
 
 ## Resources
 
@@ -119,6 +119,6 @@ In addition to the notes taken from the [Degree in Economics](https://www.urjc.e
 
 ## Support the project
 
-The first way to help the project is to **directly support the authors of the manuals that are included in the resources section** (for example, by buying their works). Every one of the authors of the manuals is a wonderful mind who has contributed a lot to econometrics and statistics. Another great way to support the project is by sharing it and :star: it!
+The first way to help the project is to **directly support the authors of the manuals that are included in the resources section** (for example, by buying their works). Every one of the authors of the manuals is a wonderful mind who contributes a lot to econometrics and statistics. Another great way to support the project is by sharing it and :star: it!
 
 A 2024 snapshot of this project is also published on the Universidad Rey Juan Carlos Institutional Repository: https://hdl.handle.net/10115/44997

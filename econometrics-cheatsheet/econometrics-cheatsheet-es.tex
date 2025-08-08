@@ -1,8 +1,8 @@
 % !TeX spellcheck = es_ES
+% !TeX encoding = UTF-8
 \documentclass[10pt, a4paper, landscape]{article}
 
 % ----- packages -----
-\usepackage[T1]{fontenc}
 \usepackage{amsmath} % AMS mathematical facilities for LaTeX
 \usepackage{enumitem} % Control layout of itemize, enumerate, description
 \usepackage{fancyhdr} % Extensive control of page headers and footers in LaTeX2
@@ -49,7 +49,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize CS-25.08-ES - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize CS-25.08.1-ES - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -100,7 +100,7 @@
 
 \subsection*{Análisis de regresión}
 
-Estudiar y predecir el valor medio de una variable (dependiente, \( y \)) respecto a unos valores fijos de otras variables (variables independientes, \( x \)). En econometría es común usar Mínimos Cuadrados Ordinarios (MCO) para análisis de regresión.
+Estudiar y predecir el valor medio de una variable (dependiente, \( y \)) respecto a unos valores fijos de otras variables (variables independientes, \( x \)). En econometría, es común usar Mínimos Cuadrados Ordinarios (MCO) para análisis de regresión.
 
 \subsection*{Análisis de correlación}
 
@@ -449,7 +449,7 @@ Las variables ficticias (o binarias) son usadas para recoger información cualit
 
 \begin{itemize}[leftmargin=*]
 	\item Toman \textbf{valor 1} en una categoría dada y \textbf{0 en el resto}.
-	\item Se usan para analizar y modelizar \textbf{cambios estructurales} en los parámetros del modelo.
+	\item Se usan para analizar y modelar \textbf{cambios estructurales} en los parámetros.
 \end{itemize}
 
 Si una variable cualitativa tiene \( m \) categorías, sólo hay que incluir \( (m - 1) \) variables ficticias en el modelo.
@@ -493,7 +493,7 @@ Cambios en el \textbf{origen de medida} de las variables (endógenas o exógenas
 
 \begin{itemize}[leftmargin=*]
 	\item \textbf{Multicolinealidad perfecta} - hay variables independientes que son constantes y/o hay una relación lineal exacta entre variables independientes. Es el \textbf{incumplimiento del tercer (3) supuesto} del modelo.
-	\item \textbf{Multicolinealidad aproximada} - hay variables independientes que son aproximadamente constantes y/o hay una relación lineal aproximada entre variables independientes. \textbf{No implica el incumplimiento de algún supuesto} del modelo, pero tiene un efecto en MCO.
+	\item \textbf{Multicolinealidad aproximada} - hay variables independientes que son aproximadamente constantes y/o hay una relación lineal aproximada entre variables independientes. \textbf{No implica el incumplimiento de algún supuesto} del modelo, pero afecta a MCO.
 \end{itemize}
 
 \subsection*{Consecuencias}

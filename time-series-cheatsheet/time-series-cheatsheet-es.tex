@@ -1,8 +1,8 @@
 % !TeX spellcheck = es_ES
+% !TeX encoding = UTF-8
 \documentclass[10pt, a4paper, landscape]{article}
 
 % ----- packages -----
-\usepackage[T1]{fontenc}
 \usepackage{amsmath} % AMS mathematical facilities for LaTeX
 \usepackage{enumitem} % Control layout of itemize, enumerate, description
 \usepackage{fancyhdr} % Extensive control of page headers and footers in LaTeX2
@@ -45,7 +45,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-25.08-ES - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-25.08.1-ES - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -114,7 +114,7 @@ Dado el formato de una serie temporal:
 
 \subsection*{Supuestos MCO bajo series temporales}
 
-Bajo estos supuestos, los estimadores de los parámetros MCO presentarán buenas propiedades. \textbf{Supuestos Gauss-Markov} extendidos en series temporales:
+Bajo estos supuestos, los estimadores de los parámetros MCO presentarán buenas propiedades. \textbf{Supuestos Gauss-Markov} extendidos para series temporales:
 
 \begin{enumerate}[leftmargin=*, label=t\arabic{*}.]
 	\item \textbf{Linealidad de parámetros y dependencia débil}.
@@ -160,7 +160,7 @@ Bajo los supuestos del modelo econométrico y el Teorema Central del Límite:
 
 \subsection*{Tendencia}
 
-Dos series temporales pueden tener la misma (o contraria) tendencia, lo que lleva a altos niveles de correlación. Esto provoca una falsa apariencia de causalidad, el problema es \textbf{regresión espuria}. Dado el modelo:
+Dos series temporales pueden tener la misma (o contraria) tendencia, lo que lleva a altos niveles de correlación. Esto provoca una falsa apariencia de causalidad; el problema es \textbf{regresión espuria}. Dado el modelo:
 
 \begin{center}
 	\( y_{t} = \beta_{0} + \beta_{1} x_{t} + u_{t} \)
