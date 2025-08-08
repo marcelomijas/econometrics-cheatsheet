@@ -1,4 +1,4 @@
-% !TeX spellcheck = en_US
+% !TeX spellcheck = en_GB
 % !TeX encoding = UTF-8
 \documentclass[10pt, a4paper, landscape]{article}
 
@@ -92,7 +92,7 @@ Let's call \( \hat{u} \) the vector of estimated residuals \( (\hat{u} \neq u) \
 	\( \hat{u} = y - X \hat{\beta} \)
 \end{center}
 
-The \textbf{objective} of OLS is to \textbf{minimize} the \( \SSR \):
+The \textbf{objective} of OLS is to \textbf{minimise} the \( \SSR \):
 
 \begin{center}
 	\( \min \SSR = \min \sum_{i = 1}^{n} \hat{u}_{i}^{2} = \min \hat{u}^{\top} \hat{u} \)
@@ -470,7 +470,7 @@ Binary (0, 1) dependent variable. \textbf{Logit model}:
 
 where \( P_{i} = \E(y_{i} = 1 \mid x_{i}) \) and \( (1 - P_{i}) = \E(y_{i} = 0 \mid x_{i}) \)
 
-The \textbf{odds ratio} (in favor of \( y_{i} = 1 \)):
+The \textbf{odds ratio} (in favour of \( y_{i} = 1 \)):
 
 \begin{center}
 	\( \dfrac{P_{i}}{1 - P_{i}} = \dfrac{1 + e^{\beta_{0} + \beta_{1} x_{i} + u_{i}}}{1 + e^{-(\beta_{0} + \beta_{1} x_{i} + u_{i})}} = e^{\beta_{0} + \beta_{1} x_{i} + u_{i}} \)

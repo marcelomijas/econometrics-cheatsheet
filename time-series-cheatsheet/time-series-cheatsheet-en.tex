@@ -1,4 +1,4 @@
-% !TeX spellcheck = en_US
+% !TeX spellcheck = en_GB
 % !TeX encoding = UTF-8
 \documentclass[10pt, a4paper, landscape]{article}
 
@@ -156,7 +156,7 @@ Under the econometric model assumptions and the Central Limit Theorem:
 
 \section*{Trends and seasonality}
 
-\textbf{Spurious regression} - is when the relation between \( y \) and \( x \) is due to factors that affect \( y \) and have a correlation with \( x \), \( \Corr(x_{j}, u) \neq 0 \). Is the \textbf{non-fulfillment of t3}.
+\textbf{Spurious regression} - is when the relation between \( y \) and \( x \) is due to factors that affect \( y \) and have a correlation with \( x \), \( \Corr(x_{j}, u) \neq 0 \). Is the \textbf{non-fulfilment of t3}.
 
 \subsection*{Trends}
 
@@ -251,7 +251,7 @@ There are much better and complex methods to seasonally adjust a time series, li
 
 \section*{Autocorrelation}
 
-The residual of any observation, \( u_{t} \), is correlated with the residual of any other observation. The observations are not independent. Is the \textbf{non-fulfillment} of \textbf{t5}.
+The residual of any observation, \( u_{t} \), is correlated with the residual of any other observation. The observations are not independent. Is the \textbf{non-fulfilment} of \textbf{t5}.
 
 \begin{center}
 	\( \Corr(u_{t}, u_{s} \mid x_{1}, \ldots, x_{k}) = \Corr(u_{t}, u_{s}) \neq 0, \; \forall t \neq s \)
@@ -262,7 +262,7 @@ The residual of any observation, \( u_{t} \), is correlated with the residual of
 \begin{itemize}[leftmargin=*]
 	\item OLS estimators are still unbiased.
 	\item OLS estimators are still consistent.
-	\item OLS is \textbf{not efficient} anymore, but still a LUE (Linear Unbiased Estimator).
+	\item OLS is \textbf{not efficient} any more, but still a LUE (Linear Unbiased Estimator).
 	\item \textbf{Variance estimations} of the estimators are \textbf{biased}: the construction of confidence intervals and the hypothesis testing is not reliable.
 \end{itemize}
 
@@ -366,14 +366,14 @@ The residual of any observation, \( u_{t} \), is correlated with the residual of
 \end{center}
 
 \begin{itemize}[leftmargin=*]
-	\item \textbf{\( \text{MA}(q) \) process}. \underline{ACF}: only the first \( q \) coefficients are significant, the remaining are abruptly canceled. \underline{PACF}: attenuated exponential fast decay or sine waves.
-	\item \textbf{\( \text{AR}(p) \) process}. \underline{ACF}: attenuated exponential fast decay or sine waves. \underline{PACF}: only the first \( p \) coefficients are significant, the remaining are abruptly canceled.
+	\item \textbf{\( \text{MA}(q) \) process}. \underline{ACF}: only the first \( q \) coefficients are significant, the remaining are abruptly cancelled. \underline{PACF}: attenuated exponential fast decay or sine waves.
+	\item \textbf{\( \text{AR}(p) \) process}. \underline{ACF}: attenuated exponential fast decay or sine waves. \underline{PACF}: only the first \( p \) coefficients are significant, the remaining are abruptly cancelled.
 \end{itemize}
 
 \columnbreak
 
 \begin{itemize}[leftmargin=*]
-	\item \textbf{\( \text{ARMA}(p, q) \) process}. \underline{ACF} and \underline{PACF}: the coefficients are not abruptly canceled and present a fast decay.
+	\item \textbf{\( \text{ARMA}(p, q) \) process}. \underline{ACF} and \underline{PACF}: the coefficients are not abruptly cancelled and present a fast decay.
 \end{itemize}
 
 If the ACF coefficients do not decay rapidly, there is a clear indicator of a lack of stationarity in mean.
@@ -721,7 +721,7 @@ Use tests like Breusch-Pagan or White's, where \( H_{0} \): No heteroscedasticit
 
 \subsection*{ARCH}
 
-An autoregressive conditional heteroscedasticity (ARCH) model is used to analyze a form of dynamic heteroscedasticity, where the error variance follows an \( \text{AR}(p) \) process.
+An autoregressive conditional heteroscedasticity (ARCH) model is used to analyse a form of dynamic heteroscedasticity, where the error variance follows an \( \text{AR}(p) \) process.
 
 Given the model: \( y_{t} = \beta_{0} + \beta_{1} z_{t} + u_{t} \) where, there is AR(1) and heteroscedasticity:
 
