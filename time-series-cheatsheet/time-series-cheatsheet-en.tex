@@ -45,7 +45,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-25.08.2-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-25.10-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -225,27 +225,26 @@ A time series with can manifest seasonality. That is, the series is subject to a
 
 \end{multicols}
 
-For example, GDP (black) is usually higher in summer and lower in winter. Seasonally adjusted series ({\color{red} dashed red}) for comparison.
+For example, GDP is usually higher in summer and lower in winter (seasonally adjusted series in {\color{red} dashed red}).
 
 \begin{itemize}[leftmargin=*]
 	\item Regressing time series that present seasonality can lead to \textbf{spurious results}.
 \end{itemize}
 
-A simple \textbf{seasonal adjustment} could be creating stationary binary variables and adding them to the model. For example, for quarterly series (\( Q q_{t} \) are binary variables):
+There are different \textbf{seasonal adjustment} methods:
 
-\begin{center}
-	\( y_{t} = \beta_{0} + \beta_{1} Q2_{t} + \beta_{2} Q3_{t} + \beta_{3} Q4_{t} + \beta_{4} x_{1t} + \cdots + \beta_{k} x_{kt} + u_{t} \)
-\end{center}
-
-Another way is to seasonally adjust (sa) the variables, and then, do the regression with the adjusted variables:
-
-\begin{center}
-	\( z_{t} = \beta_{0} + \beta_{1} Q2_{t} + \beta_{2} Q3_{t} + \beta_{3} Q4_{t} + v_{t} \rightarrow \hat{v}_{t} + \E(z_{t}) = \hat{z}_{t}^{sa} \)
-
-	\( \hat{y}_{t}^{sa} = \beta_{0} + \beta_{1} \hat{x}_{1t}^{sa} + \cdots + \beta_{k} \hat{x}_{kt}^{sa} + u_{t} \)
-\end{center}
-
-There are much better and complex methods to seasonally adjust a time series, like the \textbf{X-13ARIMA-SEATS}.
+\begin{enumerate}[leftmargin=*, label=\alph{*}.]
+	\item Include seasonal binary variables in the model. For example, for quarterly series (\( S q_{t} \) are binary variables):
+	\begin{center}
+		\( y_{t} = \beta_{0} + \beta_{1} S2_{t} + \beta_{2} S3_{t} + \beta_{3} S4_{t} + \beta_{4} x_{1t} + \cdots + \beta_{k} x_{kt} + u_{t} \)
+	\end{center}
+	\item Seasonally adjust the variables and then perform the regression with the adjusted variables.
+	\item Take seasonal differences, this can also help with the removal of trend (\( s \) is the seasonal period):
+	\begin{center}
+		\( \nabla_{s} y_{t} = y_{t} - y_{t - s} \)
+	\end{center}
+	\item Apply \textbf{X-13ARIMA-SEATS} (better and more complicated method than the previous).
+\end{enumerate}
 
 \columnbreak
 
