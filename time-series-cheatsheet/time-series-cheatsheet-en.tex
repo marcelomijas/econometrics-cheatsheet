@@ -45,7 +45,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-25.10-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-25.10.1-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -702,8 +702,8 @@ For example, \( \{ x_{t} \} \) and \( \{ y_{t} \} \) are I(1), but \( y_{t} - \b
 \subsection*{Cointegration test}
 
 \begin{enumerate}[leftmargin=*]
-	\item Estimate \( y_{t} = \alpha + \beta x_{t} + \varepsilon_{t} \) and obtain \( \hat{\varepsilon}_{t} \).
-	\item Perform an ADF test on \( \hat{\varepsilon}_{t} \) with a modified distribution.
+	\item Estimate \( y_{t} = \alpha + \beta x_{t} + u_{t} \) and obtain \( \hat{u}_{t} \).
+	\item Perform an ADF test on \( \hat{u}_{t} \) with a modified distribution.
 	The result of this test is equivalent to:
 	\begin{itemize}[leftmargin=*]
 		\item \( H_{0} \): \( \beta = 0 \) (no cointegration)

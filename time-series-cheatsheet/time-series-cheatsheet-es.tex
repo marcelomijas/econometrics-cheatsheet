@@ -45,7 +45,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-25.10-ES - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-25.10.1-ES - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -702,8 +702,8 @@ Por ejemplo, \( \{ x_{t} \} \) y \( \{ y_{t} \} \) son I(1), pero \( y_{t} - \be
 \subsection*{Contraste de cointegración}
 
 \begin{enumerate}[leftmargin=*]
-	\item Estimar \( y_{t} = \alpha + \beta x_{t} + \varepsilon_{t} \) y obtener \( \hat{\varepsilon}_{t} \).
-	\item Realizar el ADF sobre \( \hat{\varepsilon}_{t} \) con una distribución especial.
+	\item Estimar \( y_{t} = \alpha + \beta x_{t} + u_{t} \) y obtener \( \hat{u}_{t} \).
+	\item Realizar el ADF sobre \( \hat{u}_{t} \) con una distribución especial.
 	El resultado del contraste es equivalente a:
 	\begin{itemize}[leftmargin=*]
 		\item \( H_{0} \): \( \beta = 0 \) (no cointegración)
