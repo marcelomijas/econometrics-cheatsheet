@@ -56,7 +56,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ADD-25.08.1-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ADD-26.03-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -335,28 +335,24 @@ Instrumental variables let the omitted variable into the error term, but instead
 Compare models with different numbers of parameters \( (p) \). The general formula:
 
 \begin{center}
-	\( \Cr(p) = \log(\frac{\SSR}{n}) + c_{n} \varphi(p) \)
+	\( \Cr(p) = \log(\frac{\SSR}{n}) + \frac{c_{n}}{n} p \)
 \end{center}
 
 where:
 
 \begin{itemize}[leftmargin=*]
 	\item \( \SSR \) from a model of order \( p \).
-	\item \( c_{n} \) is a sequence indexed by the sample size.
-	\item \( \varphi(p) \) is a function that penalizes large \( p \) orders.
-\end{itemize}
-
-It is interpreted as the relative amount of information lost by the model. The order \( p \) that min. the criterion is chosen.
-
-There are different \( c_{n} \varphi(p) \) functions:
-
-\begin{itemize}[leftmargin=*]
-	\item Akaike: \( \AIC(p) = \log(\frac{\SSR}{n}) + \frac{2}{n} p \)
-	\item Hannan-Quinn: \( \HQ(p) = \log(\frac{\SSR}{n}) + \frac{2 \log(\log(n))}{n} p \)
-	\item Schwarz / Bayesian: \( \BIC(p) = \log(\frac{\SSR}{n}) + \frac{\log(n)}{n} p \)
+	\item \( c_{n} \) determines the criterion. Precisely:
+	\begin{itemize}[leftmargin=*]
+		\item Akaike (AIC): \( c_{n} = 2 \)
+		\item Hannan-Quinn (HQ): \( c_{n} = 2 \log(\log(n)) \)
+		\item Schwarz / Bayesian (SC / BIC): \( c_{n} = \log(n) \)
+	\end{itemize}
 \end{itemize}
 
 \( \BIC(p) \leq \HQ(p) \leq \AIC(p) \)
+
+It is interpreted as the relative amount of information lost by the model. The order \( p \) that minimises the criterion is chosen.
 
 \section*{The non-restricted hypothesis test}
 

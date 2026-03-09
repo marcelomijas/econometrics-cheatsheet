@@ -56,7 +56,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ADD-25.08.1-ES - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ADD-26.03-ES - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -335,28 +335,24 @@ Variables instrumentales deja la variable omitida en el término de error, pero 
 Comparar modelos con diferente número de parámetros \( (p) \). La fórmula general:
 
 \begin{center}
-	\( \Cr(p) = \log(\frac{\SSR}{n}) + c_{n} \varphi(p) \)
+	\( \Cr(p) = \log(\frac{\SSR}{n}) + \frac{c_{n}}{n} p \)
 \end{center}
 
 donde:
 
 \begin{itemize}[leftmargin=*]
 	\item \( \SSR \) de un modelo de orden \( p \).
-	\item \( c_{n} \) es una secuencia indexada por el tamaño muestral.
-	\item \( \varphi(p) \) es una función que penaliza órdenes grandes de \( p \).
-\end{itemize}
-
-Interpretado como el tamaño relativo de información perdida por el modelo. Orden \( p \) que mín. el criterio es elegido.
-
-Hay diferentes funciones \( c_{n} \varphi(p) \):
-
-\begin{itemize}[leftmargin=*]
-	\item Akaike: \( \AIC(p) = \log(\frac{\SSR}{n}) + \frac{2}{n} p \)
-	\item Hannan-Quinn: \( \HQ(p) = \log(\frac{\SSR}{n}) + \frac{2 \log(\log(n))}{n} p \)
-	\item Schwarz / Bayesian: \( \BIC(p) = \log(\frac{\SSR}{n}) + \frac{\log(n)}{n} p \)
+	\item \( c_{n} \) determina el criterio. Más precisamente:
+	\begin{itemize}[leftmargin=*]
+		\item Akaike (AIC): \( c_{n} = 2 \)
+		\item Hannan-Quinn (HQ): \( c_{n} = 2 \log(\log(n)) \)
+		\item Schwarz / Bayesian (SC / BIC): \( c_{n} = \log(n) \)
+	\end{itemize}
 \end{itemize}
 
 \( \BIC(p) \leq \HQ(p) \leq \AIC(p) \)
+
+Interpretado como el tamaño relativo de información perdida por el modelo. Orden \( p \) que minimiza el criterio es elegido.
 
 \section*{Contraste de hipótesis no restringido}
 
