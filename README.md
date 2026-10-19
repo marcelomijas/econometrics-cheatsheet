@@ -121,4 +121,20 @@ In addition to the notes taken from the [Degree in Economics](https://www.urjc.e
 
 The first way to help the project is to **directly support the authors of the manuals that are included in the resources section** (for example, by buying their works). Every one of the authors of the manuals is a wonderful mind who contributes a lot to econometrics and statistics. Another great way to support the project is by sharing it and :star: it!
 
-A 2024 snapshot of this project is also published on the Universidad Rey Juan Carlos Institutional Repository: https://hdl.handle.net/10115/44997
+## Citation information
+
+A 2024 snapshot of this project is published on the Universidad Rey Juan Carlos Institutional Repository: https://hdl.handle.net/10115/44997
+
+```
+@article{moreno_porras_econometrics_2021,
+	title = {The {Econometrics} {Cheat} {Sheet} {Project}},
+	copyright = {CC BY 4.0 international},
+	url = {https://hdl.handle.net/10115/44997},
+	language = {es, en},
+	urldate = {2024-12-21},
+	publisher = {BURJC-Digital},
+	author = {Moreno Porras, Marcelo},
+	month = dec,
+	year = {2021},
+}
+```
