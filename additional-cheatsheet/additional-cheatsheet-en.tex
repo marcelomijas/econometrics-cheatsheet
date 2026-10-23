@@ -14,13 +14,14 @@
 \usepackage{parskip} % Layout with zero \parindent, non-zero \parskip
 \usepackage{tikz} % Create PostScript and PDF graphics in TeX
 \usepackage{titlesec} % Select alternative section titles
+\usepackage{xcolor} % for magenta an cyan
 
 % ----- pdf metadata -----
 \hypersetup{
 	pdftitle={Additional Cheat Sheet},
 	pdfsubject={The Econometrics Cheat Sheet Project - marcelomijas - CC-BY-4.0},
 	pdfauthor={Marcelo Moreno Porras},
-	pdfkeywords={statistics, latex, economics, cheatsheet, econometrcis, ols-regression, economic-modelling},
+	pdfkeywords={statistics, latex, economics, cheatsheet, econometrics},
 	pdfduplex={DuplexFlipShortEdge}
 }
 
@@ -38,6 +39,7 @@
 \DeclareMathOperator{\AIC}{AIC}
 \DeclareMathOperator{\HQ}{HQ}
 \DeclareMathOperator{\BIC}{BIC}
+\DeclareMathOperator{\diag}{diag}
 \newcommand{\SSR}{\text{SSR}}
 \newcommand{\SSE}{\text{SSE}}
 \newcommand{\SST}{\text{SST}}
@@ -56,7 +58,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ADD-26.03-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ADD-26.10-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -65,10 +67,8 @@
 \begin{multicols}{3}
 
 \begin{center}
-	\textbf{\LARGE \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Additional Cheat Sheet}}
-
-	{\footnotesize By Marcelo Moreno Porras - Universidad Rey Juan Carlos}
-
+	\textbf{\LARGE \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Additional Cheat Sheet}} \\
+	{\footnotesize By Marcelo Moreno Porras - Universidad Rey Juan Carlos} \\
 	{\footnotesize The Econometrics Cheat Sheet Project}
 \end{center}
 
@@ -135,7 +135,7 @@ The \textbf{objective} of OLS is to \textbf{minimise} the \( \SSR \):
 			\)
 		}
 	\end{center}
-	The second derivative \( \frac{\partial^{2} \hat{u}^{\top} \hat{u}}{\partial \hat{\beta}^{2}} = X^{\top} X > 0 \) (is a min.)
+	The second derivative \( \frac{\partial^{2} \hat{u}^{\top} \hat{u}}{\partial \hat{\beta}^{2}} = 2 X^{\top} X > 0 \) (is a min.)
 \end{itemize}
 
 \section*{Variance-covariance matrix of \( \hat{\beta} \)}
@@ -143,28 +143,28 @@ The \textbf{objective} of OLS is to \textbf{minimise} the \( \SSR \):
 Has the following shape:
 
 \begin{center}
-	\( \Var(\hat{\beta}) = \hat{\sigma}_{u}^{2} \cdot (X^{\top} X)^{-1} \)
+	\( \widehat{\Var}(\hat{\beta}) = \hat{\sigma}^{2} \cdot (X^{\top} X)^{-1} \)
 \end{center}
 
 \begin{center}
 	\scalebox{0.85}{ 
 		\( =
 		\begin{bmatrix}
-			\Var(\hat{\beta}_{0})                  & \Cov(\hat{\beta}_{0}, \hat{\beta}_{1}) & \hdots & \Cov(\hat{\beta}_{0}, \hat{\beta}_{k}) \\
-			\Cov(\hat{\beta}_{1}, \hat{\beta}_{0}) & \Var(\hat{\beta}_{1})                  & \hdots & \Cov(\hat{\beta}_{1}, \hat{\beta}_{k}) \\
-			\vdots                                 & \vdots                                 & \ddots & \vdots                                 \\
-			\Cov(\hat{\beta}_{k}, \hat{\beta}_{0}) & \Cov(\hat{\beta}_{k}, \hat{\beta}_{1}) & \hdots & \Var(\hat{\beta}_{k})
+			\widehat{\Var}(\hat{\beta}_{0})                  & \widehat{\Cov}(\hat{\beta}_{0}, \hat{\beta}_{1}) & \hdots & \widehat{\Cov}(\hat{\beta}_{0}, \hat{\beta}_{k}) \\
+			\widehat{\Cov}(\hat{\beta}_{1}, \hat{\beta}_{0}) & \widehat{\Var}(\hat{\beta}_{1})                  & \hdots & \widehat{\Cov}(\hat{\beta}_{1}, \hat{\beta}_{k}) \\
+			\vdots                                           & \vdots                                           & \ddots & \vdots                                           \\
+			\widehat{\Cov}(\hat{\beta}_{k}, \hat{\beta}_{0}) & \widehat{\Cov}(\hat{\beta}_{k}, \hat{\beta}_{1}) & \hdots & \widehat{\Var}(\hat{\beta}_{k})
 		\end{bmatrix}
 		\)
 	}
 \end{center}
 
-\quad where: \( \hat{\sigma}_{u}^{2} = \frac{\hat{u}^{\top} \hat{u}}{n - k - 1} \)
+\quad where: \( \hat{\sigma}^{2} = \frac{\hat{u}^{\top} \hat{u}}{n - k - 1} \)
 
-The standard errors are on the diagonal of:
+The standard errors:
 
 \begin{center}
-	\( \se(\hat{\beta}) = \sqrt{\Var(\hat{\beta})} \)
+	\( \widehat{\se}(\hat{\beta}) = \sqrt{\diag(\widehat{\Var}(\hat{\beta}))} \)
 \end{center}
 
 \section*{Error measurements}
@@ -198,14 +198,14 @@ Has the following shape:
 Under no heteroscedasticity and no autocorrelation, the variance-covariance matrix:
 
 \begin{center}
-	\( \Var(u) = \sigma_{u}^{2} \cdot I_{n} = \)
+	\( \Var(u) = \sigma^{2} \cdot I_{n} = \)
 	\scalebox{0.85}{
 		\(
 		\begin{bmatrix}
-			\sigma_{u}^{2} & 0              & \hdots & 0              \\
-			0              & \sigma_{u}^{2} & \hdots & 0              \\
-			\vdots         & \vdots         & \ddots & \vdots         \\
-			0              & 0              & \hdots & \sigma_{u}^{2}
+			\sigma^{2} & 0          & \hdots & 0          \\
+			0          & \sigma^{2} & \hdots & 0          \\
+			\vdots     & \vdots     & \ddots & \vdots     \\
+			0          & 0          & \hdots & \sigma^{2}
 		\end{bmatrix}
 		\)
 	}
@@ -216,14 +216,14 @@ Under no heteroscedasticity and no autocorrelation, the variance-covariance matr
 Under \textcolor{cyan}{\textbf{heteroscedasticity}} and \textcolor{magenta}{\textbf{autocorrelation}}, the variance-covariance matrix:
 
 \begin{center}
-	\( \Var(u) = \sigma_{u}^{2} \cdot \Omega = \)
+	\( \Var(u) = \sigma^{2} \cdot \Omega = \)
 	\scalebox{0.85}{
 		\(
 		\begin{bmatrix}
-			\textcolor{cyan}{\sigma_{u_{1}}^2}   & \textcolor{magenta}{\sigma_{u_{12}}} & \hdots & \textcolor{magenta}{\sigma_{u_{1n}}} \\
-			\textcolor{magenta}{\sigma_{u_{21}}} & \textcolor{cyan}{\sigma_{u_{2}}^2}   & \hdots & \textcolor{magenta}{\sigma_{u_{2n}}} \\
-			\vdots                               & \vdots                               & \ddots & \vdots                               \\
-			\textcolor{magenta}{\sigma_{u_{n1}}} & \textcolor{magenta}{\sigma_{u_{n2}}} & \hdots & \textcolor{cyan}{\sigma_{u_{n}}^2}
+			\textcolor{cyan}{\sigma_{1}^2}   & \textcolor{magenta}{\sigma_{12}} & \hdots & \textcolor{magenta}{\sigma_{1n}} \\
+			\textcolor{magenta}{\sigma_{21}} & \textcolor{cyan}{\sigma_{2}^2}   & \hdots & \textcolor{magenta}{\sigma_{2n}} \\
+			\vdots                           & \vdots                           & \ddots & \vdots                           \\
+			\textcolor{magenta}{\sigma_{n1}} & \textcolor{magenta}{\sigma_{n2}} & \hdots & \textcolor{cyan}{\sigma_{n}^2}
 		\end{bmatrix}
 		\)
 	}
@@ -232,8 +232,8 @@ Under \textcolor{cyan}{\textbf{heteroscedasticity}} and \textcolor{magenta}{\tex
 \quad where \( \Omega \neq I_{n} \).
 
 \begin{itemize}[leftmargin=*]
-	\item Heteroscedasticity: \( \Var(u) = \sigma_{u_{i}}^{2} \neq \sigma_{u}^{2} \)
-	\item Autocorrelation: \( \Cov(u_{i}, u_{j}) = \sigma_{u_{ij}} \neq 0, \; \forall i \neq j \)
+	\item Heteroscedasticity: \( \Var(u_{i} \mid X) = \sigma_{i}^{2} \neq \sigma^{2} \)
+	\item Autocorrelation: \( \Cov(u_{i}, u_{j} \mid X) = \sigma_{ij} \neq 0 \quad \forall i \neq j \)
 \end{itemize}
 
 \section*{Variable omission}
@@ -244,7 +244,7 @@ Most of the time, it is hard to get all relevant variables for an analysis. For 
 	\( y = \beta_{0} + \beta_{1} x_{1} + \beta_{2} x_{2} + v \)
 \end{center}
 
-\quad where \( \beta_{2} \neq 0 \), \( v \) is the error term and \( \Cov(v \mid x_{1}, x_{2}) = 0 \).
+\quad where \( \beta_{2} \neq 0 \), \( v \) is the error term and \( \E(v \mid x_{1}, x_{2}) = 0 \).
 
 The model with the available variables:
 
@@ -254,7 +254,7 @@ The model with the available variables:
 
 \quad where \( u = v + \beta_{2} x_{2} \).
 
-Relevant variable omission can cause OLS estimators to be \textbf{biased} and \textbf{inconsistent}, because there is no weak exogeneity, \( \Cov(x_{1}, u) \neq 0 \). Depending on the \( \Corr(x_{1}, x_{2}) \) and the sign of \( \beta_{2} \), the bias on \( \hat{\alpha}_{1} \) could be:
+Relevant variable omission can cause OLS estimators to be \textbf{biased} and \textbf{inconsistent}, because exogeneity is violated, \( \Cov(x_{1}, u) \neq 0 \). Depending on the \( \Corr(x_{1}, x_{2}) \) and the sign of \( \beta_{2} \), the bias on \( \hat{\alpha}_{1} \) could be:
 
 \begin{center}
 	\begin{tabular}{ c | c c }
@@ -301,7 +301,7 @@ When the variable of interest \( (x) \) is observable but \textbf{endogenous}, t
 Instrumental variables let the omitted variable into the error term, but instead of estimating the model by OLS, it utilizes a method that recognizes the presence of an omitted variable. It can also solve error measurement problems.
 
 \begin{itemize}[leftmargin=*]
-	\item \textbf{Two-Stage Least Squares} (TSLS) is a method to estimate a model with multiple instrumental variables. The \( \Cov(z, u) = 0 \) can be relaxed, but there has to be a minimum number of variables that satisfy it.
+	\item \textbf{Two-Stage Least Squares} (TSLS) is a method to estimate a model with multiple instrumental variables.
 
 	The TSLS \textbf{estimation procedure} is as follows:
 	\begin{enumerate}[leftmargin=*]
@@ -350,11 +350,11 @@ where:
 	\end{itemize}
 \end{itemize}
 
-\( \BIC(p) \leq \HQ(p) \leq \AIC(p) \)
+Selected lag length \( (p) \): \( \BIC(p) \leq \HQ(p) \leq \AIC(p) \)
 
 It is interpreted as the relative amount of information lost by the model. The order \( p \) that minimises the criterion is chosen.
 
-\section*{The non-restricted hypothesis test}
+\section*{t test of a linear combination of coefficients}
 
 An alternative to the F test when there are few hypothesis to test on the parameters. Let \( \beta_{i}, \beta_{j} \) be parameters, \( a, b, c \in \mathbb{R} \) are constants.
 
@@ -365,9 +365,9 @@ An alternative to the F test when there are few hypothesis to test on the parame
 
 \begin{center}
 	Under \( H_{0} \): \quad
-	\( t = \dfrac{a \hat{\beta}_{i} + b \hat{\beta}_{j} - c}{\se(a \hat{\beta}_{i} + b \hat{\beta}_{j})} \)
+	\( t = \dfrac{a \hat{\beta}_{i} + b \hat{\beta}_{j} - c}{\widehat{\se}(a \hat{\beta}_{i} + b \hat{\beta}_{j})} \)
 
-	\( = \dfrac{a \hat{\beta}_{i} + b \hat{\beta}_{j} - c}{\sqrt{a^{2} \Var(\hat{\beta}_{i}) + b^{2} \cdot \Var(\hat{\beta}_{j}) + 2 a b \Cov(\hat{\beta}_{i}, \hat{\beta}_{j})}} \)
+	\( = \dfrac{a \hat{\beta}_{i} + b \hat{\beta}_{j} - c}{\sqrt{a^{2} \widehat{\Var}(\hat{\beta}_{i}) + b^{2} \cdot \widehat{\Var}(\hat{\beta}_{j}) + 2 a b \widehat{\Cov}(\hat{\beta}_{i}, \hat{\beta}_{j})}} \)
 \end{center}
 
 If \( \lvert t \rvert > \lvert t_{n - k - 1, \alpha / 2} \rvert \), there is evidence to reject \( H_{0} \).
@@ -388,8 +388,8 @@ Decompose \( \SST \):
 \end{center}
 
 \begin{itemize}[leftmargin=*]
-	\item \( H_{0}: \beta_{1} = \beta_{2} = \cdots = \beta_{k} = 0 \)
-	\item \( H_{1}: \beta_{1} \neq 0 \) and/or \( \beta_{2} \neq 0 \ldots \) and/or \( \beta_{k} \neq 0 \)
+	\item \( H_{0} \): \( \beta_{1} = \beta_{2} = \cdots = \beta_{k} = 0 \)
+	\item \( H_{1} \): \( \exists j \) such that \( \beta_{j} \neq 0 \)
 \end{itemize}
 
 Under \( H_{0} \):
@@ -416,19 +416,19 @@ Observations on \( n \) entities over \( T \) periods.
 
 \begin{itemize}[leftmargin=*]
 	\item Apply OLS to the data directly.
-	\item Assumption: \( \alpha_{i} \) is constant.
+	\item Assumption: \( \Corr(X_{it}, \alpha_{i}) = 0 \)
 \end{itemize}
 
 \textbf{Fixed effects model} (within estimator)
 
 \begin{center}
-	\( y_{it} - \overline{y}_{i} = (X_{i} - \overline{X}_{it}) \beta + (\alpha_{i} - \overline{\alpha}_{i}) + (u_{it} - \overline{u}_{i}) \)
+	\( y_{it} - \overline{y}_{i} = (X_{it} - \overline{X}_{i}) \beta + (\alpha_{i} - \overline{\alpha}_{i}) + (u_{it} - \overline{u}_{i}) \)
 \end{center}
 
 \begin{itemize}[leftmargin=*]
 	\item Demeaning is performed to remove \( \alpha_{i} \).
 	\item Control for unobserved entity-specific effects.
-	\item Assumption: \( \Corr(X_{it}, \alpha_i) \neq 0 \).
+	\item Allows \( \Corr(X_{it}, \alpha_{i}) \neq 0 \).
 \end{itemize}
 
 \textbf{Least square dummy variable model} (LSDV)
@@ -443,13 +443,13 @@ Dummy variables are added for each entity and/or time period to capture the fixe
 
 \begin{itemize}[leftmargin=*]
 	\item First differences are performed to remove \( \alpha_{i} \).
-	\item Assumption: \( \Corr(u_{it} - u_{i, t - 1} \mid X_{it} - X_{i, t - 1}) = 0 \).
+	\item Assumption: \( \Corr(u_{it} - u_{i, t - 1}, X_{it} - X_{i, t - 1}) = 0 \).
 \end{itemize}
 
 \textbf{Random effects model}
 
 \begin{center}
-	\( y_{it} = X_{it} \beta + \alpha_{i} + \epsilon_{it} \) where \( u_{it} = \alpha_{i} + \epsilon_{it} \)
+	\( y_{it} = X_{it} \beta + v_{it} \) where \( v_{it} = \alpha_{i} + u_{it} \)
 \end{center}
 
 \begin{itemize}[leftmargin=*]
@@ -461,42 +461,39 @@ Dummy variables are added for each entity and/or time period to capture the fixe
 Binary (0, 1) dependent variable. \textbf{Logit model}:
 
 \begin{center}
-	\( P_{i} = \dfrac{1}{1 + e^{-(\beta_{0} + \beta_{1} x_{i} + u_{i})}}= \dfrac{e^{\beta_{0} + \beta_{1} x_{i} + u_{i}}}{1 + e^{\beta_{0} + \beta_{1} x_{i} + u_{i}}} \)
+	\( P_{i} = \dfrac{1}{1 + e^{-(\beta_{0} + \beta_{1} x_{i})}}= \dfrac{e^{\beta_{0} + \beta_{1} x_{i}}}{1 + e^{\beta_{0} + \beta_{1} x_{i}}} \)
 \end{center}
 
-where \( P_{i} = \E(y_{i} = 1 \mid x_{i}) \) and \( (1 - P_{i}) = \E(y_{i} = 0 \mid x_{i}) \)
+where \( P_{i} = P(y_{i} = 1 \mid x_{i}) \) and \( (1 - P_{i}) = P(y_{i} = 0 \mid x_{i}) \)
 
-The \textbf{odds ratio} (in favour of \( y_{i} = 1 \)):
+The \textbf{odds} (in favour of \( y_{i} = 1 \)):
 
 \begin{center}
-	\( \dfrac{P_{i}}{1 - P_{i}} = \dfrac{1 + e^{\beta_{0} + \beta_{1} x_{i} + u_{i}}}{1 + e^{-(\beta_{0} + \beta_{1} x_{i} + u_{i})}} = e^{\beta_{0} + \beta_{1} x_{i} + u_{i}} \)
+	\( \dfrac{P_{i}}{1 - P_{i}} = \dfrac{1 + e^{\beta_{0} + \beta_{1} x_{i}}}{1 + e^{-(\beta_{0} + \beta_{1} x_{i})}} = e^{\beta_{0} + \beta_{1} x_{i}} \)
 \end{center}
 
-Taking the natural logarithm of the odds ratio, the \textbf{logit}:
+Taking the natural logarithm of the odds, the \textbf{logit}:
 
 \begin{center}
-	\( L_{i} = \ln \left( \dfrac{P_i}{1 - P_i}\right) = \beta_{0} + \beta_{1} x_{i} + u_{i} \)
+	\( L_{i} = \ln \left( \dfrac{P_i}{1 - P_i}\right) = \beta_{0} + \beta_{1} x_{i} \)
 \end{center}
 
-\setlength{\multicolsep}{6pt}
-\begin{multicols}{2}
-
-\( P_{i} \) is between 0 and 1, but \( L_{i} \) goes from \( -\infty \) to \( +\infty \). \\
-
-If \( L_{i} \) is positive, it means that when \( x_{i} \) increases, the probability of \( y_{i} = 1 \) increases, and vice versa.
-
-\columnbreak
-
-\begin{tikzpicture}[scale=0.15]
-	\draw [thick, |->] (-12, 10) node [anchor=west] {\( P \)} -- (-12, -10) -- (12, -10) node [anchor=north] {\( x \)};
-	\draw [red, thick, smooth] plot [domain=-12:12] (\x, {(1 / (1 + exp(-0.8*\x)))*19.5 - 9.75});
-	\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=15] ({12.5*rnd - 0.5}, 9.6);
-	\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=15] ({-12.5*rnd + 0.5}, -9.6);
-	\draw (-15, -9.5) node [anchor=west] {0};
-	\draw (-15, 9.5) node [anchor=west] {1};
-\end{tikzpicture}
-
-\end{multicols}
+\begin{minipage}{0.48\columnwidth}
+	\( 0 < P_{i} < 1 \); \( -\infty < L_{i} < \infty \) \\
+	
+	If \( L_{i} > 0 \), it means the probability \( P_{i} > 0.5 \). Separately, if \( \beta_{1} \) is positive, it means that when \( x_{i} \) increases, the probability of \( y_{i} = 1 \) increases, and vice versa.
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\columnwidth}
+	\begin{tikzpicture}[scale=0.15]
+		\draw [thick, |->] (-12, 10) node [anchor=west] {\( P \)} -- (-12, -10) -- (12, -10) node [anchor=north] {\( x \)};
+		\draw [red, smooth] plot [domain=-12:12] (\x, {(1 / (1 + exp(-0.8*\x)))*19.5 - 9.75});
+		\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=15] ({12.5*rnd - 0.5}, 9.6);
+		\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=15] ({-12.5*rnd + 0.5}, -9.6);
+		\draw (-15, -9.5) node [anchor=west] {0};
+		\draw (-15, 9.5) node [anchor=west] {1};
+	\end{tikzpicture}
+\end{minipage}
 
 \columnbreak
 
@@ -519,19 +516,19 @@ If \( L_{i} \) is positive, it means that when \( x_{i} \) increases, the probab
 	\end{center}
 	\item Test statistic, under \( \gamma_{2} = \cdots = \gamma_{l} = 0 \) as \( H_{0} \):
 	\begin{center}
-		\( F = \frac{R_{\text{new}}^{2} - R^{2}}{1 - R_{\text{new}}^{2}} \cdot \frac{n - (k + 1) - l}{l} \sim F_{l, n - (k + 1) - l} \)
+		\( F = \frac{R_{\text{new}}^{2} - R^{2}}{1 - R_{\text{new}}^{2}} \cdot \frac{n - k - l}{l - 1} \sim F_{l - 1, n - k - l} \)
 	\end{center}
 \end{enumerate}
 
-If \( F > F_{l, n - (k + 1) - l} \), there is evidence to reject \( H_{0} \).
+If \( F > F_{l - 1, n - k - l} \), there is evidence to reject \( H_{0} \).
 
 \section*{Statistical definitions}
 
 Let \( \xi, \eta \) be random variables, \( a, b \in \mathbb{R} \) be constants, and \( P \) denotes probability.
 
-\textbf{Mean} \quad \( E(\xi) = \sum_{i = 1}^{n} \xi_{i} \cdot P[\xi = \xi_{i}] \)
+\textbf{Mean} \quad \( \E(\xi) = \sum_{i = 1}^{n} \xi_{i} \cdot P[\xi = \xi_{i}] \)
 
-Sample mean: \quad \( \E(\xi) = \dfrac{1}{n} \sum_{i = 1}^{n} \xi_{i} \)
+Sample mean: \quad \( \overline{\xi} = \dfrac{1}{n} \sum_{i = 1}^{n} \xi_{i} \)
 
 Properties of the mean:
 
@@ -539,15 +536,15 @@ Properties of the mean:
 	\item \( \E(a) = a \)
 	\item \( \E(\xi + a) = \E(\xi) + a \)
 	\item \( \E(a \cdot \xi) = a \cdot \E(\xi) \)
-	\item \( \E(\xi \pm \eta) = \E(\xi) + \E(\eta) \)
-	\item \( \E(\xi \cdot \eta) = \E(\xi) \cdot \E(\eta) \) \quad only if \( \xi \) and \( \eta \) are independent.
+	\item \( \E(\xi \pm \eta) = \E(\xi) \pm \E(\eta) \)
+	\item \( \E(\xi \cdot \eta) = \E(\xi) \cdot \E(\eta) \) \quad if \( \xi \) and \( \eta \) are independent.
 	\item \( \E(\xi - \E(\xi)) = 0 \)
 	\item \( \E(a \cdot \xi + b \cdot \eta) = a \cdot \E(\xi) + b \cdot \E(\eta) \)
 \end{itemize}
 
 \textbf{Variance} \quad \( \Var(\xi) = \E \left[ (\xi - \E(\xi))^{2} \right] \)
 
-Sample variance: \quad \( \Var(\xi) = \dfrac{\sum_{i = 1}^{n} (\xi_{i} - \E(\xi))^2}{n - 1} \)
+Sample variance: \quad \( \widehat{\Var}(\xi) = \dfrac{\sum_{i = 1}^{n} (\xi_{i} - \overline{\xi})^2}{n - 1} \)
 
 Properties of the variance:
 
@@ -559,9 +556,9 @@ Properties of the variance:
 	\item \( \Var(a \cdot \xi \pm b \cdot \eta) = a^{2} \cdot \Var(\xi) + b^{2} \cdot \Var(\eta) \pm 2 a b \cdot \Cov(\xi, \eta) \)
 \end{itemize}
 
-\textbf{Covariance} \quad \( \Cov(\xi, \eta) = \E \left[ (\xi - E(\xi)) \cdot (\eta - E(\eta)) \right] \)
+\textbf{Covariance} \quad \( \Cov(\xi, \eta) = \E \left[ (\xi - \E(\xi)) \cdot (\eta - \E(\eta)) \right] \)
 
-Sample covariance: \quad \( \dfrac{\sum_{i = 1}^{n} (\xi_{i} - \E(\xi)) \cdot (\eta_{i} - \E(\eta))}{n - 1} \)
+Sample covariance: \quad \( \widehat{\Cov}(\xi, \eta) = \dfrac{\sum_{i = 1}^{n} (\xi_{i} - \overline{\xi}) \cdot (\eta_{i} - \overline{\eta})}{n - 1} \)
 
 Properties of the covariance:
 
@@ -595,10 +592,10 @@ Typical one-tail test:
 	\begin{tikzpicture}[scale=0.108]
 		\fill [magenta] (4, 0) -- plot [domain=4:16, smooth] (\x, {cos(\x*7 + 70)*6 + 6}); 
 		\fill [cyan] (4, 0) -- plot [domain=-16:4, smooth] (\x, {cos(\x*7 - 70)*6 + 6}); 
-		\draw [thick, cyan] plot [domain=-16:36, smooth] (\x, {cos(\x*7 - 70)*6 + 6}); 
-		\draw [thick, magenta] plot [domain=-36:16, smooth] (\x, {cos(\x*7 + 70)*6 + 6}); 
+		\draw [cyan] plot [domain=-16:36, smooth] (\x, {cos(\x*7 - 70)*6 + 6}); 
+		\draw [magenta] plot [domain=-36:16, smooth] (\x, {cos(\x*7 + 70)*6 + 6}); 
 		\draw [thick, <->] (-40, 0) -- (40, 0); 
-		\draw [thick, dashed] (4, 0) -- (4, 11); 
+		\draw [dashed] (4, 0) -- (4, 11); 
 		\node at (-20, 15) {\( H_{0} \) distribution};
 		\node at (20, 15) {\( H_{1} \) distribution}; 
 		\node at (-10, 7) {\( 1 - \alpha \)}; 
@@ -613,9 +610,9 @@ where \( (1 - \alpha) \) is the confidence level, \( \alpha \) is the significan
 
 \section*{Bootstrapping}
 
-\textbf{Problem} - Asymptotic approximations to the distributions of test statistics do not work on small samples.
+\textbf{Problem}: Asymptotic approximations to the distributions of test statistics do not work on small samples.
 
-\textbf{Solution} - Bootstrap is sampling with replacement. The observed data is treated like a population, and multiple samples are extracted to recalculate an estimator or test statistic multiple times (improves accuracy).
+\textbf{Solution}: Bootstrap is sampling with replacement. The observed data is treated like a population, and multiple samples are extracted to recalculate an estimator or test statistic multiple times (improves accuracy).
 
 \end{multicols}
 
@@ -711,10 +708,10 @@ Visualizing the separate equations:
 \begin{center}
 	\( y_{1t} = a_{11, 1} y_{1, t - 1} + a_{12, 1} y_{2, t - 1} + a_{11, 2} y_{1, t - 2} + a_{12, 2} y_{2, t - 2} + b_{11} x_{t} + c_{11} + c_{12} \trend + u_{1t} \)
 
-	\( y_{2t} = a_{21, 1} y_{2, t - 1} + a_{22, 1} y_{1, t - 1} + a_{21, 2} y_{2, t - 2} + a_{22, 2} y_{1, t - 2} + b_{21} x_{t} + c_{21} + c_{22} \trend + u_{2t} \)
+	\( y_{2t} = a_{21, 1} y_{1, t - 1} + a_{22, 1} y_{2, t - 1} + a_{21, 2} y_{1, t - 2} + a_{22, 2} y_{2, t - 2} + b_{21} x_{t} + c_{21} + c_{22} \trend + u_{2t} \)
 \end{center}
 
-If there is a unit root, the determinant is zero for \( z = 1 \); then some or all variables are integrated, and a VAR model is no longer appropriate (it becomes unstable).
+If there is a unit root, the determinant is zero for \( z = 1 \); then some or all variables are integrated, and a VECM or differenced VAR may be more appropriate.
 
 \subsection*{SVAR (Structural VAR)}
 
@@ -723,7 +720,7 @@ In a VAR model, causal interpretation is not explicit, and results are sensitive
 For example, a basic \( \text{SVAR}(p) \) model:
 
 \begin{center}
-	\( \mathsf{A} y_t = \mathsf{A} [A_1, \ldots, A_p] y_{t - 1} + \mathsf{B} \varepsilon_t \)
+	\( \mathsf{A} y_t = \mathsf{A} (A_1 y_{t - 1} + \cdots + A_p y_{t - p}) + \mathsf{B} \varepsilon_t \)
 \end{center}
 
 where:
@@ -749,7 +746,7 @@ where:
 	\item \( \Delta y_{t} = (\Delta y_{1t}, \ldots, \Delta y_{Kt})^{\top} \) is a vector of \( K \) observable endogenous time series.
 	\item \( \Pi y_{t - 1} \) is the \textbf{long-term} part.
 	\begin{itemize}[leftmargin=*, label={\( \diamond \)}]
-		\item \( \Pi = - (I_{K} - A_{1} - \cdots - A_{p}) \) for \( i = 1, \ldots, p - 1 \)
+		\item \( \Pi = - (I_{K} - A_{1} - \cdots - A_{p}) \)
 		\item \( \Pi = \alpha \beta^{\top} \)
 		\item \( \alpha \) is the \textbf{loading matrix} \( (K \times r) \). It represents the speed of adjustment.
 		\item \( \beta \) is the \textbf{cointegration matrix} \( (K \times r) \).

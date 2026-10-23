@@ -32,7 +32,6 @@
 \DeclareMathOperator{\se}{se}
 \DeclareMathOperator{\Cov}{Cov}
 \DeclareMathOperator{\Corr}{Corr}
-\DeclareMathOperator{\resid}{resid}
 \DeclareMathOperator{\diag}{diag}
 \newcommand{\SSR}{\text{SSR}}
 \newcommand{\SSE}{\text{SSE}}
@@ -50,7 +49,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize CS-26.10.1-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize CS-26.10.2-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -59,10 +58,8 @@
 \begin{multicols}{3}
 
 \begin{center}
-	\textbf{\LARGE \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Econometrics Cheat Sheet}}
-
-	{\footnotesize By Marcelo Moreno Porras - Universidad Rey Juan Carlos}
-
+	\textbf{\LARGE \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Econometrics Cheat Sheet}} \\
+	{\footnotesize By Marcelo Moreno Porras - Universidad Rey Juan Carlos} \\
 	{\footnotesize The Econometrics Cheat Sheet Project}
 \end{center}
 
@@ -125,7 +122,7 @@ Correlation analysis does not distinguish between dependent and independent vari
 \textbf{Gauss-Markov} assumptions:
 
 \begin{enumerate}[leftmargin=*]
-	\item \textbf{Linearity in parameters} (and weak dependence in time series). \( y \) must be a linear function of the \( \beta \)'s.
+	\item \textbf{Linearity in parameters}. \( y \) must be a linear function of the \( \beta \)'s.
 	\item \textbf{Random sampling}. The sample has been randomly taken (only when cross-section).
 	\item \textbf{No perfect collinearity}:
 	\begin{itemize}[leftmargin=*]
@@ -134,8 +131,8 @@ Correlation analysis does not distinguish between dependent and independent vari
 	\end{itemize}
 	\item \textbf{Conditional mean zero and correlation zero}:
 	\begin{enumerate}[leftmargin=*, label=\alph{*}.]
-		\item There are no relevant variables left out of the model: \( \Cov(x_{j}, u) = 0 \quad \forall j = 1, \ldots, k \rightarrow \) \textbf{weak exogeneity}.
-		\item There are no systematic errors: \( \E(u \mid x_{1}, \ldots, x_{k}) = \E(u) = 0 \rightarrow \) \textbf{strict exogeneity} (4a holds).
+		\item There are no relevant variables left out of the model: \( \Cov(x_{j}, u) = 0 \quad \forall j = 1, \ldots, k \rightarrow \) \textbf{exogeneity}.
+		\item There are no systematic errors: \( \E(u \mid x_{1}, \ldots, x_{k}) = \E(u) = 0 \rightarrow \) \textbf{strict exogeneity} (4a holds)
 	\end{enumerate}
 	\item \textbf{Homoscedasticity}: The variability of the error term is the same for all levels of \( x \): \( \Var(u_{i} \mid x_{1i}, \ldots, x_{ki}) = \sigma^{2} \quad \forall i = 1, \ldots, n \)
 	\item \textbf{No autocorrelation}: Errors do not contain information about any other errors: \( \Corr(u_{t}, u_{s} \mid x_{1}, \ldots, x_{k}) = 0 \quad \forall t \neq s \)
@@ -241,7 +238,7 @@ Under the Gauss-Markov assumptions and the Central Limit Theorem (CLT):
 	\begin{center}
 		\( \hat{\beta}_{0} = \overline{y} - \hat{\beta}_{1} \overline{x}_{1} - \cdots - \hat{\beta}_{k} \overline{x}_{k} \)
 	
-		\( \hat{\beta}_{j} = \frac{\Cov(y, \resid x_{j})}{\Var(\resid x_{j})} \)
+		\( \hat{\beta}_{j} = \frac{\Cov(y, \tilde{x}_{j})}{\Var(\tilde{x}_{j})} \)
 	\end{center}
 	
 	Matrix: \( \hat{\beta} = (X^{\top} X)^{-1}(X^{\top} y) \)
@@ -313,7 +310,7 @@ Rule designed to determine from a sample \textbf{whether there is evidence to re
 	\item \textbf{Null hypothesis} \( (H_{0}) \): Hypothesis to be tested.
 	\item \textbf{Alternative hypothesis} \( (H_{1}) \): Hypothesis that cannot be rejected when \( H_{0} \) is rejected.
 	\item \textbf{Test statistic}: Random variable whose probability distribution is known under \( H_{0} \).
-	\item \textbf{Critical value} \( (C) \): Value against which the test statistic is compared to determine if \( H_{0} \) is rejected or not. It sets the frontier between the regions of acceptance and rejection of \( H_{0} \).
+	\item \textbf{Critical value} \( (C) \): Value against which the test statistic is compared to determine if \( H_{0} \) is rejected or not. It sets the frontier between the regions of non-rejection and rejection of \( H_{0} \).
 	\item \textbf{Significance level} \( (\alpha) \): Probability of rejecting \( H_{0} \) being true (Type I Error). Chosen by those who conduct the test. Commonly 10\%, 5\% or 1\%.
 	\item \textbf{p-value}: Lowest level of significance at which \( H_{0} \) can be rejected.
 \end{itemize}
@@ -410,8 +407,8 @@ If \( F > F_{q, n - k - 1} \), there is evidence to reject \( H_{0} \).
 \textbf{Global significance test}: Tests whether all parameters associated with the \( x \)'s are \textbf{simultaneously equal to zero}.
 
 \begin{itemize}[leftmargin=*]
-	\item \( H_{0}: \beta_{1} = \beta_{2} = \cdots = \beta_{k} = 0 \)
-	\item \( H_{1}: \beta_{1} \neq 0 \) and/or \( \beta_{2} \neq 0 \ldots \) and/or \( \beta_{k} \neq 0 \)
+	\item \( H_{0}\): \( \beta_{1} = \beta_{2} = \cdots = \beta_{k} = 0 \)
+	\item \( H_{1}\): At least one \( \beta_{j} \neq 0 \quad j = 1, \ldots, k \)
 \end{itemize}
 
 Simplifying the formula for the \( F \) statistic:
@@ -427,7 +424,7 @@ If \( F > F_{k, n - k - 1} \), there is evidence to reject \( H_{0} \).
 The confidence interval at \( (1 - \alpha) \) confidence level:
 
 \begin{center}
-	\( \hat{\beta}_{j} \pm t_{n - k - 1, \alpha / 2} \cdot \se(\hat{\beta}_{j}) \)
+	\( \hat{\beta}_{j} \pm \lvert t_{n - k - 1, \alpha / 2} \rvert \cdot \se(\hat{\beta}_{j}) \)
 \end{center}
 
 \columnbreak
@@ -511,8 +508,8 @@ Changes in the \textbf{measurement origin} of the variables only affects the mod
 	\end{center}
 	where \( R_{j}^{2} \) denotes the R-squared from a regression between \( x_{j} \) and all the other \( x \)'s.
 	\begin{itemize}[leftmargin=*]
-		\item Values between 4 to 10: There might be multicollinearity problems.
-		\item Values \( > 10 \): There are multicollinearity problems.
+		\item Values between 4 to 10: Warning.
+		\item Values \( > 10 \): Serious problem.
 	\end{itemize}
 \end{itemize}
 

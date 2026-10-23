@@ -54,10 +54,8 @@
 \begin{multicols}{3}
 
 \begin{center}
-	\textbf{\LARGE \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Hoja de Referencia Series Temporales}}
-
-	{\footnotesize Por Marcelo Moreno Porras - Universidad Rey Juan Carlos}
-
+	\textbf{\LARGE \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Hoja de Referencia Series Temporales}} \\
+	{\footnotesize Por Marcelo Moreno Porras - Universidad Rey Juan Carlos} \\
 	{\footnotesize The Econometrics Cheat Sheet Project}
 \end{center}
 
@@ -119,7 +117,7 @@ Dado el formato de una serie temporal:
 \begin{enumerate}[leftmargin=*, label=t\arabic{*}.]
 	\item \textbf{Linealidad de parámetros y dependencia débil}:
 	\begin{enumerate}[leftmargin=*, label=\alph{*}.]
-		\item \( y_{t} \) debe ser una función lineal de \( \beta \).
+		\item \( y_{t} \) debe ser una función lineal de los \( \beta \)'s.
 		\item El proceso estocástico \( \lbrace (x_{t}, y_{t}) : t = 1, 2, \ldots, T \rbrace \) es estacionario y débilmente dependiente.
 	\end{enumerate}
 	\item \textbf{No colinealidad perfecta}:
@@ -129,8 +127,8 @@ Dado el formato de una serie temporal:
 	\end{itemize}
 	\item \textbf{Media condicional cero y correlación cero}:
 	\begin{enumerate}[leftmargin=*, label=\alph{*}.]
-		\item No hay variables relevantes no incluidas en el modelo: \( \Cov(x_{jt} , u_{t}) = 0 \quad \forall j = 1, \ldots, k \rightarrow \) \textbf{exogeneidad débil}.
-		\item No hay errores sistemáticos: \( \E(u_{t} \mid \mathrm{X}) = \E(u_{t} \mid \ldots, \mathrm{x}_{t+1}, \mathrm{x}_{t}, \mathrm{x}_{t-1}, \ldots) = 0 \quad \forall t \rightarrow \) \textbf{exogeneidad estricta} (cumple 3a).
+		\item No hay variables relevantes no incluidas en el modelo: \( \Cov(x_{jt} , u_{t}) = 0 \quad \forall j = 1, \ldots, k \rightarrow \) \textbf{exogeneidad}
+		\item No hay errores sistemáticos: \( \E(u_{t} \mid \mathrm{X}) = \E(u_{t} \mid \ldots, \mathrm{x}_{t+1}, \mathrm{x}_{t}, \mathrm{x}_{t-1}, \ldots) = 0 \quad \forall t \rightarrow \) \textbf{exogeneidad estricta} (cumple 3a)
 	\end{enumerate}
 	\item \textbf{Homocedasticidad}: La variabilidad del término de error es igual para todos los niveles \( x \): \( \Var(u_{t} \mid x_{1t}, \ldots, x_{kt}) = \sigma^{2} \quad \forall t = 1, \ldots, T \)
 	\item \textbf{No autocorrelación}: Los errores no contienen información sobre otros errores: \( \Corr(u_{t}, u_{s} \mid x_{1}, \ldots, x_{k}) = 0 \quad \forall t \neq s \)
@@ -561,7 +559,7 @@ La dependencia débil reemplaza el supuesto de muestreo aleatorio en series temp
 	\item Un proceso estacionario en covarianza es \textbf{débilmente dependiente} si la correlación entre \( x_{t} \) y \( x_{t + h} \) tiende a 0 lo suficientemente rápido cuando \( h \rightarrow \infty \) (no están asintóticamente correlacionados).
 \end{itemize}
 
-Los procesos débilmente dependientes se llaman \textbf{integrados de orden cero}, I(0). Algunos ejemplos:
+La mayoría de procesos estacionarios débilmente dependientes son \textbf{integrados de orden cero}, I(0). Ejemplos:
 
 \begin{itemize}[leftmargin=*]
 	\item \textbf{Media móvil}: \( \{ x_{t} \} \) es una media móvil de orden \( q \), \( \text{MA}(q) \):
@@ -612,12 +610,12 @@ Generalmente, las series económicas son fuertemente persistentes. Algunos ejemp
 
 \begin{center}
 	\begin{tabular}{ c c c }
-		Contraste       & \( H_{0} \)    & Rechazar \( H_{0} \)              \\ \hline
-		ADF             & I(1)           & \( \tau \) \textless \, Valor crítico    \\
-		KPSS            & I(0) nivel     & \( \eta_{\mu} \) \textgreater \, Valor crítico  \\
-		KPSS            & I(0) tendencia & \( \eta_{\tau} \) \textgreater \, Valor crítico \\
-		Phillips-Perron & I(1)           & \( \mathrm{Z}(\tau) \) \textless \, Val. crítico   \\
-		Zivot-Andrews*   & I(1)           & \( t_{\mathrm{min}} \) \textless \, Valor crítico
+		Contraste       & \( H_{0} \)    & Rechazar \( H_{0} \)                              \\ \hline
+		ADF             & I(1)           & \( \tau \) \textless \, Valor crítico             \\
+		KPSS            & I(0) nivel     & \( \eta_{\mu} \) \textgreater \, Valor crítico    \\
+		KPSS            & I(0) tendencia & \( \eta_{\tau} \) \textgreater \, Valor crítico   \\
+		Phillips-Perron & I(1)           & \( \mathrm{Z}(\tau) \) \textless \, Val. crítico  \\
+		Zivot-Andrews*  & I(1)           & \( t_{\mathrm{min}} \) \textless \, Valor crítico
 	\end{tabular}
 \end{center}
 
@@ -637,8 +635,8 @@ Integrado de \textbf{orden uno}, I(1), significa que \textbf{la primera diferenc
 	Nota:
 	
 	\begin{itemize}[leftmargin=*]
-		\item La {\color{red} primera diferencia} elimina su tendencia.
-		\item El logaritmo de una serie estabiliza su varianza.
+		\item La {\color{red} primera diferencia} suele eliminar tendencias.
+		\item Los logaritmos suelen estabilizar la varianza.
 	\end{itemize}
 \end{minipage}
 \hfill

@@ -32,7 +32,6 @@
 \DeclareMathOperator{\se}{ee}
 \DeclareMathOperator{\Cov}{Cov}
 \DeclareMathOperator{\Corr}{Corr}
-\DeclareMathOperator{\resid}{resid}
 \DeclareMathOperator{\diag}{diag}
 \newcommand{\SSR}{\text{SRC}}
 \newcommand{\SSE}{\text{SEC}}
@@ -50,7 +49,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize CS-26.10.1-ES - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize CS-26.10.2-ES - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -59,10 +58,8 @@
 \begin{multicols}{3}
 
 \begin{center}
-	\textbf{\LARGE \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Hoja de Referencia Econometría}}
-
-	{\footnotesize Por Marcelo Moreno Porras - Universidad Rey Juan Carlos}
-
+	\textbf{\LARGE \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Hoja de Referencia Econometría}} \\
+	{\footnotesize Por Marcelo Moreno Porras - Universidad Rey Juan Carlos} \\
 	{\footnotesize The Econometrics Cheat Sheet Project}
 \end{center}
 
@@ -125,7 +122,7 @@ El análisis de correlación no distingue entre variables dependientes e indepen
 Supuestos \textbf{Gauss-Markov}:
 
 \begin{enumerate}[leftmargin=*]
-	\item \textbf{Linealidad en parámetros} (y dependencia débil en series temporales): \( y \) debe ser una función lineal de \( \beta \).
+	\item \textbf{Linealidad en parámetros}: \( y \) debe ser una función lineal de los \( \beta \)'s.
 	\item \textbf{Muestreo aleatorio}: La muestra se ha tomado de forma aleatoria (sólo sección cruzada).
 	\item \textbf{No colinealidad perfecta}:
 	\begin{itemize}[leftmargin=*]
@@ -134,8 +131,8 @@ Supuestos \textbf{Gauss-Markov}:
 	\end{itemize}
 	\item \textbf{Media condicional cero y correlación cero}:
 	\begin{enumerate}[leftmargin=*, label=\alph{*}.]
-		\item No hay variables relevantes fuera del modelo: \( \Cov(x_{j}, u) = 0 \quad \forall j = 1, \ldots, k \rightarrow \) \textbf{exogeneidad débil}.
-		\item No hay errores sistemáticos: \( \E(u \mid x_{1}, \ldots, x_{k}) = \E(u) = 0 \rightarrow \) \textbf{exogeneidad estricta} (cumple 4a).
+		\item No hay variables relevantes fuera del modelo: \( \Cov(x_{j}, u) = 0 \quad \forall j = 1, \ldots, k \rightarrow \) \textbf{exogeneidad}
+		\item No hay errores sistemáticos: \( \E(u \mid x_{1}, \ldots, x_{k}) = \E(u) = 0 \rightarrow \) \textbf{exogeneidad estricta} (cumple 4a)
 	\end{enumerate}
 	\item \textbf{Homocedasticidad}: La variabilidad del término de error es igual para todos los niveles de \( x \): \( \Var(u_{i} \mid x_{1i}, \ldots, x_{ki}) = \sigma^{2} \quad \forall i = 1, \ldots, n \)
 	\item \textbf{No autocorrelación}: Los errores no contienen información sobre otros errores: \( \Corr(u_{t}, u_{s} \mid x_{1}, \ldots, x_{k}) = 0 \quad \forall t \neq s \)
@@ -241,7 +238,7 @@ Bajo los supuestos Gauss-Markov y el Teorema Central del Límite (TCL):
 	\begin{center}
 		\( \hat{\beta}_{0} = \overline{y} - \hat{\beta}_{1} \overline{x}_{1} - \cdots - \hat{\beta}_{k} \overline{x}_{k} \)
 	
-		\( \hat{\beta}_{j} = \frac{\Cov(y, \resid x_{j})}{\Var(\resid x_{j})} \)
+		\( \hat{\beta}_{j} = \frac{\Cov(y, \tilde{x}_{j})}{\Var(\tilde{x}_{j})} \)
 	\end{center}
 	
 	Matriz: \( \hat{\beta} = (X^{\top} X)^{-1}(X^{\top} y) \)
@@ -313,7 +310,7 @@ Regla diseñada para determinar, a partir de una muestra, \textbf{si existe evid
 	\item \textbf{Hipótesis nula} \( (H_{0}) \): Hipótesis a contrastar.
 	\item \textbf{Hipótesis alternativa} \( (H_{1}) \): Hipótesis que no puede rechazarse si \( H_{0} \) es rechazada.
 	\item \textbf{Estadístico de contraste}: Variable aleatoria cuya distribución de probabilidad es conocida bajo \( H_{0} \).
-	\item \textbf{Valor crítico} \( (C) \): Valor contra el cual se compara el estadístico de contraste para determinar si se rechaza o no \( H_{0} \). Determina la frontera entre la región de aceptación y la de rechazo de \( H_{0} \).
+	\item \textbf{Valor crítico} \( (C) \): Valor contra el cual se compara el estadístico de contraste para determinar si se rechaza o no \( H_{0} \). Determina la frontera entre la región de no rechazo y de rechazo de \( H_{0} \).
 	\item \textbf{Nivel de significación} \( (\alpha) \): Probabilidad de rechazar \( H_{0} \) siendo cierta (Error Tipo I). Elegido por quien conduce el contraste. Usualmente 10\%, 5\% ó 1\%.
 	\item \textbf{p-valor}: Nivel de significación más bajo para el cual se puede rechazar \( H_{0} \).
 \end{itemize}
@@ -410,8 +407,8 @@ Si \( F > F_{q, n - k - 1} \), existe evidencia para rechazar \( H_{0} \).
 \textbf{Contraste de significación global}: Prueba si todos los parámetros asociados a las \( x \)'s son \textbf{simultáneamente cero}.
 
 \begin{itemize}[leftmargin=*]
-	\item \( H_{0}: \beta_{1} = \beta_{2} = \cdots = \beta_{k} = 0 \)
-	\item \( H_{1}: \beta_{1} \neq 0 \) y/o \( \beta_{2} \neq 0 \ldots \) y/o \( \beta_{k} \neq 0 \)
+	\item \( H_{0}\): \( \beta_{1} = \beta_{2} = \cdots = \beta_{k} = 0 \)
+	\item \( H_{1}\): Al menos un \( \beta_{j} \neq 0 \quad j = 1, \ldots, k \)
 \end{itemize}
 
 Simplificando la fórmula para el estadístico \( F \):
@@ -427,7 +424,7 @@ Si \( F > F_{k, n - k - 1} \), existe evidencia para rechazar \( H_{0} \).
 El intervalo de confianza al nivel de confianza \( (1 - \alpha) \):
 
 \begin{center}
-	\( \hat{\beta}_{j} \pm t_{n - k - 1, \alpha / 2} \cdot \se(\hat{\beta}_{j}) \)
+	\( \hat{\beta}_{j} \pm \lvert t_{n - k - 1, \alpha / 2} \rvert \cdot \se(\hat{\beta}_{j}) \)
 \end{center}
 
 \columnbreak
@@ -511,8 +508,8 @@ Cambios en el \textbf{origen de medida} de las variables sólo afectan al térmi
 	\end{center}
 	donde \( R_{j}^{2} \) denota el R-cuadrado de una regresión entre \( x_{j} \) y todas las otras \( x \).
 	\begin{itemize}[leftmargin=*]
-		\item Valores entre 4 y 10: Pueden existir problemas de multicolinealidad.
-		\item Valores \( > 10 \): Existen problemas de multicolinealidad.
+		\item Valores entre 4 y 10: Aviso.
+		\item Valores \( > 10 \): Problema serio.
 	\end{itemize}
 \end{itemize}
 

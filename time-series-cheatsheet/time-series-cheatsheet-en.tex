@@ -54,10 +54,8 @@
 \begin{multicols}{3}
 
 \begin{center}
-	\textbf{\LARGE \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Time Series Cheat Sheet}}
-
-	{\footnotesize By Marcelo Moreno Porras - Universidad Rey Juan Carlos}
-
+	\textbf{\LARGE \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Time Series Cheat Sheet}} \\
+	{\footnotesize By Marcelo Moreno Porras - Universidad Rey Juan Carlos} \\
 	{\footnotesize The Econometrics Cheat Sheet Project}
 \end{center}
 
@@ -129,8 +127,8 @@ Given the format of a time series:
 	\end{itemize}
 	\item \textbf{Conditional mean zero and correlation zero}:
 	\begin{enumerate}[leftmargin=*, label=\alph{*}.]
-		\item There are no relevant variables left out of the model: \( \Cov(x_{jt} , u_{t}) = 0 \quad \forall j = 1, \ldots, k \rightarrow \) \textbf{weak exogeneity}.
-		\item There are no systematic errors: \( \E(u_{t} \mid \mathrm{X}) = \E(u_{t} \mid \ldots, \mathrm{x}_{t+1}, \mathrm{x}_{t}, \mathrm{x}_{t-1}, \ldots) = 0 \quad \forall t \rightarrow \) \textbf{strict exogeneity} (3a holds).
+		\item There are no relevant variables left out of the model: \( \Cov(x_{jt} , u_{t}) = 0 \quad \forall j = 1, \ldots, k \rightarrow \) \textbf{exogeneity}
+		\item There are no systematic errors: \( \E(u_{t} \mid \mathrm{X}) = \E(u_{t} \mid \ldots, \mathrm{x}_{t+1}, \mathrm{x}_{t}, \mathrm{x}_{t-1}, \ldots) = 0 \quad \forall t \rightarrow \) \textbf{strict exogeneity} (3a holds)
 	\end{enumerate}
 	\item \textbf{Homoscedasticity}: The variability of the error term is the same for all levels of \( x \): \( \Var(u_{t} \mid x_{1t}, \ldots, x_{kt}) = \sigma^{2} \quad \forall t = 1, \ldots, T \)
 	\item \textbf{No autocorrelation}: Errors do not contain information about any other errors: \( \Corr(u_{t}, u_{s} \mid x_{1}, \ldots, x_{k}) = 0 \quad \forall t \neq s \)
@@ -561,7 +559,7 @@ Weak dependence replaces the random sampling assumption for time series.
 	\item A covariance stationary process is \textbf{weakly dependent} if the correlation between \( x_{t} \) and \( x_{t + h} \) tends to 0 fast enough when \( h \rightarrow \infty \) (they are not asymptotically correlated).
 \end{itemize}
 
-Weakly dependent processes are known as \textbf{integrated of order zero}, I(0). Some examples:
+Most weakly dependent stationary processes are \textbf{integrated of order zero}, I(0). Some examples:
 
 \begin{itemize}[leftmargin=*]
 	\item \textbf{Moving average}: \( \{ x_{t} \} \) is a moving average of order \( q \), \( \text{MA}(q) \):
@@ -637,8 +635,8 @@ Integrated of \textbf{order one}, I(1), means that \textbf{the first difference}
 	Note:
 	
 	\begin{itemize}[leftmargin=*]
-		\item The {\color{red} first difference} of a series removes its trend.
-		\item Logarithms of a series stabilizes its variance.
+		\item The {\color{red} first difference} often removes trends.
+		\item Logarithms often stabilize the variance.
 	\end{itemize}
 \end{minipage}
 \hfill

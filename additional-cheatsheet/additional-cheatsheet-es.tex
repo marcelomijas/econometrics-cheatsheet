@@ -14,13 +14,14 @@
 \usepackage{parskip} % Layout with zero \parindent, non-zero \parskip
 \usepackage{tikz} % Create PostScript and PDF graphics in TeX
 \usepackage{titlesec} % Select alternative section titles
+\usepackage{xcolor} % for magenta an cyan
 
 % ----- pdf metadata -----
 \hypersetup{
 	pdftitle={Hoja de Referencia Adicional},
 	pdfsubject={The Econometrics Cheat Sheet Project - marcelomijas - CC-BY-4.0},
 	pdfauthor={Marcelo Moreno Porras},
-	pdfkeywords={statistics, latex, economics, cheatsheet, econometrcis, ols-regression, economic-modelling},
+	pdfkeywords={statistics, latex, economics, cheatsheet, econometrics},
 	pdfduplex={DuplexFlipShortEdge}
 }
 
@@ -38,6 +39,7 @@
 \DeclareMathOperator{\AIC}{AIC}
 \DeclareMathOperator{\HQ}{HQ}
 \DeclareMathOperator{\BIC}{BIC}
+\DeclareMathOperator{\diag}{diag}
 \newcommand{\SSR}{\text{SRC}}
 \newcommand{\SSE}{\text{SEC}}
 \newcommand{\SST}{\text{STC}}
@@ -56,7 +58,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ADD-26.03-ES - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ADD-26.10-ES - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -65,10 +67,8 @@
 \begin{multicols}{3}
 
 \begin{center}
-	\textbf{\LARGE \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Hoja de Referencia Adicional}}
-
-	{\footnotesize Por Marcelo Moreno Porras - Universidad Rey Juan Carlos}
-
+	\textbf{\LARGE \href{https://github.com/marcelomijas/econometrics-cheatsheet}{Hoja de Referencia Adicional}} \\
+	{\footnotesize Por Marcelo Moreno Porras - Universidad Rey Juan Carlos} \\
 	{\footnotesize The Econometrics Cheat Sheet Project}
 \end{center}
 
@@ -135,7 +135,7 @@ El \textbf{objetivo} de MCO es \textbf{minimizar} la \( \SSR \):
 			\)
 		}
 	\end{center}
-	La segunda derivada \( \frac{\partial^{2} \hat{u}^{\top} \hat{u}}{\partial \hat{\beta}^{2}} = X^{\top} X > 0 \) (es un mín.)
+	La segunda derivada \( \frac{\partial^{2} \hat{u}^{\top} \hat{u}}{\partial \hat{\beta}^{2}} = 2 X^{\top} X > 0 \) (es un mín.)
 \end{itemize}
 
 \section*{Matriz de varianzas-covarianzas de \( \hat{\beta} \)}
@@ -143,28 +143,28 @@ El \textbf{objetivo} de MCO es \textbf{minimizar} la \( \SSR \):
 Tiene la siguiente forma:
 
 \begin{center}
-	\( \Var(\hat{\beta}) = \hat{\sigma}_{u}^{2} \cdot (X^{\top} X)^{-1} \)
+	\( \widehat{\Var}(\hat{\beta}) = \hat{\sigma}^{2} \cdot (X^{\top} X)^{-1} \)
 \end{center}
 
 \begin{center}
 	\scalebox{0.85}{ 
 		\( =
 		\begin{bmatrix}
-			\Var(\hat{\beta}_{0})                  & \Cov(\hat{\beta}_{0}, \hat{\beta}_{1}) & \hdots & \Cov(\hat{\beta}_{0}, \hat{\beta}_{k}) \\
-			\Cov(\hat{\beta}_{1}, \hat{\beta}_{0}) & \Var(\hat{\beta}_{1})                  & \hdots & \Cov(\hat{\beta}_{1}, \hat{\beta}_{k}) \\
-			\vdots                                 & \vdots                                 & \ddots & \vdots                                 \\
-			\Cov(\hat{\beta}_{k}, \hat{\beta}_{0}) & \Cov(\hat{\beta}_{k}, \hat{\beta}_{1}) & \hdots & \Var(\hat{\beta}_{k})
+			\widehat{\Var}(\hat{\beta}_{0})                  & \widehat{\Cov}(\hat{\beta}_{0}, \hat{\beta}_{1}) & \hdots & \widehat{\Cov}(\hat{\beta}_{0}, \hat{\beta}_{k}) \\
+			\widehat{\Cov}(\hat{\beta}_{1}, \hat{\beta}_{0}) & \widehat{\Var}(\hat{\beta}_{1})                  & \hdots & \widehat{\Cov}(\hat{\beta}_{1}, \hat{\beta}_{k}) \\
+			\vdots                                           & \vdots                                           & \ddots & \vdots                                           \\
+			\widehat{\Cov}(\hat{\beta}_{k}, \hat{\beta}_{0}) & \widehat{\Cov}(\hat{\beta}_{k}, \hat{\beta}_{1}) & \hdots & \widehat{\Var}(\hat{\beta}_{k})
 		\end{bmatrix}
 		\)
 	}
 \end{center}
 
-\quad donde: \( \hat{\sigma}_{u}^{2} = \frac{\hat{u}^{\top} \hat{u}}{n - k - 1} \)
+\quad donde: \( \hat{\sigma}^{2} = \frac{\hat{u}^{\top} \hat{u}}{n - k - 1} \)
 
-Los errores estándar están en la diagonal de:
+Los errores estándar:
 
 \begin{center}
-	\( \se(\hat{\beta}) = \sqrt{\Var(\hat{\beta})} \)
+	\( \widehat{\se}(\hat{\beta}) = \sqrt{\diag(\widehat{\Var}(\hat{\beta}))} \)
 \end{center}
 
 \section*{Medidas de error}
@@ -198,14 +198,14 @@ Tiene la siguiente forma:
 Bajo no heterocedasticidad y no autocorrelación, la matriz de varianzas-covarianzas:
 
 \begin{center}
-	\( \Var(u) = \sigma_{u}^{2} \cdot I_{n} = \)
+	\( \Var(u) = \sigma^{2} \cdot I_{n} = \)
 	\scalebox{0.85}{
 		\(
 		\begin{bmatrix}
-			\sigma_{u}^{2} & 0              & \hdots & 0              \\
-			0              & \sigma_{u}^{2} & \hdots & 0              \\
-			\vdots         & \vdots         & \ddots & \vdots         \\
-			0              & 0              & \hdots & \sigma_{u}^{2}
+			\sigma^{2} & 0          & \hdots & 0          \\
+			0          & \sigma^{2} & \hdots & 0          \\
+			\vdots     & \vdots     & \ddots & \vdots     \\
+			0          & 0          & \hdots & \sigma^{2}
 		\end{bmatrix}
 		\)
 	}
@@ -216,14 +216,14 @@ Bajo no heterocedasticidad y no autocorrelación, la matriz de varianzas-covaria
 Bajo \textcolor{cyan}{\textbf{heterocedasticidad}} y \textcolor{magenta}{\textbf{autocorrelación}}, la matriz de varianzas-covarianzas:
 
 \begin{center}
-	\( \Var(u) = \sigma_{u}^{2} \cdot \Omega = \)
+	\( \Var(u) = \sigma^{2} \cdot \Omega = \)
 	\scalebox{0.85}{
 		\(
 		\begin{bmatrix}
-			\textcolor{cyan}{\sigma_{u_{1}}^2}   & \textcolor{magenta}{\sigma_{u_{12}}} & \hdots & \textcolor{magenta}{\sigma_{u_{1n}}} \\
-			\textcolor{magenta}{\sigma_{u_{21}}} & \textcolor{cyan}{\sigma_{u_{2}}^2}   & \hdots & \textcolor{magenta}{\sigma_{u_{2n}}} \\
-			\vdots                               & \vdots                               & \ddots & \vdots                               \\
-			\textcolor{magenta}{\sigma_{u_{n1}}} & \textcolor{magenta}{\sigma_{u_{n2}}} & \hdots & \textcolor{cyan}{\sigma_{u_{n}}^2}
+			\textcolor{cyan}{\sigma_{1}^2}   & \textcolor{magenta}{\sigma_{12}} & \hdots & \textcolor{magenta}{\sigma_{1n}} \\
+			\textcolor{magenta}{\sigma_{21}} & \textcolor{cyan}{\sigma_{2}^2}   & \hdots & \textcolor{magenta}{\sigma_{2n}} \\
+			\vdots                           & \vdots                           & \ddots & \vdots                           \\
+			\textcolor{magenta}{\sigma_{n1}} & \textcolor{magenta}{\sigma_{n2}} & \hdots & \textcolor{cyan}{\sigma_{n}^2}
 		\end{bmatrix}
 		\)
 	}
@@ -232,8 +232,8 @@ Bajo \textcolor{cyan}{\textbf{heterocedasticidad}} y \textcolor{magenta}{\textbf
 \quad donde \( \Omega \neq I_{n} \).
 
 \begin{itemize}[leftmargin=*]
-	\item Heterocedasticidad: \( \Var(u) = \sigma_{u_{i}}^{2} \neq \sigma_{u}^{2} \)
-	\item Autocorrelación: \( \Cov(u_{i}, u_{j}) = \sigma_{u_{ij}} \neq 0, \; \forall i \neq j \)
+	\item Heterocedasticidad: \( \Var(u_{i} \mid X) = \sigma_{i}^{2} \neq \sigma^{2} \)
+	\item Autocorrelación: \( \Cov(u_{i}, u_{j} \mid X) = \sigma_{ij} \neq 0 \quad \forall i \neq j \)
 \end{itemize}
 
 \section*{Omisión de variables}
@@ -244,7 +244,7 @@ Casi siempre es difícil disponer de todas las variables relevantes. Por ejemplo
 	\( y = \beta_{0} + \beta_{1} x_{1} + \beta_{2} x_{2} + v \)
 \end{center}
 
-\quad donde \( \beta_{2} \neq 0 \), \( v \) el término de error y \( \Cov(v \mid x_{1}, x_{2}) = 0 \).
+\quad donde \( \beta_{2} \neq 0 \), \( v \) el término de error y \( \E(v \mid x_{1}, x_{2}) = 0 \).
 
 El modelo con las variables disponibles:
 
@@ -254,7 +254,7 @@ El modelo con las variables disponibles:
 
 \quad donde \( u = v + \beta_{2} x_{2} \).
 
-Omisión de variables relevantes puede causar que los estimadores MCO sean \textbf{sesgados} e \textbf{inconsistentes},porque no hay exogeneidad estricta, \( \Cov(x_{1}, u) \neq 0 \). Dependiendo de \( \Corr(x_{1}, x_{2}) \) y el signo de \( \beta_{2} \), el sesgo en \( \hat{\alpha}_{1} \) puede ser:
+Omisión de variables relevantes puede causar que los estimadores MCO sean \textbf{sesgados} e \textbf{inconsistentes}, porque se viola la exogeneidad, \( \Cov(x_{1}, u) \neq 0 \). Dependiendo de \( \Corr(x_{1}, x_{2}) \) y el signo de \( \beta_{2} \), el sesgo en \( \hat{\alpha}_{1} \) puede ser:
 
 \begin{center}
 	\begin{tabular}{ c | c c }
@@ -301,7 +301,7 @@ Cuando una variable de interés \( (x) \) es observable pero \textbf{endógena},
 Variables instrumentales deja la variable omitida en el término de error, pero en vez de estimar el modelo por MCO, utiliza un método que reconoce la omisión de variable. Puede también corregir errores de medida.
 
 \begin{itemize}[leftmargin=*]
-	\item \textbf{Mínimos Cuadrados en Dos Etapas} (MC2E) es un método de estimar un modelo con múltiples variables instrumentales. Que \( \Cov(z, u) = 0 \) puede ser relajado, pero debe haber un mínimo de variables que lo satisfacen.
+	\item \textbf{Mínimos Cuadrados en Dos Etapas} (MC2E) es un método de estimar un modelo con múltiples variables instrumentales.
 
 	El \textbf{procedimiento de estimación} de MC2E:
 	\begin{enumerate}[leftmargin=*]
@@ -350,11 +350,11 @@ donde:
 	\end{itemize}
 \end{itemize}
 
-\( \BIC(p) \leq \HQ(p) \leq \AIC(p) \)
+Longitud de rezago seleccionada \( p \): \( \BIC(p) \leq \HQ(p) \leq \AIC(p) \)
 
 Interpretado como el tamaño relativo de información perdida por el modelo. Orden \( p \) que minimiza el criterio es elegido.
 
-\section*{Contraste de hipótesis no restringido}
+\section*{Prueba t de una combinación lineal de coeficientes}
 
 Alternativa al contraste F cuando hay pocas hipótesis a probar sobre los parámetros. Sean \( \beta_{i}, \beta_{j} \) parámetros, \( a, b, c \in \mathbb{R} \) constantes.
 
@@ -365,9 +365,9 @@ Alternativa al contraste F cuando hay pocas hipótesis a probar sobre los parám
 
 \begin{center}
 	Bajo \( H_{0} \): \quad
-	\( t = \dfrac{a \hat{\beta}_{i} + b \hat{\beta}_{j} - c}{\se(a \hat{\beta}_{i} + b \hat{\beta}_{j})} \)
+	\( t = \dfrac{a \hat{\beta}_{i} + b \hat{\beta}_{j} - c}{\widehat{\se}(a \hat{\beta}_{i} + b \hat{\beta}_{j})} \)
 
-	\( = \dfrac{a \hat{\beta}_{i} + b \hat{\beta}_{j} - c}{\sqrt{a^{2} \Var(\hat{\beta}_{i}) + b^{2} \cdot \Var(\hat{\beta}_{j}) + 2 a b \Cov(\hat{\beta}_{i}, \hat{\beta}_{j})}} \)
+	\( = \dfrac{a \hat{\beta}_{i} + b \hat{\beta}_{j} - c}{\sqrt{a^{2} \widehat{\Var}(\hat{\beta}_{i}) + b^{2} \cdot \widehat{\Var}(\hat{\beta}_{j}) + 2 a b \widehat{\Cov}(\hat{\beta}_{i}, \hat{\beta}_{j})}} \)
 \end{center}
 
 Si \( \lvert t \rvert > \lvert t_{n - k - 1, \alpha / 2}\rvert \), existe evidencia para rechazar \( H_{0} \).
@@ -388,14 +388,14 @@ Descomponer \( \SST \):
 \end{center}
 
 \begin{itemize}[leftmargin=*]
-	\item \( H_{0}: \beta_{1} = \beta_{2} = \cdots = \beta_{k} = 0 \)
-	\item \( H_{1}: \beta_{1} \neq 0 \) and/or \( \beta_{2} \neq 0 \ldots \) and/or \( \beta_{k} \neq 0 \)
+	\item \( H_{0} \): \( \beta_{1} = \beta_{2} = \cdots = \beta_{k} = 0 \)
+	\item \( H_{1} \): \( \exists j \) de tal manera que \( \beta_{j} \neq 0 \)
 \end{itemize}
 
 Bajo \( H_{0} \):
 
 \begin{center}
-	\( F = \dfrac{\text{SCP de \SSE}}{\text{SCP de \SSR}} = \dfrac{\SSE}{\SSR} \cdot \dfrac{n - k - 1}{k} \sim F_{k, n - k - 1} \)
+	\( F = \dfrac{\text{SCM de \SSE}}{\text{SCM de \SSR}} = \dfrac{\SSE}{\SSR} \cdot \dfrac{n - k - 1}{k} \sim F_{k, n - k - 1} \)
 \end{center}
 
 Si \( F > F_{k, n - k - 1} \), existe evidencia para rechazar \( H_{0} \).
@@ -416,19 +416,19 @@ Observaciones de \( n \) entidades durante \( T \) períodos.
 
 \begin{itemize}[leftmargin=*]
 	\item Aplicar MCO a los datos directamente.
-	\item Supuesto: \( \alpha_{i} \) es constante.
+	\item Supuesto: \( \Corr(X_{it}, \alpha_{i}) = 0 \)
 \end{itemize}
 
 \textbf{Modelo de efectos fijos} (within estimator)
 
 \begin{center}
-	\( y_{it} - \overline{y}_{i} = (X_{i} - \overline{X}_{it}) \beta + (\alpha_{i} - \overline{\alpha}_{i}) + (u_{it} - \overline{u}_{i}) \)
+	\( y_{it} - \overline{y}_{i} = (X_{it} - \overline{X}_{i}) \beta + (\alpha_{i} - \overline{\alpha}_{i}) + (u_{it} - \overline{u}_{i}) \)
 \end{center}
 
 \begin{itemize}[leftmargin=*]
 	\item Se realiza centrado para eliminar \( \alpha_{i} \).
 	\item Controla efectos específicos de la entidad no observados.
-	\item Supuesto: \( \Corr(X_{it}, \alpha_i) \neq 0 \).
+	\item Permite \( \Corr(X_{it}, \alpha_{i}) \neq 0 \).
 \end{itemize}
 
 \textbf{Modelo de variable ficticia de mín. cuad.} (LSDV)
@@ -443,13 +443,13 @@ Se agregan variables ficticias para cada entidad y/o período de tiempo para cap
 
 \begin{itemize}[leftmargin=*]
 	\item Se realizan primeras diferencias para eliminar \( \alpha_{i} \).
-	\item Supuesto: \( \Corr(u_{it} - u_{i, t - 1} \mid X_{it} - X_{i, t - 1}) = 0 \).
+	\item Supuesto: \( \Corr(u_{it} - u_{i, t - 1}, X_{it} - X_{i, t - 1}) = 0 \).
 \end{itemize}
 
 \textbf{Modelo de efectos aleatorios}
 
 \begin{center}
-	\( y_{it} = X_{it} \beta + \alpha_{i} + \epsilon_{it} \) donde \( u_{it} = \alpha_{i} + \epsilon_{it} \)
+	\( y_{it} = X_{it} \beta + v_{it} \) donde \( v_{it} = \alpha_{i} + u_{it} \)
 \end{center}
 
 \begin{itemize}[leftmargin=*]
@@ -461,42 +461,39 @@ Se agregan variables ficticias para cada entidad y/o período de tiempo para cap
 Variable dependiente binaria (0, 1). \textbf{Modelo logit}:
 
 \begin{center}
-	\( P_{i} = \dfrac{1}{1 + e^{-(\beta_{0} + \beta_{1} x_{i} + u_{i})}}= \dfrac{e^{\beta_{0} + \beta_{1} x_{i} + u_{i}}}{1 + e^{\beta_{0} + \beta_{1} x_{i} + u_{i}}} \)
+	\( P_{i} = \dfrac{1}{1 + e^{-(\beta_{0} + \beta_{1} x_{i})}}= \dfrac{e^{\beta_{0} + \beta_{1} x_{i}}}{1 + e^{\beta_{0} + \beta_{1} x_{i}}} \)
 \end{center}
 
-donde \( P_{i} = \E(y_{i} = 1 \mid x_{i}) \) y \( (1 - P_{i}) = \E(y_{i} = 0 \mid x_{i}) \)
+donde \( P_{i} = P(y_{i} = 1 \mid x_{i}) \) y \( (1 - P_{i}) = P(y_{i} = 0 \mid x_{i}) \)
 
 La \textbf{razón de probabilidades} (a favor de \( y_{i} = 1 \)):
 
 \begin{center}
-	\( \dfrac{P_{i}}{1 - P_{i}} = \dfrac{1 + e^{\beta_{0} + \beta_{1} x_{i} + u_{i}}}{1 + e^{-(\beta_{0} + \beta_{1} x_{i} + u_{i})}} = e^{\beta_{0} + \beta_{1} x_{i} + u_{i}} \)
+	\( \dfrac{P_{i}}{1 - P_{i}} = \dfrac{1 + e^{\beta_{0} + \beta_{1} x_{i}}}{1 + e^{-(\beta_{0} + \beta_{1} x_{i})}} = e^{\beta_{0} + \beta_{1} x_{i}} \)
 \end{center}
 
 Tomando el logaritmo natural de la razón, el \textbf{logit}:
 
 \begin{center}
-	\( L_{i} = \ln \left( \dfrac{P_i}{1 - P_i}\right) = \beta_{0} + \beta_{1} x_{i} + u_{i} \)
+	\( L_{i} = \ln \left( \dfrac{P_i}{1 - P_i}\right) = \beta_{0} + \beta_{1} x_{i} \)
 \end{center}
 
-\setlength{\multicolsep}{6pt}
-\begin{multicols}{2}
-
-\( P_{i} \) se encuentra entre 0 y 1, pero \( L_{i} \) va desde \( -\infty \) a \( +\infty \). \\
-
-Si \( L_{i} \) es positivo, significa que cuando \( x_{i} \) incrementa, la probabilidad de que \( y_{i} = 1 \) incrementa, y viceversa.
-
-\columnbreak
-
-\begin{tikzpicture}[scale=0.15]
-	\draw [thick, |->] (-12, 10) node [anchor=west] {\( P \)} -- (-12, -10) -- (12, -10) node [anchor=north] {\( x \)};
-	\draw [red, thick, smooth] plot [domain=-12:12] (\x, {(1 / (1 + exp(-0.8*\x)))*19.5 - 9.75});
-	\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=15] ({12.5*rnd - 0.5}, 9.6);
-	\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=15] ({-12.5*rnd + 0.5}, -9.6);
-	\draw (-15, -9.5) node [anchor=west] {0};
-	\draw (-15, 9.5) node [anchor=west] {1};
-\end{tikzpicture}
-
-\end{multicols}
+\begin{minipage}{0.48\columnwidth}
+	\( 0 < P_{i} < 1 \); \( -\infty < L_{i} < \infty \) \\
+	
+	Si \( L_{i} > 0 \), significa que la probabilidad \( P_{i} > 0.5 \). Por otra parte, si \( \beta_{1} \) es positivo, significa que, cuando \( x_{i} \) aumenta, la probabilidad de que \( y_{i} = 1 \) aumenta, y viceversa.
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\columnwidth}
+	\begin{tikzpicture}[scale=0.15]
+		\draw [thick, |->] (-12, 10) node [anchor=west] {\( P \)} -- (-12, -10) -- (12, -10) node [anchor=north] {\( x \)};
+		\draw [red, smooth] plot [domain=-12:12] (\x, {(1 / (1 + exp(-0.8*\x)))*19.5 - 9.75});
+		\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=15] ({12.5*rnd - 0.5}, 9.6);
+		\draw plot [only marks, mark=*, mark size=6, domain=-8:8, samples=15] ({-12.5*rnd + 0.5}, -9.6);
+		\draw (-15, -9.5) node [anchor=west] {0};
+		\draw (-15, 9.5) node [anchor=west] {1};
+	\end{tikzpicture}
+\end{minipage}
 
 \columnbreak
 
@@ -519,19 +516,19 @@ Si \( L_{i} \) es positivo, significa que cuando \( x_{i} \) incrementa, la prob
 	\end{center}
 	\item Estadístico, bajo \( \gamma_{2} = \cdots = \gamma_{l} = 0 \) como \( H_{0} \):
 	\begin{center}
-		\( F = \frac{R_{\text{new}}^{2} - R^{2}}{1 - R_{\text{new}}^{2}} \cdot \frac{n - (k + 1) - l}{l} \sim F_{l, n - (k + 1) - l} \)
+		\( F = \frac{R_{\text{new}}^{2} - R^{2}}{1 - R_{\text{new}}^{2}} \cdot \frac{n - k - l}{l - 1} \sim F_{l - 1, n - k - l} \)
 	\end{center}
 \end{enumerate}
 
-Si \( F > F_{l, n - (k + 1) - l} \), hay evidencia para rechazar \( H_{0} \).
+Si \( F > F_{l - 1, n - k - l} \), hay evidencia para rechazar \( H_{0} \).
 
 \section*{Definiciones estadísticas}
 
 Sean \( \xi, \eta \) variables aleatorias, \( a, b \in \mathbb{R} \) constantes, y \( P \) denota probabilidad.
 
-\textbf{Media} \quad \( E(\xi) = \sum_{i = 1}^{n} \xi_{i} \cdot P[\xi = \xi_{i}] \)
+\textbf{Media} \quad \( \E(\xi) = \sum_{i = 1}^{n} \xi_{i} \cdot P[\xi = \xi_{i}] \)
 
-Media muestral: \quad \( \E(\xi) = \dfrac{1}{n} \sum_{i = 1}^{n} \xi_{i} \)
+Media muestral: \quad \( \overline{\xi} = \dfrac{1}{n} \sum_{i = 1}^{n} \xi_{i} \)
 
 Propiedades de la media:
 
@@ -539,15 +536,15 @@ Propiedades de la media:
 	\item \( \E(a) = a \)
 	\item \( \E(\xi + a) = \E(\xi) + a \)
 	\item \( \E(a \cdot \xi) = a \cdot \E(\xi) \)
-	\item \( \E(\xi \pm \eta) = \E(\xi) + \E(\eta) \)
-	\item \( \E(\xi \cdot \eta) = \E(\xi) \cdot \E(\eta) \) \quad sólo si \( \xi \) y \( \eta \) son independientes.
+	\item \( \E(\xi \pm \eta) = \E(\xi) \pm \E(\eta) \)
+	\item \( \E(\xi \cdot \eta) = \E(\xi) \cdot \E(\eta) \) \quad si \( \xi \) y \( \eta \) son independientes.
 	\item \( \E(\xi - \E(\xi)) = 0 \)
 	\item \( \E(a \cdot \xi + b \cdot \eta) = a \cdot \E(\xi) + b \cdot \E(\eta) \)
 \end{itemize}
 
 \textbf{Varianza} \quad \( \Var(\xi) = \E \left[ (\xi - \E(\xi))^{2} \right] \)
 
-Varianza muestral: \quad \( \Var(\xi) = \dfrac{\sum_{i = 1}^{n} (\xi_{i} - \E(\xi))^2}{n - 1} \)
+Varianza muestral: \quad \( \widehat{\Var}(\xi) = \dfrac{\sum_{i = 1}^{n} (\xi_{i} - \overline{\xi})^2}{n - 1} \)
 
 Propiedades de la varianza:
 
@@ -559,9 +556,9 @@ Propiedades de la varianza:
 	\item \( \Var(a \cdot \xi \pm b \cdot \eta) = a^{2} \cdot \Var(\xi) + b^{2} \cdot \Var(\eta) \pm 2 a b \cdot \Cov(\xi, \eta) \)
 \end{itemize}
 
-\textbf{Covarianza} \quad \( \Cov(\xi, \eta) = \E \left[ (\xi - E(\xi)) \cdot (\eta - E(\eta)) \right] \)
+\textbf{Covarianza} \quad \( \Cov(\xi, \eta) = \E \left[ (\xi - E(\xi)) \cdot (\eta - \E(\eta)) \right] \)
 
-Covarianza muestral: \quad \( \dfrac{\sum_{i = 1}^{n} (\xi_{i} - \E(\xi)) \cdot (\eta_{i} - \E(\eta))}{n - 1} \)
+Covarianza muestral: \quad \( \widehat{\Cov}(\xi, \eta) = \dfrac{\sum_{i = 1}^{n} (\xi_{i} - \overline{\xi}) \cdot (\eta_{i} - \overline{\eta})}{n - 1} \)
 
 Propiedades de la covarianza:
 
@@ -595,10 +592,10 @@ Típico contraste de una cola:
 	\begin{tikzpicture}[scale=0.108]
 		\fill [magenta] (4, 0) -- plot [domain=4:16, smooth] (\x, {cos(\x*7 + 70)*6 + 6}); 
 		\fill [cyan] (4, 0) -- plot [domain=-16:4, smooth] (\x, {cos(\x*7 - 70)*6 + 6}); 
-		\draw [thick, cyan] plot [domain=-16:36, smooth] (\x, {cos(\x*7 - 70)*6 + 6}); 
-		\draw [thick, magenta] plot [domain=-36:16, smooth] (\x, {cos(\x*7 + 70)*6 + 6}); 
+		\draw [cyan] plot [domain=-16:36, smooth] (\x, {cos(\x*7 - 70)*6 + 6}); 
+		\draw [magenta] plot [domain=-36:16, smooth] (\x, {cos(\x*7 + 70)*6 + 6}); 
 		\draw [thick, <->] (-40, 0) -- (40, 0); 
-		\draw [thick, dashed] (4, 0) -- (4, 11); 
+		\draw [dashed] (4, 0) -- (4, 11); 
 		\node at (-20, 15) {Distribución \( H_{0} \)};
 		\node at (20, 15) {Distribución \( H_{1} \)}; 
 		\node at (-10, 7) {\( 1 - \alpha \)}; 
@@ -613,9 +610,9 @@ donde \( (1 - \alpha) \) es nivel de confianza, \( \alpha \) es nivel de signifi
 
 \section*{Bootstraping}
 
-\textbf{Problema} - Aprox. asint. a las distribuciones de los estadísticos de contraste no funcionan en muestras pequeñas.
+\textbf{Problema}: Aprox. asint. a las distribuciones de los estadísticos de contraste no funcionan en muestras pequeñas.
 
-\textbf{Solución} - Boostrap es muestreo con reemplazo. Los datos observados se tratan como una población y se extraen varias muestras para recalcular un estimador o estadístico varias veces (mejora la precisión).
+\textbf{Solución}: Boostrap es muestreo con reemplazo. Los datos observados se tratan como una población y se extraen varias muestras para recalcular un estimador o estadístico varias veces (mejora la precisión).
 
 \end{multicols}
 
@@ -711,10 +708,10 @@ Visualizando las ecuaciones por separado:
 \begin{center}
 	\( y_{1t} = a_{11, 1} y_{1, t - 1} + a_{12, 1} y_{2, t - 1} + a_{11, 2} y_{1, t - 2} + a_{12, 2} y_{2, t - 2} + b_{11} x_{t} + c_{11} + c_{12} \trend + u_{1t} \)
 
-	\( y_{2t} = a_{21, 1} y_{2, t - 1} + a_{22, 1} y_{1, t - 1} + a_{21, 2} y_{2, t - 2} + a_{22, 2} y_{1, t - 2} + b_{21} x_{t} + c_{21} + c_{22} \trend + u_{2t} \)
+	\( y_{2t} = a_{21, 1} y_{1, t - 1} + a_{22, 1} y_{2, t - 1} + a_{21, 2} y_{1, t - 2} + a_{22, 2} y_{2, t - 2} + b_{21} x_{t} + c_{21} + c_{22} \trend + u_{2t} \)
 \end{center}
 
-Si hay una raíz unitaria, el determinante es cero para \( z = 1 \); entonces una o todas las variables son integrados, y el modelo VAR ya no es apropiado (es inestable).
+Si hay una raíz unitaria, el determinante es cero para \( z = 1 \); entonces una o todas las variables son integradas, y un VECM o un VAR en diferencias podrían ser más adecuados.
 
 \subsection*{SVAR (Structural VAR)}
 
@@ -723,7 +720,7 @@ En un modelo VAR, las interpretaciones de causalidad no son explícitas, y los r
 Por ejemplo, un modelo \( \text{SVAR}(p) \) básico:
 
 \begin{center}
-	\( \mathsf{A} y_t = \mathsf{A} [A_1, \ldots, A_p] y_{t - 1} + \mathsf{B} \varepsilon_t \)
+	\( \mathsf{A} y_t = \mathsf{A} (A_1 y_{t - 1} + \cdots + A_p y_{t - p}) + \mathsf{B} \varepsilon_t \)
 \end{center}
 
 donde:
@@ -749,7 +746,7 @@ donde:
 	\item \( \Delta y_{t} = (\Delta y_{1t}, \ldots, \Delta y_{Kt})^{\top} \) es un vector de \( K \) series temporales observables endógenas.
 	\item \( \Pi y_{t - 1} \) es la parte \textbf{largo plazo}.
 	\begin{itemize}[leftmargin=*, label={\( \diamond \)}]
-		\item \( \Pi = - (I_{K} - A_{1} - \cdots - A_{p}) \) para \( i = 1, \ldots, p - 1 \)
+		\item \( \Pi = - (I_{K} - A_{1} - \cdots - A_{p}) \)
 		\item \( \Pi = \alpha \beta^{\top} \)
 		\item \( \alpha \) es la \textbf{matriz de carga} \( (K \times r) \). Representa la velocidad de ajuste.
 		\item \( \beta \) es la \textbf{matriz de cointegración} \( (K \times r) \).
