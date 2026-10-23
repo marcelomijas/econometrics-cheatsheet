@@ -50,12 +50,11 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize CS-26.10-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize CS-26.10.1-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
 \begin{document}
-\raggedright
 
 \begin{multicols}{3}
 
@@ -90,14 +89,15 @@
 \subsection*{Phases of an econometric model}
 
 \begin{enumerate}[leftmargin=*]
-	\setlength{\multicolsep}{0pt}
-	\begin{multicols}{2}
+	\begin{minipage}{0.45\columnwidth}
 		\item Specification.
 		\item Estimation.
-	\columnbreak
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.45\columnwidth}
 		\item Validation.
 		\item Utilization.
-	\end{multicols}
+	\end{minipage}
 \end{enumerate}
 
 \subsection*{Regression analysis}
@@ -135,7 +135,7 @@ Correlation analysis does not distinguish between dependent and independent vari
 	\item \textbf{Conditional mean zero and correlation zero}:
 	\begin{enumerate}[leftmargin=*, label=\alph{*}.]
 		\item There are no relevant variables left out of the model: \( \Cov(x_{j}, u) = 0 \quad \forall j = 1, \ldots, k \rightarrow \) \textbf{weak exogeneity}.
-		\item There are no systematic errors: \( \E(u \mid x_{1}, \ldots, x_{k}) = \E(u) = 0 \rightarrow \) \textbf{strong exogeneity} (4a holds).
+		\item There are no systematic errors: \( \E(u \mid x_{1}, \ldots, x_{k}) = \E(u) = 0 \rightarrow \) \textbf{strict exogeneity} (4a holds).
 	\end{enumerate}
 	\item \textbf{Homoscedasticity}: The variability of the error term is the same for all levels of \( x \): \( \Var(u_{i} \mid x_{1i}, \ldots, x_{ki}) = \sigma^{2} \quad \forall i = 1, \ldots, n \)
 	\item \textbf{No autocorrelation}: Errors do not contain information about any other errors: \( \Corr(u_{t}, u_{s} \mid x_{1}, \ldots, x_{k}) = 0 \quad \forall t \neq s \)
@@ -168,92 +168,84 @@ Under the Gauss-Markov assumptions and the Central Limit Theorem (CLT):
 
 \subsection*{Simple regression model}
 
-\setlength{\multicolsep}{2pt}
-\setlength{\columnsep}{-40pt}
-\begin{multicols}{2}
-
-\begin{tikzpicture}[scale=0.15]
-	\draw [thick, <->] (0, 20) node [anchor=south] {\( y \)} -- (0, 0) -- (20, 0) node [anchor=south] {\( x \)}; 
-	\draw [red] plot [domain=0:20] (\x, {5 + 0.5*\x});
-	\draw plot [only marks, mark=*, mark size=6, domain=2:18, samples=20] (\x, {rnd*5 + 2.5 + 0.5*\x}); 
-	\draw (0.5, 0.5) -- (0.5, 4.5) node [anchor=north west] {\( \beta_{0} \)}; 
-	\draw (8, 9) -- (12, 9) arc (0:25:4); 
-	\draw (13.5, 9) node {\( \beta_{1} \)};
-\end{tikzpicture}
-
-\columnbreak
-
-Equation:
-
-\begin{center}
-	\( y_{i} = \beta_{0} + \beta_{1} x_{i} + u_{i} \)
-\end{center}
-
-Estimation:
-
-\begin{center}
-	\( \hat{y}_{i} = \hat{\beta}_{0} + \hat{\beta}_{1} x_{i} \)
-\end{center}
-
-where:
-
-\begin{center}
-	\( \hat{\beta}_{0} = \overline{y} - \hat{\beta}_{1} \overline{x} \)
-
-	\( \hat{\beta}_{1} = \frac{\Cov(y, x)}{\Var(x)} \)
-\end{center}
-
-\end{multicols}
+\begin{minipage}{0.38\columnwidth}
+	\begin{tikzpicture}[scale=0.15]
+		\draw [thick, <->] (0, 20) node [anchor=south] {\( y \)} -- (0, 0) -- (20, 0) node [anchor=south] {\( x \)}; 
+		\draw [red] plot [domain=0:20] (\x, {5 + 0.5*\x});
+		\draw plot [only marks, mark=*, mark size=6, domain=2:18, samples=20] (\x, {rnd*5 + 2.5 + 0.5*\x}); 
+		\draw (0.5, 0.5) -- (0.5, 4.5) node [anchor=north west] {\( \beta_{0} \)}; 
+		\draw (8, 9) -- (12, 9) arc (0:25:4); 
+		\draw (13.5, 9) node {\( \beta_{1} \)};
+	\end{tikzpicture}
+\end{minipage}
+\hfill
+\begin{minipage}{0.58\columnwidth}
+	Equation:
+	
+	\begin{center}
+		\( y_{i} = \beta_{0} + \beta_{1} x_{i} + u_{i} \)
+	\end{center}
+	
+	Estimation:
+	
+	\begin{center}
+		\( \hat{y}_{i} = \hat{\beta}_{0} + \hat{\beta}_{1} x_{i} \)
+	\end{center}
+	
+	where:
+	
+	\begin{center}
+		\( \hat{\beta}_{0} = \overline{y} - \hat{\beta}_{1} \overline{x} \)
+	
+		\( \hat{\beta}_{1} = \frac{\Cov(y, x)}{\Var(x)} \)
+	\end{center}
+\end{minipage}
 
 \subsection*{Multiple regression model}
 
-\setlength{\multicolsep}{2pt}
-\setlength{\columnsep}{-40pt}
-\begin{multicols}{2}
-
-\begin{tikzpicture}[scale=0.15]
-	\draw [thick, ->] (0, 0) -- (7, 6) node [anchor=north west] {\( x_{2} \)}; 
-	\draw [thick, <->] (0, 20) node [anchor=south] {\( y \)} -- (0, 0) -- (20, 0) node [anchor=south] {\( x_{1} \)}; 
-	\draw [red] (0, 6) -- (5, 13); 
-	\draw [red] (3, 7) -- (8, 14); 
-	\draw [red] (6, 8) -- (11, 15); 
-	\draw [red] (9, 9) -- (14, 16); 
-	\draw [red] (12, 10) -- (17, 17); 
-	\draw [red] (15, 11) -- (20, 18); 
-	\draw [red] (0, 6) -- (15, 11);
-	\draw [red] (1.25, 7.75) -- (16.25, 12.75); 
-	\draw [red] (2.5, 9.5) -- (17.5, 14.5); 
-	\draw [red] (3.75, 11.25) -- (18.75, 16.25);
-	\draw [red] (5, 13) -- (20, 18); 
-	\draw plot [only marks, mark=*, mark size=6, domain=2:18, samples=20] (\x, {rnd*6 + 4 + 0.5*\x}); 
-	\draw (0.5, 1) -- (0.5, 5.5) node [anchor=north west] {\( \beta_{0} \)};
-\end{tikzpicture}
-
-\columnbreak
-
-Equation:
-
-\begin{center}
-	\( y_{i} = \beta_{0} + \beta_{1} x_{1i} + \cdots + \beta_{k} x_{ki} + u_{i} \)
-\end{center}
-
-Estimation:
-
-\begin{center}
-	\( \hat{y}_{i} = \hat{\beta}_{0} + \hat{\beta}_{1} x_{1i} + \cdots + \hat{\beta}_{k} x_{ki} \)
-\end{center}
-
-where:
-
-\begin{center}
-	\( \hat{\beta}_{0} = \overline{y} - \hat{\beta}_{1} \overline{x}_{1} - \cdots - \hat{\beta}_{k} \overline{x}_{k} \)
-
-	\( \hat{\beta}_{j} = \frac{\Cov(y, \resid x_{j})}{\Var(\resid x_{j})} \)
-\end{center}
-
-Matrix: \( \hat{\beta} = (X^{\top} X)^{-1}(X^{\top} y) \)
-
-\end{multicols}
+\begin{minipage}{0.38\columnwidth}
+	\begin{tikzpicture}[scale=0.15]
+		\draw [thick, ->] (0, 0) -- (7, 6) node [anchor=north west] {\( x_{2} \)}; 
+		\draw [thick, <->] (0, 20) node [anchor=south] {\( y \)} -- (0, 0) -- (20, 0) node [anchor=south] {\( x_{1} \)}; 
+		\draw [red] (0, 6) -- (5, 13); 
+		\draw [red] (3, 7) -- (8, 14); 
+		\draw [red] (6, 8) -- (11, 15); 
+		\draw [red] (9, 9) -- (14, 16); 
+		\draw [red] (12, 10) -- (17, 17); 
+		\draw [red] (15, 11) -- (20, 18); 
+		\draw [red] (0, 6) -- (15, 11);
+		\draw [red] (1.25, 7.75) -- (16.25, 12.75); 
+		\draw [red] (2.5, 9.5) -- (17.5, 14.5); 
+		\draw [red] (3.75, 11.25) -- (18.75, 16.25);
+		\draw [red] (5, 13) -- (20, 18); 
+		\draw plot [only marks, mark=*, mark size=6, domain=2:18, samples=20] (\x, {rnd*6 + 4 + 0.5*\x}); 
+		\draw (0.5, 1) -- (0.5, 5.5) node [anchor=north west] {\( \beta_{0} \)};
+	\end{tikzpicture}
+\end{minipage}
+\hfill
+\begin{minipage}{0.58\columnwidth}
+	Equation:
+	
+	\begin{center}
+		\( y_{i} = \beta_{0} + \beta_{1} x_{1i} + \cdots + \beta_{k} x_{ki} + u_{i} \)
+	\end{center}
+	
+	Estimation:
+	
+	\begin{center}
+		\( \hat{y}_{i} = \hat{\beta}_{0} + \hat{\beta}_{1} x_{1i} + \cdots + \hat{\beta}_{k} x_{ki} \)
+	\end{center}
+	
+	where:
+	
+	\begin{center}
+		\( \hat{\beta}_{0} = \overline{y} - \hat{\beta}_{1} \overline{x}_{1} - \cdots - \hat{\beta}_{k} \overline{x}_{k} \)
+	
+		\( \hat{\beta}_{j} = \frac{\Cov(y, \resid x_{j})}{\Var(\resid x_{j})} \)
+	\end{center}
+	
+	Matrix: \( \hat{\beta} = (X^{\top} X)^{-1}(X^{\top} y) \)
+\end{minipage}
 
 \subsection*{Interpretation of coefficients}
 
@@ -326,43 +318,40 @@ Rule designed to determine from a sample \textbf{whether there is evidence to re
 	\item \textbf{p-value}: Lowest level of significance at which \( H_{0} \) can be rejected.
 \end{itemize}
 
-\setlength{\multicolsep}{0pt}
-\setlength{\columnsep}{20pt}
-\begin{multicols}{2}
+\begin{minipage}{0.48\columnwidth}
+	\begin{tikzpicture}[scale=0.10]
+		\node at (0, 15) {Two-tailed test. \( H_{0} \) dist.}; 
+		\fill [red] (12, 0) -- plot [domain=12:18, smooth] (\x, {cos(\x*10)*6 + 6}); 
+		\fill [red] (-12, 0) -- plot [domain=-18:-12, smooth] (\x, {cos(\x*10)*6 + 6}); 
+		\draw plot [domain=-18:18, smooth] (\x, {cos(\x*10)*6 + 6}); 
+		\draw [thick, <->] (-20, 0) -- (20, 0); 
+		\draw [dashed] (12, 0) -- (12, 7); 
+		\draw [dashed] (-12, 0) -- (-12, 7); 
+		\node at (0, 2) {Accept. region}; 
+		\node at (0, 7) {\( 1 - \alpha \)}; 
+		\node [red] at (-16, 4) {\( \alpha / 2 \)}; 
+		\node [red] at (16, 4) {\( \alpha / 2 \)}; 
+		\node at (12, 9) {\( C \)}; 
+		\node at (-13, 9) {\( -C \)};
+	\end{tikzpicture}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\columnwidth}
+	\begin{tikzpicture}[scale=0.10]
+		\node at (0, 15) {One-tailed test. \( H_{0} \) dist.}; 
+		\fill [red] (9, 0) -- plot [domain=9:18, smooth] (\x, {cos(\x*10)*6 + 6}); 
+		\draw plot [domain=-18:18, smooth] (\x, {cos(\x*10)*6 + 6}); 
+		\draw [thick, <->] (-20, 0) -- (20, 0); 
+		\draw [dashed] (9, 0) -- (9, 7); 
+		\node at (-1, 2) {Accept. reg.};
+		\node at (0, 7) {\( 1 - \alpha \)}; 
+		\node [red] at (14, 4) {\( \alpha \)}; 
+		\node at (9, 9) {\( C \)};
+	\end{tikzpicture}
+\end{minipage}
 
-\begin{tikzpicture}[scale=0.10]
-	\node at (0, 15) {Two-tailed test. \( H_{0} \) dist.}; 
-	\fill [red] (12, 0) -- plot [domain=12:18, smooth] (\x, {cos(\x*10)*6 + 6}); 
-	\fill [red] (-12, 0) -- plot [domain=-18:-12, smooth] (\x, {cos(\x*10)*6 + 6}); 
-	\draw plot [domain=-18:18, smooth] (\x, {cos(\x*10)*6 + 6}); 
-	\draw [thick, <->] (-20, 0) -- (20, 0); 
-	\draw [dashed] (12, 0) -- (12, 7); 
-	\draw [dashed] (-12, 0) -- (-12, 7); 
-	\node at (0, 2) {Accept. region}; 
-	\node at (0, 7) {\( 1 - \alpha \)}; 
-	\node [red] at (-16, 4) {\( \alpha / 2 \)}; 
-	\node [red] at (16, 4) {\( \alpha / 2 \)}; 
-	\node at (12, 9) {\( C \)}; 
-	\node at (-13, 9) {\( -C \)};
-\end{tikzpicture}
-
-\columnbreak
-
-\begin{tikzpicture}[scale=0.10]
-	\node at (0, 15) {One-tailed test. \( H_{0} \) dist.}; 
-	\fill [red] (9, 0) -- plot [domain=9:18, smooth] (\x, {cos(\x*10)*6 + 6}); 
-	\draw plot [domain=-18:18, smooth] (\x, {cos(\x*10)*6 + 6}); 
-	\draw [thick, <->] (-20, 0) -- (20, 0); 
-	\draw [dashed] (9, 0) -- (9, 7); 
-	\node at (-1, 2) {Accept. reg.};
-	\node at (0, 7) {\( 1 - \alpha \)}; 
-	\node [red] at (14, 4) {\( \alpha \)}; 
-	\node at (9, 9) {\( C \)};
-\end{tikzpicture}
-
-\end{multicols}
-
-If p-value \( < \alpha \) holds, there is evidence to reject \( H_{0} \), thus, there is evidence to accept \( H_{1} \).
+\vspace*{0.1cm}
+If p-value \( < \alpha \) holds, there is evidence to reject \( H_{0} \), thus, there is evidence to support \( H_{1} \).
 
 \columnbreak
 
@@ -480,7 +469,7 @@ Changes in the \textbf{measurement units} of the variables:
 \begin{itemize}[leftmargin=*]
 	\item \textbf{Endogenous}: \( y^{*} = y \cdot \lambda \rightarrow \beta_{j}^{*} = \beta_{j} \cdot \lambda \quad \forall j = 0, \ldots, k \)
 	\item \textbf{Exogenous}: \( x_{j}^{*} = x_{j} \cdot \lambda \rightarrow \beta_{j}^{*} = \beta_{j} / \lambda \)
-	\item Endogenous and exogenous at the same time: \( y^{*} = y \cdot \lambda \) and \( x_{j}^{*} = x_{j} \cdot \lambda \rightarrow \beta_{0}^{*} = \beta_{0} \cdot \lambda \)
+	\item Endogenous and exogenous at the same time: \( y^{*} = y \cdot \lambda \) and \( x_{j}^{*} = x_{j} \cdot \lambda \rightarrow \beta_{0}^{*} = \beta_{0} \cdot \lambda \); \( \beta_{j}^{*} = \beta_{j} \).
 \end{itemize}
 
 \section*{Changes of origin}
@@ -561,26 +550,29 @@ This \textbf{breaks the fifth (5)} OLS \textbf{assumption}.
 \subsection*{Detection}
 
 \begin{itemize}[leftmargin=*]
-	\setlength{\multicolsep}{0pt}
-	\setlength{\columnsep}{20pt}
-	\begin{multicols}{3}
-	\item \textbf{Graphs}: Identify scatter patterns on \( x \) vs. \( u \) or \( x \) vs. \( y \).
-	\columnbreak
-	\begin{tikzpicture}[scale=0.108]
-		\draw [thick, ->] (0, 10) -- (20, 10) node [anchor=north] {\( x \)}; 
-		\draw [thick, -] (0, 0) -- (0, 20) node [anchor=west] {\( u \)}; 
-		\draw plot [only marks, mark=*, mark size=6, domain=2:18, samples=50] (\x, {-0.5*rand*\x + 10}); 
-		\draw [dashed, red, -latex] plot [domain=1:18] (\x, {-0.5*\x + 9.5}); 
-		\draw [dashed, red, -latex] plot [domain=1:18] (\x, {0.5*\x + 10.5});
-	\end{tikzpicture}
-	\columnbreak
-	\begin{tikzpicture}[scale=0.108]
-		\draw [thick, <->] (0, 20) node [anchor=west] {\( y \)} -- (0, 0) -- (20, 0) node [anchor=south] {\( x \)}; 
-		\draw plot [only marks, mark=*, mark size=6, domain=2:16, samples=50] (\x, {0.5*\x*(rand + 1) + 2}); 
-		\draw [dashed, red, -latex] plot [domain=1:16] (\x, {1.5}); 
-		\draw [dashed, red, -latex] plot [domain=1:16] (\x, {1*\x + 2.5});
-	\end{tikzpicture}
-	\end{multicols}
+	\begin{minipage}{0.31\columnwidth}
+		\item \textbf{Graphs}: Identify scatter patterns on \( x \) vs. \( u \) or \( x \) vs. \( y \).
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.31\columnwidth}
+		\begin{tikzpicture}[scale=0.108]
+			\draw [thick, ->] (0, 10) -- (20, 10) node [anchor=north] {\( x \)}; 
+			\draw [thick, -] (0, 0) -- (0, 20) node [anchor=west] {\( u \)}; 
+			\draw plot [only marks, mark=*, mark size=6, domain=2:18, samples=50] (\x, {-0.5*rand*\x + 10}); 
+			\draw [dashed, red, -latex] plot [domain=1:18] (\x, {-0.5*\x + 9.5}); 
+			\draw [dashed, red, -latex] plot [domain=1:18] (\x, {0.5*\x + 10.5});
+		\end{tikzpicture}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.31\columnwidth}
+		\begin{tikzpicture}[scale=0.108]
+			\draw [thick, <->] (0, 20) node [anchor=west] {\( y \)} -- (0, 0) -- (20, 0) node [anchor=south] {\( x \)}; 
+			\draw plot [only marks, mark=*, mark size=6, domain=2:16, samples=50] (\x, {0.5*\x*(rand + 1) + 2}); 
+			\draw [dashed, red, -latex] plot [domain=1:16] (\x, {1.5}); 
+			\draw [dashed, red, -latex] plot [domain=1:16] (\x, {1*\x + 2.5});
+		\end{tikzpicture}
+	\end{minipage}
+	\vspace*{0.1cm}
 	\item \textbf{Formal tests}: White, Bartlett, Breusch-Pagan, etc. Commonly, \( H_{0} \): No heteroscedasticity.
 \end{itemize}
 
@@ -623,10 +615,7 @@ The ``natural" context of this phenomenon is time series. This \textbf{breaks th
 \begin{itemize}[leftmargin=*]
 	\item \textbf{Graphs}: Identify scatter patterns on \( u_{t - 1} \) vs. \( u_{t} \) or make use of a correlogram.
 	
-	\setlength{\multicolsep}{0pt}
-	\setlength{\columnsep}{6pt}
-	\begin{multicols}{3}
-	\begin{center}
+	\begin{minipage}{0.31\columnwidth}
 		\begin{tikzpicture}[scale=0.11]
 			\node at (10, 23) {\textbf{Ac.}}; 
 			\draw [thick, ->] (0, 10) -- (20, 10) node [anchor=south] {\( u_{t - 1} \)}; 
@@ -634,9 +623,9 @@ The ``natural" context of this phenomenon is time series. This \textbf{breaks th
 			\draw plot [only marks, mark=*, mark size=6, domain=2:18, samples=50] (\x, {-0.2*(\x - 10)^2 + 13 + 6*rnd}); 
 			\draw [dashed, red, -latex] plot [domain=2:18] (\x, {-0.2*(\x - 10)^2 + 16});
 		\end{tikzpicture}
-	\end{center}
-	\columnbreak
-	\begin{center}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.31\columnwidth}
 		\begin{tikzpicture}[scale=0.11]
 			\node at (10, 23) {\textbf{Ac. \( + \)}}; 
 			\draw [thick, ->] (0, 10) -- (20, 10) node [anchor=north] {\( u_{t - 1} \)}; 
@@ -644,9 +633,9 @@ The ``natural" context of this phenomenon is time series. This \textbf{breaks th
 			\draw plot [only marks, mark=*, mark size=6, domain=2:18, samples=20] (\x, {5*rnd + 2.5 + 0.5*\x}); 
 			\draw [dashed, red, -latex] plot [domain=2:18] (\x, {5 + 0.5*\x});
 		\end{tikzpicture}
-	\end{center}
-	\columnbreak
-	\begin{center}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.31\columnwidth}
 		\begin{tikzpicture}[scale=0.11]
 			\node at (10, 23) {\textbf{Ac. \( - \)}}; 
 			\draw [thick, ->] (0, 10) -- (20, 10) node [anchor=south] {\( u_{t - 1} \)}; 
@@ -654,8 +643,8 @@ The ``natural" context of this phenomenon is time series. This \textbf{breaks th
 			\draw plot [only marks, mark=*, mark size=6, domain=2:18, samples=20] (\x, {5*rnd + 12.5 - 0.5*\x}); 
 			\draw [dashed, red, -latex] plot [domain=2:18] (\x, {15 - 0.5*\x});
 		\end{tikzpicture}
-	\end{center}
-	\end{multicols}
+	\end{minipage}
+	\vspace*{0.1cm}
 	\item \textbf{Formal tests}: Durbin-Watson, Breusch-Godfrey, etc. Commonly, \( H_{0} \): No autocorrelation.
 \end{itemize}
 
