@@ -14,8 +14,8 @@ Econometrics cheat sheets created using $\LaTeX$:
 
 | Econometrics | PDF | TeX |
 | :---: | :---: | :---: |
-| English :uk: | [`CS-25.08.1`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/econometrics-cheatsheet/econometrics-cheatsheet-en.pdf) | [`CS-25.08.1`](econometrics-cheatsheet/econometrics-cheatsheet-en.tex)
-| Spanish :es: | [`CS-25.08.1`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/econometrics-cheatsheet/econometrics-cheatsheet-es.pdf) | [`CS-25.08.1`](econometrics-cheatsheet/econometrics-cheatsheet-es.tex)
+| English :uk: | [`CS-26.10`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/econometrics-cheatsheet/econometrics-cheatsheet-en.pdf) | [`CS-26.10`](econometrics-cheatsheet/econometrics-cheatsheet-en.tex)
+| Spanish :es: | [`CS-26.10`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/econometrics-cheatsheet/econometrics-cheatsheet-es.pdf) | [`CS-26.10`](econometrics-cheatsheet/econometrics-cheatsheet-es.tex)
 
 | Time Series | PDF | TeX |
 | :---: | :---: | :---: |
@@ -77,7 +77,7 @@ For space reasons, the version included in the cheat sheets is the matrix one. I
 
 The nonmatrix version:
 
-$$\mathrm{se}(\hat{\beta}_{j}) = \sqrt{\frac{\hat{\sigma}_{u}^{2}}{\text{SST}_{j} \cdot (1 - R_{j}^{2})}} \quad , \quad j = 1, ..., k$$
+$$\mathrm{se}(\hat{\beta}_{j}) = \sqrt{\frac{\hat{\sigma}^{2}}{\text{SST}_{j} \cdot (1 - R_{j}^{2})}} \quad , \quad j = 1, ..., k$$
 
 ### Why don't they have 2 or 4 pages each?
 

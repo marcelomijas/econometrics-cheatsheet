@@ -19,7 +19,7 @@
 	pdftitle={Econometrics Cheat Sheet},
 	pdfsubject={The Econometrics Cheat Sheet Project - marcelomijas - CC-BY-4.0},
 	pdfauthor={Marcelo Moreno Porras},
-	pdfkeywords={statistics, latex, economics, cheatsheet, econometrcis, ols-regression, economic-modelling},
+	pdfkeywords={statistics, latex, economics, cheatsheet, econometrics, ols},
 	pdfduplex={DuplexFlipShortEdge}
 }
 
@@ -33,6 +33,7 @@
 \DeclareMathOperator{\Cov}{Cov}
 \DeclareMathOperator{\Corr}{Corr}
 \DeclareMathOperator{\resid}{resid}
+\DeclareMathOperator{\diag}{diag}
 \newcommand{\SSR}{\text{SSR}}
 \newcommand{\SSE}{\text{SSE}}
 \newcommand{\SST}{\text{SST}}
@@ -49,11 +50,12 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize CS-25.08.1-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize CS-26.10-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
 \begin{document}
+\raggedright
 
 \begin{multicols}{3}
 
@@ -69,21 +71,21 @@
 
 \subsection*{Definitions}
 
-\textbf{Econometrics} - is a social science discipline with the objective of quantifying the relationships between economic agents, test economic theories and evaluate and implement government and business policies.
+\textbf{Econometrics}: Social Sciences discipline with the objective of quantifying the relationships between economic agents, testing economic theories and evaluating and implementing government and business policies.
 
-\textbf{Econometric model} - is a simplified representation of the reality to explain economic phenomena.
+\textbf{Econometric model}: Simplified representation of reality to explain economic phenomena.
 
-\textbf{\textsl{Ceteris paribus}} - if all the other relevant factors remain constant.
+\textbf{\textsl{Ceteris paribus}}: If all the other relevant factors remain constant.
 
 \subsection*{Data structures}
 
-\textbf{Cross-section} - sample taken at a given point in time, an static \textsl{photo}. Order does not matter.
+\textbf{Cross-section}: Sample taken at a given point in time, a static \textsl{photo}. Order does not matter.
 
-\textbf{Time series} - observations over time. Order does matter.
+\textbf{Time series}: Observations over time. Order does matter.
 
-\textbf{Panel data} - a time series for each observation of a cross-section.
+\textbf{Panel data}: A time series for each observation of a cross-section.
 
-\textbf{Pooled cross-sections} - cross sections from different time periods.
+\textbf{Pooled cross-sections}: Cross-sections from different time periods.
 
 \subsection*{Phases of an econometric model}
 
@@ -100,56 +102,56 @@
 
 \subsection*{Regression analysis}
 
-Study and predict the mean value of a variable (dependent variable, \( y \)) regarding the base of fixed values of other variables (independent variables, \( x \)'s). In econometrics, it is common to use Ordinary Least Squares (OLS) for regression analysis.
+Study and predict the mean value of a variable (dependent, \( y \)) based on fixed values of other variables (independents, \( x \)'s). It is very common to use Ordinary Least Squares (OLS).
 
 \subsection*{Correlation analysis}
 
 Correlation analysis does not distinguish between dependent and independent variables.
 
 \begin{itemize}[leftmargin=*]
-	\item Simple correlation measures the grade of linear association between two variables.
+	\item Simple correlation measures the degree of linear association between two variables.
 	\begin{center}
-		\( r = \frac{\Cov(x, y)}{\sigma_{x} \cdot \sigma_{y}} = \frac{\sum_{i = 1}^{n} \left( (x_{i} - \overline{x}) \cdot (y_{i} - \overline{y}) \right)}{\sqrt{\sum_{i = 1}^{n} (x_{i} - \overline{x})^{2} \cdot \sum_{i = 1}^{n} (y_{i} - \overline{y})^{2}}} \)
+		\( r = \frac{\Cov(x, y)}{s_{x} \cdot s_{y}} = \frac{\sum_{i = 1}^{n} \left( (x_{i} - \overline{x}) \cdot (y_{i} - \overline{y}) \right)}{\sqrt{\sum_{i = 1}^{n} (x_{i} - \overline{x})^{2} \cdot \sum_{i = 1}^{n} (y_{i} - \overline{y})^{2}}} \)
 	\end{center}
-	\item Partial correlation measures the grade of linear association between two variables controlling a third.
+	\item Partial correlation measures the degree of linear association between two variables controlling for a third.
 \end{itemize}
 
 \columnbreak
 
 \section*{Assumptions and properties}
 
-\subsection*{Econometric model assumptions}
+\subsection*{OLS assumptions}
 
-Under these assumptions, the OLS estimator will present good properties. \textbf{Gauss-Markov} assumptions:
+\textbf{Gauss-Markov} assumptions:
 
 \begin{enumerate}[leftmargin=*]
-	\item \textbf{Parameters linearity} (and weak dependence in time series). \( y \) must be a linear function of the \( \beta \)'s.
-	\item \textbf{Random sampling}. The sample from the population has been randomly taken. (Only when cross-section)
-	\item \textbf{No perfect collinearity}.
+	\item \textbf{Linearity in parameters} (and weak dependence in time series). \( y \) must be a linear function of the \( \beta \)'s.
+	\item \textbf{Random sampling}. The sample has been randomly taken (only when cross-section).
+	\item \textbf{No perfect collinearity}:
 	\begin{itemize}[leftmargin=*]
-		\item There are no independent variables that are constant: \( \Var(x_{j}) \neq 0, \; \forall j = 1, \ldots, k \)
+		\item There are no independent variables that are constant: \( \Var(x_{j}) \neq 0 \quad \forall j = 1, \ldots, k \)
 		\item There is no exact linear relation between independent variables.
 	\end{itemize}
-	\item \textbf{Conditional mean zero and correlation zero}.
+	\item \textbf{Conditional mean zero and correlation zero}:
 	\begin{enumerate}[leftmargin=*, label=\alph{*}.]
-		\item There are no systematic errors: \( \E(u \mid x_{1}, \ldots, x_{k}) = \E(u) = 0 \rightarrow \) \textbf{strong exogeneity} (a implies b).
-		\item There are no relevant variables left out of the model: \( \Cov(x_{j}, u) = 0, \; \forall j = 1, \ldots, k \rightarrow \) \textbf{weak exogeneity}.
+		\item There are no relevant variables left out of the model: \( \Cov(x_{j}, u) = 0 \quad \forall j = 1, \ldots, k \rightarrow \) \textbf{weak exogeneity}.
+		\item There are no systematic errors: \( \E(u \mid x_{1}, \ldots, x_{k}) = \E(u) = 0 \rightarrow \) \textbf{strong exogeneity} (4a holds).
 	\end{enumerate}
-	\item \textbf{Homoscedasticity}. The variability of the residuals is the same for all levels of \( x \): \\ \( \Var(u \mid x_{1}, \ldots, x_{k}) = \sigma_{u}^{2} \)
-	\item \textbf{No autocorrelation}. Residuals do not contain information about any other residuals: \\ \( \Corr(u_{t}, u_{s} \mid x_{1}, \ldots, x_{k}) = 0, \; \forall t \neq s \)
-	\item \textbf{Normality}. Residuals are independent and identically distributed: \( u \sim \mathcal{N} (0, \sigma_{u}^{2}) \)
-	\item \textbf{Data size}. The number of observations available must be greater than \( (k + 1) \) parameters to estimate. (It is already satisfied under asymptotic situations)
+	\item \textbf{Homoscedasticity}: The variability of the error term is the same for all levels of \( x \): \( \Var(u_{i} \mid x_{1i}, \ldots, x_{ki}) = \sigma^{2} \quad \forall i = 1, \ldots, n \)
+	\item \textbf{No autocorrelation}: Errors do not contain information about any other errors: \( \Corr(u_{t}, u_{s} \mid x_{1}, \ldots, x_{k}) = 0 \quad \forall t \neq s \)
+	\item \textbf{Normality}: Errors are independent and identically distributed: \( u \sim \mathcal{N} (0, \sigma^{2}) \)
+	\item \textbf{Data size}: The number of observations available must be greater than \( (k + 1) \) parameters to estimate. (It is already satisfied under asymptotic situations)
 \end{enumerate}
 
 \subsection*{Asymptotic properties of OLS}
 
-Under the econometric model assumptions and the Central Limit Theorem (CLT):
+Under the Gauss-Markov assumptions and the Central Limit Theorem (CLT):
 
 \begin{itemize}[leftmargin=*]
-	\item Hold 1 to 4a: OLS is \textbf{unbiased}. \( \E(\hat{\beta}_{j}) = \beta_{j} \)
-	\item Hold 1 to 4: OLS is \textbf{consistent}. \( \operatorname{plim}(\hat{\beta}_{j}) = \beta_{j} \) (to 4b left out 4a, weak exogeneity, biased but consistent)
-	\item Hold 1 to 5: \textbf{Asymptotic normality} of OLS (then, 7 is necessarily satisfied): \( u \underset{a}{\sim} \mathcal{N} (0, \sigma_{u}^{2}) \)
-	\item Hold 1 to 6: \textbf{Unbiased estimate} of \( \sigma_{u}^{2} \). \( \E(\hat{\sigma}_{u}^{2}) = \sigma_{u}^{2} \)
+	\item Hold 1 to 4a: OLS is \textbf{consistent}. \( \operatorname{plim}(\hat{\beta}_{j}) = \beta_{j} \)
+	\item Hold 1 to 4b: OLS is \textbf{unbiased}. \( \E(\hat{\beta}_{j}) = \beta_{j} \)
+	\item Hold 1 to 5: \textbf{Asymptotic normality} of estimators: \( \hat{\beta}_{j} \underset{a}{\sim} \mathcal{N} (\beta_{j}, \Var(\hat{\beta}_{j})) \)
+	\item Hold 1 to 6: \textbf{Unbiased estimate} of \( \sigma^{2} \). \( \E(\hat{\sigma}^{2}) = \sigma^{2} \)
 	\item Hold 1 to 6: OLS is \textcolor{blue}{BLUE} (Best Linear Unbiased Estimator) or \textbf{efficient}.
 	\item Hold 1 to 7: Hypothesis testing and confidence intervals can be done reliably.
 \end{itemize}
@@ -158,7 +160,7 @@ Under the econometric model assumptions and the Central Limit Theorem (CLT):
 
 \section*{Ordinary Least Squares}
 
-\textbf{Objective} - minimise the Sum of Squared Residuals (SSR):
+\textbf{Objective}: Minimise the Sum of Squared Residuals:
 
 \begin{center}
 	\( \min \sum_{i = 1}^{n} \hat{u}_{i}^{2} \), where \( \hat{u}_{i} = y_{i} - \hat{y}_{i} \)
@@ -172,7 +174,7 @@ Under the econometric model assumptions and the Central Limit Theorem (CLT):
 
 \begin{tikzpicture}[scale=0.15]
 	\draw [thick, <->] (0, 20) node [anchor=south] {\( y \)} -- (0, 0) -- (20, 0) node [anchor=south] {\( x \)}; 
-	\draw [red, thick] plot [domain=0:20] (\x, {5 + 0.5*\x});
+	\draw [red] plot [domain=0:20] (\x, {5 + 0.5*\x});
 	\draw plot [only marks, mark=*, mark size=6, domain=2:18, samples=20] (\x, {rnd*5 + 2.5 + 0.5*\x}); 
 	\draw (0.5, 0.5) -- (0.5, 4.5) node [anchor=north west] {\( \beta_{0} \)}; 
 	\draw (8, 9) -- (12, 9) arc (0:25:4); 
@@ -212,17 +214,17 @@ where:
 \begin{tikzpicture}[scale=0.15]
 	\draw [thick, ->] (0, 0) -- (7, 6) node [anchor=north west] {\( x_{2} \)}; 
 	\draw [thick, <->] (0, 20) node [anchor=south] {\( y \)} -- (0, 0) -- (20, 0) node [anchor=south] {\( x_{1} \)}; 
-	\draw [red, thick] (0, 6) -- (5, 13); 
-	\draw [red, thick] (3, 7) -- (8, 14); 
-	\draw [red, thick] (6, 8) -- (11, 15); 
-	\draw [red, thick] (9, 9) -- (14, 16); 
-	\draw [red, thick] (12, 10) -- (17, 17); 
-	\draw [red, thick] (15, 11) -- (20, 18); 
-	\draw [red, thick] (0, 6) -- (15, 11);
-	\draw [red, thick] (1.25, 7.75) -- (16.25, 12.75); 
-	\draw [red, thick] (2.5, 9.5) -- (17.5, 14.5); 
-	\draw [red, thick] (3.75, 11.25) -- (18.75, 16.25);
-	\draw [red, thick] (5, 13) -- (20, 18); 
+	\draw [red] (0, 6) -- (5, 13); 
+	\draw [red] (3, 7) -- (8, 14); 
+	\draw [red] (6, 8) -- (11, 15); 
+	\draw [red] (9, 9) -- (14, 16); 
+	\draw [red] (12, 10) -- (17, 17); 
+	\draw [red] (15, 11) -- (20, 18); 
+	\draw [red] (0, 6) -- (15, 11);
+	\draw [red] (1.25, 7.75) -- (16.25, 12.75); 
+	\draw [red] (2.5, 9.5) -- (17.5, 14.5); 
+	\draw [red] (3.75, 11.25) -- (18.75, 16.25);
+	\draw [red] (5, 13) -- (20, 18); 
 	\draw plot [only marks, mark=*, mark size=6, domain=2:18, samples=20] (\x, {rnd*6 + 4 + 0.5*\x}); 
 	\draw (0.5, 1) -- (0.5, 5.5) node [anchor=north west] {\( \beta_{0} \)};
 \end{tikzpicture}
@@ -258,12 +260,12 @@ Matrix: \( \hat{\beta} = (X^{\top} X)^{-1}(X^{\top} y) \)
 \begin{center}
 	\scalebox{0.85}{
 		\begin{tabular}{ c c c c }
-			Model       & Dependent     & Independent     & \( \beta_{1} \) interpretation                         \\ \hline
-			Level-level & \( y \)       & \( x \)         & \( \Delta y = \beta_{1} \Delta x \)                    \\
-			Level-log   & \( y \)       & \( \log(x) \)   & \( \Delta y \approx (\beta_{1} / 100) (\% \Delta x) \) \\
-			Log-level   & \( \log(y) \) & \( x \)         & \( \% \Delta y \approx (100 \beta_{1}) \Delta x \)     \\
-			Log-log     & \( \log(y) \) & \( \log(x) \)   & \( \% \Delta y \approx \beta_{1} (\% \Delta x) \)      \\
-			Quadratic   & \( y \)       & \( x + x^{2} \) & \( \Delta y = (\beta_{1} + 2 \beta_{2} x) \Delta x \)
+			Model       & Dependent     & Independent     & \( \beta_{1} \) interpretation                              \\ \hline
+			Level-level & \( y \)       & \( x \)         & \( \Delta y = \beta_{1} \Delta x \)                         \\
+			Level-log   & \( y \)       & \( \log(x) \)   & \( \Delta y \approx (\beta_{1} / 100) (\% \Delta x) \)      \\
+			Log-level   & \( \log(y) \) & \( x \)         & \( \% \Delta y \approx (100 \beta_{1}) \Delta x \)          \\
+			Log-log     & \( \log(y) \) & \( \log(x) \)   & \( \% \Delta y \approx \beta_{1} (\% \Delta x) \)           \\
+			Quadratic   & \( y \)       & \( x + x^{2} \) & \( \Delta y \approx (\beta_{1} + 2 \beta_{2} x) \Delta x \)
 		\end{tabular}
 	}
 \end{center}
@@ -276,21 +278,21 @@ Explained Sum of Squares: \hfill \( \SSE = \sum_{i = 1}^{n} (\hat{y}_{i} - \over
 
 Total Sum of Sq.: \hfill \( \SST = \SSE + \SSR = \sum_{i = 1}^{n} (y_{i} - \overline{y})^{2} \)
 
-Standard Error of the Regression: \hfill \( \hat{\sigma}_{u} = \sqrt{\frac{\SSR}{n - k - 1}} \)
+Standard Error of the Regression: \hfill \( \hat{\sigma} = \sqrt{\frac{\SSR}{n - k - 1}} \)
 
-Standard Error of the \( \hat{\beta} \)'s: \hfill \( \se(\hat{\beta}) = \sqrt{\hat{\sigma}_{u}^{2} \cdot (X^{\top} X)^{-1}} \)
+Standard Error of the \( \hat{\beta} \)'s: \hfill \( \se(\hat{\beta}) = \sqrt{ \diag ( \hat{\sigma}^{2} \cdot (X^{\top} X)^{-1} ) } \)
 
 Root Mean Squared Error: \hfill \( \text{RMSE} = \sqrt{\frac{\sum_{i = 1}^{n} (y_{i} - \hat{y}_{i})^{2}}{n}} \)
 
-Absolute Mean Error: \hfill \( \text{AME} = \frac{\sum_{i = 1}^{n} \lvert y_{i} - \hat{y}_{i} \rvert}{n} \)
+Mean Absolute Error: \hfill \( \text{MAE} = \frac{\sum_{i = 1}^{n} \lvert y_{i} - \hat{y}_{i} \rvert}{n} \)
 
-Mean Percentage Error: \hfill \( \text{MPE} = \frac{\sum_{i = 1}^{n} \lvert \hat{u}_{i} / y_{i} \rvert}{n} \cdot 100 \)
+Mean Abs. Percentage Error: \hfill \( \text{MAPE} = \frac{\sum_{i = 1}^{n} \lvert \hat{u}_{i} / y_{i} \rvert}{n} \cdot 100 \)
 
 \columnbreak
 
 \section*{R-squared}
 
-It is a measure of the \textbf{goodness of the fit}, how the regression fits the data:
+Measures the \textbf{goodness of the fit}, how the regression fits the data:
 
 \begin{center}
 	\( R^{2} = \frac{\SSE}{\SST} = 1 - \frac{\SSR}{\SST} \)
@@ -301,7 +303,7 @@ It is a measure of the \textbf{goodness of the fit}, how the regression fits the
 	\item Takes values \textbf{between 0} (no linear explanation) \textbf{and 1} (total explanation).
 \end{itemize}
 
-When the number of regressors increases, the value of the R-squared also increases, whatever the new variables are relevant or not. To solve this problem, there is an \textbf{adjusted R-squared} by degrees of freedom (or corrected):
+When the number of regressors increases, the value of the R-squared also increases, whether the new variables are relevant or not. To solve this problem, there is an \textbf{adjusted R-squared} by degrees of freedom (or corrected):
 
 \begin{center}
 	\( \overline{R}^{2} = 1 - \frac{n - 1}{n - k - 1} \cdot \frac{\SSR}{\SST} = 1 - \frac{n - 1}{n - k - 1} \cdot (1 - R^{2}) \)
@@ -313,17 +315,15 @@ For big sample sizes: \( \overline{R}^{2} \approx R^{2} \)
 
 \subsection*{Definitions}
 
-It is a rule designed to explain from a sample, if exists \textbf{evidence or not to reject a hypothesis} that is made about one or more population parameters.
-
-Elements of a hypothesis test:
+Rule designed to determine from a sample \textbf{whether there is evidence to reject a hypothesis} that is made about one or more population parameters. Elements:
 
 \begin{itemize}[leftmargin=*]
-	\item \textbf{Null hypothesis} \( (H_{0}) \) - is the hypothesis to be tested.
-	\item \textbf{Alternative hypothesis} \( (H_{1}) \) - is the hypothesis that cannot be rejected when \( H_{0} \) is rejected.
-	\item \textbf{Test statistic} - is a random variable whose probability distribution is known under \( H_{0} \).
-	\item \textbf{Critical value} \( (C) \) - is the value against which the test statistic is compared to determine if \( H_{0} \) is rejected or not. It sets the frontier between the regions of acceptance and rejection of \( H_{0} \).
-	\item \textbf{Significance level} \( (\alpha) \) - is the probability of rejecting \( H_{0} \) being true (Type I Error). It is chosen by those who conduct the test. It is commonly 10\%, 5\% or 1\%.
-	\item \textbf{p-value} - is the highest level of significance by which \( H_{0} \) cannot be rejected.
+	\item \textbf{Null hypothesis} \( (H_{0}) \): Hypothesis to be tested.
+	\item \textbf{Alternative hypothesis} \( (H_{1}) \): Hypothesis that cannot be rejected when \( H_{0} \) is rejected.
+	\item \textbf{Test statistic}: Random variable whose probability distribution is known under \( H_{0} \).
+	\item \textbf{Critical value} \( (C) \): Value against which the test statistic is compared to determine if \( H_{0} \) is rejected or not. It sets the frontier between the regions of acceptance and rejection of \( H_{0} \).
+	\item \textbf{Significance level} \( (\alpha) \): Probability of rejecting \( H_{0} \) being true (Type I Error). Chosen by those who conduct the test. Commonly 10\%, 5\% or 1\%.
+	\item \textbf{p-value}: Lowest level of significance at which \( H_{0} \) can be rejected.
 \end{itemize}
 
 \setlength{\multicolsep}{0pt}
@@ -334,14 +334,14 @@ Elements of a hypothesis test:
 	\node at (0, 15) {Two-tailed test. \( H_{0} \) dist.}; 
 	\fill [red] (12, 0) -- plot [domain=12:18, smooth] (\x, {cos(\x*10)*6 + 6}); 
 	\fill [red] (-12, 0) -- plot [domain=-18:-12, smooth] (\x, {cos(\x*10)*6 + 6}); 
-	\draw [thick] plot [domain=-18:18, smooth] (\x, {cos(\x*10)*6 + 6}); 
+	\draw plot [domain=-18:18, smooth] (\x, {cos(\x*10)*6 + 6}); 
 	\draw [thick, <->] (-20, 0) -- (20, 0); 
-	\draw [thick, dashed] (12, 0) -- (12, 7); 
-	\draw [thick, dashed] (-12, 0) -- (-12, 7); 
+	\draw [dashed] (12, 0) -- (12, 7); 
+	\draw [dashed] (-12, 0) -- (-12, 7); 
 	\node at (0, 2) {Accept. region}; 
 	\node at (0, 7) {\( 1 - \alpha \)}; 
-	\node [red] at (-16, 4) {\( \alpha /\ 2 \)}; 
-	\node [red] at (16, 4) {\( \alpha /\ 2 \)}; 
+	\node [red] at (-16, 4) {\( \alpha / 2 \)}; 
+	\node [red] at (16, 4) {\( \alpha / 2 \)}; 
 	\node at (12, 9) {\( C \)}; 
 	\node at (-13, 9) {\( -C \)};
 \end{tikzpicture}
@@ -351,9 +351,9 @@ Elements of a hypothesis test:
 \begin{tikzpicture}[scale=0.10]
 	\node at (0, 15) {One-tailed test. \( H_{0} \) dist.}; 
 	\fill [red] (9, 0) -- plot [domain=9:18, smooth] (\x, {cos(\x*10)*6 + 6}); 
-	\draw [thick] plot [domain=-18:18, smooth] (\x, {cos(\x*10)*6 + 6}); 
+	\draw plot [domain=-18:18, smooth] (\x, {cos(\x*10)*6 + 6}); 
 	\draw [thick, <->] (-20, 0) -- (20, 0); 
-	\draw [thick, dashed] (9, 0) -- (9, 7); 
+	\draw [dashed] (9, 0) -- (9, 7); 
 	\node at (-1, 2) {Accept. reg.};
 	\node at (0, 7) {\( 1 - \alpha \)}; 
 	\node [red] at (14, 4) {\( \alpha \)}; 
@@ -362,13 +362,13 @@ Elements of a hypothesis test:
 
 \end{multicols}
 
-\textbf{The rule is}: if p-value \( < \alpha \) holds, there is evidence to reject \( H_{0} \), thus, there is evidence to accept \( H_{1} \).
+If p-value \( < \alpha \) holds, there is evidence to reject \( H_{0} \), thus, there is evidence to accept \( H_{1} \).
 
 \columnbreak
 
 \subsection*{Individual tests}
 
-Tests if a parameter is significantly different from a given value, \( \vartheta \).
+Tests whether a parameter is significantly different from a given value, \( \vartheta \).
 
 \begin{itemize}[leftmargin=*]
 	\item \( H_{0}: \beta_{j} = \vartheta \)
@@ -376,12 +376,12 @@ Tests if a parameter is significantly different from a given value, \( \vartheta
 \end{itemize}
 
 \begin{center}
-	Under \( H_{0} \): \quad \( t = \frac{\hat{\beta}_{j} - \vartheta}{\se(\hat{\beta}_{j})} \sim t_{n - k - 1, \alpha / 2} \)
+	Under \( H_{0} \): \quad \( t = \frac{\hat{\beta}_{j} - \vartheta}{\se(\hat{\beta}_{j})} \sim t_{n - k - 1} \)
 \end{center}
 
 If \( \lvert t \rvert > \lvert t_{n - k - 1, \alpha / 2} \rvert \), there is evidence to reject \( H_{0} \).
 
-\textbf{Individual significance test} - tests if a parameter is significantly \textbf{different from zero}.
+\textbf{Individual significance test}: Tests whether a parameter is significantly \textbf{different from zero}.
 
 \begin{itemize}[leftmargin=*]
 	\item \( H_{0}: \beta_{j} = 0 \)
@@ -389,43 +389,43 @@ If \( \lvert t \rvert > \lvert t_{n - k - 1, \alpha / 2} \rvert \), there is evi
 \end{itemize}
 
 \begin{center}
-	Under \( H_{0} \): \quad \( t = \frac{\hat{\beta}_{j}}{\se(\hat{\beta}_{j})} \sim t_{n - k - 1, \alpha / 2} \)
+	Under \( H_{0} \): \quad \( t = \frac{\hat{\beta}_{j}}{\se(\hat{\beta}_{j})} \sim t_{n - k - 1} \)
 \end{center}
 
 If \( \lvert t \rvert > \lvert t_{n - k - 1, \alpha / 2} \rvert \), there is evidence to reject \( H_{0} \).
 
 \subsection*{The F test}
 
-Simultaneously tests multiple (linear) hypothesis about the parameters. It makes use of a non-restricted model and a restricted model:
+Simultaneously tests multiple (linear) hypotheses about the parameters. It makes use of a non-restricted model and a restricted model:
 
 \begin{itemize}[leftmargin=*]
-	\item \textbf{Non-restricted model} - is the model on which we want to test the hypothesis.
-	\item \textbf{Restricted model} - is the model on which the hypothesis that we want to test has been imposed.
+	\item \textbf{Non-restricted model}: Model on which we want to test the hypotheses.
+	\item \textbf{Restricted model}: Model on which the hypotheses have been imposed.
 \end{itemize}
 
 Then, looking at the errors, there are:
 
 \begin{itemize}[leftmargin=*]
-	\item \textbf{\( \SSR_{\text{UR}} \)} - is the \( \SSR \) of the non-restricted model.
-	\item \textbf{\( \SSR_{\text{R}} \)} - is the \( \SSR \) of the restricted model.
+	\item \textbf{\( \SSR_{\text{UR}} \)}: \( \SSR \) of the non-restricted model.
+	\item \textbf{\( \SSR_{\text{R}} \)}: \( \SSR \) of the restricted model.
 \end{itemize}
 
 \begin{center}
 	Under \( H_{0} \): \quad \( F = \frac{\SSR_{\text{R}} - \SSR_{\text{UR}}}{\SSR_{\text{UR}}} \cdot \frac{n - k - 1}{q} \sim F_{q, n - k - 1} \)
 \end{center}
 
-where \( k \) is the number of parameters of the non-restricted model and \( q \) is the number of linear hypothesis tested.
+where \( k \) is the number of parameters of the non-restricted model (excluding the constant) and \( q \) is the number of linear hypotheses tested.
 
 If \( F > F_{q, n - k - 1} \), there is evidence to reject \( H_{0} \).
 
-\textbf{Global significance test} - tests if all the parameters associated with \( x \)'s are \textbf{simultaneously equal to zero}.
+\textbf{Global significance test}: Tests whether all parameters associated with the \( x \)'s are \textbf{simultaneously equal to zero}.
 
 \begin{itemize}[leftmargin=*]
 	\item \( H_{0}: \beta_{1} = \beta_{2} = \cdots = \beta_{k} = 0 \)
 	\item \( H_{1}: \beta_{1} \neq 0 \) and/or \( \beta_{2} \neq 0 \ldots \) and/or \( \beta_{k} \neq 0 \)
 \end{itemize}
 
-We can simplify the formula for the \( F \) statistic:
+Simplifying the formula for the \( F \) statistic:
 
 \begin{center}
 	Under \( H_{0} \): \quad \( F = \frac{R^{2}}{1 - R^{2}} \cdot \frac{n - k - 1}{k} \sim F_{k, n - k - 1} \)
@@ -435,10 +435,10 @@ If \( F > F_{k, n - k - 1} \), there is evidence to reject \( H_{0} \).
 
 \section*{Confidence intervals}
 
-The confidence intervals at \( (1 - \alpha) \) confidence level can be calculated:
+The confidence interval at \( (1 - \alpha) \) confidence level:
 
 \begin{center}
-	\( \hat{\beta}_{j} \mp t_{n - k - 1, \alpha / 2} \cdot \se(\hat{\beta}_{j}) \)
+	\( \hat{\beta}_{j} \pm t_{n - k - 1, \alpha / 2} \cdot \se(\hat{\beta}_{j}) \)
 \end{center}
 
 \columnbreak
@@ -448,11 +448,11 @@ The confidence intervals at \( (1 - \alpha) \) confidence level can be calculate
 Dummy (or binary) variables are used for qualitative information like sex, civil status, country, etc.
 
 \begin{itemize}[leftmargin=*]
-	\item Takes the \textbf{value 1} in a given category and \textbf{0 in the rest}.
-	\item Are used to analyse and model \textbf{structural changes} in the parameters.
+	\item Take the \textbf{value 1} in a given category and \textbf{0 in the rest}.
+	\item They are used to analyse and model \textbf{structural changes} in the parameters.
 \end{itemize}
 
-If a qualitative variable has \( m \) categories, only \( (m - 1) \) dummy variables must be included in the model.
+If a qualitative variable has \( m \) categories, only \( (m - 1) \) dummy variables must be included in a model with an intercept (include all \( m \) if the model has no intercept).
 
 \subsection*{Structural change}
 
@@ -461,64 +461,69 @@ Structural change refers to changes in the values of the parameters of the econo
 The location of the dummy variables \( (D) \) matters:
 
 \begin{itemize}[leftmargin=*]
-	\item \textbf{On the intercept} (additive effect) - represents the mean difference between the values produced by the structural change.
+	\item \textbf{On the intercept} (additive effect): Represents the mean difference between the values produced by the structural change.
 	\begin{center}
 		\( y = \beta_{0} + \delta_{1} D + \beta_{1} x_{1} + u \)
 	\end{center}
-	\item \textbf{On the slope} (multiplicative effect) - represents the effect (slope) difference between the values produced by the structural change.
+	\item \textbf{On the slope} (multiplicative effect): Represents the effect (slope) difference between the values produced by the structural change.
 	\begin{center}
 		\( y = \beta_{0} + \beta_{1} x_{1} + \delta_{1} D \cdot x_{1} + u \)
 	\end{center}
 \end{itemize}
 
-\textbf{Chow's structural test} - analyse the existence of structural changes in all the model parameters, it's a particular expression of the F test, where \( H_{0} \): No structural change (all \( \delta = 0 \)).
+\textbf{Chow's structural test}: Tests the existence of structural changes in all the model parameters. It is a particular expression of the F test, where \( H_{0} \): No structural change (all \( \delta = 0 \)).
 
 \section*{Changes of scale}
 
 Changes in the \textbf{measurement units} of the variables:
 
 \begin{itemize}[leftmargin=*]
-	\item In the \textbf{endogenous} variable, \( y^{*} = y \cdot \lambda \) - affects all model parameters, \( \beta_{j}^{*} = \beta_{j} \cdot \lambda, \; \forall j = 1, \ldots, k \)
-	\item In an \textbf{exogenous} variable, \( x_{j}^{*} = x_{j} \cdot \lambda \) - only affect the parameter linked to said exogenous variable, \( \beta_{j}^{*} = \beta_{j} \cdot \lambda \)
-	\item Same scale change on endogenous and exogenous - only affects the intercept, \( \beta_{0}^{*} = \beta_{0} \cdot \lambda \)
+	\item \textbf{Endogenous}: \( y^{*} = y \cdot \lambda \rightarrow \beta_{j}^{*} = \beta_{j} \cdot \lambda \quad \forall j = 0, \ldots, k \)
+	\item \textbf{Exogenous}: \( x_{j}^{*} = x_{j} \cdot \lambda \rightarrow \beta_{j}^{*} = \beta_{j} / \lambda \)
+	\item Endogenous and exogenous at the same time: \( y^{*} = y \cdot \lambda \) and \( x_{j}^{*} = x_{j} \cdot \lambda \rightarrow \beta_{0}^{*} = \beta_{0} \cdot \lambda \)
 \end{itemize}
 
 \section*{Changes of origin}
 
-Changes in the \textbf{measurement origin} of the variables (endogenous or exogenous), \( y^{*} = y + \lambda \) - only affects the model's intercept, \( \beta_{0}^{*} = \beta_{0} + \lambda \)
+Changes in the \textbf{measurement origin} of the variables only affects the model's intercept:
+
+\begin{itemize}[leftmargin=*]
+	\item \textbf{Endogenous}: \( y^{*} = y + \lambda \rightarrow \beta_{0}^{*} = \beta_{0} + \lambda \)
+	\item \textbf{Exogenous}: \( x_{j}^{*} = x_{j} + \lambda \rightarrow \beta_{0}^{*} = \beta_{0} - \lambda \beta_{j} \)
+\end{itemize}
 
 \columnbreak
 
 \section*{Multicollinearity}
 
 \begin{itemize}[leftmargin=*]
-	\item \textbf{Perfect multicollinearity} - there are independent variables that are constant and/or there is an exact linear relation between independent variables. Is the \textbf{breaking of the third (3) econometric} model \textbf{assumption}.
-	\item \textbf{Approximate multicollinearity} - there are independent variables that are approximately constant and/or there is an approximately linear relation between independent variables. It \textbf{does not break any econometric} model \textbf{assumption} but affects OLS.
+	\item \textbf{Perfect multicollinearity}: There are independent variables that are constant and/or there is an exact linear relation between independent variables. This \textbf{breaks the third (3)} OLS \textbf{assumption}.
+	\item \textbf{Approximate multicollinearity}: There are independent variables that are approximately constant and/or there is an approximately linear relation between independent variables. This \textbf{does not break any} OLS \textbf{assumption}, but there are effects.
 \end{itemize}
 
 \subsection*{Consequences}
 
 \begin{itemize}[leftmargin=*]
-	\item \textbf{Perfect multicollinearity} - the equation system of OLS cannot be solved due to infinite solutions.
+	\item \textbf{Perfect multicollinearity}: The equation system of OLS cannot be solved due to infinite solutions.
 	\item \textbf{Approximate multicollinearity}
 	\begin{itemize}[leftmargin=*]
-		\item Small sample variations can induce to big variations in the OLS estimations.
-		\item The variance of the OLS estimators of the \( x \)'s that are collinear, increments, thus the inference of the parameter is affected. The estimation of the parameter is very imprecise (big confidence interval).
+		\item Small sample variations can induce big variations in the OLS estimations.
+		\item The variance of the OLS estimators of the \( x \)'s that are collinear, increases, thus the inference of the parameter is affected. The estimation of the parameter is very imprecise (big confidence interval).
 	\end{itemize}
 \end{itemize}
 
 \subsection*{Detection}
 
 \begin{itemize}[leftmargin=*]
-	\item \textbf{Correlation analysis} - look for high correlations between independent variables, \( \lvert r \rvert > 0.7 \).
-	\item \textbf{Variance Inflation Factor (VIF)} - indicates the increment of \( \Var(\hat{\beta}_{j}) \) because of the multicollinearity.
+	\item \textbf{Correlation analysis}: Look for high correlations between independent variables, \( \lvert r \rvert > 0.7 \).
+	\item \textbf{Variance Inflation Factor (VIF)}: Indicates the increase of \( \Var(\hat{\beta}_{j}) \) because of the multicollinearity.
 	\begin{center}
 		\( \operatorname{VIF}(\hat{\beta}_{j}) = \frac{1}{1 - R_{j}^{2}} \)
 	\end{center}
 	where \( R_{j}^{2} \) denotes the R-squared from a regression between \( x_{j} \) and all the other \( x \)'s.
 	\begin{itemize}[leftmargin=*]
-		\item Values between 4 to 10 - there might be multicollinearity problems.
-		\item Values \( > 10 \) - there are multicollinearity problems.
+		\item Values between 4 to 10: There might be multicollinearity problems.
+		\item Values \( > 10 \): There are multicollinearity problems.
 	\end{itemize}
 \end{itemize}
 
@@ -528,7 +533,7 @@ One typical characteristic of multicollinearity is that the regression coefficie
 
 \begin{itemize}[leftmargin=*]
 	\item Delete one of the collinear variables.
-	\item Perform factorial analysis (or any other dimension reduction technique) on the collinear variables.
+	\item Perform factor analysis (or any other dimension reduction technique) on the collinear variables.
 	\item Interpret coefficients with multicollinearity jointly.
 \end{itemize}
 
@@ -536,21 +541,21 @@ One typical characteristic of multicollinearity is that the regression coefficie
 
 \section*{Heteroscedasticity}
 
-The residuals \( u_{i} \) of the population regression function do not have the same variance \( \sigma_{u}^{2} \):
+The error term \( u_{i} \) does not have a constant variance conditional to the explanatory variables:
 
 \begin{center}
-	\( \Var(u \mid x_{1}, \ldots, x_{k}) = \Var(u) \neq \sigma_{u}^{2} \)
-\end{center}
+	\( \Var(u_{i} \mid x_{1i}, \ldots, x_{ki}) = \sigma_{i}^{2} \neq \sigma^{2} \)
+\end{center}	
 
-Is the \textbf{breaking of the fifth (5) econometric} model \textbf{assumption}.
+This \textbf{breaks the fifth (5)} OLS \textbf{assumption}.
 
 \subsection*{Consequences}
 
 \begin{itemize}[leftmargin=*]
-	\item OLS estimators are still unbiased.
 	\item OLS estimators are still consistent.
-	\item OLS is \textbf{not efficient} any more, but still a LUE (Linear Unbiased Estimator).
-	\item \textbf{Variance estimations} of the estimators are \textbf{biased}: the construction of confidence intervals and the hypothesis testing is not reliable.
+	\item OLS estimators are still unbiased.
+	\item OLS is \textbf{no longer efficient}, but still a LUE (Linear Unbiased Estimator).
+	\item \textbf{Variance estimations} of the estimators are \textbf{biased}: The construction of confidence intervals and the hypothesis testing is not reliable.
 \end{itemize}
 
 \subsection*{Detection}
@@ -559,24 +564,24 @@ Is the \textbf{breaking of the fifth (5) econometric} model \textbf{assumption}.
 	\setlength{\multicolsep}{0pt}
 	\setlength{\columnsep}{20pt}
 	\begin{multicols}{3}
-	\item \textbf{Graphs} - look for scatter patterns on \( x \) vs. \( u \) or \( x \) vs. \( y \) plots.
+	\item \textbf{Graphs}: Identify scatter patterns on \( x \) vs. \( u \) or \( x \) vs. \( y \).
 	\columnbreak
 	\begin{tikzpicture}[scale=0.108]
 		\draw [thick, ->] (0, 10) -- (20, 10) node [anchor=north] {\( x \)}; 
 		\draw [thick, -] (0, 0) -- (0, 20) node [anchor=west] {\( u \)}; 
 		\draw plot [only marks, mark=*, mark size=6, domain=2:18, samples=50] (\x, {-0.5*rand*\x + 10}); 
-		\draw [thick, dashed, red, -latex] plot [domain=1:18] (\x, {-0.5*\x + 9.5}); 
-		\draw [thick, dashed, red, -latex] plot [domain=1:18] (\x, {0.5*\x + 10.5});
+		\draw [dashed, red, -latex] plot [domain=1:18] (\x, {-0.5*\x + 9.5}); 
+		\draw [dashed, red, -latex] plot [domain=1:18] (\x, {0.5*\x + 10.5});
 	\end{tikzpicture}
 	\columnbreak
 	\begin{tikzpicture}[scale=0.108]
 		\draw [thick, <->] (0, 20) node [anchor=west] {\( y \)} -- (0, 0) -- (20, 0) node [anchor=south] {\( x \)}; 
 		\draw plot [only marks, mark=*, mark size=6, domain=2:16, samples=50] (\x, {0.5*\x*(rand + 1) + 2}); 
-		\draw [thick, dashed, red, -latex] plot [domain=1:16] (\x, {1.5}); 
-		\draw [thick, dashed, red, -latex] plot [domain=1:16] (\x, {1*\x + 2.5});
+		\draw [dashed, red, -latex] plot [domain=1:16] (\x, {1.5}); 
+		\draw [dashed, red, -latex] plot [domain=1:16] (\x, {1*\x + 2.5});
 	\end{tikzpicture}
 	\end{multicols}
-	\item \textbf{Formal tests} - White, Bartlett, Breusch-Pagan, etc. Commonly, \( H_{0} \): No heteroscedasticity.
+	\item \textbf{Formal tests}: White, Bartlett, Breusch-Pagan, etc. Commonly, \( H_{0} \): No heteroscedasticity.
 \end{itemize}
 
 \subsection*{Correction}
@@ -585,8 +590,8 @@ Is the \textbf{breaking of the fifth (5) econometric} model \textbf{assumption}.
 	\item Use OLS with a variance-covariance matrix estimator robust to heteroscedasticity (HC), for example, the one proposed by White.
 	\item If the variance structure is known, make use of Weighted Least Squares (WLS) or Generalized Least Squares (GLS):
 	\begin{itemize}[leftmargin=*]
-		\item Supposing that \( \Var(u) = \sigma_{u}^{2} \cdot x_{i} \), divide the model variables by the square root of \( x_{i} \) and apply OLS.
-		\item Supposing that \( \Var(u) = \sigma_{u}^{2} \cdot x_{i}^{2} \), divide the model variables by \( x_{i} \) (the square root of \( x_{i}^{2} \)) and apply OLS.
+		\item Supposing that \( \Var(u_{i}) = \sigma^{2} \cdot x_{i} \), divide the model variables by the square root of \( x_{i} \) and apply OLS.
+		\item Supposing that \( \Var(u_{i}) = \sigma^{2} \cdot x_{i}^{2} \), divide the model variables by \( x_{i} \) (the square root of \( x_{i}^{2} \)) and apply OLS.
 	\end{itemize}
 	\item If the variance structure is not known, make use of Feasible Weighted Least Squares (FWLS), which estimates a possible variance, divides the model variables by it, and then apply OLS.
 	\item Make a new model specification, for example, logarithmic transformation (lower variance).
@@ -596,27 +601,27 @@ Is the \textbf{breaking of the fifth (5) econometric} model \textbf{assumption}.
 
 \section*{Autocorrelation}
 
-The residual of any observation, \( u_{t} \), is correlated with the residual of any other observation. The observations are not independent.
+The error terms \( u_{t} \) and \( u_{s} \) are correlated across different time periods conditional on the explanatory variables:
 
 \begin{center}
-	\( \Corr(u_{t}, u_{s} \mid x_{1}, \ldots, x_{k}) = \Corr(u_{t}, u_{s}) \neq 0, \quad \forall t \neq s \)
+	\( \Corr(u_{t}, u_{s} \mid x_{1}, \ldots, x_{k}) \neq 0 \quad \exists t \neq s \)
 \end{center}
 
-The ``natural" context of this phenomenon is time series. Is the \textbf{breaking of the sixth (6) econometric} model \textbf{assumption}.
+The ``natural" context of this phenomenon is time series. This \textbf{breaks the sixth (6)} OLS \textbf{assumption}.
 
 \subsection*{Consequences}
 
 \begin{itemize}[leftmargin=*]
-	\item OLS estimators are still unbiased.
 	\item OLS estimators are still consistent.
-	\item OLS is \textbf{not efficient} any more, but still a LUE (Linear Unbiased Estimator).
+	\item OLS estimators are still unbiased.
+	\item OLS is \textbf{no longer efficient}, but still a LUE (Linear Unbiased Estimator).
 	\item \textbf{Variance estimations} of the estimators are \textbf{biased}: the construction of confidence intervals and the hypothesis testing is not reliable.
 \end{itemize}
 
 \subsection*{Detection}
 
 \begin{itemize}[leftmargin=*]
-	\item \textbf{Graphs} - look for scatter patterns on \( u_{t - 1} \) vs. \( u_{t} \) or make use of a correlogram.
+	\item \textbf{Graphs}: Identify scatter patterns on \( u_{t - 1} \) vs. \( u_{t} \) or make use of a correlogram.
 	
 	\setlength{\multicolsep}{0pt}
 	\setlength{\columnsep}{6pt}
@@ -627,7 +632,7 @@ The ``natural" context of this phenomenon is time series. Is the \textbf{breakin
 			\draw [thick, ->] (0, 10) -- (20, 10) node [anchor=south] {\( u_{t - 1} \)}; 
 			\draw [thick, -] (0, 0) -- (0, 20) node [anchor=west] {\( u_{t} \)}; 
 			\draw plot [only marks, mark=*, mark size=6, domain=2:18, samples=50] (\x, {-0.2*(\x - 10)^2 + 13 + 6*rnd}); 
-			\draw [thick, dashed, red, -latex] plot [domain=2:18] (\x, {-0.2*(\x - 10)^2 + 16});
+			\draw [dashed, red, -latex] plot [domain=2:18] (\x, {-0.2*(\x - 10)^2 + 16});
 		\end{tikzpicture}
 	\end{center}
 	\columnbreak
@@ -637,7 +642,7 @@ The ``natural" context of this phenomenon is time series. Is the \textbf{breakin
 			\draw [thick, ->] (0, 10) -- (20, 10) node [anchor=north] {\( u_{t - 1} \)}; 
 			\draw [thick, -] (0, 0) -- (0, 20) node [anchor=west] {\( u_{t} \)}; 
 			\draw plot [only marks, mark=*, mark size=6, domain=2:18, samples=20] (\x, {5*rnd + 2.5 + 0.5*\x}); 
-			\draw [thick, dashed, red, -latex] plot [domain=2:18] (\x, {5 + 0.5*\x});
+			\draw [dashed, red, -latex] plot [domain=2:18] (\x, {5 + 0.5*\x});
 		\end{tikzpicture}
 	\end{center}
 	\columnbreak
@@ -647,11 +652,11 @@ The ``natural" context of this phenomenon is time series. Is the \textbf{breakin
 			\draw [thick, ->] (0, 10) -- (20, 10) node [anchor=south] {\( u_{t - 1} \)}; 
 			\draw [thick, -] (0, 0) -- (0, 20) node [anchor=west] {\( u_{t} \)}; 
 			\draw plot [only marks, mark=*, mark size=6, domain=2:18, samples=20] (\x, {5*rnd + 12.5 - 0.5*\x}); 
-			\draw [thick, dashed, red, -latex] plot [domain=2:18] (\x, {15 - 0.5*\x});
+			\draw [dashed, red, -latex] plot [domain=2:18] (\x, {15 - 0.5*\x});
 		\end{tikzpicture}
 	\end{center}
 	\end{multicols}
-	\item \textbf{Formal tests} - Durbin-Watson, Breusch-Godfrey, etc. Commonly, \( H_{0} \): No autocorrelation.
+	\item \textbf{Formal tests}: Durbin-Watson, Breusch-Godfrey, etc. Commonly, \( H_{0} \): No autocorrelation.
 \end{itemize}
 
 \subsection*{Correction}
@@ -660,8 +665,8 @@ The ``natural" context of this phenomenon is time series. Is the \textbf{breakin
 	\item Use OLS with a variance-covariance matrix estimator robust to heteroscedasticity and autocorrelation (HAC), for example, the one proposed by Newey-West.
 	\item Use Generalized Least Squares. Supposing \( y_{t} = \beta_{0} + \beta_{1} x_{t} + u_{t} \), with \( u_{t} = \rho u_{t - 1} + \varepsilon_{t} \), where \( \lvert \rho \rvert < 1 \) and \( \varepsilon_{t} \) is white noise.
 	\begin{itemize}[leftmargin=*]
-		\item If \( \rho \) is known, create a quasi-differentiated model where \( u_{t} \) is white noise and estimate it by OLS.
-		\item If \( \rho \) is not known, estimate it by -for example- the Cochrane-Orcutt method, create a quasi-differentiated model where \( u_{t} \) is white noise and estimate it by OLS.
+		\item If \( \rho \) is known, create a quasi-differenced model where \( \varepsilon_{t} \) is white noise and estimate it by OLS.
+		\item If \( \rho \) is not known, estimate it by, for example, the Cochrane-Orcutt method, create a quasi-differenced model where \( \varepsilon_{t} \) is white noise and estimate it by OLS.
 	\end{itemize}
 \end{itemize}
 
