@@ -13,6 +13,7 @@
 \usepackage{parskip} % Layout with zero \parindent, non-zero \parskip
 \usepackage{tikz} % Create PostScript and PDF graphics in TeX
 \usepackage{titlesec} % Select alternative section titles
+\usepackage{xcolor} % Driver-independent color extensions
 
 % ----- pdf metadata -----
 \hypersetup{
@@ -45,7 +46,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-26.10-ES - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-26.10.1-ES - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -127,13 +128,21 @@ Dado el formato de una serie temporal:
 	\end{itemize}
 	\item \textbf{Media condicional cero y correlación cero}:
 	\begin{enumerate}[leftmargin=*, label=\alph{*}.]
-		\item No hay variables relevantes no incluidas en el modelo: \( \Cov(x_{jt} , u_{t}) = 0 \quad \forall j = 1, \ldots, k \rightarrow \) \textbf{exogeneidad}
-		\item No hay errores sistemáticos: \( \E(u_{t} \mid \mathrm{X}) = \E(u_{t} \mid \ldots, \mathrm{x}_{t+1}, \mathrm{x}_{t}, \mathrm{x}_{t-1}, \ldots) = 0 \quad \forall t \rightarrow \) \textbf{exogeneidad estricta} (cumple 3a)
+		\item No hay variables relevantes fuera del modelo: \( \Cov(x_{jt} , u_{t}) = 0 \quad \forall j = 1, \ldots, k \rightarrow \) \textbf{exogeneidad}
+		\item No hay errores sistemáticos: \\
+		\( \E(u_{t} \mid \mathrm{X}) = \E(u_{t} \mid \ldots, \mathrm{x}_{t+1}, \mathrm{x}_{t}, \mathrm{x}_{t-1}, \ldots) = 0 \quad \forall t \) \\
+		\( \rightarrow \) \textbf{exogeneidad estricta} (cumple 3a)
 	\end{enumerate}
-	\item \textbf{Homocedasticidad}: La variabilidad del término de error es igual para todos los niveles \( x \): \( \Var(u_{t} \mid x_{1t}, \ldots, x_{kt}) = \sigma^{2} \quad \forall t = 1, \ldots, T \)
-	\item \textbf{No autocorrelación}: Los errores no contienen información sobre otros errores: \( \Corr(u_{t}, u_{s} \mid x_{1}, \ldots, x_{k}) = 0 \quad \forall t \neq s \)
-	\item \textbf{Normalidad}: Los errores son independientes e idénticamente distribuidos (\textbf{i.i.d.}): \( u_{t} \sim \mathcal{N} (0, \sigma^{2}) \)
-	\item \textbf{Tamaño de datos}: El número de observaciones disponibles debe ser mayor a \( (k + 1) \) parámetros a estimar. (Ya satisfecho bajo situaciones asintóticas)
+	\item \textbf{Homocedasticidad}: La variabilidad del término de error es igual para todos los niveles \( x \):
+	\begin{center}
+		\( \Var(u_{t} \mid x_{1t}, \ldots, x_{kt}) = \sigma^{2} \quad \forall t = 1, \ldots, T \)
+	\end{center}
+	\item \textbf{No autocorrelación}: Los errores no contienen información sobre otros errores:
+	\begin{center}
+		\( \Corr(u_{t}, u_{s} \mid x_{1}, \ldots, x_{k}) = 0 \quad \forall t \neq s \)
+	\end{center}
+	\item \textbf{Normalidad}: Los errores son independientes e idénticamente distribuidos: \( u_{t} \overset{iid}{\sim} \mathcal{N} (0, \sigma^{2}) \)
+	\item \textbf{Tamaño de datos}: El número de observaciones disponibles debe ser mayor a \( (k + 1) \) parámetros a estimar.
 \end{enumerate}
 
 \subsection*{Propiedades asintóticas de MCO}
@@ -141,10 +150,10 @@ Dado el formato de una serie temporal:
 Bajo los supuestos Gauss-Markov y el Teorema Central del Límite (TCL):
 
 \begin{itemize}[leftmargin=*]
-	\item De t1 a t3a: MCO es \textbf{consistente}. \( \operatorname{plim}(\hat{\beta}_{j}) = \beta_{j} \)
-	\item De t1 a t3b: MCO es \textbf{insesgado}. \( \E(\hat{\beta}_{j}) = \beta_{j} \)
+	\item De t1 a t3a: MCO es \textbf{consistente}: \( \operatorname{plim}(\hat{\beta}_{j}) = \beta_{j} \)
+	\item De t1 a t3b: MCO es \textbf{insesgado}: \( \E(\hat{\beta}_{j}) = \beta_{j} \)
 	\item De t1 a t5: \textbf{normalidad asintótica} de estimadores: \( \hat{\beta}_{j} \underset{a}{\sim} \mathcal{N} (\beta_{j}, \Var(\hat{\beta}_{j})) \)
-	\item De t1 a t5: \textbf{estimador insesgado} de \( \sigma^{2} \). \( \E(\hat{\sigma}^{2}) = \sigma^{2} \)
+	\item De t1 a t5: \textbf{estimador insesgado} de \( \sigma^{2} \): \( \E(\hat{\sigma}^{2}) = \sigma^{2} \)
 	\item De t1 a t5: MCO es MELI (Mejor Estimador Lineal Insesgado, \textcolor{blue}{BLUE} en inglés) or \textbf{eficiente}.
 	\item De t1 a t6: contrastes de hipótesis e intervalos de confianza son fiables.
 \end{itemize}
@@ -221,7 +230,7 @@ Otra manera, es hacer uso del \textbf{filtro Hodrick-Prescott} y extraer la tend
 
 \vspace*{0.1cm}
 
-Por ejemplo, el PIB es mayor en verano y menor en invierno (serie ajustada estacionalmente en {\color{red} rojo discontinuo}).
+Por ejemplo, el PIB es mayor en verano y menor en invierno (serie ajustada estacionalmente en {\color{red} discontinuo}).
 
 \begin{itemize}[leftmargin=*]
 	\item La regresión de series temporales que presentan estacionalidad puede conducir a \textbf{resultados espurios}.
@@ -314,7 +323,7 @@ Los términos de error \( u_{t} \) y \( u_{s} \) están correlacionados a lo lar
 		\node at (-1, 17.5) {\small 1};
 		\node at (-1, 14) {\small 0};
 		\node at (-1, 10.5) {\small -1}; 
-		\fill [lightgray] (0, 13) rectangle (30.5, 15); 
+		\fill [gray!25] (0, 13) rectangle (30.5, 15); 
 		\draw [dashed, thin] (0, 14) -- (30.5, 14); 
 		\draw [thick, |->] (0, 18) -- (0, 10) -- (30.5, 10);
 		\fill [red] (2, 14) rectangle (2.5, 17.95);
@@ -332,7 +341,7 @@ Los términos de error \( u_{t} \) y \( u_{s} \) están correlacionados a lo lar
 		\node at (-1, 7.5) {\small 1};
 		\node at (-1, 4) {\small 0};
 		\node at (-1, 0.5) {\small -1};
-		\fill [lightgray] (0, 3) rectangle (30.5, 5);
+		\fill [gray!25] (0, 3) rectangle (30.5, 5);
 		\draw [dashed, thin] (0, 4) -- (30.5, 4);
 		\draw [thick, |->] (0, 8) -- (0, 0) -- (30.5, 0);
 		\fill [red] (2, 4) rectangle (2.5, 7.90);
@@ -398,10 +407,10 @@ donde \( \varepsilon_{t} \) es ruido blanco.
 
 \begin{center}
 	\begin{tikzpicture}[scale=0.3]
-		\fill [lightgray] (5, 0) rectangle (9, 4); 
+		\fill [gray!25] (5, 0) rectangle (9, 4); 
 		\draw (5, 0) -- (5, 4);
 		\draw (9, 0) -- (9, 4);
-		\fill [lightgray] (16, 0) rectangle (20, 4);
+		\fill [gray!25] (16, 0) rectangle (20, 4);
 		\draw (16, 0) -- (16, 4);
 		\draw (20, 0) -- (20, 4);
 		\draw [thick] (0, 4) -- (0, 0) -- (25, 0);

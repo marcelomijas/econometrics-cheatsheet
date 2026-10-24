@@ -14,7 +14,7 @@
 \usepackage{parskip} % Layout with zero \parindent, non-zero \parskip
 \usepackage{tikz} % Create PostScript and PDF graphics in TeX
 \usepackage{titlesec} % Select alternative section titles
-\usepackage{xcolor} % for magenta an cyan
+\usepackage{xcolor} % Driver-independent color extensions
 
 % ----- pdf metadata -----
 \hypersetup{
@@ -58,7 +58,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ADD-26.10-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ADD-26.10.1-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -590,8 +590,8 @@ Typical one-tail test:
 
 \begin{center}
 	\begin{tikzpicture}[scale=0.108]
-		\fill [magenta] (4, 0) -- plot [domain=4:16, smooth] (\x, {cos(\x*7 + 70)*6 + 6}); 
-		\fill [cyan] (4, 0) -- plot [domain=-16:4, smooth] (\x, {cos(\x*7 - 70)*6 + 6}); 
+		\fill [magenta!30] (4, 0) -- plot [domain=4:16, smooth] (\x, {cos(\x*7 + 70)*6 + 6}); 
+		\fill [cyan!30] (4, 0) -- plot [domain=-16:4, smooth] (\x, {cos(\x*7 - 70)*6 + 6}); 
 		\draw [cyan] plot [domain=-16:36, smooth] (\x, {cos(\x*7 - 70)*6 + 6}); 
 		\draw [magenta] plot [domain=-36:16, smooth] (\x, {cos(\x*7 + 70)*6 + 6}); 
 		\draw [thick, <->] (-40, 0) -- (40, 0); 

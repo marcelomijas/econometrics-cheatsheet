@@ -13,6 +13,7 @@
 \usepackage{parskip} % Layout with zero \parindent, non-zero \parskip
 \usepackage{tikz} % Create PostScript and PDF graphics in TeX
 \usepackage{titlesec} % Select alternative section titles
+\usepackage{xcolor} % Driver-independent color extensions
 
 % ----- pdf metadata -----
 \hypersetup{
@@ -49,7 +50,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize CS-26.10.2-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize CS-26.10.3-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -131,13 +132,21 @@ Correlation analysis does not distinguish between dependent and independent vari
 	\end{itemize}
 	\item \textbf{Conditional mean zero and correlation zero}:
 	\begin{enumerate}[leftmargin=*, label=\alph{*}.]
-		\item There are no relevant variables left out of the model: \( \Cov(x_{j}, u) = 0 \quad \forall j = 1, \ldots, k \rightarrow \) \textbf{exogeneity}.
-		\item There are no systematic errors: \( \E(u \mid x_{1}, \ldots, x_{k}) = \E(u) = 0 \rightarrow \) \textbf{strict exogeneity} (4a holds)
+		\item There are no relevant variables left out of the model: \( \Cov(x_{j}, u) = 0 \quad \forall j = 1, \ldots, k \rightarrow \) \textbf{exogeneity}
+		\item There are no systematic errors: \\
+		\( \E(u \mid x_{1}, \ldots, x_{k}) = \E(u) = 0 \) \\
+		\( \rightarrow \) \textbf{strict exogeneity} (4a holds)
 	\end{enumerate}
-	\item \textbf{Homoscedasticity}: The variability of the error term is the same for all levels of \( x \): \( \Var(u_{i} \mid x_{1i}, \ldots, x_{ki}) = \sigma^{2} \quad \forall i = 1, \ldots, n \)
-	\item \textbf{No autocorrelation}: Errors do not contain information about any other errors: \( \Corr(u_{t}, u_{s} \mid x_{1}, \ldots, x_{k}) = 0 \quad \forall t \neq s \)
-	\item \textbf{Normality}: Errors are independent and identically distributed: \( u \sim \mathcal{N} (0, \sigma^{2}) \)
-	\item \textbf{Data size}: The number of observations available must be greater than \( (k + 1) \) parameters to estimate. (It is already satisfied under asymptotic situations)
+	\item \textbf{Homoscedasticity}: The variability of the error term is the same for all levels of \( x \):
+	\begin{center}
+		\( \Var(u_{i} \mid x_{1i}, \ldots, x_{ki}) = \sigma^{2} \quad \forall i = 1, \ldots, n \)
+	\end{center}
+	\item \textbf{No autocorrelation}: Errors do not contain information about any other errors:
+	\begin{center}
+		\( \Corr(u_{t}, u_{s} \mid x_{1}, \ldots, x_{k}) = 0 \quad \forall t \neq s \)
+	\end{center}
+	\item \textbf{Normality}: Errors are independent and identically distributed: \( u \overset{iid}{\sim} \mathcal{N} (0, \sigma^{2}) \)
+	\item \textbf{Data size}: The number of observations available must be greater than \( (k + 1) \) parameters to estimate.
 \end{enumerate}
 
 \subsection*{Asymptotic properties of OLS}
@@ -145,10 +154,10 @@ Correlation analysis does not distinguish between dependent and independent vari
 Under the Gauss-Markov assumptions and the Central Limit Theorem (CLT):
 
 \begin{itemize}[leftmargin=*]
-	\item Hold 1 to 4a: OLS is \textbf{consistent}. \( \operatorname{plim}(\hat{\beta}_{j}) = \beta_{j} \)
-	\item Hold 1 to 4b: OLS is \textbf{unbiased}. \( \E(\hat{\beta}_{j}) = \beta_{j} \)
+	\item Hold 1 to 4a: OLS is \textbf{consistent}: \( \operatorname{plim}(\hat{\beta}_{j}) = \beta_{j} \)
+	\item Hold 1 to 4b: OLS is \textbf{unbiased}: \( \E(\hat{\beta}_{j}) = \beta_{j} \)
 	\item Hold 1 to 5: \textbf{Asymptotic normality} of estimators: \( \hat{\beta}_{j} \underset{a}{\sim} \mathcal{N} (\beta_{j}, \Var(\hat{\beta}_{j})) \)
-	\item Hold 1 to 6: \textbf{Unbiased estimate} of \( \sigma^{2} \). \( \E(\hat{\sigma}^{2}) = \sigma^{2} \)
+	\item Hold 1 to 6: \textbf{Unbiased estimate} of \( \sigma^{2} \): \( \E(\hat{\sigma}^{2}) = \sigma^{2} \)
 	\item Hold 1 to 6: OLS is \textcolor{blue}{BLUE} (Best Linear Unbiased Estimator) or \textbf{efficient}.
 	\item Hold 1 to 7: Hypothesis testing and confidence intervals can be done reliably.
 \end{itemize}
@@ -317,33 +326,35 @@ Rule designed to determine from a sample \textbf{whether there is evidence to re
 
 \begin{minipage}{0.48\columnwidth}
 	\begin{tikzpicture}[scale=0.10]
-		\node at (0, 15) {Two-tailed test. \( H_{0} \) dist.}; 
-		\fill [red] (12, 0) -- plot [domain=12:18, smooth] (\x, {cos(\x*10)*6 + 6}); 
-		\fill [red] (-12, 0) -- plot [domain=-18:-12, smooth] (\x, {cos(\x*10)*6 + 6}); 
+		\node at (0, 15) {\footnotesize Two-tailed test, \( H_{0} \) distrtibution}; 
+		\fill [red] (11, 0) -- plot [domain=11:18, smooth] (\x, {cos(\x*10)*6 + 6}); 
+		\fill [red] (-11, 0) -- plot [domain=-18:-11, smooth] (\x, {cos(\x*10)*6 + 6}); 
 		\draw plot [domain=-18:18, smooth] (\x, {cos(\x*10)*6 + 6}); 
 		\draw [thick, <->] (-20, 0) -- (20, 0); 
-		\draw [dashed] (12, 0) -- (12, 7); 
-		\draw [dashed] (-12, 0) -- (-12, 7); 
-		\node at (0, 2) {Accept. region}; 
+		\draw [dashed] (11, 0) -- (11, 7); 
+		\draw [dashed] (-11, 0) -- (-11, 7); 
+		\node at (0, 3.5) {\scriptsize Non rejection};
+		\node at (0, 1.5) {\scriptsize region};
 		\node at (0, 7) {\( 1 - \alpha \)}; 
 		\node [red] at (-16, 4) {\( \alpha / 2 \)}; 
 		\node [red] at (16, 4) {\( \alpha / 2 \)}; 
-		\node at (12, 9) {\( C \)}; 
-		\node at (-13, 9) {\( -C \)};
+		\node at (11, 10) {\( C \)}; 
+		\node at (-11, 10) {\( -C \)};
 	\end{tikzpicture}
 \end{minipage}
 \hfill
 \begin{minipage}{0.48\columnwidth}
 	\begin{tikzpicture}[scale=0.10]
-		\node at (0, 15) {One-tailed test. \( H_{0} \) dist.}; 
-		\fill [red] (9, 0) -- plot [domain=9:18, smooth] (\x, {cos(\x*10)*6 + 6}); 
+		\node at (0, 15) {\footnotesize One-tailed test, \( H_{0} \) distribution}; 
+		\fill [red] (8, 0) -- plot [domain=8:18, smooth] (\x, {cos(\x*10)*6 + 6}); 
 		\draw plot [domain=-18:18, smooth] (\x, {cos(\x*10)*6 + 6}); 
 		\draw [thick, <->] (-20, 0) -- (20, 0); 
-		\draw [dashed] (9, 0) -- (9, 7); 
-		\node at (-1, 2) {Accept. reg.};
+		\draw [dashed] (8, 0) -- (8, 7); 
+		\node at (0, 3.5) {\scriptsize Non rejection};
+		\node at (0, 1.5) {\scriptsize region};
 		\node at (0, 7) {\( 1 - \alpha \)}; 
 		\node [red] at (14, 4) {\( \alpha \)}; 
-		\node at (9, 9) {\( C \)};
+		\node at (8, 10) {\( C \)};
 	\end{tikzpicture}
 \end{minipage}
 

@@ -14,8 +14,8 @@ Econometrics cheat sheets created using $\LaTeX$:
 
 | Econometrics | PDF | TeX |
 | :---: | :---: | :---: |
-| English :uk: | [`CS-26.10.2`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/econometrics-cheatsheet/econometrics-cheatsheet-en.pdf) | [`CS-26.10.2`](econometrics-cheatsheet/econometrics-cheatsheet-en.tex)
-| Spanish :es: | [`CS-26.10.2`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/econometrics-cheatsheet/econometrics-cheatsheet-es.pdf) | [`CS-26.10.2`](econometrics-cheatsheet/econometrics-cheatsheet-es.tex)
+| English :uk: | [`CS-26.10.3`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/econometrics-cheatsheet/econometrics-cheatsheet-en.pdf) | [`CS-26.10.3`](econometrics-cheatsheet/econometrics-cheatsheet-en.tex)
+| Spanish :es: | [`CS-26.10.3`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/econometrics-cheatsheet/econometrics-cheatsheet-es.pdf) | [`CS-26.10.3`](econometrics-cheatsheet/econometrics-cheatsheet-es.tex)
 
 | Time Series | PDF | TeX |
 | :---: | :---: | :---: |
@@ -24,8 +24,8 @@ Econometrics cheat sheets created using $\LaTeX$:
 
 | Additional | PDF | TeX |
 | :---: | :---: | :---: |
-| English :uk: | [`ADD-26.10`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/additional-cheatsheet/additional-cheatsheet-en.pdf) | [`ADD-26.10`](additional-cheatsheet/additional-cheatsheet-en.tex)
-| Spanish :es: | [`ADD-26.10`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/additional-cheatsheet/additional-cheatsheet-es.pdf) | [`ADD-26.10`](additional-cheatsheet/additional-cheatsheet-es.tex)
+| English :uk: | [`ADD-26.10.1`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/additional-cheatsheet/additional-cheatsheet-en.pdf) | [`ADD-26.10.1`](additional-cheatsheet/additional-cheatsheet-en.tex)
+| Spanish :es: | [`ADD-26.10.1`](https://raw.githubusercontent.com/marcelomijas/econometrics-cheatsheet/main/additional-cheatsheet/additional-cheatsheet-es.pdf) | [`ADD-26.10.1`](additional-cheatsheet/additional-cheatsheet-es.tex)
 
 Complete set (PDF and TeX, all languages): [`ZIP`](https://github.com/marcelomijas/econometrics-cheatsheet/archive/refs/heads/main.zip)
 

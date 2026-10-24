@@ -13,6 +13,7 @@
 \usepackage{parskip} % Layout with zero \parindent, non-zero \parskip
 \usepackage{tikz} % Create PostScript and PDF graphics in TeX
 \usepackage{titlesec} % Select alternative section titles
+\usepackage{xcolor} % Driver-independent color extensions
 
 % ----- pdf metadata -----
 \hypersetup{
@@ -49,7 +50,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize CS-26.10.2-ES - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize CS-26.10.3-ES - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -132,12 +133,20 @@ Supuestos \textbf{Gauss-Markov}:
 	\item \textbf{Media condicional cero y correlación cero}:
 	\begin{enumerate}[leftmargin=*, label=\alph{*}.]
 		\item No hay variables relevantes fuera del modelo: \( \Cov(x_{j}, u) = 0 \quad \forall j = 1, \ldots, k \rightarrow \) \textbf{exogeneidad}
-		\item No hay errores sistemáticos: \( \E(u \mid x_{1}, \ldots, x_{k}) = \E(u) = 0 \rightarrow \) \textbf{exogeneidad estricta} (cumple 4a)
+		\item No hay errores sistemáticos: \\
+		\( \E(u \mid x_{1}, \ldots, x_{k}) = \E(u) = 0 \) \\
+		\( \rightarrow \) \textbf{exogeneidad estricta} (cumple 4a)
 	\end{enumerate}
-	\item \textbf{Homocedasticidad}: La variabilidad del término de error es igual para todos los niveles de \( x \): \( \Var(u_{i} \mid x_{1i}, \ldots, x_{ki}) = \sigma^{2} \quad \forall i = 1, \ldots, n \)
-	\item \textbf{No autocorrelación}: Los errores no contienen información sobre otros errores: \( \Corr(u_{t}, u_{s} \mid x_{1}, \ldots, x_{k}) = 0 \quad \forall t \neq s \)
-	\item \textbf{Normalidad}: Los errores son independientes e idénticamente distribuidos: \( u \sim \mathcal{N} (0, \sigma^{2}) \)
-	\item \textbf{Tamaño de datos}: El número de observaciones disponibles debe ser mayor a \( (k + 1) \) parámetros a estimar. (Ya satisfecho bajo situaciones asintóticas)
+	\item \textbf{Homocedasticidad}: La variabilidad del término de error es igual para todos los niveles de \( x \):
+	\begin{center}
+		\( \Var(u_{i} \mid x_{1i}, \ldots, x_{ki}) = \sigma^{2} \quad \forall i = 1, \ldots, n \)
+	\end{center}
+	\item \textbf{No autocorrelación}: Los errores no contienen información sobre otros errores:
+	\begin{center}
+		\( \Corr(u_{t}, u_{s} \mid x_{1}, \ldots, x_{k}) = 0 \quad \forall t \neq s \)
+	\end{center}
+	\item \textbf{Normalidad}: Los errores son independientes e idénticamente distribuidos: \( u \overset{iid}{\sim} \mathcal{N} (0, \sigma^{2}) \)
+	\item \textbf{Tamaño de datos}: El número de observaciones disponibles debe ser mayor a \( (k + 1) \) parámetros a estimar.
 \end{enumerate}
 
 \subsection*{Propiedades asintóticas de MCO}
@@ -145,10 +154,10 @@ Supuestos \textbf{Gauss-Markov}:
 Bajo los supuestos Gauss-Markov y el Teorema Central del Límite (TCL):
 
 \begin{itemize}[leftmargin=*]
-	\item De 1 a 4a: MCO es \textbf{consistente}. \( \operatorname{plim}(\hat{\beta}_{j}) = \beta_{j} \)
-	\item De 1 a 4b: MCO es \textbf{insesgado}. \( \E(\hat{\beta}_j) = \beta_{j} \)
+	\item De 1 a 4a: MCO es \textbf{consistente}: \( \operatorname{plim}(\hat{\beta}_{j}) = \beta_{j} \)
+	\item De 1 a 4b: MCO es \textbf{insesgado}: \( \E(\hat{\beta}_j) = \beta_{j} \)
 	\item De 1 a 5: \textbf{normalidad asintótica} de estimadores: \( \hat{\beta}_{j} \underset{a}{\sim} \mathcal{N} (\beta_{j}, \Var(\hat{\beta}_{j})) \)
-	\item De 1 a 6: \textbf{estimador insesgado} de \( \sigma^{2} \). \( \E(\hat{\sigma}^{2}) = \sigma^{2} \)
+	\item De 1 a 6: \textbf{estimador insesgado} de \( \sigma^{2} \): \( \E(\hat{\sigma}^{2}) = \sigma^{2} \)
 	\item De 1 a 6: MCO es MELI (Mejor Estimador Lineal Insesgado, \textcolor{blue}{BLUE} en inglés) ó \textbf{eficiente}.
 	\item De 1 a 7: contrastes de hipótesis e intervalos de confianza son fiables.
 \end{itemize}
@@ -317,33 +326,35 @@ Regla diseñada para determinar, a partir de una muestra, \textbf{si existe evid
 
 \begin{minipage}{0.48\columnwidth}
 	\begin{tikzpicture}[scale=0.10]
-		\node at (0, 15) {Dos colas. Distrib. \( H_{0} \)}; 
-		\fill [red] (12, 0) -- plot [domain=12:18, smooth] (\x, {cos(\x*10)*6 + 6}); 
-		\fill [red] (-12, 0) -- plot [domain=-18:-12, smooth] (\x, {cos(\x*10)*6 + 6}); 
+		\node at (0, 15) {\footnotesize Test de dos colas, distribución \( H_{0} \)}; 
+		\fill [red] (11, 0) -- plot [domain=11:18, smooth] (\x, {cos(\x*10)*6 + 6}); 
+		\fill [red] (-11, 0) -- plot [domain=-18:-11, smooth] (\x, {cos(\x*10)*6 + 6}); 
 		\draw plot [domain=-18:18, smooth] (\x, {cos(\x*10)*6 + 6}); 
 		\draw [thick, <->] (-20, 0) -- (20, 0); 
-		\draw [dashed] (12, 0) -- (12, 7); 
-		\draw [dashed] (-12, 0) -- (-12, 7); 
-		\node at (0, 2) {Región acept.}; 
+		\draw [dashed] (11, 0) -- (11, 7); 
+		\draw [dashed] (-11, 0) -- (-11, 7); 
+		\node at (0, 3.5) {\scriptsize Región de};
+		\node at (0, 1.5) {\scriptsize no rechazo};
 		\node at (0, 7) {\( 1 - \alpha \)}; 
 		\node [red] at (-16, 4) {\( \alpha / 2 \)}; 
 		\node [red] at (16, 4) {\( \alpha / 2 \)}; 
-		\node at (12, 9) {\( C \)}; 
-		\node at (-13, 9) {\( -C \)};
+		\node at (11, 10) {\( C \)}; 
+		\node at (-11, 10) {\( -C \)};
 	\end{tikzpicture}
 \end{minipage}
 \hfill
 \begin{minipage}{0.48\columnwidth}
 	\begin{tikzpicture}[scale=0.10]
-		\node at (0, 15) {Una cola. Distrib. \( H_{0} \)}; 
-		\fill [red] (9, 0) -- plot [domain=9:18, smooth] (\x, {cos(\x*10)*6 + 6}); 
+		\node at (0, 15) {\footnotesize Test de una cola, distribución \( H_{0} \)}; 
+		\fill [red] (8, 0) -- plot [domain=8:18, smooth] (\x, {cos(\x*10)*6 + 6}); 
 		\draw plot [domain=-18:18, smooth] (\x, {cos(\x*10)*6 + 6}); 
 		\draw [thick, <->] (-20, 0) -- (20, 0); 
-		\draw [dashed] (9, 0) -- (9, 7); 
-		\node at (-1, 2) {Región acept.};
+		\draw [dashed] (8, 0) -- (8, 7); 
+		\node at (0, 3.5) {\scriptsize Región de};
+		\node at (0, 1.5) {\scriptsize no rechazo};
 		\node at (0, 7) {\( 1 - \alpha \)}; 
 		\node [red] at (14, 4) {\( \alpha \)}; 
-		\node at (9, 9) {\( C \)};
+		\node at (8, 10) {\( C \)};
 	\end{tikzpicture}
 \end{minipage}
 
