@@ -2,6 +2,11 @@
 % !TeX encoding = UTF-8
 \documentclass[10pt, a4paper, landscape]{article}
 
+% ----- language -----
+\usepackage[T1]{fontenc}
+\usepackage{lmodern} % Loads smooth vector fonts
+\usepackage[british]{babel}
+
 % ----- packages -----
 \usepackage{amsmath} % AMS mathematical facilities for LaTeX
 \usepackage{enumitem} % Control layout of itemize, enumerate, description
@@ -274,7 +279,7 @@ The error terms \( u_{t} \) and \( u_{s} \) are correlated across different time
 
 \textbf{Scatter plots}: Identify scatter patterns on \( u_{t - 1} \) vs. \( u_{t} \).
 
-\begin{minipage}{0.31\columnwidth}
+\begin{minipage}{0.30\columnwidth}
 	\begin{tikzpicture}[scale=0.11]
 		\node at (16, 20) {\textbf{Ac.}}; 
 		\draw [thick, ->] (0, 10) -- (20, 10) node [anchor=south] {\( u_{t - 1} \)}; 
@@ -284,7 +289,7 @@ The error terms \( u_{t} \) and \( u_{s} \) are correlated across different time
 	\end{tikzpicture}
 \end{minipage}
 \hfill
-\begin{minipage}{0.31\columnwidth}
+\begin{minipage}{0.30\columnwidth}
 	\begin{tikzpicture}[scale=0.11]
 		\node at (16, 20) {\textbf{Ac. \( + \)}}; 
 		\draw [thick, ->] (0, 10) -- (20, 10) node [anchor=north] {\( u_{t - 1} \)}; 
@@ -294,7 +299,7 @@ The error terms \( u_{t} \) and \( u_{s} \) are correlated across different time
 	\end{tikzpicture}
 \end{minipage}
 \hfill
-\begin{minipage}{0.31\columnwidth}
+\begin{minipage}{0.30\columnwidth}
 	\begin{tikzpicture}[scale=0.11]
 		\node at (16, 20) {\textbf{Ac. \( - \)}}; 
 		\draw [thick, ->] (0, 10) -- (20, 10) node [anchor=south] {\( u_{t - 1} \)}; 

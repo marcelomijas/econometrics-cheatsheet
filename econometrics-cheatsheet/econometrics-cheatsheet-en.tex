@@ -2,6 +2,11 @@
 % !TeX encoding = UTF-8
 \documentclass[10pt, a4paper, landscape]{article}
 
+% ----- language -----
+\usepackage[T1]{fontenc}
+\usepackage{lmodern} % Loads smooth vector fonts
+\usepackage[british]{babel}
+
 % ----- packages -----
 \usepackage{amsmath} % AMS mathematical facilities for LaTeX
 \usepackage{enumitem} % Control layout of itemize, enumerate, description
@@ -558,11 +563,11 @@ This \textbf{breaks the fifth (5)} OLS \textbf{assumption}.
 \subsection*{Detection}
 
 \begin{itemize}[leftmargin=*]
-	\begin{minipage}{0.31\columnwidth}
+	\begin{minipage}{0.30\columnwidth}
 		\item \textbf{Graphs}: Identify scatter patterns on \( x \) vs. \( u \) or \( x \) vs. \( y \).
 	\end{minipage}
 	\hfill
-	\begin{minipage}{0.31\columnwidth}
+	\begin{minipage}{0.30\columnwidth}
 		\begin{tikzpicture}[scale=0.108]
 			\draw [thick, ->] (0, 10) -- (20, 10) node [anchor=north] {\( x \)}; 
 			\draw [thick, -] (0, 0) -- (0, 20) node [anchor=west] {\( u \)}; 
@@ -572,7 +577,7 @@ This \textbf{breaks the fifth (5)} OLS \textbf{assumption}.
 		\end{tikzpicture}
 	\end{minipage}
 	\hfill
-	\begin{minipage}{0.31\columnwidth}
+	\begin{minipage}{0.30\columnwidth}
 		\begin{tikzpicture}[scale=0.108]
 			\draw [thick, <->] (0, 20) node [anchor=west] {\( y \)} -- (0, 0) -- (20, 0) node [anchor=south] {\( x \)}; 
 			\draw plot [only marks, mark=*, mark size=6, domain=2:16, samples=50] (\x, {0.5*\x*(rand + 1) + 2}); 
@@ -623,7 +628,7 @@ The ``natural" context of this phenomenon is time series. This \textbf{breaks th
 \begin{itemize}[leftmargin=*]
 	\item \textbf{Graphs}: Identify scatter patterns on \( u_{t - 1} \) vs. \( u_{t} \) or make use of a correlogram.
 	
-	\begin{minipage}{0.31\columnwidth}
+	\begin{minipage}{0.30\columnwidth}
 		\begin{tikzpicture}[scale=0.11]
 			\node at (10, 23) {\textbf{Ac.}}; 
 			\draw [thick, ->] (0, 10) -- (20, 10) node [anchor=south] {\( u_{t - 1} \)}; 
@@ -633,7 +638,7 @@ The ``natural" context of this phenomenon is time series. This \textbf{breaks th
 		\end{tikzpicture}
 	\end{minipage}
 	\hfill
-	\begin{minipage}{0.31\columnwidth}
+	\begin{minipage}{0.30\columnwidth}
 		\begin{tikzpicture}[scale=0.11]
 			\node at (10, 23) {\textbf{Ac. \( + \)}}; 
 			\draw [thick, ->] (0, 10) -- (20, 10) node [anchor=north] {\( u_{t - 1} \)}; 
@@ -643,7 +648,7 @@ The ``natural" context of this phenomenon is time series. This \textbf{breaks th
 		\end{tikzpicture}
 	\end{minipage}
 	\hfill
-	\begin{minipage}{0.31\columnwidth}
+	\begin{minipage}{0.30\columnwidth}
 		\begin{tikzpicture}[scale=0.11]
 			\node at (10, 23) {\textbf{Ac. \( - \)}}; 
 			\draw [thick, ->] (0, 10) -- (20, 10) node [anchor=south] {\( u_{t - 1} \)}; 
