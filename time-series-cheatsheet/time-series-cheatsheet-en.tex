@@ -46,7 +46,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-26.10.1-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-26.11-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -94,11 +94,11 @@ Given the format of a time series:
 	\end{center}
 	\item \textbf{Distributed-lag models}: The relation between \( y \) and \( x \) is not contemporaneous. Conceptually:
 	\begin{center}
-		\( y_{t} = \beta_{0} + \beta_{1} x_{t} + \beta_{2} x_{t - 1} + \cdots + \beta_{s} x_{t - s} + u_{t} \)
+		\( y_{t} = \beta_{0} + \beta_{1} x_{t} + \beta_{2} x_{t - 1} + \cdots + \beta_{s + 1} x_{t - s} + u_{t} \)
 	\end{center}
 	The long-term cumulative effect in \( y \) when \( \Delta x = 1 \) is:
 	\begin{center}
-		\( \beta_{1} + \beta_{2} + \cdots + \beta_{s} \)
+		\( \beta_{1} + \beta_{2} + \cdots + \beta_{s + 1} \)
 	\end{center}
 	\item \textbf{Dynamic models}: Introduces lags of the dependent variable. Conceptually:
 	\begin{center}

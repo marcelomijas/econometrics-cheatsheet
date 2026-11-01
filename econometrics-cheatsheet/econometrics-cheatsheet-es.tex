@@ -50,7 +50,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize CS-26.10.3-ES - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize CS-26.11-ES - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -280,11 +280,11 @@ Error Estándar de la Regresión: \hfill \( \hat{\sigma} = \sqrt{\frac{\SSR}{n -
 
 Error Estándar de \( \hat{\beta} \): \hfill \( \se(\hat{\beta}) = \sqrt{ \diag ( \hat{\sigma}^{2} \cdot (X^{\top} X)^{-1} ) } \)
 
-Raíz del Error Cuad. Medio: \hfill \( \text{RECM} = \sqrt{\frac{\sum_{i = 1}^{n} (y_{i} - \hat{y}_{i})^{2}}{n}} \)
+Raíz del Error Cuad. Medio: \hfill \( \text{RECM} = \sqrt{\frac{\SSR}{n}} \)
 
-Error Medio Absoluto: \hfill \( \text{EMA} = \frac{\sum_{i = 1}^{n} \lvert y_{i} - \hat{y}_{i} \rvert}{n} \)
+Error Medio Absoluto: \hfill \( \text{EMA} = \frac{1}{n} \sum_{i = 1}^{n} \lvert \hat{u}_{i} \rvert \)
 
-Porcentaje Error Medio Abs.: \hfill \( \text{PEMA} = \frac{\sum_{i = 1}^{n} \lvert \hat{u}_{i} / y_{i} \rvert}{n} \cdot 100 \)
+Porcentaje Error Medio Absoluto: \hfill \( \text{PEMA} = \frac{100}{n} \sum_{i = 1}^{n} \lvert \frac{\hat{u}_{i}}{y_{i}} \rvert \)
 
 \columnbreak
 

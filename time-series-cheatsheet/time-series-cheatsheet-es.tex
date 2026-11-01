@@ -46,7 +46,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-26.10.1-ES - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-26.11-ES - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -94,11 +94,11 @@ Dado el formato de una serie temporal:
 	\end{center}
 	\item \textbf{Modelos de rezagos distribuidos}: La relación entre \( y \) y \( x \) no es contemporánea. Conceptualmente:
 	\begin{center}
-		\( y_{t} = \beta_{0} + \beta_{1} x_{t} + \beta_{2} x_{t - 1} + \cdots + \beta_{s} x_{t - s} + u_{t} \)
+		\( y_{t} = \beta_{0} + \beta_{1} x_{t} + \beta_{2} x_{t - 1} + \cdots + \beta_{s + 1} x_{t - s} + u_{t} \)
 	\end{center}
 	El efecto acumulado a largo plazo en \( y \) cuando \( \Delta x = 1 \):
 	\begin{center}
-		\( \beta_{1} + \beta_{2} + \cdots + \beta_{s} \)
+		\( \beta_{1} + \beta_{2} + \cdots + \beta_{s + 1} \)
 	\end{center}
 	\item \textbf{Modelos dinámicos}: Introduce rezagos de la variable dependiente. Conceptualmente:
 	\begin{center}
@@ -730,13 +730,13 @@ Usar contrastes como el Breusch-Pagan o White, donde \( H_{0} \): No heterocedas
 
 Un modelo de heteroced. condicional autorreg. (ARCH) se usa para analizar heterocedasticidad condicional dinámica, donde los errores al cuadrado siguen un proceso \( \text{AR}(p) \).
 
-Dado el modelo: \( y_{t} = \beta_{0} + \beta_{1} z_{t} + u_{t} \), con errores no correlacionados serialmente satisfaciendo \( \E(u_{t} \mid \mathcal{F}_{t - 1}) = 0 \), una varianza del error \( \text{ARCH}(1) \) se especifica como :
+Dado el modelo: \( y_{t} = \beta_{0} + \beta_{1} z_{t} + u_{t} \), con errores no correlacionados serialmente satisfaciendo \( \E(u_{t} \mid \mathcal{F}_{t - 1}) = 0 \), una varianza del error \( \text{ARCH}(1) \) se especifica como:
 
 \begin{center}
 	\( \sigma_{t}^{2} = \Var(u_{t} \mid \mathcal{F}_{t - 1}) = \text{E}(u_{t}^{2} \mid \mathcal{F}_{t - 1}) = \alpha_{0} + \alpha_{1} u_{t - 1}^{2} \)
 \end{center}
 
-donde \( \alpha_{0} > 0 \) y \( 0 \leq \alpha_{1} < 1 \) garantiza la positividad y la estacionariedad de la covarianza.
+donde \( \alpha_{0} > 0 \) y \( 0 \leq \alpha_{1} < 1 \) garantizan la positividad y la estacionariedad de la covarianza.
 
 \end{multicols}
 

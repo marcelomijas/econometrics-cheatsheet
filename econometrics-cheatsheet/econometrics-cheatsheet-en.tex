@@ -50,7 +50,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize CS-26.10.3-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize CS-26.11-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -274,17 +274,17 @@ Sum of Sq. Residuals: \hfill \( \SSR = \sum_{i = 1}^{n} \hat{u}_{i}^{2} = \sum_{
 
 Explained Sum of Squares: \hfill \( \SSE = \sum_{i = 1}^{n} (\hat{y}_{i} - \overline{y})^{2} \)
 
-Total Sum of Sq.: \hfill \( \SST = \SSE + \SSR = \sum_{i = 1}^{n} (y_{i} - \overline{y})^{2} \)
+Total Sum of Squares: \hfill \( \SST = \SSE + \SSR = \sum_{i = 1}^{n} (y_{i} - \overline{y})^{2} \)
 
 Standard Error of the Regression: \hfill \( \hat{\sigma} = \sqrt{\frac{\SSR}{n - k - 1}} \)
 
 Standard Error of the \( \hat{\beta} \)'s: \hfill \( \se(\hat{\beta}) = \sqrt{ \diag ( \hat{\sigma}^{2} \cdot (X^{\top} X)^{-1} ) } \)
 
-Root Mean Squared Error: \hfill \( \text{RMSE} = \sqrt{\frac{\sum_{i = 1}^{n} (y_{i} - \hat{y}_{i})^{2}}{n}} \)
+Root Mean Squared Error: \hfill \( \text{RMSE} = \sqrt{\frac{\SSR}{n}} \)
 
-Mean Absolute Error: \hfill \( \text{MAE} = \frac{\sum_{i = 1}^{n} \lvert y_{i} - \hat{y}_{i} \rvert}{n} \)
+Mean Absolute Error: \hfill \( \text{MAE} = \frac{1}{n} \sum_{i = 1}^{n} \lvert \hat{u}_{i} \rvert \)
 
-Mean Abs. Percentage Error: \hfill \( \text{MAPE} = \frac{\sum_{i = 1}^{n} \lvert \hat{u}_{i} / y_{i} \rvert}{n} \cdot 100 \)
+Mean Absolute Percentage Error: \hfill \( \text{MAPE} = \frac{100}{n} \sum_{i = 1}^{n} \lvert \frac{\hat{u}_{i}}{y_{i}} \rvert \)
 
 \columnbreak
 
@@ -326,7 +326,7 @@ Rule designed to determine from a sample \textbf{whether there is evidence to re
 
 \begin{minipage}{0.48\columnwidth}
 	\begin{tikzpicture}[scale=0.10]
-		\node at (0, 15) {\footnotesize Two-tailed test, \( H_{0} \) distrtibution}; 
+		\node at (0, 15) {\footnotesize Two-tailed test, \( H_{0} \) distribution}; 
 		\fill [red] (11, 0) -- plot [domain=11:18, smooth] (\x, {cos(\x*10)*6 + 6}); 
 		\fill [red] (-11, 0) -- plot [domain=-18:-11, smooth] (\x, {cos(\x*10)*6 + 6}); 
 		\draw plot [domain=-18:18, smooth] (\x, {cos(\x*10)*6 + 6}); 
