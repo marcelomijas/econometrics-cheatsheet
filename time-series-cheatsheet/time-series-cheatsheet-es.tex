@@ -51,7 +51,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-26.11-ES - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-26.11.1-ES - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -116,9 +116,7 @@ Dado el formato de una serie temporal:
 
 \section*{Supuestos y propiedades}
 
-\subsection*{Supuestos MCO en series temporales}
-
-\textbf{Supuestos Gauss-Markov} extendidos para series temporales:
+\subsection*{Supuestos del Modelo Lineal Clásico (MLC) en series temporales}
 
 \begin{enumerate}[leftmargin=*, label=t\arabic{*}.]
 	\item \textbf{Linealidad de parámetros y dependencia débil}:
@@ -150,9 +148,9 @@ Dado el formato de una serie temporal:
 	\item \textbf{Tamaño de datos}: El número de observaciones disponibles debe ser mayor a \( (k + 1) \) parámetros a estimar.
 \end{enumerate}
 
-\subsection*{Propiedades asintóticas de MCO}
+\subsection*{Propiedades del MLC}
 
-Bajo los supuestos Gauss-Markov y el Teorema Central del Límite (TCL):
+Bajo los supuestos Gauss-Markov (t1-t5) y el Teorema Central del Límite (TCL):
 
 \begin{itemize}[leftmargin=*]
 	\item De t1 a t3a: MCO es \textbf{consistente}: \( \operatorname{plim}(\hat{\beta}_{j}) = \beta_{j} \)
@@ -165,7 +163,7 @@ Bajo los supuestos Gauss-Markov y el Teorema Central del Límite (TCL):
 
 \columnbreak
 
-\textbf{Regresión espuria}: Ocurre cuando se encuentra una relación estadísticamente significativa---pero falsa---entre series indep. no estacionarias (p.e., debido a tendencias compartidas), a pesar de que no existe un vínculo causal real. Esto \textbf{incumple el primer supuesto (t1b)} de MCO.
+\textbf{Regresión espuria}: Ocurre cuando se encuentra una relación estadísticamente significativa---pero falsa---entre series indep. no estacionarias (p.e., debido a tendencias compartidas), a pesar de que no existe un vínculo causal real. Esto \textbf{incumple el primer supuesto (t1b)} del MLC.
 
 \section*{Tendencia y estacionalidad}
 
@@ -260,7 +258,7 @@ Existen diferentes métodos de \textbf{ajuste estacional}:
 
 \section*{Autocorrelación}
 
-Los términos de error \( u_{t} \) y \( u_{s} \) están correlacionados a lo largo de distintos periodos temporales, condicionalmente a las variables explicativas. Se \textbf{incumple el quinto (t5) supuesto} OLS.
+Los términos de error \( u_{t} \) y \( u_{s} \) están correlacionados a lo largo de distintos periodos temporales, condicionalmente a las variables explicativas. Se \textbf{incumple el quinto (t5) supuesto} del MLC.
 
 \begin{center}
 	\( \Corr(u_{t}, u_{s} \mid x_{1}, \ldots, x_{k}) \neq 0 \quad \exists t \neq s \)
@@ -727,7 +725,7 @@ Contraste Engle-Granger:
 
 \section*{Heterocedasticidad en series temp.}
 
-Afecta al \textbf{supuesto t4}, lo que lleva a que \textbf{MCO no sea eficiente}.
+Afecta al \textbf{supuesto t4} del MLC, lo que lleva a que \textbf{MCO no sea eficiente}.
 
 Usar contrastes como el Breusch-Pagan o White, donde \( H_{0} \): No heterocedasticidad. Para que los contrastes funcionen, no ha de existir \textbf{autocorrelación}.
 

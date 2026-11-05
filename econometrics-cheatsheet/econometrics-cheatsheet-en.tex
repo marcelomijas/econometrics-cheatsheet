@@ -55,7 +55,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize CS-26.11-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize CS-26.11.1-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -123,9 +123,7 @@ Correlation analysis does not distinguish between dependent and independent vari
 
 \section*{Assumptions and properties}
 
-\subsection*{OLS assumptions}
-
-\textbf{Gauss-Markov} assumptions:
+\subsection*{Classical Linear Model (CLM) assumptions}
 
 \begin{enumerate}[leftmargin=*]
 	\item \textbf{Linearity in parameters}. \( y \) must be a linear function of the \( \beta \)'s.
@@ -154,9 +152,9 @@ Correlation analysis does not distinguish between dependent and independent vari
 	\item \textbf{Data size}: The number of observations available must be greater than \( (k + 1) \) parameters to estimate.
 \end{enumerate}
 
-\subsection*{Asymptotic properties of OLS}
+\subsection*{Properties of the CLM}
 
-Under the Gauss-Markov assumptions and the Central Limit Theorem (CLT):
+Under the Gauss-Markov assumptions (1-6) and the Central Limit Theorem (CLT):
 
 \begin{itemize}[leftmargin=*]
 	\item Hold 1 to 4a: OLS is \textbf{consistent}: \( \operatorname{plim}(\hat{\beta}_{j}) = \beta_{j} \)
@@ -499,8 +497,8 @@ Changes in the \textbf{measurement origin} of the variables only affects the mod
 \section*{Multicollinearity}
 
 \begin{itemize}[leftmargin=*]
-	\item \textbf{Perfect multicollinearity}: There are independent variables that are constant and/or there is an exact linear relation between independent variables. This \textbf{breaks the third (3)} OLS \textbf{assumption}.
-	\item \textbf{Approximate multicollinearity}: There are independent variables that are approximately constant and/or there is an approximately linear relation between independent variables. This \textbf{does not break any} OLS \textbf{assumption}, but there are effects.
+	\item \textbf{Perfect multicollinearity}: There are independent variables that are constant and/or there is an exact linear relation between independent variables. This \textbf{breaks the third (3)} CLM \textbf{assumption}.
+	\item \textbf{Approximate multicollinearity}: There are independent variables that are approximately constant and/or there is an approximately linear relation between independent variables. This \textbf{does not break any} CLM \textbf{assumption}, but there are effects.
 \end{itemize}
 
 \subsection*{Consequences}
@@ -549,7 +547,7 @@ The error term \( u_{i} \) does not have a constant variance conditional to the 
 	\( \Var(u_{i} \mid x_{1i}, \ldots, x_{ki}) = \sigma_{i}^{2} \neq \sigma^{2} \)
 \end{center}	
 
-This \textbf{breaks the fifth (5)} OLS \textbf{assumption}.
+This \textbf{breaks the fifth (5)} CLM \textbf{assumption}.
 
 \subsection*{Consequences}
 
@@ -612,7 +610,7 @@ The error terms \( u_{t} \) and \( u_{s} \) are correlated across different time
 	\( \Corr(u_{t}, u_{s} \mid x_{1}, \ldots, x_{k}) \neq 0 \quad \exists t \neq s \)
 \end{center}
 
-The ``natural" context of this phenomenon is time series. This \textbf{breaks the sixth (6)} OLS \textbf{assumption}.
+The ``natural" context of this phenomenon is time series. This \textbf{breaks the sixth (6)} CLM \textbf{assumption}.
 
 \subsection*{Consequences}
 

@@ -55,7 +55,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize CS-26.11-ES - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize CS-26.11.1-ES - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -123,9 +123,7 @@ El análisis de correlación no distingue entre variables dependientes e indepen
 
 \section*{Supuestos y propiedades}
 
-\subsection*{Supuestos de MCO}
-
-Supuestos \textbf{Gauss-Markov}:
+\subsection*{Supuestos del Modelo Lineal Clásico (MLC)}
 
 \begin{enumerate}[leftmargin=*]
 	\item \textbf{Linealidad en parámetros}: \( y \) debe ser una función lineal de los \( \beta \)'s.
@@ -154,9 +152,9 @@ Supuestos \textbf{Gauss-Markov}:
 	\item \textbf{Tamaño de datos}: El número de observaciones disponibles debe ser mayor a \( (k + 1) \) parámetros a estimar.
 \end{enumerate}
 
-\subsection*{Propiedades asintóticas de MCO}
+\subsection*{Propiedades del MLC}
 
-Bajo los supuestos Gauss-Markov y el Teorema Central del Límite (TCL):
+Bajo los supuestos Gauss-Markov (1-6) y el Teorema Central del Límite (TCL):
 
 \begin{itemize}[leftmargin=*]
 	\item De 1 a 4a: MCO es \textbf{consistente}: \( \operatorname{plim}(\hat{\beta}_{j}) = \beta_{j} \)
@@ -499,8 +497,8 @@ Cambios en el \textbf{origen de medida} de las variables sólo afectan al térmi
 \section*{Multicolinealidad}
 
 \begin{itemize}[leftmargin=*]
-	\item \textbf{Multicolinealidad perfecta}: Hay variables independientes que son constantes y/o hay una relación lineal exacta entre variables independientes. Se \textbf{incumple el tercer (3) supuesto} de MCO.
-	\item \textbf{Multicolinealidad aproximada}: Hay variables independientes que son aproximadamente constantes y/o hay una relación lineal aproximada entre variables independientes. \textbf{No se incumple ningún supuesto} de MCO, pero hay efectos.
+	\item \textbf{Multicolinealidad perfecta}: Hay variables independientes que son constantes y/o hay una relación lineal exacta entre variables independientes. Se \textbf{incumple el tercer (3) supuesto} del MLC.
+	\item \textbf{Multicolinealidad aproximada}: Hay variables independientes que son aproximadamente constantes y/o hay una relación lineal aproximada entre variables independientes. \textbf{No se incumple ningún supuesto} del MLC, pero hay efectos.
 \end{itemize}
 
 \subsection*{Consecuencias}
@@ -549,7 +547,7 @@ El término de error \( u_{i} \) no tiene una varianza constante condicionada a 
 	\( \Var(u_{i} \mid x_{1i}, \ldots, x_{ki}) = \sigma_{i}^{2} \neq \sigma^{2} \)
 \end{center}
 
-Se \textbf{incumple el quinto (5) supuesto} de MCO.
+Se \textbf{incumple el quinto (5) supuesto} del MLC.
 
 \subsection*{Consecuencias}
 
@@ -612,7 +610,7 @@ Los términos de error \( u_{t} \) y \( u_{s} \) están correlacionados a lo lar
 	\( \Corr(u_{t}, u_{s} \mid x_{1}, \ldots, x_{k}) \neq 0 \quad \exists t \neq s \)
 \end{center}
 
-El contexto ``natural" de este fenómeno son las series temporales. Se \textbf{incumple el sexto (6) supuesto} de MCO.
+El contexto ``natural" de este fenómeno son las series temporales. Se \textbf{incumple el sexto (6) supuesto} del MLC.
 
 \subsection*{Consecuencias}
 

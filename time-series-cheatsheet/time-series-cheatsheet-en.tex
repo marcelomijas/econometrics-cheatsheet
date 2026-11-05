@@ -51,7 +51,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-26.11-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize TS-26.11.1-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -116,9 +116,7 @@ Given the format of a time series:
 
 \section*{Assumptions and properties}
 
-\subsection*{OLS assumptions in time series}
-
-\textbf{Gauss-Markov assumptions} extended for time series:
+\subsection*{Classical Linear Model (CLM) assumptions in time series}
 
 \begin{enumerate}[leftmargin=*, label=t\arabic{*}.]
 	\item \textbf{Linearity in parameters and weak dependence}:
@@ -150,9 +148,9 @@ Given the format of a time series:
 	\item \textbf{Data size}: The number of observations available must be greater than \( (k + 1) \) parameters to estimate.
 \end{enumerate}
 
-\subsection*{Asymptotic properties of OLS}
+\subsection*{Properties of the CLM}
 
-Under the Gauss-Markov assumptions and the Central Limit Theorem (CLT):
+Under the Gauss-Markov assumptions (t1-t5) and the Central Limit Theorem (CLT):
 
 \begin{itemize}[leftmargin=*]
 	\item Hold t1 to t3a: OLS is \textbf{consistent}: \( \operatorname{plim}(\hat{\beta}_{j}) = \beta_{j} \)
@@ -165,7 +163,7 @@ Under the Gauss-Markov assumptions and the Central Limit Theorem (CLT):
 
 \columnbreak
 
-\textbf{Spurious regression}: Is when a false statistically significant relationship is found between independent non-stationary time series (e.g., due to shared trends), despite having no true causal link. This \textbf{breaks the first (t1b)} OLS \textbf{assumption}.
+\textbf{Spurious regression}: Is when a false statistically significant relationship is found between independent non-stationary time series (e.g., due to shared trends), despite having no true causal link. This \textbf{breaks the first (t1b)} CLM \textbf{assumption}.
 
 \section*{Trends and seasonality}
 
@@ -260,7 +258,7 @@ There are different \textbf{seasonal adjustment} methods:
 
 \section*{Autocorrelation}
 
-The error terms \( u_{t} \) and \( u_{s} \) are correlated across different time periods conditional on the explanatory variables. This \textbf{breaks the fifth (t5)} OLS \textbf{assumption}.
+The error terms \( u_{t} \) and \( u_{s} \) are correlated across different time periods conditional on the explanatory variables. This \textbf{breaks the fifth (t5)} CLM \textbf{assumption}.
 
 \begin{center}
 	\( \Corr(u_{t}, u_{s} \mid x_{1}, \ldots, x_{k}) \neq 0 \quad \exists t \neq s \)
@@ -727,7 +725,7 @@ Engle-Granger test:
 
 \section*{Heteroscedasticity in time series}
 
-The \textbf{assumption} affected is \textbf{t4}, which causes \textbf{OLS to no longer be efficient}.
+It affects \textbf{assumption t4} of the CLM, which causes \textbf{OLS to no longer be efficient}.
 
 Use tests like Breusch-Pagan or White's, where \( H_{0} \): No heteroscedasticity. For these tests to work, there should be \textbf{no autocorrelation}.
 
