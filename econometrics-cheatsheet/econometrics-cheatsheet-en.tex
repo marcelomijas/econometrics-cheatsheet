@@ -135,7 +135,8 @@ Correlation analysis does not distinguish between dependent and independent vari
 	\end{itemize}
 	\item \textbf{Conditional mean zero and correlation zero}:
 	\begin{enumerate}[leftmargin=*, label=\alph{*}.]
-		\item There are no relevant variables left out of the model: \( \Cov(x_{j}, u) = 0 \quad \forall j = 1, \ldots, k \rightarrow \) \textbf{exogeneity}
+		\item Any omitted relevant variables are uncorrelated with the included independent variables: \\
+		\( \Cov(x_{j}, u) = 0 \quad \forall j = 1, \ldots, k \rightarrow \) \textbf{exogeneity}
 		\item There are no systematic errors: \\
 		\( \E(u \mid x_{1}, \ldots, x_{k}) = \E(u) = 0 \) \\
 		\( \rightarrow \) \textbf{strict exogeneity} (4a holds)
@@ -320,10 +321,10 @@ Rule designed to determine from a sample \textbf{whether there is evidence to re
 
 \begin{itemize}[leftmargin=*]
 	\item \textbf{Null hypothesis} \( (H_{0}) \): Hypothesis to be tested.
-	\item \textbf{Alternative hypothesis} \( (H_{1}) \): Hypothesis that cannot be rejected when \( H_{0} \) is rejected.
+	\item \textbf{Alternative hypothesis} \( (H_{1}) \): Hypothesis that is supported when \( H_{0} \) is rejected.
 	\item \textbf{Test statistic}: Random variable whose probability distribution is known under \( H_{0} \).
 	\item \textbf{Critical value} \( (C) \): Value against which the test statistic is compared to determine if \( H_{0} \) is rejected or not. It sets the frontier between the regions of non-rejection and rejection of \( H_{0} \).
-	\item \textbf{Significance level} \( (\alpha) \): Probability of rejecting \( H_{0} \) being true (Type I Error). Chosen by those who conduct the test. Commonly 10\%, 5\% or 1\%.
+	\item \textbf{Significance level} \( (\alpha) \): Probability of rejecting \( H_{0} \) given that \( H_{0} \) is true (Type I Error). Chosen by those who conduct the test. Commonly 10\%, 5\% or 1\%.
 	\item \textbf{p-value}: Lowest level of significance at which \( H_{0} \) can be rejected.
 \end{itemize}
 

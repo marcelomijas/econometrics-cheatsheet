@@ -131,7 +131,8 @@ Given the format of a time series:
 	\end{itemize}
 	\item \textbf{Conditional mean zero and correlation zero}:
 	\begin{enumerate}[leftmargin=*, label=\alph{*}.]
-		\item There are no relevant variables left out of the model: \( \Cov(x_{jt} , u_{t}) = 0 \quad \forall j = 1, \ldots, k \rightarrow \) \textbf{exogeneity}
+		\item Any omitted relevant variables are uncorrelated with the included independent variables: \\
+		\( \Cov(x_{jt} , u_{t}) = 0 \quad \forall j = 1, \ldots, k \rightarrow \) \textbf{exogeneity}
 		\item There are no systematic errors: \\
 		\( \E(u_{t} \mid \mathrm{X}) = \E(u_{t} \mid \ldots, \mathrm{x}_{t+1}, \mathrm{x}_{t}, \mathrm{x}_{t-1}, \ldots) = 0 \quad \forall t \) \\
 		\( \rightarrow \) \textbf{strict exogeneity} (3a holds)

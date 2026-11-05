@@ -131,7 +131,8 @@ Dado el formato de una serie temporal:
 	\end{itemize}
 	\item \textbf{Media condicional cero y correlación cero}:
 	\begin{enumerate}[leftmargin=*, label=\alph{*}.]
-		\item No hay variables relevantes fuera del modelo: \( \Cov(x_{jt} , u_{t}) = 0 \quad \forall j = 1, \ldots, k \rightarrow \) \textbf{exogeneidad}
+		\item Cualquier variable relevante omitida no está correlacionada con las variables independientes incluidas: \\
+		\( \Cov(x_{jt} , u_{t}) = 0 \quad \forall j = 1, \ldots, k \rightarrow \) \textbf{exogeneidad}
 		\item No hay errores sistemáticos: \\
 		\( \E(u_{t} \mid \mathrm{X}) = \E(u_{t} \mid \ldots, \mathrm{x}_{t+1}, \mathrm{x}_{t}, \mathrm{x}_{t-1}, \ldots) = 0 \quad \forall t \) \\
 		\( \rightarrow \) \textbf{exogeneidad estricta} (cumple 3a)

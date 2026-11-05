@@ -135,7 +135,8 @@ El análisis de correlación no distingue entre variables dependientes e indepen
 	\end{itemize}
 	\item \textbf{Media condicional cero y correlación cero}:
 	\begin{enumerate}[leftmargin=*, label=\alph{*}.]
-		\item No hay variables relevantes fuera del modelo: \( \Cov(x_{j}, u) = 0 \quad \forall j = 1, \ldots, k \rightarrow \) \textbf{exogeneidad}
+		\item Cualquier variable relevante omitida no está correlacionada con las variables independientes incluidas: \\
+		\( \Cov(x_{j}, u) = 0 \quad \forall j = 1, \ldots, k \rightarrow \) \textbf{exogeneidad}
 		\item No hay errores sistemáticos: \\
 		\( \E(u \mid x_{1}, \ldots, x_{k}) = \E(u) = 0 \) \\
 		\( \rightarrow \) \textbf{exogeneidad estricta} (cumple 4a)
@@ -320,10 +321,10 @@ Regla diseñada para determinar, a partir de una muestra, \textbf{si existe evid
 
 \begin{itemize}[leftmargin=*]
 	\item \textbf{Hipótesis nula} \( (H_{0}) \): Hipótesis a contrastar.
-	\item \textbf{Hipótesis alternativa} \( (H_{1}) \): Hipótesis que no puede rechazarse si \( H_{0} \) es rechazada.
+	\item \textbf{Hipótesis alternativa} \( (H_{1}) \): Hipótesis se respalda cuando \( H_{0} \) es rechazada.
 	\item \textbf{Estadístico de contraste}: Variable aleatoria cuya distribución de probabilidad es conocida bajo \( H_{0} \).
 	\item \textbf{Valor crítico} \( (C) \): Valor contra el cual se compara el estadístico de contraste para determinar si se rechaza o no \( H_{0} \). Determina la frontera entre la región de no rechazo y de rechazo de \( H_{0} \).
-	\item \textbf{Nivel de significación} \( (\alpha) \): Probabilidad de rechazar \( H_{0} \) siendo cierta (Error Tipo I). Elegido por quien conduce el contraste. Usualmente 10\%, 5\% ó 1\%.
+	\item \textbf{Nivel de significación} \( (\alpha) \): Probabilidad de rechazar \( H_{0} \) dado que \( H_{0} \) es verdadera (Error Tipo I). Elegido por quien conduce el contraste. Usualmente 10\%, 5\% ó 1\%.
 	\item \textbf{p-valor}: Nivel de significación más bajo para el cual se puede rechazar \( H_{0} \).
 \end{itemize}
 
