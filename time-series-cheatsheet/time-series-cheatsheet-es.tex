@@ -243,9 +243,9 @@ Por ejemplo, el PIB es mayor en verano y menor en invierno (serie ajustada estac
 Existen diferentes métodos de \textbf{ajuste estacional}:
 
 \begin{enumerate}[leftmargin=*, label=\alph{*}.]
-	\item Incluir variables estacionales binarias en el modelo. Por ejemplo, serie trimestral (\( S q_{t} \) son variables binarias):
+	\item Incluir variables estacionales binarias en el modelo. Por ejemplo, serie trimestral (\( sq_{t} \) son variables binarias):
 	\begin{center}
-		\( y_{t} = \beta_{0} + \beta_{1} S2_{t} + \beta_{2} S3_{t} + \beta_{3} S4_{t} + \beta_{4} x_{1t} + \cdots + \beta_{k} x_{kt} + u_{t} \)
+		\( y_{t} = \beta_{0} + \beta_{1} s2_{t} + \beta_{2} s3_{t} + \beta_{3} s4_{t} + \beta_{4} x_{1t} + \cdots + \beta_{k + 3} x_{kt} + u_{t} \)
 	\end{center}
 	\item Ajustar estacionalmente las variables y luego realizar la regresión con las variables ajustadas.
 	\item Tomar diferencias estacionales (\( s \) es el período estacional):
@@ -529,16 +529,16 @@ Dos tipos de predicciones:
 	\item Valor individual de \( y \) para un valor específico de \( x \).
 \end{itemize}
 
-\textbf{U de Theil} - compara los resultados pronosticados con los de la previsión con datos históricos mínimos.
+\textbf{U2 de Theil}: Compara los resultados pronosticados con los de la previsión con datos históricos mínimos.
 
 \begin{center}
-	\( U = \sqrt{\frac{\sum_{t = 1}^{T - 1} \left( \frac{\hat{y}_{t + 1} - y_{t + 1}}{y_{t}} \right)^{2}}{\sum_{t = 1}^{T - 1} \left( \frac{y_{t + 1} - y_{t}}{y_{t}} \right)^{2}}} \)
+	\( U_{2} = \sqrt{\frac{\sum_{t = 1}^{T - 1} \left( \frac{\hat{y}_{t + 1} - y_{t + 1}}{y_{t}} \right)^{2}}{\sum_{t = 1}^{T - 1} \left( \frac{y_{t + 1} - y_{t}}{y_{t}} \right)^{2}}} \)
 \end{center}
 
 \begin{itemize}[leftmargin=*]
-	\item \( < 1 \): La predicción es mejor que adivinar.
-	\item \( = 1 \): La predicción es tan buena como adivinar.
-	\item \( > 1 \): La predicción es peor que adivinar.
+	\item \( U_{2} < 1 \): La predicción es mejor que adivinar.
+	\item \( U_{2} = 1 \): La predicción es tan buena como adivinar.
+	\item \( U_{2} > 1 \): La predicción es peor que adivinar.
 \end{itemize}
 
 \columnbreak

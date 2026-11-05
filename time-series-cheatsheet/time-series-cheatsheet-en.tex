@@ -243,9 +243,9 @@ For example, GDP is usually higher in summer and lower in winter (seasonally adj
 There are different \textbf{seasonal adjustment} methods:
 
 \begin{enumerate}[leftmargin=*, label=\alph{*}.]
-	\item Include seasonal binary variables in the model. For example, for quarterly series (\( S q_{t} \) are binary variables):
+	\item Include seasonal binary variables in the model. For example, for quarterly series (\( sq_{t} \) are binary variables):
 	\begin{center}
-		\( y_{t} = \beta_{0} + \beta_{1} S2_{t} + \beta_{2} S3_{t} + \beta_{3} S4_{t} + \beta_{4} x_{1t} + \cdots + \beta_{k} x_{kt} + u_{t} \)
+		\( y_{t} = \beta_{0} + \beta_{1} s2_{t} + \beta_{2} s3_{t} + \beta_{3} s4_{t} + \beta_{4} x_{1t} + \cdots + \beta_{k + 3} x_{kt} + u_{t} \)
 	\end{center}
 	\item Seasonally adjust the variables and then perform the regression with the adjusted variables.
 	\item Take seasonal differences (\( s \) is the seasonal period):
@@ -529,16 +529,16 @@ Two types of forecasts:
 	\item Of an individual value of \( y \) for a specific value of \( x \).
 \end{itemize}
 
-\textbf{Theil's U statistic}: Compares the forecast results with the ones of forecasting with minimal historical data.
+\textbf{Theil's U2 statistic}: Compares the forecast results with the ones of forecasting with minimal historical data.
 
 \begin{center}
-	\( U = \sqrt{\frac{\sum_{t = 1}^{T - 1} \left( \frac{\hat{y}_{t + 1} - y_{t + 1}}{y_{t}} \right)^{2}}{\sum_{t = 1}^{T - 1} \left( \frac{y_{t + 1} - y_{t}}{y_{t}} \right)^{2}}} \)
+	\( U_{2} = \sqrt{\frac{\sum_{t = 1}^{T - 1} \left( \frac{\hat{y}_{t + 1} - y_{t + 1}}{y_{t}} \right)^{2}}{\sum_{t = 1}^{T - 1} \left( \frac{y_{t + 1} - y_{t}}{y_{t}} \right)^{2}}} \)
 \end{center}
 
 \begin{itemize}[leftmargin=*]
-	\item \( < 1 \): The forecast is better than guessing.
-	\item \( = 1 \): The forecast is about as good as guessing.
-	\item \( > 1 \): The forecast is worse than guessing.
+	\item \( U_{2} < 1 \): The forecast is better than guessing.
+	\item \( U_{2} = 1 \): The forecast is about as good as guessing.
+	\item \( U_{2} > 1 \): The forecast is worse than guessing.
 \end{itemize}
 
 \columnbreak
