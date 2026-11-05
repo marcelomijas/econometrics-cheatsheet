@@ -63,7 +63,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ADD-26.11-ES - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ADD-26.11.1-ES - github.com/marcelomijas/econometrics-cheatsheet - Licencia CC-BY-4.0}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -221,7 +221,7 @@ Bajo no heterocedasticidad y no autocorrelación, la matriz de varianzas-covaria
 Bajo \textcolor{cyan}{\textbf{heterocedasticidad}} y \textcolor{magenta}{\textbf{autocorrelación}}, la matriz de varianzas-covarianzas:
 
 \begin{center}
-	\( \Var(u) = \sigma^{2} \cdot \Omega = \)
+	\( \Var(u) = \Sigma = \)
 	\scalebox{0.85}{
 		\(
 		\begin{bmatrix}
@@ -234,7 +234,7 @@ Bajo \textcolor{cyan}{\textbf{heterocedasticidad}} y \textcolor{magenta}{\textbf
 	}
 \end{center}
 
-\quad donde \( \Omega \neq I_{n} \).
+\quad donde \( \Sigma \neq \sigma^{2} I_{n} \).
 
 \begin{itemize}[leftmargin=*]
 	\item Heterocedasticidad: \( \Var(u_{i} \mid X) = \sigma_{i}^{2} \neq \sigma^{2} \)
@@ -384,7 +384,7 @@ Descomponer \( \SST \):
 \begin{center}
 	\scalebox{0.90}{
 		\begin{tabular}{ c c c c }
-			Origen var. & Suma Cuad. & df              & Suma Cuad. Media         \\ \hline
+			Origen var. & Suma Cuad. & df              & Cuadrados Medios         \\ \hline
 			Regresión   & \( \SSE \) & \( k \)         & \( \SSE / k \)           \\
 			Residuos    & \( \SSR \) & \( n - k - 1 \) & \( \SSR / (n - k - 1) \) \\
 			Total       & \( \SST \) & \( n - 1 \)     &
@@ -400,7 +400,7 @@ Descomponer \( \SST \):
 Bajo \( H_{0} \):
 
 \begin{center}
-	\( F = \dfrac{\text{SCM de \SSE}}{\text{SCM de \SSR}} = \dfrac{\SSE}{\SSR} \cdot \dfrac{n - k - 1}{k} \sim F_{k, n - k - 1} \)
+	\( F = \dfrac{\SSE / k}{\SSR / (n - k - 1)} \sim F_{k, n - k - 1} \)
 \end{center}
 
 Si \( F > F_{k, n - k - 1} \), existe evidencia para rechazar \( H_{0} \).
@@ -513,15 +513,15 @@ Tomando el logaritmo natural de la razón, el \textbf{logit}:
 \begin{enumerate}[leftmargin=*]
 	\item Estimar el modelo original y obtener  \( \hat{y} \) y \( R^{2} \):
 	\begin{center}
-		\( \hat{y} = \hat{\beta}_{0} + \hat{\beta}_{1} x_{1} + \cdots + \hat{\beta}_{k} x_{k} \)
+		\( y = \beta_{0} + \beta_{1} x_{1} + \cdots + \beta_{k} x_{k} + u \)
 	\end{center}
-	\item Estimar modelo con potencias de \( \hat{y} \) y obtener \( R_{\text{new}}^{2} \):
+	\item Estimar un modelo con potencias de \( \hat{y} \) y obtener \( R_{\text{aux}}^{2} \):
 	\begin{center}
-		\( \tilde{y} = \hat{y} + \tilde{\gamma}_{2} \hat{y}^{2} + \cdots + \tilde{\gamma}_{l} \hat{y}^{l} \)
+		\( y = \beta_{0} + \beta_{1} x_{1} + \cdots + \beta_{k} x_{k} + \gamma_{2} \hat{y}^{2} + \cdots + \gamma_{l} \hat{y}^{l} + v \)
 	\end{center}
-	\item Estadístico, bajo \( \gamma_{2} = \cdots = \gamma_{l} = 0 \) como \( H_{0} \):
+	\item Estadístico de prueba para \( H_{0}: \gamma_{2} = \cdots = \gamma_{l} = 0 \)
 	\begin{center}
-		\( F = \frac{R_{\text{new}}^{2} - R^{2}}{1 - R_{\text{new}}^{2}} \cdot \frac{n - k - l}{l - 1} \sim F_{l - 1, n - k - l} \)
+		\( F = \frac{R_{\text{aux}}^{2} - R^{2}}{1 - R_{\text{aux}}^{2}} \cdot \frac{n - k - l}{l - 1} \sim F_{l - 1, n - k - l} \)
 	\end{center}
 \end{enumerate}
 

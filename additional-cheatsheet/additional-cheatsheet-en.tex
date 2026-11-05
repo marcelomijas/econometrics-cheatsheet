@@ -63,7 +63,7 @@
 % ----- footer -----
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ADD-26.11-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
+\cfoot{\href{https://github.com/marcelomijas/econometrics-cheatsheet}{\normalfont \footnotesize ADD-26.11.1-EN - github.com/marcelomijas/econometrics-cheatsheet - CC-BY-4.0 license}}
 \setlength{\footskip}{12pt}
 
 % ----- document -----
@@ -221,7 +221,7 @@ Under no heteroscedasticity and no autocorrelation, the variance-covariance matr
 Under \textcolor{cyan}{\textbf{heteroscedasticity}} and \textcolor{magenta}{\textbf{autocorrelation}}, the variance-covariance matrix:
 
 \begin{center}
-	\( \Var(u) = \sigma^{2} \cdot \Omega = \)
+	\( \Var(u) = \Sigma = \)
 	\scalebox{0.85}{
 		\(
 		\begin{bmatrix}
@@ -234,7 +234,7 @@ Under \textcolor{cyan}{\textbf{heteroscedasticity}} and \textcolor{magenta}{\tex
 	}
 \end{center}
 
-\quad where \( \Omega \neq I_{n} \).
+\quad where \( \Sigma \neq \sigma^{2} I_{n} \).
 
 \begin{itemize}[leftmargin=*]
 	\item Heteroscedasticity: \( \Var(u_{i} \mid X) = \sigma_{i}^{2} \neq \sigma^{2} \)
@@ -384,7 +384,7 @@ Decompose \( \SST \):
 \begin{center}
 	\scalebox{0.90}{
 		\begin{tabular}{ c c c c }
-			Variation origin & Sum Sq.    & df              & Sum Sq. Avg.             \\ \hline
+			Variation origin & Sum Sq.    & df              & Mean Square              \\ \hline
 			Regression       & \( \SSE \) & \( k \)         & \( \SSE / k \)           \\
 			Residuals        & \( \SSR \) & \( n - k - 1 \) & \( \SSR / (n - k - 1) \) \\
 			Total            & \( \SST \) & \( n - 1 \)     &
@@ -400,7 +400,7 @@ Decompose \( \SST \):
 Under \( H_{0} \):
 
 \begin{center}
-	\( F = \dfrac{\text{SSA of \SSE}}{\text{SSA of \SSR}} = \dfrac{\SSE}{\SSR} \cdot \dfrac{n - k - 1}{k} \sim F_{k, n - k - 1} \)
+	\( F = \dfrac{\SSE / k}{\SSR / (n - k - 1)} \sim F_{k, n - k - 1} \)
 \end{center}
 
 If \( F > F_{k, n - k - 1} \), there is evidence to reject \( H_{0} \).
@@ -513,15 +513,15 @@ Taking the natural logarithm of the odds, the \textbf{logit}:
 \begin{enumerate}[leftmargin=*]
 	\item Estimate the original model and obtain \( \hat{y} \) and \( R^{2} \):
 	\begin{center}
-		\( \hat{y} = \hat{\beta}_{0} + \hat{\beta}_{1} x_{1} + \cdots + \hat{\beta}_{k} x_{k} \)
+		\( y = \beta_{0} + \beta_{1} x_{1} + \cdots + \beta_{k} x_{k} + u \)
 	\end{center}
-	\item Estimate a model adding powers of \( \hat{y} \) and obtain \( R_{\text{new}}^{2} \):
+	\item Estimate a model adding powers of \( \hat{y} \) and obtain \( R_{\text{aux}}^{2} \):
 	\begin{center}
-		\( \tilde{y} = \hat{y} + \tilde{\gamma}_{2} \hat{y}^{2} + \cdots + \tilde{\gamma}_{l} \hat{y}^{l} \)
+		\( y = \beta_{0} + \beta_{1} x_{1} + \cdots + \beta_{k} x_{k} + \gamma_{2} \hat{y}^{2} + \cdots + \gamma_{l} \hat{y}^{l} + v \)
 	\end{center}
-	\item Test statistic, under \( \gamma_{2} = \cdots = \gamma_{l} = 0 \) as \( H_{0} \):
+	\item Test statistic for \( H_{0}: \gamma_{2} = \cdots = \gamma_{l} = 0 \)
 	\begin{center}
-		\( F = \frac{R_{\text{new}}^{2} - R^{2}}{1 - R_{\text{new}}^{2}} \cdot \frac{n - k - l}{l - 1} \sim F_{l - 1, n - k - l} \)
+		\( F = \frac{R_{\text{aux}}^{2} - R^{2}}{1 - R_{\text{aux}}^{2}} \cdot \frac{n - k - l}{l - 1} \sim F_{l - 1, n - k - l} \)
 	\end{center}
 \end{enumerate}
 
